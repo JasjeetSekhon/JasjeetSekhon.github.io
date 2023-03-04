@@ -1,0 +1,15 @@
+\frametitle {R Code}
+Let's create our distribution of treatment vectors. We could compute
+all $5.7 \times 10^{14}$ treatment vectors, but to save on computing
+time, we can sample a large number of possible treatment vectors to get
+``close-to-exact'' p-values. If our experiment were smaller, then
+exhaustive enumeration would be better.
+
+Let's use the \texttt{replicate} function to  assign
+treatment 5,000 times and generate our $\Omega$:
+\begin{lstlisting}[frame=single]
+omega <- replicate(5000,
+              treat.assign(treat,blocks))
+omega <- unique(omega,MARGIN=2)
+\end{lstlisting}
+

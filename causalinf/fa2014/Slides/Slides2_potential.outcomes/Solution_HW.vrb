@@ -1,0 +1,13 @@
+\frametitle{Solution to HW question \\ The difference in means variance: Asymptotic}
+What is the asymptotic variance of the difference in means estimator?  \pause
+A technical approach:
+\textcolor{blue}{
+$$\mathbb{V}(T) = \sigma^2 \cdot  \frac{N^2}{(N-1)m(N-m)} \rightarrow  \frac{\sigma^2}{m}$$
+as $N \rightarrow \infty$ \\
+}
+\pause
+A more intuitive approach: \\
+\textcolor{blue}{
+When $N\rightarrow \infty$, $Z_i$ and $Z_j$ are independent, and hence the variance is,
+$$\mathbb{V}(T) = \frac{\sigma^2}{N-m} + \frac{\sigma^2}{m} \rightarrow \frac{\sigma^2}{m}$$
+}

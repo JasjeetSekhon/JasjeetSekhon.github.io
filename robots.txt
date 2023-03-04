@@ -1,0 +1,12 @@
+#==============================================================================
+# ROBOTS.TXT: This is the default dev/qa robots.txt file.
+# ID: "$Id: robots.txt,v 1.1 2007/04/27 16:57:31 spgleb Exp spgleb $"
+#==============================================================================
+
+User-agent: *
+Disallow: /stuff1
+Disallow: /s
+Disallow: /ipad
+Disallow: /causalinf/fa2010
+Disallow: /causalinf/fa2009
+Disallow: /causalinf/.dropbox

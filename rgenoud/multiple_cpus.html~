@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Intructions for Using Multiple Chips with GENOUD and Genetic Matching (GenMatch)</title>
+    <META NAME="description" CONTENT="R-GENetic Optimization Using Derivatives (RGENOUD) Home Page">
+    <META NAME="keywords" CONTENT="genoud, rgenoud, genetic optimization, genetic
+      algorithm, manual">
+    <META NAME="resource-type" CONTENT="document">
+    <META NAME="distribution" CONTENT="global">
+  </head>
+
+  <body>
+    <link rel="stylesheet"
+      href="http://sekhon.berkeley.edu/Traditional"
+      type="text/css"/>
+    <style type="text/css">
+      /*<![CDATA[*/
+      p {text-align: justify}
+      p.validity {text-align: right}
+      body {margin-left: 5%}
+      /*]]>*/
+    </style>
+
+    <h1>Intructions for Using Multiple Chips with GENOUD and Genetic Matching (GenMatch)</h1> 
+
+    By <a href="http://www-personal.umich.edu/~titiunik">Rocio
+      Titiunik</a>.
+
+    <br><br>
+
+    The following steps will show you how to use multiple chips in
+    your computer when using R. The instructions vary according to
+    your computer's operating system. Instructions of OS X, Linux and
+    other Unix-like systems are provided in the next section, and the
+    subsequent section provides instructions for Microsoft
+    Windows.<br>
+
+
+<h3>  Instructions for OS X, Linux or any other Unix-like system </h3>
+
+(1) In order to use multiple chips, you must install the R package
+'snow', which is available in the CRAN repositories. You can install
+it using the 'R CMD INSTALL' command or by typing
+'install.packages("snow", dependencies=TRUE)' in an R session. <br><br>
+
+(2) Create a directory to store the needed files. We will assume that
+this directory is called 'test'. <br><br>
+
+(3) Copy the files <a
+href="http://sekhon.berkeley.edu/rgenoud/test/AutoCluster3.R">AutoCluster3.R</a>
+and <a
+href="http://sekhon.berkeley.edu/rgenoud/test/a1dual.R">a1dual.R</a>
+to the 'test' directory you just created. You can download these files
+from Jasjeet Sekhon's website at <a
+href="http://sekhon.berkeley.edu/rgenoud/test">http://sekhon.berkeley.edu/rgenoud/test</a>. <br><br>
+
+(4) The file <a
+href="http://sekhon.berkeley.edu/rgenoud/test/a1dual.R">a1dual.R</a>
+runs GenMatch() using all or some of the chips available in your
+computer. Remember that in order to use multiple chips, you must
+install and load the 'snow' library (see step 1). The line 'cl <-
+NCPUS()' creates the cluster object by calling the function 'NCPUS()',
+and this object is then passed to 'GenMatch()' via the 'cluster'
+option. <br><br>
+
+The function 'NCPUS()' is in the file <a
+href="http://sekhon.berkeley.edu/rgenoud/test/AutoCluster3.R">AutoCluster3.R</a>,
+which you must source at the beginning of the file. If the file is in
+your working directory, you can source it by just typing
+'source("AutoCluster3.R")'. <br><br>
+
+The 'NCPUS()' function can be called with or without arguments. When
+the function 'NCPUS()' is executed with no arguments, the number of
+chips available in the computer is automatically detected and a
+cluster is created using as many chips as there are
+available. Alternatively, the user can specify the precise number of
+chips to be used by passing the number of chips as an argument. For
+example, 'cl <- NCPUS(nchips=4)' would create a cluster using exactly
+four chips in the computer (assuming that the computer does have four
+chips). If your computer had two chips and you wanted to create a
+cluster using both chips, you would type 'cl <- NCPUS(nchips=2)'. <br><br>
+
+(5) Done. The file <a href="http://sekhon.berkeley.edu/rgenoud/test/a1dual.R">a1dual.R</a>
+will run 'GenMatch()' using multiple chips in your computer. <br>
+
+
+<h3> Instructions for Windows </h3>
+
+(1) In order to use multiple chips, you must install a *special*
+version of the R package 'snow' prepared by Jasjeet Sekhon. In order
+to install this version, you can either download the package from <a
+href="http://sekhon.berkeley.edu/rgenoud/test/snow_0.2-2999.zip">http://sekhon.berkeley.edu/rgenoud/test/snow_0.2-2999.zip</a>
+and use the 'R CMD INSTALL' command, or type<br>
+'install.packages("snow",repos="http://sekhon.berkeley.edu")' 
+<br>
+in an R session with an internet connection. <br><br>
+
+(2) Create a directory to store the needed files. We will assume that
+this directory is called 'test'. <br><br>
+
+(3) Copy the files <a
+href="http://sekhon.berkeley.edu/rgenoud/test/AutoCluster3.R">AutoCluster3.R</a>
+and <a
+href="http://sekhon.berkeley.edu/rgenoud/test/a1dual.R">a1dual.R</a>
+to the 'test' directory you just created. You can download these files
+from Jasjeet Sekhon's website at <a
+href="http://sekhon.berkeley.edu/rgenoud/test">http://sekhon.berkeley.edu/rgenoud/test</a>. <br><br>
+
+(4) The file <a
+href="http://sekhon.berkeley.edu/rgenoud/test/a1dual.R">a1dual.R</a>
+runs GenMatch() using all or some of the chips available in your
+computer. Remember that in order to use multiple chips, you must
+install and load the special version of 'snow' (see step 1). The line
+'cl <- NCPUS()' creates the cluster object by calling the function
+'NCPUS()', and this object is then passed to 'GenMatch()' via the
+'cluster' option. <br><br>
+
+The function 'NCPUS()' is in the file <a
+href="http://sekhon.berkeley.edu/rgenoud/test/AutoCluster3.R">AutoCluster3.R</a>,
+which you must source at the beginning of the file. In order to source
+this file, you can type
+'source("C:/path_to_test/test/AutoCluster3.R")' --note the *inverted*
+slashes-- or you can first type
+'setwd("C:/path_to_test/test/AutoCluster3.R")' and then
+'source("AutoCluster3.R")'. <br><br>
+
+In Windows, the 'NCPUS()' function must be called with an
+argument. The user must specify the precise number of chips to be
+included in the cluster by passing the number of chips as an argument
+to the function. For example, 'cl <- NCPUS(nchips=4)' would create a
+cluster using exactly four chips in the computer (assuming that the
+computer does have four chips). If your computer had two chips and you
+wanted to create a cluster using both chips, you would type 'cl <-
+NCPUS(nchips=2)'. <br><br>
+
+(5) Done. The file <a href="http://sekhon.berkeley.edu/rgenoud/test/a1dual.R">a1dual.R</a>
+will run 'GenMatch()' using multiple chips in your computer. <br><br>
+    
+
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+<BR>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Genetic Optimization Using Derivatives</TITLE>
+<META NAME="description" CONTENT="Genetic Optimization Using Derivatives">
+<META NAME="keywords" CONTENT="genoud">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="genoud.css">
+<LINK REL="next" HREF="node1.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html20"
+ HREF="node1.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif_gr.gif">   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_genoud&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html21"
+ HREF="node1.shtml">Introduction</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<P>
+
+<P>
+<BR>
+<BR>
+<BR>
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+2">Genetic Optimization Using Derivatives</FONT><SUP>*</SUP> <BR>
+<BR>
+by <BR>
+<BR>
+Jasjeet S. Sekhon
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$">
+<BR>
+and <BR>
+<BR>
+Walter R. Mebane, Jr.
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$">
+<BR>
+<BR>
+<BR>
+Draft: July 30, 1998
+<BR>
+</DIV>
+
+<P>
+<BR>
+<DIV ALIGN="LEFT">
+<SUP>*</SUP> Forthcoming, <I>Political Analysis</I>. <BR>
+<BR>
+<BR>
+  
+  
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$">
+Assistant Professor,
+  <A NAME="tex2html2"
+ HREF="http://www.gov.harvard.edu/">Department of Government</A>,
+<A NAME="tex2html3"
+ HREF="http://www.harvard.edu">Harvard University</A>,
+<A NAME="tex2html4"
+ HREF="mailto:jsekhon@fas.harvard.edu"><TT>jsekhon@fas.harvard.edu</TT></A>,
+<A NAME="tex2html5"
+ HREF="http://data.fas.harvard.edu/jsekhon/"><TT>HTTP://data.fas.harvard.edu/jsekhon/</TT></A>.  Jasjeet Sekhon's research is
+supported in part by the Social Sciences and
+Humanities Research Council of Canada grant number 752-95-0380. <BR>
+<BR>
+
+
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$">
+Associate Professor, Department of Government,
+<A NAME="tex2html6"
+ HREF="http://www.cornell.edu">Cornell University</A>,
+<A NAME="tex2html7"
+ HREF="mailto:wrm1@cornell.edu"><TT>wrm1@cornell.edu</TT></A>,
+<A NAME="tex2html8"
+ HREF="http://macht.arts.cornell.edu/wrm1/"><TT>HTTP://macht.arts.cornell.edu/wrm1/</TT></A>. <BR>
+
+<P>
+</DIV>
+
+<P>
+
+<P>
+
+<H3>Abstract:</H3>
+<DIV>
+<P>
+<DIV ALIGN="LEFT">
+To solve difficult optimization problems, we have developed a computer
+      program called GENOUD (GENetic Optimization Using Derivatives) that
+      combines evolutionary algorithm methods with a derivative-based,
+      quasi-Newton method.  GENOUD can work even when the most often used
+      optimization methods completely fail.  The objective function for a
+      nonlinear model may not be globally concave, making it difficult for
+      gradient-based optimization methods to find any optimum at all.  Multiple
+      local optima may exist so there is no guarantee that gradient-based
+      methods will converge to the global optimum.  We discuss the theoretical
+      basis for expecting GENOUD to have a high probability of finding global
+      optima.  We conduct Monte Carlo experiments using scalar Normal mixture
+      densities to illustrate this capability.  We also use a real-data example
+      (the four-dimensional Hopf model), which has many parameters and multiple
+      local optima, to compare the performance of GENOUD to that of the
+      Gauss-Newton algorithm in SAS's PROC MODEL.
+    </DIV></DIV>
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html22"
+ HREF="node1.shtml">Introduction</A>
+<LI><A NAME="tex2html23"
+ HREF="node2.shtml">Evolutionary Nonlinear Optimization</A>
+<LI><A NAME="tex2html24"
+ HREF="node3.shtml">Normal Mixture Densities</A>
+<LI><A NAME="tex2html25"
+ HREF="node4.shtml">The Four-dimensional Hopf Model</A>
+<LI><A NAME="tex2html26"
+ HREF="node5.shtml">Conclusion</A>
+<LI><A NAME="tex2html27"
+ HREF="node6.shtml">Figures</A>
+<LI><A NAME="tex2html28"
+ HREF="node7.shtml">Tables</A>
+<LI><A NAME="tex2html29"
+ HREF="node8.shtml">References</A>
+<LI><A NAME="tex2html30"
+ HREF="node9.shtml">About this document ... </A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html20"
+ HREF="node1.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif_gr.gif">   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_genoud&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html21"
+ HREF="node1.shtml">Introduction</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,491 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>A Coordinating Model for Survey Data</TITLE>
+<META NAME="description" CONTENT="A Coordinating Model for Survey Data">
+<META NAME="keywords" CONTENT="midterm">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="midterm.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="midterm.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html127"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html125"
+  HREF="midterm.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html119"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+<A NAME="tex2html1"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.png"
+ ALT="home.png"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html128"
+  HREF="node5.html">A Nonstrategic Moderating Model</A>
+<B> Up:</B> <A NAME="tex2html126"
+  HREF="midterm.html">Coordination and Policy Moderation</A>
+<B> Previous:</B> <A NAME="tex2html120"
+  HREF="node3.html">A Model of Coordination</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+A Coordinating Model for Survey Data</A>
+</H1>
+With survey data we observe choices <IMG
+ WIDTH="51" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img162.gif"
+ ALT="$ Y_i\in K$"> reported by each elector <IMG
+ WIDTH="11" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif"
+ ALT="$ i$"> in
+a sample <IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img163.gif"
+ ALT="$ S$"> of size <IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img164.gif"
+ ALT="$ n$">, <!-- MATH
+ $i=1,\dots,n$
+ -->
+<IMG
+ WIDTH="84" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img165.gif"
+ ALT="$ i=1,\dots,n$">, along with a number of other
+variables that affect electoral choices--a set of variables <IMG
+ WIDTH="20" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif"
+ ALT="$ Z_i$">.  Given
+<IMG
+ WIDTH="20" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif"
+ ALT="$ Z_i$"> and a set of parameter values, we use (<A HREF="node3.html#eq:GEV">10</A>) to compute choice
+probabilities <!-- MATH
+ $\hat{\mu}_{i,h}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img166.gif"
+ ALT="$ \hat{\mu}_{i,h}$">.  We adapt Mebane's (2000) method to compute
+values <!-- MATH
+ $(\Hat{\Bar{H}},\Hat{\Bar{V}})$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif"
+ ALT="$ (\Hat{\Bar{H}},\Hat{\Bar{V}})$"> for each set of parameter values.  Let
+<!-- MATH
+ $S_{\{D,R,A\}}$
+ -->
+<IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.gif"
+ ALT="$ S_{\{D,R,A\}}$"> denote the subsample in districts with a fully contested race,
+<!-- MATH
+ $S_{\{D,A\}}$
+ -->
+<IMG
+ WIDTH="49" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img169.gif"
+ ALT="$ S_{\{D,A\}}$"> the subsample with an unopposed Democrat and <!-- MATH
+ $S_{\{R,A\}}$
+ -->
+<IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img170.gif"
+ ALT="$ S_{\{R,A\}}$"> the
+subsample with an unopposed Republican.  Given sampling weights <!-- MATH
+ $1/\omega_i$
+ -->
+<IMG
+ WIDTH="40" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img171.gif"
+ ALT="$ 1/\omega_i$">
+and values <!-- MATH
+ $\hat{\mu}_{i,h}$
+ -->
+<IMG
+ WIDTH="30" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img166.gif"
+ ALT="$ \hat{\mu}_{i,h}$">, we compute:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation*}
+\Hat{\Bar{R}} = \left(
+  \sum_{i\in S_{\{D,R,A\}}} \dfrac{\hat{\mu}_{i,R}}{\omega_i}
+  + \sum_{i\in S_{\{R,A\}}} \dfrac{\hat{\mu}_{i,R \mid\{R,A\}}}{\omega_i}
+  \right) \bigg/
+  \left( \sum_{i=1}^n 1/\omega_i \right)
+ \;,
+\end{equation*}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="394" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img172.gif"
+ ALT="$\displaystyle \Hat{\Bar{R}} = \left( \sum_{i\in S_{\{D,R,A\}}} \dfrac{\hat{\mu}...
+...id\{R,A\}}}{\omega_i} \right) \bigg/ \left( \sum_{i=1}^n 1/\omega_i \right) \;,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation*}
+\Hat{\Bar{D}} = \left(
+  \sum_{i\in S_{\{D,R,A\}}} \dfrac{\hat{\mu}_{i,D}}{\omega_i}
+  + \sum_{i\in S_{\{D,A\}}} \dfrac{\hat{\mu}_{i,D \mid\{D,A\}}}{\omega_i}
+  \right) \bigg/
+  \left( \sum_{i=1}^n 1/\omega_i \right)
+  \;,
+\end{equation*}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="401" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img173.gif"
+ ALT="$\displaystyle \Hat{\Bar{D}} = \left( \sum_{i\in S_{\{D,R,A\}}} \dfrac{\hat{\mu}...
+...id\{D,A\}}}{\omega_i} \right) \bigg/ \left( \sum_{i=1}^n 1/\omega_i \right) \;,$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<!-- MATH
+ $\Hat{\Bar{V}}=\Hat{\Bar{R}}+\Hat{\Bar{D}}$
+ -->
+<IMG
+ WIDTH="81" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img174.gif"
+ ALT="$ \Hat{\Bar{V}}=\Hat{\Bar{R}}+\Hat{\Bar{D}}$"> and
+<!-- MATH
+ $\Hat{\Bar{H}}=\Hat{\Bar{R}}/\Hat{\Bar{V}}$
+ -->
+<IMG
+ WIDTH="73" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img175.gif"
+ ALT="$ \Hat{\Bar{H}}=\Hat{\Bar{R}}/\Hat{\Bar{V}}$">.
+
+<P>
+To define the empirical model, in (<A HREF="node3.html#eq:GEVx">8</A>a-c) we set <!-- MATH
+ $\bar{H}_i =
+\Hat{\Bar{H}}$
+ -->
+<IMG
+ WIDTH="58" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img176.gif"
+ ALT="$ \bar{H}_i =
+\Hat{\Bar{H}}$"> and <!-- MATH
+ $\bar{V}_i = \Hat{\Bar{V}}$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img177.gif"
+ ALT="$ \bar{V}_i = \Hat{\Bar{V}}$"> and substitute <!-- MATH
+ $b_{C}
+\Hat{\Bar{V}}^{-1}$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img178.gif"
+ ALT="$ b_{C}
+\Hat{\Bar{V}}^{-1}$"> for <!-- MATH
+ $(N\bar{V})^{-1}$
+ -->
+<IMG
+ WIDTH="62" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img179.gif"
+ ALT="$ (N\bar{V})^{-1}$">, where <IMG
+ WIDTH="54" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif"
+ ALT="$ b_{C}&gt;0$"> is a constant
+parameter:
+
+<DIV ALIGN="CENTER"><A NAME="eq:GEVxuse"></A><!-- MATH
+ \begin{subequations}
+\begin{align}
+x_{i,D} &=
+  -b_{C} \Hat{\Bar{V}}^{-1} \Hat{\Bar{H}} w_{Ci} + z_{i,D} \\
+  x_{i,R} &=
+  b_{C} \Hat{\Bar{V}}^{-1} \left( 1-\Hat{\Bar{H}} \right) w_{Ci} + z_{i,R} \\
+  x_{i,A} &= z_{i,A} \;.
+\end{align}
+\end{subequations}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="558" HEIGHT="157" ALIGN="BOTTOM" BORDER="0"
+ SRC="img181.gif"
+ ALT="\begin{subequations}\begin{align}x_{i,D} &amp;= -b_{C} \Hat{\Bar{V}}^{-1} \Hat{\Bar{...
+...right) w_{Ci} + z_{i,R} \\  x_{i,A} &amp;= z_{i,A} \;. \end{align}\end{subequations}"></TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+Because the GEV distribution is implicitly standardized, <IMG
+ WIDTH="24" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img182.gif"
+ ALT="$ b_{C}$"> equals
+<IMG
+ WIDTH="36" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif"
+ ALT="$ N^{-1}$"> divided by the standard deviation of the elements of the
+unstandardized disturbance.<A NAME="tex2html27"
+  HREF="footnode.html#foot1670"><SUP>footnote</SUP></A>  We also use a technical
+reparameterization of (<A HREF="node3.html#eq:G">9</A>) in order to decrease the correlation
+between the estimate of <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img188.gif"
+ ALT="$ \tau$"> and the estimates of the parameters of
+<IMG
+ WIDTH="31" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img189.gif"
+ ALT="$ x_{i,D}$"> and <IMG
+ WIDTH="30" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img190.gif"
+ ALT="$ x_{i,R}$">.<A NAME="tex2html28"
+  HREF="footnode.html#foot1633"><SUP>footnote</SUP></A>  Instead of (<A HREF="node3.html#eq:G">9</A>), we use <IMG
+ WIDTH="23" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img197.gif"
+ ALT="$ G_i$"> in
+the form:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:Guse"></A><!-- MATH
+ \begin{equation}
+G_{i} = \left(v_{i,D} + v_{i,R}\right)^{1-\tau} + v_{i,A}
+  \;, \qquad 0\leq \tau < 1
+  \;.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="311" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.gif"
+ ALT="$\displaystyle G_{i} = \left(v_{i,D} + v_{i,R}\right)^{1-\tau} + v_{i,A} \;, \qquad 0\leq \tau &lt; 1 \;.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(13)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Given <IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img199.gif"
+ ALT="$ T\geq 1$"> samples <IMG
+ WIDTH="20" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img200.gif"
+ ALT="$ S_t$"> with subsets <!-- MATH
+ $S_{\{D,R,A\}t}$
+ -->
+<IMG
+ WIDTH="64" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img201.gif"
+ ALT="$ S_{\{D,R,A\}t}$">, <!-- MATH
+ $S_{\{D,A\}t}$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img202.gif"
+ ALT="$ S_{\{D,A\}t}$">
+and <!-- MATH
+ $S_{\{R,A\}t}$
+ -->
+<IMG
+ WIDTH="52" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img203.gif"
+ ALT="$ S_{\{R,A\}t}$">, the log-likelihood function is:
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="16" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img204.gif"
+ ALT="$\displaystyle L$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="443" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img205.gif"
+ ALT="$\displaystyle = \sum_{t=1}^T \left( \sum_{i\in S_{\{D,R,A\}t}} \sum_{h\in K} y_...
+...\in S_{\{D,A\}t}} \sum_{h\in\{D,A\}} y_{i,h} \log \mu_{i,h \mid\{D,A\}} \right.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="270" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img206.gif"
+ ALT="$\displaystyle \left. \quad + \sum_{i\in S_{\{R,A\}t}} \sum_{h\in\{R,A\}} y_{i,h} \log \mu_{i,h \mid\{R,A\}} \right) \;.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+<A NAME="eq:loglik">(14)</A></TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="58" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img135.gif"
+ ALT="$ y_{i,h}=1$"> if <IMG
+ WIDTH="49" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.gif"
+ ALT="$ Y_i=h$"> and <IMG
+ WIDTH="58" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img137.gif"
+ ALT="$ y_{i,h}=0$"> if <IMG
+ WIDTH="49" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img138.gif"
+ ALT="$ Y_i
+\neq h$">, <IMG
+ WIDTH="47" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img139.gif"
+ ALT="$ h\in K$">.
+Iterations to determine the parameter values include recomputation of each
+year's <!-- MATH
+ $(\Hat{\Bar{H}},\Hat{\Bar{V}})$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif"
+ ALT="$ (\Hat{\Bar{H}},\Hat{\Bar{V}})$"> values at each iteration.  The
+estimation algorithm is similar to the one used in Mebane (2000).  If the
+likelihood function is correct and a stability condition (Mebane 2000, 43-44)
+is satisfied, the algorithm converges to parameter estimates and
+<!-- MATH
+ $(\Hat{\Bar{H}},\Hat{\Bar{V}})$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif"
+ ALT="$ (\Hat{\Bar{H}},\Hat{\Bar{V}})$"> values that characterize the choices electors
+make in equilibrium.
+
+<P>
+We check whether the estimated parameters satisfy conditions necessary for
+coordination to exist.  First we test whether <IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img207.gif"
+ ALT="$ \alpha&lt;1$">: if <IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$ \alpha =1$">, then
+<IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img208.gif"
+ ALT="$ w_{Ci}=0$"> so that electors' strategies depend on neither <!-- MATH
+ $\Hat{\Bar{H}}$
+ -->
+<IMG
+ WIDTH="20" HEIGHT="25" ALIGN="BOTTOM" BORDER="0"
+ SRC="img209.gif"
+ ALT="$ \Hat{\Bar{H}}$"> nor
+<!-- MATH
+ $\Hat{\Bar{V}}$
+ -->
+<IMG
+ WIDTH="18" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img185.gif"
+ ALT="$ \Hat{\Bar{V}}$"> and there is no coordination.  We use confidence interval
+estimates and likelihood-ratio (LR) tests to check whether <IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$ \alpha =1$"> can be
+rejected for each year of our data.  The LR tests have a nonregularity because
+the coordinating model does not depend on <IMG
+ WIDTH="16" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.gif"
+ ALT="$ \rho$"> when <IMG
+ WIDTH="48" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$ \alpha =1$">.  We use
+equation (3.4) of Davies (1987, 36) to adjust the significance probabilities
+of the test statistics.  Also necessary for the choice model to describe
+coordination are that <IMG
+ WIDTH="45" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img211.gif"
+ ALT="$ q&gt;0$"> and that <IMG
+ WIDTH="54" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif"
+ ALT="$ b_{C}&gt;0$">: <IMG
+ WIDTH="45" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img212.gif"
+ ALT="$ q=0$"> implies <IMG
+ WIDTH="61" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img208.gif"
+ ALT="$ w_{Ci}=0$">; and
+<IMG
+ WIDTH="54" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img213.gif"
+ ALT="$ b_{C}=0$"> implies that <IMG
+ WIDTH="31" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img214.gif"
+ ALT="$ w_{Ci}$">, <!-- MATH
+ $\Hat{\Bar{H}}$
+ -->
+<IMG
+ WIDTH="20" HEIGHT="25" ALIGN="BOTTOM" BORDER="0"
+ SRC="img209.gif"
+ ALT="$ \Hat{\Bar{H}}$"> and <!-- MATH
+ $\Hat{\Bar{V}}$
+ -->
+<IMG
+ WIDTH="18" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img185.gif"
+ ALT="$ \Hat{\Bar{V}}$"> do not
+affect <IMG
+ WIDTH="11" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif"
+ ALT="$ i$">'s choice.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html127"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html125"
+  HREF="midterm.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html119"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+<A NAME="tex2html1"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.png"
+ ALT="home.png"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html128"
+  HREF="node5.html">A Nonstrategic Moderating Model</A>
+<B> Up:</B> <A NAME="tex2html126"
+  HREF="midterm.html">Coordination and Policy Moderation</A>
+<B> Previous:</B> <A NAME="tex2html120"
+  HREF="node3.html">A Model of Coordination</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Jasjeet S. Sekhon
+2001-06-28
+</ADDRESS>
+</BODY>
+</HTML>

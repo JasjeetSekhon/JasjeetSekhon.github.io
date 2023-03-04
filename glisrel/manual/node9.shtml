@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Example Files</TITLE>
+<META NAME="description" CONTENT="Example Files">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node18.shtml">
+<LINK REL="previous" HREF="node8.shtml">
+<LINK REL="up" HREF="manual.shtml">
+<LINK REL="next" HREF="node10.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html123"
+ HREF="node10.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html121"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html115"
+ HREF="node8.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html124"
+ HREF="node10.shtml">example1</A>
+<B> Up:</B> <A NAME="tex2html122"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html116"
+ HREF="node8.shtml">Genetic Operator Controls</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00090000000000000000">&#160;</A>
+<A NAME="example:top">&#160;</A>
+<BR>
+Example Files
+</H1>
+
+<P>
+All of the binary distributions of GENBLIS include four example model
+specification files (<TT>example1</TT> through <TT>example4</TT>), and the
+resulting list (i.e., summary output) files (<TT>example1.lst</TT> through
+<TT>example4.lst</TT>).  Each of these files has been included in this
+manual.
+
+<P>
+<A HREF="node10.shtml#example:example1"><TT>example1</TT></A> is a confirmatory factor
+analysis which uses the data contained in the <TT>example1.dat</TT> file.  The
+bootstrap goodness-of-fit test results (presented in the
+<A HREF="node11.shtml#example:example1.lst"><TT>example1.lst</TT></A> file) show that the
+model fits the data at both 
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\alpha=.05$">
+and <IMG
+ WIDTH="53" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.gif"
+ ALT="$\alpha=.1$">
+test levels.  In the
+output, ``The ML Fit'' labels the statistic denoted above by
+
+<!-- MATH: $\tilde{F}_{\text{ML}}$ -->
+<IMG
+ WIDTH="37" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="$\tilde{F}_{\text{ML}}$">.
+The bootstrap estimate of the critical value for a
+test at level 
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\alpha=.05$">,
+previously denoted 
+<!-- MATH: $F^*_{\text{ML},1-\alpha}$ -->
+<IMG
+ WIDTH="67" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.gif"
+ ALT="$F^*_{\text{ML},1-\alpha}$">,
+is
+labeled ``The 95 Percent Bound.''  The hypothesis that the model fits the data
+is not rejected at level 
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\alpha=.05$">
+because ``The ML Fit'' value is less
+than ``The 95 Percent Bound'' value, that is,
+
+<!-- MATH: $\tilde{F}_{\text{ML}}<F^*_{\text{ML},1-\alpha}$ -->
+<IMG
+ WIDTH="123" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img54.gif"
+ ALT="$\tilde{F}_{\text{ML}}<F^*_{\text{ML},1-\alpha}$">.
+
+<P>
+<A HREF="node12.shtml#example:example2"><TT>example2</TT></A> is a confirmatory factor
+analysis which uses the data contained in the <TT>example2.dat</TT> file.  The
+bootstrap goodness-of-fit test results (presented in the
+<A HREF="node13.shtml#example:example2.lst"><TT>example2.lst</TT></A> file) show that the
+model does <I>not</I> fit the data.  Here ``The ML Fit'' value is greater
+than both ``The 95 Percent Bound'' and``The 90 Percent Bound'' values, that
+is, 
+<!-- MATH: $\tilde{F}_{\text{ML}}>F^*_{\text{ML},1-\alpha}$ -->
+<IMG
+ WIDTH="123" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.gif"
+ ALT="$\tilde{F}_{\text{ML}}>F^*_{\text{ML},1-\alpha}$">
+for both the 
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\alpha=.05$">
+and the <IMG
+ WIDTH="53" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img53.gif"
+ ALT="$\alpha=.1$">
+test levels.
+
+<P>
+<A HREF="node14.shtml#example:example3"><TT>example3</TT></A> estimates a model in which
+the data from <TT>example1.dat</TT> and <TT>example2.dat</TT> are treated
+as coming from two different groups.  No constraints are imposed across
+groups, so there is no advantage compared to analyzing the datasets
+separately.  The model does not fit the data.
+
+<P>
+<A HREF="node16.shtml#example:example4"><TT>example4</TT></A> estimates a model in which the
+<TT>example1.dat</TT> and <TT>example2.dat</TT> data are treated as coming
+from two different groups.  The factor loadings and the variance of the common
+factor are constrained to be equal across the groups.  The model does not fit
+the data, but with the unconstrained model of
+<A HREF="node14.shtml#example:example3"><TT>example3</TT></A> also not fitting the data, this
+is not terribly interesting.
+
+<P>
+
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html125"
+ HREF="node10.shtml"><TT>example1</TT></A>
+<LI><A NAME="tex2html126"
+ HREF="node11.shtml"><TT>example1.lst</TT></A>
+<LI><A NAME="tex2html127"
+ HREF="node12.shtml"><TT>example2</TT></A>
+<LI><A NAME="tex2html128"
+ HREF="node13.shtml"><TT>example2.lst</TT></A>
+<LI><A NAME="tex2html129"
+ HREF="node14.shtml"><TT>example3</TT></A>
+<LI><A NAME="tex2html130"
+ HREF="node15.shtml"><TT>example3.lst</TT></A>
+<LI><A NAME="tex2html131"
+ HREF="node16.shtml"><TT>example4</TT></A>
+<LI><A NAME="tex2html132"
+ HREF="node17.shtml"><TT>example4.lst</TT></A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html123"
+ HREF="node10.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html121"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html115"
+ HREF="node8.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html124"
+ HREF="node10.shtml">example1</A>
+<B> Up:</B> <A NAME="tex2html122"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html116"
+ HREF="node8.shtml">Genetic Operator Controls</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

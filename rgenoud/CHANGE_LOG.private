@@ -1,0 +1,195 @@
+5.4-7
+RC4
+
+checks to make sure that control$fnscale is sane if the user provides it.
+
+5.4-6
+RC3
+
+User may now pass in "control" for optim including control$fnscale.
+
+It is now noted in genoud.Rd that with boundary.enforcement=2: 
+No out-of-bounds evaluations will ever be requested. In this case,
+boundary enforcement is also applied to the BFGS algorithm, which
+prevents candidates from straying beyond the bounds defined by
+\code{Domains}. Note that this forces the use of the "L-BFGS-B"
+algorithm for \code{\link[stats]{optim}}.  This algorithm requires
+that all fit values and gradients be defined and finite for all
+function evaluations.  If this causes an error, it is suggested that
+the "BFGS" algorithm be used instead by setting
+\code{boundary.enforcement=1}.
+
+Docs for negative burnin have been corrected
+
+
+5.4-4
+RC2 
+
+Removed two unused variables.  One in eval.cpp and another in
+evaluate.cpp.  Also, updates Walter's affiliation in the R code an in
+eval.cpp and evaluate.cpp.  The other files have been untouched
+because the time stamps need to be protected.
+
+5.4-3 
+
+Even better interrupt handling.  C++ code checks if at least
+Generation 0 has been run and if print.level>0 and
+project.path!="/dev/null".  Otherwise, 'interrupted' remains FALSE
+
+5.4-2 
+RC1 
+
+Better interrupt handling. When genoud is interrupted, it now prints a
+message on how to recover the best individual found so far.  This
+version also corrects the help page description of the 'BFGSburnin'
+option. Now: If \code{BFGSburnin < 0}, the BFGS will be used if and
+when \code{wait.generations} is doubled because at least one gradient
+is too large, which can only occur when \code{gradient.check = TRUE}.
+
+5.4-1
+
+The 'BFGSburnin' option may now be set to a negative value.  If it is,
+the BFGS will be used if and when \code{max.generations} is increased
+because the gradients are too large--i.e., if and when
+\code{max.generations} is increased because of the
+\code{gradient.check} option.
+
+
+5.4-0
+applied helper_with_analytic_gradient.diff and tighten_wrapper.diff
+patches.  Updated rgenoud.Rd project.path description.  
+
+5.3-5 (DISCARDED)
+applied patch for nicer_interrupt.diff, but with JSS
+modifications to make sure to print the interrupt message only when
+the project.path file actually exists.
+
+Discarded because:
+This patch generated errors:
+
+>  sin1 <- genoud(sin, nvars=1, max=TRUE)
+Error in ncol(best) : object "best" not found
+Execution halted
+trin:rgenoud.distribution/package%
+
+5.3-4
+
+Made changes for the Portland Group Compiler (pgCC).  Converted some longs to ints in frange_ran.cpp.
+int NewUnifSeed[MAXTHREADS];
+int RandIntSeed[MAXTHREADS];
+int ThreadNumber;
+
+5.3-3
+RC7
+
+Documentation updated for int.seed and unif.seed
+#define MAX_OPER_UNIQUE_TRY 1000, changed from 200
+
+5.3-2
+RC6
+
+MemoryMatrix now gives the same results as !MemoryMatrix.  The issues
+was that the number of UniquePairs that were hunted down for P6 and P8
+were different between the two setups.
+
+5.3-1
+RC5
+
+fixed the MemoryMatrix issue with data.type.int=TRUE (needed to fix the mfunc in rgenoud.R)
+
+
+
+5.2-4
+RC4
+
+fixed the bug with:
+
+test <- genoud(fn = sin, nvars = 1, max = TRUE, data.type.int = TRUE,
+starting.values = 0L)  # error that shouldn't be
+
+5.2-3
+RC3
+
+Domains can be equal, so that now just throws a warning instead of an error.  
+
+5.2-2
+RC2
+
+BG fixed an issue with starting.values (it needs to be individuals by
+nvars and not the other way around). JS fixed BG's patch and added
+checks to make sure that "Domains" now have the correct dimensions and
+sane values.
+
+5.2-1
+rc1
+
+Reversed the shrink_bounds_by_epsilon_for_L-BFGS-B.diff patch provided
+by Ben G. It doesn't actually solve the issue, see test/lbfgs1.R
+
+updated rgenoud.Rd BFGSburnin entry (typo correction)
+
+5.1-0017
+
+Got rid of the undefined functions (codetools) but doing
+snow::makeSOCKcluster stuff (this works even though snow does not have
+a namespace)
+
+5.1-0016,5.1-0015
+
+Many starting values can now be provided by passing a matrix to the
+'starting.values' option.
+
+A new option has been added named 'BFGSburnin' which control the
+number of generations which are run before the BFGS is first used.
+Premature use of the BFGS can lead to unfortunate converge to a local
+minimum instead of the global one.  This option allows the user to
+control how many generations are run before the BFGS is started.  This
+option delays the use of both the BFGS on the best individual and of
+the P9 operator.
+
+Fixed warnings in gcc >4.2:
+evaluate.cpp:304: warning: deprecated conversion from string constant
+to 'char*'
+
+5.1-14
+
+Minor changes.  Changed #includes so that the package now compiles
+with Sun Studio compilers: extern "C" is not needed for R header
+files. Added a regression suite to the "tests" directory.
+
+5.1-9
+
+Major changes: 
+
+Lexical searching now allows for one of the fit functions to be
+optimized by the derivative based optimizer.  This functionality is
+made available via the "BFGSfn" option.  Also see the "BFGShelp"
+option.  
+
+The 9th operator which takes the convex combination of the parent and
+its BFGS fit can now by tuned via the "P9mix" option.  If this is set
+to equal 1, then the BFGS fit is simply used.
+
+Minor changes:
+1) If BFGS results in out-of-bounds individuals, warning is only printed if print.level > 1
+
+5.0-5
+Prints version and build date on load.
+
+If starting values are provided and the lexical option is TRUE, then
+the starting values instead of domains[,1] are used to figure out how
+many return fits the function provides.
+
+
+5.0-2
+Improved genoud.Rd documentation file.
+
+5.0-1
+remove needless if statement in evaluate.cpp
+
+5.0-0
+
+1) Multiple point crossover now accurately called simple crossover in docs
+2) corrected whole mutation to actually do whole mutation
+3) fixed minor no improvement bug which involved going from gen0 to gen1
+4) simplified printing

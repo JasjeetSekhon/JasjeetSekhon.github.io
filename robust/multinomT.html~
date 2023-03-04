@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Multinomial Multivariate-T Estimation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for Multinomial Multivariate-T Regression {multinomRob}"><tr><td>Multinomial Multivariate-T Regression {multinomRob}</td><td align="right">R Documentation</td></tr></table>
+<h2>Multinomial Multivariate-T Estimation</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>multinomT</code> fits the multinomial multivariate-t regression for grouped
+count data.  This function is not meant to be called directly by the
+user.  It is called by <code>multinomRob</code>, which constructs the
+various arguments.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>multinomT(Yp, Xarray, xvec, jacstack, start = NA, nobsvec, fixed.df = NA)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Yp</code></td>
+<td>
+Matrix (observations by alternatives) of outcome proportions.
+Values must be between 0 and 1.  Missing data (<code>NA</code> values) are
+not allowed.</td></tr>
+<tr valign="top"><td><code>Xarray</code></td>
+<td>
+Array of regressors.  dim(Xarray) = c(observations, parameters, alternatives).</td></tr>
+<tr valign="top"><td><code>xvec</code></td>
+<td>
+Matrix (parameters by alternatives) that represents the model structure.
+It has a 1 for an estimated parameter, an integer greater than 1 for an
+estimated parameter constrained equal to another estimated parameter (all
+parameters constrained to be equal to one another have the same integer
+value in xvec) and a 0 otherwize.</td></tr>
+<tr valign="top"><td><code>jacstack</code></td>
+<td>
+Array of regressors used to facilitate computing the gradient and the
+hessian matrix.
+dim(jacstack) = c(observations, unique parameters, alternatives).</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+A list of starting values of three kinds of parameters:
+<code>start$beta</code>, the values for the regression coefficients; <code>start$Omega</code>, the
+values for the variance-covariance matrix; <code>start$df</code>, the
+value for the multivariate-t degrees of freedom parameter.</td></tr>
+<tr valign="top"><td><code>nobsvec</code></td>
+<td>
+Vector of the total number of counts for each observation.</td></tr>
+<tr valign="top"><td><code>fixed.df</code></td>
+<td>
+The degrees of freedom to be used for the multivariate-t
+distribution.  When this is specified, the DF will not be estimated.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The function often provides good starting values for multinomRob's LQD
+estimator, but the standard errors it reports are not correct, in part
+because they ignore heteroscedasticity.
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>call</code></td>
+<td>
+Names and values of all of the arguments which were passed
+to the function.  See <code>match.call</code> for further details.</td></tr>
+<tr valign="top"><td><code>logL</code></td>
+<td>
+Log likelihood.</td></tr>
+<tr valign="top"><td><code>deviance</code></td>
+<td>
+Deviance.</td></tr>
+<tr valign="top"><td><code>par</code></td>
+<td>
+A list of three kinds of parameter estimates:
+<code>par$beta</code>, the estimates for the regression coefficients; <code>par$Omega</code>, the
+estimates for the variance-covariance matrix; <code>par$df</code>, the
+estimate of the multivariate-t degrees of freedom parameter.</td></tr>
+<tr valign="top"><td><code>se</code></td>
+<td>
+Vector of standard errors for the regression coefficients.
+WARNING: these are not correct in part because the model ignores
+heteroscedasticity.</td></tr>
+<tr valign="top"><td><code>optim</code></td>
+<td>
+Returned by <code>optim</code>.</td></tr>
+<tr valign="top"><td><code>pred</code></td>
+<td>
+A matrix of predicted probabilities with the same
+dimentions as <code>Yp</code>.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Walter R. Mebane, Jr., Cornell University,
+<a href="mailto:wrm1@cornell.edu">wrm1@cornell.edu</a>, <a href="http://macht.arts.cornell.edu/wrm1/">http://macht.arts.cornell.edu/wrm1/</a> <br>
+</p>
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Walter R. Mebane, Jr. and  Jasjeet Singh Sekhon. 2004.  ``Robust Estimation
+and Outlier Detection for Overdispersed Multinomial Models of Count Data.'' 
+<EM>American Journal of Political Science</EM> 48 (April): 391&ndash;410.
+<a href="http://sekhon.berkeley.edu/multinom.pdf">http://sekhon.berkeley.edu/multinom.pdf</a> 
+</p>
+<p>
+For additional documentation please visit <a href="http://sekhon.berkeley.edu/robust/">http://sekhon.berkeley.edu/robust/</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="../../base/html/match.call.html">match.call</a></code>.  
+<code><a href="../../stats/html/optim.html">optim</a></code>.
+</p>
+
+
+
+<hr><div align="center">[Package <em>multinomRob</em> version 1.8-2 <a href="00Index.html">Index]</a></div>
+
+</body></html>

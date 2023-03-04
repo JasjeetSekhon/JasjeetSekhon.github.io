@@ -1,0 +1,1275 @@
+%!PS-Adobe-2.0
+%%Creator: dvipsk 5.86 p1.5d Copyright 1996-2001 ASCII Corp.(www-ptex@ascii.co.jp)
+%%based on dvipsk 5.86 Copyright 1999 Radical Eye Software (www.radicaleye.com)
+%%Title: estimation.dvi
+%%Pages: 5
+%%PageOrder: Ascend
+%%BoundingBox: 0 0 596 842
+%%DocumentFonts: Times-Roman Times-Bold Symbol Courier Times-Italic
+%%+ CMSY10 CMR10 CMMI10 CMEX10
+%%EndComments
+%DVIPSWebPage: (www.radicaleye.com)
+%DVIPSCommandLine: dvips -Ppdf estimation -o
+%DVIPSParameters: dpi=8000, compressed
+%DVIPSSource:  TeX output 2001.11.24:2152
+%%BeginProcSet: tex.pro
+%!
+/TeXDict 300 dict def TeXDict begin/N{def}def/B{bind def}N/S{exch}N/X{S
+N}B/A{dup}B/TR{translate}N/isls false N/vsize 11 72 mul N/hsize 8.5 72
+mul N/landplus90{false}def/@rigin{isls{[0 landplus90{1 -1}{-1 1}ifelse 0
+0 0]concat}if 72 Resolution div 72 VResolution div neg scale isls{
+landplus90{VResolution 72 div vsize mul 0 exch}{Resolution -72 div hsize
+mul 0}ifelse TR}if Resolution VResolution vsize -72 div 1 add mul TR[
+matrix currentmatrix{A A round sub abs 0.00001 lt{round}if}forall round
+exch round exch]setmatrix}N/@landscape{/isls true N}B/@manualfeed{
+statusdict/manualfeed true put}B/@copies{/#copies X}B/FMat[1 0 0 -1 0 0]
+N/FBB[0 0 0 0]N/nn 0 N/IEn 0 N/ctr 0 N/df-tail{/nn 8 dict N nn begin
+/FontType 3 N/FontMatrix fntrx N/FontBBox FBB N string/base X array
+/BitMaps X/BuildChar{CharBuilder}N/Encoding IEn N end A{/foo setfont}2
+array copy cvx N load 0 nn put/ctr 0 N[}B/sf 0 N/df{/sf 1 N/fntrx FMat N
+df-tail}B/dfs{div/sf X/fntrx[sf 0 0 sf neg 0 0]N df-tail}B/E{pop nn A
+definefont setfont}B/Cw{Cd A length 5 sub get}B/Ch{Cd A length 4 sub get
+}B/Cx{128 Cd A length 3 sub get sub}B/Cy{Cd A length 2 sub get 127 sub}
+B/Cdx{Cd A length 1 sub get}B/Ci{Cd A type/stringtype ne{ctr get/ctr ctr
+1 add N}if}B/CharBuilder{save 3 1 roll S A/base get 2 index get S
+/BitMaps get S get/Cd X pop/ctr 0 N Cdx 0 Cx Cy Ch sub Cx Cw add Cy
+setcachedevice Cw Ch true[1 0 0 -1 -.1 Cx sub Cy .1 sub]{Ci}imagemask
+restore}B/D{/cc X A type/stringtype ne{]}if nn/base get cc ctr put nn
+/BitMaps get S ctr S sf 1 ne{A A length 1 sub A 2 index S get sf div put
+}if put/ctr ctr 1 add N}B/I{cc 1 add D}B/bop{userdict/bop-hook known{
+bop-hook}if/SI save N @rigin 0 0 moveto/V matrix currentmatrix A 1 get A
+mul exch 0 get A mul add .99 lt{/QV}{/RV}ifelse load def pop pop}N/eop{
+SI restore userdict/eop-hook known{eop-hook}if showpage}N/@start{
+userdict/start-hook known{start-hook}if pop/VResolution X/Resolution X
+1000 div/DVImag X/IEn 256 array N 2 string 0 1 255{IEn S A 360 add 36 4
+index cvrs cvn put}for pop 65781.76 div/vsize X 65781.76 div/hsize X}N
+/dir 0 def/dyy{/dir 0 def}B/dyt{/dir 1 def}B/dty{/dir 2 def}B/dtt{/dir 3
+def}B/p{dir 2 eq{-90 rotate show 90 rotate}{dir 3 eq{-90 rotate show 90
+rotate}{show}ifelse}ifelse}N/RMat[1 0 0 -1 0 0]N/BDot 260 string N/Rx 0
+N/Ry 0 N/V{}B/RV/v{/Ry X/Rx X V}B statusdict begin/product where{pop
+false[(Display)(NeXT)(LaserWriter 16/600)]{A length product length le{A
+length product exch 0 exch getinterval eq{pop true exit}if}{pop}ifelse}
+forall}{false}ifelse end{{gsave TR -.1 .1 TR 1 1 scale Rx Ry false RMat{
+BDot}imagemask grestore}}{{gsave TR -.1 .1 TR Rx Ry scale 1 1 false RMat
+{BDot}imagemask grestore}}ifelse B/QV{gsave newpath transform round exch
+round exch itransform moveto Rx 0 rlineto 0 Ry neg rlineto Rx neg 0
+rlineto fill grestore}B/a{moveto}B/delta 0 N/tail{A/delta X 0 rmoveto}B
+/M{S p delta add tail}B/b{S p tail}B/c{-4 M}B/d{-3 M}B/e{-2 M}B/f{-1 M}
+B/g{0 M}B/h{1 M}B/i{2 M}B/j{3 M}B/k{4 M}B/w{0 rmoveto}B/l{p -4 w}B/m{p
+-3 w}B/n{p -2 w}B/o{p -1 w}B/q{p 1 w}B/r{p 2 w}B/s{p 3 w}B/t{p 4 w}B/x{
+0 S rmoveto}B/y{3 2 roll p a}B/bos{/SS save N}B/eos{SS restore}B end
+
+%%EndProcSet
+%%BeginProcSet: alt-rule.pro
+%!
+% Patch by TVZ
+% Makes dvips files draw rules with stroke rather than fill.
+% Makes narrow rules more predictable at low resolutions
+% after distilling to PDF.
+% May have unknown consequences for very thick rules.
+% Tested only with dvips 5.85(k).
+TeXDict begin
+/QV {
+  gsave newpath /ruleY X /ruleX X
+  Rx Ry gt
+  { ruleX ruleY Ry 2 div sub moveto Rx 0 rlineto Ry }
+  { ruleX Rx 2 div add ruleY moveto 0 Ry neg rlineto Rx }
+  ifelse
+  setlinewidth 0 setlinecap stroke grestore
+} bind def
+end
+
+%%EndProcSet
+%%BeginProcSet: texc.pro
+%!
+/TeXDict 300 dict def TeXDict begin/N{def}def/B{bind def}N/S{exch}N/X{S
+N}B/A{dup}B/TR{translate}N/isls false N/vsize 11 72 mul N/hsize 8.5 72
+mul N/landplus90{false}def/@rigin{isls{[0 landplus90{1 -1}{-1 1}ifelse 0
+0 0]concat}if 72 Resolution div 72 VResolution div neg scale isls{
+landplus90{VResolution 72 div vsize mul 0 exch}{Resolution -72 div hsize
+mul 0}ifelse TR}if Resolution VResolution vsize -72 div 1 add mul TR[
+matrix currentmatrix{A A round sub abs 0.00001 lt{round}if}forall round
+exch round exch]setmatrix}N/@landscape{/isls true N}B/@manualfeed{
+statusdict/manualfeed true put}B/@copies{/#copies X}B/FMat[1 0 0 -1 0 0]
+N/FBB[0 0 0 0]N/nn 0 N/IEn 0 N/ctr 0 N/df-tail{/nn 8 dict N nn begin
+/FontType 3 N/FontMatrix fntrx N/FontBBox FBB N string/base X array
+/BitMaps X/BuildChar{CharBuilder}N/Encoding IEn N end A{/foo setfont}2
+array copy cvx N load 0 nn put/ctr 0 N[}B/sf 0 N/df{/sf 1 N/fntrx FMat N
+df-tail}B/dfs{div/sf X/fntrx[sf 0 0 sf neg 0 0]N df-tail}B/E{pop nn A
+definefont setfont}B/Cw{Cd A length 5 sub get}B/Ch{Cd A length 4 sub get
+}B/Cx{128 Cd A length 3 sub get sub}B/Cy{Cd A length 2 sub get 127 sub}
+B/Cdx{Cd A length 1 sub get}B/Ci{Cd A type/stringtype ne{ctr get/ctr ctr
+1 add N}if}B/id 0 N/rw 0 N/rc 0 N/gp 0 N/cp 0 N/G 0 N/CharBuilder{save 3
+1 roll S A/base get 2 index get S/BitMaps get S get/Cd X pop/ctr 0 N Cdx
+0 Cx Cy Ch sub Cx Cw add Cy setcachedevice Cw Ch true[1 0 0 -1 -.1 Cx
+sub Cy .1 sub]/id Ci N/rw Cw 7 add 8 idiv string N/rc 0 N/gp 0 N/cp 0 N{
+rc 0 ne{rc 1 sub/rc X rw}{G}ifelse}imagemask restore}B/G{{id gp get/gp
+gp 1 add N A 18 mod S 18 idiv pl S get exec}loop}B/adv{cp add/cp X}B
+/chg{rw cp id gp 4 index getinterval putinterval A gp add/gp X adv}B/nd{
+/cp 0 N rw exit}B/lsh{rw cp 2 copy get A 0 eq{pop 1}{A 255 eq{pop 254}{
+A A add 255 and S 1 and or}ifelse}ifelse put 1 adv}B/rsh{rw cp 2 copy
+get A 0 eq{pop 128}{A 255 eq{pop 127}{A 2 idiv S 128 and or}ifelse}
+ifelse put 1 adv}B/clr{rw cp 2 index string putinterval adv}B/set{rw cp
+fillstr 0 4 index getinterval putinterval adv}B/fillstr 18 string 0 1 17
+{2 copy 255 put pop}for N/pl[{adv 1 chg}{adv 1 chg nd}{1 add chg}{1 add
+chg nd}{adv lsh}{adv lsh nd}{adv rsh}{adv rsh nd}{1 add adv}{/rc X nd}{
+1 add set}{1 add clr}{adv 2 chg}{adv 2 chg nd}{pop nd}]A{bind pop}
+forall N/D{/cc X A type/stringtype ne{]}if nn/base get cc ctr put nn
+/BitMaps get S ctr S sf 1 ne{A A length 1 sub A 2 index S get sf div put
+}if put/ctr ctr 1 add N}B/I{cc 1 add D}B/bop{userdict/bop-hook known{
+bop-hook}if/SI save N @rigin 0 0 moveto/V matrix currentmatrix A 1 get A
+mul exch 0 get A mul add .99 lt{/QV}{/RV}ifelse load def pop pop}N/eop{
+SI restore userdict/eop-hook known{eop-hook}if showpage}N/@start{
+userdict/start-hook known{start-hook}if pop/VResolution X/Resolution X
+1000 div/DVImag X/IEn 256 array N 2 string 0 1 255{IEn S A 360 add 36 4
+index cvrs cvn put}for pop 65781.76 div/vsize X 65781.76 div/hsize X}N
+/dir 0 def/dyy{/dir 0 def}B/dyt{/dir 1 def}B/dty{/dir 2 def}B/dtt{/dir 3
+def}B/p{dir 2 eq{-90 rotate show 90 rotate}{dir 3 eq{-90 rotate show 90
+rotate}{show}ifelse}ifelse}N/RMat[1 0 0 -1 0 0]N/BDot 260 string N/Rx 0
+N/Ry 0 N/V{}B/RV/v{/Ry X/Rx X V}B statusdict begin/product where{pop
+false[(Display)(NeXT)(LaserWriter 16/600)]{A length product length le{A
+length product exch 0 exch getinterval eq{pop true exit}if}{pop}ifelse}
+forall}{false}ifelse end{{gsave TR -.1 .1 TR 1 1 scale Rx Ry false RMat{
+BDot}imagemask grestore}}{{gsave TR -.1 .1 TR Rx Ry scale 1 1 false RMat
+{BDot}imagemask grestore}}ifelse B/QV{gsave newpath transform round exch
+round exch itransform moveto Rx 0 rlineto 0 Ry neg rlineto Rx neg 0
+rlineto fill grestore}B/a{moveto}B/delta 0 N/tail{A/delta X 0 rmoveto}B
+/M{S p delta add tail}B/b{S p tail}B/c{-4 M}B/d{-3 M}B/e{-2 M}B/f{-1 M}
+B/g{0 M}B/h{1 M}B/i{2 M}B/j{3 M}B/k{4 M}B/w{0 rmoveto}B/l{p -4 w}B/m{p
+-3 w}B/n{p -2 w}B/o{p -1 w}B/q{p 1 w}B/r{p 2 w}B/s{p 3 w}B/t{p 4 w}B/x{
+0 S rmoveto}B/y{3 2 roll p a}B/bos{/SS save N}B/eos{SS restore}B end
+
+%%EndProcSet
+%%BeginProcSet: 8r.enc
+% @@psencodingfile@{
+%   author = "S. Rahtz, P. MacKay, Alan Jeffrey, B. Horn, K. Berry",
+%   version = "0.6",
+%   date = "1 July 1998",
+%   filename = "8r.enc",
+%   email = "tex-fonts@@tug.org",
+%   docstring = "Encoding for TrueType or Type 1 fonts
+%                to be used with TeX."
+% @}
+% 
+% Idea is to have all the characters normally included in Type 1 fonts
+% available for typesetting. This is effectively the characters in Adobe
+% Standard Encoding + ISO Latin 1 + extra characters from Lucida.
+% 
+% Character code assignments were made as follows:
+% 
+% (1) the Windows ANSI characters are almost all in their Windows ANSI
+% positions, because some Windows users cannot easily reencode the
+% fonts, and it makes no difference on other systems. The only Windows
+% ANSI characters not available are those that make no sense for
+% typesetting -- rubout (127 decimal), nobreakspace (160), softhyphen
+% (173). quotesingle and grave are moved just because it's such an
+% irritation not having them in TeX positions.
+% 
+% (2) Remaining characters are assigned arbitrarily to the lower part
+% of the range, avoiding 0, 10 and 13 in case we meet dumb software.
+% 
+% (3) Y&Y Lucida Bright includes some extra text characters; in the
+% hopes that other PostScript fonts, perhaps created for public
+% consumption, will include them, they are included starting at 0x12.
+% 
+% (4) Remaining positions left undefined are for use in (hopefully)
+% upward-compatible revisions, if someday more characters are generally
+% available.
+% 
+% (5) hyphen appears twice for compatibility with both 
+% ASCII and Windows.
+% 
+/TeXBase1Encoding [
+% 0x00 (encoded characters from Adobe Standard not in Windows 3.1)
+  /.notdef /dotaccent /fi /fl
+  /fraction /hungarumlaut /Lslash /lslash
+  /ogonek /ring /.notdef
+  /breve /minus /.notdef 
+% These are the only two remaining unencoded characters, so may as
+% well include them.
+  /Zcaron /zcaron 
+% 0x10
+ /caron /dotlessi 
+% (unusual TeX characters available in, e.g., Lucida Bright)
+ /dotlessj /ff /ffi /ffl 
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ % very contentious; it's so painful not having quoteleft and quoteright
+ % at 96 and 145 that we move the things normally found there to here.
+ /grave /quotesingle 
+% 0x20 (ASCII begins)
+ /space /exclam /quotedbl /numbersign
+ /dollar /percent /ampersand /quoteright
+ /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
+% 0x30
+ /zero /one /two /three /four /five /six /seven
+ /eight /nine /colon /semicolon /less /equal /greater /question
+% 0x40
+ /at /A /B /C /D /E /F /G /H /I /J /K /L /M /N /O
+% 0x50
+ /P /Q /R /S /T /U /V /W
+ /X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore
+% 0x60
+ /quoteleft /a /b /c /d /e /f /g /h /i /j /k /l /m /n /o
+% 0x70
+ /p /q /r /s /t /u /v /w
+ /x /y /z /braceleft /bar /braceright /asciitilde
+ /.notdef % rubout; ASCII ends
+% 0x80
+ /.notdef /.notdef /quotesinglbase /florin
+ /quotedblbase /ellipsis /dagger /daggerdbl
+ /circumflex /perthousand /Scaron /guilsinglleft
+ /OE /.notdef /.notdef /.notdef
+% 0x90
+ /.notdef /.notdef /.notdef /quotedblleft
+ /quotedblright /bullet /endash /emdash
+ /tilde /trademark /scaron /guilsinglright
+ /oe /.notdef /.notdef /Ydieresis
+% 0xA0
+ /.notdef % nobreakspace
+ /exclamdown /cent /sterling
+ /currency /yen /brokenbar /section
+ /dieresis /copyright /ordfeminine /guillemotleft
+ /logicalnot
+ /hyphen % Y&Y (also at 45); Windows' softhyphen
+ /registered
+ /macron
+% 0xD0
+ /degree /plusminus /twosuperior /threesuperior
+ /acute /mu /paragraph /periodcentered
+ /cedilla /onesuperior /ordmasculine /guillemotright
+ /onequarter /onehalf /threequarters /questiondown
+% 0xC0
+ /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+ /Egrave /Eacute /Ecircumflex /Edieresis
+ /Igrave /Iacute /Icircumflex /Idieresis
+% 0xD0
+ /Eth /Ntilde /Ograve /Oacute
+ /Ocircumflex /Otilde /Odieresis /multiply
+ /Oslash /Ugrave /Uacute /Ucircumflex
+ /Udieresis /Yacute /Thorn /germandbls
+% 0xE0
+ /agrave /aacute /acircumflex /atilde
+ /adieresis /aring /ae /ccedilla
+ /egrave /eacute /ecircumflex /edieresis
+ /igrave /iacute /icircumflex /idieresis
+% 0xF0
+ /eth /ntilde /ograve /oacute
+ /ocircumflex /otilde /odieresis /divide
+ /oslash /ugrave /uacute /ucircumflex
+ /udieresis /yacute /thorn /ydieresis
+] def
+
+%%EndProcSet
+%%BeginProcSet: texps.pro
+%!
+TeXDict begin/rf{findfont dup length 1 add dict begin{1 index/FID ne 2
+index/UniqueID ne and{def}{pop pop}ifelse}forall[1 index 0 6 -1 roll
+exec 0 exch 5 -1 roll VResolution Resolution div mul neg 0 0]/Metrics
+exch def dict begin 0 1 255{exch dup type/integertype ne{pop pop 1 sub
+dup 0 le{pop}{[}ifelse}{FontMatrix 0 get div Metrics 0 get div def}
+ifelse}for Metrics/Metrics currentdict end def[2 index currentdict end
+definefont 3 -1 roll makefont/setfont cvx]cvx def}def/ObliqueSlant{dup
+sin S cos div neg}B/SlantFont{4 index mul add}def/ExtendFont{3 -1 roll
+mul exch}def/ReEncodeFont{CharStrings rcheck{/Encoding false def dup[
+exch{dup CharStrings exch known not{pop/.notdef/Encoding true def}if}
+forall Encoding{]exch pop}{cleartomark}ifelse}if/Encoding exch def}def
+end
+
+%%EndProcSet
+%%BeginFont: CMSY10
+%!PS-AdobeFont-1.1: CMSY10 1.0
+%%CreationDate: 1991 Aug 15 07:20:57
+
+% Copyright (C) 1997 American Mathematical Society.  All Rights Reserved.
+
+11 dict begin
+/FontInfo 7 dict dup begin
+/version (1.0) readonly def
+/Notice (Copyright (C) 1997 American Mathematical Society. All Rights Reserved) readonly def
+/FullName (CMSY10) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle -14.035 def
+/isFixedPitch false def
+end readonly def
+/FontName /CMSY10 def
+/PaintType 0 def
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0] readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 161 /minus put
+dup 164 /asteriskmath put
+dup 184 /greaterequal put
+dup 48 /prime put
+readonly def
+/FontBBox{-29 -960 1116 775}readonly def
+/UniqueXX 5000820 def
+currentdict end
+currentfile eexec
+9b9c1569015f2c1d2bf560f4c0d52257bac8ced9b09a275ab231194ecf829352
+05826f4e975dcecec72b2cf3a18899ccde1fd935d09d813b096cc6b83cdf4f23
+b9a60db41f9976ac333263c908dcefcdbd4c8402ed00a36e7487634d089fd45a
+f4a38a56a4412c3b0baffaeb717bf0de9ffb7a8460bf475a6718b0c73c571145
+d026957276530530a2fbefc6c8f67052788e6703bb5ee49533870bca1f113ad8
+3750d597b842d8d96c423ba1273ddd32f3a54a912a443fcd44f7c3a6fe3956b0
+aa1e784aaec6fce08dae0c76da9d0a3eba57b98a6233d9e9f0c3f00fcc6b2c6a
+9ba23af389e6dfff4efec3de05d6276c6be417703ce508377f25960ef4ed83b4
+9b01b873f3a639ce00f356229b6477a081933fef3bb80e2b9dffa7f75567b1fa
+4d739b772f8d674e567534c6c5bbf1cf615372be20b18472f7aa58be8c216dbd
+df81cc0a86b6d8318ca68fe22c8af13b54d7576fe4ca5a7af9005ea5cc4edb79
+c0ab668e4fec4b7f5a9eb5f0e4c088cd818ecc4feb4b40ec8bd2981bf2336074
+b64c4306ccd830661fcf3c47ff3eae8fd094a16831b5180e7fcf99d711aedf95
+5203c9e2245d503582b371386277fa03bee5aac0ac79f7406ce44b22a8ecaa62
+7a9812812c59c09dd51613cf3d80309a72e62a22b025b67870b608dd67b28532
+5ca3fd97db08417d8496ad1ef42fae6638dd608759f80670d51f88d14ec35b37
+bc5fcbcb2f43a566f56599c91ec9bed3424c7e228dcdeb972ef2209602f66a93
+24f824af78672f89a26be9cbb95be879c0af091de67d6591323684e0d8eb5b4c
+21a1c9e11656bc10652269c63543568237379ae424c17aebbf7868a7acf92062
+b1443853eaa4ed84060eb0c0161fe5483aba3296306d2255a54838054d78e268
+c96cd567138b76b7ccf8950c3084d4ffa6ea7c2ef5a97cd6d220305d9511bf0d
+7b037d5d6e224388f1457bf213462e8fe0b7a2eb817fc2a3c7562670d9f83b04
+bd498b01a390b69e4a87ae5538e5c972f82c11f9781be733ebe3a1f077087fa4
+ac0b72455e2f2f59489c7885368a64df3967648a7e60698ee41854bacb0954eb
+595e960328c6329254ae593f83dfa41cb8e176977de87cfe31eb611cad971479
+5d4e5e6e2350783ff0974b0c7229af409d0058bbf8872a91e07525812ac8d53d
+83212a555abf128d5f1de79cfa99fc7b2b47b4aeacd975c8983a9d23fb04c0f0
+b796dc5b838a27f36d0c9d636db969bab7ededce54f1534c3562851b909960d5
+bf5306a444ebb7eb746aaad7286290605d10e75d3e4a89b915bbd7362dcf08df
+7c48231bb41c6c9b9732f1c0a2d6ff09822109d608a8b1510cfc3cbbe7bb21ef
+d7d61ae19d2dd1a2207f53d7e698c208a06361561172cec454c2ec21c9a96b39
+0e493fff86d3f263496a8ff93328c8b34545fb8ea8c160c2ba52843186f4591a
+2f6d8b149cf924ce91aed15d8ad6e9019161794646f6d50d
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+
+%%EndFont 
+%%BeginFont: CMR10
+%!PS-AdobeFont-1.1: CMR10 1.00B
+%%CreationDate: 1992 Feb 19 19:54:52
+
+% Copyright (C) 1997 American Mathematical Society.  All Rights Reserved.
+
+11 dict begin
+/FontInfo 7 dict dup begin
+/version (1.00B) readonly def
+/Notice (Copyright (C) 1997 American Mathematical Society. All Rights Reserved) readonly def
+/FullName (CMR10) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle 0 def
+/isFixedPitch false def
+end readonly def
+/FontName /CMR10 def
+/PaintType 0 def
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0] readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 161 /Gamma put
+dup 164 /Lambda put
+dup 184 /breve put
+dup 40 /parenleft put
+dup 41 /parenright put
+dup 43 /plus put
+dup 61 /equal put
+readonly def
+/FontBBox{-251 -250 1009 969}readonly def
+/UniqueXX 5000793 def
+currentdict end
+currentfile eexec
+8053514d28ec28da1630165fab262882d3fca78881823c5537fe6c3dda8ee5b8
+97e17cb027f5c73fdbb56b0a7c25fc3512b55fe8f3acfbffcc7f4a382d8299cc
+8fd37d3cea49dabdca92847af0560b404ef71134b0f3d99934fc9d0b4e602011
+b9cfb856c23f958f3c5a2fbe0ef8587d1f5774879c324e51fcb22888b74f2415
+50d7401eb990d4f3a7af635198422283cac1b6cd446ddbcbd915db9bff88844e
+784c6bf7389803d9450b0c21756a017306457c7e62c1d269f306bd3402e266de
+fc3b5e7d8a8d2f5bf0fe6ddd40d07391df4fad4a6018dce29a2b8f692b29f202
+3a7c0e66de8ed85c14f1f8492167357f51a7e84cc5d92e0fee4d81cf7fbc8de5
+2d2e7bb57142033993f9c08c315abade8dbc4a732e84e142d3bee51557910e12
+cd8aa37c459a5e6b7f5269f59078aba3be4641a11ac48d0b625c8325b38ec08e
+4c9e5e7fed976a5650d99d82114f449b9ca14c4ec957702295a39a93ef93f618
+99b8ea06b092c3c1e503e6e436e0a9fa22576c8930ab3dc8c20f5d82b69cddf8
+ff4dacfa9c54bed5a3aa3ea5b129fe96be632843b9b6bc91b615581a985db56b
+1e01ca60ee69ca92cf5c0882ece62edad3e106d835348822400f0b66af658f2a
+e56ed08f8b0010571807009b73ab12a8cf14ca6c71f03c2a48c500f9d62266af
+154a6375ff600d9bac3f05ce34142d6867a79581c533176bb2f3117336671e2e
+44638a97167e2ea9644e31ea16c2ad2990ea33c54001e0c8156e6de8ab6a4d40
+a7137ba275f39589fea2e2db8256adc103d6f9cc038037a47e8fd469c5f98a5e
+3c15bd4ace40d340018b1cff7d1ed8abb0ac57b5b5a2c20a51957b96c453edb7
+dae5affd91a46d938fe0a13363001d844ded4323f1ee6d30012aea19b024a552
+315505535c85dc26bad31e09c50e6512802976d298c4e90d0044c362e6bf3ab3
+62a454ee93de25ce54411090c29e9d75c80ce26a84404bd9de3aee0e3f921ac5
+87f907572b8354a5c3165eea7e8b2ba4e4f834663063e9a307d8ff6f8b61acd8
+799bc105cddcf8f95f2160494fc01f7ec3effb95de571b8d7f27a2f9ad203c09
+cd4cffd98a119a507460e7fef5c910405e877aa1f8da68d1272e59e3adccef8d
+82e692b3229926fbe621080b7831a2ee248948dd3ae55082a939f02875a7a0eb
+7ae7d50270a576fbdfde7109c670f51be75b80b6fe3045ea50e212102e618380
+45b8b4d0145fd42afa7daac13f2a9363a11a7dd243df971c7a8dabe3039677cf
+3b4b1ee0bfa28f672935d2ac4d4ad23ff423f707ee47cefb312524d59e0292e4
+5214d417c8b0e0865bfa5e416633b9e0a0e64f2e3741a4768df8cc6947784889
+4332e0de2df80b610ff7167c5c44bf6d53347ba66fefab8a2c88280e41f79758
+b0bd2bc72d05eebb7eae11814f800f22180da26415a1bdaf850ca86b358cb547
+95461992cee3f55642a76bdec0a1217d1b7fcfc4c377f77b857fe04d0eb3ff50
+700f136a7e16d034c83ea7fa75b38929edf74a40672f1be2ee2d3fffc322b2b4
+58eb67a376c3b99f8158f9cca3b625c1d3b8ad36807d1412c0bb5ec859391c87
+fce41234a66cd97e6716c27e8883f70aaa340be88d7848cda68f23afec830af6
+e5d7a37c41825a3e114765411946f965d2b5d923b5fa48b5ec15fb779ee438f5
+500ed3921cc62235f597f049abbc3f39342cafe5896e04e34e56d1fe189fd01d
+c56459331656100748e7f6a557f229d4bb124ec29c452a10dfc24531c0855c59
+cfbe71f8031a868910544308ad9fb7b633e57ef364ff4e065240da1eefb5ed92
+5b79db0015a97737701e2643b2b86d36e6a0a9d992535cd3e6429c320d538c55
+278a4cd5fe22abfde21f0bfb273d6bfdf9d6b51608563c6f6e21620f9b1e5cf9
+17a4a94b69832a7a0fc5f8cf3d66acfb27d1c108f810fae6b3e5361cf4284d4d
+39d6cd232efb2fa1dbd1ac2969b3358539c581fe764811a151e23737f688600a
+0e80311af40f13117f34c619644a65a398f77662f4ffc42e936c7f58dfc7771c
+2e07dc8db1fb0d927e35513c2ce4da257960901760165acb2fccd883974c5460
+7dc9cab4c20e340f79aaeb6ade19a87ff2417a1f85c71e6ab2406b6e8946547e
+96c04677cc99343d1323b34064d7631be16b3b6646906a91744b2e9f8a39b2b7
+4a1f9b1cadde55748fc573c74490b8400b3e3b178be0dc79f67aac0523e0eb10
+7d364fcc6988752bd106f468083c8a375da3c74db9ec1ddc1f0fd0064ff96d8d
+41c2e4bbaffec693fc16c8b75529fa1a12fc6e7cbf39dadc0fd24606c680a985
+546556076bca9e330dc53eb854c10409065799a3d567cbad80c65d5610c91f14
+f46ab2c8be16ca7c31408076a980028e306652ad808eed8cae353322da8264a0
+bf7beaed0a48118e7963a7577284c184497c2e5132dc4ac130265ab4c802c347
+04fcbdd93512c31a7e5597be142cf31e2f8dc3a037f7f809db7545a3a974c3ac
+0286fbb15608ff617665dad62c53ddcb34ce5a7a09dacbde381197897231c628
+021352355bc431dbaf6d4d09624462a31d9efb1d176b435f47330991aa71515c
+593ddab50f7fd41a4244c7a9e32272fd95709e26d62c3c963594203c702c94
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+
+%%EndFont 
+%%BeginFont: CMMI10
+%!PS-AdobeFont-1.1: CMMI10 1.100
+%%CreationDate: 1996 Jul 23 07:53:57
+
+% Copyright (C) 1997 American Mathematical Society.  All Rights Reserved.
+
+11 dict begin
+/FontInfo 7 dict dup begin
+/version (1.100) readonly def
+/Notice (Copyright (C) 1997 American Mathematical Society. All Rights Reserved) readonly def
+/FullName (CMMI10) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle -14.04 def
+/isFixedPitch false def
+end readonly def
+/FontName /CMMI10 def
+/PaintType 0 def
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0] readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 161 /Gamma put
+dup 164 /Lambda put
+dup 184 /lambda put
+dup 58 /period put
+dup 59 /comma put
+dup 61 /slash put
+dup 62 /greater put
+readonly def
+/FontBBox{-32 -250 1048 750}readonly def
+/UniqueXX 5087385 def
+currentdict end
+currentfile eexec
+80347982ab3942d930e069a70d0d48311d725e830d1c76fba12e12486e989c98
+74c2b527f0925722787027f44470d484262c360cdfdddf3657533a57bb16f730
+48bfbbfcb73a650484015441fdc837add94ac8fbd2022e3ec8f115d4b4bb7b7f
+15388f22cc6198efe768bd9fceb3446ee4a8dc27d6cd152485384ef5f59381ff
+da43f2d20c8fb08aa27ab2015b774db10dacfdcd33e60f178c461553146ab427
+bdd7da12534ba078ad3d780414930da4f8d58abefd45db119b10eb409dd89792
+3c6e705479464a4b310b58348c4b42393988fef4925cf984423aaf65fea9f0e6
+4629953bcf50b919d968d99bd185f83112b2759cc411764e9bde677f57c5ee5a
+c555448d5f81a16259ded1e11bf4119d53e8ab07a802df900d3a2d5ccc1c6876
+d29c5e9effb7af3ef83400b0910c07873a8c56fa7b1eb1ba426043b00cc95dbe
+dc6e136cbbbcb3f67509964f9f281ebf81fe5b018122eaf66c4a838487e82e18
+6e006093042848a903efb3469ab6b4049767aadb95c30408dfd58d8a10f4cb22
+168decd9f3ee100f07b49aa44c92139b669cc312ba20192454eb2375be6284b0
+26659d964b96ae82d4942e758027fcf23c25ed01115af27ce7f20efe2a822bb6
+84004f20243a49c9e93301fc21b80815c033c3e2ba58ef53da2157d524b395f2
+b37abca13bc6a2f42e824ab7e47106176b0d6db267fbb795ac7425582df2e3dc
+55863468a9200742bd7b552c48f8cf58bc21343bd3b95abfa140f33f37c6f3f7
+8b0d8a5154eb7c1f62ec598267f13e841a3e64172663935ac8b665d86540d316
+ddece329c008049c5e74b27d59022c5515059bc3b89370b1bc6a169c888bb325
+e0b74282d6f053a50da4024ed1e433271a32ab8c17d41c632b41cf9f3ecd5fe1
+24daf7aea7ce8a63047b245822930d517df7baaafa69d2d17f7d93cebd45416d
+f3459365434123a76ccf883a4973bab19807e1f0c4bab03a45f7ed69ff2660ff
+3963e4def11001eec4238c368a39d874fd30b3c14f4186ec7700fbce22abe468
+eb32baf7b0164f8f21a9b5e706b91411faaa44467cb2180ab03de375c1ab93e9
+76e11ab92fdd4a7280a6d1a8dc65c4c89d04c8ed6988045a2a3de9a4c7b1efd3
+75bdb5cda2ad7fa3939609a67527ae95287305d82494012897625fa9febbd7d4
+b8859b48963ae46591c03c84b83456c06ee6df0759acf0a8826b3405db75fbf1
+b06e8c1d0c136e8b6788499698409334ee1607ac9adc92cf03043f0508d08ac9
+0a13bb37668aaf2e2724d64e2c2fd50fe1eb07a7ca34361496dd6db052ab4984
+b3c42deb34ad5df030092bdfb4869240fcc63b9d82e1b22fbdb3caf37d0c01c0
+4cc6a3bd0e310ff21166ab916da9c4bf48b92e8813a00719a3c6582f940c8d0e
+d6629d131ccdd66a0a9359b35cc8c7fa05aa5bc89139be981409c5206770cece
+84fce404a7f88f87871aa4d680d4c4a2054c99668db53e7bc63658889da6e266
+b7d7c327067cdbc822dd594e920da389d6ed431f8d3bbfd525a2a44c5a442d6b
+2b73ec05555a58436a370471936903d473be3d77dc65949cae232c6bffef22cc
+f7b77a122a981e57a523eea48a8349464105f044054a2ba4f89491a916fc673b
+3e33ca4fd65083778b69090d33a63adef33492c9868d9505ecca69b86699ed92
+832a6118ca52a7744db087991336b4fa19f3acce7e1736fcbfa0f20cdc4fbf0e
+6e8cb8f15ff49b5a16a89d350658a2b4bddd954ff2afbf0a8e0203b1ea8868f7
+08e666dcb5936c5fac80cc62dc96745ae610822a7b3862bae10666f31ca7779b
+43d54730aba82abcecc7fd402324b23de3310afe22117da44439954b1a962581
+d8f544e3d3957eab89b14bd3b98c89913b615cb6ee0a668bfc6bd004c94477b6
+dbba340dc7fe897b33cb37fc2a84be997cd2fc4fee49b03bb40d9394c145c113
+88539028de68bbb6d9e4e97c4351818e5f34595b213f993f305e3fbe1d4fed28
+387b1525d7e33577c8fb07d06a641141b16386c48c9a9e4f342386369bbdc618
+00390892519f626dab66a092dc7ac959dd0178f151a612c0b275a4850261c99c
+efde6f805e009a06f89a1f30949b6d68bfd0e4c2fb6918c597903cb870180af1
+c82edf635aab2c0b1e4e8c0631b31a364c6a87f7b2f548388882386da36d983e
+b006e6fdbf1320abd68315af826b6585ac8f737fd6e754ed6998dbdc58beb2a7
+3f4c38656a18595f6c2e1d05e3c41f6b6c96a30e1c49c44fc8401ed6cfa1946e
+cf3eb861f365852d1f68f379de621e5b6f252bda60832b073e848b5da6fa8024
+dfd9a5a6a902762d34d2dad4a508031dd12bf351b705b7fc8e706124f48c64e4
+a870691268fad98845af85fbddd2e0787cd230332a92d2b0657e5ef99c087f66
+225fa67225e92e2414456f7ff63de07a4e88595b2a5991bf27ed2cf24ac437bd
+d4e0df9c0192310cc1fb476e3cc6cd1111f3fa6b5e28dd0cf2fbce902afb6a08
+2daa3a61b5a6ad02debea208f45c3953a4d4884e5b85c82ed67ba47bff05a833
+d77939f0189980be3228e22a7b849c6b2cf68bce08bc6beb8eb263a9b92a70e3
+10d34331a975fd7d2733d0afba1cb475358cee0ec6140e81f9ea85281bd9d074
+537a8e
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+
+%%EndFont 
+%%BeginFont: CMEX10
+%!PS-AdobeFont-1.1: CMEX10 1.00
+%%CreationDate: 1992 Jul 23 21:22:48
+
+% Copyright (C) 1997 American Mathematical Society.  All Rights Reserved.
+
+11 dict begin
+/FontInfo 7 dict dup begin
+/version (1.00) readonly def
+/Notice (Copyright (C) 1997 American Mathematical Society. All Rights Reserved) readonly def
+/FullName (CMEX10) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle 0 def
+/isFixedPitch false def
+end readonly def
+/FontName /CMEX10 def
+/PaintType 0 def
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0] readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 161 /parenleftbig put
+dup 164 /bracketrightbig put
+dup 184 /bracketrightbigg put
+dup 90 /integraldisplay put
+readonly def
+/FontBBox{-24 -2960 1454 772}readonly def
+/UniqueXX 5000774 def
+currentdict end
+currentfile eexec
+80347982ab3942d930e069a70d0d48311d7190fa2d133a583138f76695558e7a
+e9348d37cac6651806d08527c1bb4a062a4835ac37784cc39ad8841404e438b4
+d52d3901e47a1de4f7924e0fb3daf442499175bab1226edf692a4956739f8828
+e80592f450c5d5c22ac88bcfbe9748f61d18243a16f4a4467f084e8e2be46ef4
+7fc51c3a8199e3cda62ff9c4fb73956dab8b6683d2156377808cb35026073e80
+523f59a30d195fcf9b9fce4ffafc6d5649664203ab24acb938d58d246707ffe7
+d62f04bec4b70c21ef75beb2b812622b3c74e969d72d3cd11bd7106294a99caf
+0b1629bc7d4de6b96ca82930831d64575f23f4ad06a0e45e315b1d392411be8d
+6d73c998789ff258a07a3c8c2057325784514c845500bfd1a971310cfc11d41c
+1a167dbd5ff012c60add4e87325f6e5299032a839de65fb1473a166aae1876a4
+414a434f22c1d241591fb36f857df6fa930608750ffc0c54f44994662b1f00f1
+400bf752ea8d83ffc4cb77a290bc2d99981ae59a191748ba5c7ba1a9d2583fd2
+1398452b6ff5d83a059f7eadcd2ef744e9dd22bdf9c79d049bf06835e878c32b
+7765c69bdd8ef4deb4ea7cfff4cf9354a4ddffa689de961d16772491c7afbd7f
+ffde42400764c68e954ee5c455a5687959829bc3b319b2147deaab3628662c80
+30c5e02fea09609abe4eaa12e217bc3af673f1bc36a7039eb13fcacb4218fe0f
+c5a3f9452d4edf46cc91db67b624d4f2d37502fb9f11af4da18ca40b61097f95
+d44329375467ed13c5cb585ec53f62b83ef9502cc755af44bf32b87b8ae9f3f2
+f8dbf72dab90acafbacd280db6aaffaefdff6d5eff26669bac56280a950560e3
+d01714ba38659b0e4e28bf8cdc1f15ff7e3ea9d95a6afbbe3d8e6905aa6d531d
+6b6dcab89e2036cc492c65f76ddcc3cfcff33fde3d9ffd10f7a90530fd5c7683
+4329baa902e701ca42717476298c9ff511b1941244bb1dfd0e5cab92a43970cd
+1bdb292eadd055c97972844fdcdb0aa06401e7b2632b9d134f96bce0064860f3
+9859da7a9a82be0a840672a1331212752ae1b521b693b384a72dba8d37a86eaf
+a0341e7fc5f6ef7a8c566aacb91e8bf5005c18837894c4eacff41dba54e071ca
+83f9dc35f771ec6dbac68188dfcb67a3ce651abcba245d7a71278fab0d5ae767
+9049697c6a90a5a37c7a866a11e6d79bc9d47b2980c7694c525e3c7d1f44a5ff
+4d2bbf420f9d206a43ed7131fdf44026a2f3cfb090bb1be75801286572091dd4
+488cdf5bab28a298995b3a5204ed0d12ea03833ff7883729bb4dc12069ff7336
+01d643bec9414486008aec4533c5fe206ef1115aa9e96c078398d609fa828de1
+1673155673c12a0154849564c967a6afb0297cf6527ff508b75eba2402581f65
+c4ec372664c6fc4e49bcb46547784895677f9446967a11448c1c778eef477a06
+140112c38ac353ecd39e535c1fce6d5620ce03a2fd786ae3d62095f2c30e392c
+d1a09c1587696dfd7b2030d707b0e3a5ca75cc7b6b8f4769eeb6ed4e5013101a
+a28405f5b59b926dea9b680b6f4ce5d0729b466070c3934aea93cd5f8cc381c5
+e3e418fa2aa062c8249aa70d4e9970b18d5ec0ad5e0f795e4e70a40e9ccf12b3
+d24835d3bdd6321728a3365b8947237b60160a8ac21f9ecadad4d026d470e1d0
+00bf021276399d429b4b4aa9f32e6d7aca84da3f2d67a4a4689201cc8395bf28
+c9814ef11e1d1e7673f5a7f752714ad80e39b0903b43578c9902dcced7e3e546
+1a2ec40ed280ca02dd65fbfed5efcbffdfaca8f2dd8e1725c243fd6ed75ca47a
+f6ff154e72dea80a5c74fc4fe9c5c254a4929a75a5db1287bca06a8131e673a1
+6fd3be9ccbad4e941b4f94d93f953cd211e206a574f10e25cf7e8028173eb6e4
+2b2348061a61e4f761a80ddb3a05829c3e6da5e51abd126d8654312e7e9b1b7a
+9abb1dae9735c615d56121daa965c3ed4c2d1a8ce50919cb347968d7f952c975
+bf53e1d1c99387b2178a7837f2eb54fd800f8b4c1cdd8b207c09c9b0e7c940fb
+a38ae57dc51ced7dc436578dda81b45a8b32d5bea82b7fe3f099c5422535e1e9
+b70954f996dce7d4a309be63
+
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+
+%%EndFont 
+TeXDict begin 39158280 55380996 1000 8000 8000 (estimation.dvi)
+@start /Fa 205[ 332 332 49[{ TeXBase1Encoding ReEncodeFont} 2
+664.176 /Times-Roman rf /Fb 256[{ } 0 664.176 /Symbol
+rf /Fc 205[ 277 50[{ TeXBase1Encoding ReEncodeFont} 1
+553.48 /Times-Roman rf /Fd 256[{ } 0 553.48 /Symbol rf
+/Fe 139[ 215 3[ 387 112[{ TeXBase1Encoding ReEncodeFont} 2
+774.872 /Times-Italic rf /Ff 256[{ } 0 774.872 /Symbol
+rf /Fg 255[ 603{ } 1 774.872 /CMSY10 rf /Fh 255[ 775{ } 1
+996.264 /CMSY10 rf /Fi 194[ 775 19[ 387 387 40[{ } 3
+996.264 /CMR10 rf /Fj 196[ 277 59[{ } 1 996.264 /CMMI10
+rf /Fk 136[ 665 2[ 277 14[ 442 101[{ TeXBase1Encoding ReEncodeFont} 3
+996.264 /Times-Italic rf /Fl 90[ 710 165[{ } 1 996.264
+/Symbol rf /Fm 104[ 996 29[ 498 498 719 498 498 277 388
+332 498 498 498 498 775 277 498 277 277 498 498 332 442
+498 442 498 442 8[ 719 940 2[ 609 554 665 2[ 719 719
+886 609 719 1[ 332 719 719 1[ 609 1[ 665 665 719 7[ 498
+498 498 498 1[ 498 1[ 498 498 498 1[ 249 1[ 249 2[ 332
+332 332 36[ 554 2[{ TeXBase1Encoding ReEncodeFont} 57
+996.264 /Times-Roman rf /Fn 202[ 387 387 387 387 387
+49[{ TeXBase1Encoding ReEncodeFont} 5 774.872 /Times-Roman
+rf /Fo 26[ 1244 229[{ } 1 1745.44 /Symbol rf /Fp 165[ 623
+90[{ } 1 1090.91 /CMEX10 rf /Fq 256[{ } 0 1212.12 /CMEX10
+rf /Fr 194[ 689 17[ 689 43[{ } 2 885.568 /CMR10 rf /Fs
+199[ 443 1[ 443 443 443 443 443 443 443 48[{
+TeXBase1Encoding ReEncodeFont} 8 885.568 /Times-Roman
+rf /Ft 207[ 244 44[ 443 2[ 689{ } 3 885.568 /CMSY10 rf
+/Fu 194[ 943 17[ 943 1[ 471 471 40[{ } 4 1212.12 /CMR10
+rf /Fv 234[ 943 20[ 943{ } 2 1212.12 /CMSY10 rf /Fw 139[ 246
+3[ 443 3[ 246 393 246 246 3[ 393 101[{ TeXBase1Encoding ReEncodeFont} 7
+885.568 /Times-Italic rf /Fx 90[ 631 165[{ } 1 885.568
+/Symbol rf /Fy 193[ 943 606 1[ 337 337 58[{ } 4 1212.12
+/CMMI10 rf /Fz 74[ 606 58[ 472 538 538 808 538 606 337
+472 472 1[ 606 606 606 875 337 538 337 337 606 606 337
+538 606 538 606 606 8[ 741 2[ 875 674 606 741 1[ 741
+875 808 1010 674 808 538 404 875 875 741 741 875 808
+741 741 1[ 606 4[ 404 11[ 303 404 303 40[ 606 606 2[{
+TeXBase1Encoding ReEncodeFont} 54 1212.12 /Times-Italic
+rf /FA 134[ 797 797 3[ 531 620 708 1[ 886 797 886 1328
+443 2[ 443 2[ 531 708 886 708 1[ 797 11[ 1151 1[ 886
+1151 1[ 974 1[ 1151 4[ 620 1240 2[ 1063 3[ 1151 6[ 531
+8[ 797 49[{ TeXBase1Encoding ReEncodeFont} 27 1594.02
+/Times-Bold rf /FB 137[ 618 618 618 618 618 2[ 618 618
+2[ 618 618 1[ 618 1[ 618 618 618 2[ 618 12[ 618 3[ 618
+7[ 618 7[ 618 5[ 618 10[ 618 618 46[{
+.85 ExtendFont TeXBase1Encoding ReEncodeFont} 21 1212.12
+/Courier rf /FC 26[ 864 63[ 864 52[ 665 8[ 498 632 532
+599 1[ 665 765 28[ 742 68[{ } 10 1212.12 /Symbol rf /FD
+80[ 404 6[ 404 16[ 1212 606 1[ 538 538 10[ 404 13[ 538
+606 606 875 606 606 337 472 404 606 606 606 606 943 337
+606 337 337 606 606 404 538 606 538 606 538 7[ 875 1[ 1144
+875 875 741 674 808 1[ 674 875 875 1078 741 875 472 404
+875 875 674 741 875 808 808 875 1[ 538 3[ 337 337 606
+606 606 606 606 606 606 606 606 606 337 303 404 303 2[ 404
+404 404 943 4[ 404 29[ 674 674 2[{ TeXBase1Encoding ReEncodeFont} 80
+1212.12 /Times-Roman rf /FE 139[ 404 472 3[ 606 674 2[ 674
+404 1[ 674 2[ 538 3[ 606 13[ 674 8[ 606 27[ 303 46[{
+TeXBase1Encoding ReEncodeFont} 12 1212.12 /Times-Bold
+rf /FF 139[ 369 517 442 2[ 664 664 2[ 664 369 369 664
+664 1[ 590 3[ 590 10[ 959 2[ 739 8[ 517 18[ 664 6[ 664
+1[ 332 46[{ TeXBase1Encoding ReEncodeFont} 18 1328.35
+/Times-Roman rf /FG 134[ 956 4[ 532 744 637 1[ 956 956
+956 1488 532 2[ 532 956 956 637 849 1[ 849 1[ 849 11[ 1381
+2[ 1276 3[ 1381 4[ 637 3[ 1169 3[ 1381 23[ 637 637 36[ 1064
+3[{ TeXBase1Encoding ReEncodeFont} 25 1912.83 /Times-Roman
+rf end
+%%EndProlog
+%%BeginSetup
+%%Feature: *Resolution 8000dpi
+TeXDict begin
+%%PaperSize: A4
+
+%%EndSetup
+%%Page: 1 1
+1 0 bop FG 216 10077 a(Estimation) 479 b(of) f(the) h(Nonacc) r
+(elerating) g(In\003ation) f(Rate) h(of) f(Unemp) r(lo) -19
+b(yment) 22407 12513 y(\(N) -67 b(AIR) -76 b(U\)) p FF
+20355 15880 a(Jasjeet) 331 b(Singh) h(Sekhon) 22975 18598
+y(V) -147 b(ersion) 332 b(0.7) p FE 3030 24735 a(J) -18
+b(asjeet) 302 b(S.) h(Sekhon) p FD 3030 26241 a(Assistant) f(Professor)
+3030 27746 y(Center) i(for) e(Basic) h(Research) h(in) f(the) g(Social)
+g(Sciences) 3030 29252 y(Harv) -30 b(ard) 303 b(Uni) -30
+b(v) -18 b(ersity) p FB 3030 30757 a(jasjeet) p 7431
+30757 364 45 v 438 w(sekhon@ha) r(rvard.edu) 3030 32262
+y(HTTP://) r(jsekhon.fas) r(.harvard.edu) r(/) p FD 3030
+35017 a(Y) -133 b(ou) 303 b(may) h(do) -30 b(wnload) 303
+b(the) g(current) g(N) -42 b(AIR) -48 b(U) 302 b(estimates) h(from) 3030
+36523 y(HTTP://jsekhon.f) -12 b(as.har) n(v) -30 b(ard.edu/nairu/do) g
+(wnload/nairu5508to0106.asc.) 1882 41874 y(The) 398 b(nonaccelerating) g
+(in\003ation) g(rate) g(of) g(unemplo) -12 b(yment) 398
+b(\(N) -42 b(AIR) -48 b(U\)) 397 b(is) g(an) h(important) g(economic) h
+(and) f(political) 0 43379 y(concept.) 625 b(It) 386
+b(is) f(signi\002cant) h(not) g(only) g(because) g(most) f
+(macroeconomists) h(use) f(it) h(when) g(thinking) g(about) h(a) f(v)
+-30 b(ariety) 385 b(of) 0 44885 y(issues) 294 b(b) -24
+b(ut) 295 b(also) g(because) g(it) h(plays) f(a) g(pi) -30
+b(v) -24 b(otal) 295 b(role) g(in) g(guiding) h(polic) -18
+b(y) -79 b(.) 373 b(In) 295 b(this) g(note) g(I) g(brie\003y) g
+(describe) g(ho) -30 b(w) 295 b(I) g(estimate) 0 46390
+y(the) 303 b(N) -42 b(AIR) -48 b(U.) p FA 0 50279 a(1) 1594
+b(N) -32 b(AIR) -48 b(U) 398 b(Estimation) p FD 0 53039
+a(The) 243 b(N) -42 b(AIR) -48 b(U) 243 b(model,) 255
+b(the) 243 b(standard) g(model) g(for) g(in\003ation,) 255
+b(is) 243 b(usually) f(based) i(on) f(the) g(e) -18 b
+(xpectations-augmented) 244 b(Phillips) 0 54544 y(relation) p
+FC 18317 56050 a(p) p Fw 18960 56232 a(t) p Fv 19490
+56050 a(\241) p FC 168 w(p) p Fw 21266 55549 a(e) 21244
+56349 y(t) p Fu 21984 56050 a(=) p FC 268 w(b) p Fu 135
+w(\() p Fz -1 w(u) p Fw 25049 56232 a(t) p Fv 25579 56050
+a(\241) p Fz 168 w(u) p Ft 27296 55549 a(\244) p Fw 27274
+56349 a(t) p Fu 27794 56050 a(\)) 167 b(+) p FC 168 w(d) p
+Fz(X) p Fw 30831 56232 a(t) p Fu 31359 56050 a(+) p Fz
+168 w(v) p Fw 32986 56232 a(t) p Fy 33347 56050 a(;) p
+FD 16903 w(\(1\)) 0 58235 y(where) p FC 323 w(p) p Fw
+3927 58417 a(t) p FD 4612 58235 a(is) 322 b(an) h(estimate) g(of) g
+(the) g(actual) g(in\003ation) g(rate,) p FC 328 w(p) p
+Fw 25404 57795 a(e) 25382 58535 y(t) p FD 26176 58235
+a(is) f(the) h(e) -18 b(xpected) 324 b(in\003ation) f(rate,) p
+Fz 328 w(u) p Fw 41120 58417 a(t) p FD 41804 58235 a(is) f(the) h
+(unemplo) -12 b(yment) 0 59741 y(rate,) p Fz 355 w(u) p
+Ft 3081 59301 a(\244) p Fw 3059 60040 a(t) p FD 3924
+59741 a(is) 344 b(the) g(N) -42 b(AIR) -48 b(U,) p Fz
+344 w(X) p Fw 11985 59923 a(t) p FD 12691 59741 a(contains) 344
+b(additional) h(re) -18 b(gressor) n(s) 344 b(intended) h(to) g
+(control) f(for) g(supply) g(shocks,) 355 b(and) p Fz
+344 w(v) p Fw 48996 59923 a(t) p FD 49703 59741 a(is) 344
+b(an) 0 61246 y(error) 302 b(term.) 1882 62752 y(Lik) -12
+b(e) 411 b(man) -18 b(y) 411 b(others,) 438 b(I) 410
+b(use) h(a) g(\223random) h(w) -12 b(alk\224) 411 b(model) h(for) e
+(in\003ationary) h(e) -18 b(xpectations) 412 b(\(Congressional) e
+(Budget) 0 64257 y(Of) -30 b(\002ce) 402 b(1994;) 452
+b(Fuhrer) 402 b(1995;) 452 b(Gordon) 402 b(1990;) 452
+b(Staiger) -48 b(,) 427 b(Stock) 402 b(and) g(W) -97
+b(atson) 403 b(\(SSW\)) e(1997a,) 428 b(1997b;) 452 b(T) -97
+b(ootell) 402 b(1994;) 0 65762 y(W) -97 b(einer) 303
+b(1993\).) 376 b(According) 303 b(to) g(the) h(\223random) f(w) -12
+b(alk) 303 b(model,) -85 b(\224) p FC 304 w(p) p Fw 27676
+65322 a(e) 27654 66062 y(t) p Fu 28394 65762 a(=) p FC
+268 w(p) p Fw 30248 65944 a(t) p Ft 60 w(\241) p Fs(1) p
+FD 31741 65762 a(,) 303 b(so) g(that) p FC 303 w(p) p
+Fw 36492 65944 a(t) p Fv 37022 65762 a(\241) p FC 168
+w(p) p Fw 38798 65322 a(e) 38776 66062 y(t) p Fu 39516
+65762 a(=) p FC 268 w(Dp) p Fw 42112 65944 a(t) p FD
+42474 65762 a(.) 376 b(Hence,) p FC 19142 68406 a(Dp) p
+Fw 20527 68588 a(t) p Fu 21158 68406 a(=) p FC 269 w(b) p
+Fu 135 w(\() p Fz -1 w(u) p Fw 24224 68588 a(t) p Fv
+24754 68406 a(\241) p Fz 168 w(u) p Ft 26471 67906 a(\244) p
+Fw 26449 68706 a(t) p Fu 26968 68406 a(\)) 168 b(+) p
+FC 168 w(d) p Fz(X) p Fw 30004 68588 a(t) p Fu 30534
+68406 a(+) p Fz 168 w(v) p Fw 32161 68588 a(t) p Fy 32522
+68406 a(:) p FD 17728 w(\(2\)) 1882 71050 y(Equation) 329
+b(2) h(ne) -18 b(glects) 329 b(the) h(possibility) e(of) h(serial) g
+(correlation) g(in) h(the) f(error) g(term.) 455 b(It) 329
+b(is) g(therefore) f(con) -48 b(v) -18 b(entional) 330
+b(to) 0 72556 y(estimate) 303 b(an) g(autore) -18 b(gressi) -30
+b(v) -18 b(e) 302 b(speci\002cation:) p FC 14391 75200
+a(Dp) p Fw 15776 75382 a(t) p Fu 16407 75200 a(=) p FC
+268 w(b) p Fu(\() p Fz(L) p Fu 4 w(\)) 135 b(\() p Fz
+-2 w(u) p Fw 21091 75382 a(t) p Fv 21621 75200 a(\241) p
+Fz 168 w(u) p Ft 23338 74699 a(\244) p Fw 23316 75499
+a(t) p Fu 23835 75200 a(\)) 168 b(+) p FC 168 w(d) p
+Fu(\() p Fz -2 w(L) p Fu 4 w(\)) p FC(Dp) p Fw 29187
+75382 a(t) p Ft 60 w(\241) p Fs -2 w(1) p Fu 30847 75200
+a(+) p FC 168 w(g) p Fu(\() p Fz -2 w(L) p Fu 4 w(\)) p
+Fz(X) p Fw 34763 75382 a(t) p Fu 35292 75200 a(+) p FC
+166 w(e) p Fw 36911 75382 a(t) p Fy 37273 75200 a(;) p
+FD 12977 w(\(3\)) 25697 78521 y(1) p 90 rotate dyy eop
+%%Page: 2 2
+2 1 bop FD 0 5218 a(where) p Fz 337 w(L) p FD 340 w(is) 336
+b(the) g(lag) h(operator) -48 b(,) p FC 344 w(b) p Fu(\() p
+Fz(L) p Fu 4 w(\)) p FD(,) p FC 344 w(d) p Fu(\() p Fz(L) p
+Fu 4 w(\)) p FD -2 w(,) 345 b(and) p FC 336 w(g) p Fu(\() p
+Fz(L) p Fu 4 w(\)) p FD 335 w(are) 337 b(lag) f(polynomials) h(and) p
+FC 336 w(e) p Fw 36627 5400 a(t) p FD 37326 5218 a(is) f(a) g(serially)
+g(uncorrelated) h(error) 0 6723 y(term.) 1882 8229 y(Equation) 326
+b(3) f(is) h(dif) -30 b(\002cult) 325 b(to) h(estimate) f(because) h
+(the) g(model) h(is) e(nonlinear) h(in) f(the) h(parameters.) 444
+b(When) 326 b(the) g(N) -42 b(AIR) -48 b(U,) p Fz 0 9734
+a(u) p Ft 606 9294 a(\244) p Fw 584 10033 a(t) p FD 1104
+9734 a(,) 448 b(does) 419 b(not) g(v) -30 b(ary) 418
+b(with) p Fz 389 w(t) p FD 82 w(,) 448 b(Equation) 419
+b(3) g(can) g(be) g(re) -30 b(written) 418 b(in) h(a) g(form) f(which) i
+(can) f(be) g(con) -48 b(v) -18 b(eniently) 419 b(estimated) g(by) 0
+11240 y(ordinary) 303 b(least) f(squares) h(\(OLS\):) p
+FC 15178 13752 a(Dp) p Fw 16563 13934 a(t) p Fu 17194
+13752 a(=) p Fz 268 w(\265) p Fu 168 w(+) p FC 168 w(b) p
+Fu(\() p Fz(L) p Fu 4 w(\)) p Fz -2 w(u) p Fw 23157 13934
+a(t) p Fu 23687 13752 a(+) p FC 168 w(d) p Fu(\() p Fz
+-2 w(L) p Fu 4 w(\)) p FC(Dp) p Fw 28400 13934 a(t) p
+Ft 60 w(\241) p Fs(1) p Fu 30060 13752 a(+) p FC 168
+w(g) p Fu(\() p Fz(L) p Fu 4 w(\)) p Fz -2 w(X) p Fw
+33976 13934 a(t) p Fu 34505 13752 a(+) p FC 168 w(e) p
+Fw 36126 13934 a(t) p Fy 36487 13752 a(:) p FD 13763
+w(\(4\)) 0 16265 y(The) g(estimate) g(of) g(the) g(N) -42
+b(AIR) -48 b(U) 302 b(is) h(then) 23493 18024 y(\210) p
+Fz -596 w(u) p Ft 23907 17523 a(\244) p Fu 24674 18024
+a(=) p Fv 26351 17203 a(\241) p FD 99 w(\210) p Fz -505
+w(\265) p 26018 17745 2213 49 v FD 26149 18701 a(\210) p
+FC 26018 19058 a(b) p Fu 1 w(\() p FD(1) p Fu(\)) p Fy
+28363 18024 a(;) p FD 21887 w(\(5\)) 0 21076 y(where) p
+FC 457 w(b) p Fu(\() p FD(1) p Fu(\)) 354 b(=) p FC 7282
+21165 a(\345) p Fw 8212 20471 a(p) 8146 21438 y(i) p
+Fr(=) p Fs(1) p FC 9713 21076 a(b) p Fw 10378 21258 a(i) p
+FD 10680 21076 a(,) 495 b(with) p Fz 548 w(p) p FD 457
+w(being) 457 b(the) g(order) f(of) h(the) g(lag) g(polynomial) p
+FC 457 w(b) p Fu(\() p Fz(L) p Fu 4 w(\)) p FD(.) 836
+b(Notice) 457 b(that) g(the) g(N) -42 b(AIR) -48 b(U) 457
+b(is) f(a) 0 22582 y(nonlinear) 303 b(function) g(of) g(the) g(coef) -30
+b(\002cients) p Fz 303 w(\265) p FD 303 w(and) p FC 303
+w(b) p Fu(\() p FD(1) p Fu(\)) p FD(.) 1882 24087 y(The) 312
+b(estimation) g(approach) h(outlined) g(in) f(Equations) g(4\2265) h
+(can) g(be) f(altered) h(for) e(the) i(case) g(where) f(the) h(N) -42
+b(AIR) -48 b(U) 312 b(v) -30 b(aries) 0 25593 y(with) 247
+b(time.) 357 b(One) 247 b(w) -12 b(ay) 248 b(to) e(accomplish) h(this) g
+(is) f(to) h(replace) 348 b(\210) p Fz -505 w(\265) p
+FD 247 w(with) p FC 27940 25682 a(\345) p Fw 28804 25113
+a(l) 28937 25909 y(j) p Fr 22 w(=) p Fs(1) p FC 30526
+25593 a(a) p Fw 31424 25775 a(j) p FD 31748 25593 a(H) p
+Fw 32756 25153 a(j) p Ft 22 w(\241) p Fs(1) p Fu 34210
+25593 a(\() p Fz -30 w(t) p Fu 82 w(\)) p FD 246 w(where) 247
+b(H) p Fw 39870 25153 a(i) p FD 40418 25593 a(is) g(a) g(Hermite) g
+(polynomial) 0 27248 y(of) 303 b(order) p Fz 302 w(i) p
+FD 303 w(and) h(where) p Fz 273 w(t) p FD 385 w(is) e(the) i(time) f
+(ar) -22 b(gument) 303 b(centered) h(around) f(0.) p
+Fs 30023 26808 a(1) p FD 30897 27248 a(Therefore,) p
+FC 12140 30655 a(Dp) p Fw 13525 30837 a(t) p Fu 14157
+30655 a(=) p Fw 15988 29360 a(l) p Fo 15512 30913 a(\345) p
+Fw 15501 31896 a(j) p Fr 22 w(=) p Fs(1) p FC 17035 30655
+a(a) p Fw 17933 30837 a(j) p FD 18256 30655 a(H) p Fw
+19264 30154 a(j) p Ft 22 w(\241) p Fs(1) p Fu 20718 30655
+a(\() p Fz -30 w(t) p Fu 82 w(\)) 168 b(+) p FC 166 w(b) p
+Fu(\() p Fz(L) p Fu 4 w(\)) p Fz(u) p Fw 26195 30837
+a(t) p Fu 26724 30655 a(+) p FC 168 w(d) p Fu(\() p Fz
+-2 w(L) p Fu 4 w(\)) p FC(Dp) p Fw 31437 30837 a(t) p
+Ft 60 w(\241) p Fs(1) p Fu 33097 30655 a(+) p FC 168
+w(g) p Fu(\() p Fz(L) p Fu 4 w(\)) p Fz -2 w(X) p Fw
+37013 30837 a(t) p Fu 37542 30655 a(+) p FC 168 w(e) p
+Fw 39163 30837 a(t) p Fy 39524 30655 a(;) p FD 10726
+w(\(6\)) 0 34147 y(and) 303 b(the) h(estimate) e(of) h(the) g(time-v)
+-30 b(arying) 303 b(N) -42 b(AIR) -48 b(U) 303 b(is) 20261
+37591 y(\210) p Fz -596 w(u) p Ft 20675 37090 a(\244) p
+Fw 20653 37890 a(t) p Fu 21442 37591 a(=) p Fv 22786
+36617 a(\241) p FC 23864 36706 a(\345) p Fw 24727 36137
+a(l) 24860 36933 y(j) p Fr 22 w(=) p Fs(1) p FD 26630
+36564 a(\210) p FC 26449 36617 a(a) p Fw 27347 36799
+a(j) p FD 27670 36617 a(H) p Fw 28678 36177 a(j) p Ft
+22 w(\241) p Fs(1) p Fu 30133 36617 a(\() p Fz -30 w(t) p
+Fu 82 w(\)) p 22786 37312 8677 49 v FD 26149 38268 a(\210) p
+FC 26018 38625 a(b) p Fu 1 w(\() p FD(1) p Fu(\)) p Fy
+31595 37591 a(:) p FD 18655 w(\(7\)) 1882 41090 y(Selection) 355
+b(of) e(the) i(order) f(of) g(the) g(Hermite) g(polynomial) h(series) e
+(is) h(done) g(using) g(Mallo) -30 b(ws') 353 b(C) p
+Fw 42073 41272 a(p) p FD 42572 41090 a(.) p Fs 42875
+40650 a(2) p FD 43903 41090 a(Hermite) h(polyno-) 0 42596
+y(mials) 396 b(in) g(particular) g(and) h(orthogonal) f(polynomials) h
+(in) f(general) g(ha) -24 b(v) -18 b(e) 397 b(man) -18
+b(y) 396 b(properties) g(which) g(mak) -12 b(e) 397 b(them) g(useful) 0
+44101 y(for) 361 b(\003e) -18 b(xible-form) 361 b(estimation) h(\(de) f
+(Boor) h(1978;) 392 b(Hinich) 362 b(and) g(Roll) g(1981;) 392
+b(Sze) -18 b(g) 35591 44095 y(\250) 35490 44101 y(o) 362
+b(1975\)\227see) f(Appendix) i(A.) p Fs 48728 43661 a(3) p
+FD 49778 44101 a(Less) 0 45606 y(computation) 304 b(is) e(required) h
+(for) f(Hermite) h(polynomials) g(than) g(for) g(cubic) g(splines.) 1882
+47112 y(SSW) 246 b(\(1997a,) 257 b(1997b\)) 245 b(use) h(se) -30
+b(v) -18 b(eral) 245 b(approaches) h(to) f(estimate) h(the) g(time-v)
+-30 b(arying) 245 b(N) -42 b(AIR) -48 b(U.) 245 b(One) h(of) g(them) g
+(is) f(similar) 0 48617 y(to) 266 b(the) g(one) h(speci\002ed) f(in) g
+(Equation) g(6.) 363 b(The) -18 b(y) 266 b(do) g(not) h(allo) -30
+b(w) 266 b(contemporaneous) g(unemplo) -12 b(yment) 266
+b(and) h(supply) f(shocks) f(to) 0 50123 y(af) -30 b(fect) 317
+b(the) i(current) e(period') -67 b(s) 318 b(in\003ation) g(rate.) 421
+b(SSW) 318 b(\(1997a,) j(1997b\)) d(approximate) h(the) f(N) -42
+b(AIR) -48 b(U) 318 b(by) g(a) g(cubic) g(spline) g(in) 0
+51628 y(time,) 304 b(written) f(as) 7927 51359 y(\257) p
+FC 7813 51628 a(f) p Ft 8445 51188 a(0) p Fz 8743 51628
+a(S) p Fw 9327 51810 a(t) p FD 9689 51628 a(,) h(where) p
+Fz 303 w(S) p Fw 14144 51810 a(t) p FD 14810 51628 a(is) f(a) h(v) -18
+b(ector) 303 b(of) g(deterministic) h(functions) f(of) g(time.) p
+Fs 36611 51188 a(4) p FD 37487 51628 a(The) g(SSW) h(estimation) g
+(equation) 0 53134 y(for) e(the) i(spline) e(approximated) i(time-v) -30
+b(arying) 302 b(N) -42 b(AIR) -48 b(U) 303 b(is) p FC
+12846 55646 a(Dp) p Fw 14231 55828 a(t) p Fu 14862 55646
+a(=) p FC 269 w(f) p Ft 16706 55146 a(0) p Fz 17004 55646
+a(S) p Fw 17588 55828 a(t) p Ft 60 w(\241) p Fs(1) p
+Fu 19249 55646 a(+) p FC 168 w(b) p Fu(\() p Fz(L) p
+Fu 4 w(\)) p Fz -2 w(u) p Fw 23227 55828 a(t) p Ft 60
+w(\241) p Fs(1) p Fu 24887 55646 a(+) p FC 168 w(d) p
+Fu(\() p Fz(L) p Fu 4 w(\)) p FC -2 w(Dp) p Fw 29600
+55828 a(t) p Ft 60 w(\241) p Fs(1) p Fu 31261 55646 a(+) p
+FC 166 w(g) p Fu(\() p Fz(L) p Fu 4 w(\)) p Fz(X) p Fw
+35175 55828 a(t) p Ft 60 w(\241) p Fs(1) p Fu 36836 55646
+a(+) p FC 168 w(e) p Fw 38457 55828 a(t) p Fy 38818 55646
+a(;) p FD 11432 w(\(8\)) 0 58159 y(where) p FC 303 w(f) p
+Fu 269 w(=) p Fv 268 w(\241) p FC(b) p Fu(\() p FD(1) p
+Fu(\)) p FD 8644 57890 a(\257) p FC 8530 58159 a(f) p
+FD 303 w(and) 495 b(\210) p Fz -596 w(u) p Ft 12124 57719
+a(\244) p Fw 12102 58458 a(t) p Fu 12892 58159 a(=) p
+Fv 268 w(\241) p FD 15158 57890 a(\210) p FC 15044 58159
+a(f) p Ft 15676 57719 a(0) p Fz 15975 58159 a(S) p Fw
+16559 58341 a(t) p Fy 16921 58159 a(=) p FD 17658 57802
+a(\210) p FC 17527 58159 a(b) p Fu(\() p FD(1) p Fu(\)) p
+FD(.) 374 b(SSW) 304 b(estimate) f(Equation) f(8) i(by) f(OLS.) 1882
+59664 y(F) -18 b(ollo) -30 b(wing) 253 b(SSW) g(\(1997b\)) g(the) h
+(lag) f(operators) g(be) -18 b(gin) 253 b(with) p Fz
+254 w(u) p Fw 28061 59846 a(t) p Ft 60 w(\241) p Fs(1) p
+FD 29807 59664 a(and) p Fz 253 w(X) p Fw 32499 59846
+a(t) p Ft 60 w(\241) p Fs(1) p FD 34244 59664 a(instead) h(of) p
+Fz 253 w(u) p Fw 39779 59846 a(t) p FD 40394 59664 a(and) p
+Fz 253 w(X) p Fw 43086 59846 a(t) p FD 43447 59664 a(\227see) g
+(Equation) f(8.) 0 61170 y(Also) 270 b(follo) -30 b(wing) 270
+b(SSW) g(\(1997b\),) 277 b(I) 269 b(use) h(monthly) h(lags) f(o) -18
+b(v) g(er) 270 b(one) g(year) h(for) e(both) p Fz 271
+w(u) p Fw 35246 61352 a(t) p FD 35878 61170 a(and) p
+FC 270 w(Dp) p Fw 39283 61352 a(t) p FD 39915 61170 a(and) i(lags) f(o)
+-18 b(v) g(er) 270 b(one) g(quarter) 0 62675 y(for) 474
+b(the) h(supply) f(shocks,) p Fz 517 w(X) p Fw 12360
+62857 a(t) p FD 12721 62675 a(.) 890 b(The) 474 b(supply) g(shocks) g
+(are) h(speci\002ed) f(as) h(the) f(dif) -30 b(ference) 474
+b(between) h(food) g(and) g(ener) -22 b(gy) 0 64181 y(in\003ation) 303
+b(and) h(o) -18 b(v) g(erall) 302 b(CPI) h(in\003ation.) p
+Fs 16563 63741 a(5) p FD 17437 64181 a(The) g(data) h(are) f(monthly) g
+(and) g(the) g(price) g(le) -30 b(v) -18 b(el) 303 b(measure) g(is) f
+(the) i(full) e(CPI.) p 0 65192 20800 45 v Fn 1350 66009
+a(1) p Fm 1793 66370 a(The) 275 b(ar) -18 b(gument,) p
+Fk 258 w(t) p Fm 68 w(,) 281 b(must) 274 b(be) i(centered) g(around) f
+(0) g(becau) r(se) f(Hermite) i(polynomials) f(are) h(orthogonal) f(on)
+g(the) h(symmetric) f(interv) -25 b(al) p Fi 275 w(\() p
+Fh(\241) p Fl(\245) p Fj(;) p Fl 330 w(\245) p Fi(\)) p
+Fm 0 67743 a(with) 249 b(respect) h(to) f(the) g(weighting) i(function)
+p Fk 249 w(w) p Fi(\() p Fk -25 w(t) p Fi 68 w(\)) 220
+b(=) p Fk 220 w(e) p Fg 18801 67381 a(\241) p Fe -19
+w(t) p Fc 19653 67100 a(2) p Fm 20040 67743 a(.) 309
+b(See) 249 b(Appen) r(dix) g(A) g(for) g(details.) p
+Fn 1350 68637 a(2) p Fm 1793 68998 a(The) h(current) f(model) h
+(selects) f(a) g(Hermite) h(series) e(of) h(order) h(6.) p
+Fn 1350 69892 a(3) p Fm 1793 70254 a(I) 235 b(do) g(not) g(wish) g(to) g
+(imply) g(that) g(Hermite) g(polynomials) h(are) f(necessarily) g
+(superior) g(to) g(other) g(polynomials) g(such) g(as) g(Le) -15
+b(gendre) 235 b(or) g(Chebyshe) -25 b(v) -65 b(.) 0 71472
+y(The) 249 b(use) g(of) g(Le) -15 b(gendre) 250 b(polynomials) g(does) f
+(not) g(signi\002cantly) h(alter) f(my) g(results.) p
+Fn 1350 72365 a(4) p Fm 1793 72727 a(See) h(SSW) f(\(1997b,) h(207\)) f
+(Equation) h(10.) p Fn 1350 73621 a(5) p Fm 1793 73982
+a(See) 235 b(King) f(and) h(W) -80 b(atson) 234 b(\(1994\)) g(footnote)
+h(18.) 304 b(I) 233 b(had) i(pre) -25 b(viously) 234
+b(included) h(the) f(NIXON) h(v) -25 b(ariable) 235 b(that) f(Gordon) h
+(\(1990,) i(1167\)) d(suggests) f(as) 0 75200 y(a) 249
+b(supply) g(shock,) h(b) -20 b(ut) 249 b(it) g(is) g(not) g
+(signi\002cant) g(and) h(is) f(rejected) h(by) f(v) -25
+b(arious) 249 b(model) h(selection) g(criteria\227LR) f(test,) g(Mallo)
+-25 b(ws') 248 b(C) p Fe 44485 75349 a(p) p Fm 45177
+75200 a(and) h(BIC.) p FD 25697 78521 a(2) p 90 rotate
+dyy eop
+%%Page: 3 3
+3 2 bop FA 0 5218 a(A) 1594 b(A) -40 b(ppendix:) 495
+b(Hermite) 397 b(P) -32 b(olynomial) 399 b(Series) p
+FD 0 7978 a(I) 321 b(use) g(the) h(Hermite) f(polynomial) h(series) f
+(to) g(estimate) h(the) f(N) -42 b(AIR) -48 b(U.) 321
+b(The) h(Hermite) f(series) g(is) g(often) g(used) g(to) h(implement) 0
+9483 y(cubic) 282 b(splines) e(\(de) i(Boor) f(1978\).) 369
+b(Hermite) 281 b(polynomials) h(form) e(one) i(of) f(the) h(f) -12
+b(amilies) 281 b(of) g(classical) g(orthogonal) g(polyno-) 0
+10989 y(mials) 303 b(\(Sze) -18 b(g) 5773 10983 y(\250) 5672
+10989 y(o) 304 b(1975\).) 377 b(The) 303 b(v) -30 b(ariance-co) -18
+b(v) -30 b(ariance) 304 b(matrix) f(is) g(often) h(well-conditioned) g
+(\(Hinich) f(and) h(Roll) g(1981\).) 377 b(The) 0 12494
+y(Hermite) 303 b(polynomials) g(may) g(be) h(de\002ned) f(for) p
+Fz 484 w(j) p Fy 300 w(>) p FD 268 w(0) g(by) g(the) g(recurrence) g
+(relation) p Fz 18127 15217 a(H) p Fw 19220 14717 a(j) p
+Fr 22 w(+) p Fs(1) p Fu 20675 15217 a(\() p Fz -30 w(t) p
+Fu 82 w(\)) 268 b(=) p FD 268 w(2) p Fz -30 w(t) 82 b(H) p
+Fw 25573 14717 a(j) p Fu 25897 15217 a(\() p Fz -30 w(t) p
+Fu 80 w(\)) p Fv 168 w(\241) p FD 168 w(2) p Fz 182 w(j) 30
+b(H) p Fw 30753 14717 a(j) p Ft 22 w(\241) p Fs(1) p
+Fu 32207 15217 a(\() p Fz -30 w(t) p Fu 82 w(\)) p Fy(:) p
+FD 0 17940 a(where) p Fz 249 w(t) p FD 360 w(is) 278
+b(the) g(ar) -22 b(gument) 279 b(\(time\),) p Fz 465
+w(j) p FD 308 w(is) f(the) h(order) e(and) i(where) p
+Fz 279 w(H) p Fs 27875 17500 a(0) p Fu 28373 17940 a(\() p
+Fz -30 w(t) p Fu 82 w(\)) 245 b(=) p FD 245 w(1) 279
+b(and) p Fz 278 w(H) p Fs 35010 17500 a(1) p Fu 35508
+17940 a(\() p Fz -30 w(t) p Fu 82 w(\)) 246 b(=) p FD
+245 w(2) p Fz -30 w(t) p FD 82 w(.) 368 b(The) 278 b(ar) -22
+b(gument,) p Fz 253 w(t) p FD 82 w(,) 284 b(must) 278
+b(be) 0 19446 y(centered) 319 b(around) f(0) h(because) f(the) h
+(polynomials) f(are) g(orthogonal) h(on) f(the) h(symmetric) f(interv)
+-30 b(al) p Fu 318 w(\() p Fv -1 w(\241) p FC(\245) p
+Fy(;) p FC 402 w(\245) p Fu(\)) p FD 318 w(with) 318
+b(respect) 0 21065 y(to) 303 b(the) g(weighting) h(function) p
+Fz 303 w(w) p Fu(\() p Fz -30 w(t) p Fu 82 w(\)) 268
+b(=) p Fz 268 w(e) p Ft 16681 20625 a(\241) p Fw -22
+w(t) p Fa 17654 20304 a(2) p FD 18097 21065 a(,) p Fp
+14105 22869 a(Z) p Fr 15224 23211 a(+) p Fx(\245) p Ft
+14727 25337 a(\241) p Fx(\245) p Fz 16733 24384 a(H) p
+Fw 17826 23883 a(j) p Fu 18150 24384 a(\() p Fz -30 w(t) p
+Fu 82 w(\)) p Fz -2 w(H) p Fw 20439 23883 a(k) p Fu 20903
+24384 a(\() p Fz -30 w(t) p Fu 82 w(\)) p Fz(e) p Ft
+22772 23883 a(\241) p Fw -24 w(t) p Fa 23743 23562 a(2) p
+Fz 24725 24384 a(d) 33 b(t) p Fu 351 w(=) p FD 268 w(2) p
+Fw 27869 23883 a(k) p Fz 28333 24384 a(k) p FD 21 w(!) p
+FC(p) p Fa 30094 23534 a(1) p 30094 23679 333 36 v 30094
+24189 a(2) p FC 30614 24384 a(d) p Fw 31346 23883 a(j) 22
+b(k) p Fy 32077 24384 a(;) p Fz 1663 w(j) p Fy 30 w(;) p
+Fz 133 w(k) p Fv 290 w(\270) p FD 268 w(0) p Fy(:) p
+FD 1882 27569 a(A) 279 b(fe) -30 b(w) 278 b(Hermite) h(polynomials) f
+(are) h(listed) g(belo) -30 b(w) -79 b(.) 368 b(Note) 279
+b(ho) -30 b(w) 278 b(quickly) h(the) g(polynomials) g(increase) f(in) h
+(size.) 368 b(This) 278 b(is) 0 29074 y(one) 303 b(of) g(the) g
+(reasons) f(wh) -6 b(y) 304 b(the) f(parameters) f(associated) h(with) g
+(the) h(polynomials) e(are) h(e) -18 b(xtremely) 303
+b(dif) -30 b(\002cult) 303 b(to) g(interpret.) p Fz 1788
+31797 a(H) p Fs 2748 31297 a(2) p Fu 3246 31797 a(\() p
+Fz -30 w(t) p Fu 82 w(\)) 268 b(=) p FD 269 w(4) p Fz
+105 w(t) p Fs 7187 31297 a(2) p Fv 7853 31797 a(\241) p
+FD 168 w(2) p Fz 1788 33785 a(H) p Fs 2748 33284 a(3) p
+Fu 3246 33785 a(\() p Fz -30 w(t) p Fu 82 w(\)) g(=) p
+FD 269 w(8) p Fz 105 w(t) p Fs 7187 33284 a(3) p Fv 7853
+33785 a(\241) p FD 168 w(12) p Fz 105 w(t) 1788 35772
+y(H) p Fs 2748 35272 a(4) p Fu 3246 35772 a(\() p Fz
+-30 w(t) p Fu 82 w(\)) g(=) p FD 269 w(16) p Fz 105 w(t) p
+Fs 7793 35272 a(4) p Fv 8459 35772 a(\241) p FD 168 w(48) p
+Fz 105 w(t) p Fs 11306 35272 a(2) p Fu 11971 35772 a(+) p
+FD 168 w(12) p Fz 1346 37772 a(H) p Fs 2306 37271 a(16) p
+Fu 3246 37772 a(\() p Fz -30 w(t) p Fu 82 w(\)) g(=) p
+FD 269 w(65536) p Fz 105 w(t) p Fs 9611 37271 a(16) p
+Fv 10720 37772 a(\241) p FD 168 w(3932160) p Fz 105 w(t) p
+Fs 16597 37271 a(14) p Fu 17705 37772 a(+) p FD 168 w(89456640) p
+Fz 105 w(t) p Fs 24188 37271 a(12) p Fv 25297 37772 a(\241) p
+FD 168 w(984023040) p Fz 105 w(t) p Fs 32386 37271 a(10) p
+Fu 33495 37772 a(+) p FD 168 w(5535129600) p Fz 105 w(t) p
+Fs 41190 37271 a(8) p Fv 41856 37772 a(\241) p FD 168
+w(15498362880) p Fz 105 w(t) p Fs 50157 37271 a(6) p
+Fu 4744 39759 a(+) p FD 168 w(19372953600) p Fz 105 w(t) p
+Fs 13045 39259 a(4) p Fv 13711 39759 a(\241) p FD 168
+w(8302694400) p Fz 105 w(t) p Fs 21406 39259 a(2) p Fu
+22072 39759 a(+) p FD 168 w(518918400) 25697 78521 y(3) p
+90 rotate dyy eop
+%%Page: 4 4
+4 3 bop FA 0 5218 a(Refer) -29 b(ences) p FD 606 7978
+a(Barndorf) f(f-Niels) n(en,) 304 b(Ole.) 376 b(1988.) p
+Fz 376 w(P) -97 b(ar) -18 b(ametric) 302 b(Statistical) h(Models) f
+(and) h(Lik) -12 b(elihood.) p FD 376 w(Ne) -30 b(w) 303
+b(Y) -133 b(ork:) 376 b(Springer) -24 b(-V) -135 b(erlag.) 606
+10479 y(Bishop,) 329 b(Yv) -24 b(onne) 323 b(M.M.,) 328
+b(Stephen) c(E.) f(Fienber) -22 b(g,) 329 b(and) 323
+b(P) -18 b(aul) 324 b(W) -112 b(.) 324 b(Holland.) 437
+b(1975.) p Fz 437 w(Discr) -45 b(ete) 324 b(Multivariate) f(Analysis) n
+(:) 3030 11985 y(Theory) 303 b(and) g(Pr) -18 b(actice) g(.) p
+FD 375 w(Cambridge,) 304 b(MA:) f(MIT) f(Press) n(.) 606
+14487 y(de) h(Boor) -48 b(,) 303 b(Carl.) 376 b(1978.) p
+Fz 376 w(A) 303 b(Pr) -18 b(actical) 302 b(Guide) i(to) f(Splines.) p
+FD 375 w(Ne) -30 b(w) 303 b(Y) -133 b(ork:) 376 b(Springer) -24
+b(-) n(V) -135 b(erlag.) 606 16988 y(Cecchetti,) 321
+b(S.) c(1995.) 417 b(\223In\003ation) 317 b(Indicators) f(and) h
+(In\003ation) f(Polic) -18 b(y) -79 b(.) -85 b(\224) p
+Fz 418 w(NBER) 316 b(Macr) -55 b(oeconomics) 317 b(Annual) p
+FD 318 w(1995:189\226) 3030 18494 y(219.) 606 20996 y(Congressional) 372
+b(Budget) g(Of) -30 b(\002ce.) 583 b(1994.) f(\223Reestimating) 373
+b(the) f(N) -42 b(AIR) -48 b(U.) -85 b(\224) 372 b(In) p
+Fz 371 w(The) h(Economic) f(and) g(Budg) -12 b(et) 372
+b(Outlook.) p FD 3030 22501 a(W) -97 b(ashington,) 304
+b(DC:) f(Go) -18 b(v) g(ernment) 303 b(Printing) g(Of) -30
+b(\002ce,) 303 b(August.) 606 25003 y(Cox,) h(D.R.,) f(and) h(D.) f(V)
+-156 b(.) 303 b(Hinkle) -18 b(y) -79 b(.) 376 b(1974.) p
+Fz 376 w(Theor) -45 b(etical) 303 b(Statistics.) p FD
+375 w(London:) 376 b(Chapman) 304 b(and) f(Hall.) 606
+27504 y(Efron,) f(Bradle) -18 b(y) -79 b(.) 376 b(1982.) p
+Fz 376 w(The) 304 b(J) -42 b(ac) -24 b(kknife) -12 b(,) 303
+b(the) g(Bootstr) -18 b(ap,) 302 b(and) h(Other) g(Resampling) f
+(Plans.) p FD 375 w(SIAM:) h(Philadelphia.) 606 30006
+y(Efron,) 342 b(Bradle) -18 b(y) -79 b(.) 472 b(1987.) g(\223Better) 335
+b(Bootstrap) g(Con\002dence) h(Interv) -30 b(als.) -85
+b(\224) p Fz 471 w(J) -30 b(ournal) 334 b(of) h(the) h(American) e
+(Statistical) h(Ass) n(o-) 3030 31512 y(ciation) p FD
+304 w(82:171\226185.) 606 34013 y(Efron,) 390 b(Bradle) -18
+b(y) -79 b(,) 392 b(and) 374 b(Robert) g(J.) f(T) -42
+b(ibshir) n(ani.) 588 b(1993.) p Fz 588 w(An) 373 b(Intr) -55
+b(oduction) 373 b(to) h(the) g(Bootstr) -20 b(ap) p FD(.) 588
+b(Ne) -30 b(w) 374 b(Y) -133 b(ork:) 516 b(Chapman) 3030
+35519 y(and) 304 b(Hall.) 606 38021 y(F) -18 b(air) -48
+b(,) 302 b(Ray) i(C.) f(1997.) 376 b(\223T) -85 b(esting) 303
+b(the) g(N) -42 b(AIR) -48 b(U) 303 b(Model) g(for) f(the) h(United) h
+(States.) -85 b(\224) 376 b(Mimeo,) 302 b(Y) -121 b(ale) 304
+b(Uni) -30 b(v) -18 b(ersity) -79 b(.) 606 40522 y(Fieller) -48
+b(,) 260 b(E.) 249 b(C.) h(1954.) 358 b(\223Some) 250
+b(Problems) e(in) i(Interv) -30 b(al) 249 b(Estimation.) -85
+b(\224) p Fz 357 w(J) -30 b(ournal) 249 b(of) h(the) f(Royal) g
+(Statistical) h(Society) -67 b(,) 261 b(Series) 3030
+42028 y(B,) p FD 303 w(16:175\226185.) 606 44529 y(Fisher) -48
+b(,) 302 b(R.) h(A.) h(1936.) 376 b(\223Has) 303 b(Mendel') -67
+b(s) 302 b(W) -97 b(ork) 303 b(Been) h(Redisco) -18 b(v) g(ered?\224) p
+Fz 376 w(Annals) 303 b(of) g(Science) p FD 304 w(1:115\226137.) 606
+47031 y(Fuhrer) -48 b(,) 394 b(Jef) -30 b(fr) n(e) -18
+b(y) 377 b(C.) g(1995.) 596 b(\223The) 376 b(Phillips) g(Curv) -18
+b(e) 377 b(is) f(Ali) -30 b(v) -18 b(e) 376 b(and) h(W) -97
+b(ell.) -85 b(\224) p Fz 596 w(Ne) -18 b(w) 378 b(England) e(Economic) h
+(Re) -18 b(vie) g(w) 376 b(of) h(the) 3030 48537 y(F) -91
+b(eder) -18 b(al) 303 b(Reserve) f(Bank) h(of) g(Boston,) p
+FD 302 w(March-April,) f(41\22656.) 606 51038 y(Gordon,) h(Robert) h
+(J.) e(1987.) p Fz 376 w(Macr) -55 b(oeconomics:) 376
+b(fourth) 302 b(edition.) p FD 376 w(Ne) -30 b(w) 304
+b(Y) -133 b(ork:) 375 b(Little,) 303 b(Bro) -30 b(wn) 303
+b(&) g(Compan) -18 b(y) -79 b(.) 606 53540 y(Gordon,) 278
+b(Robert) 273 b(J.) f(1990.) 365 b(\223What) 273 b(is) f(Ne) -30
+b(w-K) g(e) -18 b(ynesian) 272 b(Economics?\224) p Fz
+365 w(J) -30 b(ournal) 272 b(of) g(Economic) g(Liter) -18
+b(atur) -45 b(e) p FD 272 w(28:1115\226) 3030 55046 y(1171.) 606
+57547 y(Gordon,) 500 b(Robert) 461 b(J.) f(1997.) 848
+b(\223The) 460 b(T) -42 b(ime-V) -135 b(arying) 460 b(N) -42
+b(AIR) -48 b(U) 460 b(and) h(its) e(Implications) h(for) g(Economic) g
+(Polic) -18 b(y) -79 b(.) -85 b(\224) p Fz 849 w(The) 3030
+59053 y(J) -30 b(ournal) 303 b(of) g(Economic) g(P) -97
+b(er) -12 b(spectives) p FD 302 w(11:11-32.) 606 61555
+y(Hall,) 303 b(Peter) -67 b(.) 376 b(1992.) p Fz 376
+w(The) 304 b(Bootstr) -20 b(ap) 303 b(and) g(Edg) -12
+b(e) -18 b(worth) 303 b(Expansion) p FD(.) 375 b(Ne) -30
+b(w) 304 b(Y) -133 b(ork:) 375 b(Springer) -24 b(-V) -135
+b(erlag.) 606 64056 y(Hinich,) 377 b(Melvin) 361 b(J.,) 376
+b(and) 362 b(Richard) g(Roll.) 552 b(1981.) f(\223Measuring) 361
+b(Nonstationarity) g(in) h(the) g(P) -18 b(arameters) 361
+b(of) g(the) h(Mark) -12 b(et) 3030 65562 y(Model.) -85
+b(\224) p Fz 376 w(Resear) -45 b(c) -18 b(h) 302 b(in) i(F) -55
+b(inance) p FD 303 w(3:1\22651.) 606 68063 y(King,) 284
+b(Robert) c(G.,) k(and) c(Mark) f(W) -112 b(.) 280 b(W) -97
+b(atson.) 368 b(1994.) g(\223The) 279 b(Postw) -12 b(ar) 279
+b(U.S.) g(Phillips) g(Curv) -18 b(e:) 364 b(A) 280 b(Re) -30
+b(visionist) 278 b(Economet-) 3030 69569 y(ric) 303 b(History) -79
+b(.) -85 b(\224) p Fz 376 w(Carne) -48 b(gie-Roc) -18
+b(hester) 301 b(Confer) -45 b(ence) 304 b(Series) f(on) g(Public) g(P)
+-97 b(olicy) -67 b(,) p FD 303 w(41) 303 b(\(December\):157\226219.) 606
+72071 y(King,) 250 b(Robert) 238 b(G.,) 250 b(James) 236
+b(H.) h(Stock,) 251 b(and) 237 b(Mark) f(W) -112 b(.) 238
+b(W) -97 b(atson.) 354 b(1995.) g(\223T) -85 b(emporal) 237
+b(Instability) f(of) h(the) g(Unemplo) -12 b(yment-) 3030
+73576 y(In\003ation) 359 b(Relationship.) -85 b(\224) p
+Fz 543 w(Economic) 358 b(P) -97 b(er) -12 b(spectives) 358
+b(of) g(the) h(F) -91 b(eder) -18 b(al) 358 b(Reserve) g(Bank) g(of) h
+(Chica) -12 b(go,) p FD 373 w(May-June,) 3030 75082 y(2\22612.) 25697
+78521 y(4) p 90 rotate dyy eop
+%%Page: 5 5
+5 4 bop FD 606 5218 a(Krue) -18 b(ger) -48 b(,) 294 b(Alan) f(B.) g
+(1997.) 372 b(\223Comment) 294 b(on) p Fz 292 w(How) g(Pr) -45
+b(ecise) 291 b(ar) -45 b(e) 293 b(Estimates) e(of) i(the) f(Natur) -18
+b(al) 293 b(Rate) f(of) h(Unemployment?) p FD(\224) 3030
+6723 y(In) p Fz 291 w(Reducing) e(In\003ation,) p FD
+293 w(eds.) f(Christina) g(D.) h(Romer) g(and) g(Da) -24
+b(vid) 291 b(H.) g(Romer) -67 b(.) 372 b(Chicago:) f(Uni) -30
+b(v) -18 b(ersity) 290 b(of) g(Chicago) 3030 8229 y(Press.) 606
+10730 y(K) -18 b(uttner) -48 b(,) 312 b(K.N.) f(1992.) 398
+b(\223Monetary) 310 b(Polic) -18 b(y) 311 b(with) f(Uncertain) h
+(Estimates) e(of) h(Potential) h(Output.) -85 b(\224) p
+Fz 399 w(Economic) 310 b(P) -97 b(er) -12 b(spec-) 3030
+12236 y(tives,) p FD 303 w(Federal) 303 b(Reserv) -18
+b(e) 303 b(Bank) h(of) f(Chicago,) h(16:2\22615.) 606
+14738 y(Loh,) 338 b(W) -97 b(ei-Y) -67 b(in.) 459 b(1987.) h
+(\223Calibrating) 331 b(Con\002dence) h(Coef) -30 b(\002cients.) -85
+b(\224) p Fz 459 w(J) -30 b(ournal) 331 b(of) g(the) g(American) f
+(Statistical) h(Ass) n(ocia-) 3030 16243 y(tion) p FD
+303 w(82:155\226162.) 606 18745 y(Loh,) 354 b(W) -97
+b(ei-Y) -67 b(in.) 501 b(1988.) e(\223Discussion) 344
+b(of) p Fz 344 w(Theor) -45 b(etical) 344 b(Comparison) h(of) f
+(Bootstr) -18 b(a) n(p) 345 b(Con\002dence) g(Intervals) p
+FD 344 w(by) f(Peter) 3030 20250 y(Hall.) -85 b(\224) p
+Fz 377 w(Annals) 302 b(of) h(Statistics) p FD 302 w(16:972\226976.) 606
+22752 y(Loh,) 355 b(W) -97 b(ei-Y) -67 b(in.) 501 b(1991.) h
+(\223Bootstrap) 344 b(Calibration) h(for) g(Con\002dence) g(Interv) -30
+b(al) 345 b(Construction) f(and) h(Selection.) -85 b(\224) p
+Fz 502 w(Statis-) 3030 24257 y(tica) 303 b(Sinica) p
+FD 304 w(1:479\226495.) 606 26759 y(Mankiw) -79 b(,) 303
+b(N.) h(Gre) -18 b(gory) -79 b(.) 375 b(1997.) p Fz 376
+w(Macr) -55 b(oeconomics.) p FD 376 w(Ne) -30 b(w) 303
+b(Y) -133 b(ork:) 376 b(W) -97 b(orth) 303 b(Publishers) n(.) 606
+29261 y(McCullagh,) h(P) -135 b(.,) 303 b(and) g(J.A.) g(Nelder) -67
+b(.) 376 b(1992.) p Fz 376 w(Gener) -18 b(alized) 303
+b(Linear) g(Models.) p FD 375 w(Ne) -30 b(w) 303 b(Y) -133
+b(ork,) 303 b(NY) -112 b(:) 304 b(Chapman) g(&) f(Hall.) 606
+31763 y(Shao,) g(Jun,) g(and) g(Dongsheng) h(T) -55 b(u.) 375
+b(1995.) p Fz 376 w(The) 304 b(J) -42 b(ac) -24 b(kknife) 303
+b(and) g(Bootstr) -18 b(ap.) p FD 375 w(Ne) -30 b(w) 303
+b(Y) -133 b(ork:) 375 b(Springer) -67 b(.) 606 34264
+y(Staiger) -48 b(,) 296 b(Douglas,) g(James) e(H.) h(Stock,) i(and) e
+(Mark) f(W) -112 b(.) 296 b(W) -97 b(atson.) 373 b(1997a.) g(\223The)
+295 b(N) -42 b(AIR) -48 b(U,) 294 b(Unemplo) -12 b(yment) 295
+b(and) h(Mone-) 3030 35770 y(tary) 303 b(Polic) -18 b(y) -79
+b(.) -85 b(\224) p Fz 376 w(The) 304 b(J) -30 b(ournal) 302
+b(of) h(Economic) h(P) -97 b(er) -12 b(s) n(pectives) p
+FD 303 w(11:33-50.) 606 38271 y(Staiger) -48 b(,) 278
+b(Douglas,) h(James) 272 b(H.) h(Stock,) 279 b(and) 273
+b(Mark) f(W) -112 b(.) 274 b(W) -97 b(atson.) 365 b(1997b) -48
+b(.) 366 b(\223Ho) -30 b(w) 273 b(Precise) f(are) h(Estimates) f(of) g
+(the) h(Natural) 3030 39777 y(Rate) 467 b(of) e(Unemplo) -12
+b(yment?\224) 865 b(In) p Fz 465 w(Reducing) 466 b(In\003ation,) p
+FD 506 w(eds.) 863 b(Christina) 466 b(D.) g(Romer) g(and) g(Da) -24
+b(vid) 465 b(H.) h(Romer) -67 b(.) 3030 41282 y(Chicago:) 377
+b(Uni) -30 b(v) -18 b(ersity) 302 b(of) h(Chicago) h(Press) n(.) 606
+43784 y(Sze) -18 b(g) 3045 43778 y(\250) 2944 43784 y(o,) 303
+b(Gabor) -67 b(.) 377 b(1975.) p Fz 376 w(Ortho) -12
+b(gonal) 302 b(P) -97 b(olynomials.) p FD 376 w(Pro) -18
+b(vidence,) 303 b(RI:) g(The) g(American) g(Mathematical) h(Society) -79
+b(.) 606 46286 y(T) -97 b(aylor) -48 b(,) 428 b(John) 404
+b(B.) g(1994.) 678 b(\223The) 404 b(In\003ation/Output) g(V) -135
+b(ariability) 404 b(T) -42 b(radeof) -30 b(f) 402 b(Re) -30
+b(visited.) -85 b(\224) 679 b(In) p Fz 403 w(Goals,) 429
+b(Guidelines,) g(and) 3030 47791 y(Constr) -18 b(aints) 302
+b(F) -91 b(acing) 303 b(Monetary) g(P) -97 b(olicymak) -12
+b(er) g(s.) p FD 375 w(Boston:) 376 b(Federal) 303 b(Reserv) -18
+b(e) 303 b(Bank) h(of) f(Boston.) 606 50293 y(T) -97
+b(ootell,) 257 b(Geof) -30 b(fre) -18 b(y) 245 b(M.B.) h(1994.) 357
+b(\223Restructuring,) 257 b(the) 246 b(N) -42 b(AIR) -48
+b(U,) 246 b(and) g(the) g(Phillips) f(Curv) -18 b(e.) -85
+b(\224) p Fz 357 w(Ne) -18 b(w) 247 b(England) f(Economic) 3030
+51799 y(Re) -18 b(vie) g(w) 304 b(of) f(the) g(F) -91
+b(eder) -18 b(al) 302 b(Reserve) h(Bank) g(of) g(Boston,) p
+FD 302 w(September) -24 b(-October) -48 b(,) 302 b(31-44.) 606
+54300 y(W) -97 b(einer) -48 b(,) 330 b(Stuart) 325 b(E.) g(1993.) 441
+b(\223Ne) -30 b(w) 326 b(Estimates) e(of) g(the) h(Natural) g(Rate) h
+(of) f(Unemplo) -12 b(yment.) -85 b(\224) p Fz 442 w(Economic) 326
+b(Re) -18 b(vie) g(w) 325 b(of) g(the) 3030 55806 y(F) -91
+b(eder) -18 b(al) 303 b(Reserve) f(Bank) h(of) g(Kansas,) p
+FD 303 w(fourth) f(quarter) -48 b(,) 303 b(53-69.) 25697
+78521 y(5) p 90 rotate dyy eop
+%%Trailer
+end
+userdict /end-hook known{end-hook}if
+%%EOF

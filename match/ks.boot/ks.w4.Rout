@@ -1,0 +1,7218 @@
+
+R version 2.13.0 (2011-04-13)
+Copyright (C) 2011 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-apple-darwin9.8.0/x86_64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(Matching)
+Loading required package: rgenoud
+##  rgenoud (Version 5.7-3, Build Date: 2011-05-04)
+##  See http://sekhon.berkeley.edu/rgenoud for additional documentation.
+Loading required package: MASS
+## 
+##  Matching (Version 4.7-14, Build Date: 2011/05/20)
+##  See http://sekhon.berkeley.edu/matching for additional documentation.
+##  Please cite software as:
+##   Jasjeet S. Sekhon. 2011. ``Multivariate and Propensity Score Matching
+##   Software with Automated Balance Optimization: The Matching package for R.''
+##   Journal of Statistical Software, 42(7): 1-52. 
+##
+> example(ks.boot)
+
+ks.bot> #
+ks.bot> # Replication of Dehejia and Wahba psid3 model
+ks.bot> #
+ks.bot> # Dehejia, Rajeev and Sadek Wahba. 1999.``Causal Effects in Non-Experimental Studies: Re-Evaluating the
+ks.bot> # Evaluation of Training Programs.''Journal of the American Statistical Association 94 (448): 1053-1062.
+ks.bot> #
+ks.bot> data(lalonde)
+
+ks.bot> #
+ks.bot> # Estimate the propensity model
+ks.bot> #
+ks.bot> glm1  <- glm(treat~age + I(age^2) + educ + I(educ^2) + black +
+ks.bot+              hisp + married + nodegr + re74  + I(re74^2) + re75 + I(re75^2) +
+ks.bot+              u74 + u75, family=binomial, data=lalonde)
+
+ks.bot> #
+ks.bot> #save data objects
+ks.bot> #
+ks.bot> X  <- glm1$fitted
+
+ks.bot> Y  <- lalonde$re78
+
+ks.bot> Tr  <- lalonde$treat
+
+ks.bot> #
+ks.bot> # one-to-one matching with replacement (the "M=1" option).
+ks.bot> # Estimating the treatment effect on the treated (the "estimand" option which defaults to 0).
+ks.bot> #
+ks.bot> rr  <- Match(Y=Y,Tr=Tr,X=X,M=1);
+
+ks.bot> summary(rr)
+
+Estimate...  2153.3 
+AI SE......  825.4 
+T-stat.....  2.6088 
+p.val......  0.0090858 
+
+Original number of observations..............  445 
+Original number of treated obs...............  185 
+Matched number of observations...............  185 
+Matched number of observations  (unweighted).  346 
+
+
+ks.bot> #
+ks.bot> # Do we have balance on 1975 income after matching?
+ks.bot> #
+ks.bot> ks  <- ks.boot(lalonde$re75[rr$index.treated], lalonde$re75[rr$index.control], nboots=500)
+
+ks.bot> summary(ks)
+
+Bootstrap p-value:     0.18 
+Naive p-value:         0.60988 
+Full Sample Statistic: 0.057803 
+
+> 
+> source("ksw.code2.R")
+> 
+> set.seed(3198)
+> 
+> mat <- cbind(lalonde$re75[rr$index.treated], lalonde$re75[rr$index.control],xweights=rr$weights)
+> ndata <- NULL
+> w <- 0
+> count <- 0
+> for(i in 1:nrow(mat))
++   {
++     cat("i:",i,"\n")
++     count <- count+1
++     w <- w+mat[i,3]
++     cat("w:",w,"\n")
++ 
++     if(w>(1-.000001))
++       {
++         if (count==1)
++           {
++             foo <- mat[i,]
++           } else {
++             cat("count:",count,"i:",i,"\n")
++             foo <- apply(mat[(i-count+1):i,], 2, mean)
++             foo[3] <- sum(mat[(i-count+1):i,3])
++           }
++ 
++         cat("rbind",i,"\n")
++         cat(foo)
++         ndata <- rbind(ndata,foo)
++         w <- 0
++         count <- 0
++       }
++   }
+i: 1 
+w: 0.5 
+i: 2 
+w: 1 
+count: 2 i: 2 
+rbind 2 
+0 581.18 1i: 3 
+w: 1 
+rbind 3 
+0 0 1i: 4 
+w: 0.25 
+i: 5 
+w: 0.5 
+i: 6 
+w: 0.75 
+i: 7 
+w: 1 
+count: 4 i: 7 
+rbind 7 
+0 0 1i: 8 
+w: 0.3333333 
+i: 9 
+w: 0.6666667 
+i: 10 
+w: 1 
+count: 3 i: 10 
+rbind 10 
+0 0 1i: 11 
+w: 0.5 
+i: 12 
+w: 1 
+count: 2 i: 12 
+rbind 12 
+0 0 1i: 13 
+w: 0.1428571 
+i: 14 
+w: 0.2857143 
+i: 15 
+w: 0.4285714 
+i: 16 
+w: 0.5714286 
+i: 17 
+w: 0.7142857 
+i: 18 
+w: 0.8571429 
+i: 19 
+w: 1 
+count: 7 i: 19 
+rbind 19 
+0 0 1i: 20 
+w: 1 
+rbind 20 
+0 0 1i: 21 
+w: 0.3333333 
+i: 22 
+w: 0.6666667 
+i: 23 
+w: 1 
+count: 3 i: 23 
+rbind 23 
+0 0 1i: 24 
+w: 1 
+rbind 24 
+0 0 1i: 25 
+w: 1 
+rbind 25 
+0 0 1i: 26 
+w: 1 
+rbind 26 
+0 0 1i: 27 
+w: 1 
+rbind 27 
+0 0 1i: 28 
+w: 0.5 
+i: 29 
+w: 1 
+count: 2 i: 29 
+rbind 29 
+0 0 1i: 30 
+w: 1 
+rbind 30 
+0 0 1i: 31 
+w: 1 
+rbind 31 
+0 0 1i: 32 
+w: 0.2 
+i: 33 
+w: 0.4 
+i: 34 
+w: 0.6 
+i: 35 
+w: 0.8 
+i: 36 
+w: 1 
+count: 5 i: 36 
+rbind 36 
+0 0 1i: 37 
+w: 1 
+rbind 37 
+0 0 1i: 38 
+w: 0.25 
+i: 39 
+w: 0.5 
+i: 40 
+w: 0.75 
+i: 41 
+w: 1 
+count: 4 i: 41 
+rbind 41 
+0 0 1i: 42 
+w: 1 
+rbind 42 
+0 0 1i: 43 
+w: 1 
+rbind 43 
+0 0 1i: 44 
+w: 0.2 
+i: 45 
+w: 0.4 
+i: 46 
+w: 0.6 
+i: 47 
+w: 0.8 
+i: 48 
+w: 1 
+count: 5 i: 48 
+rbind 48 
+0 0 1i: 49 
+w: 1 
+rbind 49 
+0 474.502 1i: 50 
+w: 1 
+rbind 50 
+0 0 1i: 51 
+w: 0.25 
+i: 52 
+w: 0.5 
+i: 53 
+w: 0.75 
+i: 54 
+w: 1 
+count: 4 i: 54 
+rbind 54 
+0 0 1i: 55 
+w: 0.3333333 
+i: 56 
+w: 0.6666667 
+i: 57 
+w: 1 
+count: 3 i: 57 
+rbind 57 
+0 0 1i: 58 
+w: 0.3333333 
+i: 59 
+w: 0.6666667 
+i: 60 
+w: 1 
+count: 3 i: 60 
+rbind 60 
+0 0 1i: 61 
+w: 0.3333333 
+i: 62 
+w: 0.6666667 
+i: 63 
+w: 1 
+count: 3 i: 63 
+rbind 63 
+0 0 1i: 64 
+w: 1 
+rbind 64 
+0 0 1i: 65 
+w: 0.2 
+i: 66 
+w: 0.4 
+i: 67 
+w: 0.6 
+i: 68 
+w: 0.8 
+i: 69 
+w: 1 
+count: 5 i: 69 
+rbind 69 
+0 0 1i: 70 
+w: 0.25 
+i: 71 
+w: 0.5 
+i: 72 
+w: 0.75 
+i: 73 
+w: 1 
+count: 4 i: 73 
+rbind 73 
+0 0 1i: 74 
+w: 0.2 
+i: 75 
+w: 0.4 
+i: 76 
+w: 0.6 
+i: 77 
+w: 0.8 
+i: 78 
+w: 1 
+count: 5 i: 78 
+rbind 78 
+0 0 1i: 79 
+w: 1 
+rbind 79 
+0 803.343 1i: 80 
+w: 1 
+rbind 80 
+0 0 1i: 81 
+w: 1 
+rbind 81 
+0 0 1i: 82 
+w: 0.5 
+i: 83 
+w: 1 
+count: 2 i: 83 
+rbind 83 
+0 0 1i: 84 
+w: 1 
+rbind 84 
+0 0 1i: 85 
+w: 1 
+rbind 85 
+0 591.815 1i: 86 
+w: 1 
+rbind 86 
+0 0 1i: 87 
+w: 1 
+rbind 87 
+0 0 1i: 88 
+w: 0.2 
+i: 89 
+w: 0.4 
+i: 90 
+w: 0.6 
+i: 91 
+w: 0.8 
+i: 92 
+w: 1 
+count: 5 i: 92 
+rbind 92 
+0 0 1i: 93 
+w: 1 
+rbind 93 
+0 0 1i: 94 
+w: 1 
+rbind 94 
+0 0 1i: 95 
+w: 0.25 
+i: 96 
+w: 0.5 
+i: 97 
+w: 0.75 
+i: 98 
+w: 1 
+count: 4 i: 98 
+rbind 98 
+0 0 1i: 99 
+w: 0.5 
+i: 100 
+w: 1 
+count: 2 i: 100 
+rbind 100 
+0 0 1i: 101 
+w: 1 
+rbind 101 
+0 16341.2 1i: 102 
+w: 1 
+rbind 102 
+0 0 1i: 103 
+w: 0.25 
+i: 104 
+w: 0.5 
+i: 105 
+w: 0.75 
+i: 106 
+w: 1 
+count: 4 i: 106 
+rbind 106 
+0 0 1i: 107 
+w: 0.2 
+i: 108 
+w: 0.4 
+i: 109 
+w: 0.6 
+i: 110 
+w: 0.8 
+i: 111 
+w: 1 
+count: 5 i: 111 
+rbind 111 
+0 0 1i: 112 
+w: 1 
+rbind 112 
+0 591.815 1i: 113 
+w: 1 
+rbind 113 
+0 0 1i: 114 
+w: 1 
+rbind 114 
+0 0 1i: 115 
+w: 0.5 
+i: 116 
+w: 1 
+count: 2 i: 116 
+rbind 116 
+0 0 1i: 117 
+w: 0.1666667 
+i: 118 
+w: 0.3333333 
+i: 119 
+w: 0.5 
+i: 120 
+w: 0.6666667 
+i: 121 
+w: 0.8333333 
+i: 122 
+w: 1 
+count: 6 i: 122 
+rbind 122 
+0 0 1i: 123 
+w: 0.5 
+i: 124 
+w: 1 
+count: 2 i: 124 
+rbind 124 
+0 0 1i: 125 
+w: 0.5 
+i: 126 
+w: 1 
+count: 2 i: 126 
+rbind 126 
+0 0 1i: 127 
+w: 0.2 
+i: 128 
+w: 0.4 
+i: 129 
+w: 0.6 
+i: 130 
+w: 0.8 
+i: 131 
+w: 1 
+count: 5 i: 131 
+rbind 131 
+0 0 1i: 132 
+w: 0.5 
+i: 133 
+w: 1 
+count: 2 i: 133 
+rbind 133 
+0 0 1i: 134 
+w: 1 
+rbind 134 
+0 474.502 1i: 135 
+w: 1 
+rbind 135 
+0 2265.58 1i: 136 
+w: 1 
+rbind 136 
+0 580.79 1i: 137 
+w: 0.25 
+i: 138 
+w: 0.5 
+i: 139 
+w: 0.75 
+i: 140 
+w: 1 
+count: 4 i: 140 
+rbind 140 
+0 0 1i: 141 
+w: 0.5 
+i: 142 
+w: 1 
+count: 2 i: 142 
+rbind 142 
+0 0 1i: 143 
+w: 0.25 
+i: 144 
+w: 0.5 
+i: 145 
+w: 0.75 
+i: 146 
+w: 1 
+count: 4 i: 146 
+rbind 146 
+0 0 1i: 147 
+w: 0.3333333 
+i: 148 
+w: 0.6666667 
+i: 149 
+w: 1 
+count: 3 i: 149 
+rbind 149 
+0 0 1i: 150 
+w: 1 
+rbind 150 
+0 0 1i: 151 
+w: 0.25 
+i: 152 
+w: 0.5 
+i: 153 
+w: 0.75 
+i: 154 
+w: 1 
+count: 4 i: 154 
+rbind 154 
+0 0 1i: 155 
+w: 0.3333333 
+i: 156 
+w: 0.6666667 
+i: 157 
+w: 1 
+count: 3 i: 157 
+rbind 157 
+0 0 1i: 158 
+w: 1 
+rbind 158 
+0 559.596 1i: 159 
+w: 1 
+rbind 159 
+0 0 1i: 160 
+w: 1 
+rbind 160 
+0 0 1i: 161 
+w: 1 
+rbind 161 
+0 0 1i: 162 
+w: 1 
+rbind 162 
+0 0 1i: 163 
+w: 1 
+rbind 163 
+0 2445.59 1i: 164 
+w: 0.5 
+i: 165 
+w: 1 
+count: 2 i: 165 
+rbind 165 
+0 0 1i: 166 
+w: 1 
+rbind 166 
+0 0 1i: 167 
+w: 1 
+rbind 167 
+0 240.107 1i: 168 
+w: 1 
+rbind 168 
+0 0 1i: 169 
+w: 0.2 
+i: 170 
+w: 0.4 
+i: 171 
+w: 0.6 
+i: 172 
+w: 0.8 
+i: 173 
+w: 1 
+count: 5 i: 173 
+rbind 173 
+0 0 1i: 174 
+w: 1 
+rbind 174 
+0 0 1i: 175 
+w: 1 
+rbind 175 
+0 0 1i: 176 
+w: 0.5 
+i: 177 
+w: 1 
+count: 2 i: 177 
+rbind 177 
+0 0 1i: 178 
+w: 1 
+rbind 178 
+0 0 1i: 179 
+w: 1 
+rbind 179 
+0 0 1i: 180 
+w: 1 
+rbind 180 
+0 0 1i: 181 
+w: 1 
+rbind 181 
+0 0 1i: 182 
+w: 0.5 
+i: 183 
+w: 1 
+count: 2 i: 183 
+rbind 183 
+0 0 1i: 184 
+w: 1 
+rbind 184 
+0 0 1i: 185 
+w: 0.3333333 
+i: 186 
+w: 0.6666667 
+i: 187 
+w: 1 
+count: 3 i: 187 
+rbind 187 
+0 5648.867 1i: 188 
+w: 1 
+rbind 188 
+0 0 1i: 189 
+w: 1 
+rbind 189 
+0 0 1i: 190 
+w: 0.5 
+i: 191 
+w: 1 
+count: 2 i: 191 
+rbind 191 
+0 0 1i: 192 
+w: 0.2 
+i: 193 
+w: 0.4 
+i: 194 
+w: 0.6 
+i: 195 
+w: 0.8 
+i: 196 
+w: 1 
+count: 5 i: 196 
+rbind 196 
+0 0 1i: 197 
+w: 0.3333333 
+i: 198 
+w: 0.6666667 
+i: 199 
+w: 1 
+count: 3 i: 199 
+rbind 199 
+0 0 1i: 200 
+w: 1 
+rbind 200 
+0 0 1i: 201 
+w: 0.2 
+i: 202 
+w: 0.4 
+i: 203 
+w: 0.6 
+i: 204 
+w: 0.8 
+i: 205 
+w: 1 
+count: 5 i: 205 
+rbind 205 
+0 0 1i: 206 
+w: 0.5 
+i: 207 
+w: 1 
+count: 2 i: 207 
+rbind 207 
+0 0 1i: 208 
+w: 0.08333333 
+i: 209 
+w: 0.1666667 
+i: 210 
+w: 0.25 
+i: 211 
+w: 0.3333333 
+i: 212 
+w: 0.4166667 
+i: 213 
+w: 0.5 
+i: 214 
+w: 0.5833333 
+i: 215 
+w: 0.6666667 
+i: 216 
+w: 0.75 
+i: 217 
+w: 0.8333333 
+i: 218 
+w: 0.9166667 
+i: 219 
+w: 1 
+count: 12 i: 219 
+rbind 219 
+0 0 1i: 220 
+w: 1 
+rbind 220 
+0 0 1i: 221 
+w: 0.1428571 
+i: 222 
+w: 0.2857143 
+i: 223 
+w: 0.4285714 
+i: 224 
+w: 0.5714286 
+i: 225 
+w: 0.7142857 
+i: 226 
+w: 0.8571429 
+i: 227 
+w: 1 
+count: 7 i: 227 
+rbind 227 
+0 0 1i: 228 
+w: 1 
+rbind 228 
+0 0 1i: 229 
+w: 0.2 
+i: 230 
+w: 0.4 
+i: 231 
+w: 0.6 
+i: 232 
+w: 0.8 
+i: 233 
+w: 1 
+count: 5 i: 233 
+rbind 233 
+0 0 1i: 234 
+w: 0.25 
+i: 235 
+w: 0.5 
+i: 236 
+w: 0.75 
+i: 237 
+w: 1 
+count: 4 i: 237 
+rbind 237 
+0 0 1i: 238 
+w: 0.3333333 
+i: 239 
+w: 0.6666667 
+i: 240 
+w: 1 
+count: 3 i: 240 
+rbind 240 
+0 0 1i: 241 
+w: 0.1666667 
+i: 242 
+w: 0.3333333 
+i: 243 
+w: 0.5 
+i: 244 
+w: 0.6666667 
+i: 245 
+w: 0.8333333 
+i: 246 
+w: 1 
+count: 6 i: 246 
+rbind 246 
+0 0 1i: 247 
+w: 0.3333333 
+i: 248 
+w: 0.6666667 
+i: 249 
+w: 1 
+count: 3 i: 249 
+rbind 249 
+0 0 1i: 250 
+w: 1 
+rbind 250 
+0 0 1i: 251 
+w: 1 
+rbind 251 
+0 0 1i: 252 
+w: 0.2 
+i: 253 
+w: 0.4 
+i: 254 
+w: 0.6 
+i: 255 
+w: 0.8 
+i: 256 
+w: 1 
+count: 5 i: 256 
+rbind 256 
+0 0 1i: 257 
+w: 0.3333333 
+i: 258 
+w: 0.6666667 
+i: 259 
+w: 1 
+count: 3 i: 259 
+rbind 259 
+0 0 1i: 260 
+w: 1 
+rbind 260 
+0 0 1i: 261 
+w: 1 
+rbind 261 
+0 0 1i: 262 
+w: 1 
+rbind 262 
+74.3435 1239.63 1i: 263 
+w: 1 
+rbind 263 
+165.208 1405.51 1i: 264 
+w: 1 
+rbind 264 
+214.564 1203.82 1i: 265 
+w: 1 
+rbind 265 
+334.049 6004.73 1i: 266 
+w: 1 
+rbind 266 
+334.049 5551.46 1i: 267 
+w: 1 
+rbind 267 
+357.95 2003.68 1i: 268 
+w: 1 
+rbind 268 
+377.569 2850.61 1i: 269 
+w: 1 
+rbind 269 
+385.274 664.569 1i: 270 
+w: 0.5 
+i: 271 
+w: 1 
+count: 2 i: 271 
+rbind 271 
+501.074 0 1i: 272 
+w: 1 
+rbind 272 
+679.673 474.502 1i: 273 
+w: 0.3333333 
+i: 274 
+w: 0.6666667 
+i: 275 
+w: 1 
+count: 3 i: 275 
+rbind 275 
+798.908 201.3847 1i: 276 
+w: 1 
+rbind 276 
+798.908 240.107 1i: 277 
+w: 1 
+rbind 277 
+853.723 474.502 1i: 278 
+w: 1 
+rbind 278 
+919.558 0 1i: 279 
+w: 1 
+rbind 279 
+934.445 559.596 1i: 280 
+w: 1 
+rbind 280 
+936.177 2814.2 1i: 281 
+w: 1 
+rbind 281 
+936.439 3285.68 1i: 282 
+w: 1 
+rbind 282 
+1117.44 0 1i: 283 
+w: 1 
+rbind 283 
+1220.84 1174.99 1i: 284 
+w: 1 
+rbind 284 
+1253.44 367.823 1i: 285 
+w: 1 
+rbind 285 
+1284.08 863.48 1i: 286 
+w: 1 
+rbind 286 
+1392.85 0 1i: 287 
+w: 0.2 
+i: 288 
+w: 0.4 
+i: 289 
+w: 0.6 
+i: 290 
+w: 0.8 
+i: 291 
+w: 1 
+count: 5 i: 291 
+rbind 291 
+1484.99 0 1i: 292 
+w: 1 
+rbind 292 
+1666.11 9210.45 1i: 293 
+w: 1 
+rbind 293 
+1698.61 766.299 1i: 294 
+w: 1 
+rbind 294 
+1713.15 2850.61 1i: 295 
+w: 1 
+rbind 295 
+1784.27 1203.82 1i: 296 
+w: 1 
+rbind 296 
+1817.28 0 1i: 297 
+w: 1 
+rbind 297 
+2226.27 5562.6 1i: 298 
+w: 1 
+rbind 298 
+2288.68 0 1i: 299 
+w: 1 
+rbind 299 
+2409.27 5393.9 1i: 300 
+w: 0.5 
+i: 301 
+w: 1 
+count: 2 i: 301 
+rbind 301 
+2421.95 2385.115 1i: 302 
+w: 1 
+rbind 302 
+2594.72 3796.03 1i: 303 
+w: 1 
+rbind 303 
+2611.22 2265.58 1i: 304 
+w: 1 
+rbind 304 
+2615.28 4128.44 1i: 305 
+w: 1 
+rbind 305 
+2657.06 6974.48 1i: 306 
+w: 1 
+rbind 306 
+2666.27 9160.69 1i: 307 
+w: 1 
+rbind 307 
+2754.65 9210.45 1i: 308 
+w: 1 
+rbind 308 
+2777.36 165.208 1i: 309 
+w: 0.5 
+i: 310 
+w: 1 
+count: 2 i: 310 
+rbind 310 
+2836.51 2649.54 1i: 311 
+w: 1 
+rbind 311 
+2842.76 1468.38 1i: 312 
+w: 1 
+rbind 312 
+2937.26 7666.88 1i: 313 
+w: 1 
+rbind 313 
+3039.96 2003.68 1i: 314 
+w: 1 
+rbind 314 
+3058.53 0 1i: 315 
+w: 1 
+rbind 315 
+3090.73 10033.9 1i: 316 
+w: 1 
+rbind 316 
+3287.38 863.48 1i: 317 
+w: 1 
+rbind 317 
+3332.41 2003.68 1i: 318 
+w: 1 
+rbind 318 
+3550.08 9160.69 1i: 319 
+w: 1 
+rbind 319 
+3695.9 6449.48 1i: 320 
+w: 1 
+rbind 320 
+3836.99 9319.44 1i: 321 
+w: 1 
+rbind 321 
+4023.21 0 1i: 322 
+w: 1 
+rbind 322 
+4078.15 645.272 1i: 323 
+w: 1 
+rbind 323 
+4398.95 9319.44 1i: 324 
+w: 1 
+rbind 324 
+4878.94 2003.68 1i: 325 
+w: 1 
+rbind 325 
+5324.11 4491.88 1i: 326 
+w: 1 
+rbind 326 
+5463.8 0 1i: 327 
+w: 1 
+rbind 327 
+5517.84 367.823 1i: 328 
+w: 1 
+rbind 328 
+5588.66 4491.88 1i: 329 
+w: 1 
+rbind 329 
+5749.33 3796.03 1i: 330 
+w: 1 
+rbind 330 
+5793.85 0 1i: 331 
+w: 1 
+rbind 331 
+5794.83 803.343 1i: 332 
+w: 1 
+rbind 332 
+5875.05 0 1i: 333 
+w: 1 
+rbind 333 
+6056.75 559.596 1i: 334 
+w: 1 
+rbind 334 
+6788.96 0 1i: 335 
+w: 1 
+rbind 335 
+6871.86 5562.6 1i: 336 
+w: 1 
+rbind 336 
+7055.7 2814.2 1i: 337 
+w: 1 
+rbind 337 
+7867.92 5562.6 1i: 338 
+w: 1 
+rbind 338 
+8455.5 474.502 1i: 339 
+w: 1 
+rbind 339 
+8853.67 0 1i: 340 
+w: 1 
+rbind 340 
+10941.4 2814.2 1i: 341 
+w: 1 
+rbind 341 
+11536.6 3796.03 1i: 342 
+w: 0.3333333 
+i: 343 
+w: 0.6666667 
+i: 344 
+w: 1 
+count: 3 i: 344 
+rbind 344 
+13830.6 0 1i: 345 
+w: 1 
+rbind 345 
+17976.2 5562.6 1i: 346 
+w: 1 
+rbind 346 
+25142.2 9319.44 1> 
+> ks.test(ndata[,1], ndata[,2])
+
+	Two-sample Kolmogorov-Smirnov test
+
+data:  ndata[, 1] and ndata[, 2] 
+D = 0.0757, p-value = 0.6646
+alternative hypothesis: two-sided 
+
+Warning message:
+In ks.test(ndata[, 1], ndata[, 2]) :
+  cannot compute correct p-values with ties
+> ks.w(ndata[,1], ndata[,2])
+[1] 0.07567568
+> ks.boot(ndata[,1], ndata[,2],nboots=500)
+$ks.boot.pvalue
+[1] 0.298
+
+$ks
+
+	Two-sample Kolmogorov-Smirnov test
+
+data:  Tr and Co 
+D = 0.0757, p-value = 0.6646
+alternative hypothesis: two.sided 
+
+
+$nboots
+[1] 500
+
+attr(,"class")
+[1] "ks.boot"
+> 
+> ks.boot(lalonde$re75[rr$index.treated],
++         lalonde$re75[rr$index.control],
++         nboots=500)
+$ks.boot.pvalue
+[1] 0.146
+
+$ks
+
+	Two-sample Kolmogorov-Smirnov test
+
+data:  Tr and Co 
+D = 0.0578, p-value = 0.6099
+alternative hypothesis: two.sided 
+
+
+$nboots
+[1] 500
+
+attr(,"class")
+[1] "ks.boot"
+> 
+> ks.boot.w(lalonde$re75[rr$index.treated],
++           lalonde$re75[rr$index.control],
++           Tr.weights=rr$weights,
++           Co.weights=rr$weights,
++           nboots=500
++           )
+$ks.boot.pvalue
+[1] 0.296
+
+$ks
+[1] 0.07657658
+
+$nboots
+[1] 500
+
+attr(,"class")
+[1] "ks.boot"
+> 
+> ks.w(ndata[,1], ndata[,2])
+[1] 0.07567568
+> 
+> ks.w(ndata[,1], ndata[,2])
+[1] 0.07567568
+> ks.test(ndata[,1], ndata[,2])
+
+	Two-sample Kolmogorov-Smirnov test
+
+data:  ndata[, 1] and ndata[, 2] 
+D = 0.0757, p-value = 0.6646
+alternative hypothesis: two-sided 
+
+Warning message:
+In ks.test(ndata[, 1], ndata[, 2]) :
+  cannot compute correct p-values with ties
+> 
+> ks.w(ndata[,1], ndata[,2], alternative="less")
+[1] 0.07567568
+> ks.test(ndata[,1], ndata[,2], alternative="less")
+
+	Two-sample Kolmogorov-Smirnov test
+
+data:  ndata[, 1] and ndata[, 2] 
+D^- = 0.0757, p-value = 0.3466
+alternative hypothesis: the CDF of x lies below that of y 
+
+Warning message:
+In ks.test(ndata[, 1], ndata[, 2], alternative = "less") :
+  cannot compute correct p-values with ties
+> 
+> ks.w(ndata[,1], ndata[,2], alternative="greater")
+[1] 0.02162162
+> ks.test(ndata[,1], ndata[,2], alternative="greater")
+
+	Two-sample Kolmogorov-Smirnov test
+
+data:  ndata[, 1] and ndata[, 2] 
+D^+ = 0.0216, p-value = 0.9171
+alternative hypothesis: the CDF of x lies above that of y 
+
+Warning message:
+In ks.test(ndata[, 1], ndata[, 2], alternative = "greater") :
+  cannot compute correct p-values with ties
+> 
+> 
+> pvals <- c()
+> pvals.test <- c()
+> dstats <- c()
+> dstats.actual <- c()
+> 
+> for(i in 1:1000){
++   print(i)
++   
++   tr <- rnorm(1000)
++   
++   con <- rnorm(1000)
++ 
++   ks <- ks.test(tr,con)
++   dstats.actual <- c(dstats.actual, ks$statistic)
++   
++   ksboot<-ks.boot.w(tr,con,nboots=500)
++ 
++   kstest <- ks.test(tr,con)
++   
++   pvals<-c(pvals,ks$p.value)
++   pvals.test <- c(pvals.test,kstest$p.value)    
++   dstats<-c(dstats,ksboot$ks)
++   
++   cat("dstat:",mean(dstats),"\n")
++   cat("dstat actual:",mean(dstats.actual),"\n")
++   cat("test coverage:", sum(pvals.test<.05)/length(pvals.test),"\n")  
++   cat("boot coverage:", sum(pvals<.05)/length(pvals), "\n")
++ 
++   cat("\n")
++ }
+[1] 1
+dstat: 0.034 
+dstat actual: 0.034 
+test coverage: 0 
+boot coverage: 0 
+
+[1] 2
+dstat: 0.034 
+dstat actual: 0.034 
+test coverage: 0 
+boot coverage: 0 
+
+[1] 3
+dstat: 0.03366667 
+dstat actual: 0.03366667 
+test coverage: 0 
+boot coverage: 0 
+
+[1] 4
+dstat: 0.04075 
+dstat actual: 0.04075 
+test coverage: 0.25 
+boot coverage: 0.25 
+
+[1] 5
+dstat: 0.0394 
+dstat actual: 0.0394 
+test coverage: 0.2 
+boot coverage: 0.2 
+
+[1] 6
+dstat: 0.03716667 
+dstat actual: 0.03716667 
+test coverage: 0.1666667 
+boot coverage: 0.1666667 
+
+[1] 7
+dstat: 0.03957143 
+dstat actual: 0.03957143 
+test coverage: 0.1428571 
+boot coverage: 0.1428571 
+
+[1] 8
+dstat: 0.040125 
+dstat actual: 0.040125 
+test coverage: 0.125 
+boot coverage: 0.125 
+
+[1] 9
+dstat: 0.04155556 
+dstat actual: 0.04155556 
+test coverage: 0.1111111 
+boot coverage: 0.1111111 
+
+[1] 10
+dstat: 0.0428 
+dstat actual: 0.0428 
+test coverage: 0.1 
+boot coverage: 0.1 
+
+[1] 11
+dstat: 0.04209091 
+dstat actual: 0.04209091 
+test coverage: 0.09090909 
+boot coverage: 0.09090909 
+
+[1] 12
+dstat: 0.04225 
+dstat actual: 0.04225 
+test coverage: 0.08333333 
+boot coverage: 0.08333333 
+
+[1] 13
+dstat: 0.04246154 
+dstat actual: 0.04246154 
+test coverage: 0.07692308 
+boot coverage: 0.07692308 
+
+[1] 14
+dstat: 0.043 
+dstat actual: 0.043 
+test coverage: 0.07142857 
+boot coverage: 0.07142857 
+
+[1] 15
+dstat: 0.04226667 
+dstat actual: 0.04226667 
+test coverage: 0.06666667 
+boot coverage: 0.06666667 
+
+[1] 16
+dstat: 0.0419375 
+dstat actual: 0.0419375 
+test coverage: 0.0625 
+boot coverage: 0.0625 
+
+[1] 17
+dstat: 0.04152941 
+dstat actual: 0.04152941 
+test coverage: 0.05882353 
+boot coverage: 0.05882353 
+
+[1] 18
+dstat: 0.04244444 
+dstat actual: 0.04244444 
+test coverage: 0.05555556 
+boot coverage: 0.05555556 
+
+[1] 19
+dstat: 0.04231579 
+dstat actual: 0.04231579 
+test coverage: 0.05263158 
+boot coverage: 0.05263158 
+
+[1] 20
+dstat: 0.04155 
+dstat actual: 0.04155 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 21
+dstat: 0.04190476 
+dstat actual: 0.04190476 
+test coverage: 0.04761905 
+boot coverage: 0.04761905 
+
+[1] 22
+dstat: 0.04195455 
+dstat actual: 0.04195455 
+test coverage: 0.04545455 
+boot coverage: 0.04545455 
+
+[1] 23
+dstat: 0.04156522 
+dstat actual: 0.04156522 
+test coverage: 0.04347826 
+boot coverage: 0.04347826 
+
+[1] 24
+dstat: 0.04095833 
+dstat actual: 0.04095833 
+test coverage: 0.04166667 
+boot coverage: 0.04166667 
+
+[1] 25
+dstat: 0.04016 
+dstat actual: 0.04016 
+test coverage: 0.04 
+boot coverage: 0.04 
+
+[1] 26
+dstat: 0.03969231 
+dstat actual: 0.03969231 
+test coverage: 0.03846154 
+boot coverage: 0.03846154 
+
+[1] 27
+dstat: 0.03959259 
+dstat actual: 0.03959259 
+test coverage: 0.03703704 
+boot coverage: 0.03703704 
+
+[1] 28
+dstat: 0.03985714 
+dstat actual: 0.03985714 
+test coverage: 0.03571429 
+boot coverage: 0.03571429 
+
+[1] 29
+dstat: 0.03944828 
+dstat actual: 0.03944828 
+test coverage: 0.03448276 
+boot coverage: 0.03448276 
+
+[1] 30
+dstat: 0.0389 
+dstat actual: 0.0389 
+test coverage: 0.03333333 
+boot coverage: 0.03333333 
+
+[1] 31
+dstat: 0.03854839 
+dstat actual: 0.03854839 
+test coverage: 0.03225806 
+boot coverage: 0.03225806 
+
+[1] 32
+dstat: 0.038125 
+dstat actual: 0.038125 
+test coverage: 0.03125 
+boot coverage: 0.03125 
+
+[1] 33
+dstat: 0.03784848 
+dstat actual: 0.03784848 
+test coverage: 0.03030303 
+boot coverage: 0.03030303 
+
+[1] 34
+dstat: 0.03735294 
+dstat actual: 0.03735294 
+test coverage: 0.02941176 
+boot coverage: 0.02941176 
+
+[1] 35
+dstat: 0.03717143 
+dstat actual: 0.03717143 
+test coverage: 0.02857143 
+boot coverage: 0.02857143 
+
+[1] 36
+dstat: 0.03697222 
+dstat actual: 0.03697222 
+test coverage: 0.02777778 
+boot coverage: 0.02777778 
+
+[1] 37
+dstat: 0.03662162 
+dstat actual: 0.03662162 
+test coverage: 0.02702703 
+boot coverage: 0.02702703 
+
+[1] 38
+dstat: 0.0365 
+dstat actual: 0.0365 
+test coverage: 0.02631579 
+boot coverage: 0.02631579 
+
+[1] 39
+dstat: 0.03623077 
+dstat actual: 0.03623077 
+test coverage: 0.02564103 
+boot coverage: 0.02564103 
+
+[1] 40
+dstat: 0.036275 
+dstat actual: 0.036275 
+test coverage: 0.025 
+boot coverage: 0.025 
+
+[1] 41
+dstat: 0.03602439 
+dstat actual: 0.03602439 
+test coverage: 0.02439024 
+boot coverage: 0.02439024 
+
+[1] 42
+dstat: 0.03616667 
+dstat actual: 0.03616667 
+test coverage: 0.02380952 
+boot coverage: 0.02380952 
+
+[1] 43
+dstat: 0.036 
+dstat actual: 0.036 
+test coverage: 0.02325581 
+boot coverage: 0.02325581 
+
+[1] 44
+dstat: 0.03595455 
+dstat actual: 0.03595455 
+test coverage: 0.02272727 
+boot coverage: 0.02272727 
+
+[1] 45
+dstat: 0.03595556 
+dstat actual: 0.03595556 
+test coverage: 0.02222222 
+boot coverage: 0.02222222 
+
+[1] 46
+dstat: 0.03617391 
+dstat actual: 0.03617391 
+test coverage: 0.02173913 
+boot coverage: 0.02173913 
+
+[1] 47
+dstat: 0.03602128 
+dstat actual: 0.03602128 
+test coverage: 0.0212766 
+boot coverage: 0.0212766 
+
+[1] 48
+dstat: 0.0358125 
+dstat actual: 0.0358125 
+test coverage: 0.02083333 
+boot coverage: 0.02083333 
+
+[1] 49
+dstat: 0.03610204 
+dstat actual: 0.03610204 
+test coverage: 0.02040816 
+boot coverage: 0.02040816 
+
+[1] 50
+dstat: 0.03578 
+dstat actual: 0.03578 
+test coverage: 0.02 
+boot coverage: 0.02 
+
+[1] 51
+dstat: 0.03617647 
+dstat actual: 0.03617647 
+test coverage: 0.01960784 
+boot coverage: 0.01960784 
+
+[1] 52
+dstat: 0.03653846 
+dstat actual: 0.03653846 
+test coverage: 0.01923077 
+boot coverage: 0.01923077 
+
+[1] 53
+dstat: 0.03626415 
+dstat actual: 0.03626415 
+test coverage: 0.01886792 
+boot coverage: 0.01886792 
+
+[1] 54
+dstat: 0.03598148 
+dstat actual: 0.03598148 
+test coverage: 0.01851852 
+boot coverage: 0.01851852 
+
+[1] 55
+dstat: 0.03590909 
+dstat actual: 0.03590909 
+test coverage: 0.01818182 
+boot coverage: 0.01818182 
+
+[1] 56
+dstat: 0.035875 
+dstat actual: 0.035875 
+test coverage: 0.01785714 
+boot coverage: 0.01785714 
+
+[1] 57
+dstat: 0.03585965 
+dstat actual: 0.03585965 
+test coverage: 0.01754386 
+boot coverage: 0.01754386 
+
+[1] 58
+dstat: 0.03603448 
+dstat actual: 0.03603448 
+test coverage: 0.01724138 
+boot coverage: 0.01724138 
+
+[1] 59
+dstat: 0.03618644 
+dstat actual: 0.03618644 
+test coverage: 0.01694915 
+boot coverage: 0.01694915 
+
+[1] 60
+dstat: 0.03621667 
+dstat actual: 0.03621667 
+test coverage: 0.01666667 
+boot coverage: 0.01666667 
+
+[1] 61
+dstat: 0.0362459 
+dstat actual: 0.0362459 
+test coverage: 0.01639344 
+boot coverage: 0.01639344 
+
+[1] 62
+dstat: 0.03648387 
+dstat actual: 0.03648387 
+test coverage: 0.01612903 
+boot coverage: 0.01612903 
+
+[1] 63
+dstat: 0.03631746 
+dstat actual: 0.03631746 
+test coverage: 0.01587302 
+boot coverage: 0.01587302 
+
+[1] 64
+dstat: 0.03629687 
+dstat actual: 0.03629687 
+test coverage: 0.015625 
+boot coverage: 0.015625 
+
+[1] 65
+dstat: 0.03678462 
+dstat actual: 0.03678462 
+test coverage: 0.03076923 
+boot coverage: 0.03076923 
+
+[1] 66
+dstat: 0.03675758 
+dstat actual: 0.03675758 
+test coverage: 0.03030303 
+boot coverage: 0.03030303 
+
+[1] 67
+dstat: 0.03680597 
+dstat actual: 0.03680597 
+test coverage: 0.02985075 
+boot coverage: 0.02985075 
+
+[1] 68
+dstat: 0.03664706 
+dstat actual: 0.03664706 
+test coverage: 0.02941176 
+boot coverage: 0.02941176 
+
+[1] 69
+dstat: 0.03649275 
+dstat actual: 0.03649275 
+test coverage: 0.02898551 
+boot coverage: 0.02898551 
+
+[1] 70
+dstat: 0.03645714 
+dstat actual: 0.03645714 
+test coverage: 0.02857143 
+boot coverage: 0.02857143 
+
+[1] 71
+dstat: 0.03639437 
+dstat actual: 0.03639437 
+test coverage: 0.02816901 
+boot coverage: 0.02816901 
+
+[1] 72
+dstat: 0.03634722 
+dstat actual: 0.03634722 
+test coverage: 0.02777778 
+boot coverage: 0.02777778 
+
+[1] 73
+dstat: 0.03626027 
+dstat actual: 0.03626027 
+test coverage: 0.02739726 
+boot coverage: 0.02739726 
+
+[1] 74
+dstat: 0.0362027 
+dstat actual: 0.0362027 
+test coverage: 0.02702703 
+boot coverage: 0.02702703 
+
+[1] 75
+dstat: 0.03617333 
+dstat actual: 0.03617333 
+test coverage: 0.02666667 
+boot coverage: 0.02666667 
+
+[1] 76
+dstat: 0.03618421 
+dstat actual: 0.03618421 
+test coverage: 0.02631579 
+boot coverage: 0.02631579 
+
+[1] 77
+dstat: 0.03622078 
+dstat actual: 0.03622078 
+test coverage: 0.02597403 
+boot coverage: 0.02597403 
+
+[1] 78
+dstat: 0.03626923 
+dstat actual: 0.03626923 
+test coverage: 0.02564103 
+boot coverage: 0.02564103 
+
+[1] 79
+dstat: 0.03613924 
+dstat actual: 0.03613924 
+test coverage: 0.02531646 
+boot coverage: 0.02531646 
+
+[1] 80
+dstat: 0.0361875 
+dstat actual: 0.0361875 
+test coverage: 0.025 
+boot coverage: 0.025 
+
+[1] 81
+dstat: 0.03609877 
+dstat actual: 0.03609877 
+test coverage: 0.02469136 
+boot coverage: 0.02469136 
+
+[1] 82
+dstat: 0.03593902 
+dstat actual: 0.03593902 
+test coverage: 0.02439024 
+boot coverage: 0.02439024 
+
+[1] 83
+dstat: 0.03577108 
+dstat actual: 0.03577108 
+test coverage: 0.02409639 
+boot coverage: 0.02409639 
+
+[1] 84
+dstat: 0.03577381 
+dstat actual: 0.03577381 
+test coverage: 0.02380952 
+boot coverage: 0.02380952 
+
+[1] 85
+dstat: 0.03588235 
+dstat actual: 0.03588235 
+test coverage: 0.02352941 
+boot coverage: 0.02352941 
+
+[1] 86
+dstat: 0.03580233 
+dstat actual: 0.03580233 
+test coverage: 0.02325581 
+boot coverage: 0.02325581 
+
+[1] 87
+dstat: 0.03581609 
+dstat actual: 0.03581609 
+test coverage: 0.02298851 
+boot coverage: 0.02298851 
+
+[1] 88
+dstat: 0.03595455 
+dstat actual: 0.03595455 
+test coverage: 0.02272727 
+boot coverage: 0.02272727 
+
+[1] 89
+dstat: 0.03589888 
+dstat actual: 0.03589888 
+test coverage: 0.02247191 
+boot coverage: 0.02247191 
+
+[1] 90
+dstat: 0.03574444 
+dstat actual: 0.03574444 
+test coverage: 0.02222222 
+boot coverage: 0.02222222 
+
+[1] 91
+dstat: 0.03602198 
+dstat actual: 0.03602198 
+test coverage: 0.03296703 
+boot coverage: 0.03296703 
+
+[1] 92
+dstat: 0.0361413 
+dstat actual: 0.0361413 
+test coverage: 0.0326087 
+boot coverage: 0.0326087 
+
+[1] 93
+dstat: 0.03635484 
+dstat actual: 0.03635484 
+test coverage: 0.03225806 
+boot coverage: 0.03225806 
+
+[1] 94
+dstat: 0.03624468 
+dstat actual: 0.03624468 
+test coverage: 0.03191489 
+boot coverage: 0.03191489 
+
+[1] 95
+dstat: 0.03610526 
+dstat actual: 0.03610526 
+test coverage: 0.03157895 
+boot coverage: 0.03157895 
+
+[1] 96
+dstat: 0.0360625 
+dstat actual: 0.0360625 
+test coverage: 0.03125 
+boot coverage: 0.03125 
+
+[1] 97
+dstat: 0.03604124 
+dstat actual: 0.03604124 
+test coverage: 0.03092784 
+boot coverage: 0.03092784 
+
+[1] 98
+dstat: 0.03621429 
+dstat actual: 0.03621429 
+test coverage: 0.03061224 
+boot coverage: 0.03061224 
+
+[1] 99
+dstat: 0.03610101 
+dstat actual: 0.03610101 
+test coverage: 0.03030303 
+boot coverage: 0.03030303 
+
+[1] 100
+dstat: 0.03594 
+dstat actual: 0.03594 
+test coverage: 0.03 
+boot coverage: 0.03 
+
+[1] 101
+dstat: 0.0360099 
+dstat actual: 0.0360099 
+test coverage: 0.02970297 
+boot coverage: 0.02970297 
+
+[1] 102
+dstat: 0.03598039 
+dstat actual: 0.03598039 
+test coverage: 0.02941176 
+boot coverage: 0.02941176 
+
+[1] 103
+dstat: 0.03597087 
+dstat actual: 0.03597087 
+test coverage: 0.02912621 
+boot coverage: 0.02912621 
+
+[1] 104
+dstat: 0.03610577 
+dstat actual: 0.03610577 
+test coverage: 0.02884615 
+boot coverage: 0.02884615 
+
+[1] 105
+dstat: 0.03609524 
+dstat actual: 0.03609524 
+test coverage: 0.02857143 
+boot coverage: 0.02857143 
+
+[1] 106
+dstat: 0.03606604 
+dstat actual: 0.03606604 
+test coverage: 0.02830189 
+boot coverage: 0.02830189 
+
+[1] 107
+dstat: 0.03608411 
+dstat actual: 0.03608411 
+test coverage: 0.02803738 
+boot coverage: 0.02803738 
+
+[1] 108
+dstat: 0.03600926 
+dstat actual: 0.03600926 
+test coverage: 0.02777778 
+boot coverage: 0.02777778 
+
+[1] 109
+dstat: 0.03606422 
+dstat actual: 0.03606422 
+test coverage: 0.02752294 
+boot coverage: 0.02752294 
+
+[1] 110
+dstat: 0.03619091 
+dstat actual: 0.03619091 
+test coverage: 0.02727273 
+boot coverage: 0.02727273 
+
+[1] 111
+dstat: 0.03636036 
+dstat actual: 0.03636036 
+test coverage: 0.02702703 
+boot coverage: 0.02702703 
+
+[1] 112
+dstat: 0.03620536 
+dstat actual: 0.03620536 
+test coverage: 0.02678571 
+boot coverage: 0.02678571 
+
+[1] 113
+dstat: 0.03624779 
+dstat actual: 0.03624779 
+test coverage: 0.02654867 
+boot coverage: 0.02654867 
+
+[1] 114
+dstat: 0.03639474 
+dstat actual: 0.03639474 
+test coverage: 0.02631579 
+boot coverage: 0.02631579 
+
+[1] 115
+dstat: 0.03644348 
+dstat actual: 0.03644348 
+test coverage: 0.02608696 
+boot coverage: 0.02608696 
+
+[1] 116
+dstat: 0.03637069 
+dstat actual: 0.03637069 
+test coverage: 0.02586207 
+boot coverage: 0.02586207 
+
+[1] 117
+dstat: 0.0364359 
+dstat actual: 0.0364359 
+test coverage: 0.02564103 
+boot coverage: 0.02564103 
+
+[1] 118
+dstat: 0.03642373 
+dstat actual: 0.03642373 
+test coverage: 0.02542373 
+boot coverage: 0.02542373 
+
+[1] 119
+dstat: 0.03627731 
+dstat actual: 0.03627731 
+test coverage: 0.02521008 
+boot coverage: 0.02521008 
+
+[1] 120
+dstat: 0.03630833 
+dstat actual: 0.03630833 
+test coverage: 0.025 
+boot coverage: 0.025 
+
+[1] 121
+dstat: 0.03650413 
+dstat actual: 0.03650413 
+test coverage: 0.02479339 
+boot coverage: 0.02479339 
+
+[1] 122
+dstat: 0.03656557 
+dstat actual: 0.03656557 
+test coverage: 0.02459016 
+boot coverage: 0.02459016 
+
+[1] 123
+dstat: 0.03668293 
+dstat actual: 0.03668293 
+test coverage: 0.02439024 
+boot coverage: 0.02439024 
+
+[1] 124
+dstat: 0.03667742 
+dstat actual: 0.03667742 
+test coverage: 0.02419355 
+boot coverage: 0.02419355 
+
+[1] 125
+dstat: 0.036616 
+dstat actual: 0.036616 
+test coverage: 0.024 
+boot coverage: 0.024 
+
+[1] 126
+dstat: 0.03661905 
+dstat actual: 0.03661905 
+test coverage: 0.02380952 
+boot coverage: 0.02380952 
+
+[1] 127
+dstat: 0.03651181 
+dstat actual: 0.03651181 
+test coverage: 0.02362205 
+boot coverage: 0.02362205 
+
+[1] 128
+dstat: 0.03659375 
+dstat actual: 0.03659375 
+test coverage: 0.0234375 
+boot coverage: 0.0234375 
+
+[1] 129
+dstat: 0.03651938 
+dstat actual: 0.03651938 
+test coverage: 0.02325581 
+boot coverage: 0.02325581 
+
+[1] 130
+dstat: 0.03657692 
+dstat actual: 0.03657692 
+test coverage: 0.02307692 
+boot coverage: 0.02307692 
+
+[1] 131
+dstat: 0.03664885 
+dstat actual: 0.03664885 
+test coverage: 0.02290076 
+boot coverage: 0.02290076 
+
+[1] 132
+dstat: 0.03651515 
+dstat actual: 0.03651515 
+test coverage: 0.02272727 
+boot coverage: 0.02272727 
+
+[1] 133
+dstat: 0.03654135 
+dstat actual: 0.03654135 
+test coverage: 0.02255639 
+boot coverage: 0.02255639 
+
+[1] 134
+dstat: 0.0365597 
+dstat actual: 0.0365597 
+test coverage: 0.02238806 
+boot coverage: 0.02238806 
+
+[1] 135
+dstat: 0.0366 
+dstat actual: 0.0366 
+test coverage: 0.02222222 
+boot coverage: 0.02222222 
+
+[1] 136
+dstat: 0.03658088 
+dstat actual: 0.03658088 
+test coverage: 0.02205882 
+boot coverage: 0.02205882 
+
+[1] 137
+dstat: 0.03645255 
+dstat actual: 0.03645255 
+test coverage: 0.02189781 
+boot coverage: 0.02189781 
+
+[1] 138
+dstat: 0.03649275 
+dstat actual: 0.03649275 
+test coverage: 0.02173913 
+boot coverage: 0.02173913 
+
+[1] 139
+dstat: 0.03656115 
+dstat actual: 0.03656115 
+test coverage: 0.02158273 
+boot coverage: 0.02158273 
+
+[1] 140
+dstat: 0.03652857 
+dstat actual: 0.03652857 
+test coverage: 0.02142857 
+boot coverage: 0.02142857 
+
+[1] 141
+dstat: 0.03647518 
+dstat actual: 0.03647518 
+test coverage: 0.0212766 
+boot coverage: 0.0212766 
+
+[1] 142
+dstat: 0.03647183 
+dstat actual: 0.03647183 
+test coverage: 0.02112676 
+boot coverage: 0.02112676 
+
+[1] 143
+dstat: 0.03645455 
+dstat actual: 0.03645455 
+test coverage: 0.02097902 
+boot coverage: 0.02097902 
+
+[1] 144
+dstat: 0.03645833 
+dstat actual: 0.03645833 
+test coverage: 0.02083333 
+boot coverage: 0.02083333 
+
+[1] 145
+dstat: 0.03637241 
+dstat actual: 0.03637241 
+test coverage: 0.02068966 
+boot coverage: 0.02068966 
+
+[1] 146
+dstat: 0.03631507 
+dstat actual: 0.03631507 
+test coverage: 0.02054795 
+boot coverage: 0.02054795 
+
+[1] 147
+dstat: 0.03622449 
+dstat actual: 0.03622449 
+test coverage: 0.02040816 
+boot coverage: 0.02040816 
+
+[1] 148
+dstat: 0.03620946 
+dstat actual: 0.03620946 
+test coverage: 0.02027027 
+boot coverage: 0.02027027 
+
+[1] 149
+dstat: 0.03615436 
+dstat actual: 0.03615436 
+test coverage: 0.02013423 
+boot coverage: 0.02013423 
+
+[1] 150
+dstat: 0.0361 
+dstat actual: 0.0361 
+test coverage: 0.02 
+boot coverage: 0.02 
+
+[1] 151
+dstat: 0.03609934 
+dstat actual: 0.03609934 
+test coverage: 0.01986755 
+boot coverage: 0.01986755 
+
+[1] 152
+dstat: 0.03605921 
+dstat actual: 0.03605921 
+test coverage: 0.01973684 
+boot coverage: 0.01973684 
+
+[1] 153
+dstat: 0.03594771 
+dstat actual: 0.03594771 
+test coverage: 0.01960784 
+boot coverage: 0.01960784 
+
+[1] 154
+dstat: 0.03605195 
+dstat actual: 0.03605195 
+test coverage: 0.01948052 
+boot coverage: 0.01948052 
+
+[1] 155
+dstat: 0.03623226 
+dstat actual: 0.03623226 
+test coverage: 0.02580645 
+boot coverage: 0.02580645 
+
+[1] 156
+dstat: 0.03617949 
+dstat actual: 0.03617949 
+test coverage: 0.02564103 
+boot coverage: 0.02564103 
+
+[1] 157
+dstat: 0.03609554 
+dstat actual: 0.03609554 
+test coverage: 0.02547771 
+boot coverage: 0.02547771 
+
+[1] 158
+dstat: 0.03624051 
+dstat actual: 0.03624051 
+test coverage: 0.02531646 
+boot coverage: 0.02531646 
+
+[1] 159
+dstat: 0.03631447 
+dstat actual: 0.03631447 
+test coverage: 0.02515723 
+boot coverage: 0.02515723 
+
+[1] 160
+dstat: 0.03629375 
+dstat actual: 0.03629375 
+test coverage: 0.025 
+boot coverage: 0.025 
+
+[1] 161
+dstat: 0.03629193 
+dstat actual: 0.03629193 
+test coverage: 0.02484472 
+boot coverage: 0.02484472 
+
+[1] 162
+dstat: 0.03622222 
+dstat actual: 0.03622222 
+test coverage: 0.02469136 
+boot coverage: 0.02469136 
+
+[1] 163
+dstat: 0.0362638 
+dstat actual: 0.0362638 
+test coverage: 0.02453988 
+boot coverage: 0.02453988 
+
+[1] 164
+dstat: 0.03618902 
+dstat actual: 0.03618902 
+test coverage: 0.02439024 
+boot coverage: 0.02439024 
+
+[1] 165
+dstat: 0.03615152 
+dstat actual: 0.03615152 
+test coverage: 0.02424242 
+boot coverage: 0.02424242 
+
+[1] 166
+dstat: 0.03609639 
+dstat actual: 0.03609639 
+test coverage: 0.02409639 
+boot coverage: 0.02409639 
+
+[1] 167
+dstat: 0.03611976 
+dstat actual: 0.03611976 
+test coverage: 0.0239521 
+boot coverage: 0.0239521 
+
+[1] 168
+dstat: 0.03610119 
+dstat actual: 0.03610119 
+test coverage: 0.02380952 
+boot coverage: 0.02380952 
+
+[1] 169
+dstat: 0.03608284 
+dstat actual: 0.03608284 
+test coverage: 0.02366864 
+boot coverage: 0.02366864 
+
+[1] 170
+dstat: 0.03611176 
+dstat actual: 0.03611176 
+test coverage: 0.02352941 
+boot coverage: 0.02352941 
+
+[1] 171
+dstat: 0.03605848 
+dstat actual: 0.03605848 
+test coverage: 0.02339181 
+boot coverage: 0.02339181 
+
+[1] 172
+dstat: 0.03607558 
+dstat actual: 0.03607558 
+test coverage: 0.02325581 
+boot coverage: 0.02325581 
+
+[1] 173
+dstat: 0.03614451 
+dstat actual: 0.03614451 
+test coverage: 0.02312139 
+boot coverage: 0.02312139 
+
+[1] 174
+dstat: 0.03627586 
+dstat actual: 0.03627586 
+test coverage: 0.02298851 
+boot coverage: 0.02298851 
+
+[1] 175
+dstat: 0.03629714 
+dstat actual: 0.03629714 
+test coverage: 0.02285714 
+boot coverage: 0.02285714 
+
+[1] 176
+dstat: 0.03627273 
+dstat actual: 0.03627273 
+test coverage: 0.02272727 
+boot coverage: 0.02272727 
+
+[1] 177
+dstat: 0.03632768 
+dstat actual: 0.03632768 
+test coverage: 0.02259887 
+boot coverage: 0.02259887 
+
+[1] 178
+dstat: 0.03634831 
+dstat actual: 0.03634831 
+test coverage: 0.02247191 
+boot coverage: 0.02247191 
+
+[1] 179
+dstat: 0.03627374 
+dstat actual: 0.03627374 
+test coverage: 0.02234637 
+boot coverage: 0.02234637 
+
+[1] 180
+dstat: 0.03641667 
+dstat actual: 0.03641667 
+test coverage: 0.02777778 
+boot coverage: 0.02777778 
+
+[1] 181
+dstat: 0.03634254 
+dstat actual: 0.03634254 
+test coverage: 0.02762431 
+boot coverage: 0.02762431 
+
+[1] 182
+dstat: 0.03647802 
+dstat actual: 0.03647802 
+test coverage: 0.03296703 
+boot coverage: 0.03296703 
+
+[1] 183
+dstat: 0.03660656 
+dstat actual: 0.03660656 
+test coverage: 0.03278689 
+boot coverage: 0.03278689 
+
+[1] 184
+dstat: 0.03658152 
+dstat actual: 0.03658152 
+test coverage: 0.0326087 
+boot coverage: 0.0326087 
+
+[1] 185
+dstat: 0.03667027 
+dstat actual: 0.03667027 
+test coverage: 0.03243243 
+boot coverage: 0.03243243 
+
+[1] 186
+dstat: 0.03679032 
+dstat actual: 0.03679032 
+test coverage: 0.03225806 
+boot coverage: 0.03225806 
+
+[1] 187
+dstat: 0.03683422 
+dstat actual: 0.03683422 
+test coverage: 0.03208556 
+boot coverage: 0.03208556 
+
+[1] 188
+dstat: 0.03684043 
+dstat actual: 0.03684043 
+test coverage: 0.03191489 
+boot coverage: 0.03191489 
+
+[1] 189
+dstat: 0.03675661 
+dstat actual: 0.03675661 
+test coverage: 0.03174603 
+boot coverage: 0.03174603 
+
+[1] 190
+dstat: 0.03676316 
+dstat actual: 0.03676316 
+test coverage: 0.03157895 
+boot coverage: 0.03157895 
+
+[1] 191
+dstat: 0.03688482 
+dstat actual: 0.03688482 
+test coverage: 0.03141361 
+boot coverage: 0.03141361 
+
+[1] 192
+dstat: 0.03683854 
+dstat actual: 0.03683854 
+test coverage: 0.03125 
+boot coverage: 0.03125 
+
+[1] 193
+dstat: 0.0367772 
+dstat actual: 0.0367772 
+test coverage: 0.03108808 
+boot coverage: 0.03108808 
+
+[1] 194
+dstat: 0.0368866 
+dstat actual: 0.0368866 
+test coverage: 0.03092784 
+boot coverage: 0.03092784 
+
+[1] 195
+dstat: 0.03687692 
+dstat actual: 0.03687692 
+test coverage: 0.03076923 
+boot coverage: 0.03076923 
+
+[1] 196
+dstat: 0.03684184 
+dstat actual: 0.03684184 
+test coverage: 0.03061224 
+boot coverage: 0.03061224 
+
+[1] 197
+dstat: 0.03684264 
+dstat actual: 0.03684264 
+test coverage: 0.03045685 
+boot coverage: 0.03045685 
+
+[1] 198
+dstat: 0.03683838 
+dstat actual: 0.03683838 
+test coverage: 0.03030303 
+boot coverage: 0.03030303 
+
+[1] 199
+dstat: 0.03677889 
+dstat actual: 0.03677889 
+test coverage: 0.03015075 
+boot coverage: 0.03015075 
+
+[1] 200
+dstat: 0.036855 
+dstat actual: 0.036855 
+test coverage: 0.03 
+boot coverage: 0.03 
+
+[1] 201
+dstat: 0.03689552 
+dstat actual: 0.03689552 
+test coverage: 0.02985075 
+boot coverage: 0.02985075 
+
+[1] 202
+dstat: 0.03689109 
+dstat actual: 0.03689109 
+test coverage: 0.02970297 
+boot coverage: 0.02970297 
+
+[1] 203
+dstat: 0.03684236 
+dstat actual: 0.03684236 
+test coverage: 0.02955665 
+boot coverage: 0.02955665 
+
+[1] 204
+dstat: 0.03683824 
+dstat actual: 0.03683824 
+test coverage: 0.02941176 
+boot coverage: 0.02941176 
+
+[1] 205
+dstat: 0.03692195 
+dstat actual: 0.03692195 
+test coverage: 0.02926829 
+boot coverage: 0.02926829 
+
+[1] 206
+dstat: 0.03685437 
+dstat actual: 0.03685437 
+test coverage: 0.02912621 
+boot coverage: 0.02912621 
+
+[1] 207
+dstat: 0.03684058 
+dstat actual: 0.03684058 
+test coverage: 0.02898551 
+boot coverage: 0.02898551 
+
+[1] 208
+dstat: 0.03692308 
+dstat actual: 0.03692308 
+test coverage: 0.02884615 
+boot coverage: 0.02884615 
+
+[1] 209
+dstat: 0.03709091 
+dstat actual: 0.03709091 
+test coverage: 0.03349282 
+boot coverage: 0.03349282 
+
+[1] 210
+dstat: 0.03710952 
+dstat actual: 0.03710952 
+test coverage: 0.03333333 
+boot coverage: 0.03333333 
+
+[1] 211
+dstat: 0.03703791 
+dstat actual: 0.03703791 
+test coverage: 0.03317536 
+boot coverage: 0.03317536 
+
+[1] 212
+dstat: 0.03710377 
+dstat actual: 0.03710377 
+test coverage: 0.03301887 
+boot coverage: 0.03301887 
+
+[1] 213
+dstat: 0.0371784 
+dstat actual: 0.0371784 
+test coverage: 0.03286385 
+boot coverage: 0.03286385 
+
+[1] 214
+dstat: 0.03713084 
+dstat actual: 0.03713084 
+test coverage: 0.03271028 
+boot coverage: 0.03271028 
+
+[1] 215
+dstat: 0.03717209 
+dstat actual: 0.03717209 
+test coverage: 0.03255814 
+boot coverage: 0.03255814 
+
+[1] 216
+dstat: 0.037125 
+dstat actual: 0.037125 
+test coverage: 0.03240741 
+boot coverage: 0.03240741 
+
+[1] 217
+dstat: 0.03713825 
+dstat actual: 0.03713825 
+test coverage: 0.03225806 
+boot coverage: 0.03225806 
+
+[1] 218
+dstat: 0.03707339 
+dstat actual: 0.03707339 
+test coverage: 0.03211009 
+boot coverage: 0.03211009 
+
+[1] 219
+dstat: 0.03721005 
+dstat actual: 0.03721005 
+test coverage: 0.03652968 
+boot coverage: 0.03652968 
+
+[1] 220
+dstat: 0.03730455 
+dstat actual: 0.03730455 
+test coverage: 0.03636364 
+boot coverage: 0.03636364 
+
+[1] 221
+dstat: 0.03735747 
+dstat actual: 0.03735747 
+test coverage: 0.0361991 
+boot coverage: 0.0361991 
+
+[1] 222
+dstat: 0.03733333 
+dstat actual: 0.03733333 
+test coverage: 0.03603604 
+boot coverage: 0.03603604 
+
+[1] 223
+dstat: 0.03733632 
+dstat actual: 0.03733632 
+test coverage: 0.03587444 
+boot coverage: 0.03587444 
+
+[1] 224
+dstat: 0.03736161 
+dstat actual: 0.03736161 
+test coverage: 0.03571429 
+boot coverage: 0.03571429 
+
+[1] 225
+dstat: 0.03741333 
+dstat actual: 0.03741333 
+test coverage: 0.03555556 
+boot coverage: 0.03555556 
+
+[1] 226
+dstat: 0.03750885 
+dstat actual: 0.03750885 
+test coverage: 0.03539823 
+boot coverage: 0.03539823 
+
+[1] 227
+dstat: 0.03752423 
+dstat actual: 0.03752423 
+test coverage: 0.03524229 
+boot coverage: 0.03524229 
+
+[1] 228
+dstat: 0.03755263 
+dstat actual: 0.03755263 
+test coverage: 0.03508772 
+boot coverage: 0.03508772 
+
+[1] 229
+dstat: 0.03749345 
+dstat actual: 0.03749345 
+test coverage: 0.0349345 
+boot coverage: 0.0349345 
+
+[1] 230
+dstat: 0.03747391 
+dstat actual: 0.03747391 
+test coverage: 0.03478261 
+boot coverage: 0.03478261 
+
+[1] 231
+dstat: 0.03747619 
+dstat actual: 0.03747619 
+test coverage: 0.03463203 
+boot coverage: 0.03463203 
+
+[1] 232
+dstat: 0.03743103 
+dstat actual: 0.03743103 
+test coverage: 0.03448276 
+boot coverage: 0.03448276 
+
+[1] 233
+dstat: 0.03741631 
+dstat actual: 0.03741631 
+test coverage: 0.03433476 
+boot coverage: 0.03433476 
+
+[1] 234
+dstat: 0.03736752 
+dstat actual: 0.03736752 
+test coverage: 0.03418803 
+boot coverage: 0.03418803 
+
+[1] 235
+dstat: 0.03739574 
+dstat actual: 0.03739574 
+test coverage: 0.03404255 
+boot coverage: 0.03404255 
+
+[1] 236
+dstat: 0.03741102 
+dstat actual: 0.03741102 
+test coverage: 0.03389831 
+boot coverage: 0.03389831 
+
+[1] 237
+dstat: 0.03752743 
+dstat actual: 0.03752743 
+test coverage: 0.03797468 
+boot coverage: 0.03797468 
+
+[1] 238
+dstat: 0.03755462 
+dstat actual: 0.03755462 
+test coverage: 0.03781513 
+boot coverage: 0.03781513 
+
+[1] 239
+dstat: 0.03753556 
+dstat actual: 0.03753556 
+test coverage: 0.0376569 
+boot coverage: 0.0376569 
+
+[1] 240
+dstat: 0.03745417 
+dstat actual: 0.03745417 
+test coverage: 0.0375 
+boot coverage: 0.0375 
+
+[1] 241
+dstat: 0.03739834 
+dstat actual: 0.03739834 
+test coverage: 0.0373444 
+boot coverage: 0.0373444 
+
+[1] 242
+dstat: 0.03740496 
+dstat actual: 0.03740496 
+test coverage: 0.03719008 
+boot coverage: 0.03719008 
+
+[1] 243
+dstat: 0.03736626 
+dstat actual: 0.03736626 
+test coverage: 0.03703704 
+boot coverage: 0.03703704 
+
+[1] 244
+dstat: 0.03735246 
+dstat actual: 0.03735246 
+test coverage: 0.03688525 
+boot coverage: 0.03688525 
+
+[1] 245
+dstat: 0.03731837 
+dstat actual: 0.03731837 
+test coverage: 0.03673469 
+boot coverage: 0.03673469 
+
+[1] 246
+dstat: 0.03740244 
+dstat actual: 0.03740244 
+test coverage: 0.03658537 
+boot coverage: 0.03658537 
+
+[1] 247
+dstat: 0.03754656 
+dstat actual: 0.03754656 
+test coverage: 0.04048583 
+boot coverage: 0.04048583 
+
+[1] 248
+dstat: 0.03746371 
+dstat actual: 0.03746371 
+test coverage: 0.04032258 
+boot coverage: 0.04032258 
+
+[1] 249
+dstat: 0.03748594 
+dstat actual: 0.03748594 
+test coverage: 0.04016064 
+boot coverage: 0.04016064 
+
+[1] 250
+dstat: 0.037468 
+dstat actual: 0.037468 
+test coverage: 0.04 
+boot coverage: 0.04 
+
+[1] 251
+dstat: 0.03744223 
+dstat actual: 0.03744223 
+test coverage: 0.03984064 
+boot coverage: 0.03984064 
+
+[1] 252
+dstat: 0.03744841 
+dstat actual: 0.03744841 
+test coverage: 0.03968254 
+boot coverage: 0.03968254 
+
+[1] 253
+dstat: 0.03739526 
+dstat actual: 0.03739526 
+test coverage: 0.03952569 
+boot coverage: 0.03952569 
+
+[1] 254
+dstat: 0.03747244 
+dstat actual: 0.03747244 
+test coverage: 0.03937008 
+boot coverage: 0.03937008 
+
+[1] 255
+dstat: 0.03754902 
+dstat actual: 0.03754902 
+test coverage: 0.03921569 
+boot coverage: 0.03921569 
+
+[1] 256
+dstat: 0.03756641 
+dstat actual: 0.03756641 
+test coverage: 0.0390625 
+boot coverage: 0.0390625 
+
+[1] 257
+dstat: 0.03754864 
+dstat actual: 0.03754864 
+test coverage: 0.03891051 
+boot coverage: 0.03891051 
+
+[1] 258
+dstat: 0.03752326 
+dstat actual: 0.03752326 
+test coverage: 0.03875969 
+boot coverage: 0.03875969 
+
+[1] 259
+dstat: 0.03748263 
+dstat actual: 0.03748263 
+test coverage: 0.03861004 
+boot coverage: 0.03861004 
+
+[1] 260
+dstat: 0.03750769 
+dstat actual: 0.03750769 
+test coverage: 0.03846154 
+boot coverage: 0.03846154 
+
+[1] 261
+dstat: 0.0374636 
+dstat actual: 0.0374636 
+test coverage: 0.03831418 
+boot coverage: 0.03831418 
+
+[1] 262
+dstat: 0.03745038 
+dstat actual: 0.03745038 
+test coverage: 0.03816794 
+boot coverage: 0.03816794 
+
+[1] 263
+dstat: 0.03744106 
+dstat actual: 0.03744106 
+test coverage: 0.03802281 
+boot coverage: 0.03802281 
+
+[1] 264
+dstat: 0.03743939 
+dstat actual: 0.03743939 
+test coverage: 0.03787879 
+boot coverage: 0.03787879 
+
+[1] 265
+dstat: 0.03745283 
+dstat actual: 0.03745283 
+test coverage: 0.03773585 
+boot coverage: 0.03773585 
+
+[1] 266
+dstat: 0.03750376 
+dstat actual: 0.03750376 
+test coverage: 0.03759398 
+boot coverage: 0.03759398 
+
+[1] 267
+dstat: 0.03750936 
+dstat actual: 0.03750936 
+test coverage: 0.03745318 
+boot coverage: 0.03745318 
+
+[1] 268
+dstat: 0.03751866 
+dstat actual: 0.03751866 
+test coverage: 0.03731343 
+boot coverage: 0.03731343 
+
+[1] 269
+dstat: 0.03750186 
+dstat actual: 0.03750186 
+test coverage: 0.03717472 
+boot coverage: 0.03717472 
+
+[1] 270
+dstat: 0.0375 
+dstat actual: 0.0375 
+test coverage: 0.03703704 
+boot coverage: 0.03703704 
+
+[1] 271
+dstat: 0.03743173 
+dstat actual: 0.03743173 
+test coverage: 0.03690037 
+boot coverage: 0.03690037 
+
+[1] 272
+dstat: 0.03750735 
+dstat actual: 0.03750735 
+test coverage: 0.03676471 
+boot coverage: 0.03676471 
+
+[1] 273
+dstat: 0.03751648 
+dstat actual: 0.03751648 
+test coverage: 0.03663004 
+boot coverage: 0.03663004 
+
+[1] 274
+dstat: 0.03757299 
+dstat actual: 0.03757299 
+test coverage: 0.03649635 
+boot coverage: 0.03649635 
+
+[1] 275
+dstat: 0.03757455 
+dstat actual: 0.03757455 
+test coverage: 0.03636364 
+boot coverage: 0.03636364 
+
+[1] 276
+dstat: 0.03755072 
+dstat actual: 0.03755072 
+test coverage: 0.03623188 
+boot coverage: 0.03623188 
+
+[1] 277
+dstat: 0.03757401 
+dstat actual: 0.03757401 
+test coverage: 0.03610108 
+boot coverage: 0.03610108 
+
+[1] 278
+dstat: 0.03760072 
+dstat actual: 0.03760072 
+test coverage: 0.03597122 
+boot coverage: 0.03597122 
+
+[1] 279
+dstat: 0.03760215 
+dstat actual: 0.03760215 
+test coverage: 0.03584229 
+boot coverage: 0.03584229 
+
+[1] 280
+dstat: 0.03763929 
+dstat actual: 0.03763929 
+test coverage: 0.03571429 
+boot coverage: 0.03571429 
+
+[1] 281
+dstat: 0.03760854 
+dstat actual: 0.03760854 
+test coverage: 0.03558719 
+boot coverage: 0.03558719 
+
+[1] 282
+dstat: 0.03762057 
+dstat actual: 0.03762057 
+test coverage: 0.03546099 
+boot coverage: 0.03546099 
+
+[1] 283
+dstat: 0.03777739 
+dstat actual: 0.03777739 
+test coverage: 0.03886926 
+boot coverage: 0.03886926 
+
+[1] 284
+dstat: 0.03774296 
+dstat actual: 0.03774296 
+test coverage: 0.03873239 
+boot coverage: 0.03873239 
+
+[1] 285
+dstat: 0.0378 
+dstat actual: 0.0378 
+test coverage: 0.03859649 
+boot coverage: 0.03859649 
+
+[1] 286
+dstat: 0.03776923 
+dstat actual: 0.03776923 
+test coverage: 0.03846154 
+boot coverage: 0.03846154 
+
+[1] 287
+dstat: 0.03782578 
+dstat actual: 0.03782578 
+test coverage: 0.03832753 
+boot coverage: 0.03832753 
+
+[1] 288
+dstat: 0.03794097 
+dstat actual: 0.03794097 
+test coverage: 0.04166667 
+boot coverage: 0.04166667 
+
+[1] 289
+dstat: 0.03792388 
+dstat actual: 0.03792388 
+test coverage: 0.04152249 
+boot coverage: 0.04152249 
+
+[1] 290
+dstat: 0.03798966 
+dstat actual: 0.03798966 
+test coverage: 0.04137931 
+boot coverage: 0.04137931 
+
+[1] 291
+dstat: 0.03795876 
+dstat actual: 0.03795876 
+test coverage: 0.04123711 
+boot coverage: 0.04123711 
+
+[1] 292
+dstat: 0.03794863 
+dstat actual: 0.03794863 
+test coverage: 0.04109589 
+boot coverage: 0.04109589 
+
+[1] 293
+dstat: 0.03787031 
+dstat actual: 0.03787031 
+test coverage: 0.04095563 
+boot coverage: 0.04095563 
+
+[1] 294
+dstat: 0.03790136 
+dstat actual: 0.03790136 
+test coverage: 0.04081633 
+boot coverage: 0.04081633 
+
+[1] 295
+dstat: 0.03792881 
+dstat actual: 0.03792881 
+test coverage: 0.04067797 
+boot coverage: 0.04067797 
+
+[1] 296
+dstat: 0.03789865 
+dstat actual: 0.03789865 
+test coverage: 0.04054054 
+boot coverage: 0.04054054 
+
+[1] 297
+dstat: 0.03787542 
+dstat actual: 0.03787542 
+test coverage: 0.04040404 
+boot coverage: 0.04040404 
+
+[1] 298
+dstat: 0.03789262 
+dstat actual: 0.03789262 
+test coverage: 0.04026846 
+boot coverage: 0.04026846 
+
+[1] 299
+dstat: 0.03791304 
+dstat actual: 0.03791304 
+test coverage: 0.04013378 
+boot coverage: 0.04013378 
+
+[1] 300
+dstat: 0.03794667 
+dstat actual: 0.03794667 
+test coverage: 0.04 
+boot coverage: 0.04 
+
+[1] 301
+dstat: 0.03799003 
+dstat actual: 0.03799003 
+test coverage: 0.03986711 
+boot coverage: 0.03986711 
+
+[1] 302
+dstat: 0.03798344 
+dstat actual: 0.03798344 
+test coverage: 0.0397351 
+boot coverage: 0.0397351 
+
+[1] 303
+dstat: 0.03808251 
+dstat actual: 0.03808251 
+test coverage: 0.04290429 
+boot coverage: 0.04290429 
+
+[1] 304
+dstat: 0.03806908 
+dstat actual: 0.03806908 
+test coverage: 0.04276316 
+boot coverage: 0.04276316 
+
+[1] 305
+dstat: 0.03808852 
+dstat actual: 0.03808852 
+test coverage: 0.04262295 
+boot coverage: 0.04262295 
+
+[1] 306
+dstat: 0.03805556 
+dstat actual: 0.03805556 
+test coverage: 0.04248366 
+boot coverage: 0.04248366 
+
+[1] 307
+dstat: 0.03805212 
+dstat actual: 0.03805212 
+test coverage: 0.04234528 
+boot coverage: 0.04234528 
+
+[1] 308
+dstat: 0.03801623 
+dstat actual: 0.03801623 
+test coverage: 0.04220779 
+boot coverage: 0.04220779 
+
+[1] 309
+dstat: 0.0380356 
+dstat actual: 0.0380356 
+test coverage: 0.0420712 
+boot coverage: 0.0420712 
+
+[1] 310
+dstat: 0.0381 
+dstat actual: 0.0381 
+test coverage: 0.04193548 
+boot coverage: 0.04193548 
+
+[1] 311
+dstat: 0.03809646 
+dstat actual: 0.03809646 
+test coverage: 0.04180064 
+boot coverage: 0.04180064 
+
+[1] 312
+dstat: 0.03810256 
+dstat actual: 0.03810256 
+test coverage: 0.04166667 
+boot coverage: 0.04166667 
+
+[1] 313
+dstat: 0.03811502 
+dstat actual: 0.03811502 
+test coverage: 0.04153355 
+boot coverage: 0.04153355 
+
+[1] 314
+dstat: 0.03808917 
+dstat actual: 0.03808917 
+test coverage: 0.04140127 
+boot coverage: 0.04140127 
+
+[1] 315
+dstat: 0.03818413 
+dstat actual: 0.03818413 
+test coverage: 0.04444444 
+boot coverage: 0.04444444 
+
+[1] 316
+dstat: 0.03814241 
+dstat actual: 0.03814241 
+test coverage: 0.0443038 
+boot coverage: 0.0443038 
+
+[1] 317
+dstat: 0.0381388 
+dstat actual: 0.0381388 
+test coverage: 0.04416404 
+boot coverage: 0.04416404 
+
+[1] 318
+dstat: 0.03812264 
+dstat actual: 0.03812264 
+test coverage: 0.04402516 
+boot coverage: 0.04402516 
+
+[1] 319
+dstat: 0.0380815 
+dstat actual: 0.0380815 
+test coverage: 0.04388715 
+boot coverage: 0.04388715 
+
+[1] 320
+dstat: 0.03812813 
+dstat actual: 0.03812812 
+test coverage: 0.04375 
+boot coverage: 0.04375 
+
+[1] 321
+dstat: 0.03810592 
+dstat actual: 0.03810592 
+test coverage: 0.04361371 
+boot coverage: 0.04361371 
+
+[1] 322
+dstat: 0.03812733 
+dstat actual: 0.03812733 
+test coverage: 0.04347826 
+boot coverage: 0.04347826 
+
+[1] 323
+dstat: 0.03813313 
+dstat actual: 0.03813313 
+test coverage: 0.04334365 
+boot coverage: 0.04334365 
+
+[1] 324
+dstat: 0.03810494 
+dstat actual: 0.03810494 
+test coverage: 0.04320988 
+boot coverage: 0.04320988 
+
+[1] 325
+dstat: 0.03811077 
+dstat actual: 0.03811077 
+test coverage: 0.04307692 
+boot coverage: 0.04307692 
+
+[1] 326
+dstat: 0.03810429 
+dstat actual: 0.03810429 
+test coverage: 0.04294479 
+boot coverage: 0.04294479 
+
+[1] 327
+dstat: 0.03808869 
+dstat actual: 0.03808869 
+test coverage: 0.04281346 
+boot coverage: 0.04281346 
+
+[1] 328
+dstat: 0.03812195 
+dstat actual: 0.03812195 
+test coverage: 0.04268293 
+boot coverage: 0.04268293 
+
+[1] 329
+dstat: 0.03813982 
+dstat actual: 0.03813982 
+test coverage: 0.04255319 
+boot coverage: 0.04255319 
+
+[1] 330
+dstat: 0.0382303 
+dstat actual: 0.0382303 
+test coverage: 0.04545455 
+boot coverage: 0.04545455 
+
+[1] 331
+dstat: 0.03822659 
+dstat actual: 0.03822659 
+test coverage: 0.04531722 
+boot coverage: 0.04531722 
+
+[1] 332
+dstat: 0.03820482 
+dstat actual: 0.03820482 
+test coverage: 0.04518072 
+boot coverage: 0.04518072 
+
+[1] 333
+dstat: 0.03825826 
+dstat actual: 0.03825826 
+test coverage: 0.04504505 
+boot coverage: 0.04504505 
+
+[1] 334
+dstat: 0.03828443 
+dstat actual: 0.03828443 
+test coverage: 0.04491018 
+boot coverage: 0.04491018 
+
+[1] 335
+dstat: 0.03835224 
+dstat actual: 0.03835224 
+test coverage: 0.04776119 
+boot coverage: 0.04776119 
+
+[1] 336
+dstat: 0.03833333 
+dstat actual: 0.03833333 
+test coverage: 0.04761905 
+boot coverage: 0.04761905 
+
+[1] 337
+dstat: 0.03836202 
+dstat actual: 0.03836202 
+test coverage: 0.04747774 
+boot coverage: 0.04747774 
+
+[1] 338
+dstat: 0.03837278 
+dstat actual: 0.03837278 
+test coverage: 0.04733728 
+boot coverage: 0.04733728 
+
+[1] 339
+dstat: 0.03841003 
+dstat actual: 0.03841003 
+test coverage: 0.04719764 
+boot coverage: 0.04719764 
+
+[1] 340
+dstat: 0.03839412 
+dstat actual: 0.03839412 
+test coverage: 0.04705882 
+boot coverage: 0.04705882 
+
+[1] 341
+dstat: 0.03836657 
+dstat actual: 0.03836657 
+test coverage: 0.04692082 
+boot coverage: 0.04692082 
+
+[1] 342
+dstat: 0.03836842 
+dstat actual: 0.03836842 
+test coverage: 0.04678363 
+boot coverage: 0.04678363 
+
+[1] 343
+dstat: 0.03836443 
+dstat actual: 0.03836443 
+test coverage: 0.04664723 
+boot coverage: 0.04664723 
+
+[1] 344
+dstat: 0.03832558 
+dstat actual: 0.03832558 
+test coverage: 0.04651163 
+boot coverage: 0.04651163 
+
+[1] 345
+dstat: 0.03830435 
+dstat actual: 0.03830435 
+test coverage: 0.04637681 
+boot coverage: 0.04637681 
+
+[1] 346
+dstat: 0.0382948 
+dstat actual: 0.0382948 
+test coverage: 0.04624277 
+boot coverage: 0.04624277 
+
+[1] 347
+dstat: 0.03827378 
+dstat actual: 0.03827378 
+test coverage: 0.04610951 
+boot coverage: 0.04610951 
+
+[1] 348
+dstat: 0.03832759 
+dstat actual: 0.03832759 
+test coverage: 0.04597701 
+boot coverage: 0.04597701 
+
+[1] 349
+dstat: 0.03835244 
+dstat actual: 0.03835244 
+test coverage: 0.04584527 
+boot coverage: 0.04584527 
+
+[1] 350
+dstat: 0.03834286 
+dstat actual: 0.03834286 
+test coverage: 0.04571429 
+boot coverage: 0.04571429 
+
+[1] 351
+dstat: 0.03837322 
+dstat actual: 0.03837322 
+test coverage: 0.04558405 
+boot coverage: 0.04558405 
+
+[1] 352
+dstat: 0.03840057 
+dstat actual: 0.03840057 
+test coverage: 0.04545455 
+boot coverage: 0.04545455 
+
+[1] 353
+dstat: 0.03836827 
+dstat actual: 0.03836827 
+test coverage: 0.04532578 
+boot coverage: 0.04532578 
+
+[1] 354
+dstat: 0.03836723 
+dstat actual: 0.03836723 
+test coverage: 0.04519774 
+boot coverage: 0.04519774 
+
+[1] 355
+dstat: 0.0383493 
+dstat actual: 0.0383493 
+test coverage: 0.04507042 
+boot coverage: 0.04507042 
+
+[1] 356
+dstat: 0.03836517 
+dstat actual: 0.03836517 
+test coverage: 0.04494382 
+boot coverage: 0.04494382 
+
+[1] 357
+dstat: 0.03847059 
+dstat actual: 0.03847059 
+test coverage: 0.04761905 
+boot coverage: 0.04761905 
+
+[1] 358
+dstat: 0.03846369 
+dstat actual: 0.03846369 
+test coverage: 0.04748603 
+boot coverage: 0.04748603 
+
+[1] 359
+dstat: 0.03852925 
+dstat actual: 0.03852925 
+test coverage: 0.05013928 
+boot coverage: 0.05013928 
+
+[1] 360
+dstat: 0.03850556 
+dstat actual: 0.03850556 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 361
+dstat: 0.03847922 
+dstat actual: 0.03847922 
+test coverage: 0.0498615 
+boot coverage: 0.0498615 
+
+[1] 362
+dstat: 0.0384558 
+dstat actual: 0.0384558 
+test coverage: 0.04972376 
+boot coverage: 0.04972376 
+
+[1] 363
+dstat: 0.03846556 
+dstat actual: 0.03846556 
+test coverage: 0.04958678 
+boot coverage: 0.04958678 
+
+[1] 364
+dstat: 0.03843681 
+dstat actual: 0.03843681 
+test coverage: 0.04945055 
+boot coverage: 0.04945055 
+
+[1] 365
+dstat: 0.03846849 
+dstat actual: 0.03846849 
+test coverage: 0.04931507 
+boot coverage: 0.04931507 
+
+[1] 366
+dstat: 0.03843716 
+dstat actual: 0.03843716 
+test coverage: 0.04918033 
+boot coverage: 0.04918033 
+
+[1] 367
+dstat: 0.03843324 
+dstat actual: 0.03843324 
+test coverage: 0.04904632 
+boot coverage: 0.04904632 
+
+[1] 368
+dstat: 0.03841576 
+dstat actual: 0.03841576 
+test coverage: 0.04891304 
+boot coverage: 0.04891304 
+
+[1] 369
+dstat: 0.03847425 
+dstat actual: 0.03847425 
+test coverage: 0.04878049 
+boot coverage: 0.04878049 
+
+[1] 370
+dstat: 0.03847568 
+dstat actual: 0.03847568 
+test coverage: 0.04864865 
+boot coverage: 0.04864865 
+
+[1] 371
+dstat: 0.03853369 
+dstat actual: 0.03853369 
+test coverage: 0.04851752 
+boot coverage: 0.04851752 
+
+[1] 372
+dstat: 0.03853495 
+dstat actual: 0.03853495 
+test coverage: 0.0483871 
+boot coverage: 0.0483871 
+
+[1] 373
+dstat: 0.03851743 
+dstat actual: 0.03851743 
+test coverage: 0.04825737 
+boot coverage: 0.04825737 
+
+[1] 374
+dstat: 0.03858556 
+dstat actual: 0.03858556 
+test coverage: 0.05080214 
+boot coverage: 0.05080214 
+
+[1] 375
+dstat: 0.03860267 
+dstat actual: 0.03860267 
+test coverage: 0.05066667 
+boot coverage: 0.05066667 
+
+[1] 376
+dstat: 0.0385984 
+dstat actual: 0.0385984 
+test coverage: 0.05053191 
+boot coverage: 0.05053191 
+
+[1] 377
+dstat: 0.03857294 
+dstat actual: 0.03857294 
+test coverage: 0.05039788 
+boot coverage: 0.05039788 
+
+[1] 378
+dstat: 0.03856878 
+dstat actual: 0.03856878 
+test coverage: 0.05026455 
+boot coverage: 0.05026455 
+
+[1] 379
+dstat: 0.03855409 
+dstat actual: 0.03855409 
+test coverage: 0.05013193 
+boot coverage: 0.05013193 
+
+[1] 380
+dstat: 0.03852368 
+dstat actual: 0.03852368 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 381
+dstat: 0.03849869 
+dstat actual: 0.03849869 
+test coverage: 0.04986877 
+boot coverage: 0.04986877 
+
+[1] 382
+dstat: 0.03849215 
+dstat actual: 0.03849215 
+test coverage: 0.04973822 
+boot coverage: 0.04973822 
+
+[1] 383
+dstat: 0.0384752 
+dstat actual: 0.0384752 
+test coverage: 0.04960836 
+boot coverage: 0.04960836 
+
+[1] 384
+dstat: 0.03851302 
+dstat actual: 0.03851302 
+test coverage: 0.04947917 
+boot coverage: 0.04947917 
+
+[1] 385
+dstat: 0.03848571 
+dstat actual: 0.03848571 
+test coverage: 0.04935065 
+boot coverage: 0.04935065 
+
+[1] 386
+dstat: 0.03855959 
+dstat actual: 0.03855959 
+test coverage: 0.05181347 
+boot coverage: 0.05181347 
+
+[1] 387
+dstat: 0.0385323 
+dstat actual: 0.0385323 
+test coverage: 0.05167959 
+boot coverage: 0.05167959 
+
+[1] 388
+dstat: 0.03851031 
+dstat actual: 0.03851031 
+test coverage: 0.05154639 
+boot coverage: 0.05154639 
+
+[1] 389
+dstat: 0.03848586 
+dstat actual: 0.03848586 
+test coverage: 0.05141388 
+boot coverage: 0.05141388 
+
+[1] 390
+dstat: 0.03849487 
+dstat actual: 0.03849487 
+test coverage: 0.05128205 
+boot coverage: 0.05128205 
+
+[1] 391
+dstat: 0.03850384 
+dstat actual: 0.03850384 
+test coverage: 0.0511509 
+boot coverage: 0.0511509 
+
+[1] 392
+dstat: 0.03846939 
+dstat actual: 0.03846939 
+test coverage: 0.05102041 
+boot coverage: 0.05102041 
+
+[1] 393
+dstat: 0.03850382 
+dstat actual: 0.03850382 
+test coverage: 0.05089059 
+boot coverage: 0.05089059 
+
+[1] 394
+dstat: 0.03847462 
+dstat actual: 0.03847462 
+test coverage: 0.05076142 
+boot coverage: 0.05076142 
+
+[1] 395
+dstat: 0.0384557 
+dstat actual: 0.0384557 
+test coverage: 0.05063291 
+boot coverage: 0.05063291 
+
+[1] 396
+dstat: 0.0385 
+dstat actual: 0.0385 
+test coverage: 0.05050505 
+boot coverage: 0.05050505 
+
+[1] 397
+dstat: 0.03851134 
+dstat actual: 0.03851134 
+test coverage: 0.05037783 
+boot coverage: 0.05037783 
+
+[1] 398
+dstat: 0.03859548 
+dstat actual: 0.03859548 
+test coverage: 0.05276382 
+boot coverage: 0.05276382 
+
+[1] 399
+dstat: 0.03856642 
+dstat actual: 0.03856642 
+test coverage: 0.05263158 
+boot coverage: 0.05263158 
+
+[1] 400
+dstat: 0.0385575 
+dstat actual: 0.0385575 
+test coverage: 0.0525 
+boot coverage: 0.0525 
+
+[1] 401
+dstat: 0.03856359 
+dstat actual: 0.03856359 
+test coverage: 0.05236908 
+boot coverage: 0.05236908 
+
+[1] 402
+dstat: 0.03855721 
+dstat actual: 0.03855721 
+test coverage: 0.05223881 
+boot coverage: 0.05223881 
+
+[1] 403
+dstat: 0.03853598 
+dstat actual: 0.03853598 
+test coverage: 0.05210918 
+boot coverage: 0.05210918 
+
+[1] 404
+dstat: 0.03853713 
+dstat actual: 0.03853713 
+test coverage: 0.0519802 
+boot coverage: 0.0519802 
+
+[1] 405
+dstat: 0.0385358 
+dstat actual: 0.0385358 
+test coverage: 0.05185185 
+boot coverage: 0.05185185 
+
+[1] 406
+dstat: 0.03854433 
+dstat actual: 0.03854433 
+test coverage: 0.05172414 
+boot coverage: 0.05172414 
+
+[1] 407
+dstat: 0.03851597 
+dstat actual: 0.03851597 
+test coverage: 0.05159705 
+boot coverage: 0.05159705 
+
+[1] 408
+dstat: 0.03851225 
+dstat actual: 0.03851225 
+test coverage: 0.05147059 
+boot coverage: 0.05147059 
+
+[1] 409
+dstat: 0.03852567 
+dstat actual: 0.03852567 
+test coverage: 0.05134474 
+boot coverage: 0.05134474 
+
+[1] 410
+dstat: 0.03857317 
+dstat actual: 0.03857317 
+test coverage: 0.05121951 
+boot coverage: 0.05121951 
+
+[1] 411
+dstat: 0.03859124 
+dstat actual: 0.03859124 
+test coverage: 0.05109489 
+boot coverage: 0.05109489 
+
+[1] 412
+dstat: 0.03859709 
+dstat actual: 0.03859709 
+test coverage: 0.05097087 
+boot coverage: 0.05097087 
+
+[1] 413
+dstat: 0.03858354 
+dstat actual: 0.03858354 
+test coverage: 0.05084746 
+boot coverage: 0.05084746 
+
+[1] 414
+dstat: 0.03858454 
+dstat actual: 0.03858454 
+test coverage: 0.05072464 
+boot coverage: 0.05072464 
+
+[1] 415
+dstat: 0.03858072 
+dstat actual: 0.03858072 
+test coverage: 0.05060241 
+boot coverage: 0.05060241 
+
+[1] 416
+dstat: 0.03859615 
+dstat actual: 0.03859615 
+test coverage: 0.05048077 
+boot coverage: 0.05048077 
+
+[1] 417
+dstat: 0.03865707 
+dstat actual: 0.03865707 
+test coverage: 0.05275779 
+boot coverage: 0.05275779 
+
+[1] 418
+dstat: 0.03864115 
+dstat actual: 0.03864115 
+test coverage: 0.05263158 
+boot coverage: 0.05263158 
+
+[1] 419
+dstat: 0.03863246 
+dstat actual: 0.03863246 
+test coverage: 0.05250597 
+boot coverage: 0.05250597 
+
+[1] 420
+dstat: 0.03865 
+dstat actual: 0.03865 
+test coverage: 0.05238095 
+boot coverage: 0.05238095 
+
+[1] 421
+dstat: 0.03869596 
+dstat actual: 0.03869596 
+test coverage: 0.05225653 
+boot coverage: 0.05225653 
+
+[1] 422
+dstat: 0.03872512 
+dstat actual: 0.03872512 
+test coverage: 0.0521327 
+boot coverage: 0.0521327 
+
+[1] 423
+dstat: 0.03876359 
+dstat actual: 0.03876359 
+test coverage: 0.05200946 
+boot coverage: 0.05200946 
+
+[1] 424
+dstat: 0.03875472 
+dstat actual: 0.03875472 
+test coverage: 0.05188679 
+boot coverage: 0.05188679 
+
+[1] 425
+dstat: 0.03876706 
+dstat actual: 0.03876706 
+test coverage: 0.05176471 
+boot coverage: 0.05176471 
+
+[1] 426
+dstat: 0.03874883 
+dstat actual: 0.03874883 
+test coverage: 0.05164319 
+boot coverage: 0.05164319 
+
+[1] 427
+dstat: 0.03879859 
+dstat actual: 0.03879859 
+test coverage: 0.05152225 
+boot coverage: 0.05152225 
+
+[1] 428
+dstat: 0.03879439 
+dstat actual: 0.03879439 
+test coverage: 0.05140187 
+boot coverage: 0.05140187 
+
+[1] 429
+dstat: 0.0388042 
+dstat actual: 0.0388042 
+test coverage: 0.05128205 
+boot coverage: 0.05128205 
+
+[1] 430
+dstat: 0.0388 
+dstat actual: 0.0388 
+test coverage: 0.05116279 
+boot coverage: 0.05116279 
+
+[1] 431
+dstat: 0.03876334 
+dstat actual: 0.03876334 
+test coverage: 0.05104408 
+boot coverage: 0.05104408 
+
+[1] 432
+dstat: 0.03875694 
+dstat actual: 0.03875694 
+test coverage: 0.05092593 
+boot coverage: 0.05092593 
+
+[1] 433
+dstat: 0.03875289 
+dstat actual: 0.03875289 
+test coverage: 0.05080831 
+boot coverage: 0.05080831 
+
+[1] 434
+dstat: 0.03876959 
+dstat actual: 0.03876959 
+test coverage: 0.05069124 
+boot coverage: 0.05069124 
+
+[1] 435
+dstat: 0.03878391 
+dstat actual: 0.03878391 
+test coverage: 0.05057471 
+boot coverage: 0.05057471 
+
+[1] 436
+dstat: 0.03878899 
+dstat actual: 0.03878899 
+test coverage: 0.05045872 
+boot coverage: 0.05045872 
+
+[1] 437
+dstat: 0.03878947 
+dstat actual: 0.03878947 
+test coverage: 0.05034325 
+boot coverage: 0.05034325 
+
+[1] 438
+dstat: 0.03881507 
+dstat actual: 0.03881507 
+test coverage: 0.05022831 
+boot coverage: 0.05022831 
+
+[1] 439
+dstat: 0.03884966 
+dstat actual: 0.03884966 
+test coverage: 0.0501139 
+boot coverage: 0.0501139 
+
+[1] 440
+dstat: 0.03885227 
+dstat actual: 0.03885227 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 441
+dstat: 0.038839 
+dstat actual: 0.038839 
+test coverage: 0.04988662 
+boot coverage: 0.04988662 
+
+[1] 442
+dstat: 0.03885068 
+dstat actual: 0.03885068 
+test coverage: 0.04977376 
+boot coverage: 0.04977376 
+
+[1] 443
+dstat: 0.03881716 
+dstat actual: 0.03881716 
+test coverage: 0.0496614 
+boot coverage: 0.0496614 
+
+[1] 444
+dstat: 0.03884234 
+dstat actual: 0.03884234 
+test coverage: 0.04954955 
+boot coverage: 0.04954955 
+
+[1] 445
+dstat: 0.03887191 
+dstat actual: 0.03887191 
+test coverage: 0.0494382 
+boot coverage: 0.0494382 
+
+[1] 446
+dstat: 0.03885874 
+dstat actual: 0.03885874 
+test coverage: 0.04932735 
+boot coverage: 0.04932735 
+
+[1] 447
+dstat: 0.03883221 
+dstat actual: 0.03883221 
+test coverage: 0.049217 
+boot coverage: 0.049217 
+
+[1] 448
+dstat: 0.03883705 
+dstat actual: 0.03883705 
+test coverage: 0.04910714 
+boot coverage: 0.04910714 
+
+[1] 449
+dstat: 0.03881737 
+dstat actual: 0.03881737 
+test coverage: 0.04899777 
+boot coverage: 0.04899777 
+
+[1] 450
+dstat: 0.03880444 
+dstat actual: 0.03880444 
+test coverage: 0.04888889 
+boot coverage: 0.04888889 
+
+[1] 451
+dstat: 0.03877827 
+dstat actual: 0.03877827 
+test coverage: 0.04878049 
+boot coverage: 0.04878049 
+
+[1] 452
+dstat: 0.03876327 
+dstat actual: 0.03876327 
+test coverage: 0.04867257 
+boot coverage: 0.04867257 
+
+[1] 453
+dstat: 0.03875276 
+dstat actual: 0.03875276 
+test coverage: 0.04856512 
+boot coverage: 0.04856512 
+
+[1] 454
+dstat: 0.03873568 
+dstat actual: 0.03873568 
+test coverage: 0.04845815 
+boot coverage: 0.04845815 
+
+[1] 455
+dstat: 0.03872967 
+dstat actual: 0.03872967 
+test coverage: 0.04835165 
+boot coverage: 0.04835165 
+
+[1] 456
+dstat: 0.03870175 
+dstat actual: 0.03870175 
+test coverage: 0.04824561 
+boot coverage: 0.04824561 
+
+[1] 457
+dstat: 0.03866958 
+dstat actual: 0.03866958 
+test coverage: 0.04814004 
+boot coverage: 0.04814004 
+
+[1] 458
+dstat: 0.03864192 
+dstat actual: 0.03864192 
+test coverage: 0.04803493 
+boot coverage: 0.04803493 
+
+[1] 459
+dstat: 0.03867102 
+dstat actual: 0.03867102 
+test coverage: 0.04793028 
+boot coverage: 0.04793028 
+
+[1] 460
+dstat: 0.03869565 
+dstat actual: 0.03869565 
+test coverage: 0.04782609 
+boot coverage: 0.04782609 
+
+[1] 461
+dstat: 0.03874187 
+dstat actual: 0.03874187 
+test coverage: 0.04772234 
+boot coverage: 0.04772234 
+
+[1] 462
+dstat: 0.03872727 
+dstat actual: 0.03872727 
+test coverage: 0.04761905 
+boot coverage: 0.04761905 
+
+[1] 463
+dstat: 0.03869978 
+dstat actual: 0.03869978 
+test coverage: 0.0475162 
+boot coverage: 0.0475162 
+
+[1] 464
+dstat: 0.03874138 
+dstat actual: 0.03874138 
+test coverage: 0.04741379 
+boot coverage: 0.04741379 
+
+[1] 465
+dstat: 0.03874409 
+dstat actual: 0.03874409 
+test coverage: 0.04731183 
+boot coverage: 0.04731183 
+
+[1] 466
+dstat: 0.03872747 
+dstat actual: 0.03872747 
+test coverage: 0.0472103 
+boot coverage: 0.0472103 
+
+[1] 467
+dstat: 0.0387152 
+dstat actual: 0.0387152 
+test coverage: 0.04710921 
+boot coverage: 0.04710921 
+
+[1] 468
+dstat: 0.03873718 
+dstat actual: 0.03873718 
+test coverage: 0.04700855 
+boot coverage: 0.04700855 
+
+[1] 469
+dstat: 0.03875693 
+dstat actual: 0.03875693 
+test coverage: 0.04690832 
+boot coverage: 0.04690832 
+
+[1] 470
+dstat: 0.03878085 
+dstat actual: 0.03878085 
+test coverage: 0.04680851 
+boot coverage: 0.04680851 
+
+[1] 471
+dstat: 0.03877282 
+dstat actual: 0.03877282 
+test coverage: 0.04670913 
+boot coverage: 0.04670913 
+
+[1] 472
+dstat: 0.03874364 
+dstat actual: 0.03874364 
+test coverage: 0.04661017 
+boot coverage: 0.04661017 
+
+[1] 473
+dstat: 0.03876533 
+dstat actual: 0.03876533 
+test coverage: 0.04651163 
+boot coverage: 0.04651163 
+
+[1] 474
+dstat: 0.03875949 
+dstat actual: 0.03875949 
+test coverage: 0.0464135 
+boot coverage: 0.0464135 
+
+[1] 475
+dstat: 0.03873263 
+dstat actual: 0.03873263 
+test coverage: 0.04631579 
+boot coverage: 0.04631579 
+
+[1] 476
+dstat: 0.03871639 
+dstat actual: 0.03871639 
+test coverage: 0.04621849 
+boot coverage: 0.04621849 
+
+[1] 477
+dstat: 0.03873585 
+dstat actual: 0.03873585 
+test coverage: 0.04612159 
+boot coverage: 0.04612159 
+
+[1] 478
+dstat: 0.03874895 
+dstat actual: 0.03874895 
+test coverage: 0.0460251 
+boot coverage: 0.0460251 
+
+[1] 479
+dstat: 0.03873695 
+dstat actual: 0.03873695 
+test coverage: 0.04592902 
+boot coverage: 0.04592902 
+
+[1] 480
+dstat: 0.03877292 
+dstat actual: 0.03877292 
+test coverage: 0.04583333 
+boot coverage: 0.04583333 
+
+[1] 481
+dstat: 0.03875052 
+dstat actual: 0.03875052 
+test coverage: 0.04573805 
+boot coverage: 0.04573805 
+
+[1] 482
+dstat: 0.03874689 
+dstat actual: 0.03874689 
+test coverage: 0.04564315 
+boot coverage: 0.04564315 
+
+[1] 483
+dstat: 0.03871636 
+dstat actual: 0.03871636 
+test coverage: 0.04554865 
+boot coverage: 0.04554865 
+
+[1] 484
+dstat: 0.03870455 
+dstat actual: 0.03870455 
+test coverage: 0.04545455 
+boot coverage: 0.04545455 
+
+[1] 485
+dstat: 0.03869485 
+dstat actual: 0.03869485 
+test coverage: 0.04536082 
+boot coverage: 0.04536082 
+
+[1] 486
+dstat: 0.03868107 
+dstat actual: 0.03868107 
+test coverage: 0.04526749 
+boot coverage: 0.04526749 
+
+[1] 487
+dstat: 0.03865092 
+dstat actual: 0.03865092 
+test coverage: 0.04517454 
+boot coverage: 0.04517454 
+
+[1] 488
+dstat: 0.03870082 
+dstat actual: 0.03870082 
+test coverage: 0.04713115 
+boot coverage: 0.04713115 
+
+[1] 489
+dstat: 0.03871166 
+dstat actual: 0.03871166 
+test coverage: 0.04703476 
+boot coverage: 0.04703476 
+
+[1] 490
+dstat: 0.03873265 
+dstat actual: 0.03873265 
+test coverage: 0.04693878 
+boot coverage: 0.04693878 
+
+[1] 491
+dstat: 0.03872505 
+dstat actual: 0.03872505 
+test coverage: 0.04684318 
+boot coverage: 0.04684318 
+
+[1] 492
+dstat: 0.03872358 
+dstat actual: 0.03872358 
+test coverage: 0.04674797 
+boot coverage: 0.04674797 
+
+[1] 493
+dstat: 0.03870588 
+dstat actual: 0.03870588 
+test coverage: 0.04665314 
+boot coverage: 0.04665314 
+
+[1] 494
+dstat: 0.03872672 
+dstat actual: 0.03872672 
+test coverage: 0.0465587 
+boot coverage: 0.0465587 
+
+[1] 495
+dstat: 0.03870909 
+dstat actual: 0.03870909 
+test coverage: 0.04646465 
+boot coverage: 0.04646465 
+
+[1] 496
+dstat: 0.03872581 
+dstat actual: 0.03872581 
+test coverage: 0.04637097 
+boot coverage: 0.04637097 
+
+[1] 497
+dstat: 0.03871026 
+dstat actual: 0.03871026 
+test coverage: 0.04627767 
+boot coverage: 0.04627767 
+
+[1] 498
+dstat: 0.0387249 
+dstat actual: 0.0387249 
+test coverage: 0.04618474 
+boot coverage: 0.04618474 
+
+[1] 499
+dstat: 0.03874349 
+dstat actual: 0.03874349 
+test coverage: 0.04609218 
+boot coverage: 0.04609218 
+
+[1] 500
+dstat: 0.038726 
+dstat actual: 0.038726 
+test coverage: 0.046 
+boot coverage: 0.046 
+
+[1] 501
+dstat: 0.03870858 
+dstat actual: 0.03870858 
+test coverage: 0.04590818 
+boot coverage: 0.04590818 
+
+[1] 502
+dstat: 0.03868127 
+dstat actual: 0.03868127 
+test coverage: 0.04581673 
+boot coverage: 0.04581673 
+
+[1] 503
+dstat: 0.03870775 
+dstat actual: 0.03870775 
+test coverage: 0.04572565 
+boot coverage: 0.04572565 
+
+[1] 504
+dstat: 0.0387004 
+dstat actual: 0.0387004 
+test coverage: 0.04563492 
+boot coverage: 0.04563492 
+
+[1] 505
+dstat: 0.03866139 
+dstat actual: 0.03866139 
+test coverage: 0.04554455 
+boot coverage: 0.04554455 
+
+[1] 506
+dstat: 0.03869763 
+dstat actual: 0.03869763 
+test coverage: 0.04545455 
+boot coverage: 0.04545455 
+
+[1] 507
+dstat: 0.03866075 
+dstat actual: 0.03866075 
+test coverage: 0.04536489 
+boot coverage: 0.04536489 
+
+[1] 508
+dstat: 0.03864567 
+dstat actual: 0.03864567 
+test coverage: 0.04527559 
+boot coverage: 0.04527559 
+
+[1] 509
+dstat: 0.03863654 
+dstat actual: 0.03863654 
+test coverage: 0.04518664 
+boot coverage: 0.04518664 
+
+[1] 510
+dstat: 0.03862745 
+dstat actual: 0.03862745 
+test coverage: 0.04509804 
+boot coverage: 0.04509804 
+
+[1] 511
+dstat: 0.03860861 
+dstat actual: 0.03860861 
+test coverage: 0.04500978 
+boot coverage: 0.04500978 
+
+[1] 512
+dstat: 0.03859961 
+dstat actual: 0.03859961 
+test coverage: 0.04492188 
+boot coverage: 0.04492188 
+
+[1] 513
+dstat: 0.03859454 
+dstat actual: 0.03859454 
+test coverage: 0.04483431 
+boot coverage: 0.04483431 
+
+[1] 514
+dstat: 0.038607 
+dstat actual: 0.038607 
+test coverage: 0.04474708 
+boot coverage: 0.04474708 
+
+[1] 515
+dstat: 0.03863689 
+dstat actual: 0.03863689 
+test coverage: 0.04466019 
+boot coverage: 0.04466019 
+
+[1] 516
+dstat: 0.03868992 
+dstat actual: 0.03868992 
+test coverage: 0.04651163 
+boot coverage: 0.04651163 
+
+[1] 517
+dstat: 0.03869439 
+dstat actual: 0.03869439 
+test coverage: 0.04642166 
+boot coverage: 0.04642166 
+
+[1] 518
+dstat: 0.03869884 
+dstat actual: 0.03869884 
+test coverage: 0.04633205 
+boot coverage: 0.04633205 
+
+[1] 519
+dstat: 0.03869942 
+dstat actual: 0.03869942 
+test coverage: 0.04624277 
+boot coverage: 0.04624277 
+
+[1] 520
+dstat: 0.03870192 
+dstat actual: 0.03870192 
+test coverage: 0.04615385 
+boot coverage: 0.04615385 
+
+[1] 521
+dstat: 0.03876008 
+dstat actual: 0.03876008 
+test coverage: 0.04798464 
+boot coverage: 0.04798464 
+
+[1] 522
+dstat: 0.03873372 
+dstat actual: 0.03873372 
+test coverage: 0.04789272 
+boot coverage: 0.04789272 
+
+[1] 523
+dstat: 0.03873423 
+dstat actual: 0.03873423 
+test coverage: 0.04780115 
+boot coverage: 0.04780115 
+
+[1] 524
+dstat: 0.03871947 
+dstat actual: 0.03871947 
+test coverage: 0.04770992 
+boot coverage: 0.04770992 
+
+[1] 525
+dstat: 0.03868762 
+dstat actual: 0.03868762 
+test coverage: 0.04761905 
+boot coverage: 0.04761905 
+
+[1] 526
+dstat: 0.0386597 
+dstat actual: 0.0386597 
+test coverage: 0.04752852 
+boot coverage: 0.04752852 
+
+[1] 527
+dstat: 0.03864896 
+dstat actual: 0.03864896 
+test coverage: 0.04743833 
+boot coverage: 0.04743833 
+
+[1] 528
+dstat: 0.03860985 
+dstat actual: 0.03860985 
+test coverage: 0.04734848 
+boot coverage: 0.04734848 
+
+[1] 529
+dstat: 0.03860302 
+dstat actual: 0.03860302 
+test coverage: 0.04725898 
+boot coverage: 0.04725898 
+
+[1] 530
+dstat: 0.0386434 
+dstat actual: 0.0386434 
+test coverage: 0.04716981 
+boot coverage: 0.04716981 
+
+[1] 531
+dstat: 0.0386629 
+dstat actual: 0.0386629 
+test coverage: 0.04708098 
+boot coverage: 0.04708098 
+
+[1] 532
+dstat: 0.03866541 
+dstat actual: 0.03866541 
+test coverage: 0.04699248 
+boot coverage: 0.04699248 
+
+[1] 533
+dstat: 0.03865103 
+dstat actual: 0.03865103 
+test coverage: 0.04690432 
+boot coverage: 0.04690432 
+
+[1] 534
+dstat: 0.03862734 
+dstat actual: 0.03862734 
+test coverage: 0.04681648 
+boot coverage: 0.04681648 
+
+[1] 535
+dstat: 0.03862804 
+dstat actual: 0.03862804 
+test coverage: 0.04672897 
+boot coverage: 0.04672897 
+
+[1] 536
+dstat: 0.03861567 
+dstat actual: 0.03861567 
+test coverage: 0.04664179 
+boot coverage: 0.04664179 
+
+[1] 537
+dstat: 0.03860149 
+dstat actual: 0.03860149 
+test coverage: 0.04655493 
+boot coverage: 0.04655493 
+
+[1] 538
+dstat: 0.03864498 
+dstat actual: 0.03864498 
+test coverage: 0.04832714 
+boot coverage: 0.04832714 
+
+[1] 539
+dstat: 0.03862709 
+dstat actual: 0.03862709 
+test coverage: 0.04823748 
+boot coverage: 0.04823748 
+
+[1] 540
+dstat: 0.03865926 
+dstat actual: 0.03865926 
+test coverage: 0.04814815 
+boot coverage: 0.04814815 
+
+[1] 541
+dstat: 0.03865619 
+dstat actual: 0.03865619 
+test coverage: 0.04805915 
+boot coverage: 0.04805915 
+
+[1] 542
+dstat: 0.03864022 
+dstat actual: 0.03864022 
+test coverage: 0.04797048 
+boot coverage: 0.04797048 
+
+[1] 543
+dstat: 0.03869982 
+dstat actual: 0.03869982 
+test coverage: 0.04972376 
+boot coverage: 0.04972376 
+
+[1] 544
+dstat: 0.03873346 
+dstat actual: 0.03873346 
+test coverage: 0.04963235 
+boot coverage: 0.04963235 
+
+[1] 545
+dstat: 0.03871927 
+dstat actual: 0.03871927 
+test coverage: 0.04954128 
+boot coverage: 0.04954128 
+
+[1] 546
+dstat: 0.03873077 
+dstat actual: 0.03873077 
+test coverage: 0.04945055 
+boot coverage: 0.04945055 
+
+[1] 547
+dstat: 0.03874589 
+dstat actual: 0.03874589 
+test coverage: 0.04936015 
+boot coverage: 0.04936015 
+
+[1] 548
+dstat: 0.03875912 
+dstat actual: 0.03875912 
+test coverage: 0.04927007 
+boot coverage: 0.04927007 
+
+[1] 549
+dstat: 0.03876138 
+dstat actual: 0.03876138 
+test coverage: 0.04918033 
+boot coverage: 0.04918033 
+
+[1] 550
+dstat: 0.03878182 
+dstat actual: 0.03878182 
+test coverage: 0.04909091 
+boot coverage: 0.04909091 
+
+[1] 551
+dstat: 0.03879855 
+dstat actual: 0.03879855 
+test coverage: 0.04900181 
+boot coverage: 0.04900181 
+
+[1] 552
+dstat: 0.03880797 
+dstat actual: 0.03880797 
+test coverage: 0.04891304 
+boot coverage: 0.04891304 
+
+[1] 553
+dstat: 0.03880108 
+dstat actual: 0.03880108 
+test coverage: 0.04882459 
+boot coverage: 0.04882459 
+
+[1] 554
+dstat: 0.03888989 
+dstat actual: 0.03888989 
+test coverage: 0.05054152 
+boot coverage: 0.05054152 
+
+[1] 555
+dstat: 0.03889189 
+dstat actual: 0.03889189 
+test coverage: 0.05045045 
+boot coverage: 0.05045045 
+
+[1] 556
+dstat: 0.03886511 
+dstat actual: 0.03886511 
+test coverage: 0.05035971 
+boot coverage: 0.05035971 
+
+[1] 557
+dstat: 0.03884022 
+dstat actual: 0.03884022 
+test coverage: 0.0502693 
+boot coverage: 0.0502693 
+
+[1] 558
+dstat: 0.0388405 
+dstat actual: 0.0388405 
+test coverage: 0.05017921 
+boot coverage: 0.05017921 
+
+[1] 559
+dstat: 0.03881038 
+dstat actual: 0.03881038 
+test coverage: 0.05008945 
+boot coverage: 0.05008945 
+
+[1] 560
+dstat: 0.03879464 
+dstat actual: 0.03879464 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 561
+dstat: 0.03876827 
+dstat actual: 0.03876827 
+test coverage: 0.04991087 
+boot coverage: 0.04991087 
+
+[1] 562
+dstat: 0.03874199 
+dstat actual: 0.03874199 
+test coverage: 0.04982206 
+boot coverage: 0.04982206 
+
+[1] 563
+dstat: 0.03873357 
+dstat actual: 0.03873357 
+test coverage: 0.04973357 
+boot coverage: 0.04973357 
+
+[1] 564
+dstat: 0.03874645 
+dstat actual: 0.03874645 
+test coverage: 0.04964539 
+boot coverage: 0.04964539 
+
+[1] 565
+dstat: 0.03876814 
+dstat actual: 0.03876814 
+test coverage: 0.04955752 
+boot coverage: 0.04955752 
+
+[1] 566
+dstat: 0.03875972 
+dstat actual: 0.03875972 
+test coverage: 0.04946996 
+boot coverage: 0.04946996 
+
+[1] 567
+dstat: 0.03877072 
+dstat actual: 0.03877072 
+test coverage: 0.04938272 
+boot coverage: 0.04938272 
+
+[1] 568
+dstat: 0.03878345 
+dstat actual: 0.03878345 
+test coverage: 0.04929577 
+boot coverage: 0.04929577 
+
+[1] 569
+dstat: 0.03880668 
+dstat actual: 0.03880668 
+test coverage: 0.04920914 
+boot coverage: 0.04920914 
+
+[1] 570
+dstat: 0.03880877 
+dstat actual: 0.03880877 
+test coverage: 0.04912281 
+boot coverage: 0.04912281 
+
+[1] 571
+dstat: 0.03881436 
+dstat actual: 0.03881436 
+test coverage: 0.04903678 
+boot coverage: 0.04903678 
+
+[1] 572
+dstat: 0.03883392 
+dstat actual: 0.03883392 
+test coverage: 0.04895105 
+boot coverage: 0.04895105 
+
+[1] 573
+dstat: 0.03882024 
+dstat actual: 0.03882024 
+test coverage: 0.04886562 
+boot coverage: 0.04886562 
+
+[1] 574
+dstat: 0.03885017 
+dstat actual: 0.03885017 
+test coverage: 0.04878049 
+boot coverage: 0.04878049 
+
+[1] 575
+dstat: 0.0388487 
+dstat actual: 0.0388487 
+test coverage: 0.04869565 
+boot coverage: 0.04869565 
+
+[1] 576
+dstat: 0.03882292 
+dstat actual: 0.03882292 
+test coverage: 0.04861111 
+boot coverage: 0.04861111 
+
+[1] 577
+dstat: 0.03880243 
+dstat actual: 0.03880243 
+test coverage: 0.04852686 
+boot coverage: 0.04852686 
+
+[1] 578
+dstat: 0.03881488 
+dstat actual: 0.03881488 
+test coverage: 0.04844291 
+boot coverage: 0.04844291 
+
+[1] 579
+dstat: 0.03884801 
+dstat actual: 0.03884801 
+test coverage: 0.04835924 
+boot coverage: 0.04835924 
+
+[1] 580
+dstat: 0.03882931 
+dstat actual: 0.03882931 
+test coverage: 0.04827586 
+boot coverage: 0.04827586 
+
+[1] 581
+dstat: 0.03888124 
+dstat actual: 0.03888124 
+test coverage: 0.04991394 
+boot coverage: 0.04991394 
+
+[1] 582
+dstat: 0.0388866 
+dstat actual: 0.0388866 
+test coverage: 0.04982818 
+boot coverage: 0.04982818 
+
+[1] 583
+dstat: 0.03891252 
+dstat actual: 0.03891252 
+test coverage: 0.04974271 
+boot coverage: 0.04974271 
+
+[1] 584
+dstat: 0.03892295 
+dstat actual: 0.03892295 
+test coverage: 0.04965753 
+boot coverage: 0.04965753 
+
+[1] 585
+dstat: 0.03893162 
+dstat actual: 0.03893162 
+test coverage: 0.04957265 
+boot coverage: 0.04957265 
+
+[1] 586
+dstat: 0.03891809 
+dstat actual: 0.03891809 
+test coverage: 0.04948805 
+boot coverage: 0.04948805 
+
+[1] 587
+dstat: 0.03891482 
+dstat actual: 0.03891482 
+test coverage: 0.04940375 
+boot coverage: 0.04940375 
+
+[1] 588
+dstat: 0.03893878 
+dstat actual: 0.03893878 
+test coverage: 0.04931973 
+boot coverage: 0.04931973 
+
+[1] 589
+dstat: 0.03896435 
+dstat actual: 0.03896435 
+test coverage: 0.04923599 
+boot coverage: 0.04923599 
+
+[1] 590
+dstat: 0.03893729 
+dstat actual: 0.03893729 
+test coverage: 0.04915254 
+boot coverage: 0.04915254 
+
+[1] 591
+dstat: 0.03893063 
+dstat actual: 0.03893063 
+test coverage: 0.04906937 
+boot coverage: 0.04906937 
+
+[1] 592
+dstat: 0.03897128 
+dstat actual: 0.03897128 
+test coverage: 0.05067568 
+boot coverage: 0.05067568 
+
+[1] 593
+dstat: 0.03896121 
+dstat actual: 0.03896121 
+test coverage: 0.05059022 
+boot coverage: 0.05059022 
+
+[1] 594
+dstat: 0.03895791 
+dstat actual: 0.03895791 
+test coverage: 0.05050505 
+boot coverage: 0.05050505 
+
+[1] 595
+dstat: 0.03895462 
+dstat actual: 0.03895462 
+test coverage: 0.05042017 
+boot coverage: 0.05042017 
+
+[1] 596
+dstat: 0.0389245 
+dstat actual: 0.0389245 
+test coverage: 0.05033557 
+boot coverage: 0.05033557 
+
+[1] 597
+dstat: 0.03892127 
+dstat actual: 0.03892127 
+test coverage: 0.05025126 
+boot coverage: 0.05025126 
+
+[1] 598
+dstat: 0.03893144 
+dstat actual: 0.03893144 
+test coverage: 0.05016722 
+boot coverage: 0.05016722 
+
+[1] 599
+dstat: 0.03893823 
+dstat actual: 0.03893823 
+test coverage: 0.05008347 
+boot coverage: 0.05008347 
+
+[1] 600
+dstat: 0.03891667 
+dstat actual: 0.03891667 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 601
+dstat: 0.03890849 
+dstat actual: 0.03890849 
+test coverage: 0.04991681 
+boot coverage: 0.04991681 
+
+[1] 602
+dstat: 0.03890033 
+dstat actual: 0.03890033 
+test coverage: 0.04983389 
+boot coverage: 0.04983389 
+
+[1] 603
+dstat: 0.0389005 
+dstat actual: 0.0389005 
+test coverage: 0.04975124 
+boot coverage: 0.04975124 
+
+[1] 604
+dstat: 0.03889238 
+dstat actual: 0.03889238 
+test coverage: 0.04966887 
+boot coverage: 0.04966887 
+
+[1] 605
+dstat: 0.03887769 
+dstat actual: 0.03887769 
+test coverage: 0.04958678 
+boot coverage: 0.04958678 
+
+[1] 606
+dstat: 0.03888449 
+dstat actual: 0.03888449 
+test coverage: 0.04950495 
+boot coverage: 0.04950495 
+
+[1] 607
+dstat: 0.03886656 
+dstat actual: 0.03886656 
+test coverage: 0.04942339 
+boot coverage: 0.04942339 
+
+[1] 608
+dstat: 0.03885855 
+dstat actual: 0.03885855 
+test coverage: 0.04934211 
+boot coverage: 0.04934211 
+
+[1] 609
+dstat: 0.03887356 
+dstat actual: 0.03887356 
+test coverage: 0.04926108 
+boot coverage: 0.04926108 
+
+[1] 610
+dstat: 0.03886066 
+dstat actual: 0.03886066 
+test coverage: 0.04918033 
+boot coverage: 0.04918033 
+
+[1] 611
+dstat: 0.0388838 
+dstat actual: 0.0388838 
+test coverage: 0.04909984 
+boot coverage: 0.04909984 
+
+[1] 612
+dstat: 0.03891013 
+dstat actual: 0.03891013 
+test coverage: 0.04901961 
+boot coverage: 0.04901961 
+
+[1] 613
+dstat: 0.03889723 
+dstat actual: 0.03889723 
+test coverage: 0.04893964 
+boot coverage: 0.04893964 
+
+[1] 614
+dstat: 0.03889251 
+dstat actual: 0.03889251 
+test coverage: 0.04885993 
+boot coverage: 0.04885993 
+
+[1] 615
+dstat: 0.03887805 
+dstat actual: 0.03887805 
+test coverage: 0.04878049 
+boot coverage: 0.04878049 
+
+[1] 616
+dstat: 0.03885065 
+dstat actual: 0.03885065 
+test coverage: 0.0487013 
+boot coverage: 0.0487013 
+
+[1] 617
+dstat: 0.03889789 
+dstat actual: 0.03889789 
+test coverage: 0.05024311 
+boot coverage: 0.05024311 
+
+[1] 618
+dstat: 0.03888835 
+dstat actual: 0.03888835 
+test coverage: 0.05016181 
+boot coverage: 0.05016181 
+
+[1] 619
+dstat: 0.03889338 
+dstat actual: 0.03889338 
+test coverage: 0.05008078 
+boot coverage: 0.05008078 
+
+[1] 620
+dstat: 0.0388629 
+dstat actual: 0.0388629 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 621
+dstat: 0.03886795 
+dstat actual: 0.03886795 
+test coverage: 0.04991948 
+boot coverage: 0.04991948 
+
+[1] 622
+dstat: 0.03884727 
+dstat actual: 0.03884727 
+test coverage: 0.04983923 
+boot coverage: 0.04983923 
+
+[1] 623
+dstat: 0.03882504 
+dstat actual: 0.03882504 
+test coverage: 0.04975923 
+boot coverage: 0.04975923 
+
+[1] 624
+dstat: 0.03882051 
+dstat actual: 0.03882051 
+test coverage: 0.04967949 
+boot coverage: 0.04967949 
+
+[1] 625
+dstat: 0.0388144 
+dstat actual: 0.0388144 
+test coverage: 0.0496 
+boot coverage: 0.0496 
+
+[1] 626
+dstat: 0.03879393 
+dstat actual: 0.03879393 
+test coverage: 0.04952077 
+boot coverage: 0.04952077 
+
+[1] 627
+dstat: 0.03878947 
+dstat actual: 0.03878947 
+test coverage: 0.04944179 
+boot coverage: 0.04944179 
+
+[1] 628
+dstat: 0.03882643 
+dstat actual: 0.03882643 
+test coverage: 0.05095541 
+boot coverage: 0.05095541 
+
+[1] 629
+dstat: 0.03879968 
+dstat actual: 0.03879968 
+test coverage: 0.0508744 
+boot coverage: 0.0508744 
+
+[1] 630
+dstat: 0.0388254 
+dstat actual: 0.0388254 
+test coverage: 0.05079365 
+boot coverage: 0.05079365 
+
+[1] 631
+dstat: 0.03880983 
+dstat actual: 0.03880983 
+test coverage: 0.05071315 
+boot coverage: 0.05071315 
+
+[1] 632
+dstat: 0.03878797 
+dstat actual: 0.03878797 
+test coverage: 0.05063291 
+boot coverage: 0.05063291 
+
+[1] 633
+dstat: 0.03882306 
+dstat actual: 0.03882306 
+test coverage: 0.0521327 
+boot coverage: 0.0521327 
+
+[1] 634
+dstat: 0.03880442 
+dstat actual: 0.03880442 
+test coverage: 0.05205047 
+boot coverage: 0.05205047 
+
+[1] 635
+dstat: 0.0388126 
+dstat actual: 0.0388126 
+test coverage: 0.0519685 
+boot coverage: 0.0519685 
+
+[1] 636
+dstat: 0.03883333 
+dstat actual: 0.03883333 
+test coverage: 0.05188679 
+boot coverage: 0.05188679 
+
+[1] 637
+dstat: 0.03886656 
+dstat actual: 0.03886656 
+test coverage: 0.05180534 
+boot coverage: 0.05180534 
+
+[1] 638
+dstat: 0.03886207 
+dstat actual: 0.03886207 
+test coverage: 0.05172414 
+boot coverage: 0.05172414 
+
+[1] 639
+dstat: 0.03884351 
+dstat actual: 0.03884351 
+test coverage: 0.05164319 
+boot coverage: 0.05164319 
+
+[1] 640
+dstat: 0.03884063 
+dstat actual: 0.03884063 
+test coverage: 0.0515625 
+boot coverage: 0.0515625 
+
+[1] 641
+dstat: 0.03883775 
+dstat actual: 0.03883775 
+test coverage: 0.05148206 
+boot coverage: 0.05148206 
+
+[1] 642
+dstat: 0.03882866 
+dstat actual: 0.03882866 
+test coverage: 0.05140187 
+boot coverage: 0.05140187 
+
+[1] 643
+dstat: 0.0388507 
+dstat actual: 0.0388507 
+test coverage: 0.05132193 
+boot coverage: 0.05132193 
+
+[1] 644
+dstat: 0.03883851 
+dstat actual: 0.03883851 
+test coverage: 0.05124224 
+boot coverage: 0.05124224 
+
+[1] 645
+dstat: 0.03884496 
+dstat actual: 0.03884496 
+test coverage: 0.05116279 
+boot coverage: 0.05116279 
+
+[1] 646
+dstat: 0.0388483 
+dstat actual: 0.0388483 
+test coverage: 0.05108359 
+boot coverage: 0.05108359 
+
+[1] 647
+dstat: 0.03882071 
+dstat actual: 0.03882071 
+test coverage: 0.05100464 
+boot coverage: 0.05100464 
+
+[1] 648
+dstat: 0.03882253 
+dstat actual: 0.03882253 
+test coverage: 0.05092593 
+boot coverage: 0.05092593 
+
+[1] 649
+dstat: 0.03881664 
+dstat actual: 0.03881664 
+test coverage: 0.05084746 
+boot coverage: 0.05084746 
+
+[1] 650
+dstat: 0.0388 
+dstat actual: 0.0388 
+test coverage: 0.05076923 
+boot coverage: 0.05076923 
+
+[1] 651
+dstat: 0.03878187 
+dstat actual: 0.03878187 
+test coverage: 0.05069124 
+boot coverage: 0.05069124 
+
+[1] 652
+dstat: 0.03877454 
+dstat actual: 0.03877454 
+test coverage: 0.0506135 
+boot coverage: 0.0506135 
+
+[1] 653
+dstat: 0.03875345 
+dstat actual: 0.03875345 
+test coverage: 0.05053599 
+boot coverage: 0.05053599 
+
+[1] 654
+dstat: 0.03875841 
+dstat actual: 0.03875841 
+test coverage: 0.05045872 
+boot coverage: 0.05045872 
+
+[1] 655
+dstat: 0.03876183 
+dstat actual: 0.03876183 
+test coverage: 0.05038168 
+boot coverage: 0.05038168 
+
+[1] 656
+dstat: 0.03878506 
+dstat actual: 0.03878506 
+test coverage: 0.05030488 
+boot coverage: 0.05030488 
+
+[1] 657
+dstat: 0.03878995 
+dstat actual: 0.03878995 
+test coverage: 0.05022831 
+boot coverage: 0.05022831 
+
+[1] 658
+dstat: 0.03878419 
+dstat actual: 0.03878419 
+test coverage: 0.05015198 
+boot coverage: 0.05015198 
+
+[1] 659
+dstat: 0.03879666 
+dstat actual: 0.03879666 
+test coverage: 0.05007587 
+boot coverage: 0.05007587 
+
+[1] 660
+dstat: 0.0388197 
+dstat actual: 0.0388197 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 661
+dstat: 0.03881241 
+dstat actual: 0.03881241 
+test coverage: 0.04992436 
+boot coverage: 0.04992436 
+
+[1] 662
+dstat: 0.03879154 
+dstat actual: 0.03879154 
+test coverage: 0.04984894 
+boot coverage: 0.04984894 
+
+[1] 663
+dstat: 0.03877225 
+dstat actual: 0.03877225 
+test coverage: 0.04977376 
+boot coverage: 0.04977376 
+
+[1] 664
+dstat: 0.0387997 
+dstat actual: 0.0387997 
+test coverage: 0.0496988 
+boot coverage: 0.0496988 
+
+[1] 665
+dstat: 0.0388 
+dstat actual: 0.0388 
+test coverage: 0.04962406 
+boot coverage: 0.04962406 
+
+[1] 666
+dstat: 0.03881081 
+dstat actual: 0.03881081 
+test coverage: 0.04954955 
+boot coverage: 0.04954955 
+
+[1] 667
+dstat: 0.0388051 
+dstat actual: 0.0388051 
+test coverage: 0.04947526 
+boot coverage: 0.04947526 
+
+[1] 668
+dstat: 0.03882934 
+dstat actual: 0.03882934 
+test coverage: 0.0494012 
+boot coverage: 0.0494012 
+
+[1] 669
+dstat: 0.03882511 
+dstat actual: 0.03882511 
+test coverage: 0.04932735 
+boot coverage: 0.04932735 
+
+[1] 670
+dstat: 0.03882985 
+dstat actual: 0.03882985 
+test coverage: 0.04925373 
+boot coverage: 0.04925373 
+
+[1] 671
+dstat: 0.03884203 
+dstat actual: 0.03884203 
+test coverage: 0.04918033 
+boot coverage: 0.04918033 
+
+[1] 672
+dstat: 0.03883333 
+dstat actual: 0.03883333 
+test coverage: 0.04910714 
+boot coverage: 0.04910714 
+
+[1] 673
+dstat: 0.03881724 
+dstat actual: 0.03881724 
+test coverage: 0.04903418 
+boot coverage: 0.04903418 
+
+[1] 674
+dstat: 0.03881602 
+dstat actual: 0.03881602 
+test coverage: 0.04896142 
+boot coverage: 0.04896142 
+
+[1] 675
+dstat: 0.03880444 
+dstat actual: 0.03880444 
+test coverage: 0.04888889 
+boot coverage: 0.04888889 
+
+[1] 676
+dstat: 0.03878254 
+dstat actual: 0.03878254 
+test coverage: 0.04881657 
+boot coverage: 0.04881657 
+
+[1] 677
+dstat: 0.03882127 
+dstat actual: 0.03882127 
+test coverage: 0.05022157 
+boot coverage: 0.05022157 
+
+[1] 678
+dstat: 0.03881416 
+dstat actual: 0.03881416 
+test coverage: 0.05014749 
+boot coverage: 0.05014749 
+
+[1] 679
+dstat: 0.03879529 
+dstat actual: 0.03879529 
+test coverage: 0.05007364 
+boot coverage: 0.05007364 
+
+[1] 680
+dstat: 0.03878382 
+dstat actual: 0.03878382 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 681
+dstat: 0.03882819 
+dstat actual: 0.03882819 
+test coverage: 0.05139501 
+boot coverage: 0.05139501 
+
+[1] 682
+dstat: 0.03883871 
+dstat actual: 0.03883871 
+test coverage: 0.05131965 
+boot coverage: 0.05131965 
+
+[1] 683
+dstat: 0.03883309 
+dstat actual: 0.03883309 
+test coverage: 0.05124451 
+boot coverage: 0.05124451 
+
+[1] 684
+dstat: 0.03881287 
+dstat actual: 0.03881287 
+test coverage: 0.05116959 
+boot coverage: 0.05116959 
+
+[1] 685
+dstat: 0.03882044 
+dstat actual: 0.03882044 
+test coverage: 0.05109489 
+boot coverage: 0.05109489 
+
+[1] 686
+dstat: 0.03880029 
+dstat actual: 0.03880029 
+test coverage: 0.05102041 
+boot coverage: 0.05102041 
+
+[1] 687
+dstat: 0.03878603 
+dstat actual: 0.03878603 
+test coverage: 0.05094614 
+boot coverage: 0.05094614 
+
+[1] 688
+dstat: 0.03877616 
+dstat actual: 0.03877616 
+test coverage: 0.05087209 
+boot coverage: 0.05087209 
+
+[1] 689
+dstat: 0.03880406 
+dstat actual: 0.03880406 
+test coverage: 0.05079826 
+boot coverage: 0.05079826 
+
+[1] 690
+dstat: 0.03880725 
+dstat actual: 0.03880725 
+test coverage: 0.05072464 
+boot coverage: 0.05072464 
+
+[1] 691
+dstat: 0.038822 
+dstat actual: 0.038822 
+test coverage: 0.05065123 
+boot coverage: 0.05065123 
+
+[1] 692
+dstat: 0.03882659 
+dstat actual: 0.03882659 
+test coverage: 0.05057803 
+boot coverage: 0.05057803 
+
+[1] 693
+dstat: 0.03882684 
+dstat actual: 0.03882684 
+test coverage: 0.05050505 
+boot coverage: 0.05050505 
+
+[1] 694
+dstat: 0.03880548 
+dstat actual: 0.03880548 
+test coverage: 0.05043228 
+boot coverage: 0.05043228 
+
+[1] 695
+dstat: 0.03881295 
+dstat actual: 0.03881295 
+test coverage: 0.05035971 
+boot coverage: 0.05035971 
+
+[1] 696
+dstat: 0.03881034 
+dstat actual: 0.03881034 
+test coverage: 0.05028736 
+boot coverage: 0.05028736 
+
+[1] 697
+dstat: 0.03879484 
+dstat actual: 0.03879484 
+test coverage: 0.05021521 
+boot coverage: 0.05021521 
+
+[1] 698
+dstat: 0.03880229 
+dstat actual: 0.03880229 
+test coverage: 0.05014327 
+boot coverage: 0.05014327 
+
+[1] 699
+dstat: 0.03879542 
+dstat actual: 0.03879542 
+test coverage: 0.05007153 
+boot coverage: 0.05007153 
+
+[1] 700
+dstat: 0.03876857 
+dstat actual: 0.03876857 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 701
+dstat: 0.03875749 
+dstat actual: 0.03875749 
+test coverage: 0.04992867 
+boot coverage: 0.04992867 
+
+[1] 702
+dstat: 0.03876496 
+dstat actual: 0.03876496 
+test coverage: 0.04985755 
+boot coverage: 0.04985755 
+
+[1] 703
+dstat: 0.03878805 
+dstat actual: 0.03878805 
+test coverage: 0.04978663 
+boot coverage: 0.04978663 
+
+[1] 704
+dstat: 0.03878267 
+dstat actual: 0.03878267 
+test coverage: 0.04971591 
+boot coverage: 0.04971591 
+
+[1] 705
+dstat: 0.03877021 
+dstat actual: 0.03877021 
+test coverage: 0.04964539 
+boot coverage: 0.04964539 
+
+[1] 706
+dstat: 0.03875354 
+dstat actual: 0.03875354 
+test coverage: 0.04957507 
+boot coverage: 0.04957507 
+
+[1] 707
+dstat: 0.03874257 
+dstat actual: 0.03874257 
+test coverage: 0.04950495 
+boot coverage: 0.04950495 
+
+[1] 708
+dstat: 0.03873446 
+dstat actual: 0.03873446 
+test coverage: 0.04943503 
+boot coverage: 0.04943503 
+
+[1] 709
+dstat: 0.03876023 
+dstat actual: 0.03876023 
+test coverage: 0.0493653 
+boot coverage: 0.0493653 
+
+[1] 710
+dstat: 0.03874648 
+dstat actual: 0.03874648 
+test coverage: 0.04929577 
+boot coverage: 0.04929577 
+
+[1] 711
+dstat: 0.03875668 
+dstat actual: 0.03875668 
+test coverage: 0.04922644 
+boot coverage: 0.04922644 
+
+[1] 712
+dstat: 0.03873315 
+dstat actual: 0.03873315 
+test coverage: 0.0491573 
+boot coverage: 0.0491573 
+
+[1] 713
+dstat: 0.03876017 
+dstat actual: 0.03876017 
+test coverage: 0.04908836 
+boot coverage: 0.04908836 
+
+[1] 714
+dstat: 0.0387535 
+dstat actual: 0.0387535 
+test coverage: 0.04901961 
+boot coverage: 0.04901961 
+
+[1] 715
+dstat: 0.03873007 
+dstat actual: 0.03873007 
+test coverage: 0.04895105 
+boot coverage: 0.04895105 
+
+[1] 716
+dstat: 0.03870251 
+dstat actual: 0.03870251 
+test coverage: 0.04888268 
+boot coverage: 0.04888268 
+
+[1] 717
+dstat: 0.03869038 
+dstat actual: 0.03869038 
+test coverage: 0.0488145 
+boot coverage: 0.0488145 
+
+[1] 718
+dstat: 0.03871588 
+dstat actual: 0.03871588 
+test coverage: 0.04874652 
+boot coverage: 0.04874652 
+
+[1] 719
+dstat: 0.03870097 
+dstat actual: 0.03870097 
+test coverage: 0.04867872 
+boot coverage: 0.04867872 
+
+[1] 720
+dstat: 0.03868056 
+dstat actual: 0.03868056 
+test coverage: 0.04861111 
+boot coverage: 0.04861111 
+
+[1] 721
+dstat: 0.0386699 
+dstat actual: 0.0386699 
+test coverage: 0.04854369 
+boot coverage: 0.04854369 
+
+[1] 722
+dstat: 0.03867175 
+dstat actual: 0.03867175 
+test coverage: 0.04847645 
+boot coverage: 0.04847645 
+
+[1] 723
+dstat: 0.03865284 
+dstat actual: 0.03865284 
+test coverage: 0.04840941 
+boot coverage: 0.04840941 
+
+[1] 724
+dstat: 0.03864641 
+dstat actual: 0.03864641 
+test coverage: 0.04834254 
+boot coverage: 0.04834254 
+
+[1] 725
+dstat: 0.03865793 
+dstat actual: 0.03865793 
+test coverage: 0.04827586 
+boot coverage: 0.04827586 
+
+[1] 726
+dstat: 0.03868595 
+dstat actual: 0.03868595 
+test coverage: 0.04820937 
+boot coverage: 0.04820937 
+
+[1] 727
+dstat: 0.03869739 
+dstat actual: 0.03869739 
+test coverage: 0.04814305 
+boot coverage: 0.04814305 
+
+[1] 728
+dstat: 0.03871429 
+dstat actual: 0.03871429 
+test coverage: 0.04807692 
+boot coverage: 0.04807692 
+
+[1] 729
+dstat: 0.03872016 
+dstat actual: 0.03872016 
+test coverage: 0.04801097 
+boot coverage: 0.04801097 
+
+[1] 730
+dstat: 0.03873151 
+dstat actual: 0.03873151 
+test coverage: 0.04794521 
+boot coverage: 0.04794521 
+
+[1] 731
+dstat: 0.03873187 
+dstat actual: 0.03873187 
+test coverage: 0.04787962 
+boot coverage: 0.04787962 
+
+[1] 732
+dstat: 0.03871721 
+dstat actual: 0.03871721 
+test coverage: 0.04781421 
+boot coverage: 0.04781421 
+
+[1] 733
+dstat: 0.03870805 
+dstat actual: 0.03870805 
+test coverage: 0.04774898 
+boot coverage: 0.04774898 
+
+[1] 734
+dstat: 0.03869619 
+dstat actual: 0.03869619 
+test coverage: 0.04768392 
+boot coverage: 0.04768392 
+
+[1] 735
+dstat: 0.03868027 
+dstat actual: 0.03868027 
+test coverage: 0.04761905 
+boot coverage: 0.04761905 
+
+[1] 736
+dstat: 0.0386644 
+dstat actual: 0.0386644 
+test coverage: 0.04755435 
+boot coverage: 0.04755435 
+
+[1] 737
+dstat: 0.03869742 
+dstat actual: 0.03869742 
+test coverage: 0.04884668 
+boot coverage: 0.04884668 
+
+[1] 738
+dstat: 0.03869106 
+dstat actual: 0.03869106 
+test coverage: 0.04878049 
+boot coverage: 0.04878049 
+
+[1] 739
+dstat: 0.03868606 
+dstat actual: 0.03868606 
+test coverage: 0.04871448 
+boot coverage: 0.04871448 
+
+[1] 740
+dstat: 0.03867703 
+dstat actual: 0.03867703 
+test coverage: 0.04864865 
+boot coverage: 0.04864865 
+
+[1] 741
+dstat: 0.03866937 
+dstat actual: 0.03866937 
+test coverage: 0.048583 
+boot coverage: 0.048583 
+
+[1] 742
+dstat: 0.03870485 
+dstat actual: 0.03870485 
+test coverage: 0.04986523 
+boot coverage: 0.04986523 
+
+[1] 743
+dstat: 0.03871332 
+dstat actual: 0.03871332 
+test coverage: 0.04979812 
+boot coverage: 0.04979812 
+
+[1] 744
+dstat: 0.03870833 
+dstat actual: 0.03870833 
+test coverage: 0.04973118 
+boot coverage: 0.04973118 
+
+[1] 745
+dstat: 0.03869933 
+dstat actual: 0.03869933 
+test coverage: 0.04966443 
+boot coverage: 0.04966443 
+
+[1] 746
+dstat: 0.03868231 
+dstat actual: 0.03868231 
+test coverage: 0.04959786 
+boot coverage: 0.04959786 
+
+[1] 747
+dstat: 0.03866131 
+dstat actual: 0.03866131 
+test coverage: 0.04953146 
+boot coverage: 0.04953146 
+
+[1] 748
+dstat: 0.03862968 
+dstat actual: 0.03862968 
+test coverage: 0.04946524 
+boot coverage: 0.04946524 
+
+[1] 749
+dstat: 0.03861148 
+dstat actual: 0.03861148 
+test coverage: 0.0493992 
+boot coverage: 0.0493992 
+
+[1] 750
+dstat: 0.03861333 
+dstat actual: 0.03861333 
+test coverage: 0.04933333 
+boot coverage: 0.04933333 
+
+[1] 751
+dstat: 0.03862317 
+dstat actual: 0.03862317 
+test coverage: 0.04926764 
+boot coverage: 0.04926764 
+
+[1] 752
+dstat: 0.03864229 
+dstat actual: 0.03864229 
+test coverage: 0.04920213 
+boot coverage: 0.04920213 
+
+[1] 753
+dstat: 0.03864276 
+dstat actual: 0.03864276 
+test coverage: 0.04913679 
+boot coverage: 0.04913679 
+
+[1] 754
+dstat: 0.03864721 
+dstat actual: 0.03864721 
+test coverage: 0.04907162 
+boot coverage: 0.04907162 
+
+[1] 755
+dstat: 0.03863709 
+dstat actual: 0.03863709 
+test coverage: 0.04900662 
+boot coverage: 0.04900662 
+
+[1] 756
+dstat: 0.03861508 
+dstat actual: 0.03861508 
+test coverage: 0.0489418 
+boot coverage: 0.0489418 
+
+[1] 757
+dstat: 0.03859445 
+dstat actual: 0.03859445 
+test coverage: 0.04887715 
+boot coverage: 0.04887715 
+
+[1] 758
+dstat: 0.03862797 
+dstat actual: 0.03862797 
+test coverage: 0.05013193 
+boot coverage: 0.05013193 
+
+[1] 759
+dstat: 0.03861924 
+dstat actual: 0.03861924 
+test coverage: 0.05006588 
+boot coverage: 0.05006588 
+
+[1] 760
+dstat: 0.03861579 
+dstat actual: 0.03861579 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 761
+dstat: 0.03861235 
+dstat actual: 0.03861235 
+test coverage: 0.0499343 
+boot coverage: 0.0499343 
+
+[1] 762
+dstat: 0.03859055 
+dstat actual: 0.03859055 
+test coverage: 0.04986877 
+boot coverage: 0.04986877 
+
+[1] 763
+dstat: 0.03862516 
+dstat actual: 0.03862516 
+test coverage: 0.05111402 
+boot coverage: 0.05111402 
+
+[1] 764
+dstat: 0.0386178 
+dstat actual: 0.0386178 
+test coverage: 0.05104712 
+boot coverage: 0.05104712 
+
+[1] 765
+dstat: 0.03863529 
+dstat actual: 0.03863529 
+test coverage: 0.05098039 
+boot coverage: 0.05098039 
+
+[1] 766
+dstat: 0.03862402 
+dstat actual: 0.03862402 
+test coverage: 0.05091384 
+boot coverage: 0.05091384 
+
+[1] 767
+dstat: 0.03864537 
+dstat actual: 0.03864537 
+test coverage: 0.05084746 
+boot coverage: 0.05084746 
+
+[1] 768
+dstat: 0.03865885 
+dstat actual: 0.03865885 
+test coverage: 0.05078125 
+boot coverage: 0.05078125 
+
+[1] 769
+dstat: 0.0386515 
+dstat actual: 0.0386515 
+test coverage: 0.05071521 
+boot coverage: 0.05071521 
+
+[1] 770
+dstat: 0.03865065 
+dstat actual: 0.03865065 
+test coverage: 0.05064935 
+boot coverage: 0.05064935 
+
+[1] 771
+dstat: 0.03869261 
+dstat actual: 0.03869261 
+test coverage: 0.05188067 
+boot coverage: 0.05188067 
+
+[1] 772
+dstat: 0.03872668 
+dstat actual: 0.03872668 
+test coverage: 0.05310881 
+boot coverage: 0.05310881 
+
+[1] 773
+dstat: 0.0387141 
+dstat actual: 0.0387141 
+test coverage: 0.0530401 
+boot coverage: 0.0530401 
+
+[1] 774
+dstat: 0.03870801 
+dstat actual: 0.03870801 
+test coverage: 0.05297158 
+boot coverage: 0.05297158 
+
+[1] 775
+dstat: 0.03874968 
+dstat actual: 0.03874968 
+test coverage: 0.05419355 
+boot coverage: 0.05419355 
+
+[1] 776
+dstat: 0.03874742 
+dstat actual: 0.03874742 
+test coverage: 0.05412371 
+boot coverage: 0.05412371 
+
+[1] 777
+dstat: 0.03875418 
+dstat actual: 0.03875418 
+test coverage: 0.05405405 
+boot coverage: 0.05405405 
+
+[1] 778
+dstat: 0.03878406 
+dstat actual: 0.03878406 
+test coverage: 0.05526992 
+boot coverage: 0.05526992 
+
+[1] 779
+dstat: 0.03877535 
+dstat actual: 0.03877535 
+test coverage: 0.05519897 
+boot coverage: 0.05519897 
+
+[1] 780
+dstat: 0.03875513 
+dstat actual: 0.03875513 
+test coverage: 0.05512821 
+boot coverage: 0.05512821 
+
+[1] 781
+dstat: 0.0387388 
+dstat actual: 0.0387388 
+test coverage: 0.05505762 
+boot coverage: 0.05505762 
+
+[1] 782
+dstat: 0.03873529 
+dstat actual: 0.03873529 
+test coverage: 0.05498721 
+boot coverage: 0.05498721 
+
+[1] 783
+dstat: 0.03875096 
+dstat actual: 0.03875096 
+test coverage: 0.05491699 
+boot coverage: 0.05491699 
+
+[1] 784
+dstat: 0.03874745 
+dstat actual: 0.03874745 
+test coverage: 0.05484694 
+boot coverage: 0.05484694 
+
+[1] 785
+dstat: 0.03876815 
+dstat actual: 0.03876815 
+test coverage: 0.05477707 
+boot coverage: 0.05477707 
+
+[1] 786
+dstat: 0.0387659 
+dstat actual: 0.0387659 
+test coverage: 0.05470738 
+boot coverage: 0.05470738 
+
+[1] 787
+dstat: 0.03874968 
+dstat actual: 0.03874968 
+test coverage: 0.05463787 
+boot coverage: 0.05463787 
+
+[1] 788
+dstat: 0.03877411 
+dstat actual: 0.03877411 
+test coverage: 0.05456853 
+boot coverage: 0.05456853 
+
+[1] 789
+dstat: 0.03876806 
+dstat actual: 0.03876806 
+test coverage: 0.05449937 
+boot coverage: 0.05449937 
+
+[1] 790
+dstat: 0.03878228 
+dstat actual: 0.03878228 
+test coverage: 0.05443038 
+boot coverage: 0.05443038 
+
+[1] 791
+dstat: 0.03877876 
+dstat actual: 0.03877876 
+test coverage: 0.05436157 
+boot coverage: 0.05436157 
+
+[1] 792
+dstat: 0.03876515 
+dstat actual: 0.03876515 
+test coverage: 0.05429293 
+boot coverage: 0.05429293 
+
+[1] 793
+dstat: 0.0387604 
+dstat actual: 0.0387604 
+test coverage: 0.05422446 
+boot coverage: 0.05422446 
+
+[1] 794
+dstat: 0.03877456 
+dstat actual: 0.03877456 
+test coverage: 0.05415617 
+boot coverage: 0.05415617 
+
+[1] 795
+dstat: 0.03878868 
+dstat actual: 0.03878868 
+test coverage: 0.05408805 
+boot coverage: 0.05408805 
+
+[1] 796
+dstat: 0.03877889 
+dstat actual: 0.03877889 
+test coverage: 0.0540201 
+boot coverage: 0.0540201 
+
+[1] 797
+dstat: 0.03876161 
+dstat actual: 0.03876161 
+test coverage: 0.05395232 
+boot coverage: 0.05395232 
+
+[1] 798
+dstat: 0.03874812 
+dstat actual: 0.03874812 
+test coverage: 0.05388471 
+boot coverage: 0.05388471 
+
+[1] 799
+dstat: 0.03873967 
+dstat actual: 0.03873967 
+test coverage: 0.05381727 
+boot coverage: 0.05381727 
+
+[1] 800
+dstat: 0.03874 
+dstat actual: 0.03874 
+test coverage: 0.05375 
+boot coverage: 0.05375 
+
+[1] 801
+dstat: 0.03873783 
+dstat actual: 0.03873783 
+test coverage: 0.0536829 
+boot coverage: 0.0536829 
+
+[1] 802
+dstat: 0.03872943 
+dstat actual: 0.03872943 
+test coverage: 0.05361596 
+boot coverage: 0.05361596 
+
+[1] 803
+dstat: 0.03874346 
+dstat actual: 0.03874346 
+test coverage: 0.05354919 
+boot coverage: 0.05354919 
+
+[1] 804
+dstat: 0.03873632 
+dstat actual: 0.03873632 
+test coverage: 0.05348259 
+boot coverage: 0.05348259 
+
+[1] 805
+dstat: 0.03874783 
+dstat actual: 0.03874783 
+test coverage: 0.05341615 
+boot coverage: 0.05341615 
+
+[1] 806
+dstat: 0.03875062 
+dstat actual: 0.03875062 
+test coverage: 0.05334988 
+boot coverage: 0.05334988 
+
+[1] 807
+dstat: 0.03876084 
+dstat actual: 0.03876084 
+test coverage: 0.05328377 
+boot coverage: 0.05328377 
+
+[1] 808
+dstat: 0.03876361 
+dstat actual: 0.03876361 
+test coverage: 0.05321782 
+boot coverage: 0.05321782 
+
+[1] 809
+dstat: 0.03876885 
+dstat actual: 0.03876885 
+test coverage: 0.05315204 
+boot coverage: 0.05315204 
+
+[1] 810
+dstat: 0.03876543 
+dstat actual: 0.03876543 
+test coverage: 0.05308642 
+boot coverage: 0.05308642 
+
+[1] 811
+dstat: 0.03874969 
+dstat actual: 0.03874969 
+test coverage: 0.05302096 
+boot coverage: 0.05302096 
+
+[1] 812
+dstat: 0.03873153 
+dstat actual: 0.03873153 
+test coverage: 0.05295567 
+boot coverage: 0.05295567 
+
+[1] 813
+dstat: 0.03873186 
+dstat actual: 0.03873186 
+test coverage: 0.05289053 
+boot coverage: 0.05289053 
+
+[1] 814
+dstat: 0.03874324 
+dstat actual: 0.03874324 
+test coverage: 0.05282555 
+boot coverage: 0.05282555 
+
+[1] 815
+dstat: 0.03876319 
+dstat actual: 0.03876319 
+test coverage: 0.05276074 
+boot coverage: 0.05276074 
+
+[1] 816
+dstat: 0.03876593 
+dstat actual: 0.03876593 
+test coverage: 0.05269608 
+boot coverage: 0.05269608 
+
+[1] 817
+dstat: 0.03877234 
+dstat actual: 0.03877234 
+test coverage: 0.05263158 
+boot coverage: 0.05263158 
+
+[1] 818
+dstat: 0.03876895 
+dstat actual: 0.03876895 
+test coverage: 0.05256724 
+boot coverage: 0.05256724 
+
+[1] 819
+dstat: 0.03875824 
+dstat actual: 0.03875824 
+test coverage: 0.05250305 
+boot coverage: 0.05250305 
+
+[1] 820
+dstat: 0.03876585 
+dstat actual: 0.03876585 
+test coverage: 0.05243902 
+boot coverage: 0.05243902 
+
+[1] 821
+dstat: 0.038743 
+dstat actual: 0.038743 
+test coverage: 0.05237515 
+boot coverage: 0.05237515 
+
+[1] 822
+dstat: 0.03871898 
+dstat actual: 0.03871898 
+test coverage: 0.05231144 
+boot coverage: 0.05231144 
+
+[1] 823
+dstat: 0.03871567 
+dstat actual: 0.03871567 
+test coverage: 0.05224787 
+boot coverage: 0.05224787 
+
+[1] 824
+dstat: 0.03871359 
+dstat actual: 0.03871359 
+test coverage: 0.05218447 
+boot coverage: 0.05218447 
+
+[1] 825
+dstat: 0.03871273 
+dstat actual: 0.03871273 
+test coverage: 0.05212121 
+boot coverage: 0.05212121 
+
+[1] 826
+dstat: 0.03869855 
+dstat actual: 0.03869855 
+test coverage: 0.05205811 
+boot coverage: 0.05205811 
+
+[1] 827
+dstat: 0.0386844 
+dstat actual: 0.0386844 
+test coverage: 0.05199516 
+boot coverage: 0.05199516 
+
+[1] 828
+dstat: 0.03871256 
+dstat actual: 0.03871256 
+test coverage: 0.0531401 
+boot coverage: 0.0531401 
+
+[1] 829
+dstat: 0.03869964 
+dstat actual: 0.03869964 
+test coverage: 0.053076 
+boot coverage: 0.053076 
+
+[1] 830
+dstat: 0.03869639 
+dstat actual: 0.03869639 
+test coverage: 0.05301205 
+boot coverage: 0.05301205 
+
+[1] 831
+dstat: 0.03869675 
+dstat actual: 0.03869675 
+test coverage: 0.05294826 
+boot coverage: 0.05294826 
+
+[1] 832
+dstat: 0.03870433 
+dstat actual: 0.03870433 
+test coverage: 0.05288462 
+boot coverage: 0.05288462 
+
+[1] 833
+dstat: 0.03869868 
+dstat actual: 0.03869868 
+test coverage: 0.05282113 
+boot coverage: 0.05282113 
+
+[1] 834
+dstat: 0.03868945 
+dstat actual: 0.03868945 
+test coverage: 0.05275779 
+boot coverage: 0.05275779 
+
+[1] 835
+dstat: 0.0387018 
+dstat actual: 0.0387018 
+test coverage: 0.05269461 
+boot coverage: 0.05269461 
+
+[1] 836
+dstat: 0.03870574 
+dstat actual: 0.03870574 
+test coverage: 0.05263158 
+boot coverage: 0.05263158 
+
+[1] 837
+dstat: 0.03872282 
+dstat actual: 0.03872282 
+test coverage: 0.0525687 
+boot coverage: 0.0525687 
+
+[1] 838
+dstat: 0.0387148 
+dstat actual: 0.0387148 
+test coverage: 0.05250597 
+boot coverage: 0.05250597 
+
+[1] 839
+dstat: 0.03870679 
+dstat actual: 0.03870679 
+test coverage: 0.05244338 
+boot coverage: 0.05244338 
+
+[1] 840
+dstat: 0.03871429 
+dstat actual: 0.03871429 
+test coverage: 0.05238095 
+boot coverage: 0.05238095 
+
+[1] 841
+dstat: 0.03872176 
+dstat actual: 0.03872176 
+test coverage: 0.05231867 
+boot coverage: 0.05231867 
+
+[1] 842
+dstat: 0.03871853 
+dstat actual: 0.03871853 
+test coverage: 0.05225653 
+boot coverage: 0.05225653 
+
+[1] 843
+dstat: 0.0386987 
+dstat actual: 0.0386987 
+test coverage: 0.05219454 
+boot coverage: 0.05219454 
+
+[1] 844
+dstat: 0.03870379 
+dstat actual: 0.03870379 
+test coverage: 0.0521327 
+boot coverage: 0.0521327 
+
+[1] 845
+dstat: 0.03869586 
+dstat actual: 0.03869586 
+test coverage: 0.05207101 
+boot coverage: 0.05207101 
+
+[1] 846
+dstat: 0.03869267 
+dstat actual: 0.03869267 
+test coverage: 0.05200946 
+boot coverage: 0.05200946 
+
+[1] 847
+dstat: 0.03870956 
+dstat actual: 0.03870956 
+test coverage: 0.05194805 
+boot coverage: 0.05194805 
+
+[1] 848
+dstat: 0.03870165 
+dstat actual: 0.03870165 
+test coverage: 0.05188679 
+boot coverage: 0.05188679 
+
+[1] 849
+dstat: 0.03868316 
+dstat actual: 0.03868316 
+test coverage: 0.05182568 
+boot coverage: 0.05182568 
+
+[1] 850
+dstat: 0.03869176 
+dstat actual: 0.03869176 
+test coverage: 0.05176471 
+boot coverage: 0.05176471 
+
+[1] 851
+dstat: 0.03867333 
+dstat actual: 0.03867333 
+test coverage: 0.05170388 
+boot coverage: 0.05170388 
+
+[1] 852
+dstat: 0.03869131 
+dstat actual: 0.03869131 
+test coverage: 0.05164319 
+boot coverage: 0.05164319 
+
+[1] 853
+dstat: 0.03872216 
+dstat actual: 0.03872216 
+test coverage: 0.05275498 
+boot coverage: 0.05275498 
+
+[1] 854
+dstat: 0.0387096 
+dstat actual: 0.0387096 
+test coverage: 0.05269321 
+boot coverage: 0.05269321 
+
+[1] 855
+dstat: 0.03872281 
+dstat actual: 0.03872281 
+test coverage: 0.05263158 
+boot coverage: 0.05263158 
+
+[1] 856
+dstat: 0.0387278 
+dstat actual: 0.0387278 
+test coverage: 0.05257009 
+boot coverage: 0.05257009 
+
+[1] 857
+dstat: 0.03873046 
+dstat actual: 0.03873046 
+test coverage: 0.05250875 
+boot coverage: 0.05250875 
+
+[1] 858
+dstat: 0.03872378 
+dstat actual: 0.03872378 
+test coverage: 0.05244755 
+boot coverage: 0.05244755 
+
+[1] 859
+dstat: 0.03873225 
+dstat actual: 0.03873225 
+test coverage: 0.0523865 
+boot coverage: 0.0523865 
+
+[1] 860
+dstat: 0.03876163 
+dstat actual: 0.03876163 
+test coverage: 0.05348837 
+boot coverage: 0.05348837 
+
+[1] 861
+dstat: 0.03873751 
+dstat actual: 0.03873751 
+test coverage: 0.05342625 
+boot coverage: 0.05342625 
+
+[1] 862
+dstat: 0.03873318 
+dstat actual: 0.03873318 
+test coverage: 0.05336427 
+boot coverage: 0.05336427 
+
+[1] 863
+dstat: 0.03873349 
+dstat actual: 0.03873349 
+test coverage: 0.05330243 
+boot coverage: 0.05330243 
+
+[1] 864
+dstat: 0.03873032 
+dstat actual: 0.03873032 
+test coverage: 0.05324074 
+boot coverage: 0.05324074 
+
+[1] 865
+dstat: 0.03875491 
+dstat actual: 0.03875491 
+test coverage: 0.05317919 
+boot coverage: 0.05317919 
+
+[1] 866
+dstat: 0.0387448 
+dstat actual: 0.0387448 
+test coverage: 0.05311778 
+boot coverage: 0.05311778 
+
+[1] 867
+dstat: 0.03874048 
+dstat actual: 0.03874048 
+test coverage: 0.05305652 
+boot coverage: 0.05305652 
+
+[1] 868
+dstat: 0.03874885 
+dstat actual: 0.03874885 
+test coverage: 0.05299539 
+boot coverage: 0.05299539 
+
+[1] 869
+dstat: 0.03875259 
+dstat actual: 0.03875259 
+test coverage: 0.05293441 
+boot coverage: 0.05293441 
+
+[1] 870
+dstat: 0.03877011 
+dstat actual: 0.03877011 
+test coverage: 0.05287356 
+boot coverage: 0.05287356 
+
+[1] 871
+dstat: 0.03875086 
+dstat actual: 0.03875086 
+test coverage: 0.05281286 
+boot coverage: 0.05281286 
+
+[1] 872
+dstat: 0.03875573 
+dstat actual: 0.03875573 
+test coverage: 0.05275229 
+boot coverage: 0.05275229 
+
+[1] 873
+dstat: 0.03878351 
+dstat actual: 0.03878351 
+test coverage: 0.05383734 
+boot coverage: 0.05383734 
+
+[1] 874
+dstat: 0.03877002 
+dstat actual: 0.03877002 
+test coverage: 0.05377574 
+boot coverage: 0.05377574 
+
+[1] 875
+dstat: 0.03878514 
+dstat actual: 0.03878514 
+test coverage: 0.05371429 
+boot coverage: 0.05371429 
+
+[1] 876
+dstat: 0.03877397 
+dstat actual: 0.03877397 
+test coverage: 0.05365297 
+boot coverage: 0.05365297 
+
+[1] 877
+dstat: 0.03875143 
+dstat actual: 0.03875143 
+test coverage: 0.05359179 
+boot coverage: 0.05359179 
+
+[1] 878
+dstat: 0.03874829 
+dstat actual: 0.03874829 
+test coverage: 0.05353075 
+boot coverage: 0.05353075 
+
+[1] 879
+dstat: 0.0387463 
+dstat actual: 0.0387463 
+test coverage: 0.05346985 
+boot coverage: 0.05346985 
+
+[1] 880
+dstat: 0.03873636 
+dstat actual: 0.03873636 
+test coverage: 0.05340909 
+boot coverage: 0.05340909 
+
+[1] 881
+dstat: 0.03872872 
+dstat actual: 0.03872872 
+test coverage: 0.05334847 
+boot coverage: 0.05334847 
+
+[1] 882
+dstat: 0.03871202 
+dstat actual: 0.03871202 
+test coverage: 0.05328798 
+boot coverage: 0.05328798 
+
+[1] 883
+dstat: 0.03870442 
+dstat actual: 0.03870442 
+test coverage: 0.05322763 
+boot coverage: 0.05322763 
+
+[1] 884
+dstat: 0.03868665 
+dstat actual: 0.03868665 
+test coverage: 0.05316742 
+boot coverage: 0.05316742 
+
+[1] 885
+dstat: 0.03868023 
+dstat actual: 0.03868023 
+test coverage: 0.05310734 
+boot coverage: 0.05310734 
+
+[1] 886
+dstat: 0.03866253 
+dstat actual: 0.03866253 
+test coverage: 0.0530474 
+boot coverage: 0.0530474 
+
+[1] 887
+dstat: 0.03867756 
+dstat actual: 0.03867756 
+test coverage: 0.0529876 
+boot coverage: 0.0529876 
+
+[1] 888
+dstat: 0.03866329 
+dstat actual: 0.03866329 
+test coverage: 0.05292793 
+boot coverage: 0.05292793 
+
+[1] 889
+dstat: 0.03868729 
+dstat actual: 0.03868729 
+test coverage: 0.05286839 
+boot coverage: 0.05286839 
+
+[1] 890
+dstat: 0.03868539 
+dstat actual: 0.03868539 
+test coverage: 0.05280899 
+boot coverage: 0.05280899 
+
+[1] 891
+dstat: 0.03868126 
+dstat actual: 0.03868126 
+test coverage: 0.05274972 
+boot coverage: 0.05274972 
+
+[1] 892
+dstat: 0.03866592 
+dstat actual: 0.03866592 
+test coverage: 0.05269058 
+boot coverage: 0.05269058 
+
+[1] 893
+dstat: 0.03866629 
+dstat actual: 0.03866629 
+test coverage: 0.05263158 
+boot coverage: 0.05263158 
+
+[1] 894
+dstat: 0.0386566 
+dstat actual: 0.0386566 
+test coverage: 0.05257271 
+boot coverage: 0.05257271 
+
+[1] 895
+dstat: 0.03864469 
+dstat actual: 0.03864469 
+test coverage: 0.05251397 
+boot coverage: 0.05251397 
+
+[1] 896
+dstat: 0.03863839 
+dstat actual: 0.03863839 
+test coverage: 0.05245536 
+boot coverage: 0.05245536 
+
+[1] 897
+dstat: 0.03863768 
+dstat actual: 0.03863768 
+test coverage: 0.05239688 
+boot coverage: 0.05239688 
+
+[1] 898
+dstat: 0.03863029 
+dstat actual: 0.03863029 
+test coverage: 0.05233853 
+boot coverage: 0.05233853 
+
+[1] 899
+dstat: 0.0386307 
+dstat actual: 0.0386307 
+test coverage: 0.05228031 
+boot coverage: 0.05228031 
+
+[1] 900
+dstat: 0.03862556 
+dstat actual: 0.03862556 
+test coverage: 0.05222222 
+boot coverage: 0.05222222 
+
+[1] 901
+dstat: 0.03861709 
+dstat actual: 0.03861709 
+test coverage: 0.05216426 
+boot coverage: 0.05216426 
+
+[1] 902
+dstat: 0.038602 
+dstat actual: 0.038602 
+test coverage: 0.05210643 
+boot coverage: 0.05210643 
+
+[1] 903
+dstat: 0.03860133 
+dstat actual: 0.03860133 
+test coverage: 0.05204873 
+boot coverage: 0.05204873 
+
+[1] 904
+dstat: 0.03861836 
+dstat actual: 0.03861836 
+test coverage: 0.05199115 
+boot coverage: 0.05199115 
+
+[1] 905
+dstat: 0.03861878 
+dstat actual: 0.03861878 
+test coverage: 0.0519337 
+boot coverage: 0.0519337 
+
+[1] 906
+dstat: 0.03860817 
+dstat actual: 0.03860817 
+test coverage: 0.05187638 
+boot coverage: 0.05187638 
+
+[1] 907
+dstat: 0.03858875 
+dstat actual: 0.03858875 
+test coverage: 0.05181918 
+boot coverage: 0.05181918 
+
+[1] 908
+dstat: 0.03860352 
+dstat actual: 0.03860352 
+test coverage: 0.05176211 
+boot coverage: 0.05176211 
+
+[1] 909
+dstat: 0.03859626 
+dstat actual: 0.03859626 
+test coverage: 0.05170517 
+boot coverage: 0.05170517 
+
+[1] 910
+dstat: 0.0386 
+dstat actual: 0.0386 
+test coverage: 0.05164835 
+boot coverage: 0.05164835 
+
+[1] 911
+dstat: 0.03859934 
+dstat actual: 0.03859934 
+test coverage: 0.05159166 
+boot coverage: 0.05159166 
+
+[1] 912
+dstat: 0.03859649 
+dstat actual: 0.03859649 
+test coverage: 0.05153509 
+boot coverage: 0.05153509 
+
+[1] 913
+dstat: 0.03859036 
+dstat actual: 0.03859036 
+test coverage: 0.05147864 
+boot coverage: 0.05147864 
+
+[1] 914
+dstat: 0.03858972 
+dstat actual: 0.03858972 
+test coverage: 0.05142232 
+boot coverage: 0.05142232 
+
+[1] 915
+dstat: 0.03859891 
+dstat actual: 0.03859891 
+test coverage: 0.05136612 
+boot coverage: 0.05136612 
+
+[1] 916
+dstat: 0.03858297 
+dstat actual: 0.03858297 
+test coverage: 0.05131004 
+boot coverage: 0.05131004 
+
+[1] 917
+dstat: 0.03860523 
+dstat actual: 0.03860523 
+test coverage: 0.05125409 
+boot coverage: 0.05125409 
+
+[1] 918
+dstat: 0.03860131 
+dstat actual: 0.03860131 
+test coverage: 0.05119826 
+boot coverage: 0.05119826 
+
+[1] 919
+dstat: 0.03860174 
+dstat actual: 0.03860174 
+test coverage: 0.05114255 
+boot coverage: 0.05114255 
+
+[1] 920
+dstat: 0.0386337 
+dstat actual: 0.0386337 
+test coverage: 0.05217391 
+boot coverage: 0.05217391 
+
+[1] 921
+dstat: 0.03861564 
+dstat actual: 0.03861564 
+test coverage: 0.05211726 
+boot coverage: 0.05211726 
+
+[1] 922
+dstat: 0.03861497 
+dstat actual: 0.03861497 
+test coverage: 0.05206074 
+boot coverage: 0.05206074 
+
+[1] 923
+dstat: 0.03862405 
+dstat actual: 0.03862405 
+test coverage: 0.05200433 
+boot coverage: 0.05200433 
+
+[1] 924
+dstat: 0.03860931 
+dstat actual: 0.03860931 
+test coverage: 0.05194805 
+boot coverage: 0.05194805 
+
+[1] 925
+dstat: 0.0386227 
+dstat actual: 0.0386227 
+test coverage: 0.05189189 
+boot coverage: 0.05189189 
+
+[1] 926
+dstat: 0.03863175 
+dstat actual: 0.03863175 
+test coverage: 0.05183585 
+boot coverage: 0.05183585 
+
+[1] 927
+dstat: 0.03862028 
+dstat actual: 0.03862028 
+test coverage: 0.05177994 
+boot coverage: 0.05177994 
+
+[1] 928
+dstat: 0.03861853 
+dstat actual: 0.03861853 
+test coverage: 0.05172414 
+boot coverage: 0.05172414 
+
+[1] 929
+dstat: 0.03861895 
+dstat actual: 0.03861895 
+test coverage: 0.05166846 
+boot coverage: 0.05166846 
+
+[1] 930
+dstat: 0.03861828 
+dstat actual: 0.03861828 
+test coverage: 0.0516129 
+boot coverage: 0.0516129 
+
+[1] 931
+dstat: 0.03862084 
+dstat actual: 0.03862084 
+test coverage: 0.05155747 
+boot coverage: 0.05155747 
+
+[1] 932
+dstat: 0.03861695 
+dstat actual: 0.03861695 
+test coverage: 0.05150215 
+boot coverage: 0.05150215 
+
+[1] 933
+dstat: 0.03859914 
+dstat actual: 0.03859914 
+test coverage: 0.05144695 
+boot coverage: 0.05144695 
+
+[1] 934
+dstat: 0.03859422 
+dstat actual: 0.03859422 
+test coverage: 0.05139186 
+boot coverage: 0.05139186 
+
+[1] 935
+dstat: 0.03859465 
+dstat actual: 0.03859465 
+test coverage: 0.0513369 
+boot coverage: 0.0513369 
+
+[1] 936
+dstat: 0.03859295 
+dstat actual: 0.03859295 
+test coverage: 0.05128205 
+boot coverage: 0.05128205 
+
+[1] 937
+dstat: 0.03860085 
+dstat actual: 0.03860085 
+test coverage: 0.05122732 
+boot coverage: 0.05122732 
+
+[1] 938
+dstat: 0.03860554 
+dstat actual: 0.03860554 
+test coverage: 0.05117271 
+boot coverage: 0.05117271 
+
+[1] 939
+dstat: 0.03861342 
+dstat actual: 0.03861342 
+test coverage: 0.05111821 
+boot coverage: 0.05111821 
+
+[1] 940
+dstat: 0.0386234 
+dstat actual: 0.0386234 
+test coverage: 0.05106383 
+boot coverage: 0.05106383 
+
+[1] 941
+dstat: 0.0386238 
+dstat actual: 0.0386238 
+test coverage: 0.05100956 
+boot coverage: 0.05100956 
+
+[1] 942
+dstat: 0.03861996 
+dstat actual: 0.03861996 
+test coverage: 0.05095541 
+boot coverage: 0.05095541 
+
+[1] 943
+dstat: 0.0386299 
+dstat actual: 0.0386299 
+test coverage: 0.05090138 
+boot coverage: 0.05090138 
+
+[1] 944
+dstat: 0.03861653 
+dstat actual: 0.03861653 
+test coverage: 0.05084746 
+boot coverage: 0.05084746 
+
+[1] 945
+dstat: 0.03861376 
+dstat actual: 0.03861376 
+test coverage: 0.05079365 
+boot coverage: 0.05079365 
+
+[1] 946
+dstat: 0.03860254 
+dstat actual: 0.03860254 
+test coverage: 0.05073996 
+boot coverage: 0.05073996 
+
+[1] 947
+dstat: 0.03860929 
+dstat actual: 0.03860929 
+test coverage: 0.05068638 
+boot coverage: 0.05068638 
+
+[1] 948
+dstat: 0.03860865 
+dstat actual: 0.03860865 
+test coverage: 0.05063291 
+boot coverage: 0.05063291 
+
+[1] 949
+dstat: 0.03859747 
+dstat actual: 0.03859747 
+test coverage: 0.05057956 
+boot coverage: 0.05057956 
+
+[1] 950
+dstat: 0.03860316 
+dstat actual: 0.03860316 
+test coverage: 0.05052632 
+boot coverage: 0.05052632 
+
+[1] 951
+dstat: 0.03860778 
+dstat actual: 0.03860778 
+test coverage: 0.05047319 
+boot coverage: 0.05047319 
+
+[1] 952
+dstat: 0.03860504 
+dstat actual: 0.03860504 
+test coverage: 0.05042017 
+boot coverage: 0.05042017 
+
+[1] 953
+dstat: 0.03861385 
+dstat actual: 0.03861385 
+test coverage: 0.05036726 
+boot coverage: 0.05036726 
+
+[1] 954
+dstat: 0.03861006 
+dstat actual: 0.03861006 
+test coverage: 0.05031447 
+boot coverage: 0.05031447 
+
+[1] 955
+dstat: 0.03859686 
+dstat actual: 0.03859686 
+test coverage: 0.05026178 
+boot coverage: 0.05026178 
+
+[1] 956
+dstat: 0.03858891 
+dstat actual: 0.03858891 
+test coverage: 0.05020921 
+boot coverage: 0.05020921 
+
+[1] 957
+dstat: 0.0385768 
+dstat actual: 0.0385768 
+test coverage: 0.05015674 
+boot coverage: 0.05015674 
+
+[1] 958
+dstat: 0.03858977 
+dstat actual: 0.03858977 
+test coverage: 0.05010438 
+boot coverage: 0.05010438 
+
+[1] 959
+dstat: 0.0386048 
+dstat actual: 0.0386048 
+test coverage: 0.05005214 
+boot coverage: 0.05005214 
+
+[1] 960
+dstat: 0.03860938 
+dstat actual: 0.03860938 
+test coverage: 0.05 
+boot coverage: 0.05 
+
+[1] 961
+dstat: 0.03861811 
+dstat actual: 0.03861811 
+test coverage: 0.04994797 
+boot coverage: 0.04994797 
+
+[1] 962
+dstat: 0.03862786 
+dstat actual: 0.03862786 
+test coverage: 0.04989605 
+boot coverage: 0.04989605 
+
+[1] 963
+dstat: 0.03862201 
+dstat actual: 0.03862201 
+test coverage: 0.04984424 
+boot coverage: 0.04984424 
+
+[1] 964
+dstat: 0.03862448 
+dstat actual: 0.03862448 
+test coverage: 0.04979253 
+boot coverage: 0.04979253 
+
+[1] 965
+dstat: 0.03861451 
+dstat actual: 0.03861451 
+test coverage: 0.04974093 
+boot coverage: 0.04974093 
+
+[1] 966
+dstat: 0.03862112 
+dstat actual: 0.03862112 
+test coverage: 0.04968944 
+boot coverage: 0.04968944 
+
+[1] 967
+dstat: 0.03863806 
+dstat actual: 0.03863806 
+test coverage: 0.04963806 
+boot coverage: 0.04963806 
+
+[1] 968
+dstat: 0.03863843 
+dstat actual: 0.03863843 
+test coverage: 0.04958678 
+boot coverage: 0.04958678 
+
+[1] 969
+dstat: 0.0386419 
+dstat actual: 0.0386419 
+test coverage: 0.0495356 
+boot coverage: 0.0495356 
+
+[1] 970
+dstat: 0.03864433 
+dstat actual: 0.03864433 
+test coverage: 0.04948454 
+boot coverage: 0.04948454 
+
+[1] 971
+dstat: 0.0386622 
+dstat actual: 0.0386622 
+test coverage: 0.04943357 
+boot coverage: 0.04943357 
+
+[1] 972
+dstat: 0.03864712 
+dstat actual: 0.03864712 
+test coverage: 0.04938272 
+boot coverage: 0.04938272 
+
+[1] 973
+dstat: 0.03864234 
+dstat actual: 0.03864234 
+test coverage: 0.04933196 
+boot coverage: 0.04933196 
+
+[1] 974
+dstat: 0.03863244 
+dstat actual: 0.03863244 
+test coverage: 0.04928131 
+boot coverage: 0.04928131 
+
+[1] 975
+dstat: 0.03864 
+dstat actual: 0.03864 
+test coverage: 0.04923077 
+boot coverage: 0.04923077 
+
+[1] 976
+dstat: 0.03864549 
+dstat actual: 0.03864549 
+test coverage: 0.04918033 
+boot coverage: 0.04918033 
+
+[1] 977
+dstat: 0.03864688 
+dstat actual: 0.03864688 
+test coverage: 0.04912999 
+boot coverage: 0.04912999 
+
+[1] 978
+dstat: 0.03864622 
+dstat actual: 0.03864622 
+test coverage: 0.04907975 
+boot coverage: 0.04907975 
+
+[1] 979
+dstat: 0.03864045 
+dstat actual: 0.03864045 
+test coverage: 0.04902962 
+boot coverage: 0.04902962 
+
+[1] 980
+dstat: 0.03862245 
+dstat actual: 0.03862245 
+test coverage: 0.04897959 
+boot coverage: 0.04897959 
+
+[1] 981
+dstat: 0.03862793 
+dstat actual: 0.03862793 
+test coverage: 0.04892966 
+boot coverage: 0.04892966 
+
+[1] 982
+dstat: 0.03862016 
+dstat actual: 0.03862016 
+test coverage: 0.04887984 
+boot coverage: 0.04887984 
+
+[1] 983
+dstat: 0.03860834 
+dstat actual: 0.03860834 
+test coverage: 0.04883011 
+boot coverage: 0.04883011 
+
+[1] 984
+dstat: 0.03862297 
+dstat actual: 0.03862297 
+test coverage: 0.04878049 
+boot coverage: 0.04878049 
+
+[1] 985
+dstat: 0.03860203 
+dstat actual: 0.03860203 
+test coverage: 0.04873096 
+boot coverage: 0.04873096 
+
+[1] 986
+dstat: 0.03861765 
+dstat actual: 0.03861765 
+test coverage: 0.04868154 
+boot coverage: 0.04868154 
+
+[1] 987
+dstat: 0.03861499 
+dstat actual: 0.03861499 
+test coverage: 0.04863222 
+boot coverage: 0.04863222 
+
+[1] 988
+dstat: 0.03863057 
+dstat actual: 0.03863057 
+test coverage: 0.048583 
+boot coverage: 0.048583 
+
+[1] 989
+dstat: 0.03863802 
+dstat actual: 0.03863802 
+test coverage: 0.04853387 
+boot coverage: 0.04853387 
+
+[1] 990
+dstat: 0.03863434 
+dstat actual: 0.03863434 
+test coverage: 0.04848485 
+boot coverage: 0.04848485 
+
+[1] 991
+dstat: 0.03862462 
+dstat actual: 0.03862462 
+test coverage: 0.04843592 
+boot coverage: 0.04843592 
+
+[1] 992
+dstat: 0.03861694 
+dstat actual: 0.03861694 
+test coverage: 0.0483871 
+boot coverage: 0.0483871 
+
+[1] 993
+dstat: 0.03863545 
+dstat actual: 0.03863545 
+test coverage: 0.04833837 
+boot coverage: 0.04833837 
+
+[1] 994
+dstat: 0.03865292 
+dstat actual: 0.03865292 
+test coverage: 0.04828974 
+boot coverage: 0.04828974 
+
+[1] 995
+dstat: 0.03864623 
+dstat actual: 0.03864623 
+test coverage: 0.04824121 
+boot coverage: 0.04824121 
+
+[1] 996
+dstat: 0.03863454 
+dstat actual: 0.03863454 
+test coverage: 0.04819277 
+boot coverage: 0.04819277 
+
+[1] 997
+dstat: 0.03862588 
+dstat actual: 0.03862588 
+test coverage: 0.04814443 
+boot coverage: 0.04814443 
+
+[1] 998
+dstat: 0.03861323 
+dstat actual: 0.03861323 
+test coverage: 0.04809619 
+boot coverage: 0.04809619 
+
+[1] 999
+dstat: 0.03860861 
+dstat actual: 0.03860861 
+test coverage: 0.04804805 
+boot coverage: 0.04804805 
+
+[1] 1000
+dstat: 0.038591 
+dstat actual: 0.038591 
+test coverage: 0.048 
+boot coverage: 0.048 
+
+> 
+> #print(sum(pvals<.05)/length(pvals))
+> 
+> mean(dstats)
+[1] 0.038591
+> 
+> 
+> proc.time()
+     user    system   elapsed 
+35189.870    15.568 35205.855 

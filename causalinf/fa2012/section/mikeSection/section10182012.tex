@@ -1,0 +1,173 @@
+\documentclass{beamer}
+\usepackage{multicol}
+\usepackage{natbib} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{listings}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+\newcommand{\field}[1]{\mathbb{#1}}
+
+
+\lstloadlanguages{R}
+\lstdefinelanguage{Renhanced}[]{R}{%
+  morekeywords={acf,ar,arima,arima.sim,colMeans,colSums,is.na,is.null,%
+    mapply,ms,na.rm,nlmin,replicate,row.names,rowMeans,rowSums,seasonal,%
+    sys.time,system.time,ts.plot,which.max,which.min},
+  deletekeywords={c},
+  alsoletter={.\%},%
+  alsoother={:_\$}}
+\lstset{language=Renhanced,extendedchars=true,
+  basicstyle=\small\ttfamily,
+  commentstyle=\textsl,
+  keywordstyle=\mdseries,
+  showstringspaces=false,
+  index=[1][keywords], 
+  indexstyle=\indexfonction}
+  \newcommand{\indexfonction}[1]{\index{#1@\texttt{#1}}}
+
+%\usepackage{beamerthemeBerkeley}
+% Use either the one above or the one below
+\usetheme{Hannover}
+
+\title{Matching and Balance}
+%\author{	Mike Higgins from notes by F. Daniel Hidalgo\\ }
+%\date{\today}
+
+\begin{document}
+%\lstset{language=R}
+
+\frame{\titlepage}
+%\section[Outline]{}
+%\frame{\tableofcontents}
+\begin{frame}[c]
+\frametitle{Recap: Neyman-Rubin Model, Estimating ATE, ATT}  
+  \begin{itemize}  
+    \item<1->  Suppose there are $N$ units in the population.\\
+    \item<1->Under the Neyman-Rubin model, we observe
+      $$Y_i = Y_i(1)T_i + Y_i(0)(1-T_i)$$
+    \item<1->
+      $Y_i(1),Y_i(0)$ is the response of unit $i$ given treatment/control.\\ 
+      $T_i = 1$ if unit $i$ is treated, otherwise it is 0.
+    \item<2->ATE:
+      $$\frac{1}{N}\sum_{i=1}^N (Y_i(1) - Y_i(0)).$$
+    \item<2-> ATT:  
+      $$\frac{1}{\sum T_i}\sum_{i=1}^N (Y_i(1) - Y_{i}(0))T_i.$$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[c]
+\frametitle{Recap: Neyman-Rubin Model, Estimating ATE, ATT}  
+  \begin{itemize}
+    \item<1->ATE:
+      $$\frac{1}{N}\sum_{i=1}^N (Y_i(1) - Y_i(0)).$$
+    \item<1-> ATT:  
+      $$\frac{1}{\sum T_i}\sum_{i=1}^N (Y_i(1) - Y_{i}(0))T_i.$$
+    \item<2->  Problem: For each unit, we only observe one of the pair
+      $Y_i(1), Y_i(0)$.    
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[c]
+\frametitle{Matching estimators}  
+  \begin{itemize}
+   \item<1->  Possible solution: Match each observed 
+    treated unit to a ``similar'' observed control unit
+     (and vice-versa when estimating ATE).
+   \item<2-> 
+    \begin{eqnarray*}
+       \widehat{ATE} &=& \frac{\sum T_i}{N}\left(
+        \frac{\sum_{i=1}^N (Y_i(1) - Y_{i'}(0))T_i}{\sum T_i}\right) \\ 
+        &+&
+         \frac{N-\sum T_i}{N}\left(\frac{\sum_{i=1}^N (Y_{i'}(1) - Y_{i}(0))(1-T_i)}{N- \sum T_i}
+       \right) \\
+       \widehat{ATT} &=&\frac{\sum_{i=1}^N (Y_i(1) - Y_{i'}(0))T_i}{\sum T_i}
+     \end{eqnarray*}
+      \item<2->Here, $i'$ denotes an observed unit similar to unit $i$ where the 
+   treatment indicators satisfy $T_i = 1-T_{i'}$.
+   \end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{What can we use to match?}
+  \begin{itemize}
+   \item<1->  We've already discussed matching on the propensity score.
+   \item<2->  Mahalanobis distance.
+   \item<2->  GenMatch.
+   \item<3->  We're going to focus on Mahalanobis distance today.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Mahalanobis distance}
+  \begin{itemize}
+    \item<1-> Suppose we have $X_1,\ldots, X_n$, with each 
+    variable $X_i$ having $k$ components (covariates):
+    $X_i = (X_{i1},X_{i2},\ldots,X_{ik})$.
+    \item<1-> Suppose we have the $k \times k$ covariance matrix of these covariates.
+     (either by estimating this matrix, or given to us).  
+     Call this covariance matrix $S$.
+   \item<2->
+     The Mahalanobis distance between $X_i$ and $X_j$ is
+     $$
+       md(X_i,X_j) = [(X_i - X_j)'S^{-1}(X_i - X_j)]^{1/2}
+     $$
+  \end{itemize}	
+\end{frame}
+
+\begin{frame}[c]\frametitle{What is the Mahalanobis distance doing}
+  \begin{itemize}
+    \item<1-> Suppose covariates are ellipsoidal (in a crude sense, the data looks like an oval).
+    \item<1-> Special case of ellipsoidal: Multivariate normal.
+    \item<2-> Transform the covariates into a circle, where the marginal SD is 1 for any covariate.
+    \item<2-> Equivalent to ``Eliminating the correlation between covariates 
+      and scaling all covariates so that they are on the same scale.''
+    \item<3-> Calculate the distance within this circle.
+    \item<3-> Mahalanobis distance can be computed for any other original shape of data... 
+       but nice properties can be had if the data is ellipsoidal.
+  \end{itemize}	
+\end{frame}
+
+\begin{frame}[c]\frametitle{EPBR}
+  \begin{itemize}
+    \item<1-> Suppose we are matching treated units to control units.
+    \item<1-> A matching method is Equal Percent Bias Reducing (EPBR) if,
+     for ALL covariates $X$:
+     \begin{eqnarray*}
+       &&E(X | T = 1) - E(X | \text{Matched Controls})\\
+       & = & \gamma(E(X | T = 1) - E(X |  T = 0))
+     \end{eqnarray*}
+     where $0 \leq \gamma \leq 1$.
+    \item<1-> In words, the average covariate imbalance 
+      shrinks a little bit for each covariate.
+    \item<2-> If data is ellipsoidal, then the matching with the Mahalanobis distance 
+      is EPBR.
+    \item<3-> EPBR may not be that attractive of a property; especially if you think that
+      balance over some covariates (height, weight) is more important than others (number
+      of hair follicles).
+  \end{itemize}	
+\end{frame}
+
+\begin{frame}[c]\frametitle{Quick teaser:  How can you tell if matching worked?}
+  \begin{itemize}
+    \item<1-> Recall, the whole point of matching is to find people in the control
+      group that look like people that are treated.
+    \item<1-> If matching works, 
+      the distribution of the covariates for the treated group should be the same
+      as the distribution for the matched control group.
+    \item<2-> If data is quantitative, 
+      compare means of covariates between the treatment 
+      group and the matched control group ($t$-test).  
+    \item<2->  If data is categorical, compare proportions across the covariates.
+      (Fisher exact test).
+    \item<2->  These methods compare single points (a mean or propotion)
+      between these two groups.  This is sufficient for categorical data, 
+      but not for quantitative data.
+    \item<3->  Kolmogorov-Smirnov test can test if there's discrepancies
+      across the entire distribution (for next time).
+  \end{itemize}	
+\end{frame}
+
+
+
+
+\end{document}

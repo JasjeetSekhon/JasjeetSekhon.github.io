@@ -1,0 +1,566 @@
+% -*-Mode: LaTeX;-*-
+% %W%   %G%
+% 
+%
+
+\documentclass[fleqn,titlepage,11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,graphicx,psfrag,rotating}
+\usepackage{hyperref,setspace} \usepackage{threeparttable}
+\usepackage{dcolumn} \usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{epsfig,rotate}
+\usepackage[mdyyyy]{datetime}
+
+\bibliographystyle{info} 
+\bibpunct{(}{)}{;}{author-year}{}{,}
+
+\newcommand{\MyPerp}{\perp \! \! \! \perp}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{-.26in}%{0in}
+%\setlength{\topmargin}{0.05in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textwidth}{6.5in}
+%\setlength{\textheight}{8.987in}%{8.9in}
+\setlength{\textheight}{9in}
+
+\hypersetup{
+%  colorlinks=true,
+  bookmarksopen, pdftitle={}, pdfsubject={}, pdfauthor={Jasjeet S. Sekhon},
+%  linkcolor=cyan,               
+%  citecolor=cyan,               
+%  pagecolor=cyan,
+%  urlcolor=cyan
+}
+
+%\doublespacing
+
+% change section to large and subsection to normalsize font
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0em}{\baselineskip}{0.5\baselineskip}{\large\bfseries\large}}
+\renewcommand{\subsection}{\@startsection{subsection}{0}{0em}{\baselineskip}{0.5\baselineskip}{\normalfont\bfseries\normalsize}}
+\makeatletter
+\newcommand{\vs}{\vspace{-\baselineskip}}
+\newcommand{\vvs}{\vspace{-.4cm}}
+
+\newcommand{\mr}{\mathrm}
+
+%dcolumn column types
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\newcommand{\Rsymb}{{\bf{\textsf{R}}}}
+
+\begin{document}
+
+\begin{center}
+  {\Large {\textsc{Statistics for Causal Inference in the Social Sciences\\[.25em]Poli Sci 239}}}\\[1em]
+
+Jasjeet S. Sekhon\\ 
+Associate Professor\\
+\href{http://sekhon.berkeley.edu}{http://sekhon.berkeley.edu}\\
+\texttt{sekhon(at)berkeley.edu}
+
+
+\end{center}
+
+\subsection*{Description}
+
+\hspace*{1em}
+
+Approaches to causal inference using the potential outcomes framework.
+Covers observational studies with and without ignorable treatment
+assignment, randomized experiments with and without noncompliance,
+instrumental variables, regression discontinuity, sensitivity analysis
+and randomization inference. Applications are drawn from a variety of
+fields including political science, economics, sociology, public
+health and medicine.
+
+\subsection*{Prerequisites}
+
+At least one multivariate regression course.  
+
+\subsection*{Times and Locations}
+Lecture/seminar: W 4--7 PM 791 Barrows Hall \\
+There is also a section which is currently scheduled for Tu 5--7 PM
+in 246 Dwinelle
+
+\noindent
+Office Hours: W 3--4 or by appointment, 3rd Floor, Survey Research
+Center, 2538 Channing Way.
+
+\subsection*{Requirements}
+
+The course will have regular homework assignments, a midterm, and a
+final course paper.  The course paper may be written with another
+person.  
+
+\subsection*{Materials and supplementary information}
+
+Although most of the content of the course is derived from articles, I
+recommend that you obtain a copy of
+\citet{rosenbaum2002}.  
+
+\noindent
+It is a useful book, and provides a treatment of the concepts with a
+uniform notation.  The 2nd edition is available at
+\href{http://www.amazon.com/gp/product/0387989676/qid=1136502162/sr=2-1/ref=pd_bbs_b_2_1/002-5192299-7212830?s=books&v=glance&n=283155}{[
+amazon.com ] }\\
+
+
+
+\noindent
+Other materials and information related to this course will be posted at:
+\begin{center}
+{\large \href{http://polisci355.stanford.edu}{http://polisci355.stanford.edu}}
+\end{center}
+
+
+% \subsection*{Texts}
+% 
+% \noindent
+% {\em NOTE:} Readings marked with {\bf [WWW]} are (or will be) available in pdf
+% form on the course page.
+
+\newpage
+
+%{\em Readings:}
+%\begin{itemize}
+%\item 
+%\item 
+%\item 
+%\end{itemize}
+
+\subsection*{Course outline}
+\begin{enumerate}
+
+ 
+
+\item \textsc{Causality} 
+
+{\em Illustrations of observational studies based on approximate
+experimental design or based on testing formal theories.  Discussion
+of other competing frameworks for understanding causal effects.}
+
+\begin{itemize}
+
+  \item \cite{holland:1986}
+  \href{http://links.jstor.org/sici?sici=0162-1459%28198612%2981%3A396%3C%3E1.0.CO%3B2-9}{[ JSTOR ToC ]}
+
+  \item \cite{little.rubin:2000}
+  \href{http://arjournals.annualreviews.org/doi/abs/10.1146%2Fannurev.publhealth.21.1.121}{ [ link ] }
+
+
+
+
+%   \item \cite{cox:jrss1992}
+%   \href{http://links.jstor.org/sici?sici=0964-1998%281992%29155%3A2%3C291%3ACSSA%3E2.0.CO%3B2-O}{[ JSTOR ]}
+
+%   \item \cite{freedman:1991}
+%   \href{http://links.jstor.org/sici?sici=0081-1750%281991%2921%3C%3E1.0.CO%3B2-H}{[ JSTOR ToC ]}
+% 
+%   {\em With discussion by Berk, Blalock, and Mason, and rejoinder pp. 315-358 }
+
+\end{itemize}
+
+For an overview of some methods that will be presented, and others
+that may or many not be considered (depending on student interests),
+skim the following,
+
+\begin{itemize}
+  \item \cite{winship.morgan:1999}
+  \href{http://arjournals.annualreviews.org/doi/abs/10.1146%2Fannurev.soc.25.1.659}{ [ link ] }
+\end{itemize}
+
+
+\item \textsc{Randomized experiments: theory and inference } 
+
+{\em Properties of experiments, basic implementations.  Methods of hypothesis testing and inference.}
+
+ \begin{itemize}
+
+ \item Cox, D.~R.. 1958. {\em Planning of Experiments}. New York: Wiley. Chapters 1 and 2.
+\href{http://www.stanford.edu/class/polisci355/classonly/cox.pdf}{ [pdf]}
+
+%\cite{cox.reid:2000}. Chapters 1 and 2
+
+ \item Rosenbaum Chapter 2
+
+ \item \cite{cochran:1983}. Chapters 1 and 7
+\href{http://www.stanford.edu/class/polisci355/classonly/cochran.pdf}{ [ pdf ] }
+
+% \item Fisher
+
+% \item Neyman (statistical science translation)
+
+% \item Rubin, D. (1990), "Comment: Neyman (1923) and Causal Inference in Experiments
+%    and Observational Studies," Statistical Science 5, 472-480.
+
+
+ \end{itemize}
+
+\item \textsc{Unconfounded assignment to treatment} 
+
+{\em Experimental and observational studies where assignment to treatment is done on observables. Stratification and matching.}
+
+\begin{itemize}
+
+ \item Rosenbaum Chapter 3.1--3.3
+
+ \item Cox, D.~R.. 1958. {\em Planning of Experiments}. New York: Wiley. Chapters 3 and 4.
+\href{http://www.stanford.edu/class/polisci355/classonly/cox3-4.pdf}{ [pdf]}
+
+%  \item Rubin, D.B. (1977), "Assignment to a Treatment Group on the Basis of a Covariate,"
+%     Journal of Educational Statistics, 2, 1-26.
+
+ \item  \cite{rubin:1991}
+ \href{http://links.jstor.org/sici?sici=0006-341X%28199112%2947%3A4%3C1213%3APIOMOS%3E2.0.CO%3B2-H}{ [ JSTOR ] }
+
+\end{itemize}
+
+%  Rubin, D. (1984), "William G. Cochran's Contributions to the Design, Analysis and
+%     Evaluation of Observational Studies," in W. G. Cochran's Impact on Statistics. Poduri
+%     and Rao (eds). New York: John Wiley and Sons, Inc., 37-69.
+
+
+\item \textsc{Tools: nonparametric statistical methods     } 
+
+ {\em Rank-based tests.  Bootstrap and permutation procedures. }
+
+  \begin{itemize}
+  \item \cite{lehmann:1975}. Chapters 1 and 2.4--2.7 and 5.1--5.2
+\href{http://www.stanford.edu/class/polisci355/classonly/lehmann.pdf}{ [ pdf ] }
+
+%  \item Class handout.
+  \end{itemize}
+
+\newpage
+
+\item \textsc{Approaches to matching}
+
+  \begin{itemize}
+
+  \item \cite{cochran:1983}. Chapter 5.
+
+  \item \cite{rubin:1973}
+  \href{http://links.jstor.org/sici?sici=0006-341X%28197303%2929%3A1%3C159%3AMTRBIO%3E2.0.CO%3B2-G}{ [ JSTOR ] }
+
+  \item \cite{rosenbaum.rubin:1983}
+  \href{http://links.jstor.org/sici?sici=0006-3444%28198304%2970%3A1%3C41%3ATCROTP%3E2.0.CO%3B2-Q}{ [ JSTOR ] }
+
+%   \item  Rosenbaum, P. and Rubin, D. (1984), "Reducing Bias in Observational Studies Using
+%     Subclassification on the Propensity Score," Journal of the American Statistical Associ-
+%     ation, 79, 516­524.
+
+
+\item  \cite{rubin.thomas:1996}
+       \href{http://links.jstor.org/sici?sici=0006-341X%28199603%2952%3A1%3C249%3AMUEPSR%3E2.0.CO%3B2-S}{ [ JSTOR ] }
+
+%    \item Abadie, A., and G. Imbens, (2004), A Simple and
+%      Bias-corrected Matching Estimator for Average Treatment Effects"
+
+  \item \cite{imbens:2004} \newline  
+\href{http:dx.doi.org/10.1162/003465304323023651}{ [ doi link ] }
+
+
+
+  \item \cite{diamond.sekhon:2005}
+  \href{http://sekhon.polisci.berkeley.edu/papers/GenMatch.pdf}{ [ pdf ] }
+
+\end{itemize}
+
+\item \textsc{Regression Adjustments: comparison and connections with matching} 
+
+\begin{itemize}
+\item \cite{cochran:1983}. Chapter 6
+\end{itemize}
+
+\item \textsc{Applications} 
+
+\begin{itemize}
+
+\item \cite{lalonde:1986}
+\href{http://links.jstor.org/sici?sici=0002-8282%28198609%2976%3A4%3C604%3AETEEOT%3E2.0.CO%3B2-P}{ [ JSTOR ] }
+
+\item \cite{dehejia.wahba:1999}
+\href{http://links.jstor.org/sici?sici=0162-1459%28199912%2994%3A448%3C1053%3ACEINSR%3E2.0.CO%3B2-K}{ [ JSTOR ] }
+
+  \item \cite{diamond.sekhon:2005}
+
+\end{itemize}
+
+
+\item \textsc{Assessing unconfoundedness, sensitivity analysis, and bounds} 
+
+{\em Multiple control groups, zero-effect outcomes, bounds, ...}
+
+  \begin{itemize}
+
+  \item Rosenbaum Chapters 4 and 8 
+
+%   \item Rosenbaum, P., (1987), "The role of a second control group in
+%   an observational study", Statistical Science, (with discussion), Vol
+%   2., No. 3, 292­316.
+
+  \item  \cite{rosenbaum.rubin:1985}
+  \href{ http://links.jstor.org/sici?sici=0006-341X%28198503%2941%3A1%3C103%3ATBDTIM%3E2.0.CO%3B2-8}{ [ JSTOR ] }
+
+  \item  \cite{manski:1990}
+  \href{http://links.jstor.org/sici?sici=0002-8282%28199005%2980%3A2%3C319%3ANBOTE%3E2.0.CO%3B2-A }{ [ JSTOR ] }
+
+
+% 
+% Nonparametric Analysis of Randomized Experiments with Missing Covariate and Outcome Data
+% Joel L. Horowitz; Charles F. Manski
+% Journal of the American Statistical Association > Vol. 95, No. 449 (Mar., 2000), pp. 77-84
+% Stable URL: http://links.jstor.org/sici?sici=0162-1459%28200003%2995%3A449%3C77%3ANAOREW%3E2.0.CO%3B2-X 
+
+
+  \end{itemize}
+
+\newpage
+
+\item \textsc{Instrumental Variables (IV)                                } 
+  \begin{itemize}
+
+  \item \cite{angrist.krueger:2001}
+  \href{ http://www.irs.princeton.edu/pubs/pdfs/455jep.pdf }{[ pdf ]}
+
+  \item \cite{air:jasa1996}
+  \href{ http://links.jstor.org/sici?sici=0162-1459%28199606%2991%3A434%3C%3E1.0.CO%3B2-D }{ [ JSTOR ToC ] }
+
+% Comment on James J. Heckman, "Instrumental Variables: A Study of Implicit Behavioral Assumptions Used in Making Program Evaluations"
+% Joshua D. Angrist; Guido W. Imbens
+% The Journal of Human Resources > Vol. 34, No. 4 (Autumn, 1999), pp. 823-827
+% Stable URL: http://links.jstor.org/sici?sici=0022-166X%28199923%2934%3A4%3C823%3ACOJJH%22%3E2.0.CO%3B2-B 
+% 
+%     Instrumental Variables: Response to Angrist and Imbens
+%         James J. Heckman
+%         The Journal of Human Resources, Vol. 34, No. 4. (Autumn, 1999), pp. 828-837.
+%         Stable URL: http://links.jstor.org/sici?sici=0022-166X%28199923%2934%3A4%3C828%3AIVRTAA%3E2.0.CO%3B2-Q
+% 
+  \item \cite{heckman:1997}
+  \href{http://links.jstor.org/sici?sici=0022-166X%28199722%2932%3A3%3C441%3AIVASOI%3E2.0.CO%3B2-P}{ [ JSTOR ] }
+% 
+
+
+%  \item Rosenbaum comment (1996 and 1999)
+
+%   \item J.J. Heckmand Edward Vytlacil. (2003).  Structural Equations,
+%     Treatment Effects, and Econometric Policy Evaluation
+
+%    \item Pedro Carneiro James J. Heckman, and Edward Vytlacil. (2000)
+%      "Understanding What Instrumental Variables Estimate: Estimating
+%      Marginal and Average Returns to Education
+
+%   \item Bartels
+% 
+
+%
+%
+%\item Imbens, G.W., Rubin, D.B. and Sacerdote, B. (2001), "Estimating the Effect of
+%    Unearned Income on Labor Supply, Earnings, Savings and Consumption: Evidence from
+%    a Survey of Lottery Players", American Economic Review, 91, 778­794.
+
+  \end{itemize}
+
+\item \textsc{Applications and caveats }
+
+% {\em The methodology and findings from twenty studies using natural
+% experiments are summarized.  Simple economic models are used to
+% elucidate the implicit assumptions made by the authors and to
+% demonstrate the sensitivity of the interpretations of the findings to
+% the relaxation of some of these assumptions.}
+
+  \begin{itemize}
+
+  \item \cite{rosenzweig.wolpin:2000}
+  \href{ http://links.jstor.org/sici?sici=0022-0515%28200012%2938%3A4%3C827%3AN%22EIE%3E2.0.CO%3B2-F  }{ [ JSTOR ] }
+
+%  \item James Heckman and Salvador Navarro-Lozanno. (2003) "Using
+%    matching, instrumental variables and control functions to estimate
+%    economic choice models"
+
+  \item \cite{bound.ea:1995}
+   \href{http://links.jstor.org/sici?sici=0162-1459%28199506%2990%3A430%3C443%3APWIVEW%3E2.0.CO%3B2-U }{ [ JSTOR ] }
+
+  \end{itemize}
+
+
+\item \textsc{Practical advice: sensitivity tests and bounds}
+  \begin{itemize}
+
+  \item Sekhon, Jasjeet and Jonathan Wand. ``Counterfactuals and Sensitivity Analysis for
+   Instrumental Variable Models.'' mimeo.
+
+  \item \cite{manski.nagin:1998}
+  \href{http://links.jstor.org/sici?sici=0081-1750%281998%2928%3C99%3ABDATEA%3E2.0.CO%3B2-7 }{ [ JSTOR ] }
+
+
+  \end{itemize}
+
+
+
+\item \textsc{Formal models and causal inference I}
+  \begin{itemize}
+  \item Wand, Jonathan. 2005. ``Partisan Preferences and Investment Motives among Special Interest Groups''. Mimeo.
+
+  \item \cite{manski:1993}
+  \href{http://links.jstor.org/sici?sici=0081-1750%281993%2923%3C1%3AIPITSS%3E2.0.CO%3B2-V }{ [ JSTOR ] }
+
+  \item Beresteanu, Arie. 2004. ``Nonparametric Estimation of Regression Functions under
+                    Restrictions on Partial Derivatives''. Mimeo. 
+  \href{www.econ.duke.edu/~arie/shape.pdf }{ [ link ] }
+
+  \end{itemize}
+
+
+% \item \textsc{Formal models and causal inference II}
+%   \begin{itemize}
+%   \item 
+%   \end{itemize}
+
+
+
+\item \textsc{Hybrid Comparative Studies: synthetic cohorts and event analysis} 
+  \begin{itemize}
+  \item \cite{abadie:aer2003.pdf} \newline
+  [ DOI: 10.1257/000282803321455188 ]
+  \end{itemize}
+
+\item \textsc{Evaluating observational studies  } 
+  \begin{itemize}
+
+%  \item \cite{freedman:1987}
+
+  \item Rosenbaum Chap 9,11,12
+    
+%   \item Cameron, A. Colin and Pravin K. Trivedi. 2005. {\em
+%       Microeconmetrics}. New York: Cambridge. Chapter 3
+
+  \item {\em Student proposed articles}
+
+
+
+
+%   \item  \cite{wand.shotts.sekhon.mebane.herron.brady:2001}
+%   \href{http://wand.stanford.edu/research/apsr2001.pdf}{ [ link ] }
+% 
+%   \item Jasjeet S. Sekhon. 2004 Updating Voters: How voters act as if
+%     they are informed
+
+%  \item Steven D. Levitt and James M. Snyder, Jr. 1997. "The Impact of
+%    Federal Spending on House Election Outcomes." Journal of Political
+%    Economy 105(1): 30--53.
+ 
+  \end{itemize}
+
+\newpage
+\item \textsc{ Fixing Broken Experiments and a Controversy} 
+  \begin{itemize}
+  \item Gerber, Alan S. and Donald P. Green. 2000. "The Effects of
+    Canvassing, Telephone Calls, and Direct Mail on Voter Turnout: A
+    Field Experiment." American Political Science Review 94(3): 653
+    663.
+  \item Imai, Kosuke. "Do Get-Out-The-Vote Calls Reduce Turnout? The
+    Importance of Statistical Methods for Field Experiments." American
+    Political Science Review
+  \item Green and Gerber Reply
+
+  \item Bowers, Jake and Ben Hansen. 2005. "Attributing Effects to a
+  Get-Out-The-Vote Campaign Using Full Matching and Randomization
+  Inference." Working Paper.
+
+%  \item \cite{efron.feldman:1991}
+%   \href{http://links.jstor.org/sici?sici=0162-1459%28199103%2986%3A413%3C%3E1.0.CO%3B2-5}{[ JSTOR ToC ]}
+
+
+  \end{itemize}
+
+\item \textsc{An overview of methods and approaches not discussed in detail } %(make up for Jan 25--TBA)  
+
+\item \textsc{Presentation of Project Proposals } %(make up for Jan 25--TBA)  
+
+
+
+
+%  {\em }
+%  {Methodological issues: }
+% \begin{itemize}
+% \item
+% %\item \cite{} [WWW]
+% %\item \cite{}
+% \end{itemize}
+% 
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+\end{enumerate}
+
+\vspace*{2em}
+
+% Additional potential topics
+% 
+% \begin{enumerate}
+% \item \textsc{Observational studies: local random assignment at a threshold } 
+% 
+% {\em Regression discontinuity design (RDD)}
+% % 
+% %   \begin{itemize}
+% %   \item Jinyong Hahn, Petra Todd, Wilbert Van der Klaauw.
+% %     ``Identification and estimation of treatment effects with a
+% %     regression-discontinuity design'' Econometrica. Jan 2001. Vol. 69, No. 1
+% % 
+% %   \item Lee, David. Randomized Experiments from Non-random Selection in
+% %     U.S. House Elections
+% % 
+% %   \item Lee, David. Do Voters Affect or Elect Policies? Evidence from
+% %     the U.S. House
+% % 
+% %   \item \cite{klaauw:2002}
+% % 
+% %   \item Dan Butler
+% % 
+% %   \end{itemize}
+% 
+% 
+% \item \textsc{Difference-in-Difference}
+% %   \begin{itemize}
+% %  \item Susan Athey  and  Guido W. Imbens. 2005.
+% % Identification and Inference in Nonlinear Difference-In-Differences Models
+% %   \end{itemize}
+% 
+%  \end{enumerate}
+
+%\newpage
+% 
+% \subsection*{Supplementary Technical Reading Material}
+% 
+% The following books are certainly not required, but they may be of
+% interest during the course. 
+% 
+% \subsection*{Computer and \Rsymb\ Books} 
+% \begin{itemize}
+% \item \href{http://cran.r-project.org/other-docs.html}{http://cran.r-project.org/other-docs.html}
+% \item \href{http://cran.r-project.org/manuals.html}{http://cran.r-project.org/manuals.html}
+% \item Krause, Andreas and Melvin Olson. 2002. The Basics of S-PLUS. 3rd ed. New York: Springer-Verlag. ISBN: 0387954562. 
+% \item Spector, Phil. 1995. An Introduction to S and S-Plus. Wadsworth Publishing Company. ISBN: 053419866X. 
+% \item Venables, W.N and Brian D. Ripley. 2002. Modern Applied Statistics with S. New York: Springer-Verlag. ISBN: 0387954570 
+% \end{itemize}
+% 
+% \subsection*{Probability and Statistics}
+% 
+%  \begin{itemize}
+%  \item \cite{casella.berger:2002}
+%  \item \cite{feller:61}
+%  \end{itemize}
+% 
+
+\pdfbookmark[1]{References}{sec:references}
+\bibliography{genmatch,causalinf}
+
+\end{document}
+

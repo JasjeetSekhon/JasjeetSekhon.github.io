@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Application: Domains of Economic Assessment</TITLE>
+<META NAME="description" CONTENT="Application: Domains of Economic Assessment">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="previous" HREF="node4.shtml">
+<LINK REL="up" HREF="node2.shtml">
+<LINK REL="next" HREF="node6.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html75"
+ HREF="node6.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html73"
+ HREF="node2.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html69"
+ HREF="node4.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html76"
+ HREF="node6.shtml">An Endogenous Switching Tobit</A>
+<B> Up:</B> <A NAME="tex2html74"
+ HREF="node2.shtml">LISREL</A>
+<B> Previous:</B> <A NAME="tex2html70"
+ HREF="node4.shtml">Bootstrapping</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00023000000000000000">
+Application:  Domains of Economic Assessment</A>
+</H2>
+
+<P>
+Kinder, Adams and Gronke [KAG] (1989) attempt to show that person, group and
+nation constitute related but distinct domains of economic assessment.  In
+trying to test this claim they settle on a LISREL model for 15 observed
+variables.  KAG's LISREL model has four latent common factors: 1, personal
+economic assessments; 2, personal economic experiences; 3, group economic
+assessments; and 4, national economic assessments.  The model has the factor
+variances fixed at the value 1.0 and all four factors freely correlated with
+one another, and includes six free covariances among the observed variables'
+unique disturbances (i.e., 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$\Theta_{\epsilon}$">
+is not diagonal).  Using the
+numbering for the variables shown in
+Table <A HREF="node7.shtml#kag:variables">1</A>, the loading pattern is as follows.
+<BR><P></P>
+<DIV>
+
+<!-- MATH: \begin{equation}
+\Lambda_{y}=
+\left[\begin{array}{cccc}
+    \lambda_{y1,1} & & & \\
+    \lambda_{y2,1} & \lambda_{y2,2} \\
+    \lambda_{y3,1} \\
+    \lambda_{y4,1} & \lambda_{y4,2} \\
+                   & \lambda_{y5,2} \\
+                   & \lambda_{y6,2} \\
+                   & \lambda_{y7,2} \\
+                   & \lambda_{y8,2} \\
+                   & \lambda_{y9,2} \\
+                   &   & \lambda_{y10,3} \\
+                   &   & \lambda_{y11,3} \\
+                   &   & \lambda_{y12,3} & \lambda_{y12,4} \\
+                   &   &                 & \lambda_{y13,4} \\
+                   &   &                 & \lambda_{y14,4} \\
+                   &   &                 & \lambda_{y15,4} \\
+ \end{array}\right]
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD NOWRAP><A NAME="eq:kagorig">&#160;</A><IMG
+ WIDTH="280" HEIGHT="331"
+ SRC="img51.gif"
+ ALT="\begin{displaymath}\Lambda_{y}=
+\left[\begin{array}{cccc}
+\lambda_{y1,1} & & &...
+...bda_{y14,4} \\
+& & & \lambda_{y15,4} \\
+\end{array}\right]
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(7)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+Many of the observed variables have nonzero sample skewness values or sample
+kurtosis values different from 3, which strongly suggests that the joint
+distribution of the observed variables is not multivariate normal.  The large
+value of Mardia's multivariate kurtosis statistic (43.149) further supports
+such an impression.
+
+<P>
+According to the usual normal-theory <IMG
+ WIDTH="23" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\chi^2$">
+test, KAG's model does not fit
+the data.  According to KAG (1989, 500), their model has goodness-of-fit
+statistic 
+<!-- MATH: $\hat{L}_{01}=135.51$ -->
+<IMG
+ WIDTH="103" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.gif"
+ ALT="$\hat{L}_{01}=135.51$">
+with <I>df</I>=75.  But the 
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif"
+ ALT="$\alpha=.05$">
+critical
+value for the normal-theory <IMG
+ WIDTH="23" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\chi^2$">
+test of goodness-of-fit for 75 degrees of
+freedom is 96.22.  We were not able to replicate KAG's results exactly,
+mostly because we were unable to obtain exactly the same subsample of the 1984
+ANES data, but we came very close.  We have sample size <I>n</I>=825, while KAG had
+<I>n</I>=851.  Our parameter estimates and estimated goodness-of-fit statistics are
+similar to theirs.  For their model we find 
+<!-- MATH: $\hat{L}_{01}=130.70$ -->
+<IMG
+ WIDTH="103" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.gif"
+ ALT="$\hat{L}_{01}=130.70$">,
+which is
+again larger than the normal-theory critical values.  Of course the great
+departure from multivariate normality in the observed data suggests that
+
+<!-- MATH: $\hat{L}_{01}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="$\hat{L}_{01}$">
+is not a central <IMG
+ WIDTH="23" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\chi^2$">
+variable, but Browne's (1984)
+asymptotic distribution free (ADF) estimator gives
+
+<!-- MATH: $\hat{L}_{01\mathrm{ADF}}=114.36$ -->
+<IMG
+ WIDTH="132" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.gif"
+ ALT="$\hat{L}_{01\mathrm{ADF}}=114.36$">,
+which also exceeds the normal-theory
+critical value.  Note that the ADF estimator corrects asymptotically for
+excess kurtosis but not for skewness.
+
+<P>
+A bootstrap likelihood ratio (LR) test suggests that the model does fit the
+data at the 
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif"
+ ALT="$\alpha=.05$">
+test level.  The percentile bootstrap estimate of the
+
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif"
+ ALT="$\alpha=.05$">
+critical value is 
+<!-- MATH: $135.12>\hat{L}_{01}$ -->
+<IMG
+ WIDTH="103" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img57.gif"
+ ALT="$135.12>\hat{L}_{01}$">,
+suggesting that the
+specification does fit the data.  Experimental results suggest that the
+bootstrapped LR test is robust against both skewness and excess kurtosis
+(Mebane, Sekhon and Wells 1996).
+
+<P>
+A difficulty with KAG's model from the perspective of their theoretical
+interests is the correlated errors they include among variables that refer to
+different domains.  The model fits the data only when parameters are
+introduced that represent relationships between observed variables from
+different domains that are not mediated through their domain-defining latent
+variables.  The model includes correlated errors among the national, group and
+personal inflation variables, and between the group and national employment
+variables.  The covariances among the errors for the inflation variables
+suggests that there may be at least one cross-domain economic assessment
+latent variable, pertaining to inflation and perhaps employment.  The free
+loading of the group employment variable on the ``national domain'' latent
+variable (parameter 
+<!-- MATH: $\lambda_{y12,4}$ -->
+<IMG
+ WIDTH="47" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img58.gif"
+ ALT="$\lambda_{y12,4}$">)
+is also questionable from the point of
+view of domain separation.
+
+<P>
+To test the possible existence of a domain-crossing latent factor associated
+with concerns about inflation or prices, we specify an alternative model that
+removes all the cross-domain correlated errors but adds a fifth common factor
+on which loads three observed variables that refer to income and inflation or
+to ``the cost of things,'' as well as the variable that measures general
+assessment of the national economic situation.  The loading pattern is as
+follows.
+<BR><P></P>
+<DIV>
+
+<!-- MATH: \begin{equation}
+\Lambda_{y}=
+\left[\begin{array}{ccccc}
+    \lambda_{y1,1} & & & & \\
+    \lambda_{y2,1} & \lambda_{y2,2} & \\
+    \lambda_{y3,1} & & &                                   & \lambda_{y3,5} \\
+    \lambda_{y4,1} & \lambda_{y4,2} \\
+                   & \lambda_{y5,2} \\
+                   & \lambda_{y6,2} \\
+    \lambda_{y7,1} & \lambda_{y7,2} \\
+                   & \lambda_{y8,2} \\
+                   & \lambda_{y9,2} \\
+                   &   & \lambda_{y10,3} \\
+                   &   & \lambda_{y11,3} &                 & \lambda_{y11,5} \\
+                   &   & \lambda_{y12,3} \\
+                   &   &                 & \lambda_{y13,4} & \lambda_{y13,5} \\
+                   &   &                 & \lambda_{y14,4} \\
+                   &   &                 & \lambda_{y15,4} & \lambda_{y15,5} \\
+ \end{array}\right]
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD NOWRAP><A NAME="eq:kagalt">&#160;</A><IMG
+ WIDTH="338" HEIGHT="331"
+ SRC="img59.gif"
+ ALT="\begin{displaymath}\Lambda_{y}=
+\left[\begin{array}{ccccc}
+\lambda_{y1,1} & & ...
+... & & \lambda_{y15,4} & \lambda_{y15,5} \\
+\end{array}\right]
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(8)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+The added common factor is specified to be uncorrelated with the other four
+factors, which remain freely intercorrelated.  For the alternative
+specification we find 
+<!-- MATH: $\hat{L}_{01}=118.07$ -->
+<IMG
+ WIDTH="103" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img60.gif"
+ ALT="$\hat{L}_{01}=118.07$">
+with <I>df</I>=74, which is again
+larger than the normal-theory <IMG
+ WIDTH="23" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\chi^2$">
+critical values.  But the alternative
+model does fit the data when compared to the 
+<!-- MATH: $\alpha=.05$ -->
+<IMG
+ WIDTH="61" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif"
+ ALT="$\alpha=.05$">
+critical value of
+127.97 obtained using the percentile bootstrap.
+
+<P>
+The alternative specification has a smaller value of 
+<!-- MATH: $\hat{L}_{01}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="$\hat{L}_{01}$">
+(and
+therefore a larger log-likelihood value) than KAG's specification does, but
+this difference cannot be used directly to choose between the specifications
+because they are not nested: one cannot be obtained as a limit in parameter
+values of the other.  Bootstrapping 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$">
+by
+reestimating both specifications in each of 1000 resamples for the original
+sample and computing 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}^*$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}^*$">
+in each resample gives no
+statistical reason to prefer one specification to the other.  With the KAG
+specification as the null hypothesis, the percentile bootstrap 95% confidence
+interval for 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$">
+is 
+<!-- MATH: $(-2.14,\; .97)$ -->
+<IMG
+ WIDTH="98" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img62.gif"
+ ALT="$(-2.14,\; .97)$">
+while with the
+alternative specification as null the interval is 
+<!-- MATH: $(-1.15,\;
+.42)$ -->
+<IMG
+ WIDTH="98" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.gif"
+ ALT="$(-1.15,\;
+.42)$">.<A NAME="tex2html10"
+ HREF="footnode.shtml#foot954"><SUP>2</SUP></A>  Because both
+intervals included zero, neither value of 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$">
+is
+statistically significant and therefore the test rejects neither
+specification.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html75"
+ HREF="node6.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html73"
+ HREF="node2.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html69"
+ HREF="node4.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html76"
+ HREF="node6.shtml">An Endogenous Switching Tobit</A>
+<B> Up:</B> <A NAME="tex2html74"
+ HREF="node2.shtml">LISREL</A>
+<B> Previous:</B> <A NAME="tex2html70"
+ HREF="node4.shtml">Bootstrapping</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

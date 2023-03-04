@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st
+March 2002), see www.w3.org" /> 
+<meta name="keywords" content="Sekhon, Jasjeet Sekhon, Jasjeet Singh Sekhon, Apple, Mac OS X, Linux, Windows, OS X sucks, Linux rules, benchmarks, linux on
+g5, 970, ibm, review, tiger"/>
+<title>A Review and Benchmarks of Linux on Dual-G5 versus Mac OS X</title> 
+<link rel="stylesheet" href="http://www.w3.org/StyleSheets/Core/Steely"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body { margin: 5em 5em 5em 5em}
+/*]]>*/
+</style>
+</head>
+<body>
+<h2>
+A Review of Linux on Dual-G5 versus Mac OS X
+</h2>
+
+<br>
+
+<h4 class="Summary">Summary</h4>
+<br>
+
+For statistical computing <a href="http://www.apple.com/macosx/">Apple's OS
+X</a> is incredibly inefficient relative to Linux.  Hardware wise, for
+floating point performance you would be better of buying an <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>
+or even Intel machine.  The floating point performance of the 970 chip (the
+G5) leaves much to be desired but OS X makes the performance problem
+significantly worse.  OS X does not "just work" (at least for me). The latest
+release <a href="">Tiger</a> is very buggy and does not have the usability I
+would expect given Apple's reputation.  Also, the issues of <a
+href="http://www.gnu.org/philosophy/">freedom and transparency</a> should not
+be forgotten.
+
+<h4 class="Background">Background</h4>
+<br>
+
+People often ask me about my opinions of <a
+href="http://www.apple.com/macosx/">Apple's OS X</a> both as a general
+operating system (as a replacement for <a
+href="http://www.linux.com">Linux</a> or other unixes) and as an operating
+system useful for statistical computing. People training in statistical
+methods expecially often ask advice in I think the hope of avoiding
+Linux. Because I have to support my <a
+href="http://jsekhon.fas.harvard.edu/matching/">statistical software</a> on
+various platforms, I have finally gotten around to purchasing a Mac: a 1.8 Ghz
+dual G5 with 2GB of RAM.  I have also run benchmarks on a dual 2GHZ G5. In
+order to save time repeating the same information to many people I have
+decided to post it on the web.  The short answer: use Linux.  If you
+<b>want</b> to use Mac OS X or Windows XP, go ahead.  All of these operating
+systems are now above the line (not long ago the operating systems out of
+Redmond and Cupertino were a joke).  But, whatever benefits Mac OS X may have,
+don't think it is a Linux replacement without serious performance
+penalties. Life is full of tradeoffs and reasonable people can decide to make
+different tradeoffs, just don't pretend that they don't exist.  Don't fall
+victim to Apple's marketing which is an extention of the <a
+href="http://www.folklore.org/StoryView.py?project=Macintosh&story=Reality_Distortion_Field.txt">Steve
+Jobs Reality Distortion Field</a>.
+
+<br><br>
+
+<h4 class="Benchmarks">Benchmarks</h4>
+<br>
+
+I present here a set of benchmarks which are relevant to my work and the work
+of people working in statistical computing, particular people who use the <a
+href="http://www.r-project.org/">R Project for Statistical Computing</a>.
+These benchmarks are floating point bound where the main IO is to memory and
+not to disk.  The processes are large enough the cache and TBL really matter
+as does memory speed.  This setup may be of more general interest.  For
+example, my benchmarks very closely parallel those provided by the well known
+<a href="http://www.cox-internet.com/setispy/efficiency.htm">SETI@home
+project</a>.  But they may not be relevant for what you do.  If you need a
+computer to do X, and these benchmarks are in no way related to X, don't write
+me to complain about it.  These benchmarks are useful for the work <b> I </b>
+do.  Go do you own benchmarks if these aren't relevant.
+
+<br><br>
+
+OS X is incredibly slow by design not least because it uses the <a
+href="http://en.wikipedia.org/wiki/Mach_kernel">Mach Microkernel</a>.  In
+Linux, the variables for a system call are passed directly using the register
+file. In OS X, they are packed up in a memory buffer, passed to a variety of
+places, and the results are then passed back using another memory buffer
+before the results are written back to the register file. You can just imagine
+what that does for TLB and cache hits.  Context switching is bad enough on the
+power chips this just adds to the problems.  Memory management in OS X is
+awful.  To quote Kazushige Goto talking about this BLAS: <a
+href="http://www.cs.utexas.edu/users/kgoto/#For_OS_X">"Performance is
+suppressed on purpose due to [the] awful memory management of OS X"</a>.
+Goto's work is described and praised on <a
+href="http://www.apple.com/education/science/profiles/vatech/optimization.html">Apple's
+own website</a> because he added a custom BLAS for the Apple supper computer
+at <a href="http://www.tcf.vt.edu/systemX.html">Virginia Tech</a>.  On the
+Apple site it states that Goto was "pulling out incredible efficiencies".
+Well, given the Goto's own benchmarks and comments, this is just another
+example of the <a
+href="http://www.folklore.org/StoryView.py?project=Macintosh&story=Reality_Distortion_Field.txt">Steve
+Jobs Reality Distortion Field</a>.
+
+<br>
+<br>
+
+The benchmarks presented here are based on two of my packages: <a
+href="../matching">Matching</a> and <a href="../rgenoud">rgenoud</a>.  The
+former uses C++ code extensively and the later relies on C code.  The two
+benchmark scripts are available <a href="matching.R">here (matching)</a> and
+<a href="rgenoud.R">here (rgenoud)</a>.  All benchmarks were done using
+R-2.1.0 and gcc.
+
+<br><br>
+
+<img src="matching1.png" alt="Matching">
+
+<br>
+
+<img src="rgenoud1.png" alt="rgenoud">
+
+<br><br>
+
+So my 2.7 pound laptop beats my 47 odd pound g5 running OS X in floating
+point!!  Other benchmarks are consistent with this. Here were are not testing
+IO.  If that is included, the Opteron starts to outperform the Intel machine
+by a noticeable margin.  The <a
+href="http://setiathome.ssl.berkeley.edu/">SETI</a> people have a webpage
+which compares processors and it matches my own benchmarks well.  They report
+theoretical peak cycles/flop for the Pentium M at 3.1, Opteron at 3.5, G5
+(970) at 5.2 and the Pentium 4 at 6.4.  For actual performance numbers see
+their <a
+href="http://www.cox-internet.com/setispy/efficiency.htm">calculator</a>.
+This is not surprising because both what I and SETI do are floating point
+bound and both tasks are large enough for cache and TBL hits to really matter.
+
+
+<br><br>
+
+When IBM designed the 970 chip as a brain damaged version of their server
+power4 chips.  They were worried that the 970 would eat into their server chip
+market so they limited it (512 cache, FPU etc).
+
+<br><br>
+
+
+<h4 class="General Review">General Review</h4>
+<br>
+
+After a few days of the mac being my main desktop, I could no longer take it.
+I switched back to my linux box.  My linux box has two monitors.  There is a
+third monitor which I switch between XP and OS X.  I run everything with just
+a single keyboard and mouse either through my KVM or even better through RDP
+for windows and vnc for os x (vnc controls the mouse and keyboard but I look
+at the actual monitor for the mac screen output).
+
+To make a long story short, the mac has not been useful to me.  I only use it
+to run iTunes.  I cannot even use it to do video editing!?!  I rip shows from
+tivo to mpeg-ts.  I can do this using tivo2go and the open nature of windows.
+The tivo DRM does not control much because any direct show plugin can be
+entered using graphedit which is an awesome interface to Xdirect---one of
+Microsoft's biggest weapons has long been wonderful development tools.  In
+this way, I can turn tivo files into portable mpeg-ts files.  Which I can
+watch or burn to DVD to my hearts content.  The problem?  I cannot edit
+mepg-ts files using any mac tool.  I could use open source stuff like mencoder
+and mplayer, but I might as well then using linux.  On windows, I can *easily*
+burn my shows to dvd using nero. I cannot use idvd.  So, the mac does not
+"just work" even for video editing.  mpeg-ts is hardly an obscure format.  And
+no, I do not want to add an encoding step to switch mpeg-ts to some quicktime
+format just to change it again for burning to a dvd using iDVD!
+
+Tiger has a LOT of bugs.  It's ridiculous.  This is what happens when
+the beta testing setup is mostly secret---much like a Bush rally, you
+need the secret decoder ring to get in.  Apple does this because it
+wants the secrecy to generate buzz in the consumer market.  It doesn't
+really care about enterprise users and it shows.  The biggest bug I've
+found?  smb support is broken---even with a samba server.  If
+Microsoft did this, slashdot would go nuts.  But Jobs's reality
+distortion field protects Apple. An example of the bug, on linux
+(which is serving the smb file share), create the following two files:
+
+<table bgcolor="#CCCCCC" width="60%" cellpadding="5" cellspacing="0"
+border="1"><tr><td><pre><code>
+musil:tmp/tmp> echo "a" > README
+musil:tmp/tmp> echo "bb" > readme
+musil:tmp/tmp> ls -l
+total 8
+-rw-r--r--  1 jsekhon research 3 2005-05-09 04:05 readme
+-rw-r--r--  1 jsekhon research 2 2005-05-09 04:05 README
+</code></pre></td></tr></table>
+<br>
+
+
+Mac OS X then hangs when it tries to view the directory.  If this is done
+through finder, you are in big trouble.  This is just stupid.  smb has very
+basic rules for how clients are supposed to handle this.  Windows has no
+problems and neither do linux smb clients.
+
+A related bug means that Macromedia MX does not work correctly on Tiger with a
+case sensitive filesystem.  Damn. Macromedia MX on XP works fine on a case
+sensitive filesystem (enabled by the excellent UNIX Services for Windows
+package). See
+http://www.macromedia.com/cfusion/knowledgebase/index.cfm?id=d2410320
+
+Other bugs?  Malicious web pages can install dashboard widgets:
+http://stephan.com/widgets/zaptastic/ Egad!  Didn't we hate pre-SP2 XP
+for allowing this?
+
+I have to reboot to install QT mpeg plugin.  What's up with that?  I can't
+believe that I had to reboot the machine just to install the mpeg2 codec
+player for QuickTime.  That is just so lame it's funny.  Especially given that
+they are using the mach kernel which is incredibly inefficient because it is a
+micro-kernel.  They take the efficient hit of a micro-kernel but they still
+don't have a modular system to the point that even a codec needs a reboot?!?
+That's something I would expect from MS.  But at least with Windows I see the
+architectural reason for the reboot.  For the mac, it is bad programming.  At
+*worst* only the gui should need a reboot.  And I guess they don't want to
+separate the gui because they don't want to scare most of their user base.
+
+To be clear, Apple doesn't really care about techie users.  People I know who
+work there are very honest about this.  Apple thinks it is cool that a few
+hard core and famous hackers (such as Bill Joy) are using their machines.  But
+that is not who they care about.
+
+But I agree that even after playing with drivers, the color fidelity on the
+mac is better.  But the bad engineering of the os as well as the highly
+controlled nature of the apps offends me. Especially given their
+marketing---"it's insanely great! (tm)".  Who would have thought that a decade
+after the famous 1984 add, it would be Apple which would be the highly
+controlled veritical OS empire and IBM would be spending billions on code it
+gives away.  But different strokes...
+
+<br>
+<br>
+<br>
+<br>
+<small><small> <a href="http://jsekhon.fas.harvard.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+
+
+</body>
+</html>
+
+
+
+<!--  LocalWords:  Kazushige BLAS Poytech Goto's Opteron AMD's
+ -->

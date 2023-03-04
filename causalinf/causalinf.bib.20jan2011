@@ -1,0 +1,3144 @@
+% $Id: info.bib,v 1.4 2004/07/11 06:12:19 jsekhon Exp jsekhon $
+% end comments for RCS
+
+@string{aer = "American Economic Review"}
+@string{ajps= "American Journal of Political Science"}
+@string(apq = "American Politics Quarterly")
+@string{apsr= "American Political Science Review"}
+@string{ams = "Annals of Mathematical Statistics"}
+@string{asr=  "American Sociological Review"}
+@string{aos = "Annals of Statistics"}
+@string{bjps= "British Journal of Political Science"}
+@string{ec  = "Econometrica"}
+@string{ier = "International Economic Review"}
+@string{jama= "Journal of the American Medical Association"}
+@string{jasa= "Journal of the American Statistical Association"}
+@string{je  = "Journal of Econometrics"}
+@string{jel = "Journal of Economic Literature"}
+@string{jep = "Journal of Economic Perspectives"}
+@string{jet = "Journal of Economic Theory"}
+@string{jmcb= "Journal of Money, Credit, and Banking"}
+@string{jme = "Journal of Monetary Economics"}
+@string{jpe = "Journal of Political Economy"}
+@string{jop = "Journal of Politics"}
+@string{jrsa= "Journal of the Royal Statistical Society, Series A"}
+@string{jrssb= "Journal of the Royal Statistical Society, Series B"}
+@string{lsq = "Legislative Studies Quarterly"}
+@string{pa  = "Political Analysis"}
+@string{pm  = "Political Methodology"}
+@string{pop = "Perspectives on Politics"}
+@string{ps  = "PS: Political Science and Politics"}
+@string{qje = "Quarterly Journal of Economics"}
+@string{qjps ="Quarterly Journal of Political Science"}
+@string{res = "Review of Economic Studies"}
+@string{sm =  "Statistics in Medicine"}
+
+@string{c-h = "Chapman \& Hall"}
+@string{cup = "Cambridge University Press"}
+@string{cornell.up = "Cornell University Press"}
+@string{hup = "Harvard University Press"}
+@string{mit = "MIT Press"}
+@string(pup = {Princeton University Press})
+@string{oup  = "Oxford University Press"}
+@string{s-v = "Springer-Verlag"}
+@string(sup = "Stanford University Press")
+@string{ucp = "University of California Press"}
+@string{uchp = "University of Chicago Press"}
+@string{ump = "University of Michigan Press"}
+@string{yup = "Yale University Press"}
+@string{cq  = "Congressional Quarterly"}
+
+@string{aa  = "Ann Arbor"}
+@string{berk= "Berkeley"}
+@string{bos = "Boston"}
+@string{cam = "Cambridge, MA"}
+@string{camUK = "Cambridge, UK"}
+@string{chic= "Chicago"}
+@string{dc  = "Washington, D.C."}
+@string{nh  = "New Haven"}
+@string{nj  = "New Jersey"}
+@string{ny  = "New York"}
+@string{sf  = "San Francisco"}
+@string{st  = "Stanford"}
+
+@article( abadie2002,
+  author=       {Abadie, Alberto},
+  title=        {Bootstrap Tests for Distributional Treatment Effect in Instrumental Variable Models},
+  journal=      jasa, volume=97, number=457,
+  pages=        {284--292},
+  year=         2002
+)
+
+@article( AbadieGardeazabal2003,
+  author=       {Abadie, Alberto and Javier Gardeazabal},
+  title=        {The Economic Costs of Conflict: a Case-Control Study for the Basque Country},
+  journal=      aer, volume=92, number=1,
+  year=         2003
+)
+
+@unpublished( AbadieImbens_bootstrap,
+  author=       {Abadie, Alberto and Guido Imbens},
+  title=        {On the Failure of the Bootstrap for Matching Estimators},
+  note=         "Working Paper",
+  year=         "2006"
+)
+
+@article( AbadieImbens_largesample,
+  author=       {Abadie, Alberto and Guido Imbens},
+  title=        {Large Sample Properties of  Matching Estimators for Average Treatment Effects},
+  journal=      ec,
+  volume =      74, issue=1, pages="235--267",
+  year=         "2006"
+)
+
+@book( adams1805,
+  author=       {Adams, John},
+  title=        {Discourses on Davila: A Series of Papers on Political History},
+  publisher=    {Da Capo Press}, address= {New York}, 
+  year=         {1973 [1805]}
+)
+
+@book( alesina1995,
+  author=       {Alesina, Alberto and Howard Rosenthal},
+  title=        {Partisan Politics, Divided Government, and the Economy},
+  publisher=    cup, address= ny, 
+  year=         1995
+)
+
+@article( alesina1989,
+  author=       {Alesina, Alberto and Howard Rosenthal},
+  title=        {Partisan Cycles in {C}ongressional Elections and the Macroeconomy},
+  journal=      apsr, volume=83,
+  pages=        {373-398},
+  year=         1989
+)
+
+@article( AlesinaLondregan1993,
+  author=       {Alesina, Alberto and John Londregan and Howard Rosenthal},
+  title=        {A Model of the Political Economy of the United States},
+  journal=      apsr, volume=87,
+  number=       1,
+  pages=        {12--33},
+  year=         1993
+)
+
+@book( alvarez1997,
+  author=       {Alvarez, R. Michael},
+  title=        {Information and Elections},
+  publisher=    {University of Michigan Press}, address= {Ann-Arbor}, 
+  year=         1997
+)
+
+@book( AlvarezBrehm2002,
+  author=       {Alvarez, R. Michael and John Brehm},
+  title=        {Hard Choices, Easy Answers: Values, Information, and American Public Opinion},
+  publisher=    pup, address= nj, 
+  year=         2002
+)
+
+
+@article( AlvarezBrehm1998,
+  author=       {Alvarez, R. Michael and John Brehm},
+  title=        {Speaking in Two Voices: American Equivocation about the Internal Revenue Service},
+  journal=      ajps, volume=42,
+  number=       2,
+  pages=        {418--452},
+  year=         1998
+)
+
+@article( AlvarezBrehm1997,
+  author=       {Alvarez, R. Michael and John Brehm},
+  title=        {Are Americans Ambivalent Toward Racial Policies?},
+  journal=      ajps, volume=41,
+  pages=        {345--374},
+  year=         1997
+)
+
+@article( AlvarezBrehm1995,
+  author=       {Alvarez, R. Michael and John Brehm},
+  title=        {American Ambivalence Toward Abortion Policy: A Heteroskedastic Probit Method for Assessing Conflicting Values},
+  journal=      ajps, volume=39,
+  pages=        {1055--1082},
+  year=         1995
+)
+
+@book( althaus2003,
+  author=       {Althaus, Scott L.},
+  title=        {Collective Preferences in Democratic Politics: Opinion Surveys and the Will of the People},
+  publisher=    cup, address= ny, 
+  year=         2003
+)
+
+@article( althaus1998,
+  author=       {Althaus, Scott L.},
+  title=        {Information Effects in Collective Preferences},
+  journal=      apsr, volume=92,
+  number=       3,
+  pages=        {545--558},
+  year=         1998
+)
+
+@article( AldrichMcKelvey1977,
+  author=       {Aldrich, John H. and Richard D. McKelvey},
+  title=        {A Method of Scaling with Applications to the 1968 and 1972 Presidential Elections},
+  journal=      apsr, volume=71, number=1,
+  pages=        {111--130},
+  year=         1977
+)
+
+@article( air1996,
+  author=       {Angrist, Joshua D. and Guido W. Imbens and Donald B. Rubin},
+  title=        "Identification of Causal Effects Using Instrumental Variables",
+  journal=      jasa, volume=91, 
+  number=       434,
+  pages=        {444-455},
+  year=         1996
+)
+
+@article{Andam21102008,
+author = {Andam, Kwaw S. and Ferraro, Paul J. and Pfaff, Alexander and Sanchez-Azofeifa, G. Arturo and Robalino, Juan A.}, 
+title = {Measuring the Effectiveness of Protected Area Networks in Reducing Deforestation}, 
+volume = {105}, 
+number = {42}, 
+pages = {16089-16094}, 
+year = {2008}, 
+doi = {10.1073/pnas.0800437105}, 
+abstract ={Global efforts to reduce tropical deforestation rely
+                  heavily on the establishment of protected
+                  areas. Measuring the effectiveness of these areas is
+                  difficult because the amount of deforestation that
+                  would have occurred in the absence of legal
+                  protection cannot be directly observed. Conventional
+                  methods of evaluating the effectiveness of protected
+                  areas can be biased because protection is not
+                  randomly assigned and because protection can induce
+                  deforestation spillovers (displacement) to
+                  neighboring forests. We demonstrate that estimates
+                  of effectiveness can be substantially improved by
+                  controlling for biases along dimensions that are
+                  observable, measuring spatial spillovers, and
+                  testing the sensitivity of estimates to potential
+                  hidden biases. We apply matching methods to evaluate
+                  the impact on deforestation of Costa Rica's renowned
+                  protected-area system between 1960 and 1997. We find
+                  that protection reduced deforestation: approximately
+                  10\% of the protected forests would have been
+                  deforested had they not been protected. Conventional
+                  approaches to evaluating conservation impact, which
+                  fail to control for observable covariates correlated
+                  with both protection and deforestation,
+                  substantially overestimate avoided deforestation (by
+                  over 65\%, based on our estimates). We also find
+                  that deforestation spillovers from protected to
+                  unprotected forests are negligible. Our conclusions
+                  are robust to potential hidden bias, as well as to
+                  changes in modeling assumptions. Our results show
+                  that, with appropriate empirical methods,
+                  conservation scientists and policy makers can better
+                  understand the relationships between human and
+                  natural systems and can use this to guide their
+                  attempts to protect critical ecosystem services.}, 
+URL = {http://www.pnas.org/content/105/42/16089.abstract}, 
+eprint = {http://www.pnas.org/content/105/42/16089.full.pdf+html}, 
+journal = {Proceedings of the National Academy of Sciences} 
+}
+
+@article{anscombe1948,
+  author =   {Anscombe, F. J.},
+  title =    {The Validity of Comparative Experiments},
+  journal =  jrsa, volume = 61, 
+  pages =    "181--211",
+  year =     {1948},
+}
+
+@article( angrist1998,
+  author=       {Angrist, Joshua D.},
+  title=        {Estimating the Labor Market Impact of Voluntary Military Service Using
+Social Security Data on Military Applicants},
+  journal=      ec, volume=66, number=2, month="March",
+  pages=        {249-288},
+  year=         1998
+)
+
+@article( AngristKrueger2001,
+  author=       {Angrist, Joshua D. and Alan B. Krueger},
+  title=        {Instrumental Variables and the Search for Identification: From Supply and Demand to Natural Experiments},
+  journal=      {Journal of Economic Perspectives}, 
+  volume=       15,
+  number=       4,
+  pages=        {69--85},
+  year=         2001
+)
+
+@article( AngristKrueger1991,
+  author=       {Angrist, J and AB Krueger},
+  title=        {Does compulsory school attendance affect earnings?},
+  journal=      qje, volume=106,
+  pages=        {979--1019},
+  year=         1991
+)
+
+@article( ArceneauxGerberGreen2006,
+  author=       {Arceneaux, Kevin and Alan S.\ Gerber and Donald P.\ Green},
+  title=        {Comparing Experimental and Matching Methods Using a Large-Scale Voter Mobilization Experiment},
+  journal=      pa, volume=14, number=1,
+  pages=        {37--62},
+  year=         2006
+)
+
+@article( Armitage_fisher2003,
+  author=       {Armitage, Peter},
+  title=        {Fisher, Bradford Hill, and Randomization},
+  journal=      {International Journal of Epidemiology}, volume=32, number=6,
+  pages=        {925--928},
+  year=         2003
+)
+
+@article( atkinson86,
+  author=       {Atkinson, A. C.},
+  title=        {Masking Unmasked},
+  journal=      {Biometrika}, volume=73,
+  pages=        {533--541},
+  year=         1986,
+  month=        {Dec.}
+)
+
+@article( austen-smith1996,
+  author=       {Austen-Smith, David and Jeffrey S. Banks},
+  title=        {Information Aggregation, Rationality, and the Condorcet Jury Theorem},
+  journal=      apsr, volume=90,
+  pages=        {34--45},
+  year=         1996
+)
+
+@article(barnard.frangakis.hill.rubin.2003,
+  author=       {Barnard, John and Constantine E. Frangakis and Jennifer L. Hill and Donald B. Rubin},
+  title= {Principal Stratification Approach to Broken Randomized
+  Experiments: A Case Study of School Choice Vouchers in New York
+  City},
+  journal=      jasa, volume=98, number=462,
+  pages=        {299--323},
+  year=         2003
+)
+
+@unpublished( bart,
+  author=       {Chipman, Hugh A.\ and Edward I.\ George and Robert E.\ McCulloch},
+  title=        {BART: Bayesian Additive Regression Trees},
+  year=         2006,
+  note=         {Working Paper}
+)
+
+@unpublished( bartels2003,
+  author=       {Bartels, Larry M.},
+  title=        {Homer Gets a Tax Cut: Inequality and Public Policy in the American Mind},
+  note=         {Annual Meeting of the American Political Science Association, Philadelphia, August},
+  year=         2003
+)
+
+@article( bartels1999,
+  author=       {Bartels, Larry M.},
+  title=        {Panel Effects in the National Election Studies},
+  journal=      pa, volume=8, 
+  number=       1,
+  year=         1999
+)
+
+@article( bartels1996b,
+  author=       {Bartels, Larry M.},
+  title=        {Uninformed Votes: Information Effects in Presidential Elections},
+  journal=      ajps, volume=40, 
+  number=       1,
+  pages=        {194--230},
+  year=         1996
+)
+
+@article( bartels1986,
+  author=       {Bartels, Larry M.},
+  title=        "Issue Voting Under Uncertainty: An Empirical Test",
+  journal=      ajps, volume=30, 
+  number=       4,
+  pages=        {709--728},
+  year=         1986
+)
+
+@unpublished( battistin2004,
+  author=       {Battistin, Erich and Andrew Chesher},
+  title=        {Measurement Error Bias and Propensity Score Methods},
+  year=         2004,
+  note=         "Working Paper"
+)
+
+@unpublished( bbc_tea,
+  author=       {BBC},
+  title=        {How to make a perfect cuppa},
+  url=          {http://news.bbc.co.uk/1/hi/uk/3016342.stm},
+  note=         "June 25",
+  year=         2003
+)
+
+@article( bennett1988,
+  author=       {Bennett, Stephen Earl},
+  title=        {Know-nothings' Revisited: The Meaning of Political Ignorance Today},
+  journal=      {Social Science Quarterly}, volume=69,
+  pages=        {476--490},
+  year=         1988
+)
+
+@article( berg1993,
+  author=       {Berg, Sven},
+  title=        {Condorcet's Jury Theorem, Dependency Among Jurors},
+  journal=      {Social Choice and Welfare}, volume=10,
+  pages=        {87--95},
+  year=         1993
+)
+
+@book( berelson1954,
+  author=       {Berelson, Bernard R. and Paul F. Lazarsfeld and William N. McPhee},
+  title=        {Voting: A Study of Opinion Formation in a Presidential Campaign},
+  publisher=    uchp, address= chic, 
+  year=         1954
+)
+
+@article( BertrandMullainatha2004,
+  author=       {Bertrand, Marianne and Sendhil Mullainatha},
+  title=        {Are Emily and Greg More Employable than Lakisha and
+                  Jamal? A Field Experiment on Labor Market
+                  Discrimination},
+  journal=      aer, volume=94, number=4,
+  pages=        {991--1013},
+  year=         2004
+)
+
+@article( BertsimasTsitsiklis1993,
+  author=       {Bertsimas, Dimitris and John Tsitsiklis},
+  title=        {Simulated Annealing},
+  journal=      "Statistical Science", volume=8, number=1,
+  pages=        {10--15},
+  year=         1993
+)
+
+@unpublished( bhattacharya.vogt.zbias,
+  author=       {Bhattacharya, J. and Vogt, W},
+  title=        {Do Instrumental Variables Belong in Propensity Scores?},
+  note=         "NBER Technical Working Paper 343, National Bureau of Economic Research, MA.",
+  year=         "2007"
+)
+
+@book( billingsley1986,
+  author=       {Billingsley, Patrick},
+  title=        {Probability and Measure},
+  publisher=    "Wiley", address= "New York",
+  year=         1986
+)
+
+@article( bloom.eval.rev.1984,
+  author=       {Bloom, Howard S.},
+  title=        "Accounting for No-Shows in Experimental Evaluation Designs",
+  journal=      {Evaluation Review}, volume=8, number=2,
+  pages=        {225--246},
+  year=         1984
+)
+
+@article( BloomHu2002,
+  author=       {Bloom, J. R. and T. W. Hu and N. Wallace and B. Cuffel and J.W. Hausman and M.L. Sheu and R.  Scheffler},
+  title=        {Mental Health Costs and Access Under Alternative Capitation Systems in Colorado},
+  journal=      "Health Services Research", volume=37, number=2,
+  pages=        {315--40},
+  year=         2002
+)
+
+@unpublished( BonneyCanesMinozzi2007,
+  author=       {Bonney, Jessica and Brandice Canes-Wrone and William Minozzi},
+  title=        {Issue Accountability and the Mass Public: The Electoral Consequences of Legislative Voting on Crime Policy},
+  note=         {Working Paper},
+  year=         2007
+)
+
+@unpublished( BoothLeighVarganova,
+  author=       {Booth, Alison and Andrew Leigh and Elena Varganova},
+  title=        {Does Racial and Ethnic Discrimination Vary Across Minority Groups? Evidence From a Field Experiment},
+  note=         "Working Paper",
+  year=         "2009"
+)
+
+@unpublished( BoydEpsteinMartin,
+  author=       {Boyd, Christina L.\ and Lee Epstein and Andrew D.\ Martin},
+  title=        {Untangling the Causal Effects of Sex on Judging},
+  note=         "2nd Annual Conference on Empirical Legal Studies Paper. Available at SSRN: \url{http://ssrn.com/abstract=1001748}",
+  year=         2008
+)
+
+@article( BoundJaegerBaker1995,
+  author=       {Bound, J. and D. Jaeger and R. Baker},
+  title=        {Problems with Instrumental Variables Estimation when the Correlation Between the Instruments and the Endogenous Regressors is Weak},
+  journal=      jasa, volume=90,
+  pages=        {443--450},
+  year=         1995
+)
+
+@article( HansenBowersJASA,
+  author=       {Hansen, Ben B.\ and Jake Bowers},
+  title=        {Attributing Effects to A Cluster Randomized Get-Out-The-Vote Campaign},
+  journal=      jasa,
+  year=         "In Press"
+)
+
+@unpublished( BowersHansen2006,
+  author=       {Bowers, Jake and Ben Hansen},
+  title=        {Attributing Effects to A Cluster Randomized Get-Out-The-Vote Campaign},
+  note=         "Technical Report \#448, Statistics Department, University of Michigan. \url{http://www-personal.umich.edu/~jwbowers/PAPERS/bowershansen2006-10TechReport.pdf}",
+  year=         2006
+)
+
+@unpublished( BowersHansen.orig.2005,
+  author=       {Bowers, Jake and Ben Hansen},
+  title=        {Attributing Effects to a Get-Out-The-Vote Campaign Using Full Matching and Randomization Inference},
+  note=         "\url{http://www-personal.umich.edu/~jwbowers/PAPERS/bowershansen03Apr05.pdf}",
+  year=         2005
+)
+
+@incollection( brady_neyman,
+  author=       {Brady, Henry},
+  title=        {Causation and Explanation in Social Science},
+  booktitle=    {The Oxford Handbook of Political Methodology},
+  editor=       {Janet M. Box-Steffensmeier and Henry E. Brady and David Collier},
+  publisher=    {Oxford University Press}, address= {New York}, 
+  pages=        {217--270},
+  year=         2008
+)
+
+@unpublished( BradyHui2006,
+  author=       {Brady, Henry and Iris Hui},
+  title=        {Is it Worth Going the Extra Mile to Improve Causal Inference?"},
+  year=         2006,
+  note=         {Paper presented at the 23rd Annual Summer Meeting of the Society of Political Methodology}
+)
+
+@book( cart1984,
+  author=       {Breiman, Leo and Jerome Friedman and Charles J.\ Stone and R.A.\ Olshen},
+  title=        {Classification and Regression Trees},
+  publisher=    {Chapman \& Hall}, address= {New York}, 
+  year=         {1984}
+)
+
+@article( BrunellNiNardo2004,
+  author=       {Brunell, Thomas L. and John DiNardo},
+  title=        {A Propensity Score Reweighting Approach to Estimating the Partisan Effects of Full Turnout in American Presidential Elections},
+  journal=      pa, volume=12, number=1,
+  pages=        {28--45},
+  year=         2004
+)
+
+@book( bryce1888,
+  author=       {Bryce, James},
+  title=        {The American Commonwealth},
+  publisher=    {Liberty Fund}, address= {Indianapolis}, 
+  year=         "1995 [1888]"
+)
+
+@article( bunce2000,
+  author=       {Bunce, Valerie},
+  title=        {Comparative Democratization: Big and Bounded Generalizations},
+  journal=      {Comparative Political Studies}, volume=33, number={6/7},
+  pages=        {703--724},
+  year=         2000
+)
+
+@incollection( camp2004,
+  author=       {Camp, Ai Roderic},
+  title=        {Citizen Attitudes toward Democracy and Vicente Fox's Victory in 2000},
+  booktitle=    {Mexico's Pivotal Democratic Election},
+  editor=       {Jorge I. Dom\'{i}nguez and Chappell Lawson},
+  publisher=    sup, address= "Stanford",
+  pages=        {25--46},
+  year=         2004
+)
+
+@book( campbell1960,
+  author=       {Campbell, Angus and Philip E. Converse and Warren E. Miller and Donald E. Stokes},
+  title=        {The {A}merican Voter},
+  publisher=    {John Wiley \& Sons}, address= ny,
+  year=         1960
+)
+
+@article( CantoniRonchetti2001,
+  author=       {Cantoni, Eva and Elvezio Ronchetti},
+  title=        {Robust Inference for Generalized Linear Models},
+  journal=      jasa, volume=96,
+  pages=        {1022--1030},
+  year=         2001
+)
+
+@article( chapin1938,
+  author=       {Chapin, Stuart F.},
+  title=        {Design for Social Experiments},
+  journal=      asr, volume=3, number=6,
+  pages=        {786--800},
+  year=         1938
+)
+
+@article( CarrollPederson1993,
+  author=       {Carroll, R. J. and Pederson, Shane},
+  title=        {On Robustness in the Logistic Regression Model},
+  journal=      jrssb, volume=84,
+  number=       3,
+  pages=        {693--706},
+  year=         1993
+)
+
+@unpublished( CaugheySekhon2010,
+  author=       {Devin Caughey and Jasjeet S.\ Sekhon},
+  title=        {Regression-Discontinuity Designs and Popular Elections: The Implications of Pro-Incumbent Bias in Close Races},
+  note=         {Working Paper},
+  year=         2010
+)
+
+Regression-Discontinuity Designs and Popular Elections:\\The Implications of Pro-Incumbent Bias in Close Races}
+
+@article{ cerny1985,
+    author = "Cerny, V.",
+    title = "Thermodynamical Approach to the Traveling Salesman Problem: An Efficient Simulation Algorithm",
+    journal = "Journal of Optimization Theory and Applications", number = "1", 
+    volume = "45",
+    pages = "41--51",
+    year = "1985"
+}
+
+@article( ChristakisIwashyna2003,
+  author=       {Christakis, Nicholas A. and Iwashyna, Theodore I.},
+  title=        "The Health Impact of Health Care on Families: A Matched Cohort Study of Hospice use by Decedents and Mortality Outcomes in Surviving, Widowed Spouses",
+  journal=      "Social Science \& Medicine", volume=57, number=3,
+  pages=        {465--475},
+  year=         2003
+)
+
+@article( cochran1953,
+  author=       {Cochran, William G.},
+  title=        "Matching in Analytical Studies",
+  journal=      {American Journal of Public Health}, volume=43, 
+  pages=        {684--691},
+  year=         1953
+)
+
+@article( cochran1965,
+  author=       {Cochran, William G.},
+  title=        "The Planning of Observational Studies of Human Populations (with discussion)",
+  journal=      jrsa, volume=128, 
+  pages=        {234--255},
+  year=         1965
+)
+
+@book( cochran1983,
+  author=       {Cochran, William G.},
+  title=        {Planning and analysis of observational studies},
+  publisher=    "John Wiley and Sons", address= "New York",
+  note=         "Edited posthumously by L. E. Moses and F. Mosteller",
+  year=         1983
+)
+
+@article( CochranRubin1973,
+  author=       {Cochran, William G. and Donald B. Rubin},
+  title=        "Controlling Bias in Observational Studies: A Review",
+  journal=      {Sankhya, Series A}, volume=35, number=4,
+  pages=        {417--446},
+  year=         1973
+)
+
+@book( collier_christopher1971,
+  author=       {Collier, Christopher},
+  title=        {Roger Sherman's Connecticut: Yankee Politics and the American Revolution},
+  publisher=    "Wesleyan University Press", address= "Middletown, Conn.",
+  year=         1971
+)
+
+@book( conover1971,
+  author=       {Conover, William J.},
+  title=        {Practical Nonparametric Statistics},
+  publisher=    {John Wiley \& Sons}, address= {New York}, 
+  year=         {1971}
+)
+
+@incollection( converse1964,
+  author=       {Converse, Phillip},
+  title=        {The Nature of Belief Systems in Mass Publics},
+  booktitle=    {Ideology and Discontent},
+  editor=       {David Apter},
+  publisher=    {Free Press}, address= ny,
+  pages=       {240--268},
+  year=         1964
+)
+
+@article( cornfield1959,
+  author=       {Cornfield, J. and W. Haenszel and E. Hammond and A. Lilienfeld and M. Shimkin and E. Wynder},
+  title=        {Smoking and lunch cancer: Recent evidence and a discussion of some questions},
+  journal=      {Journal of the National Cancer Institute}, volume=22, 
+  pages=        {173--203},
+  year=         1959
+)
+
+@article( copas1988,
+  author=       {Copas, J. B.},
+  title=        {Binary Regression Models for Contaminated Data},
+  journal=      jrssb, volume=50,
+  number=       2,
+  pages=        {225--265},
+  year=         1988
+)
+
+@book( cox1958,
+  author=       {Cox, David R.},
+  title=        {Planning of Experiments},
+  publisher=    "Wiley", address= ny,
+  year=         1958
+)
+
+@unpublished( CrumpHotzImbensMitnik2006,
+  author=       {Crump, Richard K. and V. Joseph Hotz and Guido W. Imbens and Oscar A. Mitnik},
+  title=        {Moving the Goalposts: Addressing Limited Overlap in Estimation of Average Treatment Effects by Changing the Estimand},
+  year=         2006,
+  note=         {Working Paper}
+)
+
+@article( CuffelBloom2002,
+  author=       {Cuffel, B.J. and J.R. Bloom and N. Wallace and J.W. Hausman and T.W. Hu},
+  title=        {Two-Year Outcomes of Fee-For-Service and Capitated Medicaid Programs for People with Severe Mental Illness},
+  journal=      "Health Services Research", volume=37, number=2,
+  pages=        {341-359},
+  year=         2002
+)
+
+@article( dagostino2007,
+  author=       {D'Agostino, Jr., R. and D'Agostino, Sr., R.},
+  title=        {Estimating Treatment Effects using Observational Data},
+  journal=      jama,
+  volume =      297, pages="314--316",
+  year=         "2007"
+)
+
+@book( davis1991,
+  author=       {Davis, Lawrence, ed},
+  title=        {Handbook of Genetic Algorithms},
+  publisher=    {Van Nostrand Reinhold}, address= {New York}, 
+  year=         {1991}
+)
+
+@book{DavisonHinkley1997,
+	Address = {New York},
+	Author = {Davison, A. C. and D. V. Hinkley},
+	Publisher = cup,
+	Title = {Bootstrap Methods and Their Application},
+	Year = {1997}
+}
+
+@article( dawid1979,
+  author=       {Dawid, A. Phillip},
+  title=        {Conditional Independence in Statistical Theory},
+  journal=      jrssb, volume=41,
+  pages=        {1--31},
+  number=       1,
+  year=         1979
+)
+
+@incollection( dejong1993,
+  author=       {De Jong, Kenneth A.},
+  title=        {Genetic Algorithms Are Not Function Optimizers},
+  booktitle=    {Foundations of Genetic Algorithms 2},
+  editor=       {L.~Darrell Whitley},
+  publisher=    {Morgan Kaufmann}, address= {San Mateo, CA},
+  year=         1993
+)
+
+@Article{Dehejia2005,
+  author =   {Rajeev Dehejia},
+  title =    {Practical Propensity Score Matching: A Reply to Smith and Todd},
+  journal =  {Journal of Econometrics},
+  year =     {2005},
+  volume =   {125}, number="1--2",
+  pages =    {355--364},
+}
+
+@Article{DehejiaWahba2002,
+  author =   {Rajeev H. Dehejia and Sadek Wahba},
+  title =    {Propensity Score Matching Methods for Nonexperimental Causal Studies},
+  journal =  {Review of Economics and Statistics},
+  year =     {2002},
+  volume =   {84},
+  number =   {1},
+  pages =    {151--161},
+  month =    {February},
+}
+
+@article( DehejiaWahba1999,
+  author=    {Dehejia, Rajeev and Sadek Wahba},
+  title=     {Causal Effects in Non-Experimental Studies: Re-Evaluating the Evaluation of Training Programs},
+  journal=   jasa, volume=94,
+  number=    448,
+  pages=     {1053--1062},
+  year=      1999
+)
+
+@unpublished( DehejiaWahba1997,
+  author=       {Dehejia, Rajeev and Sadek Wahba},
+  title=        {Causal Effects in Non-Experimental Studies: Re-Evaluating the Evaluation of Training Programs},
+  note=         {Rejeev Dehejia, \textit{Econometric Methods for Program Evaluation}. Ph.D. Dissertation, Harvard University, Chapter 1},
+  year=         1997
+)
+
+@book( delli1996,
+  author=       {Delli Carpini, X. Michael and Scott Keeter},
+  title=        {What Americans Know about Politics and Why It Matters},
+  publisher=    {Yale University Press}, address= {New Haven}, 
+  year=         1996
+)
+
+@article( delli1993,
+  author=       {Delli Carpini, X. Michael and Scott Keeter},
+  title=        {Measuring Political Knowledge: Putting First Things First},
+  journal=      ajps, volume=37,
+  number =      4,
+  pages=        {1179-1206},
+  year=         1993
+)
+
+@unpublished( DiamondSekhon2005,
+  author=       {Diamond, Alexis and Jasjeet S.\ Sekhon},
+  title=        {Genetic Matching for Estimating Causal Effects: A General Multivariate Matching Method for Achieving Balance in Observational Studies},
+  note=         {Working Paper},
+  year=         2005
+)
+
+@article( DiNardoPischke1997,
+  author=       {DiNardo, JE and JS Pischke},
+  title=        {The returns to computer use revisited: Have pencils changed the wage structure too?},
+  journal=      qje, volume=112,
+  pages=        {291--303},
+  year=         1997
+)
+
+@article( DipreteEngelhardt2004,
+  author=       {Diprete, Thomas A. and Henriette Engelhardt},
+  title=        {Estimating Causal Effects With Matching Methods in the Presence and Absence of Bias Cancellation},
+  journal=      "Sociological Methods \& Research", volume=32, number=4,
+  pages=        "501--528",
+  year=         "2004",
+)
+
+@incollection( dominguez2004,
+  author=       {Dom\'{i}nguez, I. Jorge},
+  title=        {Why and How Did Mexico's 2000 Presidential Election Campaign Matter?},
+  booktitle=    {Mexico's Pivotal Democratic Election},
+  editor=       {Jorge I. Dom\'{i}nguez and Chappell Lawson},
+  publisher=    sup, address= "Stanford",
+  pages=        {321--344},
+  year=         2004
+)
+
+@article( dorn1953,
+  author=       {Dorn, H. F.},
+  title=        "Philosophy of Inference from Retrospective Studies",
+  journal=      {American Journal of Public Health}, volume=43, 
+  pages=        {692--699},
+  year=         1953
+)
+
+@article( drake1993,
+  author=       {Drake, Christiana},
+  title=        {Effects of Misspecification of the Propensity Score on Estimators of Treatment Effect},
+  journal=      {Biometrics}, volume=49, 
+  number=       4,
+  pages=        {1231--1236},
+  year=         1993
+)
+
+@article( dunning2008,
+  author=       {Dunning, Thad},
+  title=        {Improving Causal Inference: Strengths and Limitations of Natural Experiments},
+  journal=      "Political Science Quarterly", volume=61, number=2,
+  pages=        {282--293},
+  year=         2008
+)
+
+@book( efron1994,
+  author=       {Efron, Bradely and Robert J. Tibshirani},
+  title=        {An Introduction to the Bootstrap},
+  publisher=    {Chapman \& Hall}, address= {New York}, 
+  year=         {1994}
+)
+
+@unpublished( Eggers2006,
+  author=       {Eggers, Andrew C.},
+  title=        {How Much Do Trade Agreements Increase Trade?},
+  year=         2006,
+  note=         "\url{http://sekhon.berkeley.edu/causalinf/papers/rtaffects5.pdf}"
+)
+
+@unpublished( EggersHainmueller_mp,
+  author=       {Eggers, Andy and Jens Hainmueller},
+  title=        {The Value of Political Power: Estimating Returns to Office in Post-War British Politics},
+  note=         "Working Paper",
+  year=         2008
+)
+
+@article( eldersveld1956,
+  author=       {Eldersveld, Samuel J.},
+  title=        {Experimental Propaganda Technique and Voting Behavior},
+  journal=      apsr, volume=50, number=1,
+  pages=        {154--165},
+  year=         1956
+)
+
+@article( EpsteinHoKing2005,
+  author=       {Epstein, Lee and Daniel E. Ho and Gary King and Jeffrey A. Segal},
+  title=        {The Supreme Court During Crisis: How War Affects only Non-War Cases},
+  journal=      "New York University Law Review", volume=80, number=1,
+  pages=        "1--116",
+  year=         "2005",
+)
+
+@article( erikson1988,
+  author=       {Erikson, Robert S.},
+  title=        {The Puzzle of Midterm Loss},
+  journal=      jop, volume=50,
+  number =      4,
+  pages=        {1012--1029},
+  year=         1988
+)
+
+@book( fechner1860,
+  author=       {Fechner, Gustav Theodor},
+  title=        {Elements of psychophysics, Vol 1.},
+  note       =  {Translated by Helmut E. Adler and edited by D.H. Howes and E.G. Boring},
+  publisher=    {Rinehart \& Winston}, address= ny, 
+  year=         "1966 [1860]"
+)
+
+@book( feller1970,
+  author=       {Feller, William},
+  title=        {An Introduction to Probability Theory and Its Applications},
+  publisher=    "Wiley", address= "New York",
+  note=         "Vol.\ 1, 3d ed., revised printing",
+  year=         1970
+)
+
+@article( FilhoTreleavenAlippi1994,
+  author=       {Filho, Jose L. Ribeiro, Philip C. Treleaven and Cesare Alippi},
+  title=        {Genetic Algorithm Programming Environments},
+  journal=      {Computer}, volume=27,
+  pages=        {28--43},
+  year=         1994
+)
+  	 
+@book( fiorina1996,
+  author=       {Fiorina, Morris P.},
+  title=        {Divided Government},
+  publisher=    {Allyn \& Bacon}, address= "Boston", 
+  edition=      "2nd",
+  year=         1992
+)
+
+@article(fisher.1958b,
+  author=       {Fisher, Ronald A.},
+  title= {Lung Cancer and Cigarettes?},
+  journal=      {Nature}, 
+  volume=       182, 
+  month=        "July",
+  pages=        108,
+  year=         1958
+)
+
+@article(fisher.1958a,
+  author=       {Fisher, Ronald A.},
+  title=        {Cancer and Smoking},
+  journal=      {Nature}, 
+  volume=       182, 
+  month=        "August",
+  pages=        596,
+  year=         1958
+)
+
+@book( fisher1935,
+  author=       {Fisher, Ronald A.},
+  title=        {Design of Experiments},
+  publisher=    {Hafner}, address= {New York}, 
+  year=         {1935}
+)
+
+@article( fisher1926,
+  author=       {Fisher, Ronald A.},
+  title=        {The Arrangement of Field Experiments},
+  journal=      {Journal of the Ministry of Agriculture of Great Britain},
+  volume=       33,
+  pages=        {503--513},
+  year=         {1926}
+)
+
+@book( fisher1925,
+  author=       {Fisher, Ronald A.},
+  title=        {Statistical Methods for Research Workers},
+  publisher=    {Oliver and Boyd}, address= {Edinburgh}, 
+  year=         {1925}
+)
+
+@book( fishkin1997,
+  author=       {James S. Fishkin},
+  title=        {The Voice of the People: Public Opinion and Democracy},
+  edition=      {2nd},
+  publisher=    {Yale University Press}, address= {New Haven, CT}, 
+  year=         {1997}
+)
+
+@article( franklin1991,
+  author=       {Franklin, Charles H.},
+  title=        {Eschewing Obfuscation? Campaigns and the Perception of U.S. Senate Incumbents},
+  journal=      apsr, volume=85,
+  number =      4,
+  pages=        {1193--1214},
+  year=         1991
+)
+
+@article( freedmanLogit,
+  author=       {Freedman, David A.},
+  title=        {Randomization Does not Justify Logistic Regression},
+  journal=      {Statistical Science},
+  volume=       23, 
+  number=       2,
+  pages=        "237--249",
+  year=         {2008}
+)
+
+@article( freedmanOLSa,
+  author=       {Freedman, David A.},
+  title=        {On Regression Adjustments in Experiments with Several Treatments},
+  journal=      {Annals of Applied Statistics},
+  volume=       2, 
+  number=       1,
+  pages=        {176--196},
+  year=         {2008}
+)
+
+@article( freedmanOLSb,
+  author=       {Freedman, David A.},
+  title=        {On Regression Adjustments to Experimental Data},
+  journal=      {Advances in Applied Mathematics},
+  volume=       40,
+  number=       2,
+  pages=        {180--193},
+  year=         {2008}
+)
+
+@article( freedman_oasis,
+  author=       {Freedman, David A.},
+  title=        {Oasis or Mirage?},
+  journal=      {CHANCE Magazine},
+  volume=       21, 
+  number=       1,
+  pages=        "59--61",
+  year=         {2008}
+)
+
+@article( freedman2006,
+  author=       {Freedman, David A.},
+  title=        {Statistical Models for Causation: What Inferential leverage Do They Provide?},
+  journal=      {Evaluation Review}, volume=30,
+  pages=        {691--713},
+  year=         2006
+)
+
+@book( freedman2005,
+  author=       {Freedman, David A.},
+  title=        {Statistical Models: Theory and Practice},
+  publisher=    cup, address=ny, 
+  year=         {2005}
+)
+
+@article( freedman_graph,
+  author=       {Freedman, David A.},
+  title=        {On Specifying Graphical Models for Causation, and the Identification Problem},
+  journal=      {Evaluation Review},
+  volume=       26, 
+  number=       4,
+  pages=        "267–-93",
+  year=         {2004}
+)
+
+@incollection( freedmanCh2,
+  author=       {Freedman, David A.},
+  title=        {Statistical Assumptions as Empirical Commitments},
+  booktitle=    {Punishment and Social Control: Essays in Honor of Sheldon Messinger},
+  editor=       {Thomas G.~Blomberg and Stanley Cohen}, edition="2nd",
+  publisher=    {Aldine de Gruyter}, 
+  pages=       {235--254},
+  year=         2003
+)
+
+@article( freedmanCh14,
+  author=       {Freedman, David A. and Paul Humphreys},
+  title=        {The Grand Leap},
+  journal=      {British Journal for the Philosophy of Science},
+  volume=       47, 
+  pages=        "113--123",
+  year=         {1996}
+)
+
+@incollection( freedmanCh20,
+  author=       {Freedman, David A.},
+  title=        {On Types of Scientific Inquiry: The Role of Qualitative Reasoning},
+  booktitle=    {Oxford Handbook of Political Methodology},
+  editor=       {Janet M.~Box-Steffensmeier and Henry E. Brady and
+David Collier}, 
+  publisher=   oup, 
+  pages=       {300--318},
+  year=         2008
+)
+
+@article( FreedmanPetitti_HRT,
+  author=       {Freedman, David A. and Diana B.\ Petitti},
+  title=        {Hormone Replacement Therapy Does Not Save Lives: Comments on the Women's Health Initiative
+},
+  journal=      {Biometrics}, volume=61, number=4,
+  pages=        {918–-920},
+  year=         2005
+)
+
+@article( FreedmanPetitti_HRT.aje,
+  author=       {Freedman, David A. and Diana B.\ Petitti},
+  title=        {Invited Commentary: How Far Can Epidemiologists Get with Statistical Adjustment?},
+  journal=      {American Journal of Epidemiology}, volume=162, number=5,
+  pages=        {415--418},
+  year=         2005
+)
+
+
+@article( freedman_association,
+  author=       {Freedman, David A.},
+  title=        {From Association to Causation: Some Remarks on the History of Statistics},
+  journal=      {Statistical Science},
+  volume=       14, 
+  pages=        "243--258",
+  year=         {1999}
+)
+
+@article( freedman_foundations,
+  author=       {Freedman, David A.},
+  title=        {Some Issues in the Foundation of Statistics},
+  journal=      {Foundations of Science},
+  volume=       1, 
+  pages=        "19--39",
+  year=         {1995}
+)
+
+@article( freedman_shoe,
+  author=       {Freedman, David A.},
+  title=        {Statistical Models and Shoe Leather},
+  journal=      {Sociological Methodology},
+  volume=       21, 
+  pages=        "291--313",
+  year=         {1991}
+)
+
+@article( GalianiGertlerSchargrodsky2005,
+  author=       {Galiani, Sebastian and Paul Gertler and Ernesto Schargrodsky},
+  title=        {Water for Life: The Impact of the Privatization of Water Services on Child Mortality},
+  journal=      jpe, volume=113, number=1,
+  pages=        {83--120},
+  year=         2005
+)
+
+@article( geddes1999,
+  author=       {Geddes, Barbara},
+  title=        {What Do We Know about Democratization},
+  journal=      "Annual Review of Political Science", volume=2,
+  pages=        {129--148},
+  year=         1999
+)
+
+@article( GeyerThompson1995,
+  author=       {Geyer, Charles J. and Elizabeth A. Thompson},
+  title=        {Annealing Markov Chain Monte Carlo with Applications to Ancestral Inference},
+  journal=      jasa, volume=90, number=431,
+  pages=        {909--920},
+  year=         1995
+)
+
+@unpublished( GlynnQuinn_pearl,
+  author=       {Glynn, Adam and Kevin Quinn},
+  title=        {Non-parametric Mechanisms and Causal Modeling},
+  note=         {Working Paper},
+  year=         2007
+)
+
+@book( greenwood1945,
+  author=       {Greenwood, Ernest},
+  title=        {Experimental Sociology: A Study in Method},
+  publisher=    {King's Crown Press}, address= {New York}, 
+  year=         {1945}
+)
+
+@incollection( GreenGerber_oxford,
+  author=       {Green, Donald and Alan Gerber},
+  title=        {Field Experiments and Natural Experiments},
+  booktitle=    {The Oxford Handbook of Political Methodology},
+  editor=       {Janet M. Box-Steffensmeier and Henry E. Brady and David Collier},
+  publisher=    {Oxford University Press}, address= {New York}, 
+  pages=        {357--381},
+  year=         2008
+)
+
+@incollection( GreenGerber_reclaim,
+  author=       {Green, Donald and Alan Gerber},
+  title=        {Reclaiming the Experimental Tradition in Political Science},
+  booktitle=    {State of the Discipline, Vol. III},
+  editor=       {Helen Milner and Ira Katznelson},
+  publisher=    {W.W.\ Norton \& Company, Inc.}, address= {New York}, 
+  pages=        {805--832},
+  year=         2002
+)
+
+@article( GerberGreen2005,
+  author=       {Gerber, Alan S. and Donald P. Green},
+  title=        {Correction to Gerber and Green (2000) Replication of Disputed Findings, and Reply to Imai (2005)},
+  journal=      apsr, volume=99, number=2,
+  pages=        {301--313},
+  year=         2005
+)
+
+@article( GerberGreen2000,
+  author=       {Gerber, Alan S.\ and Donald P.\ Green},
+  title=        {The Effects of Canvassing, Telephone Calls, and Direct Mail on Voter Turnout: A Field Experiment.},
+  journal=      apsr, volume=94, number=3,
+  pages=        {653--663},
+  year=         2000
+)
+
+@article( GrieveSekhonHSR,
+  author=       {Grieve, Richard and Jasjeet S. Sekhon and TW Hu and Joan R. Bloom},
+  title=        {Evaluating Health Care Programs by Combining Cost with Quality of Life Measures: A Case Study Comparing Capitation and Fee for Service},
+  journal=      {Health Services Research}, 
+  OPTvolume=    {43}, number=4,
+  OPTpages=     {1204--1222},
+  year=         "2008"
+)
+
+@article( GrieveSekhon2008,
+  author=       {Grieve, Richard and Jasjeet Sekhon and TW Hu and Joan Bloom},
+  title=          {Evaluating Health Care Programs by Combining Cost with Quality of Life Measures: A Case Study Comparing Capitation and Fee for Service},
+  journal=      {Health Services Research}, volume=43, number=4,
+  pages=        {1204--1222},
+  year=         2008
+)
+
+@article( GilliganSergenti2006,
+  author=       {Gilligan, Michael J.\ and Ernest J.\ Sergenti},
+  title=        {Evaluating UN Peacekeeping with Matching to Improve Causal Inference},
+  journal=      qjps, volume=3, number=2,
+  pages=        "89--122",
+  year=         2008
+)
+
+@book( goldberg1989,
+  author=       {Goldberg, David E.},
+  title=        {Genetic Algorithms in Search, Optimization, and Machine Learning},
+  publisher=    "Addison-Wesley", address= "Reading, MA",
+  year=         1989
+)
+
+@article( gosnell1948,
+  author=       {Gosnell, Harold F.},
+  title=        {Mobilizing the Electorate},
+  journal=      {Annals of the American Academy of Political and Social Science},
+  volume=       259,
+  pages=        "98--103",
+  year=         1948
+)
+
+@book( gosnell1927,
+  author=       {Gosnell, Harold F.},
+  title=        {Getting Out the Vote: an experiment in the stimulation of voting},
+  publisher=    uchp, address= chic, 
+  year=         1927
+)
+
+@article{gordon2009,
+author = {Gordon, Sanford C.},
+title = {Assessing Partisan Bias in Federal Public Corruption Prosecutions},
+journal = {American Political Science Review},
+volume = {103},
+number = {4},
+pages = {534-554},
+year = {2009},
+doi = {10.1017/S0003055409990207},
+URL = {http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=6648228&fulltextType=RA&fileId=S0003055409990207},
+eprint = {http://journals.cambridge.org/article_S0003055409990207},
+abstract = { ABSTRACT The 2007 U.S. Attorney firing scandal raised the specter of political bias in the prosecution of officials under federal corruption laws. Has prosecutorial discretion been employed to persecute enemies or shield allies? To answer this question, I develop a model of the interaction between officials contemplating corruption and a prosecutor deciding whether to pursue cases against them. Biased prosecutors will be willing to file weaker cases against political opponents than against allies. Consequently, the model anticipates that in the presence of partisan bias, sentences of prosecuted opponents will tend to be lower than those of co-partisans. Employing newly collected data on public corruption prosecutions, I find evidence of partisan bias under both Bush (II) and Clinton Justice Departments. However, additional evidence suggests that these results may understate the extent of bias under Bush, while overstating it under Clinton. }
+}
+
+@article( GordonHuber2007,
+  author=       {Gordon, Sandy and Greg Huber},
+  title=        {The Effect of Electoral Competitiveness on Incumbent Behavior},
+  journal=      {Quarterly Journal of Political Science},
+  Volume=       2, 
+  Number=       2,
+  pages=        {107--138},
+  year=         2007
+)
+
+@incollection( GrefenstetteBaker1989,
+  author=       {Grefenstette, John J. and James E. Baker},
+  title=        {How Genetic Algorithms Work: A Critical Look at Implicit Parallelism},
+  booktitle=    {Proceedings of the Third International Conference on Genetic Algorithms},
+  publisher=    "Morgan Kaufmann", address= "San Mateo, CA",
+  pages=        {20--27},
+  year=         1989
+)
+
+@incollection( grefenstette1993,
+  author=       {Grefenstette, John J.},
+  title=        {Deception Considered Harmful},
+  booktitle=    {Foundations of Genetic Algorithms 2},
+  editor=       {L.~Darrell Whitley},
+  publisher=    {Morgan Kaufmann}, address= {San Mateo, CA},
+  year=         1993
+)
+
+@article( GuRosenbaum1993,
+  author=       {Gu, X. and Paul Rosenbaum},
+  title=        {Comparison of Multivariate Matching Methods: Structures, Distances, and Algorithms},
+  journal=      {Journal of Computational and Graphical Statistics},
+  volume =      2, pages="205--420",
+  year=         "1993"
+)
+
+@article( haavelmo1943,
+  author=       {Haavelmo, Trygve},
+  title=        {The Statistical Implications of a System of Simultaneous Equations},
+  journal=      ec, volume=1, number=11,
+  pages=        {1--12},
+  year=         1943
+)
+
+@article( hahn1998,
+  author=       {Hahn, Jinyong},
+  title=        {On the Role of the Propensity Score in Efficient Estimation of Average Treatment Effects},
+  journal=      ec, volume=66, number=2,
+  pages=        {315--331},
+  year=         1998
+)
+
+@article{haavelmo1943,
+	Author = {Haavelmo, Trygve},
+	Journal = ec,
+	Number = 11,
+	Pages = {1--12},
+	Title = {The Statistical Implications of a System of Simultaneous Equations},
+	Volume = 1,
+	Year = 1943}
+
+@article{HoImaiKingStuart2007,
+	Author = {Ho, Daniel E. and Kosuke Imai and Gary King and Elizabeth A. Stuart},
+	Journal = pa,
+	Pages = {199--236},
+	Title = {Matching as Nonparametric Preprocessing for Reducing Model Dependence in Parametric Causal Inference},
+	Volume = 15, number=3,
+	Year = {2007}}
+
+@book( hume1748,
+  author=       {Hume, David},
+  title=        {Philosophical Essays Concerning Human Understanding},
+  publisher=    "A.\ Millar", address= "London",
+  note=         "Retitled \textit{An Enquiry Concerning Human
+                  Understanding} in 1758. Republished in Tom L.\
+                  Beauchamp, ed. (2005), Oxford University Press.",
+  year=         1748
+)
+
+@book( LeBon1896,
+  author=       {Le Bon, Gustave},
+  title=        {The Crowd: A Study of the Popular Mind},
+  publisher=    "The Macmillan Co. ", address= "New York",
+  year=         1896
+)
+
+@article( leeRD,
+  author=       {Lee, David S.},
+  title=        {Randomized Experiments from Non-random Selection in U.S.\ House Elections},
+  journal=      je, volume=142, number=2,
+  pages=        {675--697},
+  year=         2008
+)
+
+@book( HodgesLehmann1964,
+  author=       {Hodges, J. L and Erich L. Lehmann},
+  title=        {Basic Concepts of Probability and Statistics},
+  publisher=    "Holden-Day, Inc.", address= "San Fransisco",
+  year=         1964
+)
+
+@article( lehmann1993,
+  author=       {Lehmann, Erich L.},
+  title=        {The Fisher, Neyman-Pearson Theories of Testing Hypotheses: One Theory or Two?},
+  journal=      jasa, volume=88, number=424,
+  pages=        {1242--1249},
+  year=         1993,
+  Abstract = {The Fisher and Neyman-Pearson approaches to testing
+                 statistical hypotheses are compared with respect to their
+                 attitudes to the interpretation of the outcome, to power,
+                 to conditioning, and to the use of fixed significance
+                 levels. It is argued that despite basic philosophical
+                 differences, in their main practical aspects the two
+                 theories are complementary rather than contradictory and
+                 that a unified approach is possible that combines the best
+                 features of both. As applications, the controversies about
+                 the Behrens-Fisher problem and the comparison of two
+                 binomials (2 \&#215; 2 tables) are considered from the
+                 present point of view.}
+)
+
+@article( LenzLadd2006,
+  author=       {Lenz, Gabriel S. and Jonathan McDonald Ladd},
+  title=        {Exploiting a Rare Shift in Communication Flows: Media Effects in the 1997 British Election},
+  journal=      ajps, volume=53, number=2, 
+  pages=        "394--410",
+  year=         2009
+)
+
+@article( LenzLadd2009,
+  author=       {Lenz, Gabriel S. and Jonathan McDonald Ladd},
+  title=        {Exploiting a Rare Shift in Communication Flows: Media Effects in the 1997 British Election},
+  journal=      ajps, volume=53, number=2, 
+  pages=        "394--410",
+  year=         2009
+)
+
+
+@book( habermas1964,
+  author=       {Habermas, J\"{u}rgen},
+  title=        {The Structural Transformation of the Public Sphere: An Inquiry into a Category of Bourgeois Society},
+  note       =  {Translated by Thomas Burger},
+  publisher=    mit, address= cam, 
+  year=         "1996 [1964]"
+)
+
+@book( hall1992,
+  author=       {Hall, Peter},
+  title=        {The Bootstrap and Edgeworth Expansion},
+  publisher=    {Springer-Verlag}, address= {New York}, 
+  year=         {1992}
+)
+
+@article( Hall_fisher2007,
+  author=       {Hall, Nancy},
+  title=        {R.\ A.\ Fisher and His Advocacy of Randomization},
+  journal=      {Journal of the History of Biology}, volume=40, number=2,
+  pages=        {295--325},
+  year=         2007
+)
+
+@book( hampel1986,
+  author=       {Hampel, Frank R. and Elvezio M. Ronchetti and Peter J. Rousseeuw and Werner A. Stahel},
+  title=        {Robust Statistics: The Approach Based on Influence Functions},
+  publisher=    {Wiley, John and Sons}, address= {New York}, 
+  year=         1986
+)
+
+@article( HahnToddvanderKlaauw,
+  author=       {Hahn, Jinyong and Petra Todd and Wilbert van der Klaauw},
+  title=        {Identification and Estimation of Treatment Effects with a Regression-Discontinuity Design},
+  journal=      ec, volume=69,
+  pages=        {201--209},
+  year=         2001
+)
+
+@article( HahnToddvanderKlaauw2001,
+  author=       {Hahn, Jinyong and Petra Todd and Wilbert van der Klaauw},
+  title=        {Identification and Estimation of Treatment Effects with a Regression-Discontinuity Design},
+  journal=      ec, volume=69,
+  pages=        {201--209},
+  year=         2001
+)
+
+@article( Hansen2004,
+  author=       {Hansen, Ben B.},
+  title=        {Full Matching in an Observational Study of Coaching for the SAT},
+  journal=      jasa,
+  volume =      99, number=467,
+  pages="609--618",
+  year=         "2004"
+)
+
+@article( HansenKlofer2006,
+  author=       {Hansen, Ben B. and S. O. Klopfer},
+  title=        {Optimal Full Matching and Related Designs via Network Flows},
+  journal=      "Journal of Computational and Graphical Statistics",
+  volume =      15, number=3,
+  pages="609--627",
+  year=         "2006"
+)
+
+@article( HausmanWise1979,
+  author=       {Hausman, Jerry A. and David A. Wise},
+  title=        {Attrition Bias in Experimental and Panel Data: The Gary Income Maintenance Experiment},
+  journal=      ec, volume=47,
+  pages=        {455--473},
+  year=         1979
+)
+
+@article{ heinrich2007,
+  author =   {Heinrich, Caryolyn J.},
+  title =    {Demand and Supply-Side Determinants of Conditional Cash Transfer Program Effectiveness},
+  journal =  {World Development},
+  volume=    35, number=1,
+  pages=     "121--143",
+  year =     2007
+}
+
+@article( hirnao1998,
+  author=       {Hirano, Keisuke and Guido W. Imbens and Geert Ridder and Donald B. Rubin},
+  title=        {Combining Panel Data Sets with Attrition and Refreshment Samples},
+  journal=      ec, volume=69,
+  pages=        {1645--1659},
+  year=         1998
+)
+
+@article( HeckmanSM,
+  author=       {Heckman, James J.},
+  title=        {The Scientific Model of Causality},
+  journal=      {Sociological Methodology}, volume=35,
+  number =      1,
+  pages=        {1--98},
+  year=         2007
+)
+
+@article( heckman1979,
+  author=       {Heckman, James J},
+  title=        {Sample Selection Bias as a Specification Error},
+  journal=      ec, volume=47,
+  pages=        {153--161},
+  year=         1979
+)
+
+
+@article( heckman1997,
+  author=       {Heckman, James},
+  title=        "Instrumental Variables: A Study of Implicit Behavioral Assumptions Used in Making Program Evaluations",
+  journal=      {The Journal of Human Resources}, 
+  volume=       32, 
+  number=       3,
+  pages=        {441--462},
+  year=         1997
+)
+
+
+@article( heckman1998,
+  author=       {Heckman, James J. and  Hidehiko Ichimura and Jeffrey Smith and Petra Todd},
+  title=        {Characterizing Selection Bias Using Experimental Data},
+  journal=      ec, volume=66,
+  number =      5,
+  pages=        {1017-1098},
+  year=         1998
+)
+
+@article( HeckmanIchimuraTodd1997,
+  author=       {Heckman, James J. and  Hidehiko Ichimura and Petra Todd},
+  title=        {Matching as an Econometric Evaluation Estimator: Evidence from Evaluating a Job Training Programme},
+  journal=      res, volume=64,
+  number =      4,
+  pages=        {605--654},
+  year=         1997
+)
+
+@article( HeckmanIchimuraTodd1998,
+  author=       {Heckman, James J. and  Hidehiko Ichimura and Petra Todd},
+  title=        {Matching as an Econometric Evaluation Estimator},
+  journal=      res, volume=65,
+  number =      2,
+  pages=        {261--294},
+  year=         1998
+) 
+
+@article( HeckmanSmith1995,
+  author=       {Heckman, James J. and Jeffrey A. Smith},
+  title=        {Assessing the Case for Social Experiments},
+  journal=      jep, volume=9,
+  number =      2,
+  pages=        {85--110},
+  year=         1995
+)
+
+@article( HerronSekhon2005,
+  author=       {Herron, Michael C. and Jasjeet S.\ Sekhon},
+  title=        {Black Candidates and Black Voters: Assessing the Impact of Candidate Race on Uncounted Vote Rates},
+  journal=      jop, volume=67, number=1,
+  pages=        {154--177},
+  year=         2005
+)
+
+@article{HerronWand2006,
+  author =   {Herron, Michael C. and Jonathan Wand},
+  title =    {Assessing Partisan Bias in Voting Technology: The Case of the 2004 New Hampshire Recount},
+  journal =  {Electoral Studies}, volume=26, number=2, 
+  pages=     "247--261",
+  year =     {2007},
+}
+
+@article( hersh1982,
+  author=       {Hersh, Seymour M.},
+  title=        {The Price of Power: Kissinger, Nixon, and Chile},
+  journal=      {The Atlantic Monthly}, month=12, 
+  url=          {http://www.theatlantic.com/issues/82dec/hersh.htm},
+  year=         1982
+)
+
+@book( hettmansperger1984,
+  author=       {Hettmansperger, T},
+  title=        {Statistical Inference Based on Ranks},
+  publisher=    "Wiley", address= ny, 
+  year=         1984
+)
+
+@book( hill1961,
+  author=       {Hill, Bradford},
+  title=        {Principles of Medical Statistics},
+  publisher=    {The Lancet}, address= {London},
+  edition=      "7",
+  year=         {1961} 
+)
+
+@article( HillReiter2006,
+  author=       {Hill, Jennifer and Jerome P.\ Reiter},
+  title=        {Interval Estimation for Treatment Effects Using Propensity Score Matching},
+  journal=      "Statistics in Medicine", volume=25, number=13,
+  pages=        {2230--2256},
+  year=         2006
+)
+
+@article( holland1986,
+  author=       {Holland, Paul W.},
+  title=        {Statistics and Causal Inference},
+  journal=      jasa, volume=81, number=396,
+  pages=        {945--960},
+  year=         1986
+)
+
+
+@book( holland1975,
+  author=       {Holland, John H.},
+  title=        {Adaptation in Natural and Artificial Systems},
+  publisher=    "University of Michigan Press", address= "Ann Arbor",
+  year=         1975
+)
+
+@article{hopkins2010,
+author = {Hopkins, Daniel J.},
+title = {Politicized Places: Explaining Where and When Immigrants Provoke Local Opposition},
+journal = {American Political Science Review},
+volume = {104},
+number = {1},
+pages = {40-60},
+year = {2010},
+doi = {10.1017/S0003055409990360},
+URL = {http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=7449412&fulltextType=RA&fileId=S0003055409990360},
+eprint = {http://journals.cambridge.org/article_S0003055409990360},
+abstract = { ABSTRACT In ethnic and racial terms, America is growing rapidly more diverse. Yet attempts to extend racial threat hypotheses to today's immigrants have generated inconsistent results. This article develops the politicized places hypothesis, an alternative that focuses on how national and local conditions interact to construe immigrants as threatening. Hostile political reactions to neighboring immigrants are most likely when communities undergo sudden influxes of immigrants and when salient national rhetoric reinforces the threat. Data from several sources, including twelve geocoded surveys from 1992 to 2009, provide consistent support for this approach. Time-series cross-sectional and panel data allow the analysis to exploit exogenous shifts in salient national issues such as the September 11 attacks, reducing the problem of residential self-selection and other threats to validity. The article also tests the hypothesis using new data on local anti-immigrant policies. By highlighting the interaction of local and national conditions, the politicized places hypothesis can explain both individual attitudes and local political outcomes. }
+}
+
+@book( huber1981,
+  author=       {Huber, Peter J.},
+  title=        {Robust Statistics},
+  publisher=    {Wiley, John and Sons}, address= {New York}, 
+  year=         1981
+)
+
+@book( huntington1968,
+  author=       {Huntington, Samuel P.},
+  title=        {Political Order in Changing Societies},
+  publisher=    {Yale University Press}, address= {New Haven}, 
+  year=         1968
+)
+
+@book( huntington1991,
+  author=       {Huntington, Samuel P.},
+  title=        {The Third Wave: Democratization in the Late Twentieth Century},
+  publisher=    {University of Oklahoma Press}, address= {Norman and London}, 
+  year=         1991
+)
+
+@article{kempthorne1955,
+  author =   {Kempthorne, O.},
+  title =    {The Randomization Theory of Experimental Inference},
+  journal =  jasa, volume = 50, 
+  pages =    "495--497",
+  year =     {1955},
+}
+
+@book{kempthorne1952,
+  author =   {Kempthorne, O.},
+  title =    {The Design and Analysis of Experiments},
+  publisher= "Wiley", address=ny,
+  year =     {1952},
+}
+
+@article{ KirkpatrickGelattVecchi83,
+    author = "S. Kirkpatrick and C. D. Gelatt and M. P. Vecchi",
+    title = "Optimization by Simulated Annealing",
+    journal = "Science", number = "4598", 
+    volume = "220",
+    pages = "671--680",
+    year = "1983"
+}
+
+
+@book( knuth1998,
+  author=       {Knuth, Donald E.},
+  title=        {The Art of Computer Programming, Vol. 2: Seminumerical Algorithms},
+  edition=      "3rd",
+  publisher=    "Addison-Wesley", address= "Reading: MA", 
+  year=         1998
+)
+
+@unpublished( krosnick2004,
+  author=       {Holbrook, Allyson L. and Matthew K. Berent and Jon A. Krosnick and Penny S. Visser and David S. Boninger},
+  title=        {Attitude Importance and the Accumulation of Attitude-Relevant Knowledge in Memory},
+  note=         "Working Paper",
+  year=         2004
+)
+
+@article( krueger1993,
+  author=       {Krueger, AB},
+  title=        {How computers have changed the wage structure: Evidence from microdata, 1984--1989.},
+  journal=      qje, volume=108,
+  pages=        {33--60},
+  year=         1993
+)
+
+@article( kullback1987,
+  author=       {Kullback, Solomon},
+  title=        {The Kullback-Leibler Distance},
+  journal=      {The American Statistican}, volume={41},
+  pages=        {340--341},
+  year=         1987
+)
+
+@article( kullback1959,
+  author=       {Kullback, Solomon and Richard A.\ Leibler},
+  title=        {On Information and Sufficiency},
+  journal=      {Annals of Mathematical Statistics}, volume={22},
+  pages=        {79--86},
+  year=         1951
+)
+
+
+@article( HorvitzThompson1952,
+  author=       {Horvitz, D. G. and D. J. Thompson},
+  title=        {A Generalization of Sampling without Replacement from a Finite Universe},
+  journal=      jasa, volume=47,
+  pages=        {663--685},
+  year=         1952
+)
+
+@article( imbens2004,
+  author=       {Imbens, Guido W.},
+  title=        "Nonparametric Estimation of Average Treatment Effects Under Exogeneity: A Review",
+  journal =     {Review of Economics and Statistics},volume=86, number=1,
+  pages=        {4--29},
+  year=         2004
+)
+
+@article( imbens2000,
+  author=       {Imbens, Guido W.},
+  title=        "The Role of the Propensity Score in Estimating Dose-Response Functions",
+  journal=      {Biometrika}, volume=87, number=3,
+  pages=        {706--710},
+  year=         2000
+)
+
+@article( ImbensAngrist1994,
+  author=       {Angrist, Joshua D. and Guido W. Imbens},
+  title=        "Identiﬁcation and Estimation of Local Average Treatment Effects",
+  journal=      ec, volume=62, 
+  number=       2,
+  pages=        {467--475},
+  year=         1994
+)
+
+
+
+@article( ImbensRosenbaum2005,
+  author=       {Imbens, Guido W. and Paul Rosenbaum},
+  title=        {Robust, Accurate Confidence Intervals with a Weak Instrument: Quarter of Birth and Education},
+  journal=      jrsa, volume=168,
+  pages=        {109--126},
+  year=         2005
+)
+
+@article( ImbensRubinSacerdote2001,
+  author=       {Imbens, Guido W. and Donald B. Rubin and Bruce I. Sacerdote},
+  title=        {Estimating the Effect of Unearned Income on Labor Earnings, Savings, and Consumption: Evidence from a Survey of Lottery Players},
+  journal=      aer, volume=91, number=4, month="Sep.",
+  pages=        {778--794},
+  year=         2001
+)
+
+
+@unpublished( ImbensWooldridge,
+  author=       {Imbens, Guido W.\ and Jeffrey M.\ Wooldridge},
+  title=        {Recent Developments in the Econometrics of Program Evaluation},
+  note=         "NBER Working Paper No.\ 14251",
+  year=         "2008"
+)
+
+@Article{imai2005,
+  author =   {Kosuke Imai},
+  title =    {Do Get-Out-The-Vote Calls Reduce Turnout? The Importance of Statistical Methods for Field Experiments},
+  journal =  apsr, volume =   99, number=2,
+  pages =    "283--300",
+  year =     {2005},
+}
+
+@article{imai_dyk2004,
+  author =   {Imai, Kosuke and David A. van Dyk},
+  title =    {Causal Inference With General Treatment Regimes: Generalizing the Propensity Score},
+  journal =  jasa, volume =   99, number=467,
+  pages =    "854--866",
+  year =     {2004},
+}
+
+@Article{ImaiKingStaurt2008,
+  author =   {Kosuke Imai and Gary King and Elizabeth A.\ Stuart},
+  title =    {Misunderstandings among Experimentalists and Observationalists about Causal Inference},
+  journal =  {Journal of the Royal Statistical Society, Series A}, 
+  volume =   171, number=2,
+  pages =    "481--502",
+  year =     {2008}
+}
+
+@incollection( iyengar1990,
+  author=       {Iyengar, Shanto},
+  title=        {Shorts to Political Knowledge: Selective attention and the accessibility bias},
+  booktitle=    {Information and the Democratic Process},
+  editor=       {John Ferejohn and James Kuklinski},
+  publisher=    {University of Illinois Press}, address= {Urbana},
+  year=         1990
+)
+
+@unpublished( iyengar1986,
+  author=       {Iyengar, Shanto},
+  title=        {Whither Political Information},
+  note=         {Report to the NES Board of Overseers. Center for Political Studies, University of Michigan},
+  year=         1986
+)
+
+@book( johnston2004,
+  author=       {Johnston, Richard and Michael G. Hagen and Kathleen Hall Jamieson},
+  title=        {The 2000 Presidential Election and the Foundations of Party Politics},
+  publisher=    cup, address= ny, 
+  year=         2004
+)
+
+@book( johnston1992,
+  author=       {Johnston, Richard and Andr\'{e} Blais and Henry E. Brady and Jean Cr\^{e}te},
+  title=        {Letting the People Decide: Dynamics of a Canadian Election},
+  publisher=    "McGill-Queen's University Press", address= "Montreal", 
+  year=         1992
+)
+
+@article{ KorkeamakiUusitalo,
+  author =   {Korkeam\"{a}ki, Ossi and Roope Uuistalo},
+  title =    {Employment and Wage Effects of a Payroll-Tax Cut---evidence from a regional experiment},
+  journal =  "International Tax and Public Finance", 
+  year =     "In Press"
+}
+
+@book( kornhauser1959,
+  author=       {Kornhauser, William},
+  title=        {The Politics of Mass Society},
+  publisher=    {The Free Press}, address= {New York}, 
+  year=         1959
+)
+
+@book( kuhn1962,
+  author=       {Kuhn, Thomas},
+  title=        {The Structure of Scientific Revolutions},
+  publisher=    {University of Chicago Press}, address= {Chicago}, 
+  year=         {1962}
+)
+
+@article( kunsch1989,
+  author=       {Kunsch, H. R. and L. A. Stefanski and R. J. Carroll},
+  title=        {Conditionally Unbiased Bounded-Influence Estimation in General Regression Models},
+  journal=      jasa, volume=84,
+  pages=        {460--466},
+  year=         1989
+)
+
+@Article{lalonde1986,
+  author =   {Robert LaLonde},
+  title =    {Evaluating the Econometric Evaluations of Training Programs with Experimental Data},
+  journal =      {American Economic Review},
+  year =     {1986},
+  OPTkey =   {},
+  volume =   {76},
+  OPTnumber =    {4},
+  pages =    {604--20},
+  month =    {September},
+  OPTnote =      {},
+  OPTannote =    {}
+}
+
+@incollection( lawson2004,
+  author=       {Lawson, Chappell},
+  title=        {Introduction},
+  booktitle=    {Mexico's Pivotal Democratic Election},
+  editor=       {Jorge I. Dom\'{i}nguez and Chappell Lawson},
+  publisher=    sup, address= "Stanford",
+  pages=        {1--21},
+  year=         2004
+)
+
+@article( LeeLesslerStuart2010,
+  author=       {Lee, Brian and Justin Lessler and Elizabeth A.\ Stuart},
+  title=        {Improving Propensity Score Weighting Using Machine Learning},
+  journal=      sm, volume=29, number=3,
+  pages=        {337--346},
+  year=         2010
+)
+
+@article( DavidLee2005,
+  author=       {David S. Lee},
+  title=        {Randomized Experiments from Non-random Selection in U.S. House Elections},
+  journal=      {Journal of Econometrics},
+  year=         "In Press"
+)
+
+@book( lewis1973,
+  author=       {Lewis, David K},
+  title=        {Counterfactuals},
+  publisher=    hup, address= {Cambridge, MA}, 
+  year=         1973
+)
+
+@article( lipset1959,
+  author=       {Lipset, Seymour Martin},
+  title=        {Some Social Requisites of Democracy: Economic Development and Political Legitimacy},
+  journal=      apsr, volume=53, number=1,
+  pages=        {69--105},
+  year=         1959
+)
+
+@article( LittleRubin2000,
+  author=       {Little, Roderick J. A. and Rubin, Donald B.},
+  title=        {Causal Effects in Clinical and Epidemiological Studies via Potential Outcomes: Concepts and Analytical Approaches},
+  journal=      {Annual Review of Public Health}, volume=21, 
+  pages=        {121--145},
+  year=         2000
+)
+
+@book( LittleRubin1987,
+  author=       {Little, Roderick J. A. and Rubin, Donald B.},
+  title=        {Statistical Analysis with Missing Data},
+  publisher=    {J. Wiley \& Sons}, address= ny,
+  year=         1987
+)
+
+@book( locke.essay,
+  author=       {Locke, John},
+  title=        {An Essay Concerning Human Understanding},
+  publisher=    oup, address= {New York}, 
+  year=         {1690 [1979]}
+)
+%  editor=       "Peter H.\ Nidditch",
+
+@unpublished( lupia2004,
+  author=       {Lupia, Arthur},
+  title=        {Questioning Our Competence: Tasks, Institutions, and the Limited Practical Relevance of Common Political Knowledge Measures},
+  note=         "Working Paper",
+  year=         2004
+)
+
+@article( luskin2002,
+  author=       {Luskin, Robert C. and James S. Fishkin and Roger Jowell},
+  title=        {Considered Opinions: Deliberative Polling in Britain},
+  journal=      bjps, volume=32,
+  pages=        {455--487},
+  year=         2002
+)
+
+@unpublished( mauldon2000,
+  author=       {Mauldon, Jane and Jan Malvin and Jon Stiles and Nancy Nicosia and Eva Seto},
+  title=        {Impact of California's Cal-Learn Demonstration Project: Final Report},
+  year=         2000,
+  note=         "UC DATA Archive and Technical Assistance"
+)
+
+@article{mccarthy1939,
+  author =   {McCarthy, M. D.},
+  title =    {On the Application of the $z$-Test to Randomized Blocks},
+  journal =  "Ann. Math. Statist.", volume = 10, 
+  pages =    "495--497",
+  year =     {1939},
+}
+
+@book( McCullaghNelder1989,
+  author=       {McCullagh,Peter and John A. Nelder},
+  title=        {Generalized Linear Models},
+  publisher=    c-h, address= "New York", 
+  year=         {1989}
+)
+
+@article( mcgraw1990,
+  author=       {McGraw, Kathleen and Neil Pinney},
+  title=        {The Effects of General and Domain-Specific Expertise on Political Memory and Judgement},
+  journal=      {Social Cognition}, volume=8,
+  pages=        {9--30},
+  year=         1990
+)
+
+@article( McNemar1947,
+  author=       {McNemar, Q.},
+  title=        {Note on the Sampling Error of the Differences Between Correlated Proportions or Percentage},
+  journal=      {Psychometrika}, volume=12,
+  pages=        {153--157},
+  year=         1947
+)
+
+@article{ MarinariParisi1992,
+    author = "E. Marinari and G. Parisi",
+    title = "Simulated tempering: A New Monte Carlo Scheme",
+    journal = "Europhysics Letters", number = "19", 
+    volume = "6",
+    pages = "451--455",
+    year = "1992"
+}
+
+@article( MannWhitney1947,
+  author=       {Mann, H. and Whitney, D},
+  title=        {On a Test of Whether One of Two Random Variables is Stochastically Larger than the Other},
+  journal=      {Annals of Mathematical Statistics}, volume=18,
+  pages=        {50--60},
+  year=         1947
+)
+
+@article( mebane2000,
+  author=       {Mebane, Walter R. Jr.},
+  title=        {Coordination, Moderation and Institutional Balancing in American Presidential and House Elections},
+  journal=      apsr, volume=94,
+  number =      1,
+  pages=        {37--57},
+  year=         2000
+)
+
+@article{MebaneSekhonJSS,
+  author =   {Mebane, Walter R. Jr.\ and Jasjeet S.\ Sekhon},
+  title =    {Genetic Optimization Using Derivatives: The \texttt{rgenoud} package for \texttt{R}},
+  journal =  {Journal of Statistical Software},
+  year =     {In Press}
+}
+
+@article( MebaneSekhon2004,
+  author=       {Mebane, Walter R. Jr. and Jasjeet S.\ Sekhon},
+  title=        {Robust Estimation and Outlier Detection for Overdispersed Multinomial Models of Count Data},
+  journal=      ajps, volume=48,
+  number =      2,
+  pages=        {391--410},
+  year=         2004
+)
+
+@article( MebaneSekhon2002,
+  author=       {Mebane, Walter R. Jr. and Jasjeet S.\ Sekhon},
+  title=        {Coordination and Policy Moderation at Midterm},
+  journal=      apsr, volume=96,
+  number =      1,
+  pages=        {141--157},
+  year=         2002
+)
+
+@unpublished( MebaneSekhon1998,
+  author=       {Mebane, Walter R. Jr. and Jasjeet S.\ Sekhon},
+  title=        {GENetic Optimization Using Derivatives (GENOUD)},
+  note =        {Software Package. \url{http://sekhon.berkeley.edu/rgenoud/}},
+  year=         1998
+)
+
+@book( mes2002,
+  author=       {Erikson, Robert S. and Michael B. MacKuen and James A. Stimson},
+  title=        {The Macro Polity},
+  publisher=    cup, address= {New York}, 
+  year=         {2002}
+)
+
+@article( MuellerCatholic,
+  author=       {Mueller, Franz H.},
+  title=        {Review of: ``Experimental Sociology: A Study in Method'' by Ernest Greenwood},
+  journal=      {The American Catholic Sociological Review}, volume=6,
+  number =      3,
+  pages=        {185--186},
+  year=         1945
+)
+
+@article( mckelvey1985a,
+  author=       {McKelvey, Richard D. and Peter C. Ordeshook},
+  title=        {Elections with Limited
+Information:  A Fulfilled Expectations Model Using Contemporaneous Poll and
+Endorsement Data as Information Sources},
+  journal=      jet, volume=36,
+  pages=        {55--85},
+  year=         1985
+)
+
+@article( mckelvey1985b,
+  author=       {McKelvey, Richard D. and Peter C. Ordeshook},
+  title=        {Sequential Elections with Limited Information},
+  journal=      ajps, volume=29, number=3,
+  pages=        {480--512},
+  year=         1985
+)
+
+@article( mckelvey1986,
+  author=       {McKelvey, Richard D. and Peter C. Ordeshook},
+  title=        {Information, Electoral Equilibria, and the Democratic Ideal},
+  journal=      jop, volume=48, number=4,
+  pages=        {909--937},
+  year=         1986
+)
+
+@article( middleton2008,
+  author=       {Middleton, Joel A.},
+  title=        {Bias of the Regression Estimator for Experiments using Clustered Random Assignment},
+  journal=      {Statistics \& Probability Letters}, volume=78, number=16,
+  pages=        {2654--2659},
+  year=         2008
+)
+
+@book( mill_logic,
+  author=       {John Stuart Mill},
+  title=        {A System of Logic, Ratiocinative and Inductive: 
+Being a Connected View of the Principles of Evidence and the Methods of Scientific Investigation},
+  publisher=    {Longmans, Green and Co.}, address= {London},
+  edition =	{8th},
+  year=         {1843/1872}
+)
+
+@book( mill1873,
+  author=       {John Stuart Mill},
+  title=        {Autobiography},
+  publisher=    {Longmans, Green and Co.}, address= {London},
+  year=         {1873} 
+)
+
+@incollection( miller1986,
+  author=       {Miller, Nicholas R},
+  title=        {Information, Electorates, and Democracy: Some Extensions and
+Interpretations of the Condorcet Jury Theorem},
+  booktitle=    {Information Pooling and Group Decision Making},
+  editor=       {Bernard Grofman and Guillermo Owen},
+  publisher=    {JAI}, address= {Greenwich, CT},
+  year=         1986
+)
+
+@article{MitchellKrzanowski1989,
+  author =   {Mitchell, Ann F. S. and Wojtek J. Krzanowski},
+  title =    {Amendments and Corrections: The Mahalanobis Distance and Elliptic Distributions},
+  journal =  {Biometrika},
+  year =     {1989},
+  volume =   {76},
+  number =   {2},
+  pages =    {407},
+}
+
+@article{MitchellKrzanowski1985,
+  author =   {Mitchell, Ann F. S. and Wojtek J. Krzanowski},
+  title =    {The Mahalanobis Distance and Elliptic Distributions},
+  journal =  {Biometrika},
+  year =     {1985},
+  volume =   {72},
+  number =   {2},
+  pages =    {464--467},
+}
+
+@article( MorganHarding2006,
+  author=       {Morgan, Stephen L. and David J. Harding},
+  title=        {Matching Estimators of Causal Effects: Prospects and Pitfalls in Theory and Practice},
+  journal=      {Sociological Methods \& Research}, volume=35, number=1,
+  pages=        {3--60},
+  notes=        {\url{http://smr.sagepub.com/cgi/content/abstract/35/1/3}},
+  year=         2006
+)
+
+@book( MorganWinship2007,
+  author=       {Morgan, Stephen L. and Christopher Winship},
+  title=        {Counterfactuals and Causal Inference: Methods and Principles for Social Research},
+  publisher=    cup, address={New York},
+  year=         2007
+)
+
+@book( neuman86,
+  author=       {Neuman, W. Russell},
+  title=        {The Paradox of Mass Politics: Knowledge and Opinion in the {A}merican Electorate},
+  publisher=    hup, address= cam, 
+  year=         1986
+)
+
+@article(neyman1923,
+  author=       {Neyman, Jerzy},
+  title=        {On the Application of Probability Theory to Agricultural Experiments. Essay on Principles. Section 9},
+  journal=      {Statistical Science}, volume=5, number=4,
+  pages=        {465--472},
+  note =        {Trans. Dorota M. Dabrowska and Terence P. Speed.},
+  year=         {1923/1990}
+)
+
+@article(neyman1990,
+  author=       {Neyman, Jerzy},
+  title=        {On the Application of Probability Theory to Agricultural Experiments. Essay on Principles. Section 9},
+  journal=      {Statistical Science}, volume=5, number=4,
+  pages=        {465--472},
+  note =        {Trans. Dorota M. Dabrowska and Terence P. Speed.},
+  year=         {1990}
+)
+
+
+@article( NixVose1992,
+  author=       {Nix, Allen E. and Michael D. Vose},
+  title=        {Modeling Genetic Algorithms with Markov Chains},
+  journal=      {Annals of Mathematics and Artificial Intelligence}, volume=5,
+  pages=        {79--88},
+  year=         1992
+)
+
+@unpublished( oreopoulos2009,
+  author=       {Oreopoulos, Philip},
+  title=        {Why Do Skilled Immigrants Struggle in the Labor Market? A Field Experiment with Six Thousand Resumes},
+  note=         "NBER Working Paper 15036",
+  url=          "http://www.nber.org/papers/w15036",
+  year=         2009
+)
+
+@book( page1992,
+  author=       {Page, Benjamin I. and Robert Y. Shapiro},
+  title=        {The Rational Public: Fifty Years of Trends in {A}mericans' Policy Preferences},
+  publisher=    uchp, address= chic, 
+  year=         1992
+)
+
+@article( PalfreyPoole1987,
+  author=       {Palfrey, Thomas R. and Keith T. Poole},
+  title=        {The Relationship between Information, Ideology, and Voting Behavior},
+  journal=      ajps, volume=31,
+  number =      3,
+  pages=        {511--530},
+  year=         1987
+)
+
+@unpublished( park2006,
+  author=       {Park, Jong Hee},
+  title=        {Causal Effect of Information on Voting Behavior from a Natural Experiment: An Analysis of Candidate Blacklisting Campaign in 2000 South Korean National Assembly Election},
+  year=         2006,
+  note=         "working paper"
+)
+
+
+@book( patterson2002,
+  author=       {Patterson, Thomas E.},
+  title=        {The Vanishing Voter: Public Involvement in an Age of Uncertainty},
+  publisher=    "Alfred A. Knopf", address= "New York",
+  year=         2002
+)
+
+@article{pearl.zbias,
+  author=    {Pearl, Judea},
+  title =    {On a Class of Bias-Amplifying Variables that Endanger Effect Estimates},
+  journal =  "Proceedings of UAI", 
+  note=      "forthcoming",
+  year =     {2010},
+}
+
+@book( pearl2000,
+  author=       {Pearl, Judea},
+  title=        {Causality: Models, Reasoning, and Inference},
+  publisher=    {Cambridge University Press}, address= {New York},
+  year=         {2000} 
+)
+
+@unpublished( pearl.blog.2010,
+  author=       {Pearl, Judea},
+  title=        {Causal Analysis in Theory and Practice: On Mediation, counterfactuals and manipulations},
+  note=         "Online reply to Robins and Thomas. 
+\url{http://www.mii.ucla.edu/causality/wp-content/uploads/2010/05/mediation-part1.pdf}.",
+  year=         {2010} 
+)
+
+@article{pitman1937,
+  author =   {Pitman, E. J. G.},
+  title =    {Significance Tests which can be Applied to Samples from any Populations. III. The Analysis of Variance Test},
+  journal =  "Biometrika", volume = 29, 
+  pages =    "322--335",
+  year =     {1937},
+}
+
+@book( popkin1991,
+  author=       {Popkin, Samuel L},
+  title=        {The Reasoning Voter: Communication and Persuasion in Presidential Campaigns},
+  publisher=    uchp, address= chic, 
+  year=         1991
+)
+
+@article( Preece_fisher1990,
+  author=       {Preece, D. A.},
+  title=        {R.\ A.\ Fisher and Experimental Design: A Review},
+  journal=      {Biometrics}, volume=46, number=4,
+  pages=        {925--935},
+  year=         1990
+)
+
+@article( PriceZaller1993,
+  author=       {Price, Vincent and John Zaller},
+  title=        {Who Gets the News? Alternative Measures of News Reception and Their Implications for Research},
+  journal=      {Public Opinion Quarterly}, volume=57, number=2,
+  pages=        {133--164},
+  year=         1993
+)
+
+@article( pryor2003,
+  author=       {Pryor, Kane},
+  title=        {A national state of confusion},
+  journal=      {Salon.com}, month=6, day=2,
+  url=          {http://www.salon.com/opinion/feature/2003/02/06/iraq_poll},
+  note=         "Accessed 07/05/2004",
+  year=         2003
+)
+
+@book( putnam2000,
+  author=       {Putnam, Robert D.},
+  title=        {Bowling Alone: The Collapse and Revival of American Community},
+  publisher=    "Simon \& Schuster", address= ny, 
+  year=         2000
+)
+
+@incollection( przeworski:science,
+  author=       {Przeworski, Adam},
+  title=        {Is the Science of Comparative Politics Possible},
+  booktitle=    {Oxford Handbook in Comparative Politics},
+  editor=       {Carles Boix and Susan C. Stokes},
+  publisher=    "Oxford University Press", address= "New York",
+  year=         "In Press"
+)
+
+@book( PrzeworskiTeune1970,
+  author=       {Przeworski, A. and H. Teune},
+  title=        {The Logic of Comparative Social Inquiry},
+  publisher=    {Wiley}, address= {New York},
+  year=         {1970} 
+)
+
+@article( RaesslerRubin2005,
+  author=       {Raessler, S. and D. B. Rubin},
+  title=        {Complications when using nonrandomized job training data to draw causal inferences},
+  journal=      {Proceedings of the International Statistical Institute},
+  year=         2005
+)
+
+@book( reid1982,
+  author=       {Reid, Constance},
+  title=        {Neyman from Life},
+  publisher=    "Springer", address=ny, 
+  year=         {1982}
+)
+
+@incollection( RobinsRichardson2010,
+  author=       {Robins, James and Thomas Richardson},
+  title=        {Alternative Graphical Causal Models and the Identification of Direct Effects},
+  booktitle=    {Causality and Psychopathology: Finding the
+                  Determinants of Disorders and Their Cures},
+  editor=       {Patrick Shrout and Katherine Keyes and Katherine Ornstein},
+  publisher=    {Oxford University Press}, address= {New York}, 
+  year=         2010
+)
+
+@incollection{RobinsRotnitzky1992,
+	Address = {Boston},
+	Author = {Robins, J.M. and A Rotnitzky},
+	Booktitle = {AIDS Epidemiology-Methodological Issues},
+	Editor = {N. Jewell and K. Dietz and V. Farewell},
+	Publisher = {Birkha},
+	Title = {Recovery of Information and Adjustment for Dependent Censoring Using Surrogate Markers},
+	Year = 1992
+}
+
+@article( RobinsRotnitzky1995,
+  author=       {Robins, J. M. and A. Rotnitzky},
+  title=           {Semiparametric Efficiency in Multivariate Regression Models with Missing Data},
+  journal=      jasa, volume=90,
+  pages=        {122–-129},
+  year=          1995
+)
+
+@article( RobinsRotnitzkyZhao1995,
+  author=       {Robins, J. M. and A. Rotnitzky and L. P. Zhao},
+  title=           {Analysis of Semiparametric Regression Models for Repeated Outcomes in the Presence of Missing Data},
+  journal=      jasa, volume=90,
+  pages=        {106--121},
+  year=          1995
+)
+
+@article( RobinsRotnitzkyZhao1994,
+  author=       {Robins, J. M. and A. Rotnitzky and L. P. Zhao},
+  title=           {Estimation of Regression Coefficients When Some Regressors Are Not Always Observed},
+  journal=      jasa, volume=89,
+  pages=        {846–-866},
+  year=          1994
+)
+
+@article( rosenbaum2005,
+  author=       {Rosenbaum, Paul R.},
+  title=        {Heterogeneity and Causality: Unit Heterogeneity and Design Sensitivity in Observational Studies},
+  journal=      {The American Statistician}, volume=59, 
+  pages=        {147--152},
+  year=         2005
+)
+
+@article( rosenbaum.ri, 
+  author=       {Rosenbaum, Paul R.}, 
+  title=        {Covariance Adjustment in Randomized Experiments and Observatio\
+nal Studies (with discussion)}, 
+  journal=      {Statistical Science}, volume=17,  
+  pages=        {286--327}, 
+  year=         2002 
+) 
+
+@book( rosenbaum2002,
+  author=       {Rosenbaum, Paul R.},
+  title=        {Observational Studies},
+  edition=      "2nd",
+  publisher=    "Springer-Verlag", address= ny, 
+  year=         2002
+)
+
+@article( Rosenbaum1999,
+  author=       {Rosenbaum, Paul R.},
+  title=        {Using Quantile Averages in Matched Observational Studies},
+  journal=      {Applied Statistics}, volume=48, 
+  number=       1,
+  pages=        {63--78},
+  year=         1999
+)
+
+@article( Rosenbaum1993,
+  author=       {Rosenbaum, Paul R.},
+  title=        {Comparison of Multivariate Matching Methods: Structures, Distances, and Algorithms},
+  journal=      {Journal of Computational and Graphical Statistics}, volume=2, 
+  number=       4,
+  pages=        {405--420},
+  year=         1993
+)
+
+@article( Rosenbaum1991,
+  author=       {Rosenbaum, Paul R.},
+  title=        {A Characterization of Optimal Designs for Observational Studies},
+  journal=      jrssb, volume=53, 
+  number=       3,
+  pages=        {597--610},
+  year=         1991
+)
+
+@article( Rosenbaum1989,
+  author=       {Rosenbaum, Paul R.},
+  title=        {Optimal Matching for Observational Studies},
+  journal=      jasa, volume=84, 
+  number=       408,
+  pages=        {1024--1032},
+  year=         1989
+)
+
+@article( RosenbaumRubin1985,
+  author=       {Rosenbaum, Paul R. and Donald B. Rubin},
+  title=        {Constructing a Control Group Using Multivariate Matched Sampling Methods That Incorporate the Propensity Score},
+  journal=      {The American Statistician}, volume=39, 
+  number=       1,
+  pages=        {33--38},
+  year=         1985
+)
+
+@article( RosenbaumRubin1984,
+  author=       {Rosenbaum, Paul R. and Donald B. Rubin},
+  title=        {Reducing Bias in Observational Studies Using Subclassification on the Propensity Score},
+  journal=      jasa, volume=79, 
+  number=       387,
+  pages=        {516--524},
+  year=         1984
+)
+
+@article( RosenbaumRubin1983,
+  author=       {Rosenbaum, Paul R. and Donald B. Rubin},
+  title=        {The Central Role of the Propensity Score in Observational Studies for Causal Effects},
+  journal=      {Biometrika}, volume=70, 
+  number=       1,
+  pages=        {41--55},
+  year=         1983
+)
+
+@article( RosenzweigWolpin2000,
+  author=       {Rosenzweig, Mark R. and Kenneth I. Wolpin},
+  title=        {Natural "Natural Experiments" in Economics},
+  journal=      jel, volume=38, month="December",
+  pages=        {827--874},
+  year=         2000
+)
+
+@article( rubin_design,
+  author=       {Rubin, Donald B},
+  title=        "For Objective Causal Inference, Design Trumps Analysis",
+  journal=      "Annals of Applied Statistics", volume=2, number=3,
+  pages=        "808--840",
+  year=         2008
+)
+
+@article( rubin2007,
+  author=       {Rubin, Donald B},
+  title=        "The Design Versus the Analysis of Observational Studies for Causal Effects: Parallels with the Design of Randomized Trials",
+  journal=      "Statistics in Medicine", volume=26, 
+  pages=        "20--30",
+  year=         2007
+)
+
+@book( rubin2006,
+  author=       {Rubin, Donald B.},
+  title=        {Matched Sampling for Causal Effects},
+  publisher=    cup, address= {New York}, 
+  year=         2006
+)
+
+@article( rubin2001,
+  author=       {Rubin, Donald B},
+  title=        "Using Propensity Scores to Help Design Observational Studies: Application to the Tobacco Litigation",
+  journal=      "Health Services \& Outcomes Research Methodology", volume=2, number=1,
+  pages=        "169--188",
+  year=         2002
+)
+
+@article( rubin.smoking,
+  author=       {Rubin, Donald B},
+  title=        "Using Propensity Scores to Help Design Observational Studies: Application to the Tobacco Litigation",
+  journal=      "Health Services \& Outcomes Research Methodology", volume=2, number=1,
+  pages=        "169--188",
+  year=         2002
+)
+
+@article( rubin1997,
+  author=       {Rubin, Donald B},
+  title=        "Estimating Causal Effects from Large Data Sets Using Propensity Scores",
+  journal=      {Annals of Internal Medicine}, volume=127, number="8S",
+  pages=        "757--763",
+  year=         1997
+)
+
+@article( rubin1990,
+  author=       {Rubin, Donald B.},
+  title=        {Comment: Neyman (1923) and Causal Inference in Experiments and Observational Studies},
+  journal=      {Statistical Science}, volume=5, number=4,
+  pages=        {472--480},
+  year=         1990
+)
+
+@book( rubinMI1987,
+  author=       {Rubin, Donald B.},
+  title=        {Multiple Imputation for Nonresponse in Surveys},
+  publisher=    {J. Wiley \& Sons}, address= ny,
+  year=         1987
+)
+
+@article( rubin1980,
+  author=       {Rubin, Donald B.},
+  title=        "Bias Reduction Using Mahalanobis-Metric Matching",
+  journal=      {Biometrics}, volume=36, 
+  number =      2,
+  pages=        {293--298},
+  year=         1980
+)
+
+@article( rubin1979,
+  author=       {Rubin, Donald B.},
+  title=        "Using Multivariate Sampling and Regression Adjustment to Control Bias in Observational Studies",
+  journal=      jasa, volume=74, 
+  pages=        {318--328},
+  year=         1979
+)
+
+@article( rubin1978,
+  author=       {Rubin, Donald B.},
+  title=        {Bayesian Inference for Causal Effects: The Role of Randomization},
+  journal=      {Annals of Statistics}, volume=6, number=1,
+  pages=        {34--58},
+  year=         1978
+)
+
+@article( rubin1977,
+  author=       {Rubin, Donald B.},
+  title=        {Assignment to a Treatment Group on the Basis of a Covariate},
+  journal=      {Journal of Educational Statistics}, volume=2, 
+  pages=        {1--26},
+  year=         1977
+)
+
+@article( rubin1976,
+  author=       {Rubin, Donald B.},
+  title=        {Multivariate Matching Methods That are Equal Percent Bias Reducing, I: Some Examples},
+  journal=      {Biometrics}, 
+  volume =      32, 
+  number =      1,
+  pages=        {109--120},
+  year=         1976
+)
+
+@article( rubin1976b,
+  author=       {Rubin, Donald B.},
+  title=        {Multivariate Matching Methods That are Equal Percent Bias Reducing, II: Maximums on Bias Reduction for Fixed Sample Sizes},
+  journal=      {Biometrics}, 
+  volume =      32, 
+  number =      1,
+  pages=        {121--132},
+  year=         1976
+)
+
+@article( rubinMI1976,
+  author=       {Rubin, Donald B.},
+  title=        {Inference and Missing Data},
+  journal=      {Biometrika}, volume=63, 
+  pages=        {581-592},
+  year=         1976
+)
+
+@incollection( rubin1975,
+  author=       {Rubin, Donald B.},
+  title=        {Bayesian Inference for Causality: The Importance of Randomization},
+  booktitle=    {The Proceedings of the Social Statistics Section of the American Statistical Association},
+  publisher=    "American Statistical Association", address= "Alexandria, VA",
+  pages=        {233–-239},
+  year=         1975
+)
+
+@article( rubin1974,
+  author=       {Rubin, Donald B.},
+  title=        "Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies",
+  journal=      {Journal of Educational Psychology}, volume=66, number=6,
+  pages=        {688--701},
+  year=         1974
+)
+
+@article( rubin1973a,
+  author=       {Rubin, Donald B.},
+  title=        "Matching to Remove Bias in Observational Studies",
+  journal=      {Biometrics}, volume=29, 
+  pages=        {159--184},
+  year=         1973
+)
+
+@article( rubin1973b,
+  author=       {Rubin, Donald B.},
+  title=        "The Use of Matching and Regression Adjustment to Remove Bias in Observational Studies",
+  journal=      {Biometrics}, volume=29, 
+  pages=        {185--203},
+  year=         1973
+)
+
+@article( RubinStuart,
+  author=       {Rubin, Donald B. and Elizabeth A. Stuart},
+  title=        {Affinely Invariant Matching Methods with Discriminant Mixtures of Proportional Ellipsoidally Symmetric Distributions},
+  journal=      aos,
+  volume= 34,
+  number=4,
+  pages="1814--1826",
+  year=         2006
+)
+
+@article( RubinThomas2000,
+  author=       {Rubin, Donald B. and Neal Thomas},
+  title=        "Combining propensity score matching with additional adjustments for prognostic covariates",
+  journal=      jasa, volume=95,
+  pages=        {573--585},
+  year=         2000
+)
+
+@article( RubinThomas1996,
+  author=       {Rubin, Donald B. and Neal Thomas},
+  title=        "Matching Using Estimated Propensity Scores: Relating Theory to Practice",
+  journal=      {Biometrics}, volume=52, number=1,
+  pages=        {249--264},
+  year=         1996
+)
+
+@article( RubinThomas1992,
+  author=       {Rubin, Donald B. and Neal Thomas},
+  title=        "Affinely Invariant Matching Methods with Ellipsoidal Distributions",
+  journal=      aos, volume=20, number=2,
+  pages=        {1079--1093},
+  year=         1992
+)
+
+@article( RubinThomas1992b,
+  author=       {Rubin, Donald B. and Neal Thomas},
+  title=        "Characterizing the Effect of Matching Using Linear Propensity Score Methods with Normal Distributions",
+  journal=      "Biometrika", volume=79, number=4,
+  pages=        {797--809},
+  year=         1992
+)
+
+
+
+@article( rustow1970,
+  author=       {Rustow, Dankwart A.},
+  title=        {Transitions to Democracy: Toward a Dynamic Model},
+  journal=      {Comparative Politics}, volume=2, number=3,
+  pages=        {337--363},
+  year=         1970
+)
+
+@book( schafer1997a,
+  author=       {Schafer, Joseph L.},
+  title=        {Analysis of Incomplete Multivariate Data},
+  publisher=    c-h, address= "London", 
+  year=         1997
+)
+
+@unpublished( schafer1997b,
+  author=       {Schafer, Joseph L.},
+  title=        {Imputation of missing covariates under a general linear mixed model},
+  note=         {Technical report, Dept. of Statistics, Penn State University},
+  year=         1997
+)
+
+@article( scheffe1956,
+  author=       {Scheff\'{e}, H},
+  title=        {Alternative Models for the Analysis of Variance},
+  journal=      {Annals of Mathematical Statistics}, volume=27,
+  pages=        {251–-271},
+  year=         1956
+)
+
+@article( SekhonOpiates,
+  author=       {Sekhon, Jasjeet Singh},
+  title=        {Opiates for the Matches: Matching Methods for Causal Inference},
+  journal=      {Annual Review of Political Science}, volume={12}, 
+  pages=        "487--508",
+  year=         2010
+)
+
+@incollection( SekhonOxford,
+  author=       {Sekhon, Jasjeet S.\},
+  title=        {The Neyman-Rubin Model of Causal Inference and Estimation via Matching Methods},
+  booktitle=    {The Oxford Handbook of Political Methodology},
+  editor=       {Janet M. Box-Steffensmeier and Henry E. Brady and David Collier},
+  publisher=    {Oxford University Press}, address= {New York}, 
+  pages=        {271--299},
+  year=         2008
+)
+
+@unpublished( SekhonGrieve_pac,
+  author=       {Sekhon, Jasjeet S.\ and Richard Grieve},
+  title=        {A Non-Parametric Matching Method for Bias Adjustment with Applications to Economic Evaluations},
+  note=         "Working Paper",
+  year=         2008
+)
+
+@article( SekhonMalloc,
+  author=       {Sekhon, Jasjeet Singh},
+  title=        {The Art of Benchmarking: Evaluating the Performance of R on Linux and OS X.},
+  journal=      {The Political Methodologist}, volume={14}, number=1,
+  year=         2006
+)
+
+@unpublished( Sekhon2006,
+  author=       {Jasjeet S.\ Sekhon},
+  title=        {Alternative Balance Metrics for Bias Reduction in Matching Methods for Causal Inference},
+  note=         {Working Paper},
+  URL=          {http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf},
+  year=         2006
+)
+
+@article{sekhonJSS,
+  author =   {Jasjeet S.\ Sekhon},
+  title =    {Matching: Multivariate and Propensity Score Matching with Automated Balance Search},
+  journal =  {Journal of Statistical Software},
+  note = {Computer program available at  \mbox{\url{http://sekhon.berkeley.edu/matching/}}},
+  year =     {In Press}
+}
+
+@article( sekhon2004,
+  author=       {Sekhon, Jasjeet S.},
+  title=        {Quality Meets Quantity: Case Studies, Conditional Probability and Counterfactuals},
+  journal=      pop, volume=2,
+  number =      2,
+  pages=        {281--293},
+  year=         2004
+)
+
+@unpublished( SekhonInformation,
+  author=       {Sekhon, Jasjeet S.\},
+  title=        "The Varying Role of Voter Information Across Democratic Societies",
+  note =        "Working Paper",
+  url=          {http://sekhon.berkeley.edu/papers/SekhonInformation.pdf},
+  year=         2004
+)
+
+@article( SekhonMebane1998,
+  author=       {Sekhon, Jasjeet Singh and Mebane, Jr., Walter R.},
+  title=        {Genetic Optimization Using Derivatives: Theory and Application to Nonlinear Models},
+  journal=      {Political Analysis}, volume={7},
+  pages=        {189--203},
+  year=         1998
+)
+
+@unpublished( sekhon_glmRob,
+  author=       {Sekhon, Jasjeet S.\},
+  title=        {Robust Alternatives to Binary Logit and Probit: With
+  reanalysis of Fearon and Laitin's (2003) ``Ethnicity, Insurgency and
+  Civil War'' and Bartels's (1996) ``Uninformed Votes: Information Effects in
+  Presidential Elections.},
+  note=         "Working Paper",
+  year=         2004
+)
+
+@unpublished( Sekhon_florida,
+  author=       {Sekhon, Jasjeet S.\},
+  title=        {The 2004 Florida Optical Voting Machine Controversy: A Causal Analysis Using Matching},
+  note=         "Working Paper",
+  year=         2004
+)
+
+@unpublished( SekhonTitiunik2007,
+  author=       {Sekhon, Jasjeet S.\ and Roc\'{i}o Titiunik},
+  title=        {Exploiting Tom DeLay: A New Method for Estimating Incumbency Advantage and the Effect of Candidate Ethnicity on Turnout},
+  note=         "Working Paper \url{http://sekhon.berkeley.edu/papers/SekhonTitiunik.pdf}",
+  year=         2007
+)
+
+@incollection( simon1953,
+  author=       {Simon, Herbert},
+  title=        {Causal Ordering and Identifiability},
+  booktitle=    {Studies in Econometric Method},
+  editor=       {William C.\ Hood and T.C.\ Koopmans},
+  publisher=    {Wiley}, address= ny, 
+  pages=        {49--74},
+  year=         1953
+)
+
+@article( SimmonsHopkins2005,
+  author=       {Simmons, Beth A. and Daniel J. Hopkins},
+  title=        {The Constraining Power of International Treaties: Theory and Methods},
+  journal=      apsr, volume=99, number=4,
+  pages=        {623--631},
+  year=         2005
+)
+
+@book( smith_charles1956,
+  author=       {Smith, Charles Page},
+  title=        {James Wilson, Founding Father, 1742-1798},
+  publisher=    "University of North Carolina Press", address= "Chapel Hill",
+  year=         1956
+)
+
+@article( smith_herbert1997,
+  author=       {Smith, Herbert L.},
+  title=        {Matching with Multiple Controls to Estimate Treatment Effects in Observational Studies},
+  journal=      "Sociological Methodology", volume=27,
+  pages=        "305--353",
+  year=         "1997"
+)
+
+@article( SmithTodd2005a,
+  author=       {Smith, Jeffrey and Petra Todd},
+  title=        {Does Matching Overcome LaLonde's Critique of Nonexperimental Estimators?},
+  journal=      je, volume=125, number="1--2",
+  pages=        "305--353",
+  year=         "2005"
+)
+
+@article( SmithTodd2005b,
+  author=       {Smith, Jeffrey and Petra Todd},
+  title=        {Rejoinder},
+  journal=      je, volume=125, number="1--2",
+  pages=        "365--375",
+  year=         "2005"
+)
+
+@article{SmithTodd2001,
+  author =   {Jeffrey A. Smith and Petra E. Todd},
+  title =    {Reconciling Conflicting Evidence on the Performance of Propensity Score Matching Methods},
+  journal =  {AEA Papers and Proceedings},
+  year =     {2001},
+  volume =   {91},
+  number =   {2},
+  pages =    {112--118},
+}
+
+@book( sniderman1991,
+  author=       {Sniderman, Paul M. and Richard Brody and Philip E. Tetlock},
+  title=        {Reasoning and Choice: Explorations in Political Psychology},
+  publisher=    cup, address= ny,
+  year=         1991
+)
+
+@incollection( sniderman1993,
+  author=       {Sniderman, Paul M.},
+  title=        {The New Look in Public Opinion Research},
+  booktitle=    {Political Science: The State of the Discipline II},
+  editor=       {Ada W. Finifter},
+  publisher=    {American Political Science Association}, 
+  address=      {Washington, DC},
+  year=         1993
+)
+
+@article( SommerZeger1991,
+  author=       {Sommer, Alfred and Scott L. Zeger},
+  title=        "On Estimating Efficacy from Clinical Trials",
+  journal=      {Statistics in Medicine}, volume=10, number=1,
+  pages=        {45--52},
+  year=         1991
+)
+
+@article(speed1990,
+  author=       {Terence P. Speed},
+  title=        {Introductory Remarks on Neyman (1923)},
+  journal=      {Statistical Science}, volume=5, number=4,
+  pages=        {463--464},
+  year=         {1990}
+)
+
+@book( snow1855,
+  author=       {Snow, John},
+  title=           {On the Mode of Communication of Cholera},
+  edition=      "2nd",
+  publisher=   {John Churchill}, address= {London}, 
+  year=           {1855}
+)
+
+@book( snyder2000,
+  author=       {Snyder, Jack},
+  title=        {From Voting to Violence: Democratization and Nationalist Conflict},
+  publisher=    {W. W. Norton}, address= ny,
+  year=         2000
+)
+
+@article( stephens1974,
+  author=       {Stephens, M. A.},
+  title=        {EDF Statistics for Goodness of Fit and Some Comparisons},
+  journal=      jasa, volume=69,
+  pages=        {730--737},
+  year=         1974
+)
+
+@article( StockTrebbi2003,
+  author=       {Stock, James H. and Francesco Trebbi},
+  title=        {Who Invented Instrumental Variable Regression?},
+  journal=      jep, volume=17, number=3,
+  pages=        {177-194},
+  year=         2003
+)
+
+@book( stigler1990,
+  author=       {Stigler, Stephen M.},
+  title=        {The History of Statistics: The Measurement of Uncertainty before 1900},
+  publisher=    {Belknap Press}, address= {Cambridge, MA},
+  year=         {1990}
+)
+
+@article( ThistlethwaiteCampbell1960,
+  author=       {Thistlethwaite, Donald L.\ and Donald T.\ Campbell},
+  title=        {Regression-Discontinuity Analysis: An alternative to the ex post facto experiment},
+  journal=      {Journal of Educational Psychology}, number=6,
+  volume =      51, pages={309-317},
+  year=         1960
+)
+
+@book( viten_snow,
+  author=       {Vinten-Johansen, Peter and Howard Brody and Nigel Paneth and Stephen Rachman and Michael Russell Rip},
+  title=        {Cholera, Chloroform, and the Science of Medicine: A Life of John Snow},
+  publisher=    oup, address= "New York",
+  year=         2003
+)
+
+@incollection( vose1993,
+  author=       {Vose, Michael D.},
+  title=        {Modeling Simple Genetic Algorithms},
+  booktitle=    {Foundations of Genetic Algorithms 2},
+  editor=       {L.~Darrell Whitley},
+  publisher=    {Morgan Kaufmann}, address= {San Mateo, CA},
+  year=         1993
+)
+
+@unpublished{WandGosnell,
+  author =   {Wand, Jonathan N.},
+  title =    {Harold F. Gosnell and Social Science Experiments},
+  note=      "Working Paper",
+  year =     {2008}
+}
+
+@article( WSSMHB,
+  author=       {Wand, Jonathan N. and Kenneth W. Shotts and Jasjeet S.\ Sekhon and Walter R. Mebane, Jr. and Michael C. Herron and Henry E. Brady},
+  title=        {The Butterfly Did It: The Aberrant Vote for Buchanan in Palm Beach County, Florida},
+  journal=      apsr, volume=95,
+  number =      4,
+  pages=        {793--810},
+  year=         2001
+)
+
+@article{welch1937,
+  author =   {Welch, B. L.},
+  title =    {On the $z$-Test in Randomized Blocks and Latin Squares},
+  journal =  "Biometrika", volume = 29, 
+  pages =    "21--52",
+  year =     {1937},
+}
+
+@book( wilcox1997,
+  author=       {Wilcox, Rand R.},
+  title=        {Introduction to Robust Estimation},
+  publisher=    {Academic Press}, address= {San Diego, CA},
+  year=         1997
+)
+
+@article( wilcoxon1945,
+  author=       {Wilcoxon, F},
+  title=        {Individual Comparisons by Ranking Methods},
+  journal=      {Biometrics}, volume=1,
+  pages=        {8083},
+  year=         1945
+)
+
+@article( WinshipMorgan1999,
+  author=       {Winship, Christopher and Stephen Morgan},
+  title=        {The estimation of causal effects from observational data},
+  journal=      "Annual Review of Sociology", volume=25, 
+  pages=        "659--707",
+  year=         "1999"
+)
+
+@article( wittman1989,
+  author=       {Wittman, Donald A},
+  title=        {Why Democracies Produce Efficient Results},
+  journal=      jpe, volume=97,
+  pages=        {1395--1424},
+  year=         1989
+)
+
+@unpublished( wooldridge.zbias,
+  author=       {Wooldridge, J.},
+  title=        {Should Instrumental Variables be Used as Matching Variables?},
+  note=         "Tech.\ Rep.\ Michigan State University, MI.",
+  year=         "2009"
+)
+
+@article( WooReiterKarr2008,
+  author=       {Woo, Mi-Ja and Jerome P.\ Reiter and Alan F.\ Karr},
+  title=        {Estimation of propensity scores using generalized additive models},
+  journal=      "Statistics in Medicine", 
+  year=         "In Press"
+)
+
+@book( WrightIV,
+  author=       {Wright, Philip G.},
+  title=        {The Tariff on Animal and Vegetable Oils},
+  publisher=    {Macmillan}, address= {New York}, 
+  year=         {1928}
+)
+
+@article( yule1899,
+  author=       {Yule, Undy G.},
+  title=        {An Investigation into the Causes of Changes in Pauperism in England, Chiefly During the Last Two Intercensal Decades (Part I.)},
+  journal=      {Journal of the Royal Statistical Society}, volume=62,
+  number =      2,
+  pages=        {249--295},
+  year=         1899
+)
+
+@incollection( zaller2004,
+  author=       {Zaller, John R},
+  title=        {Floating Voters in U.S.\ Presidential Elections, 1948--1996},
+  booktitle=    {Studies in Public Opinion: Gauging Attitudes, Nonattitudes, Measurement Error and Change},
+  editor=       {Willem Saris and Paul Sniderman},
+  publisher=    pup, 
+  address=      nj,
+  year=         "In Press"
+)
+
+@book( zaller1992,
+  author=       {Zaller, John R},
+  title=        {The Nature and Origins of Mass Opinion},
+  publisher=    cup, address= ny,
+  year=         1992
+)
+
+@unpublished( zaller1986,
+  author=       {Zaller, John R.},
+  title=        {Analysis of Information Items in the 1985 NES Pilot Study},
+  note=         {NES Pilot Study Report. Center for Political Studies, University of Michigan},
+  year=         1986
+)
+
+@unpublished( zaller1985,
+  author=       {Zaller, John R.},
+  title=        {Proposal for the Measurement of Political Information},
+  note=         {Report to the NES Board of Overseers. Center for Political Studies, University of Michigan},
+  year=         1985
+)
+
+@book( zakaria2003,
+  author=       {Zakaria, Fareed},
+  title=        {The Future of Freedom: Illiberal Democracy at Home and Abroad},
+  publisher=    {W. W. Norton}, address= {New York}, 
+  year=         2003
+)
+
+@article( zakaria1998,
+  author=       {Zakaria, Fareed},
+  title=        {Doubts About Democracy},
+  journal=      {Newsweek}, Month="January", day=5,
+  year=         1998
+)
+
+@article( zakaria1997,
+  author=       {Zakaria, Fareed},
+  title=        {The Rise of Illiberal Democracy},
+  journal=      {Foreign Affairs}, volume=76, number=6,
+  pages=        {249--295},
+  year=         1997
+)
+
+@Comment  LocalWords:  apsr booktitle Finifter Zaller NES Iyengar Shanto Brehm
+@Comment  LocalWords:  AlvarezBrehm ajps HorvitzThompson Horvitz jasa ny kunsch
+@Comment  LocalWords:  MannWhitney Psychometrika Biometrika rubinMI Stefanski
+@Comment  LocalWords:  Cantoni Elvezio Ronchetti CarrollPederson Pederson jssrb
+@Comment  LocalWords:  copas jrssb sekhon glmRob Probit Fearon Laitin's althaus
+@Comment  LocalWords:  Bartels's MebaneSekhon Keisuke Geert ec Allyson Berent
+@Comment  LocalWords:  Krosnick Visser Boninger Hausman Kosuke Rosenbaum Bon Ai
+@Comment  LocalWords:  Kornhauser Jamieson hersh url huntington Zakaria Fareed
+@Comment  LocalWords:  zakaria rustow Dankwart Lipset geddes MacKuen Brunell nd
+@Comment  LocalWords:  BrunellNiNardo DiNardo Reweighting AldrichMcKelvey rubin
+@Comment  LocalWords:  McKelvey imbens abadie incollection dominguez nguez jop
+@Comment  LocalWords:  Chappell Ordeshook Lupia fishkin Subclassification Jong
+@Comment  LocalWords:  CochranRubin BertsimasTsitsiklis Bertsimas Dimitris Boix
+@Comment  LocalWords:  Tsitsiklis Kaufmann Quantile Ellipsoidally Galiani Segal
+@Comment  LocalWords:  Gertler Schargrodsky GalianiGertlerSchargrodsky Diprete
+@Comment  LocalWords:  DipreteEngelhardt Engelhardt herbert Winship Mosteller
+@Comment  LocalWords:  WinshipMorgan BowersHansen Przeworski Carles Affinely ki
+@Comment  LocalWords:  aos Bonney Wrone Minozzi cochran Guido jrsa Jaeger Roc
+@Comment  LocalWords:  Titiunik Herron Ratiocinative Imai Dyk Gosnell gosnell
+@Comment  LocalWords:  uchp Chapin Neyman Trebbi GlynnQuinn middleton Armitage
+@Comment LocalWords:  freedmanOLSa freedmanOLSb Preece Milner Arceneaux Angrist
+@Comment LocalWords:  Katznelson GreenGerber eldersveld HansenBowersJASA Sommer
+                  @Comment LocalWords:  AngristImbens SommerZeger Zeger Millar
+                  @Comment LocalWords:  Beauchamp Breiman Olshen Chipman facto
+                  @Comment LocalWords:  McCulloch Thistlethwaite HRT Petitti
+                  @Comment LocalWords:  FreedmanPetitti Vinten Johansen Paneth
+                  @Comment LocalWords:  Rachman oup qjps Sergenti Korkeam Ossi
+                  @Comment LocalWords:  Roope Uuistalo KorkeamakiUusitalo SSRN
+                  @Comment LocalWords:  Caryolyn EggersHainmueller Eggers IZA
+                  @Comment LocalWords:  Hainmueller Wooldridge Counterfactuals
+                  @Comment LocalWords:  NBER Mebane Jasjeet rgenoud haavelmo
+                  @Comment LocalWords:  Trygve Koopmans Exogeneity Kullback UAI
+                  @Comment LocalWords:  Leibler ImaiKingStaurt Bhattacharya
+                  @Comment LocalWords:  Observationalists Vogt zbias Rotnitzky
+                  @Comment LocalWords:  SekhonOpiates RobinsRotnitzky Zhao kuhn
+                  @Comment LocalWords:  Semiparametric RobinsRotnitzkyZhao
+                  @Comment LocalWords:  Regressors freedmanCh Steffensmeier
+                  @Comment LocalWords:  oreopoulos BoothLeighVarganova Shrout
+                  @Comment LocalWords:  Varganova RobinsRichardson Keyes
+                  @Comment LocalWords:  Ornstein

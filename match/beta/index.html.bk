@@ -1,0 +1,129 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score   Software, Causal Inference, Causality, Sekhon">
+   <meta name="keywords" content="Propensity Score Matching,
+   Multivariate Matching, Matching Software, Propensity Score Software, Causal Inference, Causality, Jasjeet Sekhon, Jas Sekhon, Sekhon,
+   Jas">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.17-21mdksmp i686) [Netscape]">
+   <title>Jasjeet Sekhon's Multivariate and Propensity Score Matching
+   Software for Causal Inference</title>
+</head>
+
+<body>
+
+<link rel="stylesheet"
+href="http://jsekhon.fas.harvard.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+<h1>Beta Version of Multivariate and Propensity Score Matching Software</h1>
+
+<a href="http://jsekhon.fas.harvard.edu/">Jasjeet S. Sekhon</a>
+
+<br><br> This website is for the distribution of "Matching" which is a
+<b><a href="http://www.r-project.org/">R</a></b> package for estimating causal
+effects by multivariate and propensity score matching.  The package provides
+functions for multivariate and propensity score matching and for finding
+optimal balance based on a <a
+href="http://jsekhon.fas.harvard.edu/rgenoud/">genetic search
+algorithm</a></b>. A variety of univariate and multivariate tests to determine
+if balance has been obtained are also provided.  These tests can also be used
+to determine if an experiment or quasi-experiment is balanced on baseline
+covariates.
+
+<br><br> The easiest way to install the latest version (0.70), if you
+have an active network connection, is to type in a <b><a
+href="http://www.r-project.org/">R</a></b> session: <br> <dl> <dd>
+<B> > install.packages("Matching", CRAN="http://jsekhon.fas.harvard.edu") </B>
+</dl> </dd> 
+
+<br> Alternatively, the package may be directly downloaded: <br> <dl>
+<dd> Linux, Mac OS X and Windows source package: <a
+href="http://jsekhon.fas.harvard.edu/R/CRAN/src/contrib/Matching_0.70.tar.gz">Matching_0.70.tar.gz</a><br>
+
+Mac OS X (10.2.x and above) binary package for G5 processors: <a
+href="http://jsekhon.fas.harvard.edu/R/CRAN/bin/macosx/2.0/Matching_0.70_R_powerpc-apple-darwin7.6.0.tar.gz">Matching_0.70_R_powerpc-apple-darwin7.6.0.tar.gz</a><br>
+Windows binary package: <a
+href="http://jsekhon.fas.harvard.edu/R/CRAN/bin/windows/contrib/2.0/Matching_0.70.zip">Matching_0.70.zip</a>
+</dl> </dd> For Mac OS X users with G5 processors it is recommended that the
+<a
+href="http://jsekhon.fas.harvard.edu/R/CRAN/bin/macosx/2.0/Matching_0.70_R_powerpc-apple-darwin7.6.0.tar.gz">binary
+package</a> be downloaded and installed directly by typing on the OS X command
+line: <br> <dl> <dd> <B> R CMD INSTALL
+Matching_0.70_R_powerpc-apple-darwin7.6.0.tar.gz
+</B> </dl> </dd> The OS X binary package is about 30% faster than the source
+package because of some G5 specific optimizations.
+
+<br> <br>
+The package includes the following main user exposed functions, two
+replication datasets and three demos:
+<br> <dl> <dd> 
+     <a href="GenMatch.html"><b>GenMatch():</b></a> 
+     finds optimal balance using multivariate matching where a genetic search
+     algorithm determines the weight each covariate is given.
+     <br><br>
+     <a href="Match.html">Match()</a>: 
+     preforms multivariate and propensity score matching. 
+     <br><br>
+     <a href="../MatchBalance.html">MatchBalance():</a> 
+     provides a variety of univariate and multivariate tests to determine if
+     balance exists.
+     <br><br>
+     <a href="../balanceMV.html">balanceMV()</a><br>
+     <a href="../balanceUV.html">balanceUV()</a><br>
+     <a href="../ks.boot.html">ks.boot()</a><br>
+     <a href="../GerberGreenImai.html">Gerber, Green and Imai data</a><br>
+     <a href="../lalonde.html">Lalonde data</a><br>
+     <a href="../AbadieImbens.Rout">AbadieImbens demo</a><br>
+     <a href="../DehejiaWahba.Rout">DehejiaWahba demo</a><br>
+     <a href="../GerberGreenImai.Rout">GerberGreenImai demo</a><br>
+</dl> </dd>
+<br>
+
+The package is under active development so please check back for
+updates.  <br> <br>
+
+This software was used by me to produce the following working paper: <a
+href="http://jsekhon.fas.harvard.edu/papers/SekhonInformation.pdf">The Varying
+Role of Voter Information Across Democratic Societies.</a> This paper includes
+some useful discussion of Matching, particularly of the balance tests.  The
+robust propensity score methods discussed in the paper will be included in a
+future version.  The core matching estimator which is implemented is that of
+<a href="http://ksghome.harvard.edu/~.aabadie.academic.ksg/">Alberto
+Abadie</a> and <a href="http://elsa.berkeley.edu/~imbens/">Guido Imbens</a>.
+This algorithm provides principled standard errors when matching is done with
+covariates or a known propensity score.  Ties are handled in a deterministic
+and coherent fashion. For details see their working paper entitled <a
+href="http://ksghome.harvard.edu/~.aabadie.academic.ksg/sme.pdf">Large Sample
+Properties of Matching Estimators for Average Treatment</a>. 
+
+<br><br> "Matching" relies on a modified version of the <a
+href="http://scythe.wustl.edu/">Scythe Statistical Library</a> developed by
+Andrew Martin, Kevin Quinn and Daniel Pemstein.  My modified version of the
+library is included in the "Matching" package.
+
+<br><br> For more details on matching and causal inference see <a
+href="http://www.stanford.edu/class/polisci353/2004winter/reading.html">Jonathan
+Wand's Reading List</a>.
+
+
+
+<br>
+<br>
+<small><small> <a href="http://jsekhon.fas.harvard.edu/matching">Return to
+the main Matching page</a><br> </small></small>
+
+</body>
+</html>
+<!--  LocalWords:  html charset iso css multinomRob CRAN MatchBalance balanceMV
+ -->
+<!--  LocalWords:  balanceUV Matlab
+ -->

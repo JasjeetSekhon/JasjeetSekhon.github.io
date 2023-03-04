@@ -1,0 +1,1002 @@
+\batchmode
+
+\documentclass[fleqn,titlepage,11pt]{article}
+\makeatletter
+\usepackage{epsfig}
+\usepackage{html}
+\usepackage{amsmath}
+
+\setlength{\oddsidemargin}{0in}  
+\setlength{\evensidemargin}{0in}  
+\setlength{\topmargin}{0in}  
+\setlength{\headheight}{0in}  
+\setlength{\headsep}{0in}  
+\setlength{\textwidth}{6.5in}  
+\setlength{\textheight}{8.9in}  
+
+\providecommand{\eref}[1]{(\ref{#1})}  %
+\providecommand{\fref}[1]{Figure \ref{#1}}  %
+\providecommand{\tref}[1]{Table \ref{#1}}  %
+
+\providecommand{\mb}[1]{{\bf #1}}  %
+\providecommand{\tr}{\operatorname{tr}}
+\providecommand{\Cov}{\operatorname{Cov}}
+\providecommand{\plim}{\operatorname{plim}}
+\providecommand{\pr}{\text{prob}}
+\providecommand{\diag}{\text{diag}}
+
+\providecommand{\Ch}{\textit{Chadha}}
+
+\htmladdtonavigation{
+  \begin{rawhtml}    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">\end{rawhtml}
+  \htmladdnormallink{%
+\htmladdimg{http://data.fas.harvard.edu/jsekhon/pics/home.gif}}
+  {http://data.fas.harvard.edu/jsekhon/}}
+\par\usepackage[dvips]{color}
+\pagecolor[gray]{.7}
+
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{} \catcode`\_=\count@
+\makeatother
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{349pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string\immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup}%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup%
+ \let\ifinner=\iffalse }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\def\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA[1]{\lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA[1]{\lthtmlmathtype{#1}\lthtmlhboxmathA  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA[1]{\lthtmlmathtype{#1}\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em\vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\setbox1=\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}\message{ht\the\ht1: dp\the\dp1}\box1}}
+\def\centerinlinemath{%\dimen1=\ht\sizebox
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize\expandafter\vfill
+  \else\expandafter\vss\fi}%
+\makeatletter \tracingstats = 1 
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\makeatother
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline986}%
+$^{\mbox{\dag }}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline988}%
+$^{\mbox{\ddag }}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1000}%
+$\Sigma$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath78}%
+\begin{displaymath}\log L = \log \left [\frac{|S|^{\frac{1}{2}(n-p-2)}
+ \exp \left \{-\frac{1}{2}(n-1) \ \operatorname{tr}\left [S \Sigma^{-1} \right] \right \}
+ \left (\frac{1}{2}(n-1) \right )^{\frac{1}{2}p(n-1)}}
+ {\pi^{\frac{1}{4}(2p-1)} |\Sigma|^{\frac{1}{2}(n-1)}
+ \prod_{i=1}^{p} \Gamma \left [\frac{1}{2}(n - i) \right ]} \right ]
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1002}%
+$w_{i} = (w_{i1},
+w_{i2},\cdots,w_{ip})^{\top}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1004}%
+$\mu$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{align102}%
+\begin{align}\log L & = \log \left [
+  \left ( 2 \pi \right )^{\frac{1}{2}np} |\Sigma|^{-\frac{1}{2}n}
+  \exp \left \{ -\frac{1}{2} \sum_{i=1}^{n} (w_{i}-\mu)^{\top}
+  \Sigma^{-1} (w_{i}-\mu) \right \} \right ] \nonumber \\
+& = \mbox{} - \frac{1}{2} n p \log \left (2 \pi \right ) 
+ - \frac{1}{2} n \log|\Sigma| 
+ - \frac{1}{2} n \operatorname{tr}\left ( S_{\mathrm{ml}} \Sigma^{-1}
+ \right ) 
+\end{align}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1006}%
+$S_{\mathrm{ml}}= n^{-1} \sum_{i=1}^{n}
+(w_{i}-\hat{\mu})(w_{i}-\hat{\mu})^{\top}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1008}%
+$\hat{\mu}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1014}%
+$\mu_F$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1016}%
+$\Sigma_F$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1020}%
+$\hat{L}_{01}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1022}%
+$\hat{L}_{0}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1024}%
+$\hat{L}_{1}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1026}%
+$\hat{L}_{01} = -2 (\log \hat{L}_{0} - \log \hat{L}_{1})$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1028}%
+$\log
+\hat{L}_{1}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1032}%
+$\log \hat{L}_{0}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1034}%
+$\hat{\theta}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath160}%
+\begin{displaymath}\hat{L}_{01} = -2 (\log \hat{L}_{0} - \log \hat{L}_{1})
+ = (n-1)
+ \left[ \operatorname{tr}\left( S \hat{\Sigma}^{-1} \right) - \log|S \hat{\Sigma}^{-1}| - p \right]
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath173}%
+\begin{displaymath}F_{ML} = (n-1)^{-1}\hat{L}_{01} = \operatorname{tr}\left[ S \hat{\Sigma}^{-1} \right]
+ - \log|S \hat{\Sigma}^{-1}| - p.
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath185}%
+\begin{displaymath}\hat{M} = n^{-1} \log \hat{L}_{0} - n^{-1} \log \hat{L}_{1} - 
+ E\{n^{-1} \log \hat{L}_{0} - n^{-1} \log \hat{L}_{1} | \hat{L}_{0}\}.
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{align204}%
+\begin{align}\hat{M}_{\mathrm{lisrel}} & =
+ n^{-1} \left [
+ - \frac{np_{0}}{2} \log (2 \pi) - \frac{n}{2} \log|\hat{\Sigma}_{0}| 
+ - \frac{n}{2} \operatorname{tr}\left [S \hat{\Sigma}^{-1}_{0} \right ] 
+ + \frac{np_{1}}{2} \log (2 \pi) + \frac{n}{2} \log|\hat{\Sigma}_{1}|
+ \right.
+ \nonumber \\
+& \quad
+ \mbox{}
+ + \frac{n}{2} \operatorname{tr}\left [S \hat{\Sigma}^{-1}_{1} \right ] 
+ + \frac{np_{0}}{2} \log (2 \pi) + \frac{n}{2} \log|\hat{\Sigma}_{0}| 
+ + \frac{n}{2} \operatorname{tr}\left [\hat{\Sigma}_{0} \hat{\Sigma}^{-1}_{0} \right ] 
+ \nonumber \\
+& \quad
+ \left.
+ \mbox{}
+ - \frac{np_{1}}{2} \log (2 \pi) - \frac{n}{2} \log|\hat{\Sigma}_{1}|
+ - \frac{n}{2} \operatorname{tr}\left [\hat{\Sigma}_{0} \hat{\Sigma}^{-1}_{1} \right ]
+ \right ]
+ \nonumber \\
+& =
+ \frac{1}{2} \left [
+ \log\frac{|\hat{\Sigma}_{0}^{-1}||\hat{\Sigma}_{1}|}{|\hat{\Sigma}_{0}^{-1}||\hat{\Sigma}_{1}|}
+ + \operatorname{tr}\left ( -S\hat{\Sigma}_{0}^{-1} + S \hat{\Sigma}_{1}^{-1}
+ + \hat{\Sigma}_{0} \hat{\Sigma}_{0}^{-1} - \hat{\Sigma}_{0} \hat{\Sigma}_{1}^{-1} \right ) 
+ \right ]
+ \nonumber \\
+& = 
+ \frac{1}{2} \operatorname{tr}\left ( \hat{\Sigma}_{1}^{-1} - \hat{\Sigma}_{0}^{-1} \right)
+ \left (S - \hat{\Sigma}_{0} \right )
+\end{align}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1040}%
+$\hat{M}_{\mathrm{lisrel}}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{align300}%
+\begin{align}\hat{M}_{\mathrm{White}}
+& =
+ \operatorname{tr}n^{-1} \sum_{t=1}^{n} \left (
+ \hat{\Sigma}_{1t}^{-1} - \hat{\Sigma}_{0t}^{-1} \right ) \left [
+ (\mathrm{Y}_{t} - \hat{\mu}_{0t})(\mathrm{Y}_{t} - \hat{\mu}_{0t})^{\top} -
+ \hat{\Sigma}_{0t} \right ]
+  \nonumber  \\
+& = 
+ \operatorname{tr}\left (
+ \hat{\Sigma}_{1}^{-1} - \hat{\Sigma}_{0}^{-1} \right ) 
+ \left (
+ S - \hat{\Sigma}_{0} \right )
+\end{align}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1044}%
+$\hat{\Sigma}_{0}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1046}%
+$\sqrt{n}{M_{\mathrm{lisrel}}}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath343}%
+\begin{displaymath}u \left [g(S_{n}^{*}) - g(\Sigma_{\hat{F}_{n}}) \right ]
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1056}%
+$\Sigma_{\hat{F}_{n}}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1062}%
+$\dim
+g(\omega) = m$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1068}%
+$\{z \in R^{m}: u(z) = c \}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1074}%
+$\omega$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1076}%
+$u = \operatorname{tr}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1078}%
+$g(\omega) = \left [
+h_{1}(\hat{\theta}_{1}(\omega))^{-1} -
+h_{0}(\hat{\theta}_{0}(\omega))^{-1} \right ] \left [ \omega - (
+h_{0}(\hat{\theta}_{0}(\omega)) \right ] $%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1080}%
+$\hat{\theta}_{i}(\omega)$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1082}%
+$p \times 1$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1084}%
+$\hat{\Lambda}_{yi},\ \hat{\Lambda}_{xi},\ \hat{\mathrm{B}}_{i},\
+\hat{\Gamma}_{i},\  \hat{\Phi}_{i},\  \hat{\Psi}_{i},\  \hat{\Theta}_{\epsilon i},\ 
+\hat{\Theta}_{\delta i}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{align385}%
+\begin{align}h_{i}(\theta_{i})  = 
+ \left [ 
+ \begin{array}{cc}
+ \Lambda_{yi}(\mathrm{I} - \mathrm{B}_{i})^{-1}(\Gamma_{i} \Phi_{i} \Gamma_{i}^{\top} + \Psi_{i})
+  [(\mathrm{I} - \mathrm{B}_{i})^{-1}]^{\top} \Lambda_{yi}^{\top} + 
+  \Theta_{\epsilon i} &
+ \Lambda_{yi}(\mathrm{I} - \mathrm{B}_{i})^{-1} \Gamma_{i} \Phi_{i} \Lambda_{xi}^{\top}
+ \\
+ \Lambda_{xi} \Phi_{i} \Gamma_{i}^{\top} [(\mathrm{I} - \mathrm{B}_{i})^{-1}]^{\top}
+  \Lambda_{yi}^{\top} &
+ \Lambda_{xi} \Phi_{i} \Lambda_{xi}^{\top} + \Theta_{\delta i} 
+ \end{array}
+\right ].
+\end{align}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1088}%
+$\hat{h}_i = h_i(\hat{\theta}_i(w))$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1098}%
+$h_i(\hat{\theta}_i(\omega))$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1106}%
+$\theta$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1108}%
+$g(\omega)$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1110}%
+$\hat{h_{i}}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1130}%
+$\hat{M}^{*}_{\mathrm{lisrel}}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1134}%
+$\alpha$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1136}%
+$J_{n} = S_{n} - \Sigma_{F}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath460}%
+\begin{displaymath}x_{i} = \left \{ \prod_{j=1}^{p} w_{ij}^{d_{j}} : 1 \le
+  \sum_{j=1}^{p} d_{j} \le 4 \right \}
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1146}%
+$X=(x_{1}^{\top},
+x_{2}^{\top},\cdots,x_{n}^{\top})^{\top}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1150}%
+$(p\ge2)$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1154}%
+$ 4p + \left ( \begin{array}{c} p \\2 \end{array} \right ) 6 $%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1160}%
+$\Theta_{\epsilon}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath484}%
+\begin{displaymath}\Lambda_{y}=
+ \left[\begin{array}{cccc}
+    \lambda_{y1,1} & & & \\
+    \lambda_{y2,1} & \lambda_{y2,2} \\
+    \lambda_{y3,1} \\
+    \lambda_{y4,1} & \lambda_{y4,2} \\
+                   & \lambda_{y5,2} \\
+                   & \lambda_{y6,2} \\
+                   & \lambda_{y7,2} \\
+                   & \lambda_{y8,2} \\
+                   & \lambda_{y9,2} \\
+                   &   & \lambda_{y10,3} \\
+                   &   & \lambda_{y11,3} \\
+                   &   & \lambda_{y12,3} & \lambda_{y12,4} \\
+                   &   &                 & \lambda_{y13,4} \\
+                   &   &                 & \lambda_{y14,4} \\
+                   &   &                 & \lambda_{y15,4} \\
+ \end{array}\right]
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1162}%
+$\chi^2$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1164}%
+$\hat{L}_{01}=135.51$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1168}%
+$\alpha=.05$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1178}%
+$\hat{L}_{01}=130.70$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1184}%
+$\hat{L}_{01\mathrm{ADF}}=114.36$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1190}%
+$135.12>\hat{L}_{01}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1192}%
+$\lambda_{y12,4}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath520}%
+\begin{displaymath}\Lambda_{y}=
+ \left[\begin{array}{ccccc}
+    \lambda_{y1,1} & & & & \\
+    \lambda_{y2,1} & \lambda_{y2,2} & \\
+    \lambda_{y3,1} & & &                                   & \lambda_{y3,5} \\
+    \lambda_{y4,1} & \lambda_{y4,2} \\
+                   & \lambda_{y5,2} \\
+                   & \lambda_{y6,2} \\
+    \lambda_{y7,1} & \lambda_{y7,2} \\
+                   & \lambda_{y8,2} \\
+                   & \lambda_{y9,2} \\
+                   &   & \lambda_{y10,3} \\
+                   &   & \lambda_{y11,3} &                 & \lambda_{y11,5} \\
+                   &   & \lambda_{y12,3} \\
+                   &   &                 & \lambda_{y13,4} & \lambda_{y13,5} \\
+                   &   &                 & \lambda_{y14,4} \\
+                   &   &                 & \lambda_{y15,4} & \lambda_{y15,5} \\
+ \end{array}\right]
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1194}%
+$\hat{L}_{01}=118.07$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1208}%
+$\hat{M}_{\mathrm{lisrel}}^*$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1212}%
+$(-2.14,\; .97)$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1214}%
+$(-1.15,\;
+.42)$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1216}%
+$\hat{M}_{\mathrm{lisrel}}^* -\hat{M}_{\mathrm{lisrel}}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath568}%
+\begin{displaymath}L_{1} = \prod_{y_t = 0} G_{1t} \prod_{y_t > 0} \tilde{L}_{1t}\{y_t\}
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1222}%
+$\prod_{y_t = 0}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1224}%
+$G_{1t}=\int_{-\infty}^0 \tilde{L}_{1t}\{\tilde{y}\} d\tilde{y}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1226}%
+$\tilde{L}_{1}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath585}%
+\begin{displaymath}L_{2} = \prod_{y_t = 0} G_{2t} \prod_{y_t > 0} \tilde{L}_{2t}\{y_t\}
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1228}%
+$G_{2t} = \int_{-\infty}^0 \tilde{L}_{2t}\{\tilde{y}\} d\tilde{y}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1230}%
+$\tilde{L}_{2}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1236}%
+$\hat{M}_{12}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath606}%
+\begin{displaymath}\hat{M}_{jk} = n^{-1} \left[
+ \log \dfrac{\hat{L}_{j}}{\hat{L}_{k}} - \sum_{t=1}^n \left(
+ \log \dfrac{\hat{G}_{jt}}{\hat{G}_{kt}} \hat{G}_{jt}
+ + \int_{0}^{\infty} \log
+ \dfrac{\Hat{\Tilde{L}}_{jt}\{\tilde{y}\}}{\Hat{\Tilde{L}}_{kt}\{\tilde{y}\}}
+ \Hat{\Tilde{L}}_{jt}\{\tilde{y}\} d\tilde{y} \right)
+ \right]
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1240}%
+$\hat{L}_{2}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1242}%
+$\hat{G}_{1t}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1244}%
+$\hat{G}_{2t}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1246}%
+$\Hat{\Tilde{L}}_{1t}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1248}%
+$\Hat{\Tilde{L}}_{2t}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1250}%
+$\mu_1$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1252}%
+$\mu_2$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1254}%
+$\mu_3$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1258}%
+$\sigma$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1260}%
+$\hat{\gamma}_1$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1262}%
+$\hat{\gamma}_{2}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1264}%
+$\hat{\gamma}_j = (\hat{\mu}_{1j}, \hat{\mu}_{2j}, \hat{\mu}_{3j},
+\hat{\theta}_j, \hat{\sigma}_j)$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1268}%
+$\hat{M}_{jk}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmldisplayA{displaymath660}%
+\begin{displaymath}M_{jk} = n^{-1} \left[
+ \log \dfrac{(L_{j})^{\lambda}}{(\hat{L}_{k})^{1-\lambda}}
+ - \sum_{t=1}^n \left(
+ \log \dfrac{(G_{jt})^{\lambda}}{(\hat{G}_{kt})^{1-\lambda}} G_{jt}
+ + \int_{0}^{\infty} \log
+ \dfrac{\left(\Tilde{L}_{jt}\{\tilde{y}\}\right)^{\lambda}}
+ {\left(\Hat{\Tilde{L}}_{kt}\{\tilde{y}\}\right)^{1-\lambda}}
+ \Tilde{L}_{jt}\{\tilde{y}\} d\tilde{y} \right)
+ \right]
+\end{displaymath}%
+\lthtmldisplayZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1270}%
+$\lambda\in[0,1]$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1276}%
+$\Tilde{L}_{jt}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1278}%
+$\mu_i$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1286}%
+$\hat{L}_{k}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1288}%
+$\hat{G}_{kt}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1290}%
+$\Hat{\Tilde{L}}_{kt}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1292}%
+$\hat{\gamma}_{k}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1296}%
+$\lambda=1$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1300}%
+$\sqrt{n}\hat{M}_{jk}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1312}%
+$\hat{M}_{21}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1318}%
+$|\mu_i/\theta \sigma|$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1320}%
+$i\in\{H,S,P\}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1322}%
+$i\in\{H,S\}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1326}%
+$\mu_i <\min_t (C_{Dt}^*-C_{it}^*) + \mu_D$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1330}%
+$\mu_i >\max_t (C_{Dt}^*-C_{it}^*) + \mu_D$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1332}%
+$|\hat{\mu}_i|$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1334}%
+$\theta>0$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1336}%
+$\sigma>0$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1338}%
+$n\rightarrow\infty$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1344}%
+$\hat{\gamma}_j$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1348}%
+$\lambda$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1356}%
+$b=1,\ldots,1000$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1360}%
+$\hat{\sigma}_j^2$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1362}%
+$\varepsilon_i$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1364}%
+$\hat{\theta}_j$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1366}%
+$\hat{\mu}_{ij}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1372}%
+$\acute{y}_i^{*b}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1374}%
+$\acute{y}^{b}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1376}%
+$\hat{L}_j$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1382}%
+$\Acute{\Hat{M}}_{jk}^{b}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1384}%
+$\Acute{\Hat{M}}_{jk}^{b}-\hat{M}_{jk}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1386}%
+$\Acute{\Hat{M}}_{jk}^{b}>\hat{M}_{jk}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1390}%
+$\Acute{\Hat{M}}_{jk}^{b}<\hat{M}_{jk}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1394}%
+$\hat{\theta} \downarrow 0$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1428}%
+$\hat{L}_{\text{tobit}} <\hat{L}_{j}$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline1436}%
+$\theta=0$%
+\lthtmlinlinemathZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

@@ -1,0 +1,11 @@
+\frametitle {Estimate the Propensity Score}
+How do we estimate the propensity score?  Often we use a linear logit model (this bounds our propensity score between 0 and 1).  The propensity is then estimated by:
+\[ log \big( \frac{e(\mathbf{x}_i)}{1 - e(\mathbf{x}_i)}\big) = \zeta_0 + \zeta_1 age_i + \zeta_2 black_i + \zeta_3 smoker_i \]
+\[ \hat{e}(\mathbf{x}_i) \text{ are the fitted values from this model}\]
+
+So, we run the following code in R to find our propensity score:
+\begin{lstlisting}[frame=single]
+pscore <- glm(treat ~ age + black + smoker,
+          family = binomial(link = logit),
+          data = data)$fitted.values
+\end{lstlisting}

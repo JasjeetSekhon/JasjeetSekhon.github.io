@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+ 
+\usepackage{fullpage}
+\usepackage{boxedminipage}
+
+\usepackage{listings}
+
+\usepackage{minitoc}
+
+\usepackage{ifpdf}
+
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+\newcommand{\var}[0]{\text{var}}
+\newcommand{\cov}[0]{\text{cov}}
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\begin{document}
+\begin{itemize}
+  \item[1)]
+    Suppose there are 10,000 people.
+    Some of these people are assigned to treatment, and the rest are assigned to control.
+    The exact mechanism for assigning units to treatment is unknown,
+    but is known to depend only on the values of three dichotomous variables:
+    the sex of the person, 
+    whether or not the person exercises 30 minutes a day, 
+    and whether or not the person watches TV for more than an hour a day.
+    For each of the $2^3 = 8$ configurations of the dichotomous variables, 
+    there is at least one treated person and at least one non-treated person.
+  \begin{itemize}
+    \item[a)]
+      Let $t_i = 1$ if person $i$ is treated, and let $t_i = 0$ if the person is not.
+      Let $t = (t_1,t_2,\ldots,t_{10000})$ denote the 
+      observed treatment assignment for all 10000 units.
+      The probability that person $i$ is assigned treatment is $p_i$, which is unknown.
+      Express the probability of observing the treatment assignment $t$ in terms of $t$ and $p$.
+      What estimated values of $p_i$ maximize this probability, 
+      under the assumption that treatment
+      assignment only depends on the dichotomous variables?     
+    \item[b)]  
+      Suppose that the propensity score depends on all three of these dichotomous
+      variables.  
+      Will the estimated probabilities found in a) converge to the true propensity score?
+      What if the propensity score only depends on two of the
+      original three dichotomous variables?
+    \item[c)]
+      Suppose the propensity score is known (and again, depends only on the values of 
+      these three variables).  
+      Write out unbiased estimates for the ATE and the ATT, 
+      and prove that they are unbiased (assuming that the propensity score is fixed).
+      How do these estimates change if the propensity score is not fixed? 
+    \item[d)]
+      Suppose the heaviest person of the 10,000 people weighs 500 pounds.
+      Moreover suppose the propensity score is:
+      $$
+        P(T_i =1 | X) = 1/2 - 1/4(\text{does not exercise more than 30 minutes a day}) - 
+        \text{weight}/2000
+      $$
+      Can both the ATT and the ATE be estimated without bias by
+      conditioning responses on the propensity score?  
+      For each quantity that can be estimated unbiasedly, 
+      give a description or formula on how to compute the estimate (supposing the
+      propensity score is known and fixed).
+    \item[e)]
+      Suppose it is known that the propensity score is linear 
+      in the exercise dichotomous
+      variable and in weight, but the exact coefficients are unknown.
+      Will regressing treatment assignment on 
+      exercise and weight using OLS produce unbiased estimates of these coefficients?      
+  \end{itemize}
+\end{itemize}    
+\end{document}

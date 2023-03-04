@@ -1,0 +1,31 @@
+library(Matching)
+library(parallel)
+source("AutoCluster4.R")
+
+data(lalonde)
+attach(lalonde)
+
+     #The covariates we want to match on
+X = cbind(age, educ, black, hisp, married, nodegr, u74, u75, re75, re74)
+
+     #The covariates we want to obtain balance on
+BalanceMat <- cbind(age, educ, black, hisp, married, nodegr, u74, u75, re75, re74,
+                    I(re74*re75))
+
+     #
+     #Let's call GenMatch() to find the optimal weight to give each
+     #covariate in 'X' so as we have achieved balance on the covariates in
+     #'BalanceMat'. This is only an example so we want GenMatch to be quick
+     #so the population size has been set to be only 16 via the 'pop.size'
+     #option. This is *WAY* too small for actual problems.
+     #For details see http://sekhon.berkeley.edu/papers/MatchingJSS.pdf.
+     #
+
+cl <- NCPUS()
+genout <- GenMatch(Tr=treat, X=X, BalanceMatrix=BalanceMat, estimand="ATE", M=1,
+                   pop.size=16, max.generations=10, wait.generations=1,
+                   cluster=cl)
+stopCluster(cl)
+
+
+

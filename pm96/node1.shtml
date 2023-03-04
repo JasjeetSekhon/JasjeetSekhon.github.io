@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="next" HREF="node2.shtml">
+<LINK REL="previous" HREF="pm96.shtml">
+<LINK REL="up" HREF="pm96.shtml">
+<LINK REL="next" HREF="node2.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html34"
+ HREF="node2.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html32"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html26"
+ HREF="pm96.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html35"
+ HREF="node2.shtml">LISREL</A>
+<B> Up:</B> <A NAME="tex2html33"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html27"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+Introduction</A>
+</H1>
+
+<P>
+Cox (1962; 1961) proposed a fairly general method that can be used to test
+alternative hypotheses from separate statistical families.  The Cox test can
+be interpreted as a classical procedure (Dastoor 1985), so that the familiar
+machinery of classical hypothesis testing can be relied upon when using the
+Cox test.  White (1982) rigorously derived regularity conditions under which
+the Cox test is asymptotically normal, and Aguirre-Torres and Gallant (1983)
+used a bootstrap method to derive a distribution-free form of the test for
+nonlinear regression models.  But Loh (1985) showed that notwithstanding
+asymptotic results, hypothesis tests based on the Cox statistic may not have
+the correct size.
+
+<P>
+Using a formulation of the statistic described by White (1994, 283), we use
+results from Beran and Srivastava (1985) and Hall (1992) to prove that
+non-parametric bootstrap methods can produce consistent and second-order
+correct approximations to the distribution of the Cox statistic for non-nested
+LISREL-style covariance structure models.  We use the method to investigate a
+question about the specification of a LISREL model used by Kinder, Adams and
+Gronke (1989).  In a second application--a pair of non-nested endogenous
+switching regression models with tobit-style censoring--we illustrate how
+bootstrap calibration can be used to correct the size of the test when the
+test distribution is being estimated by Monte Carlo simulation due to concern
+about nonregularity.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html34"
+ HREF="node2.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html32"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html26"
+ HREF="pm96.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html35"
+ HREF="node2.shtml">LISREL</A>
+<B> Up:</B> <A NAME="tex2html33"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html27"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.2 beta6 (August 14th, 1998)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The GENetic optimization and Bootstrapping of LInear Structures (GENBLIS) Home Page</TITLE>
+<META NAME="description" CONTENT="The GENetic optimization and Bootstrapping of LInear Structures (GENBLIS) Home Page">
+<META NAME="keywords" CONTENT="webpage">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="webpage.css">
+</HEAD>
+<BODY >
+
+<link rel="stylesheet"
+href="http://jsekhon.fas.harvard.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+<h1>The GENetic optimization and Bootstrapping of LInear
+    Structures (GENBLIS) Home Page
+</h1>
+
+<br>
+<a href="http://macht.arts.cornell.edu/wrm1/">Walter R. Mebane,
+Jr.</a> and <a href="http://jsekhon.fas.harvard.edu/">Jasjeet
+S. Sekhon</a>
+
+<br>
+Please direct all questions and comments to <A NAME="tex2html7"
+ HREF="mailto:jsekhon@fas.harvard.edu">Jasjeet Sekhon</A>. <BR>
+
+<BR>
+<BR>
+<BR>
+<P>
+<DIV ALIGN="LEFT">
+  GENBLIS (GENetic optimization and Bootstrapping of LInear Structures) is an
+  evolutionary program which estimates structural equation models with latent
+  variables by combining the global search strength of evolutionary
+  algorithms with the ability of derivative based algorithms to do rapid
+  local hill climbing.  GENBLIS provides bootstrap confidence intervals for
+  parameters and bootstrap confidence limits for the goodness-of-fit test
+  statistic.  Structural equation models are often used in political science,
+  sociology, psychology, marketing and related social science fields to
+  specify and estimate stochastic models for linear relations in the presence
+  of measurement errors.
+<BR>
+<BR>
+There are a variety of ways to parameterize structural equation models.
+  Following Bollen (1989<A HREF="http://jsekhon.fas.harvard.edu/genblis/manual/node18.shtml#ref:bollen89">
+<IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="cross_ref_motif.gif"></A>), GENBLIS uses a
+  parameterization developed by J&#246;reskog
+  (1973<A HREF="http://jsekhon.fas.harvard.edu/genblis/manual/node18.shtml#ref:joreskog73">
+<IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="cross_ref_motif.gif"></A>) and Wiley
+  (1973<A HREF="http://jsekhon.fas.harvard.edu/genblis/manual/node18.shtml#ref:wiley73">
+<IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]" SRC="cross_ref_motif.gif"></A>).
+  This parameterization has become a standard because of the popularity
+    of the LISREL program which was developed by J&#246;reskog and
+    S&#246;rbom. 
+<BR>
+<BR>
+GENBLIS is described in the <A NAME="tex2html8"
+ HREF="http://jsekhon.fas.harvard.edu/genblis/manual/">GENBLIS
+    Manual</A>.
+
+One can download the following binaries:
+</DIV>
+<P>
+<DIV ALIGN="LEFT"></DIV>
+
+<UL><LI><A NAME="tex2html9"
+ HREF="http://jsekhon.fas.harvard.edu/genblis/download/genblis.aix-1.11.4.tar.gz">AIX
+      1.11.4</A>. 
+<BR>
+
+<P>
+
+<LI><A NAME="tex2html10"
+ HREF="http://jsekhon.fas.harvard.edu/genblis/download/genblis.hpux-1.11.4.tar.gz">HP-UX
+      1.11.4</A>.
+<BR>
+
+<P>
+
+<LI><A NAME="tex2html12"
+ HREF="http://jsekhon.fas.harvard.edu/genblis/download/genblis.linux-1.11.4.tar.gz">LINUX
+      1.11.4</A>.
+
+This version does not require dynamic access to any libraries.  All of
+    the required functions are linked into the binary.  It ought to work
+    with most any LINUX system. 
+<BR>
+
+<P>
+
+<LI><A NAME="tex2html13"
+ HREF="http://jsekhon.fas.harvard.edu/genblis/download/genblis.windows-1.11.4.zip">Windows 95/98/NT
+      1.11.4</A>.
+
+The program is packed using the zip format.  <BR> <BR>
+  
+</UL>
+<DIV ALIGN="LEFT">
+</DIV>
+<P>
+<DIV ALIGN="LEFT">The UNIX binaries are in tar and gzip format.  Therefore, to unpack them
+  in a given directory please issue the following commands: <BR>
+<BR>
+  <TT>zcat genblis.linux-1.11.4.tar.gz | tar -xvf -</TT> <BR>
+<BR>
+</DIV>
+<P>
+<DIV ALIGN="LEFT">You may have to change the mode of the <TT>genblis</TT> binary to make it
+  an executable.  The can be done by issuing the following command:
+<BR>
+<BR>
+  
+  <TT>chmod ugo+rx genblis</TT> 
+
+<BR> <BR> 
+
+Small parts of the current GENBLIS code were adapted from an early
+version of <A NAME="tex2html15"
+HREF="mailto:zbyszek@uncc.edu">Zbigniew Michalewicz</A>'s GENOCOP I.
+</DIV>
+<P>
+
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+</BODY>
+</HTML>

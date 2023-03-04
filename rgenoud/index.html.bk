@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+<TITLE>R-GENetic Optimization Using Derivatives (R-GENOUD) Home Page</TITLE>
+<META NAME="description" CONTENT="R-GENetic Optimization Using Derivatives (RGENOUD) Home Page">
+<META NAME="keywords" CONTENT="genoud, rgenoud, genetic optimization, genetic
+algorithm, manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+</HEAD>
+
+<BODY >
+
+<link rel="stylesheet"
+href="http://jsekhon.fas.harvard.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+
+<h1> R-GENetic Optimization Using Derivatives (RGENOUD)</h1>
+
+<a href="http://macht.arts.cornell.edu/wrm1/">Walter R. Mebane,
+Jr.</a> and <a href="http://jsekhon.fas.harvard.edu/">Jasjeet
+S. Sekhon</a>
+
+<br><br>
+
+This webpage is for the distribution of the <A
+href="http://www.r-project.org/"><B>R</B></A> version of GENOUD
+(GENetic Optimized Using Derivatives).  Please <A
+href="http://jsekhon.fas.harvard.edu/genoud/">click here</A> for
+some background information on GENOUD.
+
+<br><br> The easiest way to install the latest version (1.31), if you have an
+active network connection, is to type in a <b><a
+href="http://www.r-project.org/">R</a></b> session: <br> <dl> <dd>
+<B> > install.packages("rgenoud") </B>
+</dl> </dd> 
+<br> Alternatively, the package may be directly downloaded:
+<dl> <dd>
+<b> <a href="http://www.r-project.org/">R</a></b> Source Package: <a
+href="http://jsekhon.fas.harvard.edu/R/CRAN/src/contrib/rgenoud_1.31.tar.gz">rgenoud_1.31.tar.gz</a></dd>
+<dd> Binary Packages:  <a
+href="http://www.cran.r-project.org/bin">http://www.cran.r-project.org/bin</a>
+</dl>
+
+<br> Manual page for <a href="genoud.html">genoud()</a>  
+
+<P>
+<br><br>
+GENOUD is a function that combines evolutionary algorithm methods
+with a derivative-based, quasi-Newton method to solve difficult
+unconstrained optimization problems.  GENOUD is made to solve
+problems that are nonlinear or perhaps even discontinuous in the
+parameters of the function to be optimized.  When a statistical
+model's estimating function (for example, a log-likelihood) is
+nonlinear in the model's parameters, the function to be optimized will
+usually not be globally concave and may contain irregularities such as
+saddlepoints or discontinuous jumps.  Optimization methods that rely
+on derivatives of the objective function may be unable to find any
+optimum at all.  Multiple local optima may exist, so that there is no
+guarantee that a derivative-based method will converge to the global
+optimum.  On the other hand, algorithms that do not use derivative
+information (such as pure GAs) are for many problems needlessly poor
+at local hill climbing.  Most statistical problems are regular in the
+neighborhood of the solution.  Therefore, for some portion of the
+search space derivative information is useful.  GENOUD is relatively
+flexible.  For example, recursive optimization is supported--GENOUD
+may be used to optimize GENOUD.
+
+<P>
+The current version of GENOUD contains many improvements made over the
+original version of GENOUD.  Some of the logic of GENOUD has been
+rewritten including a few of the key algorithms.  The original ``C''
+version of GENOUD extended and greatly modified a constrained
+optimization program created by Michalewicz (1992). GENOUD is strictly
+speaking written in ``C++''.  But most of the code base is ANSI-C
+compatible. <BR> <BR> 
+
+<br>
+<br>
+<small><small> <a href="http://jsekhon.fas.harvard.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+<BR>
+
+</BODY>
+</HTML>

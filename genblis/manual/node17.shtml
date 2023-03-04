@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>example4.lst</TITLE>
+<META NAME="description" CONTENT="example4.lst">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="previous" HREF="node16.shtml">
+<LINK REL="up" HREF="node9.shtml">
+<LINK REL="next" HREF="node18.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html209"
+ HREF="node18.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html207"
+ HREF="node9.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html203"
+ HREF="node16.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html210"
+ HREF="node18.shtml">References</A>
+<B> Up:</B> <A NAME="tex2html208"
+ HREF="node9.shtml">Example Files</A>
+<B> Previous:</B> <A NAME="tex2html204"
+ HREF="node16.shtml">example4</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00098000000000000000">&#160;</A>
+<A NAME="example:example4.lst">&#160;</A>
+<BR>
+<TT>example4.lst</TT>
+</H2>
+
+<P>
+The list (i.e., summary output) file produced by
+<A HREF="node16.shtml#example:example4"><TT>example4</TT></A> ought to, aside from rounding
+error, look like the <TT>example4.lst</TT> file included with the GENBLIS
+distributions.  The file has been included below for convenience.
+
+<P>
+<PRE>
+Output produced by GENBLIS-1.11.4
+Copyright (C) 1998 Walter R. Mebane Jr. and Jasjeet S. Sekhon.
+Program distributed under the GNU General Public License. See documentation for details.
+Please see http://data.fas.harvard.edu/jsekhon/ for latest binaries and information.
+
+
+Basic program, data and model parameters:
+model specification file = example4
+
+type of matrix to analyze = covariance matrix
+input data file (group 1) = example1.dat
+input data file (group 2) = example2.dat
+number of bootstrap resamples = 1000
+no output record file
+no input record file (default)
+
+number of cases = 1266
+number of observed variables = 12
+   number in group 1 = 6 (variables 1 to 6)
+   number in group 2 = 6 (variables 7 to 12)
+number of latent variables = 2
+
+genoud random seed = 0
+bootstrap random seed = 707070
+boundary-hit threshold =  1.0000000000e-09
+
+number of parameters to estimate = 18
+the degrees of freedom = 24
+total information = 42
+
+the number of equality constraints = 6
+constrained parms.  The second one is actually estimated:
+LY(7,2) = LY(1,1)
+LY(8,2) = LY(2,1)
+LY(10,2) = LY(4,1)
+LY(11,2) = LY(5,1)
+LY(12,2) = LY(6,1)
+PSI(2,2) = PSI(1,1)
+Out of bounds values are not used (default).
+There are no user supplied starting values.
+
+Model Specifications:
+
+specified fixed parameters (other fixed parameters = 0.0)
+LY 3 1 = 1.000000
+LY 9 2 = 1.000000
+The number of free parameters (to be estimated):
+Lambda: 5
+Theta Epsilon: 12
+Beta: 0
+Psi: 1
+
+Matrix elements to be estimated:
+ 1)   LY  1  1
+ 2)   LY  2  1
+ 3)   LY  4  1
+ 4)   LY  5  1
+ 5)   LY  6  1
+ 6)   TE  1  1
+ 7)   TE  2  2
+ 8)   TE  3  3
+ 9)   TE  4  4
+10)   TE  5  5
+11)   TE  6  6
+12)  PSI  1  1
+13)   TE  7  7
+14)   TE  8  8
+15)   TE  9  9
+16)   TE 10 10
+17)   TE 11 11
+18)   TE 12 12
+
+
+
+*********************************************************************************
+
+FULL SAMPLE RESULTS
+
+Fit:  1.4129837502e-01   N: 1266 
+Chi-square goodness-of-fit:  1.7874244440e+02    df: 24
+
+Parameter MLEs and Normal-theory Asymptotic Standard Errors
+parameter       MLE                 SE                   t-statistic
+LY 1 1 (1)       5.9689582282e-01    6.3498760305e-02    9.4001e+00
+LY 2 1 (2)       6.8514575634e-01    9.8905279151e-02    6.9273e+00
+LY 4 1 (3)       1.5670086700e+00    9.5914829683e-02    1.6338e+01
+LY 5 1 (4)       1.6138688737e+00    1.0416281213e-01    1.5494e+01
+LY 6 1 (5)       1.8035916470e+00    1.1511448375e-01    1.5668e+01
+TE 1 1 (6)       6.1763444079e-02    2.5258698228e-03    2.4452e+01
+TE 2 2 (7)       2.0514727256e-01    8.3186358156e-03    2.4661e+01
+TE 3 3 (8)       3.6152255603e-02    1.7968887852e-03    2.0119e+01
+TE 4 4 (9)       8.8045974859e-02    4.2980394537e-03    2.0485e+01
+TE 5 5 (10)      5.6502719225e-02    3.2079739716e-03    1.7613e+01
+TE 6 6 (11)      9.6560119489e-02    4.8807346472e-03    1.9784e+01
+PSI 1 1 (12)     1.4191878647e-02    1.3565119238e-03    1.0462e+01
+TE 7 7 (13)      7.6855575382e-02    3.2067141938e-03    2.3967e+01
+TE 8 8 (14)      1.9328483879e-01    7.7903049392e-03    2.4811e+01
+TE 9 9 (15)      4.7650812758e-02    2.1852601069e-03    2.1806e+01
+TE 10 10 (16)    7.8267446104e-02    4.0201406190e-03    1.9469e+01
+TE 11 11 (17)    1.1545139331e-01    5.4224078903e-03    2.1292e+01
+TE 12 12 (18)    9.2736950678e-02    4.9727928562e-03    1.8649e+01
+
+
+
+*********************************************************************************
+
+BOOTSTRAP RESULTS
+
+
+Simple Percentile intervals:  N= 1266, bootstrap replication = 1000 (used = 1000)
+Percentile intervals are NOT adjusted for nonconvergence.
+                             95%                              90%
+ 1)   LY  1  1 (3.97440064e-01, 8.25701475e-01) (4.32347727e-01, 7.82890726e-01)
+ 2)   LY  2  1 (3.92225238e-01, 9.90598403e-01) (4.43288867e-01, 9.44855058e-01)
+ 3)   LY  4  1 (1.31577235e+00, 1.89328771e+00) (1.33747259e+00, 1.84947773e+00)
+ 4)   LY  5  1 (1.29078198e+00, 2.03736412e+00) (1.33024677e+00, 1.93920152e+00)
+ 5)   LY  6  1 (1.45492013e+00, 2.23188327e+00) (1.50195822e+00, 2.16474328e+00)
+ 6)   TE  1  1 (5.28093363e-02, 7.04524872e-02) (5.43205615e-02, 6.88838659e-02)
+ 7)   TE  2  2 (1.85883438e-01, 2.21182888e-01) (1.89027441e-01, 2.18720527e-01)
+ 8)   TE  3  3 (2.90624785e-02, 4.34523512e-02) (2.99450594e-02, 4.23723937e-02)
+ 9)   TE  4  4 (7.34830081e-02, 1.01820165e-01) (7.51412573e-02, 9.92679561e-02)
+10)   TE  5  5 (4.64281056e-02, 6.77585138e-02) (4.75379176e-02, 6.58334452e-02)
+11)   TE  6  6 (7.92487003e-02, 1.12651845e-01) (8.16683347e-02, 1.10286850e-01)
+12)  PSI  1  1 (9.92644483e-03, 1.95792414e-02) (1.05113599e-02, 1.88608141e-02)
+13)   TE  7  7 (6.97189393e-02, 8.43761924e-02) (7.08014879e-02, 8.28636661e-02)
+14)   TE  8  8 (1.78170196e-01, 2.05572323e-01) (1.79872052e-01, 2.03949874e-01)
+15)   TE  9  9 (4.07407886e-02, 5.43231842e-02) (4.17116220e-02, 5.29931423e-02)
+16)   TE 10 10 (6.62737010e-02, 8.98062868e-02) (6.82888218e-02, 8.76874792e-02)
+17)   TE 11 11 (9.99198959e-02, 1.28230776e-01) (1.02411960e-01, 1.26636935e-01)
+18)   TE 12 12 (8.04179849e-02, 1.03877159e-01) (8.26225301e-02, 1.01952176e-01)
+
+
+
+BCa intervals and bootstrap goodness-of-fit test with NO adjustments for
+nonconvergence.  These intervals will be larger than or equal to the intervals
+produced with adjustments.
+BCa results:  N = 1266, bootstrap replications = 1000 (used = 1000)
+proportion of bootstraps that are not usable:    0.0000
+BCa confidence intervals:
+                             95%                              90%
+ 1)   LY  1  1 (3.92692081e-01, 8.22684241e-01) (4.31334792e-01, 7.82458247e-01)
+ 2)   LY  2  1 (3.90357983e-01, 9.88714703e-01) (4.42814577e-01, 9.42025959e-01)
+ 3)   LY  4  1 (1.31802943e+00, 1.90626347e+00) (1.34627325e+00, 1.85969699e+00)
+ 4)   LY  5  1 (1.30220641e+00, 2.05361259e+00) (1.33912611e+00, 1.95582522e+00)
+ 5)   LY  6  1 (1.45757836e+00, 2.24042006e+00) (1.50638731e+00, 2.17345820e+00)
+ 6)   TE  1  1 (5.42368340e-02, 7.14426693e-02) (5.54927105e-02, 7.04167121e-02)
+ 7)   TE  2  2 (1.86437669e-01, 2.21780668e-01) (1.89313845e-01, 2.19342718e-01)
+ 8)   TE  3  3 (2.97270086e-02, 4.43018734e-02) (3.08839649e-02, 4.31912847e-02)
+ 9)   TE  4  4 (7.42217413e-02, 1.03194976e-01) (7.64857191e-02, 1.00549258e-01)
+10)   TE  5  5 (4.71740030e-02, 6.89029572e-02) (4.86871515e-02, 6.73514577e-02)
+11)   TE  6  6 (8.12084406e-02, 1.15547631e-01) (8.35430965e-02, 1.11959612e-01)
+12)  PSI  1  1 (9.95820108e-03, 1.96166902e-02) (1.05113599e-02, 1.88608141e-02)
+13)   TE  7  7 (6.97797108e-02, 8.44022073e-02) (7.08403029e-02, 8.29307080e-02)
+14)   TE  8  8 (1.78170196e-01, 2.05572323e-01) (1.79872052e-01, 2.03949874e-01)
+15)   TE  9  9 (4.12174622e-02, 5.49483109e-02) (4.22040790e-02, 5.38019091e-02)
+16)   TE 10 10 (6.62358575e-02, 8.97070038e-02) (6.82863850e-02, 8.76694723e-02)
+17)   TE 11 11 (1.01648811e-01, 1.28745214e-01) (1.03754442e-01, 1.27425220e-01)
+18)   TE 12 12 (8.04883050e-02, 1.04205922e-01) (8.27583715e-02, 1.02027961e-01)
+Goodness-of-fit tests:
+The ML Fit:  0.1412983750161327
+The 95 Percent Bound: 0.10517321         diff: -0.03612516
+The 90 Percent Bound: 0.08988050         diff: -0.05141788
+The Position of the ML Fit Statistic: 0.98900000
+Fit value at Position:    0.13984151     diff: -0.00145686
+Fit value Below Position: 0.13790178     diff: -0.00339659
+
+
+BCa intervals and bootstrap goodness-of-fit test WITH adjustments for
+nonconvergence.  These intervals will be smaller than or equal to the intervals
+produced without adjustments.
+BCa results:  N = 1266, bootstrap replications = 1000 (used = 1000)
+proportion of bootstraps that are not usable:    0.0000
+BCa confidence intervals:
+                             95%                              90%
+ 1)   LY  1  1 (3.92692081e-01, 8.22684241e-01) (4.31334792e-01, 7.82458247e-01)
+ 2)   LY  2  1 (3.90357983e-01, 9.88714703e-01) (4.42814577e-01, 9.42025959e-01)
+ 3)   LY  4  1 (1.31802943e+00, 1.90626347e+00) (1.34627325e+00, 1.85969699e+00)
+ 4)   LY  5  1 (1.30220641e+00, 2.05361259e+00) (1.33912611e+00, 1.95582522e+00)
+ 5)   LY  6  1 (1.45757836e+00, 2.24042006e+00) (1.50638731e+00, 2.17345820e+00)
+ 6)   TE  1  1 (5.42368340e-02, 7.14426693e-02) (5.54927105e-02, 7.04167121e-02)
+ 7)   TE  2  2 (1.86437669e-01, 2.21780668e-01) (1.89313845e-01, 2.19342718e-01)
+ 8)   TE  3  3 (2.97270086e-02, 4.43018734e-02) (3.08839649e-02, 4.31912847e-02)
+ 9)   TE  4  4 (7.42217413e-02, 1.03194976e-01) (7.64857191e-02, 1.00549258e-01)
+10)   TE  5  5 (4.71740030e-02, 6.89029572e-02) (4.86871515e-02, 6.73514577e-02)
+11)   TE  6  6 (8.12084406e-02, 1.15547631e-01) (8.35430965e-02, 1.11959612e-01)
+12)  PSI  1  1 (9.95820108e-03, 1.96166902e-02) (1.05113599e-02, 1.88608141e-02)
+13)   TE  7  7 (6.97797108e-02, 8.44022073e-02) (7.08403029e-02, 8.29307080e-02)
+14)   TE  8  8 (1.78170196e-01, 2.05572323e-01) (1.79872052e-01, 2.03949874e-01)
+15)   TE  9  9 (4.12174622e-02, 5.49483109e-02) (4.22040790e-02, 5.38019091e-02)
+16)   TE 10 10 (6.62358575e-02, 8.97070038e-02) (6.82863850e-02, 8.76694723e-02)
+17)   TE 11 11 (1.01648811e-01, 1.28745214e-01) (1.03754442e-01, 1.27425220e-01)
+18)   TE 12 12 (8.04883050e-02, 1.04205922e-01) (8.27583715e-02, 1.02027961e-01)
+Goodness-of-fit tests:
+The ML Fit:  0.1412983750161327
+The 95 Percent Bound: 0.10517321         diff: -0.03612516
+The 90 Percent Bound: 0.08988050         diff: -0.05141788
+The Position of the ML Fit Statistic: 0.98900000
+Fit value at Position:    0.13984151     diff: -0.00145686
+Fit value Below Position: 0.13790178     diff: -0.00339659
+</PRE>
+
+<P>
+
+<BR><HR>
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

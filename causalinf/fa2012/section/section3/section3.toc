@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{Fisher}{2}{0}{1}
+\beamer@sectionintoc {2}{Basic Setup}{4}{0}{2}
+\beamer@sectionintoc {3}{The Null Hypothesis}{20}{0}{3}
+\beamer@sectionintoc {4}{Test Statistics}{24}{0}{4}

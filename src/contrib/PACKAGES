@@ -1,0 +1,49 @@
+Package: Matching
+Version: 4.8-2
+Date: 2013/04/26
+Title: Multivariate and Propensity Score Matching with Balance Optimization
+Author: Jasjeet Singh Sekhon <sekhon@berkeley.edu>
+Maintainer: Jasjeet Singh Sekhon <sekhon@berkeley.edu>
+Description: Provides functions for multivariate and propensity score matching
+             and for finding optimal balance based on a genetic search algorithm.
+             A variety of univariate and multivariate metrics to
+             determine if balance has been obtained are also provided.
+Depends: R (>= 2.6.0), rgenoud (>= 2.12), MASS (>= 7.2-1), graphics, grDevices, stats
+Suggests: snow (>= 0.2-1), rbounds
+License: GPL-3
+URL: http://sekhon.berkeley.edu/matching
+
+Package: multinomRob
+Version: 1.8-6.1
+Date: 2013/02/15
+Title: Robust Estimation of Overdispersed Multinomial Regression Models
+Author: Walter R. Mebane, Jr. <wrm1@cornell.edu>, Jasjeet Singh Sekhon
+        <sekhon@berkeley.edu>
+Maintainer: Jasjeet Singh Sekhon <sekhon@berkeley.edu>
+Description: MNL and overdispersed multinomial regression using robust (LQD and tanh) estimation
+Depends: R (>= 1.7.1), rgenoud (>= 2.9), MASS (>= 7.1-8), mvtnorm (>= 0.6-3)
+License: GPL (>= 2)
+URL: http://sekhon.berkeley.edu/
+
+Package: rgenoud
+Version: 5.7-10
+Date: 2013-06-28
+Title: R version of GENetic Optimization Using Derivatives
+Author: Walter R. Mebane, Jr. <wmebane@umich.edu>,
+ Jasjeet Singh Sekhon <sekhon@berkeley.edu> 
+Maintainer: Jasjeet Singh Sekhon <sekhon@berkeley.edu> 
+Depends: R (>= 2.15), utils, parallel
+Description: A genetic algorithm plus derivative optimizer
+License: GPL-3
+URL: http://sekhon.berkeley.edu/rgenoud/
+
+Package: snow
+Title: Simple Network of Workstations
+Version: 0.2-3
+Author: Luke Tierney, A. J. Rossini, Na Li, H. Sevcikova
+Description: Support for simple parallel computing in R.
+Maintainer: Luke Tierney <luke@stat.uiowa.edu>
+Suggests: Rmpi,rpvm,rlecuyer,rsprng
+License: GPL
+Depends: R (>= 2.3)
+

@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Optimization Problem</TITLE>
+<META NAME="description" CONTENT="The Optimization Problem">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node2.shtml">
+<LINK REL="previous" HREF="manual.shtml">
+<LINK REL="up" HREF="manual.shtml">
+<LINK REL="next" HREF="node2.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html43"
+ HREF="node2.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html41"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html35"
+ HREF="manual.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html44"
+ HREF="node2.shtml">The Bootstrap</A>
+<B> Up:</B> <A NAME="tex2html42"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html36"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+The Optimization Problem</A>
+</H1>
+The gradient-based optimization algorithms most often used with structural
+equation models (Levenberg-Marquardt, Newton-Raphson, quasi-Newton) are
+inadequate because they too often fail to find the global maximum of the
+likelihood function.  The discrepancy function is not globally convex.
+Multiple, local minima and saddlepoints often exist, so that there is no
+guarantee that gradient-based methods will converge to the global maximum.
+Indeed, saddlepoints and other complexities in the curvature of the
+likelihood function can make it difficult for gradient-based optimization
+methods to find any maximum at all.  Such difficulties are intrinsic to
+linear structure models for two reasons.  First, the LISREL likelihood is not
+globally concave.  Second, linear structure models' identification conditions do not
+require and do not guarantee that the model (as a function of the data)
+will determine a unique set of parameter values outside a neighborhood of
+the true values.  The derivatives of the likelihood function with respect
+to the parameters are not well defined outside of the neighborhood of the
+solution.  Therefore, outside of the neighborhood of the solution,
+derivative based methods often have little or no information upon which to
+advance to the global maximum.
+
+<P>
+Bootstrap methodology accentuates optimization difficulties, because the
+bootstrap resampling distribution draws from the entire distribution of the
+parameter estimates.  Even if optimization in the original sample is not
+problematic, one can expect to encounter difficulties in a significant
+number of bootstrap resamples.  Even if the model being estimated is
+correctly specified, problematic resamples contain crucial information
+about the tails of the distribution of the parameter estimates.  Indeed,
+what bootstrap methods primarily do is make corrections for skewness--for
+asymmetry between the tails of the distribution of each parameter
+estimate--that is ignored by normal-theory confidence limit estimates.
+Tossing out the tail information basically defeats the purpose of using the
+bootstrap to improve estimated confidence intervals.  In general, any
+procedure of replacing problematic resamples with new resampling draws
+until optimization is easy must fail, as making such replacements would
+induce incomplete coverage of the parameter estimates' sampling
+distribution and therefore incorrect inferences.  <A HREF="node18.shtml#ref:ichikawa95">Ichikawa and
+  Konishi (1995)</A> make this mistake.
+
+<P>
+Because the nonexistence of good MLEs in bootstrap resamples is evidence of
+misspecification and because the occurrence of failures affects the
+coverage of the bootstrap confidence intervals, it is crucial to use an
+optimization method that finds the global minimum of the discrepancy
+function if one exists.  In order to overcome the problems of local minima
+and nonconvergence from poor starting values, GENBLIS combines a
+gradient-based method with an evolutionary programming (EP) algorithm.  Our
+EP algorithm uses a collection of random and homotopy search operators that
+combine members of a population of candidate solutions to produce a
+population that on average better fits the current data.  <A HREF="node18.shtml#ref:nix92">Nix and
+  Vose (1992;</A> <A HREF="node18.shtml#ref:vose93">Vose 1993)</A> prove that
+genetic algorithms are asymptotically correct, in the sense that the
+probability of converging to the best possible population of candidate
+solutions goes to one as the population size increases to infinity.
+Because they have a similar Markov chain structure, EP algorithms of the
+kind we use are asymptotically correct in the same sense.  For a linear structure
+model and a data set for which a good MLE (global minimum) exists, the best
+possible population is the one in which all but a small fraction of the
+candidate solutions have that value.  A fraction of the population will
+have different values because the algorithm must include certain random
+variations in order to have effective global search properties.  The
+probability of not finding a good MLE when one exists can be made
+arbitrarily small by increasing the population size used in the algorithm.
+
+<P>
+The EP is very good at finding a neighborhood of the global minimum in
+which the discrepancy function is convex.  But the search operators, which
+do not use derivatives, are quite slow at getting from an arbitrary point
+in that neighborhood to the global minimum value.  We add the
+Broyden-Fletcher-Goldfarb-Shanno (BFGS) quasi-Newton optimizer as an
+operator to do the final hill-climbing.  We developed and implemented a
+general form of this EP-BFGS algorithm in a C program called Genetic
+Optimization Using Derivatives
+(<A NAME="tex2html12"
+ HREF="http://data.fas.harvard.edu/jsekhon/genoud/">GENOUD</A>) .
+GENBLIS is a version of GENOUD specifically tuned to estimate linear structure
+models.
+
+<P>
+In our experience the program finds the global minimum solution for the
+LISREL estimation problem in all cases where the most widely used software
+fails, except where extensive examination suggests that a solution does not
+exist.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html43"
+ HREF="node2.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html41"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html35"
+ HREF="manual.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html44"
+ HREF="node2.shtml">The Bootstrap</A>
+<B> Up:</B> <A NAME="tex2html42"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html36"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

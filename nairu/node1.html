@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>NAIRU Estimation</TITLE>
+<META NAME="description" CONTENT="NAIRU Estimation">
+<META NAME="keywords" CONTENT="estimation">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="estimation.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="estimation.html">
+<LINK REL="up" HREF="estimation.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html27"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html25"
+  HREF="estimation.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html19"
+  HREF="estimation.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+   <meta name="description" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation of the Natural Rate of Unemployment">
+   <meta name="keywords" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation, NAIRU, Natural Rate of Unemployment, Harvard  University, Department of Government,Political Science, Political  Methodology, Political Economy, American Politics, Monetary and Fiscal  Policy, Financial Markets">
+  <A NAME="tex2html1"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.gif"
+ ALT="home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html28"
+  HREF="node2.html">Appendix: Hermite Polynomial Series</A>
+<B> Up:</B> <A NAME="tex2html26"
+  HREF="estimation.html">Estimation of the Nonaccelerating</A>
+<B> Previous:</B> <A NAME="tex2html20"
+  HREF="estimation.html">Estimation of the Nonaccelerating</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+NAIRU Estimation</A>
+</H1>
+
+<P>
+The NAIRU model, the standard model for inflation, is usually based on the
+expectations-augmented Phillips relation
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:standard"></A><!-- MATH
+ \begin{equation}
+\pi_{t} - \pi^{e}_{t} = \beta \left(u_{t}-u^{*}_{t}\right) + \delta
+  X_{t} + v_{t},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="227" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$\displaystyle \pi_{t} - \pi^{e}_{t} = \beta \left(u_{t}-u^{*}_{t}\right) + \delta X_{t} + v_{t},$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(1)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="21" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \pi_{t}$"> is an estimate of the actual inflation rate, <!-- MATH
+ $\pi^{e}_{t}$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \pi^{e}_{t}$">
+is the expected inflation rate, <IMG
+ WIDTH="20" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$ u_{t}$"> is the unemployment rate,
+<IMG
+ WIDTH="22" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ u^{*}_{t}$"> is the NAIRU, <IMG
+ WIDTH="22" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ X_{t}$"> contains additional regressors intended
+to control for supply shocks, and <IMG
+ WIDTH="19" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ v_{t}$"> is an error term.
+
+<P>
+Like many others, I use a ``random walk'' model for inflationary
+expectations (Congressional Budget Office 1994; Fuhrer 1995; Gordon
+1990; Staiger, Stock and Watson (SSW) 1997a, 1997b; Tootell 1994;
+Weiner 1993).  According to the ``random walk model,'' <!-- MATH
+ $\pi^{e}_{t} =
+\pi_{t-1}$
+ -->
+<IMG
+ WIDTH="74" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \pi^{e}_{t} =
+\pi_{t-1}$">, so that <!-- MATH
+ $\pi_{t} - \pi_{t}^{e} = \Delta \pi_{t}$
+ -->
+<IMG
+ WIDTH="102" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \pi_{t} - \pi_{t}^{e} = \Delta \pi_{t}$">.  Hence,
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:nairu_basic"></A><!-- MATH
+ \begin{equation}
+\Delta \pi_{t} = \beta \left( u_{t} - u_{t}^{*} \right) + \delta
+  X_{t} + v_{t}.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="204" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$\displaystyle \Delta \pi_{t} = \beta \left( u_{t} - u_{t}^{*} \right) + \delta X_{t} + v_{t}.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(2)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Equation&nbsp;<A HREF="node1.html#eq:nairu_basic">2</A> neglects the possibility of serial
+correlation in the error term.  It is therefore conventional to estimate an
+autoregressive specification:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:classic1"></A><!-- MATH
+ \begin{equation}
+\Delta \pi_{t} = \beta(L)\left(u_{t} - u^{*}_{t}\right) +
+ \delta(L) \Delta \pi_{t-1} + \gamma(L)X_{t} + \epsilon_{t},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="340" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$\displaystyle \Delta \pi_{t} = \beta(L)\left(u_{t} - u^{*}_{t}\right) + \delta(L) \Delta \pi_{t-1} + \gamma(L)X_{t} + \epsilon_{t},$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="16" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img12.png"
+ ALT="$ L$"> is the lag operator, <IMG
+ WIDTH="39" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ \beta(L)$">, <IMG
+ WIDTH="38" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.png"
+ ALT="$ \delta(L)$">, and <IMG
+ WIDTH="37" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.png"
+ ALT="$ \gamma(L)$"> are
+lag polynomials and <!-- MATH
+ $\epsilon_{t}$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ \epsilon_{t}$"> is a serially uncorrelated error term.
+
+<P>
+Equation <A HREF="node1.html#eq:classic1">3</A> is difficult to estimate because the model is
+nonlinear in the parameters.  When the NAIRU, <IMG
+ WIDTH="22" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ u^{*}_{t}$">, does not vary
+with <IMG
+ WIDTH="12" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ t$">, Equation <A HREF="node1.html#eq:classic1">3</A> can be rewritten in a form which can
+be conveniently estimated by ordinary least squares (OLS):
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:novary_nairu"></A><!-- MATH
+ \begin{equation}
+\Delta \pi_{t} = \mu  + \beta(L)u_{t} + \delta(L)\Delta\pi_{t-1}
+  + \gamma(L)X_{t} + \epsilon_{t}.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="318" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$\displaystyle \Delta \pi_{t} = \mu + \beta(L)u_{t} + \delta(L)\Delta\pi_{t-1} + \gamma(L)X_{t} + \epsilon_{t}.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(4)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The estimate of the NAIRU is then
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:nairu1"></A><!-- MATH
+ \begin{equation}
+\hat{u}^{*} = \dfrac{-\hat{\mu}}{\hat{\beta}(1)},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="84" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.png"
+ ALT="$\displaystyle \hat{u}^{*} = \dfrac{-\hat{\mu}}{\hat{\beta}(1)},$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(5)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $\beta(1) = \sum_{i=1}^{p}\beta_{i}$
+ -->
+<IMG
+ WIDTH="108" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ \beta(1) = \sum_{i=1}^{p}\beta_{i}$">, with <IMG
+ WIDTH="16" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.png"
+ ALT="$ p$"> being the order of the
+lag polynomial <IMG
+ WIDTH="39" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ \beta(L)$">.  Notice that the NAIRU is a nonlinear function
+of the coefficients <IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img22.png"
+ ALT="$ \mu$"> and <IMG
+ WIDTH="38" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.png"
+ ALT="$ \beta(1)$">.
+
+<P>
+The estimation approach outlined in Equations
+<A HREF="node1.html#eq:novary_nairu">4</A>-<A HREF="node1.html#eq:nairu1">5</A> can be altered for the case where
+the NAIRU varies with time.  One way to accomplish this is to replace
+<IMG
+ WIDTH="15" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img24.png"
+ ALT="$ \hat{\mu}$"> with <!-- MATH
+ $\sum_{j=1}^{l} \alpha_{j} \mathrm{H}^{j-1}(t)$
+ -->
+<IMG
+ WIDTH="116" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$ \sum_{j=1}^{l} \alpha_{j} \mathrm{H}^{j-1}(t)$"> where
+<!-- MATH
+ $\mathrm{H}^{i}$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="22" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.png"
+ ALT="$ \mathrm{H}^{i}$"> is a Hermite polynomial of order <IMG
+ WIDTH="11" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img27.png"
+ ALT="$ i$"> and where <IMG
+ WIDTH="12" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ t$"> is the
+time argument centered around 0.<A NAME="tex2html8"
+  HREF="footnode.html#foot291"><SUP>1</SUP></A>  Therefore,
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:my_nairu1"></A><!-- MATH
+ \begin{equation}
+\Delta \pi_{t} = \sum_{j=1}^{l} \alpha_{j} \mathrm{H}^{j-1}(t)
+  + \beta(L)u_{t} + \delta(L)\Delta\pi_{t-1} + \gamma(L)X_{t} +
+  \epsilon_{t},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="405" HEIGHT="69" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle \Delta \pi_{t} = \sum_{j=1}^{l} \alpha_{j} \mathrm{H}^{j-1}(t) + \beta(L)u_{t} + \delta(L)\Delta\pi_{t-1} + \gamma(L)X_{t} + \epsilon_{t},$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and the estimate of the time-varying NAIRU is
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:my_nairu2"></A><!-- MATH
+ \begin{equation}
+\hat{u}^{*}_{t} =
+  \dfrac{-\sum_{j=1}^{l} \hat{\alpha}_{j}
+    \mathrm{H}^{j-1}(t)}{\hat{\beta}(1)}.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="177" HEIGHT="70" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$\displaystyle \hat{u}^{*}_{t} = \dfrac{-\sum_{j=1}^{l} \hat{\alpha}_{j} \mathrm{H}^{j-1}(t)}{\hat{\beta}(1)}.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(7)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Selection of the order of the Hermite polynomial series is done using
+Mallows' C<IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.png"
+ ALT="$ _{p}$">.<A NAME="tex2html9"
+  HREF="footnode.html#foot153"><SUP>2</SUP></A>  Hermite polynomials in particular and orthogonal
+polynomials in general have many properties which make them useful for
+flexible-form estimation (de Boor 1978; Hinich and Roll 1981;
+Szeg&#246; 1975)--see Appendix&nbsp;<A HREF="node2.html#app:hermite">A</A>.<A NAME="tex2html10"
+  HREF="footnode.html#foot156"><SUP>3</SUP></A>  Less
+computation is required for Hermite polynomials than for cubic
+splines.
+
+<P>
+SSW (1997a, 1997b) use several approaches to estimate the time-varying
+NAIRU.  One of them is similar to the one specified in
+Equation&nbsp;<A HREF="node1.html#eq:my_nairu1">6</A>.  They do not allow contemporaneous
+unemployment and supply shocks to affect the current period's inflation
+rate.  SSW (1997a, 1997b) approximate the NAIRU by a cubic spline in time,
+written as <!-- MATH
+ $\bar{\phi}^{\prime}S_{t}$
+ -->
+<IMG
+ WIDTH="33" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.png"
+ ALT="$ \bar{\phi}^{\prime}S_{t}$">, where <IMG
+ WIDTH="20" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ S_{t}$"> is a vector of
+deterministic functions of time.<A NAME="tex2html11"
+  HREF="footnode.html#foot162"><SUP>4</SUP></A>  The SSW estimation equation for the spline approximated
+time-varying NAIRU is
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:ssw"></A><!-- MATH
+ \begin{equation}
+\Delta \pi_{t} = \phi^{\prime}S_{t-1} + \beta(L)u_{t-1} +
+  \delta(L)\Delta\pi_{t-1} + \gamma(L)X_{t-1} +
+  \epsilon_{t},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="385" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$\displaystyle \Delta \pi_{t} = \phi^{\prime}S_{t-1} + \beta(L)u_{t-1} + \delta(L)\Delta\pi_{t-1} + \gamma(L)X_{t-1} + \epsilon_{t},$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(8)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $\phi=-\beta(1)\bar{\phi}$
+ -->
+<IMG
+ WIDTH="91" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.png"
+ ALT="$ \phi=-\beta(1)\bar{\phi}$"> and
+<!-- MATH
+ $\hat{u}^{*}_{t}=-\hat{\phi}^{\prime}S_{t}/\hat{\beta}(1)$
+ -->
+<IMG
+ WIDTH="125" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$ \hat{u}^{*}_{t}=-\hat{\phi}^{\prime}S_{t}/\hat{\beta}(1)$">.  SSW estimate
+Equation&nbsp;<A HREF="node1.html#eq:ssw">8</A> by OLS.
+
+<P>
+Following SSW (1997b) the lag operators begin with <IMG
+ WIDTH="36" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$ u_{t-1}$"> and <IMG
+ WIDTH="38" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ X_{t-1}$">
+instead of <IMG
+ WIDTH="20" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$ u_{t}$"> and <IMG
+ WIDTH="22" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ X_{t}$">--see Equation&nbsp;<A HREF="node1.html#eq:ssw">8</A>.  Also following
+SSW (1997b), I use monthly lags over one year for both <IMG
+ WIDTH="20" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$ u_{t}$"> and <!-- MATH
+ $\Delta
+\pi_{t}$
+ -->
+<IMG
+ WIDTH="32" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ \Delta
+\pi_{t}$"> and lags over one quarter for the supply shocks, <IMG
+ WIDTH="22" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ X_{t}$">.  The
+supply shocks are specified as the difference between food and energy
+inflation and overall CPI inflation.<A NAME="tex2html12"
+  HREF="footnode.html#foot287"><SUP>5</SUP></A>  The data are monthly and the price level measure is the full
+CPI.
+
+<P>
+
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html27"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html25"
+  HREF="estimation.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html19"
+  HREF="estimation.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+   <meta name="description" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation of the Natural Rate of Unemployment">
+   <meta name="keywords" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation, NAIRU, Natural Rate of Unemployment, Harvard  University, Department of Government,Political Science, Political  Methodology, Political Economy, American Politics, Monetary and Fiscal  Policy, Financial Markets">
+  <A NAME="tex2html1"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.gif"
+ ALT="home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html28"
+  HREF="node2.html">Appendix: Hermite Polynomial Series</A>
+<B> Up:</B> <A NAME="tex2html26"
+  HREF="estimation.html">Estimation of the Nonaccelerating</A>
+<B> Previous:</B> <A NAME="tex2html20"
+  HREF="estimation.html">Estimation of the Nonaccelerating</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Jasjeet Singh Sekhon
+2001-11-24
+</ADDRESS>
+</BODY>
+</HTML>

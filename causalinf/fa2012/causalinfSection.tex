@@ -1,0 +1,154 @@
+% -*-Mode: LaTeX;-*-
+% %W%   %G%
+% 
+%
+
+\documentclass[fleqn,11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,graphicx,psfrag,rotating}
+\usepackage{hyperref,setspace} \usepackage{threeparttable}
+\usepackage{dcolumn} \usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{epsfig,rotate}
+\usepackage[mdyyyy]{datetime}
+
+\bibliographystyle{info} 
+\bibpunct{(}{)}{;}{author-year}{}{,}
+
+\newcommand{\MyPerp}{\perp \! \! \! \perp}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{-.26in}%{0in}
+%\setlength{\topmargin}{0.05in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textwidth}{6.5in}
+%\setlength{\textheight}{8.987in}%{8.9in}
+\setlength{\textheight}{9in}
+
+\hypersetup{
+%  colorlinks=true,
+  bookmarksopen, pdftitle={}, pdfsubject={}, pdfauthor={Jasjeet S. Sekhon},
+%  linkcolor=cyan,               
+%  citecolor=cyan,               
+%  pagecolor=cyan,
+%  urlcolor=cyan
+}
+
+%\doublespacing
+
+% change section to large and subsection to normalsize font
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0em}{\baselineskip}{0.5\baselineskip}{\large\bfseries\large}}
+\renewcommand{\subsection}{\@startsection{subsection}{0}{0em}{\baselineskip}{0.5\baselineskip}{\normalfont\bfseries\normalsize}}
+\makeatletter
+\newcommand{\vs}{\vspace{-\baselineskip}}
+\newcommand{\vvs}{\vspace{-.4cm}}
+
+\newcommand{\mr}{\mathrm}
+
+%dcolumn column types
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\newcommand{\Rsymb}{{\bf{\textsf{R}}}}
+
+\newcommand{\hlink}{\htmladdnormallink}
+
+\title{Section Syllabus \\The Statistics of Causal Inference in the Social Sciences\\
+  Political Science C236A\\
+  Statistics C239A}
+\author{GSI: John Henderson}
+\date{Discussion Section: 6 -- 8pm Thursday \\791 Barrows Hall}
+
+\begin{document}
+\maketitle
+
+\begin{quote}
+  \textbf{Professor Jasjeet Singh Sekhon} \\
+  \hlink{\texttt{sekhon@berkeley.edu}}%
+  {mailto:sekhon@berkeley.edu} \\
+  \hlink{\texttt{HTTP://sekhon.berkeley.edu}}%
+  {http://sekhon.berkeley.edu} \\
+ Office: Institute of Governmental Studies, 750C Barrows Hall \\
+% Office Hours: By Email AppTBA %Monday 2 pm -- 3:30 pm
+\end{quote}
+
+\begin{quote}
+  \textbf{John Henderson, GSI}\\
+  \hlink{\texttt{jahenderson@berkeley.edu}}{jahenderson@berkeley.edu} \\
+  Office: Institute of Governmental Studies, 135 Moses \\
+  Section: Thursday 6 -- 8pm in 791 Barrows Hall\\
+  Office Hours: Thursday 3 -- 5pm
+\end{quote}
+
+
+\subsection*{Description}
+\pdfbookmark[1]{Description}{sec:description}
+
+Section aims to cover, in more depth, topics discussed in lecture.  The first hour of section will generally focus on the theoretical material and the second hour will emphasize applications. Section will also cover all material related to learning R. 
+
+
+\subsection*{Homework}
+\pdfbookmark[1]{Homework}{sec:homework}
+
+Homework will be posted on the course website:
+
+\paragraph{}
+\texttt{http://sekhon.berkeley.edu/causalinf/}
+
+\paragraph{}
+Homeworks will be assigned approximately every week, with some longer
+biweekly assignments.  These will typically contain both a theoretical
+section and a code section.  Homeworks will be posted by section on
+Thursday and will be due the following \underline{Friday} (unless
+otherwise indicated) by \underline{4pm} in 210 Barrows in my mailbox.
+Keep in mind that 210 Barrows is locked at the end of the work day.  Late assignments will not
+be accepted.
+
+It is highly
+recommended that students form study groups in order to complete the
+homework assignments.  Although it is recommended that people work
+together in order to complete the assignments, students must hand in
+their own individual answers.  Photocopies and other reproductions of
+someone else's answers are not acceptable.  Students should hand in
+the answers to the problem sets, and all computer code written to find
+those answers.
+
+All assignments must be clearly legible.  All code submitted must be at least minimally commented and legible.  To make our lives much easier, please format your code as follows:
+
+
+\begin{itemize}
+\item All operators (i.e. \texttt{+, -, =, <-, ...}) must have spaces around them
+\item All loops must be commented
+\item There should be a line of comment for logical blocks of code
+\item Loops must be of the following format:\\
+\texttt{for(i in 1:10) \{ \\
+\hspace*{1cm}code$\ldots$\\
+\}}
+\item All blocks of codes in brackets must be properly indented
+\end{itemize}
+
+There are code beautifiers available, and if you do not wish to abide to the above rules while coding, please run the \texttt{tidy.source2()} command on your code, located in the \texttt{animation} package, before submitting it.  Make sure to read the help document for this command.
+
+\subsection*{Attendance}
+Attendance is not mandatory, but material covered in section is fair game for homework, the midterm, and the final.
+
+\subsection*{Office Hours}
+Office hours are listed above, will be held in 135 Moses Hall, unless
+otherwise indicated by email. Email me to make
+appointments outside of the posted hours.
+
+\end{document}
+
+
+% LocalWords:  Verlag nd Rocio Titiunik GSI Dwinelle sekhon online Venables th
+% LocalWords:  Webpage Neyman rubin rosenbaum DiamondSekhon unconfoundedness pm
+% LocalWords:  pdf Counterfactuals mimeo DOI Imai Kosuke causalinf TBA Tu sec
+% LocalWords:  CA ISBN com ACSSA JSTOR ToC Berk Blalock pp Cochran's Cochran
+% LocalWords:  APIOMOS LaLonde Outlier Overdispersed AbadieGardeazabal Winship
+% LocalWords:  freedmanLogit freedmanOLSb Krause florida Jasjeet Singh Channing
+% LocalWords:  else's Univariate Covariate SekhonInformation MorganHarding
+% LocalWords:  lalonde DehejiaWahba SmithTodd GordonHuber GilliganSergenti
+% LocalWords:  LenzLadd freedmanOLSa ThistlethwaiteCampbell facto DavidLee
+% LocalWords:  HahnToddvanderKlaauw

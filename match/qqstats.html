@@ -1,0 +1,165 @@
+<html><head><title>R: Bootstrap Kolmogorov-Smirnov</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score   Software, Causal Inference, Causality, Sekhon">
+<meta name="keywords" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score Software, Causal Inference, Causality, Jasjeet Sekhon, Jas Sekhon, Sekhon, Jas">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for qqstats {Matching}"><tr><td>qqstats {Matching}</td><td align="right">R Documentation</td></tr></table>
+<h2>QQ Summary Statistics</h2>
+
+<h3>Description</h3>
+
+<p>
+This function calculates a set of summary statistics for the QQ
+plot of two samples of data.  The summaries are useful for determining
+if the two samples are from the same distribution.  If
+<code>standardize==TRUE</code>, the empirical CDF is used instead of the
+empirical-QQ plot.  The later retains the scale of the variable.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+qqstats(x, y, standardize=TRUE, summary.func)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+The first sample.</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+The second sample.</td></tr>
+<tr valign="top"><td><code>standardize</code></td>
+<td>
+A logical flag for whether the statistics should be
+standardized by the empirical cumulative distribution functions of the
+two samples.</td></tr>
+<tr valign="top"><td><code>summary.func</code></td>
+<td>
+A user provided function to summarize the
+difference between the two distributions.  The function should
+expect a vector of the differences as an argument and return summary
+statistic.  For example, the <code><a href="../../stats/html/quantile.html">quantile</a></code> function is a
+legal function to pass in.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>meandiff</code></td>
+<td>
+The mean difference between the QQ plots of the two
+samples.</td></tr>
+<tr valign="top"><td><code>mediandiff</code></td>
+<td>
+The median difference between the QQ plots of the
+two samples.</td></tr>
+<tr valign="top"><td><code>maxdiff</code></td>
+<td>
+The maximum difference between the QQ plots of the two
+samples.</td></tr>
+<tr valign="top"><td><code>summarydiff</code></td>
+<td>
+If the user provides a <code>summary.func</code>, the
+user requested summary difference is returned.</td></tr>
+<tr valign="top"><td><code>summary.func</code></td>
+<td>
+If the user provides a <code>summary.func</code>, the
+function is returned.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Sekhon, Jasjeet S. 2011.  "Multivariate and Propensity Score
+Matching Software with Automated Balance Optimization.&rdquo;
+<EM>Journal of Statistical Software</EM> 42(7): 1-52.
+<a href="http://www.jstatsoft.org/v42/i07/">http://www.jstatsoft.org/v42/i07/</a>
+</p>
+<p>
+Diamond, Alexis and Jasjeet S. Sekhon. 2005. "Genetic Matching for
+Estimating Causal Effects: A General Multivariate Matching Method for
+Achieving Balance in Observational Studies.&rdquo;  Working Paper.
+<a href="http://sekhon.berkeley.edu/papers/GenMatch.pdf">http://sekhon.berkeley.edu/papers/GenMatch.pdf</a>
+</p>
+<p>
+Sekhon, Jasjeet Singh and Richard D. Grieve. 2011. "A Matching Method
+For Improving Covariate Balance in Cost-Effectiveness Analyses."
+<EM>Health Economics</EM>. forthcoming.
+</p>
+<p>
+Sekhon, Jasjeet S. 2006.  ``Alternative Balance Metrics for Bias
+Reduction in Matching Methods for Causal Inference.''  Working Paper.
+<a href="http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf">http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+Also see <code><a href="ks.boot.html">ks.boot</a></code>,
+<code><a href="balanceUV.html">balanceUV</a></code>, <code><a href="Match.html">Match</a></code>,
+<code><a href="GenMatch.html">GenMatch</a></code>,
+<code><a href="MatchBalance.html">MatchBalance</a></code>,
+<code><a href="GerberGreenImai.html">GerberGreenImai</a></code>, <code><a href="lalonde.html">lalonde</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+#
+# Replication of Dehejia and Wahba psid3 model
+#
+# Dehejia, Rajeev and Sadek Wahba. 1999.``Causal Effects in Non-Experimental Studies: Re-Evaluating the
+# Evaluation of Training Programs.''Journal of the American Statistical Association 94 (448): 1053-1062.
+#
+data(lalonde)
+
+#
+# Estimate the propensity model
+#
+glm1  &lt;- glm(treat~age + I(age^2) + educ + I(educ^2) + black +
+             hisp + married + nodegr + re74  + I(re74^2) + re75 + I(re75^2) +
+             u74 + u75, family=binomial, data=lalonde)
+
+#
+#save data objects
+#
+X  &lt;- glm1$fitted
+Y  &lt;- lalonde$re78
+Tr  &lt;- lalonde$treat
+
+#
+# one-to-one matching with replacement (the "M=1" option).
+# Estimating the treatment effect on the treated (the "estimand" option which defaults to 0).
+#
+rr  &lt;- Match(Y=Y,Tr=Tr,X=X,M=1);
+summary(rr)
+
+#
+# Do we have balance on 1975 income after matching?
+#
+qqout  &lt;- qqstats(lalonde$re75[rr$index.treated], lalonde$re75[rr$index.control])
+print(qqout)
+</pre>
+
+
+<hr><div align="center"><a href="http://sekhon.berkeley.edu/matching/">Return to Jasjeet
+Sekhon's Matching Software Page</a></div>
+
+</body></html>

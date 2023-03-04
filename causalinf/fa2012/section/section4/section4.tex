@@ -1,0 +1,208 @@
+\documentclass{beamer}
+\usepackage{multicol}
+\usepackage{natbib} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{listings}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+\newcommand{\field}[1]{\mathbb{#1}}
+
+
+\lstloadlanguages{R}
+\lstdefinelanguage{Renhanced}[]{R}{%
+  morekeywords={acf,ar,arima,arima.sim,colMeans,colSums,is.na,is.null,%
+    mapply,ms,na.rm,nlmin,replicate,row.names,rowMeans,rowSums,seasonal,%
+    sys.time,system.time,ts.plot,which.max,which.min},
+  deletekeywords={c},
+  alsoletter={.\%},%
+  alsoother={:_\$}}
+\lstset{language=Renhanced,extendedchars=true,
+  basicstyle=\small\ttfamily,
+  commentstyle=\textsl,
+  keywordstyle=\mdseries,
+  showstringspaces=false,
+  index=[1][keywords], 
+  indexstyle=\indexfonction}
+  \newcommand{\indexfonction}[1]{\index{#1@\texttt{#1}}}
+
+%\usepackage{beamerthemeBerkeley}
+% Use either the one above or the one below
+\usetheme{Hannover}
+
+\title{Univariate Matching}
+%\author{	F. Daniel Hidalgo\\ }
+%\date{\today}
+
+\begin{document}
+%\lstset{language=R}
+
+\frame{\titlepage}
+%\section[Outline]{}
+%\frame{\tableofcontents}
+
+\begin{frame}[c]\frametitle{Mechanical vs Scientific Tasks}
+	\begin{itemize}
+		\item<+-> Two tasks required for inference with matching:
+		\item<+-> The first task is how do we create matched pairs.  This is a fairly mechanical task.  
+		\item<+-> The second task is to decide whether or not those people that look comparable are comparable $\dots$ and this is not such a trivial task. 
+		\item<+-> Ultimately, we are asking ourselves if our mechanical operations are sufficient for identification of our treatment effect. 
+		\item<+->  As Rosenbaum says, ``The second task is not a mechanical but rather a scientific task, one that can be controversial and difficult to bring to a rapid and definitive closure; this task is, therefore, more challenging, and hence more interesting.''
+	\end{itemize}
+	
+\end{frame}
+\section{Model of an Observational Study} % (fold)
+\label{sec:a_model_of_an_observational_study}
+
+% section a_model_of_an_observational_study (end)
+\begin{frame}[c]\frametitle{Notation}
+	Working in the observational framework and allowing subjects to select treatment, we will define the following quantities:
+	\begin{itemize}
+		\item<+-> Let $\mathbf{x}_i$ refer to a set of observed covariates for person $i$
+		\item<+-> let $u_i$ refer to an unobserved covariate for subject $i$
+		\item<+->  $T_i$ refers to treatment assignment (1 for treatment, 0 for control)
+		\item<+-> $Y_{i1}$ refers to potential outcome under treatment, and $Y_{i0}$ refers to potential outcome under control
+		\item<+-> There are $N$ subjects
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{A Model of Treatment Assignment}
+	\begin{itemize}
+		\item<+-> In the population before matching, we imagine that subject $i$ received treatment with probability $\pi_i$, independently of other subjects, where $\pi_i$ may vary from one person to the next and is not known.  More precisely:
+		\[ \pi_i = Pr(T_i = 1 | Y_{i1}, Y_{i0}, \mathbf{x}_i, u_i) \]
+		\[ Pr(T_1 = t_1, \dots, T_N = t_n | Y_{11}, Y_{10}, \mathbf{x}_1, u_1, \dots, Y_{n1}, Y_{n0}, \mathbf{x}_n, u_n) = \prod_{i = 1}^N \pi_i^{t_i} (1 - \pi_i)^{1 - t_i} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{The Ideal Match}
+	\begin{itemize}
+		\item<+-> Suppose that we could find two subjects, say $k$ and $l$, such that exactly one was treated, $T_k + T_l = 1$, but they had the same probability of treatment, $\pi_k = \pi_l$. 
+		\item<+-> We can pair these two subjects and call them a match pair.  Note, though, that we are imposing an assumption because we now require that $0 < \pi_i < 1$, otherwise we wouldn't be able to find matches.
+		\item<+-> It is difficult to create this matched pair because we don't observe $u_k$ or $u_l$, and we either observe $Y_{k1}$ or $Y_{l1}$ (but not both) and either $Y_{k0}$ or $Y_{l0}$.
+		\item<+-> Supposing that we could create a matched pair with $\pi_k = \pi_l$ and $T_k + T_l = 1$, then what would this give us?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Treatment Odds}
+	
+	\begin{align*}
+	&  Pr(T_k = 1, T_l = 0 | Y_{k1}, Y_{k0}, \mathbf{x}_k, u_k, Y_{l1}, Y_{l0}, \mathbf{x}_l, u_l, T_k + T_l = 1) \\
+	&=\frac{Pr(T_k = 1, T_l = 0 | Y_{k1}, Y_{k0}, \mathbf{x}_k, u_k, Y_{l1}, Y_{l0}, \mathbf{x}_l, u_l)}{Pr(T_k + T_l = 1 | Y_{k1}, Y_{k0}, \mathbf{x}_k, u_k, Y_{l1}, Y_{l0}, \mathbf{x}_l, u_l)} \\
+	&= \frac{\pi_l^{1 + 0}(1 - \pi_l)^{(1 -1) + (1 - 0)}}{\pi_l^{1 + 0}(1 - \pi_l)^{(1 - 1) + (1 - 0)} + \pi_l^{0 + 1}(1 - \pi_l)^{(1 - 0) + (1 - 1)}} \\
+	&= \frac{\pi_l(1 - \pi_l)}{\pi_l(1 - \pi_l) + \pi_l(1 - \pi_l)} = \frac{1}{2}
+	\end{align*}
+	\begin{itemize}
+		\item<+-> It is important to note that this is always true if treatment is assigned by the fair flip of a fair coin
+		\item<+-> Or independent flips of a group of biased coins where the same biased coin is used when subject $i$ and subject $j$ have the same observable characteristics (assuming no coins have a probability of 0 or 1)
+	\end{itemize}
+	
+\end{frame}
+
+\section{Mechanics of Matching} % (fold)
+\label{sec:mechanics_of_matching}
+\begin{frame}[c]\frametitle{Exact Matching}
+	\begin{itemize}
+		\item<+-> If the naive model is true, then it is clear that if we can exactly match on $\mathbf{x}$, then the model will follow and we can reconstruct the distribution of treatment assignments in a randomized paired experiment simply by matching based on the observed covariates. 
+		\item<+-> If there is only one covariate that determines how treatment is assigned, then this is straight forward: we just matched on that covariate.
+		\item<+-> With a large enough sample, it might even be straight forward to exactly match on a couple of covariates, however it becomes very difficult to exactly match on many covariates, especially with finite samples.
+	\end{itemize}
+\end{frame}
+% section mechanics_of_matching (end)
+\begin{frame}[t]\frametitle{Propensity Score}
+	\begin{itemize}
+		\item<+->  The propensity score is defined as the conditional probability of treatment, $T = 1$ given the observed covariates $\mathbf{x}$.
+		\[ e(\mathbf{x}) = Pr( T = 1 | \mathbf{x}) \] 
+		\item<+-> The balancing property is always true, regardless of if the naive model holds or not.  The balancing property states that treated and control units with the same propensity score have the same distribution of the \emph{observed} characteristics.  This gives us that treatment and observed covariates are conditionally independent given the propensity score.
+		\[ Pr\{\mathbf{x} | T = 1, e(\mathbf{x})\} = Pr\{\mathbf{x} | T = 0, e(\mathbf{x})\} \Leftrightarrow T \independent \mathbf{x} | e(\mathbf{x}) \]
+		\item<+-> It is important to see that within a given matched pair, it is not necessary that subject $k$ and subject $l$ have the same values of $\mathbf{x}$, only that they have the same propensity score, $e(\mathbf{x}_k) = e(\mathbf{x}_l)$. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Propensity Score}
+	\begin{itemize}
+		\item<+-> We often estimate the propensity score, coming up with an estimate $\hat{e}(\mathbf{x})$ to produce balance on the observed covariates $\mathbf{x}$. 
+		\item<+-> If the naive model \emph{were} true, then from the propensity score we could get ignorable treatment assignment.  We could produce the ``ideal match'' from the propensity score, since it just reduces our dimensionality of $\mathbf{x}$.
+		\item<+->  If the naive model holds, then $\pi_i = e(\mathbf{x})$, so matching on the propensity score is matching on $\pi_i$.  In the naive model:
+		\[ T \independent Y_{i1}, Y_{i0}, u_i | \mathbf{x} \Rightarrow T \independent Y_{i1}, Y_{i0}, u_i | e(\mathbf{x}) \] 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Welders and DNA}
+	
+	\begin{quote}
+		Welders get exposed to chromium and nickel, substances that can cause inappropriate links between DNA and proteins.  Costa, Zhitkovich, and Toniolo measured DNA-protein cross-links in samples of white blood cells from 21 railroad arc welders exposed to chromium and nickel and from 26 unexposed controls.  All 47 subjects were male. In their data $\dots$ there are three covariates, namely age, race and current smoking behavior.  The response is a measure of DNA-protein cross-links.
+	\end{quote}
+
+	Before matching, we get the following descriptive statistics for the means of the two groups:
+
+	\begin{verbatim}
+	          control      treat
+	age    42.6923077 38.2380952
+	black   0.1923077  0.0952381
+	smoker  0.3461538  0.5238095
+	\end{verbatim}
+
+\end{frame}
+\begin{frame}[fragile]\frametitle{Estimate the Propensity Score}
+	How do we estimate the propensity score?  Often we use a linear logit model (this bounds our propensity score between 0 and 1).  The propensity is then estimated by:
+	\[ log \big( \frac{e(\mathbf{x}_i)}{1 - e(\mathbf{x}_i)}\big) = \zeta_0 + \zeta_1 age_i + \zeta_2 black_i + \zeta_3 smoker_i \]
+	\[ \hat{e}(\mathbf{x}_i) \text{ are the fitted values from this model}\]
+
+	So, we run the following code in R to find our propensity score:
+	\begin{lstlisting}[frame=single]
+	pscore <- glm(treat ~ age + black + smoker,
+		          family = binomial(link = logit), 
+		          data = data)$fitted.values
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Some Considerations}
+	\begin{enumerate}
+		\item<+-> What distance metric do we use?
+	\item<+-> Do we match with replacement or without replacement?
+	\item<+-> What do we do with ties?
+	\item<+-> What do we consider a ``good'' match?
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[c]\frametitle{Distance Metrics}
+	\begin{itemize}
+		\item<+-> In order to figure out what the ``closest'' match is, we have to decide what our metric for the distance between observations $k$ and $l$. 
+		\item<+-> Since we are only matching on one covariate, in this case the propensity score, we can use the squared distance between the two estimated propensity scores.
+		\[ d = (\hat{e}(\mathbf{x}_k) - \hat{e}(\mathbf{x}_k))^2 \]
+		\item<+-> This will punish large differences more than small distances.  Alternatively, we could use the absolute value of the distance between the estimated propensity scores. 
+		\item<+->  Whatever our distance metric, ``nearest-neighbor'' matching matches the closest control unit to each treated unit (in the case of ATT) or the closest treated unit to each control unit (ATC).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{With or Without Replacement}
+	\begin{itemize}
+		\item<+-> If we match without replacement, then once we match a control unit, we take it out of the pool of potential matches for all remaining treated units.
+		\item<+-> It is important to notice that if we do this, then depending on the order of the controls and the algorithm we use to sort through them, we may get different matches.
+		\item<+-> If we match with replacement, then this means that after a control gets matched to a treated unit, it goes back into the pool of potential matches for the remaining treated units.  This means that a control unit could be matched to multiple treated units.
+		\item<+-> In general, we'd like to match with replacement to make sure that we get the ``best'' match every time.
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}[c]\frametitle{Ties}
+	\begin{itemize}
+		\item<+-> The case may arise that when we look for matches to a given treated unit $i$, there are two control units that are the same distance from $i$ based on our distance metric $d$. 
+		\item<+-> What do we do?
+		\item<+-> Flip a coin
+		\item<+-> Allow a tie: we match both control units to treated unit $i$, but we give each of these controls a weight of $\frac{1}{2}$ in our matched data set (in effect, we average the control units)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[c]\frametitle{What do we consider a good match?}
+	\begin{itemize}
+		\item<+-> What if the closest control unit to treated unit $i$ has a large distance, $d$.  We may want to say that treated unit $i$ cannot be matched because there is no control unit that is ``close'' to it. 
+		\item<+->  To do this, we would enforce a caliper, which says that if there is no ``nearest neighbor'' to treated unit $i$, defined as being within a certain distance of $i$, we say that we cannot match treated unit $i$.
+		\[ | \hat{e}(\mathbf{x}_i) - \hat{e}(\mathbf{x}_k) | > w \]
+		 Where, if the distance is greater than the caliper $w$, we set the distance to infinity. 
+		 \item<+-> When we drop treated observations, we are changing what we are estimating, but it is no longer ATT $\dots$
+	\end{itemize}
+\end{frame}
+
+
+\end{document}

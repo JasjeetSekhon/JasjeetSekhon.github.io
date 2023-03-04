@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>R-GENetic Optimization Using Derivatives (RGENOUD) Home Page</TITLE>
+<META NAME="description" CONTENT="R-GENetic Optimization Using Derivatives (RGENOUD) Home Page">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html19"
+  HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_g.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev_g.png">   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html2"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.gif"
+ ALT="home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html20"
+  HREF="node1.html">R's GENOUD Function Manual</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<P>
+<H1 ALIGN=CENTER>R-GENetic Optimization Using Derivatives (RGENOUD) Home Page</H1>
+<P ALIGN=CENTER><STRONG>Walter R. Mebane, Jr.  - Jasjeet Singh Sekhon<A NAME="tex2html1"
+  HREF="footnode.html#foot21"><SUP>1</SUP></A></STRONG></P>
+<P ALIGN=LEFT></P>
+
+<P>
+
+<P>
+<P>
+<BLOCKQUOTE><B>Walter R. Mebane, Jr.</B>
+<BR>
+  <A NAME="tex2html3"
+  HREF="http://falcon.arts.cornell.edu/Govt">Department of
+    Government</A>,
+
+<A NAME="tex2html4"
+  HREF="http://www.cornell.edu">Cornell University</A>
+<BR>
+
+<A NAME="tex2html5"
+  HREF="mailto:wrm1@cornell.edu"><TT>wrm1@cornell.edu</TT></A>
+<BR><A NAME="tex2html6"
+  HREF="http://macht.arts.cornell.edu/wrm1/"><TT>HTTP://macht.arts.cornell.edu/wrm1/</TT></A>
+<BR>
+Voice: 607-255-3868  Fax:  607-255-4530 <BR>
+<BR>
+<BR></BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><B>Jasjeet S. Sekhon</B>
+<BR>
+  <A NAME="tex2html7"
+  HREF="http://www.cbrss.harvard.edu/">Center for Basic Research in the Social
+    Sciences</A>, <A NAME="tex2html8"
+  HREF="http://www.harvard.edu">Harvard
+
+University</A>
+<BR>
+
+<A NAME="tex2html9"
+  HREF="mailto:jsekhon@fas.harvard.edu"><TT>jsekhon@fas.harvard.edu</TT></A>
+<BR>
+  <A NAME="tex2html10"
+  HREF="http://jsekhon.fas.harvard.edu/"><TT>HTTP://jsekhon.fas.harvard.edu/</TT></A>
+<BR>
+Voice: 617-496-2426 Fax: 617-496-5149 <BR>
+<BR>
+<BR></BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The authors wish to thank <A NAME="tex2html11"
+  HREF="http://www.stanford.edu/~wand/">Jonathan N. 
+     Wand</A>
+and Todd Rice for
+   contributing code and thank <A NAME="tex2html12"
+  HREF="http://www.people.fas.harvard.edu/~bfbraum">Bear F.
+     Braumoeller</A>
+for
+   providing Mac OS X binaries.
+<BR>
+<BR>
+<BR>
+</BLOCKQUOTE>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">This webpage is for the
+    <A NAME="tex2html16"
+  HREF="http://www.r-project.org/"><B>R</B></A>
+version
+    of GENOUD (GENetic Optimized Using Derivatives).  Please
+    <A NAME="tex2html17"
+  HREF="http://jsekhon.fas.harvard.edu/genoud/">click
+      here</A>
+for some background information on GENOUD.
+<BR>
+<BR>
+<BR></DIV>
+<P>
+<DIV ALIGN="CENTER"><B>Download:</B>
+<BR>    <TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">Source code R package:</TD>
+<TD ALIGN="LEFT"><A NAME="tex2html13"
+  HREF="http://jsekhon.fas.harvard.edu/rgenoud/download/rgenoud_1.23.tar.gz">rgenoud_1.23.tar.gz</A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">Windows (95 and later) binary:</TD>
+<TD ALIGN="LEFT"><A NAME="tex2html14"
+  HREF="http://jsekhon.fas.harvard.edu/rgenoud/download/rgenoud.zip">rgenoud.zip</A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MacOS X (Darwin/X11) binary:</TD>
+<TD ALIGN="LEFT"><A NAME="tex2html15"
+  HREF="http://jsekhon.fas.harvard.edu/rgenoud/download/mac/rgenoud.zip">rgenoud.zip</A></TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<BR>    <A NAME="tex2html18"
+  HREF="http://www.r-project.org/"><B>R</B></A>
+version
+    <IMG
+ WIDTH="72" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$ &gt;= 1.6.0$"> is required and version <IMG
+ WIDTH="72" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$ &gt;= 1.6.1$"> is
+    recommended. <BR>
+<BR>
+<BR>  
+</DIV>
+
+<P>
+
+<P>
+RGENOUD is a function that combines evolutionary algorithm methods
+with a derivative-based, quasi-Newton method to solve difficult
+unconstrained optimization problems.  RGENOUD is made to solve
+problems that are nonlinear or perhaps even discontinuous in the
+parameters of the function to be optimized.  When a statistical
+model's estimating function (for example, a log-likelihood) is
+nonlinear in the model's parameters, the function to be optimized will
+usually not be globally concave and may contain irregularities such as
+saddlepoints or discontinuous jumps.  Optimization methods that rely
+on derivatives of the objective function may be unable to find any
+optimum at all.  Multiple local optima may exist, so that there is no
+guarantee that a derivative-based method will converge to the global
+optimum.  On the other hand, algorithms that do not use derivative
+information (such as pure GAs) are for many problems needlessly poor
+at local hill climbing.  Most statistical problems are regular in the
+neighborhood of the solution.  Therefore, for some portion of the
+search space derivative information is useful.  RGENOUD is relatively
+flexible.  For example, recursive optimization is supported--RGENOUD
+may be used to optimize RGENOUD.
+
+<P>
+RGENOUD contains many improvements made over the original version of
+GENOUD.  Some of the logic of GENOUD has been rewritten including a
+few of the key algorithms.  The original ``C'' version of GENOUD
+extended and greatly modified a constrained optimization program
+created by Michalewicz (1992). RGENOUD is strictly speaking written in
+``C++''.  But most of the code base is ANSI-C compatible. <BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"></A>
+
+<UL>
+<LI><A NAME="tex2html21"
+  HREF="node1.html">R's GENOUD Function Manual Page</A>
+<LI><A NAME="tex2html22"
+  HREF="node2.html">FAQ</A>
+<UL>
+<LI><A NAME="tex2html23"
+  HREF="node3.html">How do I get RGENOUD to continue a run that was previously
+  terminated?</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html24"
+  HREF="node4.html">About this document ...</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html19"
+  HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_g.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev_g.png">   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html2"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.gif"
+ ALT="home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html20"
+  HREF="node1.html">R's GENOUD Function Manual</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Jasjeet S. Sekhon
+2004-02-02
+</ADDRESS>
+</BODY>
+</HTML>

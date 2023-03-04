@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st
+March 2002), see www.w3.org" /> 
+<meta name="keywords" content="Sekhon, Jasjeet Sekhon, Jasjeet Singh
+Sekhon,Apple, Mac OS X, Linux, Windows, OS X sucks, Linux rules, benchmarks,linux on g5, 970, ibm, review, tiger, operton, intel, linux vs. os x, Linux vs. OS X, G5 versus opteron, g5, MacBookpro"/>
+<title>Linux versus Mac OS X and Windows XP on Intel Dual Core</title> 
+<link rel="stylesheet" href="http://www.w3.org/StyleSheets/Core/Steely"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body { margin: 5em 5em 5em 5em}
+/*]]>*/
+</style>
+</head>
+<body>
+<h2>
+Linux versus Mac OS X and Windows XP on Intel Dual Core
+</h2>
+
+<br>
+
+<I> With the help of a variety of developers working at Apple and
+elsewhere, the large OS X performance gap reported here has been
+eliminated.  This can be accomplished by either algorithmic changes or
+by the use of an alternative memory allocator for OS X.  Small
+performance differences remain between the three operating systems,
+and this page will be updated shortly to report the new benchmarks.
+
+<br><br>
+
+The underlying issue is that for this code the default malloc on OS X,
+like the default malloc on Windows XP, causes a large performance
+degradation which the default mallocs on Linux, Solaris and FreeBSD do
+not.  The R developers use the default system malloc on every
+operating system but Windows.  It turns out that this decision is a
+bad one in the case of OS X.  But if the code is modified to either
+use an alternative (memory efficient) algorithm or Doug Lea's malloc,
+OS X performs well.
+
+<br><br>
+
+For the curious, the original (now outdated) benchmarks are reported
+below.
+</I>
+
+
+<br><br>
+
+<h4 class="Summary">Summary (WARNING: Outdated)</h4>
+<br>
+
+<a href="http://www.ubuntu.com">Linux</a> is found to be much faster
+than <a href="http://www.apple.com/macosx/">Apple's OS X</a> for
+statistical computing when using <a
+href="http://www.r-project.org/">R</a>. And although Linux is 5 to 10
+percent faster than Windows XP, both are markedly faster than OS X.
+For example, in one benchmark both Linux and Windows XP are more than
+twice as fast as OS X. The <a href="http://www.r-project.org/">R
+Project for Statistical Computing</a> needs to be better optimized for
+OS X.  The results on this page were conducted on a <a
+href="http://www.apple.com/macbookpro">MacBookpro</a> with a 2.16Ghz
+Intel Core Duo chip (OS X/Linux/Windows XP), an <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>
+250 server (Linux) and Pentium 4 3Ghz workstation (Linux).
+
+<br><br>
+
+<h4 class="Benchmarks">Benchmarks</h4>
+<br>
+
+I present here a set of benchmarks which are relevant to my work and
+to people working in statistical computing, particular people using
+the <a href="http://www.r-project.org/">R Project for Statistical
+Computing</a>.  These benchmarks are floating point bound where the
+main IO is to memory and not to disk.  <B> Memory allocation and
+management is a central issue.</B> And cache and Translation
+Look-aside Buffer (TLB) misses really matter.  This setup may be of
+more general interest.  But they may not be relevant for what you do.
+If you need a computer to do <I>Y</I>, and these benchmarks are in no
+way related to <I>Y</I>, don't write me to complain about it.  These
+benchmarks are useful for the work <b> I
+</b> and some other computational statistics people do.
+
+<br><br>
+
+The default memory manager in OS X is awful.  To quote <a
+href="http://www.tacc.utexas.edu/~kgoto/">Kazushige Goto</a> talking
+about his <a href="http://en.wikipedia.org/wiki/Blas">BLAS</a>:
+"<B>Performance is suppressed on purpose due to [the] awful memory
+management of OS X</B>".  Goto's work is described and praised on <a
+href="http://www.apple.com/education/science/profiles/vatech/optimization.html">Apple's
+own website</a> because he added a custom BLAS for the Apple super
+computer at <a href="http://www.tcf.vt.edu/systemX.html">Virginia
+Tech</a>.  On the Apple site it states that Goto was "pulling out
+incredible efficiencies".  Given Goto's own benchmarks and comments,
+it is not surprising that the Virginia Tech team was able to pull out
+these efficiencies by writing a kernel level memory manager to work
+around OS X's memory manager (information provided via email by their
+Director of HPC and Technology Innovation).  The custom kernel level
+memory manager is not mentioned on <a
+href="http://www.apple.com/science/profiles/vatech/">Apple's
+webpage</a> so the impression is left that the excellent performance
+achieved by the Virginia Tech team is possible with the standard
+operating system.  In what follows the default OS X memory allocator
+is used as is the default one on Linux (ptmalloc).  It appears that on
+Windows, R defaults to using <a
+href="http://g.oswego.edu/dl/html/malloc.html">Doug Lea's</a> memory
+allocator.  The memory allocators used for these benchmarks are the
+default allocators which R uses for the various platforms.  I have in
+no way altered R's defaults.
+
+<br>
+<br>
+
+Aside from memory issues, it should be noted that Darwin system calls
+are generally much slower than the equivalent calls on
+Linux---particularly when compared with the 2.6 kernel.  There is no
+need for me to conduct these benchmarks because <a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2436&p=8">Anandtech</a>
+already has using Lmbench---a suite of micro benchmarks which measure
+bottlenecks at the Unix operating system and CPU level.  Darwin is
+slower than the 2.6 linux kernel in every benchmark sometimes by
+several times.  For example, OS X is between 2 and 5 times slower than
+Linux in creating new threads.
+
+<br><br>
+
+
+The benchmarks presented here are based on two of my statistical
+software packages for <a href="http://www.r-project.org/">R</a>: <a
+href="../matching">Matching</a> (Multivariate and Propensity Score
+Matching Software) and <a href="../rgenoud">rgenoud</a> (R Version of
+GENetic Optimization Using Derivatives).  The code uses C++ code
+extensively.  The two benchmark scripts are available <a
+href="GenMatch.R">here (Genetic Matching)</a> and <a
+href="matching.R">here (Matching)</a>.  All benchmarks were done using
+R-2.3 and gcc 4.  The best timing result of the three calls to <a
+href="../Matching/GenMatch.html">GenMatch</a> in the GenMatch <a
+href="GenMatch.R">script</a> are presented and the best result of
+three consecutive runs of the <a href="matching.R">matching</a> script
+are presented (examining the worst or the average times yields the
+same substantive results).
+
+<br><br>
+
+The machines are:
+<TABLE BORDER=2 CELLSPACING=15>
+<TR> <TH>Label</TH> <TH>OS and Chip</TH> </TR> 
+
+<TR> <TD>OS X Core Duo</TD> <TD><a
+href="http://www.apple.com/macosx/tiger">Tiger</a> on <a
+href="http://www.apple.com/macbookpro">MacBookpro</a>, Intel 2.16GHz
+Dual Core 2GB RAM</TD> </TR>
+
+<TR>
+<TD>Linux Core Duo</TD> <TD>
+<a href="http://www.ubuntu.com/">Ubuntu</a> Linux (<a
+href="http://www.ubuntu.com/testing/dapperbeta?highlight=%28beta%29">Drapper
+Drake</a>) with i686-SMP kernel on MacBookpro, Intel 2.16GHz Dual Core
+2GB RAM.  Note: Xorg server running with <a
+href="http://www.gnome.org">GNOME</a></TD> </TR>
+
+<TR>
+<TD>XP Core Duo</TD> <TD> Windows XP SP2 on MacBookpro, Intel 2.16GHz
+Dual Core 2GB RAM.</TD> </TR>
+
+<TR> <TD>Linux P4</TD> <TD><a href="http://www.ubuntu.com/">Ubuntu</a>
+Linux (<a
+href="http://www.ubuntu.com/testing/dapperbeta?highlight=%28beta%29">Drapper
+Drake</a>) with i686 kernel on 3GHz Pentium 4, 2GB RAM.  Note: <a
+href="http://en.opensuse.org/Xgl">Xgl+compiz</a> running with <a
+href="http://www.kde.org">KDE</a>
+</TD>
+</TR>
+
+<TR> <TD>Linux Opteron</TD> <TD><a
+href="http://www.ubuntu.com/">Ubuntu</a> Linux (64bit) on <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>
+250, 4GB RAM Note: Xorg server running with <a
+href="http://www.kde.org">KDE</a>
+</TD>
+</TR>
+</TABLE>
+
+<br> <br>
+
+<img src="GenMatch1.png" alt="GenMatch">
+
+<br><br>
+
+Both Linux and Windows XP are significantly faster than OS X.  And
+Linux is somewhat faster than Windows XP. In one thousand iterations
+of the benchmark, Linux and Windows are always faster than OS X, and
+Linux is always at least twice as fast as OS X.  This benchmark does
+not take up much RAM, less than 30meg, nor does it work the filesystem
+much.  But the application does flip between various shared libraries
+and copy various data objects back and forth in RAM.  The following
+benchmark takes about the same amount of RAM, but unlike the previous
+one it does not flip between various shared libraries and makes many
+fewer calls to malloc().  It does call a shared library, but it only
+does it once and only passes results back once.
+
+<br><br>
+
+<img src="matching2.png" alt="matching2">
+
+<br><br>
+
+This second benchmarks looks better for OS X, but it is still about
+1.2 times slower than Linux.  In one thousand iterations of the
+benchmark, Linux is always faster than OS X.  And the gap between
+Linux and Windows has grown from about 5 to about 10 percent.
+
+<br><br>
+
+<I> These benchmarks do not use a graphical user interface. They are
+batch jobs run from the command line and produce no graphical
+output.  </I> No X11 or Aqua calls are made. And on all platforms the
+benchmark process obtains 99%+ of a cpu or core.  Moreover, in neither
+benchmark are we testing IO or running multiple processes on the same
+chip.  If we do either of these, the <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron's</a>
+relative performance improves.
+
+<br><br>
+
+<a
+href="http://www.applematters.com/index.php/section/comments/how-long-will-apple-keep-the-mach-microkernel/">People
+on the web</a> have recently been speculating whether Apple with drop
+the Mach micro-kernel portion of the <a
+href="http://en.wikipedia.org/wiki/XNU">XNU kernel</a>. These rumors
+have picked with the departure of <a
+href="http://en.wikipedia.org/wiki/Avie_Tevanian">Avie Tevanian</a>,
+an important figure in the development of the Mach Kernel first at
+Carnegie Mellon and then at Apple.  Interestingly, Chris Emura, the
+Filesystem Development Manager within Apple's CoreOS organization, <a
+href="http://www.osnews.com/story.php?news_id=14473">recently
+stated</a> that Apple is interested in porting <a
+href="http://www.opensolaris.org/os/community/zfs/">Sun's ZFS
+filesystem</a> to OS X.  If true, it may be that Apple is interested
+in fixing core issues with their operating system now that the eye
+candy is stable.
+
+<br><br>
+
+I have conducted many more benchmarks on these and other machines.
+For example, I have tested the HFS+ filesystem.  It is slower than <a
+href="http://www.namesys.com/">reiser</a> especially for small and
+medium sized files and slower than <a
+href="http://oss.sgi.com/projects/xfs/">XFS</a> especially for large
+files.  If you want these additional benchmarks, let me know.
+
+<br>
+<h4 class="Summary">Suggestions</h4> 
+
+<br> 
+
+If you have any suggestions on how to fix the terrible performance of
+(this software on) OS X or if you think something here is erroneous,
+please <a href="http://sekhon.berkeley.edu">contact me</a>.  
+
+
+
+<br>
+<br>
+<h4 class="Summary">Links</h4> 
+
+<br> 
+
+See similar benchmarks available on AnandTech's website: <a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2436">"No more
+mysteries: Apple's G5 versus x86, Mac OS X versus Linux"</a> and <a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2520&p=8">"No more
+mysteries, part two"</a>.
+
+
+
+<br>
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+
+
+</body>
+</html>
+
+
+
+<!--  LocalWords:  Kazushige BLAS Goto's Opteron AMD's unixes XP SuSE Ghz Duo
+ -->
+<!--  LocalWords:  Microkernel Homepage yast Debian Cygwin GENetic gcc TLB
+ -->
+<!--  LocalWords:  tradeoffs SETI XNU Tanenbaum NeXT FreeBSD Goto rgenoud GHz
+ -->
+<!--  LocalWords:  GenMatch Ubuntu LiveCD Drapper Tevanian HFS reiser XFS RISC
+ -->
+<!--  LocalWords:  AnandTech KVM rdesktop RDP VNC iTunes PVR mpeg mpegpes mepg
+ -->
+<!--  LocalWords:  DirectShow graphedit mencoder mplayer dvd iDVD Quicktime
+ -->
+<!--  LocalWords:  Steamclip MacBookpro
+ -->

@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.4)
+The top-level auxiliary file: causalinfStats.aux
+The style file: info.bst
+Database file #1: causalinf.bib
+Warning--empty pages in przeworski:science
+You've used 59 entries,
+            2804 wiz_defined-function locations,
+            1059 strings with 15206 characters,
+and the built_in function-call counts, 27079 in all, are:
+= -- 2652
+> -- 1046
+< -- 53
++ -- 379
+- -- 290
+* -- 2221
+:= -- 4876
+add.period$ -- 239
+call.type$ -- 59
+change.case$ -- 343
+chr.to.int$ -- 53
+cite$ -- 60
+duplicate$ -- 1212
+empty$ -- 2075
+format.name$ -- 450
+if$ -- 5331
+int.to.chr$ -- 7
+int.to.str$ -- 1
+missing$ -- 59
+newline$ -- 307
+num.names$ -- 238
+pop$ -- 355
+preamble$ -- 1
+purify$ -- 332
+quote$ -- 0
+skip$ -- 871
+stack$ -- 0
+substring$ -- 1816
+swap$ -- 197
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 516
+warning$ -- 1
+while$ -- 268
+width$ -- 0
+write$ -- 771
+(There was 1 warning)

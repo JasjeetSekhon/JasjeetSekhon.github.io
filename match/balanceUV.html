@@ -1,0 +1,213 @@
+<html><head><title>R: Univariate Balance Tests</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score   Software, Causal Inference, Causality, Sekhon">
+<meta name="keywords" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score Software, Causal Inference, Causality, Jasjeet Sekhon, Jas Sekhon, Sekhon, Jas">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for balanceUV {Matching}"><tr><td>balanceUV {Matching}</td><td align="right">R Documentation</td></tr></table>
+<h2>Univariate Balance Tests</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function provides a number of univariate balance metrics.
+Generally, users should call <code><a href="MatchBalance.html">MatchBalance</a></code> and not this function
+directly.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+balanceUV(Tr, Co, weights = rep(1, length(Co)), exact = FALSE, ks=FALSE,
+          nboots = 1000, paired=TRUE, match=FALSE,
+          weights.Tr=rep(1,length(Tr)), weights.Co=rep(1,length(Co)),
+          estimand="ATT")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Tr</code></td>
+<td>
+A vector containing the treatment observations.</td></tr>
+<tr valign="top"><td><code>Co</code></td>
+<td>
+A vector containing the control observations.</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+A vector containing the observation specific
+weights. Only use this option when the treatment and control
+observations are paired (as they are after matching).</td></tr>
+<tr valign="top"><td><code>exact</code></td>
+<td>
+A logical flag indicating if the exact Wilcoxon test
+should be used instead of the test with a correction.  See
+<code><a href="../../stats/html/wilcox.test.html">wilcox.test</a></code> for details.</td></tr>
+<tr valign="top"><td><code>ks</code></td>
+<td>
+A logical flag for if the univariate bootstrap
+Kolmogorov-Smirnov (KS) test should be calculated.  If the ks option
+is set to true, the univariate KS test is calculated for all
+non-dichotomous variables.  The bootstrap KS test is consistent even
+for non-continuous variables.  See <code><a href="ks.boot.html">ks.boot</a></code> for more
+details.</td></tr>
+<tr valign="top"><td><code>nboots</code></td>
+<td>
+The number of bootstrap samples to be run for the
+<code>ks</code> test.  If zero, no bootstraps are done.  Bootstrapping is
+highly recommended because the bootstrapped Kolmogorov-Smirnov test
+only provides correct coverage even for non-continuous covariates. At
+least 500 <code>nboots</code> (preferably 1000) are
+recommended for publication quality p-values.</td></tr>
+<tr valign="top"><td><code>paired</code></td>
+<td>
+A flag for if the paired <code><a href="../../stats/html/t.test.html">t.test</a></code> should be used.</td></tr>
+<tr valign="top"><td><code>match</code></td>
+<td>
+A flag for if the <code>Tr</code> and <code>Co</code> objects are the result
+of a call to <code><a href="Match.html">Match</a></code>.</td></tr>
+<tr valign="top"><td><code>weights.Tr</code></td>
+<td>
+A vector of weights for the treated observations.</td></tr>
+<tr valign="top"><td><code>weights.Co</code></td>
+<td>
+A vector of weights for the control observations.</td></tr>
+<tr valign="top"><td><code>estimand</code></td>
+<td>
+This determines if the standardized mean difference
+returned by the <code>sdiff</code> object is standardized by the variance of
+the treatment observations (which is done if the estimand is either
+"ATE" or "ATT") or by the variance of the control observations (which
+is done if the estimand is "ATC").</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>sdiff</code></td>
+<td>
+This is the standardized difference between the treated
+and control units multiplied by 100.  That is, 100 times the mean
+difference  between treatment and control units divided by the standard
+deviation of the treatment
+observations alone if the estimand is either <code>ATT</code> or
+<code>ATE</code>.  The variance of the control observations are used if
+the estimand is <code>ATC</code>.</td></tr>
+<tr valign="top"><td><code>sdiff.pooled</code></td>
+<td>
+This is the standardized difference between the
+treated and control units multiplied by 100 using the pooled
+variance.  That is, 100 times the mean
+difference between treatment and control units divided by the pooled standard deviation as in
+Rosenbaum and Rubin (1985).</td></tr>
+<tr valign="top"><td><code>mean.Tr</code></td>
+<td>
+The mean of the treatment group.</td></tr>
+<tr valign="top"><td><code>mean.Co</code></td>
+<td>
+The mean of the control group.</td></tr>
+<tr valign="top"><td><code>var.Tr</code></td>
+<td>
+The variance of the treatment group.</td></tr>
+<tr valign="top"><td><code>var.Co</code></td>
+<td>
+The variance of the control group.</td></tr>
+<tr valign="top"><td><code>p.value</code></td>
+<td>
+The p-value from the two-sided weighted <code><a href="../../stats/html/t.test.html">t.test</a></code>.</td></tr>
+<tr valign="top"><td><code>var.ratio</code></td>
+<td>
+var.Tr/var.Co.</td></tr>
+<tr valign="top"><td><code>ks</code></td>
+<td>
+The object returned by <code><a href="ks.boot.html">ks.boot</a></code>.</td></tr>
+<tr valign="top"><td><code>tt</code></td>
+<td>
+The object returned by two-sided weighted
+<code><a href="../../stats/html/t.test.html">t.test</a></code>.</td></tr>
+<tr valign="top"><td><code>qqsummary</code></td>
+<td>
+The return object from a call to
+<code><a href="qqstats.html">qqstats</a></code> with standardization&mdash;i.e., balance test
+based on the empirical CDF.</td></tr>
+<tr valign="top"><td><code>qqsummary.raw</code></td>
+<td>
+The return object from a call to
+<code><a href="qqstats.html">qqstats</a></code> without standardization&ndash;i.e., balance tests
+based on the empirical QQ-plot which retain the scale of the
+variable.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Sekhon, Jasjeet S. 2011.  "Multivariate and Propensity Score
+Matching Software with Automated Balance Optimization.&rdquo;
+<EM>Journal of Statistical Software</EM> 42(7): 1-52.
+<a href="http://www.jstatsoft.org/v42/i07/">http://www.jstatsoft.org/v42/i07/</a>
+</p>
+<p>
+Diamond, Alexis and Jasjeet S. Sekhon. 2005. "Genetic Matching for
+Estimating Causal Effects: A General Multivariate Matching Method for
+Achieving Balance in Observational Studies.&rdquo;  Working Paper.
+<a href="http://sekhon.berkeley.edu/papers/GenMatch.pdf">http://sekhon.berkeley.edu/papers/GenMatch.pdf</a>
+</p>
+<p>
+Sekhon, Jasjeet Singh and Richard D. Grieve. 2011. "A Matching Method
+For Improving Covariate Balance in Cost-Effectiveness Analyses."
+<EM>Health Economics</EM>. forthcoming.
+</p>
+<p>
+Sekhon, Jasjeet S. 2006.  ``Alternative Balance Metrics for Bias
+Reduction in Matching Methods for Causal Inference.''  Working Paper.
+<a href="http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf">http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf</a>
+</p>
+<p>
+Rosenbaum, Paul R. and Donald B. Rubin. 1985. ``Constructing a Control
+Group Using Multivariate Matched Sampling Methods That Incorporate the
+Propensity Score.'' <EM>The American Statistician</EM> 39:1 33-38.
+</p>
+<p>
+Hollander, Myles and Douglas A. Wolfe. 1973. <EM>Nonparametric
+statistical inference</EM>. New York: John Wiley &amp; Sons.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+Also see <code><a href="summary.balanceUV.html">summary.balanceUV</a></code>, <code><a href="qqstats.html">qqstats</a></code>
+<code><a href="ks.boot.html">ks.boot</a></code>, <code><a href="Match.html">Match</a></code>, <code><a href="GenMatch.html">GenMatch</a></code>,
+<code><a href="MatchBalance.html">MatchBalance</a></code>,
+<code><a href="GerberGreenImai.html">GerberGreenImai</a></code>, <code><a href="lalonde.html">lalonde</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(lalonde)
+attach(lalonde)
+
+foo  &lt;- balanceUV(re75[treat==1],re75[treat!=1])
+summary(foo)
+
+</pre>
+
+
+<hr><div align="center"><a href="http://sekhon.polisci.berkeley.edu/matching/">Return to Jasjeet
+Sekhon's Matching Software Page</a></div>
+
+</body></html>

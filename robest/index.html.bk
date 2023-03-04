@@ -1,0 +1,68 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Jasjeet Sekhon, Harvard  University, Assistant Professor,Department of Government.">
+   <meta name="keywords" content="Jasjeet Sekhon, Jas Sekhon, Sekhon,
+   Jas, Robust Estimation">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.17-21mdksmp i686) [Netscape]">
+   <title>Robust Estimation Software</title>
+</head>
+
+<body>
+
+<link rel="stylesheet"
+href="http://jsekhon.fas.harvard.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+<h1>
+Robust Estimation Software</h1>
+
+<a href="http://macht.arts.cornell.edu/wrm1/">Walter R. Mebane,
+Jr.</a> and <a href="http://jsekhon.fas.harvard.edu/">Jasjeet
+S. Sekhon</a>
+
+<br><br> This website is for the distribution of robust estimation
+software for <b><a href="http://www.r-project.org/">R</a></b>.
+Currently available is <b> <a
+href="multinomRob.html">multinomRob()</a>
+</b> which provides the hyperbolic tangent estimator for overdispersed
+multinomial regression models of count data described in "<a
+href="http://elections.fas.harvard.edu/election2000/MebaneSekhon.multinom.pdf">Robust
+Estimation and Outlier Detection for Overdispersed Multinomial Models
+of Count Data</a>," <I>American Journal of Political Science</I> 2004,
+48 (April): 391-410. The package is also able to estimate overdispersed
+grouped multinomial logistic and additive multivariate-<I>T</I>
+logistic models.
+
+<br><br>
+<dl>
+<dd>
+<b> <a href="http://www.r-project.org/">R</a></b> Source Package: <a
+href="http://jsekhon.fas.harvard.edu/robest/multinomRob_1.0.tar.gz">multinomRob_1.0.tar.gz</a></dd>
+<br> <dd> Windows' Binary Packages: <dl> <dd> R-1.8: <a
+href="http://jsekhon.fas.harvard.edu/robest/R-1.8.0/multinomRob.zip">multinomRob.zip</a></dd>
+<dd> R-1.7.0: <a
+href="http://jsekhon.fas.harvard.edu/robest/R-1.7.0/multinomRob.zip">multinomRob.zip</a></dd>
+<dd> R-1.6.1: <a
+href="http://jsekhon.fas.harvard.edu/robest/R-1.6.1/multinomRob.zip">multinomRob.zip</a></dd>
+</dl> </dd> 
+<br>
+<dd> Help page for <a href="multinomRob.html">multinomRob()</a>.  </dl>
+
+<br>
+<br>
+<small><small> <a href="http://jsekhon.fas.harvard.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+</body>
+</html>
+<!--  LocalWords:  html charset iso css multinomRob
+ -->

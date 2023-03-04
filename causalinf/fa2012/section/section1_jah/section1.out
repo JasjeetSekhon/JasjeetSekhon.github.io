@@ -1,0 +1,12 @@
+\BOOKMARK [1][-]{section.1}{OLS in Matrix Form}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Deriving }{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Deriving 2}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{The Hat Matrix}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{The OLS assumptions}{}% 5
+\BOOKMARK [1][-]{section.3}{Gauss-Markov Theorem}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{What does BLUE mean?}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{The ``U"}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Unbiasedness of }{subsection.3.2}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Unbiasedness of 2}{subsection.3.2}% 10
+\BOOKMARK [2][-]{subsection.3.3}{The ``B''}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{The Sherlock Holmes approach to Regression}{}% 12

@@ -1,0 +1,12 @@
+abd:  abducted by the LRA (treatment)
+C_ach – C_pal: Location indicators (each abbreviation corresponds to a sub-district; i.e. ach = Acholibur, etc.)
+age: age in years
+fthr_ed: father's education (years)
+mthr_ed: mother's education (years)
+orphan96: indicator if parent's died before 1997
+hh_fthr_frm: indicator if father is a farmer
+hh_size96: household size in 1996
+educ: years of education
+distress: index of emotional distress (0-15)
+log.wage: log of average daily wage earned in last 4 weeks
+

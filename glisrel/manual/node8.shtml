@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Genetic Operator Controls</TITLE>
+<META NAME="description" CONTENT="Genetic Operator Controls">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node9.shtml">
+<LINK REL="previous" HREF="node7.shtml">
+<LINK REL="up" HREF="manual.shtml">
+<LINK REL="next" HREF="node9.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html113"
+ HREF="node9.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html111"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html105"
+ HREF="node7.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html114"
+ HREF="node9.shtml">Example Files</A>
+<B> Up:</B> <A NAME="tex2html112"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html106"
+ HREF="node7.shtml">Starting Values</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00080000000000000000">&#160;</A>
+<A NAME="controls:top">&#160;</A>
+<BR>
+Genetic Operator Controls
+</H1>
+
+<P>
+The <B>genetic operator controls</B> section defines the four setups used by
+GENBLIS to control GENOUD's EP operators.  This section is not required.
+GENBLIS has four different control setups defined by the following keywords:
+<TT>control</TT> (used for the original sample); <TT>control.big</TT> (used in the
+original sample and when there is a convergence failure in either the jackknives or
+the bootstraps); <TT>control.jack</TT> (used for the jackknives); and
+<TT>control.boot</TT> (used for the bootstraps).  Each control defines 9
+different variables: the number of uses of each of 8 operators, and the
+gradient convergence tolerance.  GENBLIS decides that it has found a minimum
+of 
+<!-- MATH: $F_{\text{ML}}$ -->
+<IMG
+ WIDTH="37" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$F_{\text{ML}}$">
+only if the absolute value of each gradient element is
+smaller than the gradient convergence tolerance.  The default tolerance is
+<TT>1.0e-9</TT>.
+
+<P>
+The syntax is <I>control-file-keyword</I> followed by up to 9 numbers.
+The first 8 numbers define the number of operators of the chosen type.  The
+9<SUP><I>th</I></SUP> number is the gradient tolerance.  Obviously, the first 8 numbers
+must be integers.  The first 8 numbers refer to the operators in the
+following order: uniform mutation (50); boundary mutation (0); non-uniform
+mutation (50); polytope crossover (50); multiple point simple crossover
+(50); whole non-uniform mutation (50); heuristic crossover (50); and
+local-minimum crossover (0).  The number in brackets is the default number
+of operators of each type that GENBLIS uses. The <A HREF="node8.shtml#tab:genoud">GENBLIS Operator
+  Table</A> describes each operator in detail.
+
+<P>
+None of the control files need to described in this section.  If the
+<TT>control</TT> file is set and another of the given files is not set, it
+is set equal to the <TT>control</TT> file.  If only part of a control files
+arguments is listed (e.g., <TT>control.big</TT> is only followed by 3
+numbers) the rest of the operators and the gradient tolerance are set to
+equal the default values listed above. <BR>
+<BR>
+<BR>
+
+<P>
+<B>GENBLIS Operators</B>
+<A NAME="tab:genoud">&#160;</A><DL COMPACT>
+<DT>1.
+<DD>Uniform Mutation.  At random choose 
+<!-- MATH: $i\in\mathbf{N}$ -->
+<IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.gif"
+ ALT="$i\in\mathbf{N}$">.
+Select a value
+
+<!-- MATH: $\tilde{x}_i \sim U(\underline{x}_i, \overline{x}_i)$ -->
+<IMG
+ WIDTH="109" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.gif"
+ ALT="$\tilde{x}_i \sim U(\underline{x}_i, \overline{x}_i)$">.
+Set
+  
+<!-- MATH: $X_i=\tilde{x}_i$ -->
+<IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.gif"
+ ALT="$X_i=\tilde{x}_i$">.
+<BR>
+
+<P>
+<DT>2.
+<DD>Boundary Mutation.  At random choose 
+<!-- MATH: $i\in\mathbf{N}$ -->
+<IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.gif"
+ ALT="$i\in\mathbf{N}$">.
+Set either
+  
+<!-- MATH: $X_i=\underline{x}_i$ -->
+<IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.gif"
+ ALT="$X_i=\underline{x}_i$">
+or 
+<!-- MATH: $X_i=\overline{x}_i$ -->
+<IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.gif"
+ ALT="$X_i=\overline{x}_i$">,
+with probability 1/2 of
+  using each value.  <BR>
+
+<P>
+<DT>3.
+<DD>Non-uniform Mutation.  At random choose 
+<!-- MATH: $i\in\mathbf{N}$ -->
+<IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.gif"
+ ALT="$i\in\mathbf{N}$">.
+Compute
+  
+<!-- MATH: $p = (1-t/T)^B u$ -->
+<I>p</I> = (1-<I>t</I>/<I>T</I>)<SUP><I>B</I></SUP> <I>u</I>, where <I>t</I> is the current generation number, <I>T</I> is the
+  maximum number of generations, <I>B</I>&gt;0 is a tuning parameter and 
+<!-- MATH: $u \sim
+U(0,1)$ -->
+<IMG
+ WIDTH="90" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.gif"
+ ALT="$u \sim
+U(0,1)$">.
+Set either 
+<!-- MATH: $X_i=(1-p)x_i + p\underline{x}_i$ -->
+<IMG
+ WIDTH="161" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.gif"
+ ALT="$X_i=(1-p)x_i + p\underline{x}_i$">
+or 
+<!-- MATH: $X_i=(1-p)x_i +
+p\overline{x}_i$ -->
+<IMG
+ WIDTH="161" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.gif"
+ ALT="$X_i=(1-p)x_i +
+p\overline{x}_i$">,
+with probability 1/2 of using each value.  <BR>
+
+<P>
+<DT>4.
+<DD>Polytope Crossover.  Using 
+<!-- MATH: $m=\max(2,n)$ -->
+<IMG
+ WIDTH="116" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$m=\max(2,n)$">
+vectors 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> from the
+  current population and <I>m</I> random numbers 
+<!-- MATH: $p_j\in(0,1)$ -->
+<IMG
+ WIDTH="80" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.gif"
+ ALT="$p_j\in(0,1)$">
+such that
+  
+<!-- MATH: $\sum_{j=1}^m p_j = 1$ -->
+<IMG
+ WIDTH="98" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif"
+ ALT="$\sum_{j=1}^m p_j = 1$">,
+set 
+<!-- MATH: $\mathbf{X} = \sum_{j=1}^m p_j
+\mathbf{x}_j$ -->
+<IMG
+ WIDTH="122" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.gif"
+ ALT="$\mathbf{X} = \sum_{j=1}^m p_j
+\mathbf{x}_j$">.
+<BR>
+
+<P>
+<DT>5.
+<DD>Multiple Point Simple Crossover.  Choose a random number
+  
+<!-- MATH: $m\in\mathbf{N}$ -->
+<IMG
+ WIDTH="57" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif"
+ ALT="$m\in\mathbf{N}$">
+of distinct integers <I>i</I> from 
+<!-- MATH: $\mathbf{N}$ -->
+<B>N</B>.  Using two
+  parameter vectors, 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> and 
+<!-- MATH: $\mathbf{y}$ -->
+<B>y</B>, for each <I>i</I> set 
+<!-- MATH: $X_i = p
+x_i + (1-p) y_i$ -->
+<I>X</I><SUB><I>i</I></SUB> = <I>p</I>
+  <I>x</I><SUB><I>i</I></SUB> + (1-<I>p</I>) <I>y</I><SUB><I>i</I></SUB> and 
+<!-- MATH: $Y_i = p y_i + (1-p) x_i$ -->
+<I>Y</I><SUB><I>i</I></SUB> = <I>p y</I><SUB><I>i</I></SUB> + (1-<I>p</I>) <I>x</I><SUB><I>i</I></SUB>, where <IMG
+ WIDTH="73" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif"
+ ALT="$p\in(0,1)$">
+is a fixed
+  number. <BR>
+
+<P>
+<DT>6.
+<DD>Whole Non-uniform Mutation.  Do non-uniform mutation for all the
+  elements of 
+<!-- MATH: $\mathbf{X}$ -->
+<B>X</B>.  <BR>
+
+<P>
+<DT>7.
+<DD>Heuristic Crossover.  Choose 
+<!-- MATH: $p \sim U(0,1)$ -->
+<IMG
+ WIDTH="89" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif"
+ ALT="$p \sim U(0,1)$">.
+Using two parameter
+  vectors, 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> and 
+<!-- MATH: $\mathbf{y}$ -->
+<B>y</B>, compute 
+<!-- MATH: $\mathbf{z} =
+p(\mathbf{x} - \mathbf{y}) + \mathbf{x}$ -->
+<B>z</B> =
+  <I>p</I>(<B>x</B> - <B>y</B>) + <B>x</B>.  If 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> satisfies
+  all constraints, use it.  Otherwise choose another <I>p</I> value and repeat.
+  Set 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> equal to the better of 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> and 
+<!-- MATH: $\mathbf{y}$ -->
+<B>y</B> if
+  a satisfactory mixed 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> is not found by a preset number of
+  attempts.  In this fashion produce two 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> vectors.  <BR>
+
+<P>
+<DT>8.
+<DD>Local-minimum Crossover.  Choose 
+<!-- MATH: $p \sim U(0,1)$ -->
+<IMG
+ WIDTH="89" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif"
+ ALT="$p \sim U(0,1)$">.
+Starting with
+  
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B>, run BFGS optimization up to a preset number of iterations to
+  produce 
+<!-- MATH: $\mathbf{\tilde{x}}$ -->
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img46.gif"
+ ALT="$\mathbf{\tilde{x}}$">.
+Compute 
+<!-- MATH: $\mathbf{z} = p\mathbf{\tilde{x}} +
+(1-p)\mathbf{x}$ -->
+<IMG
+ WIDTH="140" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$\mathbf{z} = p\mathbf{\tilde{x}} +
+(1-p)\mathbf{x}$">.
+If 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> satisfies boundary constraints, use it.
+  Otherwise shrink <I>p</I> by setting <I>p</I> = <I>p</I>/2 and recompute 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B>.  If a
+  satisfactory 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> is not found by a preset number of attempts,
+  return 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B>.  This operators is extremely computationally
+  intensive, use sparingly. <BR>
+<BR>
+<BR>
+</DL>
+
+<P>
+<DIV ALIGN="LEFT">
+
+<!-- MATH: $\mathbf{X} =\begin{bmatrix}X_1,\dots,X_n\end{bmatrix}$ -->
+<IMG
+ WIDTH="142" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.gif"
+ ALT="$\mathbf{X} =\begin{bmatrix}X_1,\dots,X_n\end{bmatrix}$">
+is the vector of <I>n</I>
+  parameters <I>X</I><SUB><I>i</I></SUB>.  
+<!-- MATH: $\underline{x}_i$ -->
+<IMG
+ WIDTH="20" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.gif"
+ ALT="$\underline{x}_i$">
+is the lower bound and 
+<!-- MATH: $\overline{x}_i$ -->
+<IMG
+ WIDTH="20" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$\overline{x}_i$">
+  is the upper bound on values for <I>X</I><SUB><I>i</I></SUB>.  <I>x</I><SUB><I>i</I></SUB> is the current value of
+  <I>X</I><SUB><I>i</I></SUB>, and 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> is the current value of 
+<!-- MATH: $\mathbf{X}$ -->
+<B>X</B>.  
+<!-- MATH: $\mathbf{N}
+= \{1,\dots,n\}$ -->
+<IMG
+ WIDTH="119" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$\mathbf{N}
+= \{1,\dots,n\}$">.
+
+<!-- MATH: $p \sim U(0,1)$ -->
+<IMG
+ WIDTH="89" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif"
+ ALT="$p \sim U(0,1)$">
+means that <I>p</I> is drawn from the uniform
+  distribution on the [0,1] interval.
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html113"
+ HREF="node9.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html111"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html105"
+ HREF="node7.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html114"
+ HREF="node9.shtml">Example Files</A>
+<B> Up:</B> <A NAME="tex2html112"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html106"
+ HREF="node7.shtml">Starting Values</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

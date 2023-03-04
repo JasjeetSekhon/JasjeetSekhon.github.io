@@ -1,0 +1,189 @@
+\documentclass[11pt]{report}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{fullpage}
+\usepackage{latexsym}
+\usepackage{setspace}
+\usepackage{natbib}
+
+\newcommand{\indep}{\perp\!\!\!\perp}
+\newcommand{\cov}[0]{\text{cov}}
+\newcommand{\var}[0]{\text{var}}
+\newcommand{\E}[0]{\mathbb{E}}
+\begin{document}
+
+\flushright
+Mike Higgins\\
+Stat 239A\\
+Midterm\\
+\flushleft
+\begin{itemize}
+\item[2a)]
+	Let $p_{j,k}$ denote the proportion of candidates with $D_i = j$ and $R_i = k$.
+	We can write
+	\begin{eqnarray}
+	&&\E(Y_i(1) - Y_i(0))\nonumber \\
+	&=&\E(Y_i(1) - Y_i(0)| D_i = 1, R_i = 1)p_{1,1} +
+	   \E(Y_i(1) - Y_i(0)| D_i = 1, R_i = 0)p_{1,0}\nonumber \\
+	&+&\E(Y_i(1) - Y_i(0)| D_i = 0, R_i = 1)p_{0,1}+
+		 \E(Y_i(1) - Y_i(0)| D_i = 0, R_i = 0)p_{0,0}.
+	\label{condexps}
+	\end{eqnarray}
+	It follows from \eqref{condexps} that
+	\begin{align}
+		\E(\hat \delta_{naive})  = & \E(Y_i(1)|D_i = 1, R_i = 1) - \E(Y_i(0)|D_i = 0, R_i = 1) 
+		\nonumber \\
+		= &\E(Y_i(1) - Y_i(0)) -\E(Y_i(1) - Y_i(0)| D_i = 1, R_i = 0)p_{1,0} \nonumber \\
+		 &- \E(Y_i(1) - Y_i(0)| D_i = 0, R_i = 0)p_{0,0} + \E(Y_i(0)| D_i = 1, R_i = 1)p_{1,1} 
+		 \nonumber \\
+		 & - \E(Y_i(1)| D_i = 0, R_i = 1)p_{0,1} + \E(Y_i(1)| D_i = 1, R_i = 1)(1 - p_{1,1}) \nonumber \\
+		 & - \E(Y_i(0)|D_i = 0, R_i = 1)(1 - p_{0,1}).
+		 \label{ugequal}
+	\end{align}
+	Thus, the bias in the estimator is
+	\begin{align}
+		Bias(\hat \delta_{naive}) = &
+		 - \E(Y_i(1) - Y_i(0)| D_i = 1, R_i = 0)p_{1,0} -\E(Y_i(1) - Y_i(0)| D_i = 0, R_i = 0)p_{0,0} \nonumber \\
+		 & + \E(Y_i(0)| D_i = 1, R_i = 1)p_{1,1}  - \E(Y_i(1)| D_i = 0, R_i = 1)p_{0,1} \nonumber \\
+		 & + \E(Y_i(1)| D_i = 1, R_i = 1)(1 - p_{1,1}) - \E(Y_i(0)|D_i = 0, R_i = 1)(1 - p_{0,1}). 
+		 \label{bias}
+	\end{align}
+\item[2b)] 
+	If $(Y_i(1),Y_i(0)) \indep D_i$, then \eqref{bias} simplifies to
+	\begin{align}
+		& - \E(Y_i(1) - Y_i(0)| R_i = 0)p_{1,0} - \E(Y_i(1) - Y_i(0)| R_i = 0)p_{0,0} \nonumber \\
+		 & + \E(Y_i(0)|  R_i = 1)p_{1,1}  - \E(Y_i(1)|  R_i = 1)p_{0,1} \nonumber \\
+		 & + \E(Y_i(1)|  R_i = 1)(1 - p_{1,1}) - \E(Y_i(0)| R_i = 1)(1 - p_{0,1}) \nonumber \\
+		 = &- \E(Y_i(1) - Y_i(0)| R_i = 0)(p_{1,0} + p_{0,0}) \nonumber \\
+		 & + \E(Y_i(1)| R_i = 1)(1 - p_{1,1} - p_{0,1}) \nonumber \\
+		 & - \E(Y_i(0)|R_i = 1)(1 - p_{1,1} - p_{0,1}).
+		 \label{simplertime}
+	\end{align}
+	Note that $p_{1,1} + p_{0,1} = \lambda$ and $p_{1,0} + p_{0,0} = 1 - \lambda$.
+	Thus, we can write the bias in \eqref{simplertime} as
+	\begin{equation}
+		 Bias(\hat \delta_{naive}) = \left [\E(Y_i(1) - Y_i(0)| R_i = 1)- 
+		 \E(Y_i(1) - Y_i(0)| R_i = 0)\right ](1-\lambda).
+		 \label{dabias}
+	\end{equation}
+	The bias is zero if and only if
+	the incumbency advantage among candidates
+	that run in the next election is the same 
+	as the advantage for those that do not run in the next election.
+\item[2c)]
+	If the incumbency advantage is at least as big among candidates that re-run,
+	and if the independence assumption holds,
+	then $Bias(\hat \delta_{naive}) \geq 0$.  
+	That is, the smallest possible value of $\E(\delta)$ is $\E(\hat \delta_{naive})$.
+	
+	Since $0 \leq Y_i(j) \leq 1$, it follows that $-1 \leq \E(Y_i(1) - Y_i(0)|R_i) \leq 1$.  
+	Thus, if the incumbency advantage is at least as big among candidates that re-run,
+	it follows that $Bias(\hat \delta_{naive}) \leq 2(1-\lambda).$
+	(If most of the candidates run in the next election, this bias is small).
+	
+	More precisely, under the assumption that $(Y_i(1),Y_i(0)) \indep D_i$,
+	it follows that $\E(\hat \delta_{naive}) = \E(Y_i(1) - Y_i(0)| R_i = 1)$.
+	Thus, 
+	\begin{eqnarray}
+	  Bias(\hat \delta_{naive}) &=& \E(\hat \delta_{naive}) - \E(\delta) \nonumber\\
+	  &=&\left [\E(\hat \delta_{naive})- \E(Y_i(1) - Y_i(0)| R_i = 0)\right ](1-\lambda)	
+	\end{eqnarray}
+	And so,
+	\begin{eqnarray}
+	  \E(\delta) = \lambda\E(\hat \delta_{naive}) + 
+	  (1-\lambda)\E(Y_i(1) - Y_i(0)| R_i = 0) \leq \lambda\E(\hat \delta_{naive}) + (1-\lambda)
+	\end{eqnarray}
+\item[3a)]
+	In this scenario, we have a 
+	binomial-randomized controlled experiment ($p$ = 0.5);
+	by design, we are guaranteed that treatment assignment is 
+	independent of potential outcome.
+	
+	A natural quantity to estimate given this design is the ATE of
+	the training program on status and income.  
+	We can make inferences about the ATE over all workers
+	in our study.
+	
+	Suppose there are $N$ workers in total.
+	Let $T_i = 1$ if worker $i$ participates in the 
+	training program, and $T_i = 0$ if the worker does not.
+	Let $Y_i(1)$ and $Y_i(0)$ denote the 
+	value of the response variable for worker $i$
+	(either status or income) under treatment
+	and control respectively.
+	Estimates of the ATE include:
+	\begin{equation}
+		\sum_{i = 1}^N \frac{Y_i(1)T_i}{\sum T_i} - \sum_{i = 1}^N \frac{Y_i(0)(1-T_i)}{\sum(1-T_i)}.
+	\end{equation}
+	and
+	\begin{equation}
+		\frac 1 {N/2}  \sum_{i = 1}^N Y_i(1)T_i - \frac 1 {N/2} \sum_{i = 1}^N Y_i(0)(1-T_i).
+	\end{equation}
+	Both estimates can be shown to be unbiased.
+%	We can estimate this unbiasedly using
+%	$$
+%		\frac{1}{\sum T_i}\sum_{T_i = 1} Y_i - \frac{1}{\sum( 1-T_i)}\sum_{T_i = 0} Y_i.
+%	$$
+	Inferences assume the SUTVA assumption.
+	Through this assumption,
+	we can test the (sharp) null hypothesis of no treatment effect
+	on all workers using a permutation test.
+%	Moreover, if we make further assumptions on how
+%	the treatments may effect workers,
+%	(say, a constant additive or multiplicative treatment effect),
+%	we can invert this hypothesis test and obtain confidence
+%	intervals for the ATE.
+\item[3b)]	
+	Despite randomization into treatment and control, 
+	we should not use the approach as in part a);
+	workers may respond differently depending on the
+	amount of compensation they receive before beginning the program.
+	
+	Instead, this may be a more reasonable assumption: 
+	the compensation for units that were assigned a number $X \approx 2$
+	is similar enough that the effect of treatment on units that had $X$ slightly
+	greater than 2 would be the same as the effect of treatment with 
+	for units with $X$ slightly less than 2 had they been assigned treatment.
+	Because assignment to treatment is determined by a fixed threshold of $X$, 
+	this suggests making inference using a (sharp) regression discontinuity design.
+	We would estimate the local average treatment effect (LATE) at $X = 2$;
+	$$
+		\E(Y_i(1) - Y_i(0) | X_i = 2).
+	$$
+
+	We can obtain an estimate of the local average
+	treatment effect (LATE) $\hat \beta$ at $X=2$ 
+	by fitting two OLS models (or LOESS, or whatever your favorite method is)
+         over data within some small bandwidth $\delta$ around $X = 2$;
+         one model fitted to data before the cutpoint and one fitted to data after the cutpoint.
+	The estimate of the LATE is the difference of the model estimates at the cutpoint.
+\item[3c)]
+	Let $Z_i = 1$ if the coin flips heads and let $Z_i = 0$ if the coin flips tails.
+	Let $P(Z_i = 1) = p$
+	Recall, the LATE is
+	$$
+	  \E(Y_i(1) - Y_i(0) | X_i = 2)
+	$$
+	What we estimate to the left of the cutpoint is:
+	$$
+	  \E(Y_i(0)|X_i = 2)
+	$$
+	and what we estimate to the right of the cutpoint is
+	$$
+	  p\E(Y_i(1) | X_i = 2, Z_i = 1) + (1-p)\E(Y_i(0) | X_i = 2, Z_i = 0)
+	$$
+	If smoothness conditions necessary for RD hold,
+	they will still hold in this model, as long as response is independent of the coin flip
+	(if people can self-select to be in treatment or control, this property will no longer hold).
+	The quantity estimated using RD will then be
+	$$
+	  p\E(Y_i(1) | X_i = 2) + (1-p)\E(Y_i(0) | X_i = 2) - \E(Y_i(0)|X_i = 2) =
+	  p(\E(Y_i(1) | X_i = 2) - \E(Y_i(0) | X_i = 2))
+	$$
+	This expectation scales with the probability of heads of the coin flip.
+	If $p$ is known, an estimate of the LATE can be obtained by 
+	estimating the LATE without factoring in the coin flip, and then dividing by $1/p$.
+\end{itemize}
+\end{document}

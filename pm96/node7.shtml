@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Tables</TITLE>
+<META NAME="description" CONTENT="Tables">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="next" HREF="node8.shtml">
+<LINK REL="previous" HREF="node6.shtml">
+<LINK REL="up" HREF="pm96.shtml">
+<LINK REL="next" HREF="node8.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html95"
+ HREF="node8.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html93"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html87"
+ HREF="node6.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html96"
+ HREF="node8.shtml">References</A>
+<B> Up:</B> <A NAME="tex2html94"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html88"
+ HREF="node6.shtml">An Endogenous Switching Tobit</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+Tables</A>
+</H1>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="793">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 1:</STRONG>
+Kinder, Adams, Gronke Model Variables Names</CAPTION>
+<TR><TD><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>1</SUB> Personal General Economic Situation (ANES v140)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>2</SUB> Watched Budget (ANES v152/153)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>3</SUB> Personal Income/Inflation (ANES v154)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>4</SUB> Put off Buying (ANES v156)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>5</SUB> Put off Medical Treatment (ANES v157)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>6</SUB> Had to Borrow (ANES v158/159)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>7</SUB> Had to Use Savings (ANES v161/162)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>8</SUB> Missed Rent (ANES v165)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>9</SUB> Took Second Job (ANES v166)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>10</SUB> Group Economic Situation (ANES v176)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>11</SUB> Group Income/Inflation (ANES v187)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>12</SUB> Group Employment (ANES v192)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>13</SUB> National General Economic Situation (ANES v228)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>14</SUB> National Employment (ANES v240)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+<I>y</I><SUB>15</SUB> National Cost of Things (ANES v242)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+</TR>
+</TABLE>
+<DIV ALIGN="LEFT">
+<P>
+<P>
+Note: The variable numbers from the 1984 American National Election
+Study are in parentheses.
+
+<P>
+</DIV>
+<A NAME="kag:variables">&#160;</A></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="948">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 2:</STRONG>
+Cox Test of Pre-<I>Chadha</I> versus Post-<I>Chadha</I> Likelihoods</CAPTION>
+<TR><TD><A NAME="tab:coxtest">&#160;</A><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT" COLSPAN=3>Rescission proposals</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Fiscal Year</TD>
+<TD ALIGN="CENTER"><I>H</I><SUB>0</SUB>: pre v. <I>H</I><SUB>1</SUB>: post</TD>
+<TD ALIGN="CENTER"><I>H</I><SUB>0</SUB>: post v. <I>H</I><SUB>1</SUB>: pre</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1982</TD>
+<TD ALIGN="CENTER">(-.015, .008)</TD>
+<TD ALIGN="CENTER">(.113, .181)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1983</TD>
+<TD ALIGN="CENTER">(-.033, .019)</TD>
+<TD ALIGN="CENTER">(.023, .093)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1984</TD>
+<TD ALIGN="CENTER">(-.035, -.025)</TD>
+<TD ALIGN="CENTER">(-.052, .304)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1985</TD>
+<TD ALIGN="CENTER">--<SUP><I>a</I></SUP></TD>
+<TD ALIGN="CENTER">--<SUP><I>a</I></SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">1986</TD>
+<TD ALIGN="CENTER">(-.067, .026)</TD>
+<TD ALIGN="CENTER">(-.036, .096)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1987</TD>
+<TD ALIGN="CENTER">(-.006, .005)</TD>
+<TD ALIGN="CENTER">(-.010, .016)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" COLSPAN=3><P>
+Deferral proposals</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Fiscal Year</TD>
+<TD ALIGN="CENTER"><I>H</I><SUB>0</SUB>: pre v. <I>H</I><SUB>1</SUB>: post</TD>
+<TD ALIGN="CENTER"><I>H</I><SUB>0</SUB>: post v. <I>H</I><SUB>1</SUB>: pre</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1982</TD>
+<TD ALIGN="CENTER">(-.131, .082)</TD>
+<TD ALIGN="CENTER">(-.100, .097)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1983</TD>
+<TD ALIGN="CENTER">(-.087, .051)</TD>
+<TD ALIGN="CENTER">(1.138, 1.455)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1984</TD>
+<TD ALIGN="CENTER">--<SUP><I>b</I></SUP></TD>
+<TD ALIGN="CENTER">--<SUP><I>b</I></SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">1985</TD>
+<TD ALIGN="CENTER">--<SUP><I>c</I></SUP></TD>
+<TD ALIGN="CENTER">--<SUP><I>c</I></SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">1986</TD>
+<TD ALIGN="CENTER">--<SUP><I>a</I></SUP></TD>
+<TD ALIGN="CENTER">--<SUP><I>a</I></SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">1987</TD>
+<TD ALIGN="CENTER">(.007, .013)</TD>
+<TD ALIGN="CENTER">(.118, .256)</TD>
+</TR>
+</TABLE>
+<DIV ALIGN="LEFT">
+Notes:  Confidence intervals are calibrated 95% parametric percentile intervals.
+
+<P>
+<SUP><I>a</I></SUP> The test is undefined because both <I>L</I><SUB>1</SUB> and <I>L</I><SUB>2</SUB> are unbounded.
+
+<P>
+<SUP><I>b</I></SUP> The test is undefined because <I>L</I><SUB>2</SUB> is unbounded.
+
+<P>
+<SUP><I>c</I></SUP> The test is undefined because <I>L</I><SUB>1</SUB> is unbounded.
+
+<P>
+</DIV>
+
+<P>
+</TD></TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html95"
+ HREF="node8.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html93"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html87"
+ HREF="node6.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html96"
+ HREF="node8.shtml">References</A>
+<B> Up:</B> <A NAME="tex2html94"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html88"
+ HREF="node6.shtml">An Endogenous Switching Tobit</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

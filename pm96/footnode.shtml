@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Footnotes</TITLE>
+<META NAME="description" CONTENT="Footnotes">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="previous" HREF="node8.shtml">
+<LINK REL="up" HREF="pm96.shtml">
+</HEAD>
+<BODY >
+
+<DL>
+<DT><A NAME="foot916">... domain.</A><A NAME="foot916"
+ HREF="node4.shtml#tex2html9"><SUP>1</SUP></A>
+<DD>Since 
+<!-- MATH: $h_i(\hat{\theta}_i(\omega))$ -->
+<IMG
+ WIDTH="72" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$h_i(\hat{\theta}_i(\omega))$">
+is a continuous function of the MLE (or QMLE) 
+<!-- MATH: $\hat{\theta}$ -->
+<IMG
+ WIDTH="13" HEIGHT="20" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\hat{\theta}$">,
+it is assumed
+that 
+<!-- MATH: $h_i(\hat{\theta}_i(\omega))$ -->
+<IMG
+ WIDTH="72" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$h_i(\hat{\theta}_i(\omega))$">
+is uniquely identified--i.e.,
+
+<!-- MATH: $h_i(\hat{\theta}_i(\omega))$ -->
+<IMG
+ WIDTH="72" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$h_i(\hat{\theta}_i(\omega))$">
+is nonsingular.  Therefore, taking the inverse
+of 
+<!-- MATH: $h_i(\hat{\theta}_i(\omega))$ -->
+<IMG
+ WIDTH="72" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$h_i(\hat{\theta}_i(\omega))$">
+does not break continuity.
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+<DT><A NAME="foot954">...<IMG
+ WIDTH="98" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.gif"
+ ALT="$(-1.15,\;
+.42)$">.</A><A NAME="foot954"
+ HREF="node5.shtml#tex2html10"><SUP>2</SUP></A>
+<DD>The intervals are the empirical percentiles of the differences
+
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}^* -\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="117" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}^* -\hat{M}_{\mathrm{lisrel}}$">.
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+<DT><A NAME="foot601">...
+To</A><A NAME="foot601"
+ HREF="node6.shtml#tex2html11"><SUP>3</SUP></A>
+<DD>The remaining discussion is taken with minor changes from Mebane
+and Wawro (1996).
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+<DT><A NAME="foot735">....</A><A NAME="foot735"
+ HREF="node6.shtml#tex2html12"><SUP>4</SUP></A>
+<DD>Barndorff-Nielsen and Cox (1994, 28-45) review
+conditioning and ancillarity.
+<PRE>.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+</PRE>
+</DL><ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

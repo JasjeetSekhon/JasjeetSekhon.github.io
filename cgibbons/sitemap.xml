@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/</loc>
+  <priority>1.00</priority>
+  <lastmod>2009-02-07T17:01:23+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/index.html</loc>
+  <priority>0.80</priority>
+  <lastmod>2009-02-07T17:01:23+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/vitae.html</loc>
+  <priority>0.80</priority>
+  <lastmod>2009-02-07T16:55:57+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/research.html</loc>
+  <priority>0.80</priority>
+  <lastmod>2009-02-07T17:01:24+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/teaching.html</loc>
+  <priority>0.80</priority>
+  <lastmod>2009-02-07T16:55:22+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/links.html</loc>
+  <priority>0.80</priority>
+  <lastmod>2009-02-07T08:04:02+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/current.html</loc>
+  <priority>0.80</priority>
+  <lastmod>2009-02-07T17:01:31+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Vita/GibbonsCV.pdf</loc>
+  <priority>0.64</priority>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Vita/education.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:55:56+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Vita/rexperience.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:55:57+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Vita/education2.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T17:01:24+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Vita/leadership.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:55:57+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Vita/honors.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:55:56+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Vita/uexperience.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:55:57+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/previous.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T17:01:24+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/writings.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T17:01:31+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/ugba101a.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:57:24+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/ph126.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:57:23+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/ps236.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:57:24+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/ps239.html</loc>
+  <priority>0.64</priority>
+  <lastmod>2009-02-07T16:57:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/Papers/LATEforSchool.pdf</loc>
+  <priority>0.64</priority>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/Papers/FixedEffects.pdf</loc>
+  <priority>0.64</priority>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/Papers/NAFTA.pdf</loc>
+  <priority>0.64</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/Papers/RPM.pdf</loc>
+  <priority>0.64</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/Papers/Investment.pdf</loc>
+  <priority>0.64</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Research/Papers/summercamp.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+<loc>http://cgibbons.berkeley.edu/Courses/UGBA101A_F07/UGBA_101A_F07_Section.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+<loc>http://cgibbons.berkeley.edu/Courses/UGBA101A_F07/Utility_maximization.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+<loc>http://cgibbons.berkeley.edu/Courses/UGBA101A_F07/First_exam_notes.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/Demand%20for%20health%20care.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/Supply%20of%20health%20care.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/Demand%20for%20insurance.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/Demand%20for%20physician%20services.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/Mandates.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/PS%201.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/PS%201%20solutions.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/126PrepQuestions.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/126FinalExam.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PH126_S08/Managed%20care.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/Section1.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/Expectations.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+<loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/TreatmentIntro.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/RandomizationInference.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/Matching.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/IV.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/StrategyComparisons.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/RD.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/PS1.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/PS1solutions.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/PS2.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+<loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/PS2solutions.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/PS3.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/PS3solutions.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS236_F08/PS4.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/PS236_F08/PS4solutions.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/PS236_F08/PS5.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/PS236_F08/GGScodebook.txt</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/PS236_F08/PS5solutions.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>http://cgibbons.berkeley.edu/Courses/PS239_S09/Design-Methods.pdf</loc>
+  <priority>0.51</priority>
+  <changefreq>yearly</changefreq>
+</url>
+</urlset>

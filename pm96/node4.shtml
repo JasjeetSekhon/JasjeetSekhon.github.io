@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bootstrapping </TITLE>
+<META NAME="description" CONTENT="Bootstrapping ">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="next" HREF="node5.shtml">
+<LINK REL="previous" HREF="node3.shtml">
+<LINK REL="up" HREF="node2.shtml">
+<LINK REL="next" HREF="node5.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html67"
+ HREF="node5.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html65"
+ HREF="node2.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html59"
+ HREF="node3.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html68"
+ HREF="node5.shtml">Application: Domains of Economic</A>
+<B> Up:</B> <A NAME="tex2html66"
+ HREF="node2.shtml">LISREL</A>
+<B> Previous:</B> <A NAME="tex2html60"
+ HREF="node3.shtml">The LISREL Cox Test</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00022000000000000000">
+Bootstrapping 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$"></A>
+</H2>
+
+<P>
+We show that 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$">
+meets the requirements of Corollary 1 of Beran
+and Srivastava (1985) and of the ``smooth function model'' (Hall 1992,
+52-68).  Hall's Proposition 3.1 (1992, 102) then applies to show that using a
+bootstrap-<I>t</I> method with 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$">
+can give second-order correct
+inferences.
+
+<P>
+Following Beran and Srivastava's notation, the statistic to be bootstrapped
+needs to be of the following form
+<BR><P></P>
+<DIV>
+
+<!-- MATH: \begin{equation}
+u \left [g(S_{n}^{*}) - g(\Sigma_{\hat{F}_{n}}) \right ]
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD NOWRAP><IMG
+ WIDTH="142" HEIGHT="38"
+ SRC="img27.gif"
+ ALT="\begin{displaymath}u \left [g(S_{n}^{*}) - g(\Sigma_{\hat{F}_{n}}) \right ]
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(5)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+Where 
+<!-- MATH: $\Sigma_{\hat{F}_{n}}$ -->
+<IMG
+ WIDTH="35" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$\Sigma_{\hat{F}_{n}}$">
+is the estimate of 
+<!-- MATH: $\Sigma_{F}$ -->
+<IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\Sigma_F$">
+in the original
+sample, and <I>S</I><SUB><I>n</I></SUB><SUP>*</SUP> is the bootstrap sample covariance matrix.  If 
+<!-- MATH: $\dim
+g(\omega) = m$ -->
+<IMG
+ WIDTH="109" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$\dim
+g(\omega) = m$">,
+then <I>u</I> is any real-valued continuous function on <I>R</I><SUP><I>m</I></SUP>
+such that 
+<!-- MATH: $\{z \in R^{m}: u(z) = c \}$ -->
+<IMG
+ WIDTH="156" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.gif"
+ ALT="$\{z \in R^{m}: u(z) = c \}$">
+has Lebesgue measure zero for every
+<I>c</I>.  <I>g</I> needs to be a function of observations and of a parameter of
+interest whose distribution can be estimated consistently.  It also needs to
+be continuously differentiable over its domain.  The elements of <IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img31.gif"
+ ALT="$\omega$">
+must
+have finite variance.
+
+<P>
+Let 
+<!-- MATH: $u = \operatorname{tr}$ -->
+<IMG
+ WIDTH="52" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img32.gif"
+ ALT="$u = \operatorname{tr}$">,
+and let 
+<!-- MATH: $g(\omega) = \left [
+h_{1}(\hat{\theta}_{1}(\omega))^{-1} -
+h_{0}(\hat{\theta}_{0}(\omega))^{-1} \right ] \left [ \omega - (
+h_{0}(\hat{\theta}_{0}(\omega)) \right ]$ -->
+<IMG
+ WIDTH="410" HEIGHT="48" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.gif"
+ ALT="$g(\omega) = \left [
+h_{1}(\hat{\theta}_{1}(\omega))^{-1} -
+h_{0}(\hat{\theta}_{...
+...ga))^{-1} \right ] \left [ \omega - (
+h_{0}(\hat{\theta}_{0}(\omega)) \right ] $">.
+Where
+
+<!-- MATH: $\hat{\theta}_{i}(\omega)$ -->
+<IMG
+ WIDTH="43" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.gif"
+ ALT="$\hat{\theta}_{i}(\omega)$">
+is the (
+<!-- MATH: $p \times 1$ -->
+<IMG
+ WIDTH="44" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.gif"
+ ALT="$p \times 1$">)
+vector of estimated LISREL
+parameters--
+<!-- MATH: $\hat{\Lambda}_{yi},\ \hat{\Lambda}_{xi},\ \hat{\mathrm{B}}_{i},\
+\hat{\Gamma}_{i},\  \hat{\Phi}_{i},\  \hat{\Psi}_{i},\  \hat{\Theta}_{\epsilon i},\
+\hat{\Theta}_{\delta i}$ -->
+<IMG
+ WIDTH="270" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.gif"
+ ALT="$\hat{\Lambda}_{yi},\ \hat{\Lambda}_{xi},\ \hat{\mathrm{B}}_{i},\
+\hat{\Gamma}_{...
+...hi}_{i},\ \hat{\Psi}_{i},\ \hat{\Theta}_{\epsilon i},\
+\hat{\Theta}_{\delta i}$">--which are MLEs (or QMLEs) based on <IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img31.gif"
+ ALT="$\omega$">,
+and let
+<BR>
+<IMG
+ WIDTH="664" HEIGHT="67" ALIGN="BOTTOM" BORDER="0"
+ SRC="img37.gif"
+ ALT="\begin{align}h_{i}(\theta_{i}) =
+\left [
+\begin{array}{cc}
+\Lambda_{yi}(\ma...
+...i_{i} \Lambda_{xi}^{\top} + \Theta_{\delta i}
+\end{array}\right ].
+\end{align}">
+<BR>
+Note that 
+<!-- MATH: $\hat{h}_i = h_i(\hat{\theta}_i(w))$ -->
+<IMG
+ WIDTH="113" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.gif"
+ ALT="$\hat{h}_i = h_i(\hat{\theta}_i(w))$">
+is a continuous function of the
+MLE 
+<!-- MATH: $\hat{\theta}$ -->
+<IMG
+ WIDTH="13" HEIGHT="20" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\hat{\theta}$">.
+
+<P>
+The application of Beran and Srivastava's Theorem 1 and Corollary 1 imposes
+only one additional assumption over what is required to prove the consistency
+of 
+<!-- MATH: $\hat{\theta}$ -->
+<IMG
+ WIDTH="13" HEIGHT="20" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\hat{\theta}$">.
+The relevant assumptions for consistency are that the
+observed data <I>w</I> be i.i.d., have finite second moments and that
+
+<!-- MATH: $\hat{\theta}$ -->
+<IMG
+ WIDTH="13" HEIGHT="20" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\hat{\theta}$">
+be uniquely identified (Anderson and Amemiya 1988).  From the
+MLE regularity conditions we get that both 
+<!-- MATH: $h_i(\hat{\theta}_i(\omega))$ -->
+<IMG
+ WIDTH="72" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$h_i(\hat{\theta}_i(\omega))$">
+and
+<I>S</I><SUB><I>n</I></SUB> are functions of the observations and that they are continuously
+differentiable over their domains.  The same properties hold for
+
+<!-- MATH: $h_i(\hat{\theta}_i(\omega))$ -->
+<IMG
+ WIDTH="72" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$h_i(\hat{\theta}_i(\omega))$">
+if 
+<!-- MATH: $\hat{\theta}$ -->
+<IMG
+ WIDTH="13" HEIGHT="20" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\hat{\theta}$">
+is not consistent for <IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img40.gif"
+ ALT="$\theta$">
+but is identifiably unique.  Because <IMG
+ WIDTH="39" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif"
+ ALT="$g(\omega)$">
+is composed only of linear
+combinations, multiplications, and inversions of 
+<!-- MATH: $\hat{h_{i}}$ -->
+<IMG
+ WIDTH="20" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.gif"
+ ALT="$\hat{h_{i}}$">
+and <I>S</I><SUB><I>n</I></SUB>,
+<IMG
+ WIDTH="39" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif"
+ ALT="$g(\omega)$">
+is a function of the observations and is continuously
+differentiable over its domain.<A NAME="tex2html9"
+ HREF="footnode.shtml#foot916"><SUP>1</SUP></A>
+
+<P>
+The MLE consistency assumptions give us almost everything we need to apply
+Corollary 1.  We only lack the assumption that the observed data <I>w</I> have
+finite fourth moments (required because the covariance elements <IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img31.gif"
+ ALT="$\omega$">
+must
+have finite variance).  Once this assumption is added, it follows that
+inferences (e.g., confidence intervals) from the bootstrap distribution of
+
+<!-- MATH: $\hat{M}^{*}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif"
+ ALT="$\hat{M}^{*}_{\mathrm{lisrel}}$">
+are consistent for inferences from the actual
+(unknown) distribution of 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$">.
+We then have from
+Corollary 1 that the bootstrap confidence limit has asymptotically the
+intended test level <IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img44.gif"
+ ALT="$\alpha$">.
+
+<P>
+The ``smooth function model'' (Hall 1992, 52ff) applies because, under
+asymptotic normality, the variance of 
+<!-- MATH: $J_{n} = S_{n} - \Sigma_{F}$ -->
+<IMG
+ WIDTH="111" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif"
+ ALT="$J_{n} = S_{n} - \Sigma_{F}$">
+is a smooth
+function of the fourth moments of the observed data.  We construct the <I>X</I>
+matrix of Hall (1994, 52) using the data and variables that define <I>J</I><SUB><I>n</I></SUB>.
+<BR><P></P>
+<DIV>
+
+<!-- MATH: \begin{equation}
+x_{i} = \left \{ \prod_{j=1}^{p} w_{ij}^{d_{j}} : 1 \le
+\sum_{j=1}^{p} d_{j} \le 4 \right \}
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD NOWRAP><IMG
+ WIDTH="242" HEIGHT="70"
+ SRC="img46.gif"
+ ALT="\begin{displaymath}x_{i} = \left \{ \prod_{j=1}^{p} w_{ij}^{d_{j}} : 1 \le
+\sum_{j=1}^{p} d_{j} \le 4 \right \}
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(6)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+where <I>i</I> indexes observation and <I>j</I> indexes variables.  
+<!-- MATH: $X=(x_{1}^{\top},
+x_{2}^{\top},\cdots,x_{n}^{\top})^{\top}$ -->
+<IMG
+ WIDTH="182" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$X=(x_{1}^{\top},
+x_{2}^{\top},\cdots,x_{n}^{\top})^{\top}$">.
+For <I>p</I> variables <IMG
+ WIDTH="59" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.gif"
+ ALT="$(p\ge2)$">,
+<I>X</I>
+will have 
+<!-- MATH: $4p + \left ( \begin{array}{c} p \\2 \end{array} \right ) 6$ -->
+<IMG
+ WIDTH="105" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.gif"
+ ALT="$ 4p + \left ( \begin{array}{c} p \\ 2 \end{array} \right ) 6 $">
+columns.
+
+<P>
+Because the variance of <I>J</I><SUB><I>n</I></SUB> is a smooth function of the mean of <I>X</I>, the
+``smooth function model'' applies and second-order correctness is achievable.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html67"
+ HREF="node5.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html65"
+ HREF="node2.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html59"
+ HREF="node3.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html68"
+ HREF="node5.shtml">Application: Domains of Economic</A>
+<B> Up:</B> <A NAME="tex2html66"
+ HREF="node2.shtml">LISREL</A>
+<B> Previous:</B> <A NAME="tex2html60"
+ HREF="node3.shtml">The LISREL Cox Test</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

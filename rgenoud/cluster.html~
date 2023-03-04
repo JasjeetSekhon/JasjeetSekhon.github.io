@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Intructions for Using the CALGRID Cluster </title>
+    <META NAME="description" CONTENT="R-GENetic Optimization Using Derivatives (RGENOUD) Home Page">
+    <META NAME="keywords" CONTENT="genoud, rgenoud, genetic optimization, genetic
+      algorithm, manual">
+    <META NAME="resource-type" CONTENT="document">
+    <META NAME="distribution" CONTENT="global">
+  </head>
+
+  <body>
+    <link rel="stylesheet"
+      href="http://sekhon.berkeley.edu/Traditional"
+      type="text/css"/>
+    <style type="text/css">
+      /*<![CDATA[*/
+      p {text-align: justify}
+      p.validity {text-align: right}
+      body {margin-left: 5%}
+      /*]]>*/
+    </style>
+
+    <h1>Instructions for Using the CALGRID Cluster </h1> 
+
+    By <a href="https://webfiles.berkeley.edu/~titiunik/">Rocio
+      Titiunik</a>.
+
+    <br><br>
+
+The calgrid cluster has 28 different nodes, each of which has 2
+chips. These 28 nodes are accessed from the master node, which is the
+node where you are at when you log in to the cluster. The master node
+is the node from where all other nodes in the cluster can be accessed;
+but once you log in to one of the 28 nodes, you cannot communicate
+with the other nodes in the cluster.
+
+You should never run jobs in the master node. Rather, you should run
+jobs in a given node, using that node's two chips if desired. The
+following steps will show you how to do exactly this: how to run a job
+in a node, and how to use the node's two chips when you are using R.
+
+In order to follow these steps successfully, though, you should know
+that calgrid's operating system is Unix, so you should be familiar
+with basic Unix commands. The following website at Indiana University
+is a good introduction: http://kb.iu.edu/data/afsk.html#du. Of course,
+there are many other Unix tutorials online, just use your favorite
+search engine.
+
+Also, there are some commands that are specific to the cluster. We
+will briefly explain the most basic ones. If you want more information
+on a given command, just type 'man commandname' at the cluster prompt.
+
+(a) 'pbsnodes -a ' checks the status of all of the nodes (see more details below).
+
+(b) 'qstat -a' checks the status of a job. Look for the job id number.
+
+(c) 'qdel' deletes (i.e. stops) jobs in the order in which the job id numbers are
+   presented to the command. So, if you want to delete a job whose id number is
+   4965, type 'qdel 4965'.
+
+(d) 'qsub -I' logs in to a node interactively. This will log you in
+   to any node. To log in to a specific node (for example, node 7) type
+   'qsub -I -l nodes="node0007"'.
+
+(e) 'qsub -l walltime=2:00:00 script' to submit a job which is called from the
+   file 'script' (see below for details).
+
+We are now ready to describe the steps that you need to follow in order to run
+a job in a node using the node's two chips:
+
+(1) Log in to the cluster: you are now in the master node.
+
+(2) Check which nodes are free by typing 'pbsnodes -a' at the
+prompt. You will see some output for each node. If the output of a
+given node is 'state = free', then that node is currently available
+and you can use it to run your jobs.
+
+(3) We will assume that there is a directory called 'test' in your
+home directory where there is a file called 'a1dual.R' (available at
+http://sekhon.berkeley.edu/rgenoud/test/).  This file runs GenMatch()
+using whatever number of chips are available in the node in which the
+file is executed. The 'snow' package must be installed and the library
+loaded in order to use multiple chips. The line 'cl <- NCPUS()'
+creates the cluster object by calling the function 'NCPUS()', and this
+object is then passed to 'GenMatch()' via the 'cluster' option. The
+function 'NCPUS()' is in the file 'AutoCluster3.R', which is in the
+directory '/home/software/lib64/snow.extra' in calgrid. You must
+source the file 'AutoCluster3.R' at the beginning of the R code you
+want to run, as shown in the 'a1dual.R' example file. Note that in
+order to source this file in the cluster you must specify the entire
+path to the directory, i.e. you must write
+'source("/home/software/lib64/snow.extra/AutoCluster3.R")'.
+
+The 'NCPUS()' function can be called with or without arguments.
+When the function 'NCPUS()' is executed with no arguments, as in this
+example, the number of chips available in the computer is
+automatically detected and a cluster is created using as many chips as
+there are available. Alternatively, the user can specify the precise
+number of chips to be used by passing the number of chips as an
+argument. For example, 'cl <- NCPUS(nchips=4)' would create a cluster
+using exactly four chips in the computer (assuming that the computer
+does have four chips). In the calgrid cluster, each node has two
+chips, so if you want to specify the number of chips by hand you
+should specify 'cl <- NCPUS(nchips=2)'.
+
+(4) We will now assume that we want to run the code 'a1dual.R' using
+the two chips of one of the cluster's nodes, and we want to run this
+code in the background (this is, we want to be able to leave the code
+running when we log out). For this we create the file 'run.csh', which
+contains the following two lines:
+
+#!/bin/csh
+R CMD BATCH --no-save ~/test/a1dual.R ~/test/a1dual.Rout
+
+This file will therefore execute the R code 'a1dual.R' in batch mode.
+
+
+(5) Now, the file 'run.csh' must be made executable. We do this by
+typing the command 'chmod u+x run.csh'.
+
+(6) We must now create a file that will execute the executable file
+'run.csh'. So, we create the file 'script', which contains the
+following single line:
+
+~/test/run.csh
+
+(7) Finally, we must now submit this job from the directory 'test'
+(remember that we are still in the master node). To do this, issue the
+command 'qsub -l walltime=2:00:00 script'. The option 'walltime'
+specifies the maximum running time, which in this example is set to
+two hours. If you expect your job to take longer, specify a large
+number of hours, for example, 'walltime=24:00:00'. When you submit a
+job in this way, the node to which the job is sent is automatically
+picked by the 'qsub' command. Letting the 'qsub' command assign the
+node automatically is generally to be preferred, since when more than
+one job is being run this command will pick chips and nodes
+efficiently.
+
+Nonetheless, this behavior can be overridden and a job can be
+submitted to a particular node. For example, if you wanted to submit
+the job to node 16, you would issue the command 'qsub -l
+nodes="node0016",walltime=2:00:00 script'. But as mentioned above, you
+should generally use the previous option.
+
+(8) Done. Your job is now running and you can log out using the 'exit'
+command.    
+
+    <hr>
+    <address><a href="mailto:sekhon@.berkeley.edu">Jasjeet S. Sekhon</a></address>
+<!-- Created: Thu Jan  3 03:36:35 PST 2008 -->
+<!-- hhmts start -->
+Last modified: Thu Jan  3 03:40:01 PST 2008
+<!-- hhmts end -->
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Jasjeet Sekhon, Harvard  University, Assistant Professor,Department of Government.">
+   <meta name="keywords" content="Jasjeet Sekhon, Jas Sekhon, Sekhon,
+   Jas, Robust Estimation">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.17-21mdksmp i686) [Netscape]">
+   <title>Robust Estimation Software</title>
+</head>
+
+<body>
+
+<link rel="stylesheet"
+href="http://sekhon.berkeley.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+<h1>
+Robust Estimation Software</h1>
+
+<a href="http://macht.arts.cornell.edu/wrm1/">Walter R. Mebane,
+Jr.</a> and <a href="http://sekhon.berkeley.edu/">Jasjeet
+S. Sekhon</a>
+
+<br><br> This website is for the distribution of robust estimation
+software for <b><a href="http://www.r-project.org/">R</a></b>.
+Currently available is <b> <a
+href="multinomRob.html">multinomRob()</a>
+</b> which provides the hyperbolic tangent estimator for overdispersed
+multinomial regression models of count data described in "<a
+href="http://elections.fas.harvard.edu/election2000/MebaneSekhon.multinom.pdf">Robust
+Estimation and Outlier Detection for Overdispersed Multinomial Models
+of Count Data</a>," <I>American Journal of Political Science</I> 2004,
+48 (April): 391-410. The package is also able to estimate
+overdispersed grouped multinomial logistic and multivariate-<I>t</I>
+logistic models.
+
+<br><br>  The easiest way to install multinomRob (if you have
+an active network connection) is to type, from either the Unix shell
+or the GUI terminal (Windows, Mac): <br> <dl> <dd>
+<B> > install.packages("multinomRob", dependencies=TRUE) </B> </dd> </dl><br> 
+
+Alternatively you can download the source or binary files yourself:
+<br><br>
+<b> <a href="http://www.r-project.org/">R</a></b> Source Package: <a
+href="http://sekhon.berkeley.edu/R/CRAN/src/contrib/multinomRob_1.8-4.tar.gz">multinomRob_1.8-4.tar.gz</a>
+<br> Windows Binary Package: <a
+href="http://cran.r-project.org/bin/windows/contrib/r-release/multinomRob_1.8-4.zip">multinomRob_1.8-4.zip</a>
+<br> OS X Universal Binary Package: <a
+href="http://cran.r-project.org/bin/macosx/leopard/contrib/r-release/multinomRob_1.8-4.tgz">multinomRob_1.8-4.tgz</a>
+<br> Other Binary Packages:  <a
+href="http://www.cran.r-project.org/bin">http://www.cran.r-project.org/bin</a>
+
+<br><br> 
+
+The help pages of the functions in the package are listed below.  End
+users should generally simply use the <a
+href="multinomRob.html">multinomRob</a> function.
+<br> <dl> <dd> 
+     <a href="multinomRob.html"><b>multinomRob:</b></a> Robust Multinomial Regression	<br>
+     <a href="multinomMLE.html"><b>multinomMLE:</b></a> Multinomial Regression Maximum Likelihood Estimator with Overdispersion <br>
+     <a href="multinomT.html"><b>multinomT:</b></a> Multinomial Multivariate-T Estimation <br>
+     <a href="multinomTanh.html"><b>multinomTanh:</b></a> Multinomial Regression Hyperbolic Tangent (Tanh) Estimator <br>
+     <a href="rmultinomial.html"><b>rmultinomial:</b></a> Random Number Generator for the Multinomial Distribution <br>
+     <a href="mGNtanh.html"><b>mGNtanh:</b></a> Multinomial Regression Hyperbolic Tangenet (Tanh) Estimator Gauss-Newton Optimization <br>
+
+</dl> </dd>
+
+<br>
+Replication archive: <a
+href="webex.09mar2004.zip">webex.09mar2004.zip</a>.
+
+
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+</body>
+</html>
+<!--  LocalWords:  html charset iso css multinomRob
+ -->

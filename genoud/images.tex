@@ -1,0 +1,196 @@
+\batchmode
+
+\documentclass[fleqn,titlepage,11pt]{article}
+\makeatletter
+\usepackage{epsfig}
+\usepackage{dcolumn}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{endnotes}
+\usepackage{html}
+
+\setlength{\oddsidemargin}{0in}  
+\setlength{\evensidemargin}{0in}  
+\setlength{\topmargin}{0in}  
+\setlength{\headheight}{0in}  
+\setlength{\headsep}{0in}  
+\setlength{\textwidth}{6.5in}  
+\setlength{\textheight}{9in}  
+
+\htmladdtonavigation{
+  \begin{rawhtml}    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">\end{rawhtml}
+  \htmladdnormallink{%
+\htmladdimg{http://data.fas.harvard.edu/jsekhon/pics/home.gif}}
+  {http://data.fas.harvard.edu/jsekhon/}}
+
+\providecommand{\mb}[1]{{\bf #1}}  %
+
+\renewcommand{\baselinestretch}{2}  \normalsize
+
+\renewcommand{\enoteheading}{\section*{Notes} }
+\renewcommand{\footnote}{\endnote}
+
+\providecommand{\eref}[1]{(\ref{#1})}  %
+\providecommand{\fref}[1]{Figure \ref{#1}}  %
+\providecommand{\tref}[1]{Table \ref{#1}}  %
+\par\usepackage[dvips]{color}
+\pagecolor[gray]{.7}
+
+\AtBeginDocument{\input /usr/local/work/xchg/genoud/text/genoud.aux }
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{} \catcode`\_=\count@
+\makeatother
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{349pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string\immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup}%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup%
+ \let\ifinner=\iffalse }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\def\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA[1]{\lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA[1]{\lthtmlmathtype{#1}\lthtmlhboxmathA  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA[1]{\lthtmlmathtype{#1}\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em\vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\setbox1=\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}\message{ht\the\ht1: dp\the\dp1}\box1}}
+\def\centerinlinemath{%\dimen1=\ht\sizebox
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize\expandafter\vfill
+  \else\expandafter\vss\fi}%
+\makeatletter \tracingstats = 1 
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\makeatother
+
+\setcounter{equation}{}
+{\newpage\clearpage
+\lthtmlfigureA{figure654}%
+\begin{figure}% latex2html id marker 654
+\begin{center}
+\epsfig{file=d10.eps, width=15cm}\par Mixture Density:
+\begin{math}
+\frac{1}{2}\mathrm{N}(0,1) + \sum_{m=0}^{4} \frac{1}{10} \mathrm{N}(\frac{m}{2}-1 , (\frac{1}{10}))
+\end{math}
+\par\vspace{.25in}
+\par The straight lines show the path that GENOUD took, in an example run, to find the solution. \\
+\par\vspace{.25in}
+\par See Tables \ref{tab:mix_small},\ref{tab:mix_large} for the Monte
+Carlo results.
+\par\end{center}
+\end{figure}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{figure679}%
+\begin{figure}% latex2html id marker 679
+\begin{center}
+\epsfig{file=d13.eps, width=15cm}\par Mixture Density:
+\begin{math}
+\sum_{m=0}^{1} \frac{46}{100} \mathrm{N}(2m-1,\frac{2}{3}) +
+\sum_{m=1}^{3} \frac{1}{300} \mathrm{N}(\frac{-m}{2},\frac{1}{100}) +
+\sum_{m=1}^{3} \frac{7}{300} \mathrm{N}(\frac{m}{2},\frac{7}{100})
+\end{math}
+\par\vspace{.25in}
+\par The straight lines show the path that GENOUD took, in an example run, to find the solution. \\
+\par\vspace{.25in}
+\par See Tables \ref{tab:mix_small},\ref{tab:mix_large} for the Monte Carlo results.
+\par\end{center}
+\end{figure}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{figure717}%
+\begin{figure}% latex2html id marker 717
+\begin{center}
+\epsfig{file=d15.eps, width=15cm}\par Mixture Density:
+\par\begin{math}
+\sum_{m=2}^{5} \frac{2}{7}\mathrm{N}(\frac{(12m-15)}{7},\frac{2}{7}) +
+\sum_{m=8}^{10} \frac{1}{21}\mathrm{N}(\frac{2m}{7},\frac{1}{21})
+\end{math}
+\par\vspace{.25in}
+\par The straight lines show the path that GENOUD took, in an example run, to find the solution. \\
+\par\vspace{.25in}
+\par See Tables \ref{tab:mix_small},\ref{tab:mix_large} for the Monte Carlo results.
+\par\end{center}
+\end{figure}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{figure748}%
+\begin{figure}% latex2html id marker 748
+\begin{center}
+\epsfig{file=d15b.eps, width=15cm}\par Mixture Density:
+\par\begin{math}
+\sum_{m=2}^{5} \frac{2}{7}\mathrm{N}(\frac{(12m-15)}{7},\frac{2}{7}) +
+\sum_{m=8}^{10} \frac{1}{21}\mathrm{N}(\frac{2m}{7},\frac{1}{21})
+\end{math}
+\par\vspace{.25in}
+\par The straight lines show the path that GENOUD took, in an example run, to find the solution. \\
+\par\vspace{.25in}
+\par See Tables \ref{tab:mix_small},\ref{tab:mix_large} for the Monte Carlo results.
+\end{center}
+\end{figure}%
+\lthtmlfigureZ
+\hfill\lthtmlcheckvsize\clearpage}
+
+
+\end{document}

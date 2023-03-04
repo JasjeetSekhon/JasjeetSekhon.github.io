@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{OLS as Prediction}{2}{0}{1}
+\beamer@sectionintoc {2}{Model-Based Inference}{15}{0}{2}
+\beamer@sectionintoc {3}{Regression and Causation}{30}{0}{3}

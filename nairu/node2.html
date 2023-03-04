@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Appendix: Hermite Polynomial Series</TITLE>
+<META NAME="description" CONTENT="Appendix: Hermite Polynomial Series">
+<META NAME="keywords" CONTENT="estimation">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="estimation.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="estimation.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html37"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html35"
+  HREF="estimation.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html29"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+   <meta name="description" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation of the Natural Rate of Unemployment">
+   <meta name="keywords" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation, NAIRU, Natural Rate of Unemployment, Harvard  University, Department of Government,Political Science, Political  Methodology, Political Economy, American Politics, Monetary and Fiscal  Policy, Financial Markets">
+  <A NAME="tex2html1"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.gif"
+ ALT="home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html38"
+  HREF="node3.html">References</A>
+<B> Up:</B> <A NAME="tex2html36"
+  HREF="estimation.html">Estimation of the Nonaccelerating</A>
+<B> Previous:</B> <A NAME="tex2html30"
+  HREF="node1.html">NAIRU Estimation</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000"></A>
+<A NAME="app:hermite"></A>
+<BR>
+Appendix: Hermite Polynomial Series
+</H1>
+
+<P>
+I use the Hermite polynomial series to estimate the NAIRU.  The Hermite
+series is often used to implement cubic splines (de Boor 1978).  Hermite
+polynomials form one of the families of classical orthogonal polynomials
+(Szeg&#246; 1975).  The variance-covariance matrix is often well-conditioned
+(Hinich and Roll 1981).  The Hermite polynomials may be defined for <IMG
+ WIDTH="44" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.png"
+ ALT="$ j &gt; 0$">
+by the recurrence relation
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation*}
+H^{j+1}(t) = 2t H^{j}(t) - 2j H^{j-1}(t).
+\end{equation*}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="233" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$\displaystyle H^{j+1}(t) = 2t H^{j}(t) - 2j H^{j-1}(t).$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="12" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ t$"> is the argument (time), <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.png"
+ ALT="$ j$"> is the order and where <!-- MATH
+ $H^{0}(t)=1$
+ -->
+<IMG
+ WIDTH="77" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.png"
+ ALT="$ H^{0}(t)=1$">
+and <IMG
+ WIDTH="82" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.png"
+ ALT="$ H^1(t)=2t$">.  The argument, <IMG
+ WIDTH="12" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ t$">, must be centered around 0 because the
+polynomials are orthogonal on the symmetric interval <!-- MATH
+ $\left(-\infty,\;
+\infty\right)$
+ -->
+<IMG
+ WIDTH="69" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.png"
+ ALT="$ \left(-\infty,\; \infty\right)$"> with respect to the weighting function <!-- MATH
+ $w(t) =
+e^{-t^{2}}$
+ -->
+<IMG
+ WIDTH="87" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.png"
+ ALT="$ w(t) = e^{-t^{2}}$">,
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation*}
+\int^{+\infty}_{-\infty} H^{j}(t)H^{k}(t)e^{-t^2} \;\; dt =
+  2^kk!\pi^{\frac{1}{2}}\delta^{jk}, \;\;\;\;\; j,k \ge 0.
+\end{equation*}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="348" HEIGHT="59" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$\displaystyle \int^{+\infty}_{-\infty} H^{j}(t)H^{k}(t)e^{-t^2} \;\; dt = 2^kk!\pi^{\frac{1}{2}}\delta^{jk}, \;\;\;\;\; j,k \ge 0.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+A few Hermite polynomials are listed below.  Note how quickly the
+polynomials increase in size.  This is one of the reasons why the
+parameters associated with the polynomials are extremely difficult to
+interpret.
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="46" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.png"
+ ALT="$\displaystyle H^{2}(t)$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="74" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.png"
+ ALT="$\displaystyle = 4 t^{2}-2$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="46" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.png"
+ ALT="$\displaystyle H^{3}(t)$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="91" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.png"
+ ALT="$\displaystyle = 8 t^{3} - 12 t$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="46" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.png"
+ ALT="$\displaystyle H^{4}(t)$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="142" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.png"
+ ALT="$\displaystyle = 16  t^{4} - 48  t^{2} + 12$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="53" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.png"
+ ALT="$\displaystyle H^{16}(t)$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="662" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img54.png"
+ ALT="$\displaystyle = 65536 {t}^{16} - 3932160 {t}^{14} + 89456640 {t}^{12} - 984023040 {t}^{10} + 5535129600 {t}^{8} - 15498362880 {t}^{6}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">&nbsp; <IMG
+ WIDTH="347" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$\displaystyle + 19372953600 {t}^{4} - 8302694400 {t}^{2} + 518918400$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html37"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html35"
+  HREF="estimation.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html29"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+  
+    <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+   <meta name="description" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation of the Natural Rate of Unemployment">
+   <meta name="keywords" content="Jasjeet Sekhon, Jas Sekhon, NAIRU, Estimation, NAIRU, Natural Rate of Unemployment, Harvard  University, Department of Government,Political Science, Political  Methodology, Political Economy, American Politics, Monetary and Fiscal  Policy, Financial Markets">
+  <A NAME="tex2html1"
+  HREF="http://jsekhon.fas.harvard.edu/"><IMG
+ ALIGN="BOTTOM" BORDER="0" SRC="http://jsekhon.fas.harvard.edu/pics/home.gif"
+ ALT="home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html38"
+  HREF="node3.html">References</A>
+<B> Up:</B> <A NAME="tex2html36"
+  HREF="estimation.html">Estimation of the Nonaccelerating</A>
+<B> Previous:</B> <A NAME="tex2html30"
+  HREF="node1.html">NAIRU Estimation</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Jasjeet Singh Sekhon
+2001-11-24
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,43 @@
+OUTCOME -
+reppresfv2p00m96 - Change in Republican presidential vote share between 1996 
+and 2000  
+
+TREATMENT
+foxnews2000 = added foxnews
+
+
+DEMOGRAPHIC CONTROLS
+state = state
+reppresfv2p1996
+totpreslvpop1996
+pop2000 population in 2000
+hs2000 fraction with high school education
+hsp2000 fraction with some college education
+college2000 - fraction with college education
+black20000 - fraction black
+hisp2000 - fraction hispanic
+empl2000 - fraction employed
+unempl2000 - fraction unemployed
+married2000 - fraction married
+income2000 - average income
+urban2000 - share urban 
+pop00m90 - change in population between 2000 and 1990
+hs00m90 - change in fraction in high school
+hsp00m90 - change in fraction with some college
+college00m90 - change in fraction with college education 
+male00m90 - change in fraction male
+black00m90 - change in fraction black
+hisp00m90 - change in fraction hispanic
+empl00m90 - change in fraction employed
+unemp00m90 - change in fraction unemployed
+married00m90 - change in fraction married
+income00m90 - change in mean income
+00m90 - change in fraction urban
+
+CABLE CONTROLS
+poptot2000d_X - Xth decile in the number of potential subscribers
+noch2000d_X - Xth decile in the number of channels provided
+
+POLITICAL CONTROLS
+reppresfv2p92m88 - Change in Presidential vote share for Republicans between 1988-1992
+

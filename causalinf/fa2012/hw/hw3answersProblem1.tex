@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+ 
+\usepackage{fullpage}
+\usepackage{boxedminipage}
+
+\usepackage{listings}
+
+\usepackage{minitoc}
+
+\usepackage{ifpdf}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amssymb}
+
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+\newcommand{\var}[0]{\text{var}}
+\newcommand{\cov}[0]{\text{cov}}
+\def\E{{\mathbb E}}   
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\begin{document}
+\begin{itemize}
+  \item[1)]
+   We first show that 
+   \begin{equation}
+     r_0 \independent Z | e(X_{Z=1})
+     \label{condindep}
+   \end{equation}
+   where $e(X_{Z=1})$ is the distribution of the propensity score for the treated units.
+   
+   Note that 
+   $P(Z=1|X) = E(Z|X)$.
+   Following Rosenbaum and Rubin, we have:
+   \begin{eqnarray*}
+     \E(Z  | r_0, e(X_{Z=1})) & = & \E[\E[Z | r_0, X_{Z=1}] | r_0, e(X_{Z=1}) ]
+     = \E[\E[Z | X_{Z=1}] | r_0, e(X_{Z=1}) ]\\
+     &=& \E[e(X_{Z=1})|r_0, e(X_{Z=1})] = e(X_{Z=1})
+   \end{eqnarray*}
+   and
+   \begin{eqnarray*}
+     \E(Z | e(X_{Z=1})) = \E[\E(Z | X_{Z=1})| e(X_{Z=1})] = \E(e(X_{Z=1})| e(X_{Z=1})) = e(X_{Z=1})
+   \end{eqnarray*}
+   Thus, $\E(Z  | r_0, e(X_{Z=1})) = \E(Z  |  e(X_{Z=1}))$, and so,~\eqref{condindep} must hold.
+   
+   Now, by~\eqref{condindep} and the law of iterated expectations,
+   \begin{eqnarray*}
+     ATT &=& \E(r_1 - r_0 | Z= 1) = \E[\E(r_1|Z = 1, e(X_{Z=1})] - \E[\E(r_0|Z = 1, e(X_{Z=1})] \\
+       &=& \E[\E(r_1|Z = 1, e(X_{Z=1})] - \E[\E(r_0|Z = 0, e(X_{Z=1})] 
+   \end{eqnarray*}
+   We can compute this last expression using actual data.
+   By the assumption that $e(X_{Z=1}) < 1$, the
+   expectation $\E[\E(r_0|Z = 0, e(X_{Z=1})]$ is well defined.
+   
+   To estimate the ATE unbiasedly, we need to strengthen the conditions to
+   \begin{eqnarray*}
+     r_0, r_1 \independent Z | X \\
+     0 < e(X) < 1
+   \end{eqnarray*}
+   These are the conditions outlined in Rosenbaum and Rubin (1983).
+   \end{itemize}     
+\end{document}

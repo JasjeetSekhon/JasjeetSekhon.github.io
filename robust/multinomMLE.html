@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Multinomial Regression Maximum Likelihood Estimator with Overdispersion</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for Multinomial Regression {multinomRob}"><tr><td>Multinomial Regression {multinomRob}</td><td align="right">R Documentation</td></tr></table>
+<h2>Multinomial Regression Maximum Likelihood Estimator with Overdispersion</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>multinomMLE</code> estimates the coefficients of the multinomial
+regression model for grouped count data by maximum likelihood, then
+computes a moment estimator for overdispersion and reports standard
+errors for the coefficients that take overdispersion into account.
+This function is not meant to be called directly by the user.  It is
+called by <code>multinomRob</code>, which constructs the various arguments.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>multinomMLE(Y, Ypos, Xarray, xvec, jacstack, itmax=100, xvar.labels,
+                   choice.labels, MLEonly=FALSE, print.level=0)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Y</code></td>
+<td>
+Matrix (observations by alternatives) of outcome counts.
+Values must be nonnegative.  Missing data (<code>NA</code> values) are not allowed.</td></tr>
+<tr valign="top"><td><code>Ypos</code></td>
+<td>
+Matrix indicating which elements of Y are counts to be analyzed (TRUE)
+and which are values to be skipped (FALSE).  This allows the set of
+outcome alternatives to vary over observations.</td></tr>
+<tr valign="top"><td><code>Xarray</code></td>
+<td>
+Array of regressors.  dim(Xarray) = c(observations, parameters, alternatives).</td></tr>
+<tr valign="top"><td><code>xvec</code></td>
+<td>
+Matrix (parameters by alternatives) that represents the model structure.
+It has a 1 for an estimated parameter, an integer greater than 1 for an
+estimated parameter constrained equal to another estimated parameter (all
+parameters constrained to be equal to one another have the same integer
+value in xvec) and a 0 otherwize.</td></tr>
+<tr valign="top"><td><code>jacstack</code></td>
+<td>
+Array of regressors used to facilitate computing the gradient and the
+hessian matrix.
+dim(jacstack) = c(observations, unique parameters, alternatives).</td></tr>
+<tr valign="top"><td><code>itmax</code></td>
+<td>
+The maximum number of iterations to be done in the Gauss-Newton
+optimization.</td></tr>
+<tr valign="top"><td><code>xvar.labels</code></td>
+<td>
+Vector of labels for observations.</td></tr>
+<tr valign="top"><td><code>choice.labels</code></td>
+<td>
+Vector of labels for outcome alternatives.</td></tr>
+<tr valign="top"><td><code>MLEonly</code></td>
+<td>
+If <code>TRUE</code>, then only the standard maximum-likelihood MNL model
+is estimated&mdash;i.e., no overdispersion parameter is estimated.</td></tr>
+<tr valign="top"><td><code>print.level</code></td>
+<td>
+Specify 0 for minimal printing (error messages only) or 3 to print details
+about the MLE computations.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Following the generalized linear models approach, the coefficient
+parameters in an overdispersed multinomial regression model may be
+estimated using the likelihood for a standard multinomial regression
+model.  A moment estimator may be used for the dispersion parameter, given
+the coefficient estimates, with little efficiency loss.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+multinomMLE returns a list containing the following objects.  The
+returned objects are:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>coefficients</code></td>
+<td>
+The maximum likelihood coefficient estimates in matrix format.  The value 0 is
+used in the matrix to fill in for values that do not correspond to a
+regressor.</td></tr>
+<tr valign="top"><td><code>coeffvec</code></td>
+<td>
+A vector containing the maximum likelihood coefficient estimates.</td></tr>
+<tr valign="top"><td><code>dispersion</code></td>
+<td>
+Moment estimate of the dispersion:  mean sum of squared orthogonalized
+residuals (adjusted for degrees of freedom lost to estimated coefficients).</td></tr>
+<tr valign="top"><td><code>se</code></td>
+<td>
+The MLE coefficient estimate standard errors derived from the asymptotic
+covariance estimated using the Hessian matrix (observed
+information).</td></tr>
+<tr valign="top"><td><code>se.opg</code></td>
+<td>
+The MLE coefficient estimate standard errors derived from the asymptotic
+covariance estimated using the outer product of the gradient (expected
+information) divided by the moment estimate of the dispersion.
+Not provided if <code>MLEonly==TRUE</code>.</td></tr>
+<tr valign="top"><td><code>se.hes</code></td>
+<td>
+The MLE coefficient estimate standard errors derived from the asymptotic
+covariance estimated using the Hessian matrix (observed
+information).  Same as <code>se</code>; included for backward
+compatibility.</td></tr>
+<tr valign="top"><td><code>se.sw</code></td>
+<td>
+The MLE coefficient estimate standard errors derived from the asymptotic
+covariance estimated using the estimated asymptotic
+sandwich covariance estimate. Not provided if <code>MLEonly==TRUE</code>.</td></tr>
+<tr valign="top"><td><code>se.vec</code></td>
+<td>
+<code>se</code> in vector form.</td></tr>
+<tr valign="top"><td><code>se.opg.vec</code></td>
+<td>
+<code>se.opg</code> in vector form.</td></tr>
+<tr valign="top"><td><code>se.hes.vec</code></td>
+<td>
+<code>se.hes</code> in vector form.</td></tr>
+<tr valign="top"><td><code>se.sw.vec</code></td>
+<td>
+<code>se.sw</code> in vector form.</td></tr>
+<tr valign="top"><td><code>A</code></td>
+<td>
+The outer product of the gradient (expected information) divided by the
+moment estimate of the dispersion.</td></tr>
+<tr valign="top"><td><code>B</code></td>
+<td>
+The inverse of the hessian matrix (observed formation).</td></tr>
+<tr valign="top"><td><code>covmat</code></td>
+<td>
+Sandwich estimate of the asymptotic covariance of the maximum likelihood
+coefficient estimates.</td></tr>
+<tr valign="top"><td><code>iters</code></td>
+<td>
+Number of Gauss-Newton iterations.</td></tr>
+<tr valign="top"><td><code>error</code></td>
+<td>
+Exit error code.</td></tr>
+<tr valign="top"><td><code>GNlist</code></td>
+<td>
+List reporting final results of the Gauss-Newton optimization.  Elements:
+<code>coefficients</code>, vector of coefficient parameters (same as <code>coeffvec</code>
+value in list returned by multinomMLE);  <code>tvec</code>, matrix of coefficient
+parameters (same as <code>coefficients</code> value in list returned by multinomMLE);
+<code>formation</code>, inverse Hessian matrix;  <code>score</code>, score (or gradient
+element) matrix;  <code>LLvals</code>, list containing log-likelihood value;
+<code>convflag</code>, TRUE/FALSE convergence flag;  <code>iters</code>, number of
+iterations done in final Gauss-Newton stage;  <code>posdef</code>, TRUE if Hessian is
+positive definite.</td></tr>
+<tr valign="top"><td><code>sigma2</code></td>
+<td>
+Moment estimate of the dispersion:  mean sum of squared orthogonalized
+residuals (adjusted for degrees of freedom lost to estimated coefficients).</td></tr>
+<tr valign="top"><td><code>Y</code></td>
+<td>
+The same <code>Y</code> matrix that was supplied as input, except modified by 
+having done <code>Y[!Ypos] &lt;- 0</code>.</td></tr>
+<tr valign="top"><td><code>Ypos</code></td>
+<td>
+The same <code>Ypos</code> matrix that was supplied as input.</td></tr>
+<tr valign="top"><td><code>fitted.prob</code></td>
+<td>
+The matrix of predicted probabilities for each category for each
+observation based on the coefficient estimates.</td></tr>
+<tr valign="top"><td><code>jacstack</code></td>
+<td>
+The same <code>jacstack</code> that was supplied as an input argument.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Walter R. Mebane, Jr., Cornell University,
+<a href="mailto:wrm1@cornell.edu">wrm1@cornell.edu</a>, <a href="http://macht.arts.cornell.edu/wrm1/">http://macht.arts.cornell.edu/wrm1/</a> <br>
+</p>
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Walter R. Mebane, Jr. and  Jasjeet Singh Sekhon. 2004.  ``Robust Estimation
+and Outlier Detection for Overdispersed Multinomial Models of Count Data.'' 
+<EM>American Journal of Political Science</EM> 48 (April): 391&ndash;410.
+<a href="http://sekhon.berkeley.edu/multinom.pdf">http://sekhon.berkeley.edu/multinom.pdf</a>
+</p>
+<p>
+For additional documentation please visit <a href="http://sekhon.berkeley.edu/robust/">http://sekhon.berkeley.edu/robust/</a>.
+</p>
+
+
+
+<hr><div align="center"><a href="http://sekhon.berkeley.edu/robust/">Return to Jasjeet
+Sekhon's Robust Estimation Page</a></div>
+
+</body></html>

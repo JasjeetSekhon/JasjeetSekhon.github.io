@@ -1,0 +1,118 @@
+
+R : Copyright 2003, The R Development Core Team
+Version 1.7.1  (2003-06-16)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type `license()' or `licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type `contributors()' for more information.
+
+Type `demo()' for some demos, `help()' for on-line help, or
+`help.start()' for a HTML browser interface to help.
+Type `q()' to quit R.
+
+> invisible(options(echo = TRUE))
+> data.approval <-
++ read.table(file="http://www.courses.fas.harvard.edu/~gov1000/Data/approval.asc",header=T)
+> 
+> #what are the variables in the approval data set?
+> names(data.approval)
+ [1] "Date"           "administration" "approval"       "lagApproval"   
+ [5] "unrate"         "inflation"      "kennedy"        "johnson"       
+ [9] "nixon"          "ford"           "carter"         "regan"         
+[13] "bush"           "clinton"       
+> attach(data.approval)
+> 
+> postscript(file="diagnostics1.ps",width=10.5,height=8,horizontal=T)
+> 
+> lm4  <- lm(approval~unrate+inflation+lagApproval)
+> summary(lm4)
+
+Call:
+lm(formula = approval ~ unrate + inflation + lagApproval)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-15.804  -2.844  -0.131   2.092  41.978 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  9.86277    1.66288   5.931 5.24e-09 ***
+unrate      -0.13254    0.14480  -0.915 0.360393    
+inflation   -0.30789    0.08749  -3.519 0.000468 ***
+lagApproval  0.85999    0.02082  41.308  < 2e-16 ***
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 4.931 on 566 degrees of freedom
+Multiple R-Squared: 0.8316,	Adjusted R-squared: 0.8307 
+F-statistic: 931.5 on 3 and 566 DF,  p-value: < 2.2e-16 
+
+> lm5  <- lm(approval~unrate+inflation+lagApproval+kennedy+johnson+nixon+ford+carter+regan+bush+clinton)
+> summary(lm5)
+
+Call:
+lm(formula = approval ~ unrate + inflation + lagApproval + kennedy + 
+    johnson + nixon + ford + carter + regan + bush + clinton)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-16.2758  -2.7445  -0.1872   2.3064  39.2390 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 15.06193    2.13347   7.060 4.97e-12 ***
+unrate      -0.60416    0.21040  -2.872  0.00424 ** 
+inflation   -0.35019    0.13055  -2.682  0.00753 ** 
+lagApproval  0.82526    0.02288  36.064  < 2e-16 ***
+kennedy      1.19652    1.00644   1.189  0.23500    
+johnson     -2.16593    0.84941  -2.550  0.01104 *  
+nixon       -1.58270    0.93370  -1.695  0.09062 .  
+ford         1.39494    1.44502   0.965  0.33479    
+carter      -0.16646    1.33620  -0.125  0.90090    
+regan        0.62330    0.97021   0.642  0.52085    
+bush         0.52829    0.98643   0.536  0.59248    
+clinton     -1.30218    0.75310  -1.729  0.08435 .  
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 4.895 on 558 degrees of freedom
+Multiple R-Squared: 0.8364,	Adjusted R-squared: 0.8331 
+F-statistic: 259.3 on 11 and 558 DF,  p-value: < 2.2e-16 
+
+> 
+> plot(lm4$residual,ylab="Residuals",xlab="Observation Number")
+> hist(lm4$residual,xlab="Residuals")
+> plot(approval,lm4$residual,xlab="Approval",ylab="Residual")
+> 
+> #scale the residuals to have variance 1
+> lm4.residual.scaled  <- lm4$residual/sd(lm4$residual)
+> plot(lm4.residual.scaled,ylab="Scaled Residuals",xlab="Observation Number")
+> hist(lm4.residual.scaled,xlab="Scaled Residuals")
+> plot(approval,lm4.residual.scaled,xlab="Approval",ylab="Scaled Residual")
+> 
+> qqnorm(lm4$residual)
+> qqline(lm4$residual)
+> 
+> plot(lm5$residual,ylab="Residuals",xlab="Observation Number")
+> hist(lm5$residual,xlab="Residuals")
+> plot(approval,lm5$residual,xlab="Approval",ylab="Residual")
+> 
+> #scale the residuals to have variance 1
+> lm5.residual.scaled  <- lm5$residual/sd(lm5$residual)
+> plot(lm5.residual.scaled,ylab="Scaled Residuals",xlab="Observation Number")
+> hist(lm5.residual.scaled,xlab="Scaled Residuals")
+> plot(approval,lm5.residual.scaled,xlab="Approval",ylab="Scaled Residual")
+> 
+> qqnorm(lm5$residual)
+> qqline(lm5$residual)
+> 
+> 
+> dev.off()
+null device 
+          1 
+> proc.time()
+[1] 1.21 0.04 1.62 0.00 0.00
+> 

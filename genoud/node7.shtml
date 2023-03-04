@@ -1,0 +1,1500 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Tables</TITLE>
+<META NAME="description" CONTENT="Tables">
+<META NAME="keywords" CONTENT="genoud">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="genoud.css">
+<LINK REL="next" HREF="node8.shtml">
+<LINK REL="previous" HREF="node6.shtml">
+<LINK REL="up" HREF="genoud.shtml">
+<LINK REL="next" HREF="node8.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html99"
+ HREF="node8.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html97"
+ HREF="genoud.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html91"
+ HREF="node6.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+ <A NAME="tex2html1"
+ HREF="http://jsekhon.fas.harvard.edu">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html100"
+ HREF="node8.shtml">References</A>
+<B> Up:</B> <A NAME="tex2html98"
+ HREF="genoud.shtml">Genetic Optimization Using Derivatives</A>
+<B> Previous:</B> <A NAME="tex2html92"
+ HREF="node6.shtml">Figures</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00070000000000000000">
+Tables</A>
+</H1>
+  <DIV ALIGN="CENTER">
+<B>Table 1: GENOUD Operators</B>
+  </DIV>
+  <DL COMPACT>
+<DT>1.
+<DD>Uniform Mutation.  At random choose 
+<!-- MATH: $i\in\mathbf{N}$ -->
+<IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.gif"
+ ALT="$i\in\mathbf{N}$">.
+Select a value
+
+<!-- MATH: $\tilde{x}_i \sim U(\underline{x}_i, \overline{x}_i)$ -->
+<IMG
+ WIDTH="109" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.gif"
+ ALT="$\tilde{x}_i \sim U(\underline{x}_i, \overline{x}_i)$">.
+Set
+    
+<!-- MATH: $X_i=\tilde{x}_i$ -->
+<IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.gif"
+ ALT="$X_i=\tilde{x}_i$">.
+<BR>
+
+  <DT>2.
+<DD>Boundary Mutation.  At random choose 
+<!-- MATH: $i\in\mathbf{N}$ -->
+<IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.gif"
+ ALT="$i\in\mathbf{N}$">.
+Set either
+    
+<!-- MATH: $X_i=\underline{x}_i$ -->
+<IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.gif"
+ ALT="$X_i=\underline{x}_i$">
+or 
+<!-- MATH: $X_i=\overline{x}_i$ -->
+<IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.gif"
+ ALT="$X_i=\overline{x}_i$">,
+with probability 1/2 of
+    using each value.  <BR>
+
+  <DT>3.
+<DD>Non-uniform Mutation.  At random choose 
+<!-- MATH: $i\in\mathbf{N}$ -->
+<IMG
+ WIDTH="48" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.gif"
+ ALT="$i\in\mathbf{N}$">.
+Compute
+    
+<!-- MATH: $p = (1-t/T)^B u$ -->
+<I>p</I> = (1-<I>t</I>/<I>T</I>)<SUP><I>B</I></SUP> <I>u</I>, where <I>t</I> is the current generation number, <I>T</I> is the
+    maximum number of generations, <I>B</I>&gt;0 is a tuning parameter and 
+<!-- MATH: $u \sim
+U(0,1)$ -->
+<IMG
+ WIDTH="90" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif"
+ ALT="$u \sim
+U(0,1)$">.
+Set either 
+<!-- MATH: $X_i=(1-p)x_i + p\underline{x}_i$ -->
+<IMG
+ WIDTH="161" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.gif"
+ ALT="$X_i=(1-p)x_i + p\underline{x}_i$">
+or 
+<!-- MATH: $X_i=(1-p)x_i +
+p\overline{x}_i$ -->
+<IMG
+ WIDTH="161" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif"
+ ALT="$X_i=(1-p)x_i +
+p\overline{x}_i$">,
+with probability 1/2 of using each value.  <BR>
+
+  <DT>4.
+<DD>Polytope Crossover.  Using 
+<!-- MATH: $m=\max(2,n)$ -->
+<IMG
+ WIDTH="116" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.gif"
+ ALT="$m=\max(2,n)$">
+vectors 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> from the
+    current population and <I>m</I> random numbers 
+<!-- MATH: $p_j\in(0,1)$ -->
+<IMG
+ WIDTH="80" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif"
+ ALT="$p_j\in(0,1)$">
+such that
+    
+<!-- MATH: $\sum_{j=1}^m p_j = 1$ -->
+<IMG
+ WIDTH="98" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif"
+ ALT="$\sum_{j=1}^m p_j = 1$">,
+set 
+<!-- MATH: $\mathbf{X} = \sum_{j=1}^m p_j
+\mathbf{x}_j$ -->
+<IMG
+ WIDTH="122" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif"
+ ALT="$\mathbf{X} = \sum_{j=1}^m p_j
+\mathbf{x}_j$">.
+<BR>
+
+  <DT>5.
+<DD>Multiple Point Simple Crossover.  Choose a random number
+    
+<!-- MATH: $m\in\mathbf{N}$ -->
+<IMG
+ WIDTH="57" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.gif"
+ ALT="$m\in\mathbf{N}$">
+of distinct integers <I>i</I> from 
+<!-- MATH: $\mathbf{N}$ -->
+<B>N</B>.  Using two
+    parameter vectors, 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> and 
+<!-- MATH: $\mathbf{y}$ -->
+<B>y</B>, for each <I>i</I> set 
+<!-- MATH: $X_i = p
+x_i + (1-p) y_i$ -->
+<I>X</I><SUB><I>i</I></SUB> = <I>p</I>
+    <I>x</I><SUB><I>i</I></SUB> + (1-<I>p</I>) <I>y</I><SUB><I>i</I></SUB> and 
+<!-- MATH: $Y_i = p y_i + (1-p) x_i$ -->
+<I>Y</I><SUB><I>i</I></SUB> = <I>p y</I><SUB><I>i</I></SUB> + (1-<I>p</I>) <I>x</I><SUB><I>i</I></SUB>, where <IMG
+ WIDTH="73" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif"
+ ALT="$p\in(0,1)$">
+is a fixed
+    number. <BR>
+
+  <DT>6.
+<DD>Whole Non-uniform Mutation.  Do non-uniform mutation for all the
+    elements of 
+<!-- MATH: $\mathbf{X}$ -->
+<B>X</B>.  <BR>
+
+  <DT>7.
+<DD>Heuristic Crossover.  Choose 
+<!-- MATH: $p \sim U(0,1)$ -->
+<IMG
+ WIDTH="89" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.gif"
+ ALT="$p \sim U(0,1)$">.
+Using two parameter
+    vectors, 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> and 
+<!-- MATH: $\mathbf{y}$ -->
+<B>y</B>, compute 
+<!-- MATH: $\mathbf{z} =
+p(\mathbf{x} - \mathbf{y}) + \mathbf{x}$ -->
+<B>z</B> =
+    <I>p</I>(<B>x</B> - <B>y</B>) + <B>x</B>.  If 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> satisfies
+    all constraints, use it.  Otherwise choose another <I>p</I> value and repeat.
+    Set 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> equal to the better of 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> and 
+<!-- MATH: $\mathbf{y}$ -->
+<B>y</B> if
+    a satisfactory mixed 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> is not found by a preset number of
+    attempts.  In this fashion produce two 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> vectors.  <BR>
+
+  <DT>8.
+<DD>Local-minimum Crossover.  Choose 
+<!-- MATH: $p \sim U(0,1)$ -->
+<IMG
+ WIDTH="89" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.gif"
+ ALT="$p \sim U(0,1)$">.
+Starting with
+    
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B>, run BFGS optimization up to a preset number of iterations to
+    produce 
+<!-- MATH: $\mathbf{\tilde{x}}$ -->
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img49.gif"
+ ALT="$\mathbf{\tilde{x}}$">.
+Compute 
+<!-- MATH: $\mathbf{z} = p\mathbf{\tilde{x}} +
+(1-p)\mathbf{x}$ -->
+<IMG
+ WIDTH="140" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.gif"
+ ALT="$\mathbf{z} = p\mathbf{\tilde{x}} +
+(1-p)\mathbf{x}$">.
+If 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> satisfies boundary constraints, use it.
+    Otherwise shrink <I>p</I> by setting <I>p</I> = <I>p</I>/2 and recompute 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B>.  If a
+    satisfactory 
+<!-- MATH: $\mathbf{z}$ -->
+<B>z</B> is not found by a preset number of attempts,
+    return 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B>.  This operators is extremely computationally
+    intensive, use sparingly. <BR>
+<BR>
+<BR>
+  </DL>
+  <BR>
+<BR>
+  <DIV ALIGN="LEFT">
+
+<!-- MATH: $\mathbf{X} =\begin{bmatrix}X_1,\dots,X_n\end{bmatrix}$ -->
+<IMG
+ WIDTH="146" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif"
+ ALT="$\mathbf{X} =\begin{bmatrix}X_1,\dots,X_n\end{bmatrix}$">
+is the vector of <I>n</I>
+    parameters <I>X</I><SUB><I>i</I></SUB>.  
+<!-- MATH: $\underline{x}_i$ -->
+<IMG
+ WIDTH="20" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.gif"
+ ALT="$\underline{x}_i$">
+is the lower bound and 
+<!-- MATH: $\overline{x}_i$ -->
+<IMG
+ WIDTH="20" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.gif"
+ ALT="$\overline{x}_i$">
+      is the upper bound on values for <I>X</I><SUB><I>i</I></SUB>.  <I>x</I><SUB><I>i</I></SUB> is the current value of
+      <I>X</I><SUB><I>i</I></SUB>, and 
+<!-- MATH: $\mathbf{x}$ -->
+<B>x</B> is the current value of 
+<!-- MATH: $\mathbf{X}$ -->
+<B>X</B>.  
+<!-- MATH: $\mathbf{N}
+= \{1,\dots,n\}$ -->
+<IMG
+ WIDTH="119" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img54.gif"
+ ALT="$\mathbf{N}
+= \{1,\dots,n\}$">.
+
+<!-- MATH: $p \sim U(0,1)$ -->
+<IMG
+ WIDTH="89" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.gif"
+ ALT="$p \sim U(0,1)$">
+means that <I>p</I> is drawn from the uniform
+      distribution on the [0,1] interval.
+    </DIV>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="839">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 2:</STRONG>
+Normal Mixture Experiment Results, Small Population</CAPTION>
+<TR><TD>
+
+<A NAME="tab:mix_small">&#160;</A>
+<BR>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=2><B>GENOUD</B></TD>
+<TD ALIGN="CENTER" COLSPAN=2><B>EBFGS</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=1>Narrow</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Wide</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Narrow</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Wide</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1><P>
+Figure <A HREF="node6.shtml#fig:claw">1</A></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1>Claw Density</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">% Error
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$"></TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">24.4</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Time
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$"></TD>
+<TD ALIGN="RIGHT">3.8</TD>
+<TD ALIGN="RIGHT">5.3</TD>
+<TD ALIGN="RIGHT">2.9</TD>
+<TD ALIGN="RIGHT">2.9</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1><P>
+Figure <A HREF="node6.shtml#fig:aclaw">2</A></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1>Asymmetric Double Claw</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">% Error</TD>
+<TD ALIGN="RIGHT">0.4</TD>
+<TD ALIGN="RIGHT">0.9</TD>
+<TD ALIGN="RIGHT">13.3</TD>
+<TD ALIGN="RIGHT">19.2</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Time</TD>
+<TD ALIGN="RIGHT">4.0</TD>
+<TD ALIGN="RIGHT">5.7</TD>
+<TD ALIGN="RIGHT">3.1</TD>
+<TD ALIGN="RIGHT">3.2</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1><P>
+Figures <A HREF="node6.shtml#fig:comb">3</A>-<A HREF="node6.shtml#fig:combclose">4</A></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1>Discrete Comb Density</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">% Error</TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">0.4</TD>
+<TD ALIGN="RIGHT">49.2</TD>
+<TD ALIGN="RIGHT">88.7</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Time</TD>
+<TD ALIGN="RIGHT">4.7</TD>
+<TD ALIGN="RIGHT">8.5</TD>
+<TD ALIGN="RIGHT">2.6</TD>
+<TD ALIGN="RIGHT">2.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+</TABLE>
+<DIV ALIGN="LEFT">
+Notes: 1000 replications were completed for each category.  There
+  were 701 random starting values for the small population.
+<BR>
+
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$">
+The percentage of the 1000 replications in which
+  the correct maximum was <I>not</I> found. <BR>
+  
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$">
+The mean time in seconds that it took to finish
+  each replication. 
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="904">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 3:</STRONG>
+Normal Mixture Experiment Results, Large Population</CAPTION>
+<TR><TD>
+
+<A NAME="tab:mix_large">&#160;</A>
+<BR>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=2><B>GENOUD</B></TD>
+<TD ALIGN="CENTER" COLSPAN=2><B>EBFGS</B></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=1>Narrow</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Wide</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Narrow</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Wide</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P></TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Boundaries</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1><P>
+Figure <A HREF="node6.shtml#fig:claw">1</A></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1>Claw Density</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">% Error
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$"></TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">9.5</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Time
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$"></TD>
+<TD ALIGN="RIGHT">11.5</TD>
+<TD ALIGN="RIGHT">11.5</TD>
+<TD ALIGN="RIGHT">9.6</TD>
+<TD ALIGN="RIGHT">25.8</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1><P>
+Figure <A HREF="node6.shtml#fig:aclaw">2</A></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1>Asymmetric Double Claw</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">% Error</TD>
+<TD ALIGN="RIGHT">0.2</TD>
+<TD ALIGN="RIGHT">0.7</TD>
+<TD ALIGN="RIGHT">12.4</TD>
+<TD ALIGN="RIGHT">13.6</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Time</TD>
+<TD ALIGN="RIGHT">12.1</TD>
+<TD ALIGN="RIGHT">13.2</TD>
+<TD ALIGN="RIGHT">9.9</TD>
+<TD ALIGN="RIGHT">26.9</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1><P>
+Figures <A HREF="node6.shtml#fig:comb">3</A>-<A HREF="node6.shtml#fig:combclose">4</A></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER" COLSPAN=1>Discrete Comb Density</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">% Error</TD>
+<TD ALIGN="RIGHT">0.0</TD>
+<TD ALIGN="RIGHT">0.3</TD>
+<TD ALIGN="RIGHT">23.1</TD>
+<TD ALIGN="RIGHT">80.1</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Time</TD>
+<TD ALIGN="RIGHT">16.1</TD>
+<TD ALIGN="RIGHT">19.9</TD>
+<TD ALIGN="RIGHT">9.1</TD>
+<TD ALIGN="RIGHT">22.7</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+</TABLE>
+<DIV ALIGN="LEFT">
+Notes: 1000 replications were completed for each category.  There
+  were 1402 random starting values for the large population. <BR>
+
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$">
+The percentage of the 1000 replications in which
+  the correct maximum was <I>not</I> found. <BR>
+  
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$">
+The mean time in seconds that it took to finish
+  each replication. <BR>
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="969">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 4:</STRONG>
+GENOUD versus Gauss-Newton Optimization of the Least Squares 4DH Model</CAPTION>
+<TR><TD>
+
+<A NAME="tab:ghopf">&#160;</A>
+<BR>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=5>Residual Variance</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=4>GENOUD</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">Type of Transfer/</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Original</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Gauss-</TD>
+<TD ALIGN="CENTER" COLSPAN=2>25+25<SUP><I>a</I></SUP></TD>
+<TD ALIGN="CENTER" COLSPAN=2>50+50<SUP><I>b</I></SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Year</TD>
+<TD ALIGN="LEFT">PACs</TD>
+<TD ALIGN="RIGHT"><IMG
+ WIDTH="26" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img55.gif"
+ ALT="$N \; $"></TD>
+<TD ALIGN="CENTER" COLSPAN=1>Variance</TD>
+<TD ALIGN="CENTER" COLSPAN=1>Newton</TD>
+<TD ALIGN="CENTER" COLSPAN=1>B+B<SUP><I>c</I></SUP></TD>
+<TD ALIGN="CENTER" COLSPAN=1>no+B<SUP><I>d</I></SUP></TD>
+<TD ALIGN="CENTER" COLSPAN=1>B+B</TD>
+<TD ALIGN="CENTER" COLSPAN=1>no+B</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1984</TD>
+<TD ALIGN="LEFT">education</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">162</TD>
+<TD ALIGN="RIGHT">7.3920</TD>
+<TD ALIGN="RIGHT">1.9141<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8314</TD>
+<TD ALIGN="RIGHT">1.7766</TD>
+<TD ALIGN="RIGHT">1.8314</TD>
+<TD ALIGN="RIGHT">1.7766</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">114</TD>
+<TD ALIGN="RIGHT">9.4636</TD>
+<TD ALIGN="RIGHT">1.8909<SUP><I>g</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8895<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8895<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8895<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8895<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">186</TD>
+<TD ALIGN="RIGHT">7.2649</TD>
+<TD ALIGN="RIGHT">2.3035<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">2.1997</TD>
+<TD ALIGN="RIGHT">2.2497<SUP>*</SUP></TD>
+<TD ALIGN="RIGHT">2.1997</TD>
+<TD ALIGN="RIGHT">2.1997</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">highways</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">92</TD>
+<TD ALIGN="RIGHT">12.8424</TD>
+<TD ALIGN="RIGHT">2.6218<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">2.6197</TD>
+<TD ALIGN="RIGHT">2.7219</TD>
+<TD ALIGN="RIGHT">2.6197</TD>
+<TD ALIGN="RIGHT">2.7219</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">63</TD>
+<TD ALIGN="RIGHT">12.4288</TD>
+<TD ALIGN="RIGHT">1.9982<SUP><I>g</I></SUP></TD>
+<TD ALIGN="RIGHT">1.9948<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.9948<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.9948<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.9948<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">103</TD>
+<TD ALIGN="RIGHT">12.5410</TD>
+<TD ALIGN="RIGHT">2.7457<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">2.7755</TD>
+<TD ALIGN="RIGHT">2.8487<SUP>*</SUP></TD>
+<TD ALIGN="RIGHT">2.7319</TD>
+<TD ALIGN="RIGHT">2.7455</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">social welfare</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">162</TD>
+<TD ALIGN="RIGHT">7.1987</TD>
+<TD ALIGN="RIGHT">1.7356<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.7224</TD>
+<TD ALIGN="RIGHT">1.7224</TD>
+<TD ALIGN="RIGHT">1.7224</TD>
+<TD ALIGN="RIGHT">1.7224</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">114</TD>
+<TD ALIGN="RIGHT">9.6753</TD>
+<TD ALIGN="RIGHT">1.8133<SUP><I>g</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8133<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8133<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8133<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8133<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">186</TD>
+<TD ALIGN="RIGHT">6.8500</TD>
+<TD ALIGN="RIGHT">2.1068<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.9988</TD>
+<TD ALIGN="RIGHT">1.9988</TD>
+<TD ALIGN="RIGHT">1.9988</TD>
+<TD ALIGN="RIGHT">1.9988</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">other</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">162</TD>
+<TD ALIGN="RIGHT">6.6478</TD>
+<TD ALIGN="RIGHT">1.6062<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.4716</TD>
+<TD ALIGN="RIGHT">1.4716</TD>
+<TD ALIGN="RIGHT">1.4716</TD>
+<TD ALIGN="RIGHT">1.5357</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">114</TD>
+<TD ALIGN="RIGHT">8.6963</TD>
+<TD ALIGN="RIGHT">1.5894<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.5884</TD>
+<TD ALIGN="RIGHT">1.5884</TD>
+<TD ALIGN="RIGHT">1.5884</TD>
+<TD ALIGN="RIGHT">1.5884</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">186</TD>
+<TD ALIGN="RIGHT">6.4171</TD>
+<TD ALIGN="RIGHT">1.7610<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.6848</TD>
+<TD ALIGN="RIGHT">1.6848</TD>
+<TD ALIGN="RIGHT">1.6848</TD>
+<TD ALIGN="RIGHT">1.6848</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+1986</TD>
+<TD ALIGN="LEFT">education</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">150</TD>
+<TD ALIGN="RIGHT">5.5344</TD>
+<TD ALIGN="RIGHT">1.5042<SUP><I>g</I></SUP></TD>
+<TD ALIGN="RIGHT">1.5041<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.5041<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.5041<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.5041<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">94</TD>
+<TD ALIGN="RIGHT">8.6402</TD>
+<TD ALIGN="RIGHT">1.4757<SUP><I>g</I></SUP></TD>
+<TD ALIGN="RIGHT">1.4727<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.4727<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.4727<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.4727<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">167</TD>
+<TD ALIGN="RIGHT">7.0023</TD>
+<TD ALIGN="RIGHT">1.6522<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.6498</TD>
+<TD ALIGN="RIGHT">1.6498</TD>
+<TD ALIGN="RIGHT">1.6498</TD>
+<TD ALIGN="RIGHT">1.6498</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">highways</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">101</TD>
+<TD ALIGN="RIGHT">8.5653</TD>
+<TD ALIGN="RIGHT">1.7595<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.7085</TD>
+<TD ALIGN="RIGHT">1.7085</TD>
+<TD ALIGN="RIGHT">1.7085</TD>
+<TD ALIGN="RIGHT">1.7123<SUP>*</SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">67</TD>
+<TD ALIGN="RIGHT">14.3379</TD>
+<TD ALIGN="RIGHT">2.7857<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">2.9336</TD>
+<TD ALIGN="RIGHT">3.0225<SUP>*</SUP></TD>
+<TD ALIGN="RIGHT">2.9336</TD>
+<TD ALIGN="RIGHT">2.9611<SUP>*</SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">119</TD>
+<TD ALIGN="RIGHT">8.9918</TD>
+<TD ALIGN="RIGHT">1.8046<SUP><I>g</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8053<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8053<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8053<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.8053<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">social welfare</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">150</TD>
+<TD ALIGN="RIGHT">4.9803</TD>
+<TD ALIGN="RIGHT">1.2975</TD>
+<TD ALIGN="RIGHT">1.2389</TD>
+<TD ALIGN="RIGHT">1.2389</TD>
+<TD ALIGN="RIGHT">1.2389</TD>
+<TD ALIGN="RIGHT">1.2389</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">94</TD>
+<TD ALIGN="RIGHT">7.6896</TD>
+<TD ALIGN="RIGHT">1.1788<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.1332</TD>
+<TD ALIGN="RIGHT">1.1355</TD>
+<TD ALIGN="RIGHT">1.1332</TD>
+<TD ALIGN="RIGHT">1.1355</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">167</TD>
+<TD ALIGN="RIGHT">6.3375</TD>
+<TD ALIGN="RIGHT">1.4766<SUP><I>g</I></SUP></TD>
+<TD ALIGN="RIGHT">1.4724<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.5157</TD>
+<TD ALIGN="RIGHT">1.4724<SUP><I>f</I></SUP></TD>
+<TD ALIGN="RIGHT">1.5157</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">other</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">150</TD>
+<TD ALIGN="RIGHT">4.5346</TD>
+<TD ALIGN="RIGHT">1.1132<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.0966</TD>
+<TD ALIGN="RIGHT">1.0966</TD>
+<TD ALIGN="RIGHT">1.0966</TD>
+<TD ALIGN="RIGHT">1.0966</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">94</TD>
+<TD ALIGN="RIGHT">7.3780</TD>
+<TD ALIGN="RIGHT">1.2868</TD>
+<TD ALIGN="RIGHT">1.1493</TD>
+<TD ALIGN="RIGHT">1.1493</TD>
+<TD ALIGN="RIGHT">1.1493</TD>
+<TD ALIGN="RIGHT">1.1493</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">167</TD>
+<TD ALIGN="RIGHT">5.8507</TD>
+<TD ALIGN="RIGHT">1.3282<SUP><I>e</I></SUP></TD>
+<TD ALIGN="RIGHT">1.2503</TD>
+<TD ALIGN="RIGHT">1.2503</TD>
+<TD ALIGN="RIGHT">1.2503</TD>
+<TD ALIGN="RIGHT">1.2503</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+</TABLE>
+<DIV ALIGN="LEFT">
+Notes: The Gauss-Newton algorithm (PROC MODEL of SAS) ran for 1000
+  iterations.  The operator counts for GENOUD were
+  
+<!-- MATH: $(500,50,500,500,500,500,500,0)$ -->
+(500,50,500,500,500,500,500,0).
+  <SUP><I>a</I></SUP> 25 generations with or without BFGS then 25 generations with BFGS.
+  <SUP><I>b</I></SUP> 50 generations with or without BFGS then 50 generations with BFGS.
+  <SUP><I>c</I></SUP> Both sets of generations used BFGS.
+  <SUP><I>d</I></SUP> Only the second set of generations used BFGS.
+  <SUP><I>e</I></SUP> Not converged.
+  <SUP><I>f</I></SUP> No substantial differences between Gauss-Newton and best GENOUD solution
+  parameter values.
+  <SUP><I>g</I></SUP> Not converged and no substantial differences between Gauss-Newton and best GENOUD solution
+  parameter values.
+  <SUP>*</SUP> Not a local minimum.
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="1089">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 5:</STRONG>
+GENOUD versus Gauss-Newton Optimization CPU Times</CAPTION>
+<TR><TD>
+
+<A NAME="tab:ghopftimes">&#160;</A>
+<BR>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=4>GENOUD</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">Type of Transfer/</TD>
+<TD ALIGN="RIGHT">Gauss-</TD>
+<TD ALIGN="CENTER" COLSPAN=2>25+25<SUP><I>a</I></SUP></TD>
+<TD ALIGN="CENTER" COLSPAN=2>50+50<SUP><I>b</I></SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">Year</TD>
+<TD ALIGN="LEFT">PACs</TD>
+<TD ALIGN="RIGHT">Newton</TD>
+<TD ALIGN="RIGHT">B+B<SUP><I>c</I></SUP></TD>
+<TD ALIGN="RIGHT">no+B<SUP><I>d</I></SUP></TD>
+<TD ALIGN="RIGHT">B+B</TD>
+<TD ALIGN="RIGHT">no+B</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1984</TD>
+<TD ALIGN="LEFT">education</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">1252.57</TD>
+<TD ALIGN="RIGHT">189.1</TD>
+<TD ALIGN="RIGHT">357.4</TD>
+<TD ALIGN="RIGHT">370.4</TD>
+<TD ALIGN="RIGHT">697.4</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">799.89</TD>
+<TD ALIGN="RIGHT">176.2</TD>
+<TD ALIGN="RIGHT">334.6</TD>
+<TD ALIGN="RIGHT">337.6</TD>
+<TD ALIGN="RIGHT">645.0</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">1590.19</TD>
+<TD ALIGN="RIGHT">202.0</TD>
+<TD ALIGN="RIGHT">372.2</TD>
+<TD ALIGN="RIGHT">388.1</TD>
+<TD ALIGN="RIGHT">734.4</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">highways</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">746.96</TD>
+<TD ALIGN="RIGHT">170.3</TD>
+<TD ALIGN="RIGHT">293.0</TD>
+<TD ALIGN="RIGHT">326.7</TD>
+<TD ALIGN="RIGHT">617.4</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">455.02</TD>
+<TD ALIGN="RIGHT">157.4</TD>
+<TD ALIGN="RIGHT">301.0</TD>
+<TD ALIGN="RIGHT">304.9</TD>
+<TD ALIGN="RIGHT">397.5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">631.07</TD>
+<TD ALIGN="RIGHT">338.6</TD>
+<TD ALIGN="RIGHT">323.7</TD>
+<TD ALIGN="RIGHT">660.3</TD>
+<TD ALIGN="RIGHT">629.3</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">social welfare</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">1113.15</TD>
+<TD ALIGN="RIGHT">190.1</TD>
+<TD ALIGN="RIGHT">367.3</TD>
+<TD ALIGN="RIGHT">366.3</TD>
+<TD ALIGN="RIGHT">714.0</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">766.37</TD>
+<TD ALIGN="RIGHT">341.6</TD>
+<TD ALIGN="RIGHT">326.7</TD>
+<TD ALIGN="RIGHT">202.9</TD>
+<TD ALIGN="RIGHT">644.9</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">1380.91</TD>
+<TD ALIGN="RIGHT">291.1</TD>
+<TD ALIGN="RIGHT">446.5</TD>
+<TD ALIGN="RIGHT">473.2</TD>
+<TD ALIGN="RIGHT">435.1</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">other</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">1760.47</TD>
+<TD ALIGN="RIGHT">213.8</TD>
+<TD ALIGN="RIGHT">279.2</TD>
+<TD ALIGN="RIGHT">392.0</TD>
+<TD ALIGN="RIGHT">369.4</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">763.27</TD>
+<TD ALIGN="RIGHT">179.2</TD>
+<TD ALIGN="RIGHT">203.9</TD>
+<TD ALIGN="RIGHT">338.6</TD>
+<TD ALIGN="RIGHT">650.4</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">1224.39</TD>
+<TD ALIGN="RIGHT">393.0</TD>
+<TD ALIGN="RIGHT">384.1</TD>
+<TD ALIGN="RIGHT">396.0</TD>
+<TD ALIGN="RIGHT">732.3</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><P>
+1986</TD>
+<TD ALIGN="LEFT">education</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">1156.68</TD>
+<TD ALIGN="RIGHT">187.1</TD>
+<TD ALIGN="RIGHT">349.5</TD>
+<TD ALIGN="RIGHT">356.4</TD>
+<TD ALIGN="RIGHT">678.0</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">672.00</TD>
+<TD ALIGN="RIGHT">154.4</TD>
+<TD ALIGN="RIGHT">233.6</TD>
+<TD ALIGN="RIGHT">155.4</TD>
+<TD ALIGN="RIGHT">334.8</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">1599.94</TD>
+<TD ALIGN="RIGHT">199.0</TD>
+<TD ALIGN="RIGHT">363.3</TD>
+<TD ALIGN="RIGHT">377.2</TD>
+<TD ALIGN="RIGHT">708.6</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">highways</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">725.58</TD>
+<TD ALIGN="RIGHT">179.2</TD>
+<TD ALIGN="RIGHT">325.7</TD>
+<TD ALIGN="RIGHT">345.5</TD>
+<TD ALIGN="RIGHT">638.8</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">451.02</TD>
+<TD ALIGN="RIGHT">311.9</TD>
+<TD ALIGN="RIGHT">303.9</TD>
+<TD ALIGN="RIGHT">317.8</TD>
+<TD ALIGN="RIGHT">602.9</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">833.49</TD>
+<TD ALIGN="RIGHT">121.8</TD>
+<TD ALIGN="RIGHT">329.7</TD>
+<TD ALIGN="RIGHT">121.8</TD>
+<TD ALIGN="RIGHT">658.1</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">social welfare</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">436.87</TD>
+<TD ALIGN="RIGHT">184.1</TD>
+<TD ALIGN="RIGHT">228.7</TD>
+<TD ALIGN="RIGHT">355.4</TD>
+<TD ALIGN="RIGHT">674.2</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">822.33</TD>
+<TD ALIGN="RIGHT">165.3</TD>
+<TD ALIGN="RIGHT">316.8</TD>
+<TD ALIGN="RIGHT">321.8</TD>
+<TD ALIGN="RIGHT">617.8</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">1302.72</TD>
+<TD ALIGN="RIGHT">199.0</TD>
+<TD ALIGN="RIGHT">378.2</TD>
+<TD ALIGN="RIGHT">376.2</TD>
+<TD ALIGN="RIGHT">699.9</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">other</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">corporate</TD>
+<TD ALIGN="RIGHT">1279.36</TD>
+<TD ALIGN="RIGHT">185.1</TD>
+<TD ALIGN="RIGHT">346.5</TD>
+<TD ALIGN="RIGHT">357.4</TD>
+<TD ALIGN="RIGHT">412.8</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">labor</TD>
+<TD ALIGN="RIGHT">258.35</TD>
+<TD ALIGN="RIGHT">170.3</TD>
+<TD ALIGN="RIGHT">246.5</TD>
+<TD ALIGN="RIGHT">324.7</TD>
+<TD ALIGN="RIGHT">340.6</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">non-connected</TD>
+<TD ALIGN="RIGHT">998.65</TD>
+<TD ALIGN="RIGHT">179.2</TD>
+<TD ALIGN="RIGHT">230.7</TD>
+<TD ALIGN="RIGHT">179.2</TD>
+<TD ALIGN="RIGHT">701.9</TD>
+</TR>
+</TABLE>
+<DIV ALIGN="LEFT">
+Notes:  Times (user plus system) are in seconds.
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="1134">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 6:</STRONG>
+GENOUD for 1986 Labor PACs and Highways Transfers Data</CAPTION>
+<TR><TD>
+
+<A NAME="tab:ghopflh86">&#160;</A>
+<BR>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">Generations</TD>
+<TD ALIGN="RIGHT" COLSPAN=1>3051<SUP><I>a</I></SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">25+25<SUP><I>b</I></SUP></TD>
+<TD ALIGN="RIGHT">3.0225<SUP>*</SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">50+50<SUP><I>b</I></SUP></TD>
+<TD ALIGN="RIGHT">2.9611<SUP>*</SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">100+100<SUP><I>b</I></SUP></TD>
+<TD ALIGN="RIGHT">2.8527<SUP>*</SUP></TD>
+</TR>
+<TR><TD ALIGN="LEFT">200+200<SUP><I>b</I></SUP></TD>
+<TD ALIGN="RIGHT">2.7828</TD>
+</TR>
+</TABLE>
+<DIV ALIGN="LEFT">
+Notes: <SUP><I>a</I></SUP>&nbsp;The operator counts for GENOUD were
+  
+<!-- MATH: $(500,50,500,500,500,500,500,0)$ -->
+(500,50,500,500,500,500,500,0).  <SUP><I>b</I></SUP> Only the second set of
+  generations used BFGS.  <SUP>*</SUP> Not a local minimum.
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html99"
+ HREF="node8.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html97"
+ HREF="genoud.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html91"
+ HREF="node6.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html100"
+ HREF="node8.shtml">References</A>
+<B> Up:</B> <A NAME="tex2html98"
+ HREF="genoud.shtml">Genetic Optimization Using Derivatives</A>
+<B> Previous:</B> <A NAME="tex2html92"
+ HREF="node6.shtml">Figures</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

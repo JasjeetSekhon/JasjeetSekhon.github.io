@@ -1,0 +1,5 @@
+foo <- dget(file="FearonLaitin.dpt")
+
+glm1  <- glm(onset ~ warl + gdpenl +lpopl1 +lmtnest +ncontig +Oil +nwstate +instab +polity2l +ethfrac +relfrac,
+             data=foo, family=binomial)
+summary(glm1)

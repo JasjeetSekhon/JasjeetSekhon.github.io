@@ -1,0 +1,580 @@
+% -*-Mode: LaTeX;-*-
+% %W%   %G%
+% 
+%
+
+\documentclass[fleqn,11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,graphicx,psfrag,rotating}
+\usepackage{hyperref,setspace} \usepackage{threeparttable}
+\usepackage{dcolumn} \usepackage[longnamesfirst]{natbib}
+\usepackage{comment}
+\usepackage{epsfig,rotate}
+\usepackage[mdyyyy]{datetime}
+
+\bibliographystyle{info} 
+\bibpunct{(}{)}{;}{author-year}{}{,}
+
+\newcommand{\MyPerp}{\perp \! \! \! \perp}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{-.26in}%{0in}
+%\setlength{\topmargin}{0.05in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textwidth}{6.5in}
+%\setlength{\textheight}{8.987in}%{8.9in}
+\setlength{\textheight}{9in}
+
+\hypersetup{
+%  colorlinks=true,
+  bookmarksopen, pdftitle={}, pdfsubject={}, pdfauthor={Jasjeet S. Sekhon},
+%  linkcolor=cyan,               
+%  citecolor=cyan,               
+%  pagecolor=cyan,
+%  urlcolor=cyan
+}
+
+%\doublespacing
+
+% change section to large and subsection to normalsize font
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0em}{\baselineskip}{0.5\baselineskip}{\large\bfseries\large}}
+\renewcommand{\subsection}{\@startsection{subsection}{0}{0em}{\baselineskip}{0.5\baselineskip}{\normalfont\bfseries\normalsize}}
+\makeatletter
+\newcommand{\vs}{\vspace{-\baselineskip}}
+\newcommand{\vvs}{\vspace{-.4cm}}
+
+\newcommand{\mr}{\mathrm}
+
+%dcolumn column types
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\newcommand{\Rsymb}{{\bf{\textsf{R}}}}
+
+\newcommand{\hlink}{\htmladdnormallink}
+
+\title{The Statistics of Causal Inference in the Social Sciences\\
+  Political Science C236A\\
+  Statistics C239A}
+\author{Professor Jasjeet Singh Sekhon}
+\date{Class: 4-7pm Monday\\Barrows 118}
+
+\begin{document}
+\maketitle
+
+\begin{quote}
+  \textbf{Associate Professor Jasjeet Singh Sekhon} \\
+  \hlink{\texttt{sekhon@berkeley.edu}}%
+  {mailto:sekhon@berkeley.edu} \\
+  \hlink{\texttt{HTTP://sekhon.berkeley.edu}}%
+  {http://sekhon.berkeley.edu} \\
+  Office: Barrows Hall 750C\\
+\end{quote}
+
+\begin{quote}
+  \textbf{Danny Hidalgo, GSI}\\
+  \hlink{\texttt{fdhidalgo@berkeley.edu}}{fdhidalgo@berkeley.edu} \\
+  Office: Survey Research Center, 2638 Channing Way\\
+  Section: Wed 2--4 PM in 118 Barrows
+\end{quote}
+
+\subsection*{Description}
+\pdfbookmark[1]{Description}{sec:description}
+
+Approaches to causal inference using the potential outcomes framework.
+Covers observational studies with and without ignorable treatment
+assignment, randomized experiments with and without noncompliance,
+instrumental variables, regression discontinuity, sensitivity analysis
+and randomization inference. Applications are drawn from a variety of
+fields including political science, economics, sociology, public
+health and medicine.  \\ 
+
+This course can be used to meet the Department's Methodology course-out
+option. 
+
+\subsection*{Prerequisites}
+
+At least one graduate matrix based multivariate regression course in
+addition to introductory statistics and probability.  If you need to
+review material, please consult David Freedman's excellent
+\textit{Statistical Models: Theory and Practice} or John Fox's
+\textit{Applied Regression Analysis, Linear Models, and Related
+  Methods}, which includes examples using the
+\hlink{\textit{R}}{http://www.r-project.org/} programming language.
+
+\begin{comment}
+You may also want to review my lecture notes for an introductory
+course (Government 1000 at Harvard).  Link to \hlink{[presentation
+  version of
+  notes]}{http://sekhon.berkeley.edu/gov1000/g1000_presentation.pdf},
+\hlink{[printer version of
+  notes]}{http://sekhon.berkeley.edu/gov1000/g1000_printing.pdf}.
+\end{comment}
+
+\section*{Evaluation}
+\pdfbookmark[1]{Evaluation}{sec:evaluation}
+
+Final grades will be based on a series of homework assignments (30\%
+of final grade), a midterm (30\%), a term paper or final exam (30\%),
+and class and section participation (10\%).  Student have the choice
+between a term paper and a final exam.
+
+It is recommended that students write the term paper jointly with one
+or at most two other students.  Experience has shown that this greatly
+facilitates learning as well as increases the likelihood that the
+paper will eventually become a published article.
+
+Weekly readings and homework assignments are the norm.  It is highly
+recommended that students form study groups in order to complete the
+homework assignments.  Although it is recommended that people work
+together in order to complete the assignments, students must hand in
+their own individual answers.  Photocopies and other reproductions of
+someone else's answers are not acceptable.  Students should hand in
+the answers to the problem sets, and all computer code written to find
+those answers.
+
+Incompletes: all course material must be handed in by the first day of
+class of the spring semester unless an exemption is explicitly
+granted.
+
+\section*{Course Software and Books}
+\pdfbookmark[1]{Course Books and Software}{sec:books} 
+
+The programming language for this course is the
+\hlink{\textit{R}}{http://www.r-project.org/} variant of the
+\textit{S} statistical programming language.  It is available for
+download from:
+\hlink{\texttt{http://www.r-project.org/}}{http://www.r-project.org/}.
+\hlink{\textit{R}}{http://www.r-project.org/} is open source software
+(released under the \hlink{GNU public license}{http://www.gnu.org/})
+and is available at no charge.  We will also be making extensive use
+of an R package called
+\hlink{``Matching''}{http://sekhon.berkeley.edu/matching}
+\citep{sekhonJSS}.
+
+The books listed below are required and available at various online
+bookstores and at the University Book Store.
+
+\begin{itemize}
+\item Rubin, Donald.  2006.  \textit{Matched Sampling for Causal
+    Effects}.  Cambridge University Press.  ISBN 0521674360.
+
+\item Rosenbaum, Paul R.  2002.  \textit{Observational Studies}.
+  Springer-Verlag.  2nd edition.  ISBN 0387989676.
+  
+\item Morgan, Stephen L.\ and Christopher Winship. 2007.
+  \textit{Counterfactuals and Causal Inference: Methods and Principles
+    for Social Research}.  Cambridge University Press. ISBN-10:
+  0521671930.
+
+\item Krause, Andreas and Melvin Olson. 2005. \textit{The Basics of
+    S-PLUS}. Springer. ISBN-10: 0387261095.
+\end{itemize}
+
+In addition to the required books, you may wish to obtain a copy of:
+\begin{itemize}
+\item Freedman, David A. 2010. \textit{Statistical Models and Causal
+    Inference: A Dialogue with the Social Sciences}. David Collier,
+  Jasjeet S.\ Sekhon, and Philip B.\ Stark, Editors. Cambridge
+  University Press. ISBN-10 0521123909.\\ [1.25ex]
+  This volume contains a collection of Freedman's articles of special
+  interest to social scientists.
+
+\item Rosenbaum, Paul R.  2009.  \textit{Design of Observational
+    Studies}.  Springer-Verlag.  ISBN-10 1441912126. \\ [1.25ex]
+  This book is less technical than Rosenbaum's \textit{Observational
+    Studies}.  The book is also available online via Cal's contract
+  with Springer-Verlag: \url{http://www.springerlink.com/content/978-1-4419-1212-1/#section=627451&page=1}
+
+\item Venables, W.N and Brian D.~Ripley.  2003.  \textit{Modern
+    Applied Statistics with S}.  New York: Springer-Verlag. 4th
+  edition.  ISBN: 0387954570 \\ [1.25ex]
+  A reference manual on the implementation of many statistical
+  techniques in \textit{R} and \textit{S}.
+\end{itemize}
+
+\begin{comment}
+  Rosenbaum (2002) is a useful book, and provides a treatment of the
+  concepts with a uniform notation.  The 2nd edition is available at
+  \href{http://www.amazon.com/gp/product/0387989676/qid=1136502162/sr=2-1/ref=pd_bbs_b_2_1/002-5192299-7212830?s=books&v=glance&n=283155}{[
+    amazon.com ] }\\
+\end{comment}
+
+
+\subsection*{Course outline}
+\begin{enumerate}
+
+\item \textsc{Causality} 
+
+  {\em The potential outcomes framework for causal inference.
+    }
+
+\begin{itemize}
+  \item \cite{holland1986}
+  \href{http://links.jstor.org/sici?sici=0162-1459%28198612%2981%3A396%3C%3E1.0.CO%3B2-9}{``Statistics and Causal Inference''}
+
+  \item \cite{LittleRubin2000}
+  \href{http://arjournals.annualreviews.org/doi/abs/10.1146%2Fannurev.publhealth.21.1.121}{``Causal Effects in Clinical and Epidemiological Studies via Potential Outcomes''}
+
+  \item \cite{Sekhon2004}:
+    \hlink{``Quality Meets Quantity: Case Studies, Conditional Probability and Counterfactuals''}{http://sekhon.berkeley.edu/papers/QualityQuantity.pdf}
+
+%   \item \cite{cox:jrss1992}
+%   \href{http://links.jstor.org/sici?sici=0964-1998%281992%29155%3A2%3C291%3ACSSA%3E2.0.CO%3B2-O}{[ JSTOR ]}
+
+%   \item \cite{freedman:1991}
+%   \href{http://links.jstor.org/sici?sici=0081-1750%281991%2921%3C%3E1.0.CO%3B2-H}{[ JSTOR ToC ]}
+% 
+%   {\em With discussion by Berk, Blalock, and Mason, and rejoinder pp. 315-358 }
+
+\end{itemize}
+
+Extra reading:
+\begin{itemize}
+  \item \cite{WinshipMorgan1999}
+  \href{http://arjournals.annualreviews.org/doi/abs/10.1146%2Fannurev.soc.25.1.659}{``The Estimation of Causal Effects from Observational Data''}
+\end{itemize}
+
+\item \textsc{Statistical Modeling: Foundations and Limitations} 
+  \begin{itemize}
+  \item Freedman Chapter 1 \citep{freedman_foundations}: \href{http://www.stat.berkeley.edu/~census/fos.pdf}{``Some Issues in the Foundations of Statistics: Probability and Model Validation.''}
+
+ \item Freedman Chapter 2 \citep{freedmanCh2}: \href{http://www.stat.berkeley.edu/~census/berk2.pdf}{``Statistical
+   Assumptions as Empirical Commitments.''}
+
+ \item Freedman Chapter 3 \citep{freedman_shoe}: ``Statistical Models
+   and Shoe Leather.''
+ \end{itemize}
+ For extra readings see the rest of the Freedman volume, especially:
+\begin{itemize}
+\item Freedman Chapter 20 \citep{freedmanCh20}: ``On Types of Scientific Inquiry: The Role of Qualitative Reasoning.''
+\item Freedman Chapter 14 \citep{freedmanCh14}: ``The Grand Leap'' (of graphical models).
+\item Freedman Chapter 15 \citep{freedman_graph}: ``On Specifying Graphical Models for
+  Causation, and the Identification Problem.'' 
+\end{itemize}
+
+
+
+\item \textsc{Randomized Experiments and Controlling Bias in Observational Studies} 
+
+  {\em Properties of experiments, basic implementations, and illustrations of observational studies based on     approximate experimental design. }
+
+ \begin{itemize}
+
+% \item Fisher
+
+ \item \cite{neyman1923}: ``On the Application of Probability Theory to
+   Agricultural Experiments. Essay on Principles. Section 9.''
+   \textit{Statistical Science} 5, 465--472.
+
+ \item \cite{rubin1990} ``Comment: Neyman (1923) and Causal Inference in Experiments
+   and Observational Studies,'' \textit{Statistical Science} 5, 472-480.
+   
+ \item \citet{rubin2006} Chapters 1 and 2:\\
+   ``William G. Cochran's Contributions to the Design, Analysis and
+   Evaluation of Observational Studies'' \\    
+   \cite{CochranRubin1973}: ``Controlling Bias in Observational Studies: A Review''
+
+ \item \cite{rosenbaum2002} Chapter 2
+ \end{itemize}
+
+ Extra readings:
+
+ \begin{itemize}
+ \item \cite{przeworski:science} \href{http://www.nyu.edu/gsas/dept/politics/faculty/przeworski/papers/isthescience.pdf#search=%22is%20the%20science%20of%20comparative%20politics%20possible%22}{``Is the Science of Comparative Politics Possible?''
+}
+
+ \item \cite{cox1958}: {\em Planning of Experiments}. Chapters 1 and 2.
+   % \href{http://www.stanford.edu/class/polisci355/classonly/cox.pdf}{[pdf]}
+
+ \item \cite{cochran1965}: ``The Planning of Observational Studies of
+   Human Populations''
+   
+ \item \cite{cochran1983}: Chapters 1 and 7
+   %\href{http://www.stanford.edu/class/polisci355/classonly/cochran.pdf}{ [ pdf ] }
+   
+   % \cite{cox.reid:2000}. Chapters 1 and 2
+ \end{itemize}
+
+\item \textsc{Randomization Inference} 
+
+  {\em Fisherian and permutation Inference, and the Lady Tasting Tea}
+
+  \begin{itemize}
+  \item \citet[][ch 1--2]{fisher1935}: \textit{Design of Experiments}
+  \item \citet[][ch 2]{rosenbaum2002}: \textit{Observational Studies}
+  \item \cite{rosenbaum.ri}: ``Covariance adjustment in randomized
+    experiments and observational studies.'' \textit{Statistical
+      Science} 17 286--327 (with discussion).
+  \end{itemize}
+  
+  Extra reading:
+  \begin{itemize}
+  \item Freedman Chapter 8: ``What is the Chance of an Earthquake?''
+
+  \item Application to correct issues with weak instruments and
+    2SLS: \citet{ImbensRosenbaum2005}: ``Randomization Inference with
+    an Instrumental Variable,'' \textit{Journal of the Royal
+      Statistical Society}, Series A, vol 168(1), 109--126.
+
+  \item Attributable effects: \citet[][188--194]{rosenbaum2002}.
+  \end{itemize}
+
+
+\item \textsc{Univariate Matching Methods for Controlling Bias in Observational Studies} 
+  
+  {\em Experimental and observational studies where
+    assignment to treatment is done on observables. Stratification and
+    matching.}
+  
+  \begin{itemize}
+  \item \citet[]{rubin2006} Chapters 3 to 5:\\
+    ``Matching to Remove Bias in Observational Studies'' \cite{rubin1973a}\\
+    ``The Use of Matched Sampling and Regression Adjustment to Remove Bias in Observational
+    Studies'' \cite{rubin1973b}\\
+  ``Assignment to a Treatment Group on the Basis of a Covariate''
+    
+  \item \citet{rosenbaum2002} Chapter 3.1--3.3
+  \end{itemize}
+  
+  %Extra readings:
+  %\begin{itemize}
+    % \item  \cite{rubin:1991}
+    %   \href{http://links.jstor.org/sici?sici=0006-341X%28199112%2947%3A4%3C1213%3APIOMOS%3E2.0.CO%3B2-H}{ [ JSTOR ] }
+    
+  %\item Cox, D.~R.. 1958. {\em Planning of Experiments}. New York: Wiley. Chapters 3 and 4.
+  %  \href{http://www.stanford.edu/class/polisci355/classonly/cox3-4.pdf}{ [pdf]}
+  %\end{itemize}
+
+\item \textsc{The Propensity Score} 
+
+ {\em Logistic regression and the fundamentals of propensity score matching}
+  \begin{itemize}
+    \item Handout on general linear models
+    \item \citet{rubin2006} Chapters 10, 11 and 14 all with Paul R. Rosenbaum:\\
+      ``The Central Role of the Propensity Score in Observational Studies'' \cite{RosenbaumRubin1983} \\
+      ``Assessing Sensitivity to an Unobserved binary Covariate in an Observational Study with Binary Outcome'' \\
+      ``The Bias Due to Incomplete Matching''
+    \item \citet{SekhonInformation}: \hlink{The Varying Role of Voter Information Across Democratic Societies}{http://sekhon.berkeley.edu/papers/SekhonInformation.pdf}
+    \item \citet{MorganHarding2006}: ``\hlink{Matching Estimators of
+        Causal Effects: Prospects and Pitfalls in Theory and
+        Practice}{http://smr.sagepub.com/cgi/content/abstract/35/1/3}''
+  \end{itemize}
+  Also see \cite{RosenbaumRubin1984,RubinThomas2000}.
+
+\item \textsc{Regression Discontinuity Design} 
+  \begin{itemize}
+  \item \citet{ThistlethwaiteCampbell1960}: ``Regression-Discontinuity Analysis: An alternative to the ex post facto experiment''
+
+  \item \citet{leeRD}: ``Randomized Experiments from Non-random Selection in U.S. House Elections''
+
+  \item \citet{HahnToddvanderKlaauw}: ``Identification and Estimation of Treatment Effects with a Regression-Discontinuity Design''
+  \end{itemize}
+
+
+  Extra reading:
+  \begin{itemize}
+  \item \cite{dunning2008}: ``Improving Causal Inference: Strengths
+    and Limitations of Natural Experiments.'' \textit{Political Science Quarterly} 61(2):282--293 2008.
+  \end{itemize}
+
+\item \textsc{Multivariate Matching} 
+
+ {\em Mahalanobis distance, Genetic Matching and Equal Percent Bias Reduction}
+
+  \begin{itemize}
+  \item \cite{rubin2006} Chapters 8 and 9:\\
+    ``Bias Reduction Using Mahalanobis-Metric Matching'' \cite{rubin1980}\\
+    ``Using Multivariate Matched Sampling and Regression Adjustment to Control Bias in Observational Studies'' \cite{rubin1979}
+  \item \citet{DiamondSekhon2005}: \hlink{Genetic Matching for Estimating Causal Effects: A General Multivariate Matching Method for Achieving Balance in Observational Studies}{http://sekhon.berkeley.edu/papers/GenMatch.pdf}
+  \end{itemize}
+
+\item \textsc{Genetic Matching}
+
+ {\em Automatic balance optimization, evaluating balance and the LaLonde controversy}
+  \begin{itemize}
+  \item \citet{Sekhon2006}: \hlink{``Alternative Balance Metrics for Bias Reduction in Matching Methods for Causal Inference''}{http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf}
+
+  \item \citet{DiamondSekhon2005}: \hlink{``Genetic Matching for Estimating Causal Effects: A General Multivariate Matching Method for Achieving Balance in Observational Studies}{http://sekhon.berkeley.edu/papers/GenMatch.pdf''}
+
+\item \citet{lalonde1986}
+  \href{http://links.jstor.org/sici?sici=0002-8282%28198609%2976%3A4%3C604%3AETEEOT%3E2.0.CO%3B2-P}{ [ JSTOR ] }
+
+  \item \citet{DehejiaWahba1999}
+    \href{http://links.jstor.org/sici?sici=0162-1459%28199912%2994%3A448%3C1053%3ACEINSR%3E2.0.CO%3B2-K}{ [ JSTOR ] }
+
+  \item \citet{SmithTodd2001}
+\end{itemize}
+
+\item \textsc{Matching Examples Using Observational Data} \\
+  Please read
+  the first three of the Political Science examples listed here and
+  any of the others you find of interest.  An effort has been made to
+  obtain examples across fields which are pedagogically interesting.\\
+  \textit{Political Science}
+  \begin{itemize}
+  \item \citeauthor*{GordonHuber2007}: \href{http://sekhon.berkeley.edu/causalinf/papers/faithful5.0s.pdf}{``The Effect of Electoral Competitiveness on Incumbent Behavior''}
+  \item \citeauthor*{GilliganSergenti2006}:
+    \href{http://sekhon.berkeley.edu/causalinf/papers/gilligan_sergenti_06.pdf}{``Evaluating
+      UN Peacekeeping with Matching to Improve Causal Inference''}
+  \item \citeauthor*{LenzLadd2006}:
+    \href{http://sekhon.berkeley.edu/causalinf/papers/LaddLenzBritish.pdf}{``Exploiting a Rare Shift in Communication Flows: Media Effects in the 1997 British Election''}
+  \item \cite{SimmonsHopkins2005}: \href{http://sekhon.berkeley.edu/causalinf/papers/treaties.pdf}{``The Constraining Power of International Treaties: Theory and Methods"}
+  \end{itemize}
+
+  \textit{Economics}
+  \begin{itemize}
+  \item \cite{GalianiGertlerSchargrodsky2005}: \href{http://www.journals.uchicago.edu/JPE/journal/issues/v113n1/113106/113106.web.pdf}{``Water for Life: The
+    Impact of the Privatization of Water Services on Child Mortality''}
+  \item \cite{ImbensRubinSacerdote2001}: \href{http://links.jstor.org/sici?sici=0002-8282%28200109%2991%3A4%3C778%3AETEOUI%3E2.0.CO%3B2-7}{``Estimating the Effect of
+    Unearned Income on Labor Earnings, Savings, and Consumption:
+    Evidence from a Survey of Lottery Players''}
+  \item \cite{angrist1998}: \href{http://links.jstor.org/sici?sici=0012-9682%28199803%2966%3A2%3C249%3AETLMIO%3E2.0.CO%3B2-A}{``Estimating the Labor Market Impact of
+    Voluntary Military Service Using Social Security Data on Military}
+    Applicants.''
+  \end{itemize}
+
+  \textit{Other}
+  \begin{itemize}
+  \item \cite{ChristakisIwashyna2003}: ``The Health Impact of Health
+    Care on Families: A matched cohort study of hospice use by
+    decedents and mortality outcomes in surviving, widowed spouses''
+  \item \cite{rubin2001}: ``Using Propensity Scores to Help Design Observational Studies: Application to the Tobacco Litigation''
+  \end{itemize}
+
+\item {Regression Adjustment to Experimental Data}
+  \begin{itemize}
+  \item \citet{freedmanOLSa}: ``On regression adjustments to
+    experimental data.''
+  \item \citet{freedmanLogit}: ``Randomization does not justify
+    logistic regression''
+  \item \citet{freedmanOLSb}: ``On regression adjustments in
+    experiments with several treatments''
+  \end{itemize}
+  
+
+%Using Matching, but not GenMatch
+%  \textit{Additional Applications}
+%  \begin{itemize}
+%  \item \citeauthor*{Eggers2006}:
+%    \href{http://sekhon.berkeley.edu/causalinf/papers/rtaffects5.pdf}{``How Much Do Trade Agreements Increase Trade''}
+%  \end{itemize}
+
+\item \textsc{Instrumental Variables (IV)} 
+  \begin{itemize}
+
+  \item \cite{AngristKrueger2001}: \hlink{``Instrumental Variables and the Search for Identification: From Supply and Demand to Natural Experiments''}{http://www.irs.princeton.edu/pubs/pdfs/455jep.pdf}
+
+  \item \cite{air1996}
+  \href{http://links.jstor.org/sici?sici=0162-1459%28199606%2991%3A434%3C%3E1.0.CO%3B2-D }{``Identification of Causal Effects Using Instrumental Variables''}
+
+% Comment on James J. Heckman, "Instrumental Variables: A Study of Implicit Behavioral Assumptions Used in Making Program Evaluations"
+% Joshua D. Angrist; Guido W. Imbens
+% The Journal of Human Resources > Vol. 34, No. 4 (Autumn, 1999), pp. 823-827
+% Stable URL: http://links.jstor.org/sici?sici=0022-166X%28199923%2934%3A4%3C823%3ACOJJH%22%3E2.0.CO%3B2-B 
+% 
+%     Instrumental Variables: Response to Angrist and Imbens
+%         James J. Heckman
+%         The Journal of Human Resources, Vol. 34, No. 4. (Autumn, 1999), pp. 828-837.
+%         Stable URL: http://links.jstor.org/sici?sici=0022-166X%28199923%2934%3A4%3C828%3AIVRTAA%3E2.0.CO%3B2-Q
+% 
+  \item \cite{heckman1997}
+  \href{http://links.jstor.org/sici?sici=0022-166X%28199722%2932%3A3%3C441%3AIVASOI%3E2.0.CO%3B2-P}{``Instrumental Variables: A Study of Implicit Behavioral Assumptions Used in Making Program Evaluations''}
+
+%  \item Rosenbaum comment (1996 and 1999)
+
+%   \item J.J. Heckmand Edward Vytlacil. (2003).  Structural Equations,
+%     Treatment Effects, and Econometric Policy Evaluation
+
+%    \item Pedro Carneiro James J. Heckman, and Edward Vytlacil. (2000)
+%      "Understanding What Instrumental Variables Estimate: Estimating
+%      Marginal and Average Returns to Education
+
+%   \item Bartels
+% 
+
+%
+%
+%\item Imbens, G.W., Rubin, D.B. and Sacerdote, B. (2001), "Estimating the Effect of
+%    Unearned Income on Labor Supply, Earnings, Savings and Consumption: Evidence from
+%    a Survey of Lottery Players", American Economic Review, 91, 778­794.
+  \end{itemize}
+
+  Application, and use of randomization inference to correct an issue:
+  \begin{itemize}
+  \item \citet{ImbensRosenbaum2005}: ``Randomization Inference with
+    an Instrumental Variable,'' \textit{Journal of the Royal Statistical
+      Society}, Series A, vol 168(1), 109--126.
+
+  \item \citet{AngristKrueger1991}: ``Does compulsory school attendance
+    affect earnings?'' \textit{QJE} 1991; 106: 979--1019.
+
+  \item \citet{BoundJaegerBaker1995}: ``Problems with Instrumental
+    Variables Estimation when the Correlation Between the Instruments
+    and the Endogenous Regressors is Weak,'' \textit{JASA} 90, June
+    1995, 443--450.
+  \end{itemize}
+
+
+\item \textsc{Application: Fixing Broken Experiments and a Controversy} 
+  \begin{itemize}
+  \item Gerber, Alan S. and Donald P. Green. 2000. "The Effects of
+    Canvassing, Telephone Calls, and Direct Mail on Voter Turnout: A
+    Field Experiment." American Political Science Review 94(3): 653
+    663.
+  \item Imai, Kosuke. "Do Get-Out-The-Vote Calls Reduce Turnout? The
+    Importance of Statistical Methods for Field Experiments." American
+    Political Science Review
+  \item Green and Gerber Reply
+    
+  \item Bowers, Jake and Ben Hansen. 2005.
+    \href{http://sekhon.berkeley.edu/causalinf/papers/bowershansen2006-10TechReport.pdf}{``Attributing Effects to A Cluster Randomized Get-Out-The-Vote Campaign.''}
+
+%  \item \cite{efron.feldman:1991}
+%   \href{http://links.jstor.org/sici?sici=0162-1459%28199103%2986%3A413%3C%3E1.0.CO%3B2-5}{[ JSTOR ToC ]}
+  \end{itemize}
+
+\item \textsc{Synthetic Cohorts} \\
+  {\em When good matches cannot be found: create a new unit}
+  \begin{itemize}
+  \item \citet{AbadieGardeazabal2003}: \href{http://ksghome.harvard.edu/~.aabadie.academic.ksg/ecc.pdf}{``The Economic Costs of Conflict: a Case-Control Study for the Basque Country''}
+  \end{itemize}
+
+\item \textsc{Full and Optimal Matching} 
+  \begin{itemize}
+    \item \citet{Rosenbaum1991,Rosenbaum1989}
+    \item \citet{Hansen2004}
+  \end{itemize}
+
+\item \textsc{Sensitivity Analysis for Hidden Bias and other Helpful Suggestions}
+
+\item \textsc{Application: Voting Irregularities} 
+  \begin{itemize}
+    \item \citet{WSSMHB}: \hlink{The Butterfly Did It: The Aberrant Vote for Buchanan in Palm Beach County, Florida}{http://elections.berkeley.edu/election2000/butterfly.pdf}
+    \item \citet{MebaneSekhon2004}: \hlink{Robust Estimation and Outlier Detection for Overdispersed Multinomial Models of Count Data}{http://sekhon.berkeley.edu/elections/election2000/MebaneSekhon.multinom.pdf}
+    \item \citet{HerronWand2006}: \hlink{Assessing Partisan Bias in Voting Technology: The Case of the 2004 New Hampshire Recount}{http://www.dartmouth.edu/~herron/nh.pdf}
+    \item \citet{Sekhon_florida}: \hlink{The 2004 Florida Optical Voting Machine Controversy: A Causal Analysis Using Matching}{http://sekhon.berkeley.edu/papers/SekhonOpticalMatch.pdf}
+  \end{itemize}
+
+\end{enumerate}
+
+\pdfbookmark[1]{References}{sec:references}
+\bibliography{causalinf}
+
+\end{document}
+
+
+% LocalWords:  Verlag nd Rocio Titiunik GSI Dwinelle sekhon online Venables th
+% LocalWords:  Webpage Neyman rubin rosenbaum DiamondSekhon unconfoundedness pm
+% LocalWords:  pdf Counterfactuals mimeo DOI Imai Kosuke causalinf TBA Tu sec
+% LocalWords:  CA ISBN com ACSSA JSTOR ToC Berk Blalock pp Cochran's Cochran
+% LocalWords:  APIOMOS LaLonde Outlier Overdispersed AbadieGardeazabal Winship
+% LocalWords:  freedmanLogit freedmanOLSb Krause florida Jasjeet Singh Channing
+% LocalWords:  else's Univariate Covariate SekhonInformation MorganHarding SLS
+% LocalWords:  lalonde DehejiaWahba SmithTodd GordonHuber GilliganSergenti QJE
+% LocalWords:  LenzLadd freedmanOLSa ThistlethwaiteCampbell facto DavidLee JASA
+% LocalWords:  HahnToddvanderKlaauw Hidalgo Incompletes WSSMHB MebaneSekhon
+% LocalWords:  Multinomial HerronWand sekhonJSS freedmanCh Calnet's Fisherian
+% LocalWords:  ImbensRosenbaum leeRD AngristKrueger BoundJaegerBaker Regressors

@@ -1,0 +1,166 @@
+<html>
+<title>PS 236A / Stat 239A Homepage</title>
+
+<body link=blue vlink=blue alink=darkblue bgcolor=lightgray text="darkblue">
+
+<font face="geneva, courier, times new roman" size="4">
+<a href=http://sekhon.berkeley.edu> Sekhon's Homepage</a> |  <a href=http://www.jahenderson.com/>John's Homepage</a>     
+</font>
+<hr>
+
+<font face="geneva, courier, times new roman" size="5">
+<br>Causal Inference for the Social Sciences<br>
+PS C236A / Stats C239A<br>
+Fall 2012<br>
+
+
+<font face="geneva, courier, times new roman" size="3">
+Lecture: Tuesdays 2-4 in 220 Wheeler<br>
+Section: Thursdays 6-8 in 791 Barrows<br>
+
+<br>Contact Information:
+<table border=0 width="90%">
+<td width="30%" align=left valign=top>
+Instructor:
+Jas Sekhon<br>
+sekhon[at]berkeley(dot)edu <br>
+</td>
+<td width="30%" align=left valign=top>
+GSI:
+John Henderson<br>
+jahenderson[at]berkeley(dot)edu<br>
+Office Hours: Thursday 3-5 in 135 Moses
+</td>
+</table>
+
+<br><br>
+<a href=http://sekhon.berkeley.edu/causalinf/causalinf.pdf>Class
+Syllabus,</a>
+<a href=http://sekhon.berkeley.edu/causalinf/fa2012/causalinfSection.pdf>Section Syllabus</a>
+<br>
+Lecture Notes: <a href=http://sekhon.berkeley.edu/causalinf/causalinf.pres.pdf>presentation version;</a>
+<a href=http://sekhon.berkeley.edu/causalinf/causalinf.print.pdf>print version</a>
+
+<br><br>
+<hr>
+<table border=0 width="100%">
+<td width="50%" align=left valign=top>
+<p><font size="4" face="geneva, courier, times new roman">Section Notes</font><br><br>
+	<a href="./fa2012/section/section1.pdf">Section 1 - OLS;</a>
+  <a href="./fa2012/section/section1_supplement.pdf">[extra notes]</a>  <br>
+	<a href="./fa2012/section/section2.pdf">Section 2 - Potential
+  Outcomes;</a>   <a href="./fa2012/section/section2_supplement.pdf">[extra notes]</a>  <br>
+  	<a href="./fa2012/section/section3.pdf">Section 3 -
+  Randomization Inference;</a>   <a
+  href="./fa2012/section/section3_supplement.pdf">[extra notes]</a>
+  <br>
+  	<a href="./fa2012/section/section4.pdf">Section 4 -
+  Matching</a>  <a
+  href="./fa2012/section/section4_supplement.pdf">[extra notes]</a>
+    <br>
+	<a href="./fa2012/section/section5.pdf">Section 5 - Regression
+  Discontinuity</a>  <a
+  href="./fa2012/section/section5_supplement.pdf">[extra notes]</a>
+      <br>
+  	<a href="./fa2012/section/section6.pdf">Section 6 - Matching
+  and Balance</a>
+  <br>
+  	<a href="./fa2012/section/section7.pdf">Section 7 - Genetic Matching</a>  <a
+  href="./fa2012/section/section7_supplement.pdf">[extra notes]</a>
+      <br>
+  	<a href="./fa2012/section/section8.pdf">Section 8 - The KS Test</a>  
+      <br>
+  	<a href="./fa2012/section/section9.pdf">Section 9 - The Bootstrap</a>  
+      <br>
+  	<a href="./fa2012/section/section10.pdf">Section 10 -
+  Sensitivity Analysis</a>  
+      <br>
+  	<a href="./fa2012/section/section11.pdf">Section 11 -
+  Instrumental Variables</a>  
+      <br>
+</td>
+
+
+<td width="50%" align=left valign=top>
+<p><font size="4" face="geneva, courier, times new roman">Section Code Examples</font><br><br>
+	<br>
+  	<a href="./fa2012/R/section2.R">Section 2 - Functions and MLE</a><br>
+  	<a href="./fa2012/R/section3.R">Section 3 - Permutation
+  Inference</a><br>
+  	<a href="./fa2012/R/section4.R">Section 4 - Matching</a><br>
+  	<a href="./fa2012/R/section5.R">Section 5 - Regression Discontinuity</a><br>
+  	<a href="./fa2012/R/section6.R">Section 6 - Matching and
+  Balance</a><br>
+    	<a href="./fa2012/R/section7.R">Section 7 - Genetic
+  Matching</a><br>
+  
+    	<a href="./fa2012/R/section8.R">Section 8 - Balance Plots and Matching</a><br>
+	<a href="./fa2012/R/section9.R">Section 9 - The Bootstrap</a><br>
+	<a href="./fa2012/R/section10.R">Section 10 - Sensitivity Analysis</a><br>
+  	<a href="./fa2012/R/section11.R">Section 11 - Instrumental Variables</a><br>
+  
+	
+</td>
+</table>
+
+
+<br>
+<hr>
+<table border=0 width="100%">
+<td width="50%" align=left valign=top>
+<p><font size="4" face="geneva, courier, times new roman">Problem Sets</font><br><br>
+	<a href="./fa2012/hw/hw1.pdf">Problem
+  Set 1</a><br>
+  	<a href="./fa2012/hw/hw2.pdf">Problem
+  Set 2</a><br>
+  	<a href="./fa2012/hw/hw3.pdf">Problem
+  Set 3</a><br>
+   	<a href="./fa2012/hw/hw4.pdf">Problem
+  Set 4</a><br>
+   	<a href="./fa2012/hw/hw5.pdf">Problem
+  Set 5</a><br>
+  	<a href="./fa2012/hw/hw6.pdf">Problem
+  Set 6</a><br>
+
+  <br>
+		</td>
+
+
+<td width="50%" align=left valign=top>
+<p><font size="4" face="geneva, courier, times new roman">Problem Set
+  Answers</font><br>
+  <br>
+	<a href="./fa2012/hw/hw1_solutions.pdf">Problem
+  Set 1 - Solutions</a>	<a href="./fa2012/hw/HW1_Answers.R"> R Code</a><br>  	<a href="./fa2012/hw/hw2_solutions.pdf">Problem
+  Set 2 - Solutions</a>	<a href="./fa2012/hw/HW2_Answers.R"> R
+  Code</a><br> <a href="./fa2012/hw/hw3_solutions.pdf">Problem
+  Set 3 - Solutions</a>	<a href="./fa2012/hw/HW3_Answers.R"> R Code</a><br>
+  <a href="./fa2012/hw/hw4_solutions.pdf">Problem
+  Set 4 - Solutions</a>	<a href="./fa2012/hw/HW4_Answers.R"> R
+  Code</a><br>
+    <a href="./fa2012/hw/hw5_solutions.pdf">Problem
+  Set 5 - Solutions</a>	<a href="./fa2012/hw/HW5_Answers.R"> R Code</a>
+<br>
+      <a href="./fa2012/hw/hw6_solutions.pdf">Problem
+  Set 6 - Solutions</a>	<a href="./fa2012/hw/HW6_Answers.R"> R Code</a><br>
+<br>
+</td>
+</table>
+<hr>
+
+
+<table border=0 width="100%">
+<td width="50%" align=left valign=top>
+
+<p><font size="4" face="geneva, courier, times new roman">Other Useful Materials and Links</font><br><br>
+<a href=http://www-personal.umich.edu/~titiunik/fall2007_ps236> Rocio Titiunik's Website for the Course:</a><br>
+<a href=http://www-personal.umich.edu/~titiunik/fall2007_ps236/section_notes_1_probstat.pdf> Probability Notes</a><br>
+<a href=http://www-personal.umich.edu/~titiunik/fall2007_ps236/section_notes_3_matrixalg.pdf> Intro Matrix Algebra Notes</a><br>
+<a href="http://www-personal.umich.edu/~titiunik/fall2007_ps236/section_notes_4_ateatt.pdf"> Identification of treatment effects </a><br>
+<a href="./fa2012/R/Rreview_2012.R"> <em>R</em> Review Session Code
+  </a>, <a href="./fa2012/R/exampleData1.csv"> data </a>,  <a href="./R/balStatPlot.R"> plot.pval()</a>
+
+
+</font>
+</body>
+</html>

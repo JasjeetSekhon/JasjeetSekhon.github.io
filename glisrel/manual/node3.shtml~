@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Program Syntax</TITLE>
+<META NAME="description" CONTENT="Program Syntax">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node4.shtml">
+<LINK REL="previous" HREF="node2.shtml">
+<LINK REL="up" HREF="manual.shtml">
+<LINK REL="next" HREF="node4.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html63"
+ HREF="node4.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html61"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html55"
+ HREF="node2.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:genblis_manual&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html64"
+ HREF="node4.shtml">General Setup</A>
+<B> Up:</B> <A NAME="tex2html62"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html56"
+ HREF="node2.shtml">The Bootstrap</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000">
+Program Syntax</A>
+</H1>
+There are two general versions of GENBLIS.  The first runs on UNIX
+systems (e.g., AIX, HP-UX, <A NAME="tex2html13"
+ HREF="http://www.linux.org">LINUX</A>)
+and the binary is called <TT>genblis</TT>.  The second version is a 32 bit
+Windows 95/98/NT application.  The Windows binary is called
+<TT>genblis.exe</TT>.  The Windows version of GENBLIS runs in a DOS window
+(and currently has only a command-line interface), but it is <I>not</I> a
+DOS application.  It is a true 32 bit Windows application.
+
+<P>
+The GENBLIS program is a command line program which reads a model
+specification (modelspec) file and produces output to files specified in
+the modelspec file and to standard output.  The name of the model
+specification file is expected by GENBLIS on the command line.  For
+example, 
+<BLOCKQUOTE>
+<TT>unix&gt; genblis files/example1</TT> <BR>
+<TT>windows dos shell&gt; genblis c:<code>\</code>files<code>\</code>example1
+</TT></BLOCKQUOTE>
+In either case GENBLIS will read the file named <TT>example1</TT> which is
+located in the <TT>files</TT> directory.
+
+<P>
+GENBLIS can take two command line options.  The first, as described above,
+names the model specification file.  The second names the file to which
+GENBLIS will send its output.  If this second option is not given, GENBLIS
+sends its output to standard out.  It is advised that on UNIX systems one use
+the redirection capabilities of the shell to redirect this output to a file or
+to wherever else one wishes.  In Windows, however, GENBLIS handles the
+redirection to a file better than the OS does.  Several versions of Windows
+will buffer the redirected output until the GENBLIS process ends.  This can be
+extremely annoying because GENBLIS will not produce any output while the
+process is running to inform the user of its current status.  Therefore, in
+Windows it is highly suggested that one provide the second command line option
+naming the output file.  In UNIX and particularly in Windows it is not
+recommended that GENBLIS be allowed to send output to the screen.  Screen
+output comes at a significant performance cost.  Therefore, it is best to
+redirect standard output to a file either by providing a second command line
+option naming the output file (in Windows) or by redirecting the output
+(UNIX).
+
+<P>
+In addition to the output which GENBLIS by default sends to standard out,
+GENBLIS creates a list file which contains a summary of the results.  The
+list file provides a description of the estimated model, the options
+chosen, and the results requested.  The list file does not provide the
+details of program execution.  By default GENBLIS sends this list output to
+a file it creates with the same name as the model specification file plus
+the extension <TT>.lst</TT>.  For example, if the specified model
+specification file is entitled <TT>1run</TT> the default list file will be
+<TT>1run.lst</TT> and it will be created in the directory from which
+GENBLIS is executed.  The name of the list file can be chosen using the
+<TT>listfile</TT> option--please see the <A HREF="node4.shtml#general:top">General Setup
+  section</A>.
+
+<P>
+All error messages are sent to general output and to standard error.  One
+may, therefore, see an error message displayed in duplicate if both standard
+error and standard out are being directed to the same location.
+
+<P>
+The modelspec file has five different parts the first three of which are
+required: <A HREF="node4.shtml#general:top"><B>general setup</B></A>; <A HREF="node5.shtml#modelspec:top"><B>linear structure model
+    definition</B></A>; <A HREF="node6.shtml#bounds:top"><B>parameter bounds</B></A>; <A HREF="node7.shtml#starting:top"><B>starting
+    values</B></A>; and
+<A HREF="node8.shtml#controls:top"><B>genetic operator controls</B></A>.
+
+<P>
+<A NAME="syntax:comments">&#160;</A>Comments are allowed in the model specification file.  Comments begin with
+# and continue until the end of the line.  Lines must be no longer than
+4096 characters.  Comments are not allowed to appear between a variable
+name and its setting.  For example, when the name of the data file is being
+set, a comment cannot appear between <TT>datafile</TT> and the
+filename--<A HREF="node4.shtml#general:datafile">see <TT>datafile</TT> description</A>.  Only
+white space may appear between a variable name and its setting.  White
+space includes space, tab, and end-of-line characters.
+
+<P>
+GENBLIS is case sensitive.  With the exception of a few special commands,
+the model specification file must be written completely in lower case.
+
+<P>
+Setting up a GENBLIS model specification file is not as difficult as the
+following text may lead one to believe.  There are a large number of
+options, but they need not be used.  It is probably best to look at the
+provided example model specification files.  Four example model
+specification files are provided with the binary distribution of GENBLIS.
+Please see <A HREF="node9.shtml#example:top">the Example Files section</A>
+for more details.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html63"
+ HREF="node4.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html61"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html55"
+ HREF="node2.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:genblis_manual&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html64"
+ HREF="node4.shtml">General Setup</A>
+<B> Up:</B> <A NAME="tex2html62"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html56"
+ HREF="node2.shtml">The Bootstrap</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

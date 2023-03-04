@@ -1,0 +1,658 @@
+
+R version 2.8.0 (2008-10-20)
+Copyright (C) 2008 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # Example of using GenMatch with lalonde2.RData.  This is modified
+> # from the example included in the GenMatch help page.
+> #
+> # For output see http://sekhon.berkeley.edu/causalinf/R/GenMatch1.Rout
+> #
+> 
+> library(Matching)
+Loading required package: rgenoud
+##  rgenoud (Version 5.4-7, Build Date: 2007-01-04)
+##  See http://sekhon.berkeley.edu/rgenoud for additional documentation.
+Loading required package: MASS
+## 
+##  Matching (Version 4.7-3, Build Date: 2008/10/23)
+##  See http://sekhon.berkeley.edu/matching for additional documentation.
+##  Please cite software as:
+##   Jasjeet S. Sekhon. Forthcoming. ``Multivariate and Propensity Score Matching
+##   Software with Automated Balance Optimization: The Matching package for R.''
+##   Journal of Statistical Software. 
+##
+> 
+> #download the data file from the web.  It is better to copy it to your
+> #computer so you don't have to keep doing this!!
+> load(url("http://sekhon.berkeley.edu/causalinf/R/lalonde2.RData"))
+> #if the file is located locally
+> #load("lalonde2.RData")
+> 
+> #let's attach the dataset
+> attach(lalonde2)
+> 
+> # Let's print out the variable names:
+> 
+> #> names(lalonde2)
+> # [1] "treat"     "age"       "education" "black"     "hispan"    "married"  
+> # [7] "nodegree"  "re74"      "re75"      "re78"      "u74"       "u75"
+> 
+> 
+> #The covariates we want to match on
+> X = cbind(age, education, black, hispan, married, nodegree, u74, u75, re75, re74);
+> 
+> #The covariates we want to obtain balance on
+> #ARE THESE ENOUGH??  WHAT ELSE MAY WE WANT TO LOOK AT?
+> BalanceMat <- cbind(age, education, black, hispan, married, nodegree, u74, u75, re75, re74,
++                     I(re74*re75));
+> 
+> #Let's call GenMatch() to find the optimal weight to give each
+> #covariate in 'X' so as we have achieved balance on the covariates in
+> #'BalanceMat'. For details on 'pop.size', 'max.generations' and
+> #'wait.generations' see the GenMatch help and the genoud help.  These
+> #three are the most important 'GenMatch' specific options aside from
+> #'BalanceMatrix'.
+> 
+> ###############
+> # WARNING 1: THESE SETTINGS ARE FOR A QUICK RUN.  FOR EXAMPLE, A LARGER POP.SIZE IS NEEDED.
+> # WARNING 2: NO PSCORE IS BEING USED IN THIS EXAMPLE
+> # WARNING 3: NO ORTHOGONALIZATION IS BEING DONE (THERE IS AFTER ALL NO PSCORE)
+> ###############
+> 
+> genout <- GenMatch(Tr=treat, X=X, BalanceMatrix=BalanceMat, estimand="ATT", M=1,
++                    pop.size=100, wait.generations=1)
+
+
+Fri Nov  7 00:07:41 2008
+Domains:
+ 0.000000e+00   <=  X1   <=    1.000000e+03 
+ 0.000000e+00   <=  X2   <=    1.000000e+03 
+ 0.000000e+00   <=  X3   <=    1.000000e+03 
+ 0.000000e+00   <=  X4   <=    1.000000e+03 
+ 0.000000e+00   <=  X5   <=    1.000000e+03 
+ 0.000000e+00   <=  X6   <=    1.000000e+03 
+ 0.000000e+00   <=  X7   <=    1.000000e+03 
+ 0.000000e+00   <=  X8   <=    1.000000e+03 
+ 0.000000e+00   <=  X9   <=    1.000000e+03 
+ 0.000000e+00   <=  X10  <=    1.000000e+03 
+
+Data Type: Floating Point
+Operators (code number, name, population) 
+	(1) Cloning........................... 	15
+	(2) Uniform Mutation.................. 	12
+	(3) Boundary Mutation................. 	12
+	(4) Non-Uniform Mutation.............. 	12
+	(5) Polytope Crossover................ 	12
+	(6) Simple Crossover.................. 	12
+	(7) Whole Non-Uniform Mutation........ 	12
+	(8) Heuristic Crossover............... 	12
+	(9) Local-Minimum Crossover........... 	0
+
+SOFT Maximum Number of Generations: 100
+Maximum Nonchanging Generations: 1
+Population size       : 100
+Convergence Tolerance: 1.000000e-03
+
+Not Using the BFGS Derivative Based Optimizer on the Best Individual Each Generation.
+Not Checking Gradients before Stopping.
+Using Out of Bounds Individuals.
+
+Maximization Problem.
+GENERATION: 0 (initializing the population)
+Lexical Fit..... 8.872113e-03  9.205633e-03  2.361585e-02  5.617062e-02  7.293806e-02  7.330421e-02  1.567422e-01  1.567422e-01  3.173158e-01  3.173158e-01  3.580876e-01  9.540218e-01  9.828903e-01  9.994877e-01  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  
+#unique......... 100, #Total UniqueCount: 100
+var 1:
+best............ 7.902419e+02
+mean............ 5.382904e+02
+variance........ 8.808270e+04
+var 2:
+best............ 6.848617e+02
+mean............ 4.908717e+02
+variance........ 5.864386e+04
+var 3:
+best............ 7.488580e+02
+mean............ 4.870227e+02
+variance........ 9.262706e+04
+var 4:
+best............ 9.010063e+01
+mean............ 5.103968e+02
+variance........ 7.632858e+04
+var 5:
+best............ 3.668278e+02
+mean............ 5.301096e+02
+variance........ 8.422348e+04
+var 6:
+best............ 3.356096e+02
+mean............ 4.814062e+02
+variance........ 9.330010e+04
+var 7:
+best............ 8.775662e+02
+mean............ 4.961508e+02
+variance........ 8.489732e+04
+var 8:
+best............ 2.534051e+02
+mean............ 4.850205e+02
+variance........ 8.965997e+04
+var 9:
+best............ 9.809141e+02
+mean............ 5.074346e+02
+variance........ 8.192060e+04
+var 10:
+best............ 8.614954e+02
+mean............ 5.303554e+02
+variance........ 8.102772e+04
+
+GENERATION: 1
+Lexical Fit..... 1.081730e-02  1.081730e-02  1.460919e-02  3.089783e-02  3.122125e-02  3.298898e-02  3.959390e-02  1.044092e-01  3.173158e-01  3.173158e-01  3.548939e-01  7.597361e-01  9.824078e-01  9.956765e-01  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  
+#unique......... 62, #Total UniqueCount: 162
+var 1:
+best............ 7.873370e+02
+mean............ 5.776822e+02
+variance........ 5.376082e+04
+var 2:
+best............ 7.365000e+02
+mean............ 5.653669e+02
+variance........ 3.687546e+04
+var 3:
+best............ 7.542946e+02
+mean............ 5.296743e+02
+variance........ 7.162846e+04
+var 4:
+best............ 2.943113e+02
+mean............ 3.911952e+02
+variance........ 8.745650e+04
+var 5:
+best............ 3.580654e+02
+mean............ 5.300280e+02
+variance........ 6.781718e+04
+var 6:
+best............ 2.706394e+02
+mean............ 3.885638e+02
+variance........ 3.674097e+04
+var 7:
+best............ 7.376805e+02
+mean............ 6.592957e+02
+variance........ 6.217008e+04
+var 8:
+best............ 8.544956e+01
+mean............ 3.539845e+02
+variance........ 5.696163e+04
+var 9:
+best............ 9.858376e+02
+mean............ 7.061568e+02
+variance........ 6.688590e+04
+var 10:
+best............ 8.850658e+02
+mean............ 6.352834e+02
+variance........ 6.525477e+04
+
+GENERATION: 2
+Lexical Fit..... 1.658960e-02  1.713370e-02  1.889979e-02  1.889979e-02  1.951706e-02  4.935593e-02  5.487935e-02  1.482341e-01  3.173158e-01  3.173158e-01  3.548939e-01  8.383793e-01  9.824078e-01  9.956765e-01  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  
+#unique......... 64, #Total UniqueCount: 226
+var 1:
+best............ 7.873370e+02
+mean............ 6.997561e+02
+variance........ 2.405433e+04
+var 2:
+best............ 6.771247e+02
+mean............ 7.500790e+02
+variance........ 1.171632e+04
+var 3:
+best............ 7.542946e+02
+mean............ 6.683505e+02
+variance........ 2.590454e+04
+var 4:
+best............ 2.943113e+02
+mean............ 3.101835e+02
+variance........ 3.451799e+04
+var 5:
+best............ 3.422989e+02
+mean............ 4.064124e+02
+variance........ 1.235897e+04
+var 6:
+best............ 2.706394e+02
+mean............ 3.373007e+02
+variance........ 8.541440e+03
+var 7:
+best............ 5.065530e+02
+mean............ 6.677525e+02
+variance........ 5.060396e+04
+var 8:
+best............ 8.544956e+01
+mean............ 2.244615e+02
+variance........ 2.508255e+04
+var 9:
+best............ 9.858376e+02
+mean............ 8.432930e+02
+variance........ 5.811318e+04
+var 10:
+best............ 8.920276e+02
+mean............ 8.446362e+02
+variance........ 9.083700e+03
+
+GENERATION: 3
+Lexical Fit..... 1.889979e-02  1.889979e-02  2.189322e-02  2.452645e-02  2.884111e-02  3.089783e-02  4.428637e-02  2.699933e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.548939e-01  9.044218e-01  9.956765e-01  9.956765e-01  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  
+#unique......... 62, #Total UniqueCount: 288
+var 1:
+best............ 7.873370e+02
+mean............ 7.522312e+02
+variance........ 1.123696e+04
+var 2:
+best............ 7.404275e+02
+mean............ 7.079073e+02
+variance........ 9.434938e+03
+var 3:
+best............ 3.452162e+02
+mean............ 6.673696e+02
+variance........ 3.236022e+04
+var 4:
+best............ 2.943113e+02
+mean............ 3.199446e+02
+variance........ 1.031678e+04
+var 5:
+best............ 3.923346e+02
+mean............ 3.778427e+02
+variance........ 6.728093e+03
+var 6:
+best............ 1.932980e+02
+mean............ 2.953041e+02
+variance........ 7.661740e+03
+var 7:
+best............ 7.376805e+02
+mean............ 6.120681e+02
+variance........ 3.743324e+04
+var 8:
+best............ 8.544956e+01
+mean............ 1.356830e+02
+variance........ 1.428150e+04
+var 9:
+best............ 9.959311e+02
+mean............ 9.067162e+02
+variance........ 3.536041e+04
+var 10:
+best............ 9.752227e+02
+mean............ 8.810057e+02
+variance........ 6.342972e+03
+
+GENERATION: 4
+Lexical Fit..... 1.889979e-02  1.889979e-02  2.281679e-02  2.452645e-02  2.845770e-02  2.884111e-02  4.428637e-02  2.250290e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.548939e-01  9.044218e-01  9.956765e-01  9.956765e-01  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  
+#unique......... 61, #Total UniqueCount: 349
+var 1:
+best............ 7.873370e+02
+mean............ 7.700264e+02
+variance........ 7.779560e+03
+var 2:
+best............ 7.505773e+02
+mean............ 7.010965e+02
+variance........ 6.775308e+03
+var 3:
+best............ 2.796254e+02
+mean............ 5.398324e+02
+variance........ 4.232626e+04
+var 4:
+best............ 2.943113e+02
+mean............ 2.916143e+02
+variance........ 4.513662e+03
+var 5:
+best............ 4.003572e+02
+mean............ 3.736465e+02
+variance........ 5.439578e+03
+var 6:
+best............ 1.808972e+02
+mean............ 2.432914e+02
+variance........ 4.528597e+03
+var 7:
+best............ 7.747391e+02
+mean............ 6.225762e+02
+variance........ 1.798654e+04
+var 8:
+best............ 8.544956e+01
+mean............ 1.076531e+02
+variance........ 8.847473e+03
+var 9:
+best............ 9.975494e+02
+mean............ 9.431872e+02
+variance........ 1.970301e+04
+var 10:
+best............ 9.885620e+02
+mean............ 8.986292e+02
+variance........ 1.777135e+04
+
+GENERATION: 5
+Lexical Fit..... 1.889979e-02  1.889979e-02  2.281679e-02  2.452645e-02  2.845770e-02  2.884111e-02  4.428637e-02  2.250290e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.548939e-01  9.044218e-01  9.956765e-01  9.956765e-01  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  
+#unique......... 61, #Total UniqueCount: 410
+var 1:
+best............ 7.873370e+02
+mean............ 7.784797e+02
+variance........ 4.374930e+03
+var 2:
+best............ 7.505773e+02
+mean............ 7.303504e+02
+variance........ 4.138264e+03
+var 3:
+best............ 2.796254e+02
+mean............ 3.765083e+02
+variance........ 3.222804e+04
+var 4:
+best............ 2.943113e+02
+mean............ 3.128809e+02
+variance........ 1.039077e+04
+var 5:
+best............ 4.003572e+02
+mean............ 3.938975e+02
+variance........ 4.886950e+03
+var 6:
+best............ 1.808972e+02
+mean............ 2.025871e+02
+variance........ 2.358179e+03
+var 7:
+best............ 7.747391e+02
+mean............ 7.068168e+02
+variance........ 1.231355e+04
+var 8:
+best............ 8.544956e+01
+mean............ 1.072150e+02
+variance........ 9.464703e+03
+var 9:
+best............ 9.975494e+02
+mean............ 9.588205e+02
+variance........ 1.221297e+04
+var 10:
+best............ 9.885620e+02
+mean............ 9.375563e+02
+variance........ 1.287214e+04
+
+'wait.generations' limit reached.
+No significant improvement in 1 generations.
+
+Solution Lexical Fitness Value:
+1.889979e-02  1.889979e-02  2.281679e-02  2.452645e-02  2.845770e-02  2.884111e-02  4.428637e-02  2.250290e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.173158e-01  3.548939e-01  9.044218e-01  9.956765e-01  9.956765e-01  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  
+
+Parameters at the Solution:
+
+ X[ 1] :	7.873370e+02
+ X[ 2] :	7.505773e+02
+ X[ 3] :	2.796254e+02
+ X[ 4] :	2.943113e+02
+ X[ 5] :	4.003572e+02
+ X[ 6] :	1.808972e+02
+ X[ 7] :	7.747391e+02
+ X[ 8] :	8.544956e+01
+ X[ 9] :	9.975494e+02
+ X[10] :	9.885620e+02
+
+Solution Found Generation 3
+Number of Generations Run 5
+
+Fri Nov  7 00:09:10 2008
+Total run time : 0 hours 1 minutes and 29 seconds
+Warning message:
+closing unused connection 3 (gzcon(http://sekhon.berkeley.edu/causalinf/R/lalonde2.RData)) 
+> 
+> #The outcome variable
+> Y=re78/1000;
+> 
+> # Now that GenMatch() has found some weights, let's estimate
+> # our causal effect of interest using those weights
+> mout <- Match(Y=Y, Tr=treat, X=X, estimand="ATT", Weight.matrix=genout)
+> summary(mout)
+
+Estimate...  2.4297 
+AI SE......  1.4138 
+T-stat.....  1.7185 
+p.val......  0.08571 
+
+Original number of observations..............  4185 
+Original number of treated obs...............  185 
+Matched number of observations...............  185 
+Matched number of observations  (unweighted).  188 
+
+> 
+> #                        
+> #Let's determine if balance has actually been obtained on the variables of interest
+> #WHAT ELSE MAY BE OF INTEREST?                        
+> mb <- MatchBalance(treat~age +education+black+ hispan+ married+ nodegree+ u74+ u75+
++                    re75+ re74+ I(re74*re75),
++                    match.out=mout, nboots=1000)
+
+***** (V1) age *****
+                       Before Matching 	 	 After Matching
+mean treatment........     25.816 	 	     25.816 
+mean control..........     33.073 	 	     25.396 
+std mean diff.........    -101.42 	 	     5.8675 
+
+mean raw eQQ diff.....     7.3135 	 	     1.8564 
+med  raw eQQ diff.....          6 	 	          2 
+max  raw eQQ diff.....         16 	 	          8 
+
+mean eCDF diff........     0.1824 	 	   0.048316 
+med  eCDF diff........    0.19192 	 	   0.026596 
+max  eCDF diff........    0.33569 	 	    0.15426 
+
+var ratio (Tr/Co).....    0.41953 	 	    0.68626 
+T-test p-value........ < 2.22e-16 	 	    0.22503 
+KS Bootstrap p-value.. < 2.22e-16 	 	       0.01 
+KS Naive p-value...... < 2.22e-16 	 	   0.022817 
+KS Statistic..........    0.33569 	 	    0.15426 
+
+
+***** (V2) education *****
+                       Before Matching 	 	 After Matching
+mean treatment........     10.346 	 	     10.346 
+mean control..........     12.025 	 	     10.503 
+std mean diff.........    -83.533 	 	    -7.7963 
+
+mean raw eQQ diff.....     1.7459 	 	    0.26064 
+med  raw eQQ diff.....          2 	 	          0 
+max  raw eQQ diff.....          4 	 	          2 
+
+mean eCDF diff........   0.091155 	 	   0.017857 
+med  eCDF diff........    0.03425 	 	   0.010638 
+max  eCDF diff........    0.40711 	 	   0.095745 
+
+var ratio (Tr/Co).....    0.49006 	 	     1.1370 
+T-test p-value........ < 2.22e-16 	 	   0.028458 
+KS Bootstrap p-value.. < 2.22e-16 	 	       0.13 
+KS Naive p-value...... < 2.22e-16 	 	    0.35489 
+KS Statistic..........    0.40711 	 	   0.095745 
+
+
+***** (V3) black *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.84324 	 	    0.84324 
+mean control..........     0.0715 	 	    0.84324 
+std mean diff.........     211.69 	 	          0 
+
+mean raw eQQ diff.....    0.76757 	 	          0 
+med  raw eQQ diff.....          1 	 	          0 
+max  raw eQQ diff.....          1 	 	          0 
+
+mean eCDF diff........    0.38587 	 	          0 
+med  eCDF diff........    0.38587 	 	          0 
+max  eCDF diff........    0.77174 	 	          0 
+
+var ratio (Tr/Co).....     2.0014 	 	          1 
+T-test p-value........ < 2.22e-16 	 	          1 
+
+
+***** (V4) hispan *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.05946 	 	    0.05946 
+mean control..........    0.06675 	 	    0.05946 
+std mean diff.........    -3.0746 	 	          0 
+
+mean raw eQQ diff.....   0.010811 	 	          0 
+med  raw eQQ diff.....          0 	 	          0 
+max  raw eQQ diff.....          1 	 	          0 
+
+mean eCDF diff........  0.0036453 	 	          0 
+med  eCDF diff........  0.0036453 	 	          0 
+max  eCDF diff........  0.0072905 	 	          0 
+
+var ratio (Tr/Co).....    0.90239 	 	          1 
+T-test p-value........     0.6838 	 	          1 
+
+
+***** (V5) married *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.18919 	 	    0.18919 
+mean control..........      0.711 	 	    0.19459 
+std mean diff.........    -132.87 	 	    -1.3764 
+
+mean raw eQQ diff.....    0.51892 	 	  0.0053191 
+med  raw eQQ diff.....          1 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+mean eCDF diff........    0.26091 	 	  0.0026596 
+med  eCDF diff........    0.26091 	 	  0.0026596 
+max  eCDF diff........    0.52181 	 	  0.0053191 
+
+var ratio (Tr/Co).....     0.7504 	 	    0.97875 
+T-test p-value........ < 2.22e-16 	 	    0.31732 
+
+
+***** (V6) nodegree *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.70811 	 	    0.70811 
+mean control..........      0.301 	 	     0.7027 
+std mean diff.........     89.304 	 	     1.1857 
+
+mean raw eQQ diff.....    0.40541 	 	  0.0053191 
+med  raw eQQ diff.....          0 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+mean eCDF diff........    0.20355 	 	  0.0026596 
+med  eCDF diff........    0.20355 	 	  0.0026596 
+max  eCDF diff........    0.40711 	 	  0.0053191 
+
+var ratio (Tr/Co).....    0.98747 	 	    0.98937 
+T-test p-value........ < 2.22e-16 	 	    0.31732 
+
+
+***** (V7) u74 *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.70811 	 	    0.70811 
+mean control..........    0.12375 	 	    0.70811 
+std mean diff.........     128.19 	 	          0 
+
+mean raw eQQ diff.....    0.58378 	 	          0 
+med  raw eQQ diff.....          1 	 	          0 
+max  raw eQQ diff.....          1 	 	          0 
+
+mean eCDF diff........    0.29218 	 	          0 
+med  eCDF diff........    0.29218 	 	          0 
+max  eCDF diff........    0.58436 	 	          0 
+
+var ratio (Tr/Co).....      1.916 	 	          1 
+T-test p-value........ < 2.22e-16 	 	          1 
+
+
+***** (V8) u75 *****
+                       Before Matching 	 	 After Matching
+mean treatment........        0.6 	 	        0.6 
+mean control..........    0.10475 	 	    0.56216 
+std mean diff.........     100.82 	 	     7.7027 
+
+mean raw eQQ diff.....    0.49189 	 	   0.037234 
+med  raw eQQ diff.....          0 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+mean eCDF diff........    0.24762 	 	   0.018617 
+med  eCDF diff........    0.24762 	 	   0.018617 
+max  eCDF diff........    0.49525 	 	   0.037234 
+
+var ratio (Tr/Co).....     2.5725 	 	    0.97507 
+T-test p-value........ < 2.22e-16 	 	   0.018900 
+
+
+***** (V9) re75 *****
+                       Before Matching 	 	 After Matching
+mean treatment........     1532.1 	 	     1532.1 
+mean control..........      13576 	 	     1791.5 
+std mean diff.........    -374.14 	 	    -8.0596 
+
+mean raw eQQ diff.....      12035 	 	     324.48 
+med  raw eQQ diff.....      13818 	 	          0 
+max  raw eQQ diff.....      22459 	 	       5478 
+
+mean eCDF diff........    0.47565 	 	   0.022518 
+med  eCDF diff........    0.51453 	 	   0.021277 
+max  eCDF diff........    0.64929 	 	   0.058511 
+
+var ratio (Tr/Co).....    0.12137 	 	    0.80458 
+T-test p-value........ < 2.22e-16 	 	   0.028841 
+KS Bootstrap p-value.. < 2.22e-16 	 	      0.632 
+KS Naive p-value...... < 2.22e-16 	 	    0.90442 
+KS Statistic..........    0.64929 	 	   0.058511 
+
+
+***** (V10) re74 *****
+                       Before Matching 	 	 After Matching
+mean treatment........     2095.6 	 	     2095.6 
+mean control..........      13914 	 	     1849.4 
+std mean diff.........    -241.85 	 	     5.0375 
+
+mean raw eQQ diff.....      11910 	 	     307.37 
+med  raw eQQ diff.....      13119 	 	          0 
+max  raw eQQ diff.....      23152 	 	     9220.8 
+
+mean eCDF diff........    0.45434 	 	   0.011535 
+med  eCDF diff........    0.49441 	 	   0.010638 
+max  eCDF diff........    0.59625 	 	   0.042553 
+
+var ratio (Tr/Co).....    0.25774 	 	     1.3781 
+T-test p-value........ < 2.22e-16 	 	   0.024526 
+KS Bootstrap p-value.. < 2.22e-16 	 	      0.801 
+KS Naive p-value...... < 2.22e-16 	 	    0.99568 
+KS Statistic..........    0.59625 	 	   0.042553 
+
+
+***** (V11) I(re74 * re75) *****
+                       Before Matching 	 	 After Matching
+mean treatment........   13118578 	 	   13118578 
+mean control..........  266173166 	 	   15743806 
+std mean diff.........    -498.31 	 	    -5.1695 
+
+mean raw eQQ diff.....  253283620 	 	    4155415 
+med  raw eQQ diff.....  200239188 	 	          0 
+max  raw eQQ diff.....  642368776 	 	  137280547 
+
+mean eCDF diff........    0.44611 	 	   0.016501 
+med  eCDF diff........    0.47788 	 	   0.015957 
+max  eCDF diff........     0.6306 	 	   0.042553 
+
+var ratio (Tr/Co).....   0.041796 	 	     0.7956 
+T-test p-value........ < 2.22e-16 	 	   0.044286 
+KS Bootstrap p-value.. < 2.22e-16 	 	      0.793 
+KS Naive p-value...... < 2.22e-16 	 	    0.99568 
+KS Statistic..........     0.6306 	 	   0.042553 
+
+
+Before Matching Minimum p.value: < 2.22e-16 
+Variable Name(s): age education black married nodegree u74 u75 re75 re74 I(re74 * re75)  Number(s): 1 2 3 5 6 7 8 9 10 11 
+
+After Matching Minimum p.value: 0.01 
+Variable Name(s): age  Number(s): 1 
+
+> 
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+123.962  25.991 152.994 

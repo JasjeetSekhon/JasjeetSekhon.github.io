@@ -1,0 +1,366 @@
+
+R : Copyright 2006, The R Foundation for Statistical Computing
+Version 2.3.1 (2006-06-01)
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> invisible(options(echo = TRUE))
+> library(Matching)
+Loading required package: rgenoud
+Loading required package: MASS
+## 
+##  Matching (Version 3.7-3, Build Date: 2006/10/08)
+##  Please see http://sekhon.berkeley.edu/matching for documentation, 
+##  examples and supporting articles.  Please cite software as:
+##   Jasjeet S. Sekhon. 2006.``Matching: Algorithms and Software for Multivariate
+##   and Propensity Score Matching with Balance Optimization via Genetic Search.''
+##
+> 
+> #load(file="a2.Rdata")
+> 
+> set.seed(23)
+> #set.seed(3827287)
+> #set.seed(372719)
+> 
+> indx <- 1:185
+> 
+> nrow <- nrow(foo)
+> 
+> indx2 <- sample(186:nrow, 4000)
+> #indx2 <- 186:nrow
+> 
+> #full
+> #Estimate...  2401.7 
+> #AI SE......  910.37 
+> #T-stat.....  2.6382 
+> #p.val......  0.0083353 
+> 
+> 
+> dta <- foo[c(indx,indx2),]
+> dta$u74 <- as.real(dta$re74==0)
+> dta$u75 <- as.real(dta$re75==0)
+> 
+>      glm1  <- glm(treat~age + I(age^2) + education + I(education^2) + black +
++                   hispan + married + nodegree + re74  + I(re74^2) + re75 + I(re75^2) +
++                   u74 + u75, family=binomial, data=dta)
+> 
+>      #
+>      #save data objects
+>      #
+>      X  <- glm1$fitted
+>      Y  <- dta$re78
+>      Tr  <- dta$treat
+> 
+>      #
+>      # one-to-one matching with replacement (the "M=1" option).
+>      # Estimating the treatment effect on the treated (the "estimand" option defaults to ATT).
+>      #
+>      rr  <- Match(Y=Y, Tr=Tr, X=X, M=1);
+>      summary(rr)
+
+Estimate...  2887.3 
+AI SE......  1481.5 
+T-stat.....  1.9489 
+p.val......  0.051307 
+
+Original number of observations..............  4185 
+Original number of treated obs...............  185 
+Matched number of observations...............  185 
+Matched number of observations  (unweighted).  711 
+
+
+> 
+>      #
+>      # Let's check for balance
+>      # 'nboots' and 'nmc' are set to small values in the interest of speed.
+>      # Please increase to at least 500 each for publication quality p-values.  
+>      mb  <- MatchBalance(treat~age + I(age^2) + education + I(education^2) + black +
++                          hispan + married + nodegree + re74  + I(re74^2) + re75 + I(re75^2) +
++                          u74 + u75, data=dta, match.out=rr, nboots=500)
+
+***** (V1) age *****
+                       Before Matching 	 	 After Matching
+mean treatment........     25.816 	 	     25.816 
+mean control..........     33.073 	 	     24.878 
+
+mean std eQQ diff.....     0.1824 	 	    0.06603 
+med  std eQQ diff.....    0.19192 	 	   0.052743 
+max  std eQQ diff ....    0.33569 	 	    0.15049 
+
+mean raw eQQ diff.....     7.3135 	 	     2.5176 
+med  raw eQQ diff.....          6 	 	          2 
+max  raw eQQ diff.....         16 	 	          8 
+
+var ratio (Tr/Co).....    0.41953 	 	    0.99465 
+T-test p-value........ < 2.22e-16 	 	    0.19069 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 2.0311e-07 
+KS Statistic..........    0.33569 	 	    0.15049 
+
+
+***** (V2) I(age^2) *****
+                       Before Matching 	 	 After Matching
+mean treatment........      717.4 	 	      717.4 
+mean control..........     1215.8 	 	     670.09 
+
+mean std eQQ diff.....     0.1824 	 	    0.06603 
+med  std eQQ diff.....    0.19192 	 	   0.052743 
+max  std eQQ diff ....    0.33569 	 	    0.15049 
+
+mean raw eQQ diff.....     502.07 	 	     143.84 
+med  raw eQQ diff.....        336 	 	        112 
+max  raw eQQ diff.....       1312 	 	        721 
+
+var ratio (Tr/Co).....    0.30339 	 	      1.238 
+T-test p-value........ < 2.22e-16 	 	    0.26507 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 2.0311e-07 
+KS Statistic..........    0.33569 	 	    0.15049 
+
+
+***** (V3) education *****
+                       Before Matching 	 	 After Matching
+mean treatment........     10.346 	 	     10.346 
+mean control..........     12.025 	 	     10.706 
+
+mean std eQQ diff.....   0.091155 	 	   0.032437 
+med  std eQQ diff.....    0.03425 	 	   0.021800 
+max  std eQQ diff ....    0.40711 	 	    0.16174 
+
+mean raw eQQ diff.....     1.7459 	 	    0.51899 
+med  raw eQQ diff.....          2 	 	          0 
+max  raw eQQ diff.....          4 	 	          3 
+
+var ratio (Tr/Co).....    0.49006 	 	     1.4998 
+T-test p-value........ < 2.22e-16 	 	   0.041648 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 1.6707e-08 
+KS Statistic..........    0.40711 	 	    0.16174 
+
+
+***** (V4) I(education^2) *****
+                       Before Matching 	 	 After Matching
+mean treatment........     111.06 	 	     111.06 
+mean control..........     152.86 	 	     117.30 
+
+mean std eQQ diff.....   0.091155 	 	   0.032437 
+med  std eQQ diff.....    0.03425 	 	   0.021800 
+max  std eQQ diff ....    0.40711 	 	    0.16174 
+
+mean raw eQQ diff.....     42.405 	 	     11.219 
+med  raw eQQ diff.....         40 	 	          0 
+max  raw eQQ diff.....        128 	 	         93 
+
+var ratio (Tr/Co).....    0.34546 	 	     1.2849 
+T-test p-value........ < 2.22e-16 	 	   0.078837 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 1.6707e-08 
+KS Statistic..........    0.40711 	 	    0.16174 
+
+
+***** (V5) black *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.84324 	 	    0.84324 
+mean control..........     0.0715 	 	    0.85006 
+
+mean std eQQ diff.....    0.38587 	 	   0.022504 
+med  std eQQ diff.....    0.38587 	 	   0.022504 
+max  std eQQ diff ....    0.77174 	 	   0.045007 
+
+mean raw eQQ diff.....    0.76757 	 	   0.045007 
+med  raw eQQ diff.....          1 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+var ratio (Tr/Co).....     2.0014 	 	     1.0371 
+T-test p-value........ < 2.22e-16 	 	    0.75287 
+
+
+***** (V6) hispan *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.05946 	 	    0.05946 
+mean control..........    0.06675 	 	   0.064164 
+
+mean std eQQ diff.....  0.0036453 	 	   0.038678 
+med  std eQQ diff.....  0.0036453 	 	   0.038678 
+max  std eQQ diff ....  0.0072905 	 	   0.077356 
+
+mean raw eQQ diff.....   0.010811 	 	   0.077356 
+med  raw eQQ diff.....          0 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+var ratio (Tr/Co).....    0.90239 	 	    0.93134 
+T-test p-value........     0.6838 	 	       0.84 
+
+
+***** (V7) married *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.18919 	 	    0.18919 
+mean control..........      0.711 	 	    0.12704 
+
+mean std eQQ diff.....    0.26091 	 	   0.037975 
+med  std eQQ diff.....    0.26091 	 	   0.037975 
+max  std eQQ diff ....    0.52181 	 	    0.07595 
+
+mean raw eQQ diff.....    0.51892 	 	    0.07595 
+med  raw eQQ diff.....          1 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+var ratio (Tr/Co).....     0.7504 	 	     1.3832 
+T-test p-value........ < 2.22e-16 	 	   0.076251 
+
+
+***** (V8) nodegree *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.70811 	 	    0.70811 
+mean control..........      0.301 	 	    0.64661 
+
+mean std eQQ diff.....    0.20355 	 	   0.011955 
+med  std eQQ diff.....    0.20355 	 	   0.011955 
+max  std eQQ diff ....    0.40711 	 	    0.02391 
+
+mean raw eQQ diff.....    0.40541 	 	    0.02391 
+med  raw eQQ diff.....          0 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+var ratio (Tr/Co).....    0.98747 	 	    0.90454 
+T-test p-value........ < 2.22e-16 	 	    0.16254 
+
+
+***** (V9) re74 *****
+                       Before Matching 	 	 After Matching
+mean treatment........     2095.6 	 	     2095.6 
+mean control..........      13914 	 	     1200.7 
+
+mean std eQQ diff.....    0.45434 	 	    0.10385 
+med  std eQQ diff.....    0.49441 	 	    0.09564 
+max  std eQQ diff ....    0.59625 	 	    0.23769 
+
+mean raw eQQ diff.....      11910 	 	       2096 
+med  raw eQQ diff.....      13119 	 	     1731.3 
+max  raw eQQ diff.....      23152 	 	      11202 
+
+var ratio (Tr/Co).....    0.25774 	 	     2.2691 
+T-test p-value........ < 2.22e-16 	 	   0.019996 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 < 2.22e-16 
+KS Statistic..........    0.59625 	 	    0.23769 
+
+
+***** (V10) I(re74^2) *****
+                       Before Matching 	 	 After Matching
+mean treatment........   28141412 	 	   28141412 
+mean control..........  286226150 	 	   11908347 
+
+mean std eQQ diff.....    0.45434 	 	    0.10385 
+med  std eQQ diff.....    0.49441 	 	    0.09564 
+max  std eQQ diff ....    0.59625 	 	    0.23769 
+
+mean raw eQQ diff.....  264329938 	 	   42578639 
+med  raw eQQ diff.....  216331736 	 	   12845768 
+max  raw eQQ diff.....  655628204 	 	  558946910 
+
+var ratio (Tr/Co).....    0.19146 	 	     4.5661 
+T-test p-value........ < 2.22e-16 	 	   0.069098 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 < 2.22e-16 
+KS Statistic..........    0.59625 	 	    0.23769 
+
+
+***** (V11) re75 *****
+                       Before Matching 	 	 After Matching
+mean treatment........     1532.1 	 	     1532.1 
+mean control..........      13576 	 	     1342.2 
+
+mean std eQQ diff.....    0.47565 	 	   0.072289 
+med  std eQQ diff.....    0.51453 	 	   0.064698 
+max  std eQQ diff ....    0.64929 	 	    0.18987 
+
+mean raw eQQ diff.....      12035 	 	     1743.9 
+med  raw eQQ diff.....      13818 	 	     647.84 
+max  raw eQQ diff.....      22459 	 	      13140 
+
+var ratio (Tr/Co).....    0.12137 	 	     1.6307 
+T-test p-value........ < 2.22e-16 	 	    0.48408 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 1.4750e-11 
+KS Statistic..........    0.64929 	 	    0.18987 
+
+
+***** (V12) I(re75^2) *****
+                       Before Matching 	 	 After Matching
+mean treatment........   12654750 	 	   12654750 
+mean control..........  269688172 	 	    8122473 
+
+mean std eQQ diff.....    0.47565 	 	   0.072289 
+med  std eQQ diff.....    0.51453 	 	   0.064698 
+max  std eQQ diff ....    0.64929 	 	    0.18987 
+
+mean raw eQQ diff.....  257174917 	 	   42483921 
+med  raw eQQ diff.....  206986632 	 	    3449620 
+max  raw eQQ diff.....  629191050 	 	  488076547 
+
+var ratio (Tr/Co).....   0.051786 	 	     2.5057 
+T-test p-value........ < 2.22e-16 	 	    0.31998 
+KS Bootstrap p-value.. < 2.22e-16 	 	 < 2.22e-16 
+KS Naive p-value...... < 2.22e-16 	 	 1.4750e-11 
+KS Statistic..........    0.64929 	 	    0.18987 
+
+
+***** (V13) u74 *****
+                       Before Matching 	 	 After Matching
+mean treatment........    0.70811 	 	    0.70811 
+mean control..........    0.12375 	 	      0.746 
+
+mean std eQQ diff.....    0.29218 	 	   0.031646 
+med  std eQQ diff.....    0.29218 	 	   0.031646 
+max  std eQQ diff ....    0.58436 	 	   0.063291 
+
+mean raw eQQ diff.....    0.58378 	 	   0.063291 
+med  raw eQQ diff.....          1 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+var ratio (Tr/Co).....      1.916 	 	     1.0908 
+T-test p-value........ < 2.22e-16 	 	    0.27692 
+
+
+***** (V14) u75 *****
+                       Before Matching 	 	 After Matching
+mean treatment........        0.6 	 	        0.6 
+mean control..........    0.10475 	 	    0.43885 
+
+mean std eQQ diff.....    0.24762 	 	   0.018284 
+med  std eQQ diff.....    0.24762 	 	   0.018284 
+max  std eQQ diff ....    0.49525 	 	   0.036568 
+
+mean raw eQQ diff.....    0.49189 	 	   0.036568 
+med  raw eQQ diff.....          0 	 	          0 
+max  raw eQQ diff.....          1 	 	          1 
+
+var ratio (Tr/Co).....     2.5725 	 	    0.97458 
+T-test p-value........ < 2.22e-16 	 	  0.0016852 
+
+> 
+> print(names(dta))
+ [1] "treat"     "age"       "education" "black"     "hispan"    "married"  
+ [7] "nodegree"  "re74"      "re75"      "re78"      "u74"       "u75"      
+> lalonde2 <- dta
+> save(lalonde2, file="lalonde2.RData")
+> 
+> proc.time()
+[1] 34.686  0.564 35.436  0.000  0.000
+> 

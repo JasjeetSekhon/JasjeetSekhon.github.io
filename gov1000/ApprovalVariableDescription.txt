@@ -1,0 +1,23 @@
+Variable Descriptions for the approval.asc dataset.  Located at:
+http://www.courses.fas.harvard.edu/~gov1000/Data/approval.asc
+
+Variable Name: Description
+
+Date: YYYY.MM 1953.01 to 2000.06
+administration: administration number from 1 to 9 
+approval: monthly average approval rating
+lagApproval: lagged approval, the approval rating the previous month
+unrate: civilian adult unemployment rate
+inflation: inflation rate based on year-on-year changes in the
+           seasonally adjusted CPI all urban workers
+kennedy: 1 if Kennedy administration, 0 otherwise
+johnson: 1 if Johnson administration, 0 otherwise 
+nixon:   1 if nixon administration, 0 otherwise 
+ford:    1 if ford administration, 0 otherwise 
+carter:  1 if Carter administration, 0 otherwise 
+regan:   1 if Regan administration, 0 otherwise 
+bush:    1 if Bush administration, 0 otherwise 
+clinton: 1 if Clinton administration, 0 otherwise 
+Eisenhower: 1 if Eisenhower administration, 0 otherwise 
+inflationMonthly: inflation rate based on month-on-month changes in the
+                  seasonally adjusted CPI all urban workers

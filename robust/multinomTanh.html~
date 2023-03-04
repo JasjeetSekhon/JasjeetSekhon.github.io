@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Multinomial Regression Hyperbolic Tangent (Tanh) Estimator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for Multinomial Regression Tanh Estimator {multinomRob}"><tr><td>Multinomial Regression Tanh Estimator {multinomRob}</td><td align="right">R Documentation</td></tr></table>
+<h2>Multinomial Regression Hyperbolic Tangent (Tanh) Estimator</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>multinomTanh</code> fits the overdispersed multinomial regression
+model for grouped count data using the hyperbolic tangent (tanh)
+estimator.  This function is not meant to be called directly by the
+user.  It is called by <code>multinomRob</code>, which constructs the
+various arguments.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>multinomTanh(Y, Ypos, X, jacstack, xvec, tvec, pop, s2,
+                    xvar.labels, choice.labels, print.level = 0)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Y</code></td>
+<td>
+Matrix (observations by alternatives) of outcome counts.
+Values must be nonnegative.  Missing data (<code>NA</code> values) are not allowed.</td></tr>
+<tr valign="top"><td><code>Ypos</code></td>
+<td>
+Matrix indicating which elements of Y are counts to be analyzed (TRUE)
+and which are values to be skipped (FALSE).  This allows the set of
+outcome alternatives to vary over observations.</td></tr>
+<tr valign="top"><td><code>X</code></td>
+<td>
+Array of regressors.  dim(X) = c(observations, parameters, alternatives).</td></tr>
+<tr valign="top"><td><code>jacstack</code></td>
+<td>
+Array of regressors used to facilitate computing the gradient and the
+hessian matrix.
+dim(jacstack) = c(observations, unique parameters, alternatives).</td></tr>
+<tr valign="top"><td><code>xvec</code></td>
+<td>
+Matrix (parameters by alternatives) that represents the model structure.
+It has a 1 for an estimated parameter, an integer greater than 1 for an
+estimated parameter constrained equal to another estimated parameter (all
+parameters constrained to be equal to one another have the same integer
+value in xvec) and a 0 otherwize.</td></tr>
+<tr valign="top"><td><code>tvec</code></td>
+<td>
+Starting values for the regression coefficient parameters, as a matrix
+(parameters by alternatives).  Parameters that are involved in equality
+constraints are repeated in tvec.</td></tr>
+<tr valign="top"><td><code>pop</code></td>
+<td>
+Vector giving the total number of counts for each observation.  In general,
+<code>pop &lt;- apply(Y * ifelse(Ypos,1,0), 1, sum)</code>.</td></tr>
+<tr valign="top"><td><code>s2</code></td>
+<td>
+Overdispersion value.  In multinomRob this is the square of the LQD
+scale estimate.</td></tr>
+<tr valign="top"><td><code>xvar.labels</code></td>
+<td>
+Vector of labels for observations.</td></tr>
+<tr valign="top"><td><code>choice.labels</code></td>
+<td>
+Vector of labels for outcome alternatives.</td></tr>
+<tr valign="top"><td><code>print.level</code></td>
+<td>
+Specify 0 for minimal printing (error messages only) or 2 to print details
+about the tanh computations.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The tanh estimator is a redescending M-estimator.  Given an estimate of the
+scale of the overdispersion, the tanh estimator estimates the coefficient
+parameters of the linear predictors of the multinomial regression model.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+multinomTanh returns a list of 5 objects.  The returned objects are:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>mtanh</code></td>
+<td>
+List of tanh estimation results from function <code>mGNtanh</code>.</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+The matrix of tanh weights for the orthogonalized residuals.  The matrix
+has the same dimensions as the outcome count matrix <code>Y</code>.  The first
+column of the matrix has names for the observations, and the remaining
+columns contain the weights.  Each of the latter columns has a name
+derived from the <code>choice.labels</code> vector:  column <code>i+1</code> is named
+<code>paste("weights:",choice.labels[i],sep="")</code>.
+<br>
+If <code>sum(Ypos[i,]==FALSE)&gt;0</code>, then values of <code>NA</code> appear in
+<code>weights[i,]</code>, with <code>sum(is.na(weights[i,]))==sum(!Ypos[i,])</code>.
+The <code>NA</code> values will be the last values in the affected
+row of the <code>weights</code> matrix, regardless of which outcome alternatives
+were unavailable for the observation.</td></tr>
+<tr valign="top"><td><code>Hdiag</code></td>
+<td>
+The matrix of weights used to fully studentize the orthogonalized
+residuals.  The matrix has the same dimensions as the outcome count matrix
+<code>Y</code>.  The first column of the matrix has names for the observations,
+and the remaining columns contain the weights.  Each of the latter columns
+has a name derived from the <code>choice.labels</code> vector:  column <code>i+1</code>
+is named <code>paste("Hdiag:",choice.labels[i],sep="")</code>.
+<br>
+If <code>sum(Ypos[i,]==FALSE)&gt;0</code>, then values of 0 appear in
+<code>Hdiag[i,]</code>, with <code>sum(is.na(Hdiag[i,]))==sum(!Ypos[i,])</code>.
+The <code>0</code> values created for this reason will be the last values in the
+affected row of the <code>Hdiag</code> matrix, regardless of which outcome
+alternatives were unavailable for the observation.</td></tr>
+<tr valign="top"><td><code>cr</code></td>
+<td>
+List of predicted outcome counts, studentized residuals and
+standardized residuals.</td></tr>
+<tr valign="top"><td><code>tvec</code></td>
+<td>
+The tanh coefficient estimates in matrix format.  The matrix has one
+column for each outcome alternative.  The label for each row of the matrix
+gives the names of the regressors to which the coefficient values in the row
+apply.  The regressor names in each label are separated by a forward
+slash (/), and <code>NA</code> is used to denote that no regressor is
+associated with the corresponding value in the matrix.  The value 0 is
+used in the matrix to fill in for values that do not correspond to a
+regressor.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Walter R. Mebane, Jr., Cornell University,
+<a href="mailto:wrm1@cornell.edu">wrm1@cornell.edu</a>, <a href="http://macht.arts.cornell.edu/wrm1/">http://macht.arts.cornell.edu/wrm1/</a> <br>
+</p>
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Walter R. Mebane, Jr. and  Jasjeet Singh Sekhon. 2004.  ``Robust Estimation
+and Outlier Detection for Overdispersed Multinomial Models of Count Data.'' 
+<EM>American Journal of Political Science</EM> 48 (April): 391&ndash;410.
+<a href="http://sekhon.berkeley.edu/multinom.pdf">http://sekhon.berkeley.edu/multinom.pdf</a>
+</p>
+<p>
+For additional documentation please visit <a href="http://sekhon.berkeley.edu/robust/">http://sekhon.berkeley.edu/robust/</a>.
+</p>
+
+
+
+<hr><div align="center">[Package <em>multinomRob</em> version 1.8-2 <a href="00Index.html">Index]</a></div>
+
+</body></html>

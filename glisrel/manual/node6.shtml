@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Parameter Bounds</TITLE>
+<META NAME="description" CONTENT="Parameter Bounds">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node7.shtml">
+<LINK REL="previous" HREF="node5.shtml">
+<LINK REL="up" HREF="manual.shtml">
+<LINK REL="next" HREF="node7.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html93"
+ HREF="node7.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html91"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html85"
+ HREF="node5.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html94"
+ HREF="node7.shtml">Starting Values</A>
+<B> Up:</B> <A NAME="tex2html92"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html86"
+ HREF="node5.shtml">Linear Structure Model Definition</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00060000000000000000">&#160;</A>
+<A NAME="bounds:top">&#160;</A>
+<BR>
+Parameter Bounds
+</H1>
+
+<P>
+The <B>parameter bounds</B> part of the model specification file begins with
+the keyword <TT>bounds</TT>--see the <A HREF="node9.shtml#example:top">example model specification
+  files</A>.  No comments can be placed until all of the bounds have
+been set.  The bounds are set using the following format: <BR>
+<BR>
+<BR>
+
+<P>
+<I>parameter-number</I> <I>lower-bound</I> <I>upper-bound</I> <BR>
+
+<P>
+Parameters are numbered 1 through <I>n</I>.  The free parameters are ordered
+first by matrix: <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img30.gif"
+ ALT="$\Lambda$">,
+
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">,
+<IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">,
+and <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">.
+Within a matrix they are numbered columnwise--going in order down each
+column.  As a check the
+free parameters are printed with both their number and matrix location at
+the top of both GENBLIS's standard output and in the listing file.
+
+<P>
+<BR><HR>
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>References</TITLE>
+<META NAME="description" CONTENT="References">
+<META NAME="keywords" CONTENT="genoud">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="genoud.css">
+<LINK REL="next" HREF="node9.shtml">
+<LINK REL="previous" HREF="node7.shtml">
+<LINK REL="up" HREF="genoud.shtml">
+<LINK REL="next" HREF="node9.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html109"
+ HREF="node9.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html107"
+ HREF="genoud.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html101"
+ HREF="node7.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+ <A NAME="tex2html1"
+ HREF="http://jsekhon.fas.harvard.edu">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html110"
+ HREF="node9.shtml">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html108"
+ HREF="genoud.shtml">Genetic Optimization Using Derivatives</A>
+<B> Previous:</B> <A NAME="tex2html102"
+ HREF="node7.shtml">Tables</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00080000000000000000">
+References</A>
+</H1>
+
+<P>
+<DL>
+<DD><P>
+<DT><DD>Amemiya, Takeshi.  1985.  <I>Advanced Econometrics.</I>
+  Cambridge: Harvard University Press.
+  
+<DT><DD>Billingsley, Patrick.  1986.  <I>Probability and Measure.</I>  New
+  York: Wiley.
+
+<P>
+<DT><DD>Bollen, Kenneth A.  1989.  <I>Structural Equations with Latent
+    Variables.</I>  New York: Wiley.
+  
+<DT><DD>Box, G.E.P. and G.M. Jenkins.  1976.  <I>Time Series Analysis:
+    forecasting and control.</I>  Englewood Cliffs: Prentice Hall.
+
+<P>
+<DT><DD>Davis, Lawrence, ed.  1991.  <I>Handbook of Genetic Algorithms.</I>  New York:
+Van Nostrand Reinhold.
+
+<P>
+<DT><DD>De Jong, Kenneth A.  1993.  ``Genetic Algorithms Are Not Function Optimizers.''  In
+<I>Foundations of Genetic Algorithms 2</I>, ed. L. Darrell Whitley.  San
+Mateo, CA: Morgan Kaufmann.
+
+<P>
+<DT><DD>Efron, Bradley, and Robert J. Tibshirani.  1993.  <I>An Introduction to
+the Bootstrap</I>.  New York: Chapman and Hall.
+
+<P>
+<DT><DD>Fahrmeir, Ludwig, and Gerhard Tutz.  1994.
+<I>Multivariate Statistical Modeling Based on Generalized Linear
+Models</I>.  New York:  Springer-Verlag.
+
+<P>
+<DT><DD>Feller, William.  1970.
+<I>An Introduction to Probability Theory and Its Applications</I>.
+Vol. 1, 3d ed., revised printing.  New York:  Wiley.
+
+<P>
+<DT><DD>Filho, Jose L. Ribeiro, Philip C. Treleaven and Cesare Alippi.  1994.
+``Genetic Algorithm Programming Environments.''  <I>Computer</I> 27:28-43.
+
+<P>
+<DT><DD>Gallant, A. Ronald.  1987.
+<I>Nonlinear Statistical Models.</I>
+New York:  Wiley.
+
+<P>
+<DT><DD>Gill, Philip E., Walter Murray and Margaret H. Wright.  1981.
+<I>Practical Optimization.</I>  San Diego:  Academic Press.
+
+<P>
+<DT><DD>Goldberg, David E.  1989.  <I>Genetic Algorithms in Search, Optimization,
+and Machine Learning</I>.  Reading, MA: Addison-Wesley.
+
+<P>
+<DT><DD>Grefenstette, John J.  1993.  ``Deception Considered Harmful.''  In
+<I>Foundations of Genetic Algorithms 2</I>, ed. L. Darrell Whitley.  San
+Mateo, CA: Morgan Kaufmann.
+
+<P>
+<DT><DD>Grefenstette, John J., and James E. Baker.  1989.  ``How Genetic Algorithms
+Work: A Critical Look at Implicit Parallelism.''  <I>Proceedings of the
+Third International Conference on Genetic Algorithms</I>, pp. 20-27.  San
+Mateo, CA: Morgan Kaufmann.
+
+<P>
+<DT><DD>Hall, Peter.  1992.  <I>The Bootstrap and Edgeworth Expansion</I>.  New
+York: Springer-Verlag.
+
+<P>
+<DT><DD>Heckman, James J., and Burton Singer, ed.  1985.
+<I>Longitudinal Analysis of Labor Market Data.</I>
+New York:  Cambridge University Press.
+
+<P>
+<DT><DD>Holland, John H.  1975.  <I>Adaptation in Natural and Artificial
+Systems.</I>  Ann Arbor: University of Michigan Press.
+
+<P>
+<DT><DD>Kernighan, Brian W., and Dennis M. Ritchie.  1988.
+<I>The C Programming Language.</I>  2d ed.  Englewood Cliffs, NJ:  Prentice
+Hall.
+
+<P>
+<DT><DD>Lancaster, Tony.  1990.
+<I> The Econometric Analysis of Transition Data.</I>
+New York:  Cambridge University Press.
+
+<P>
+<DT><DD>Maddala, G.S.  1983.  <I>Limited-Dependent and Qualitative
+    Variables in Econometrics.</I>  Cambridge: Cambridge University
+  Press.
+
+<P>
+<DT><DD>Marron, J. P. and M. P. Wand.  1992.  ``Exact Mean Integrated
+  Squared Error.'' <I>Annals of Statistics.</I> 20:712-736.
+
+<P>
+<DT><DD>McCullagh, P. and J.A. Nelder.  1992.  <I>Generalized Linear
+Models.</I>  New York: Chapman &amp; Hall.
+
+<P>
+<DT><DD>Mebane, Walter R. Jr. 1997.  ``Congressional Campaign Contributions,
+  District Service and Electoral Outcomes in the United States: Statistical
+  Tests of a Formal Game Model with Nonlinear Dynamics.''  In
+  <I>Nonlinear Models and Methods in Political Research.  Ann Arbor:
+    University of Michigan Press,</I> ed. Diana Richards.  Ann Arbor:
+  University of Michigan Press.
+
+<P>
+<DT><DD>Mebane, Walter R. Jr., and Jasjeet Sekhon.  1996.  <I>GENOUD:  GENetic
+Optimization Using Derivatives</I>.  Computer program.
+
+<P>
+<DT><DD>Mebane, Walter R. Jr., and Jasjeet Sekhon.  1995.  <I>GENBLIS:
+    GENetic optimization, with Bootstrapping, of LInear Structures</I>.
+  Computer program.
+
+<P>
+<DT><DD>Mebane, Walter R. Jr., and Gregory J. Wawro.  1996.  ``<I>Chadha</I>,
+  Gramm-Rudman-Hollings and Impoundments: Testing a Spatial Game Model of
+  Congressional Delegation and Institutional Change.''  Manuscript.
+  
+<DT><DD>Mebane, Walter R. Jr., and Jonathan Wand.  1997.  ``Markov Chain Models for
+  Rolling Cross-section Data: How Campaign Events and Political Awareness
+  Affect Vote Intentions and Partisanship in the United States and Canada.''
+  Paper presented at the 1997 Annual Meeting of the Midwest Political Science
+  Association, April 10-12, Palmer House Hilton, Chicago, IL.
+
+<P>
+<DT><DD>Michalewicz, Zbigniew.  1992.  <I>Genetic Algorithms + Data Structures =
+Evolution Programs</I>.  New York:  Springer-Verlag
+
+<P>
+<DT><DD>Michalewicz, Zbigniew, and Thomas D. Logan.  1993.  ``GA Operators for Convex
+Continuous Parameter Spaces.''  Manuscript.
+
+<P>
+<DT><DD>Michalewicz, Zbigniew, Swarnalatha Swaminathan and Thomas D. Logan.  1993.
+<I>GENOCOP</I> (version 2.0).  C language computer program source code.
+
+<P>
+<DT><DD>Nix, Allen E., and Michael D. Vose.  1992.  ``Modeling Genetic Algorithms with
+Markov Chains.''  <I>Annals of Mathematics and Artificial Intelligence</I>
+5:79-88.
+
+<P>
+<DT><DD>SAS Institute Inc.  1988.
+<I>SAS/ETS User's Guide, Version 6, First Edition.</I>  Cary, NC:  SAS
+Institute Inc.
+
+<P>
+<DT><DD>Wawro, Gregory J.  1996.  <I>Legislative Entrepreneurship in the U.S.   House of Representatives.</I>  Unpublished Ph.D. dissertation, Cornell
+University.
+
+<P>
+<DT><DD>Vose, Michael D.  1993.  ``Modeling Simple Genetic Algorithms.''  In
+<I>Foundations of Genetic Algorithms 2</I>, ed. L. Darrell Whitley.  San
+Mateo, CA: Morgan Kaufmann Publishers.
+
+<P>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html109"
+ HREF="node9.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html107"
+ HREF="genoud.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html101"
+ HREF="node7.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_genoud&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html110"
+ HREF="node9.shtml">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html108"
+ HREF="genoud.shtml">Genetic Optimization Using Derivatives</A>
+<B> Previous:</B> <A NAME="tex2html102"
+ HREF="node7.shtml">Tables</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

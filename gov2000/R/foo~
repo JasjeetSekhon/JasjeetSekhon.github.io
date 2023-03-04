@@ -1,0 +1,57 @@
+
+R : Copyright 2004, The R Foundation for Statistical Computing
+Version 2.0.1  (2004-11-15), ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for a HTML browser interface to help.
+Type 'q()' to quit R.
+
+> foo <- dget(file="FearonLaitin.dpt")
+> 
+> glm1  <- glm(onset ~ warl + gdpenl +lpopl1 +lmtnest +ncontig +Oil +nwstate +instab +polity2l +ethfrac +relfrac,
++              data=foo, family=binomial)
+> summary(glm1)
+
+Call:
+glm(formula = onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + 
+    Oil + nwstate + instab + polity2l + ethfrac + relfrac, family = binomial, 
+    data = foo)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.1412  -0.2001  -0.1446  -0.1011   3.4209  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -6.73134    0.73577  -9.149  < 2e-16 ***
+warl        -0.95437    0.31439  -3.036 0.002400 ** 
+gdpenl      -0.34386    0.07179  -4.790 1.67e-06 ***
+lpopl1       0.26294    0.07271   3.616 0.000299 ***
+lmtnest      0.21880    0.08475   2.582 0.009830 ** 
+ncontig      0.44333    0.27399   1.618 0.105646    
+Oil          0.85764    0.27919   3.072 0.002127 ** 
+nwstate      1.70946    0.33859   5.049 4.45e-07 ***
+instab       0.61754    0.23510   2.627 0.008621 ** 
+polity2l     0.02086    0.01677   1.244 0.213536    
+ethfrac      0.16641    0.37310   0.446 0.655581    
+relfrac      0.28505    0.50874   0.560 0.575273    
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1077.1  on 6326  degrees of freedom
+Residual deviance:  960.8  on 6315  degrees of freedom
+AIC: 984.8
+
+Number of Fisher Scoring iterations: 8
+
+> 

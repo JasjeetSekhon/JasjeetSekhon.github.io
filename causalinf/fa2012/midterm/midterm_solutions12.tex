@@ -1,0 +1,752 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb} 
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+
+\newcommand{\indep}{\perp\!\!\!\perp}
+\newcommand{\cov}[0]{\text{cov}}
+\newcommand{\var}[0]{\text{var}}
+\newcommand{\E}[0]{\mathbb{E}}
+
+
+
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\title{PS C236A / Stat C239A \\  Midterm Exam  - Solutions}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-4em}
+%\section*{Solutions}
+
+
+
+
+%This is an ungraded practice exam.  The following instructions outline
+%the expectations for the upcoming midterm. \vspace{1em}
+
+
+
+\paragraph{\Large I. True or False}
+Answer {\em True} or {\em False}.  Explain your answer in a sentence or two.
+\begin{itemize}
+
+
+
+\item[1.]  TRUE
+\vspace{1em}
+
+In the study, the scientist wants to estimate the average treatment
+effect ($ATE$), where the potential outcomes are {\em assumed} to be a
+function only of treatment $T$ and gender $M$.  
+%The ATE estimate can be separable by groups:
+%\begin{eqnarray}
+%\nonumber        ATE = \frac{1}{4n}\left\{\sum_{i=1}^{4n}Y_i(1,M) -
+ %         \sum_{i=1}^{4n} Y_i(0,M)\right\} \\
+%= \frac{1}{4n}\left\{\sum_{i=1}^{2n}Y_i(1,1) - \sum_{i=1}^{2n}
+ % Y_i(0,1) + \sum_{i=1}^{2n}Y_i(1,0) - \sum_{i=1}^{2n}
+ % Y_i(0,0)\right\} 
+%\end{eqnarray}
+For the $4n$ subjects, of which exactly $2n$ are men ($M_i=1$) and $2n$ are
+women ($M_i=0$), the scientist assigns treatment to exactly half of each
+group.  
+
+
+Thus, in this design, $M\indep T$, so ${ATE}$ can be estimated from
+the observed quantities from four groups:
+\begin{eqnarray}  
+\nonumber       \widehat{ ATE } & = & \frac{1}{4n}\left\{\sum_{i\in\{1,1\}}Y_i(1,1) - \sum_{i\in\{0,1\}}
+  Y_i(0,1) + \sum_{i\in\{1,0\}}Y_i(1,0) - \sum_{i\in\{0,0\}}
+  Y_i(0,0)\right\} \\
+\nonumber   &=& \frac{1}{4n}\left\{\sum_{i\in\{1,M\}}Y_i(1,M) - \sum_{i\in\{0,M\}}
+  Y_i(0,M)\right\} 
+\end{eqnarray}
+%which is composed of the averages of the observed outcomes for the
+%four subpopulations.  
+which is unbiased, so long as only treatment and gender are relevant in predicting the
+potential outcomes {\em and} treatment assignment is balanced across
+gender groups.  
+
+The first part of this is also assumed in the following linear model: 
+      $$
+        Y_i = \alpha + \beta_1 T_i + \beta_2 M_i + \epsilon_i
+      $$
+      This model assumes that $Y_i$ is a systematic and additive
+      function only of $T$ and $M$, with the other variance in $Y_i$
+      to be random noise in $\epsilon_i$ according to the OLS
+      assumptions.  
+
+      And since $T\indep M$ and thus $Cov(T,M)=0$,  it can be shown in OLS that the estimator
+      for $\beta_1$ is
+      $\hat{\beta}_1=Cov(Y,T)/Var(T)=Cov(Y,T)/p(1-p)=4\times Cov(Y,T)$.
+      By the definition of covariance with a binary variable $T$, this
+      estimator is identical to:
+$$
+\hat{\beta}_1 =  \frac{1}{4n}\left\{\sum_{i=1}^{2n}Y_i(1,M) -
+         \sum_{i=1}^{2n} Y_i(0,M)\right\} 
+$$
+which is the difference in means estimator for observed outcomes under
+the assigned treatment and control for men and women {\em balanced} across
+treatment assignment.
+
+Note, that for this OLS estimator to be an unbiased estimate of $ATE$,
+the potential outcomes cannot be a function of any factor other than
+treatment and gender, since treatment is not assigned randomly.
+
+%and 
+%$\hat{\beta}_2$ is 
+%$$
+%\hat{\beta}_2 =  \frac{1}{4n}\left\{\sum_{i=1}^{2n}Y_i(T,1) -
+ %         \sum_{i=1}^{2n} Y_i(T,0)\right\} 
+%$$
+
+
+
+
+     % Here, $T_i$ is a treatment indicator, and
+     % $M_i$ is an indicator variable for whether
+     % subject $i$ is a male.
+     % The scientists estimates the $ATE$ by computing $\widehat{ATE} = \hat\beta_1$ 
+     % using OLS. 
+     % Under these assumptions, the OLS estimate is unbiased for the $ATE$.
+%      A researcher  runs an experiment, and assigns people to 
+%      treatment groups and control groups randomly.
+%      The researcher estimates the Average Treatment Effect (ATE) in two ways: 
+%      \begin{enumerate}
+%        \item[i.] First, the researcher  computes
+%          $$
+%            \widehat{ATE}_1 = \sum_{i=1}^N \frac{Y_iT_i}{N_1} -\sum_{i=1}^N \frac{Y_i(1-T_i)}{N_0} 
+%          $$
+%           where $T_i$ are treatment indicators and 
+%           $N_1$ and $N_0$ denote how many people were assigned to 
+%           treatment and control respectively.
+%           This estimate is unbiased for the ATE.
+%         \item[ii.] Second, the researcher  assumes that responses were generated by the model
+%           $$
+%             Y_i = \alpha + \beta T_i + X_i\gamma+ \epsilon_i
+%           $$
+%           where $X_i$ are pre-treatment covariates, and $\epsilon_i$
+%           are independent and identically distributed with
+%           $\E(\epsilon_i) = 0$.  The researcher obtains
+%           $\widehat{ATE}_2 = \hat\beta $ through OLS from this linear
+%           model.  Since OLS
+%           estimates coefficients unbiasedly, this method obtains an
+%           unbiased estimate for the ATE.
+%      \end{enumerate}
+%      Both methods find that the average treatment effect estimate is
+%      large and positive. The finding that both methods obtain large
+%      and positive estimates of the ATE provides more evidence that
+%      the ATE is positive than if only one of these methods were used.
+
+\begin{itemize}
+\item[] 
+\end{itemize}
+
+    \item[2.]  FALSE 
+
+      The condition being tested is that balancing the mean of $x$ for
+      treated and the mean of $x$ for control reduces bias in an
+      estimate of the effect of $T$ on $Y$, so long as other moments
+      of $x$ across treated and control do not become more dissimilar
+      acording to a Kolmogorov-Smirnov (KS) test.  Although this is
+      possible (and may often occur), there is no guarantee that bias
+      is reduced in this case.  For example, $x$ may confound the
+      estimate of a treatment in its second-, third-, or higher-order
+      moments, but not due to its mean moment.  In such a case, let's
+      assume that the means and variances get better, but higher-order
+      moments get worse, which contribute to bias if left imbalanced.
+      Since the KS test is sensitive to improvements in the balance of
+      many moments, it is possible that under such a condition the
+      {\em results} of the KS test do not change, but certain
+      important moments get worse increasing bias.  
+
+
+
+
+%A researcher is analyzing the effect of a treatment in a
+%  randomized experiment and uses a two-sample $t$-test (with unequal
+ % variances) to reject the null hypothesis of a 0 average treatment
+ % effect. The researcher could have tested the same null hypothesis
+ % with a randomization (permutation) test and his inference would not
+ % depend on any large sample approximations.
+
+ % \item[3.] A group of researchers begins a drug trial to study the
+ %   effectiveness of a particular psychostimulant in treating
+ %   Attention Deficit Hyperactivity Disorder (ADHD).  Before the
+ %   study, individuals were surveyed to measure their likelihood to
+ %   comply with the experimental protocol, resulting in a `compliance
+ %   score' $S_i$ that is an unbiased estimate of
+ %   $Pr(Complier_i|T_i=1)$, or the true probability of taking the
+ %   drug if assigned to it in an experiment. In this particular
+ %   experimental design, the researchers choose to assign the drug
+ %   based on the scoring $S_i$ itself, using a weighted
+ %   coin flip, so that $\pi_i=\pi_j$, if and only if, $S_i=S_j$,
+ %   where $\pi_i$ is the probability of being assigned the drug
+ %   treatment
+ %   $(T_i=1)$, and $1-\pi_i$ is the probabilty of being assigned a
+ %   sugar pill ($T_i=0$).
+%  \vspace{.5em}
+%
+%  The researchers believe that the Effect of the Treatment on Treated
+%  (ETT) (i.e., the average drug response for compliers) will be
+%  positive, and that the average drug response among individuals in
+%  the treatment group who refused treatment will
+%  be zero.  Given these assumptions about the responses under
+%  treatment (and given a known treatment assignment probability), it
+%  is
+%  better to assign treatment so that $\pi_i=1-S_i$, rather than
+%  $\pi_i=S_i$, since it is more conservative (i.e., likely to recover
+%  an estimate biased towards zero) to have a higher rate of
+%  non-compliance in the treatment group rather than in the control
+%  group here.
+
+
+\item[3.] FALSE
+
+  Since the design is implemented at the state level, the researcher
+  is breaking the design by ignoring this assignment mechanism and
+  only focusing on the study of individual-level outcomes. In this
+  case, treatments are correlated by geographical location and are not
+  independent.  A consequence of this is that the probability of
+  rejecting the null hypothesis of no effect is likely to be
+  biased. For instance, in a permutation approach, this is equivalent
+  to permitting permutations of a treatment that have zero probabiity
+  of occuring, but that contribute probability to a test of the null.
+  Typically, this failure to adhere to the clustered nature of the
+  assignment will understate uncertainty and overstate power in such a
+  test since the number of $n$ of independently assigned units is much
+  greater when assuming individual-level rather than state-level
+  assignment, which assumes the test has much more independent
+  information about the treatment effect than it should given the
+  assignment.  
+
+\end{itemize}
+
+
+\paragraph{\Large II. Regression Discontinuity Design \\ \\}
+\vspace{1em} 
+
+\noindent Consider a large medical trial for a new weight loss drug.  
+      Before the trial, 
+      each patient has their weight, height, and body fat percentage measured.
+      A goodness-of-health score 
+      is calculated for each patient based on these measurements
+      (higher scores are a proxy for worse health).
+      Assume that patients do not have time to manipulate their weight or body fat
+      once selected to participate in the trial.
+      Historically, a histogram of patient goodness-of-health 
+      scores closely follows a normal
+      distribution with mean $c$.
+      It is thought that the effect of the drug varies with the value of this score.
+      \begin{itemize}
+        \item[a)]  
+%          Consider the following mechanism for treatment assignment:
+%          Before being assigned to treatment or control, each patient rolls a 6-sided die.
+%          For a patient with a score above $c$, 
+%          If the die comes up as 1, 2, 3, or 4 and the patient has a score of $c$ or above,
+%          that patient takes the weight loss drug, otherwise they receive a placebo.
+%          If the die comes up as a 5 or 6 and the patient has a score below $c$,
+%          that patient takes the weight loss drug, otherwise they receive a placebo.
+%          Suppose that the die roll is known to the experimenter.
+          Suppose that the trial is conducted so that people with a 
+          goodness-of-health score of $c$ or above 
+          are given the drug and that people with a score below $c$ are not given the drug.
+          Under this setup,
+          what meaningful inferences can be made about the effect of the drug on weight loss? 
+          Discuss the parameter of interest and the 
+          methods used to estimate this parameter.
+          What assumptions are required to estimate this parameter?
+        \item[b)]
+          Consider the following mechanism for treatment assignment:
+          Before being assigned to treatment or control, each patient rolls a 6-sided die.
+          If the die comes up as 1, 2, 3, or 4 and the patient has a score of $c$ or above,
+          that patient takes the weight loss drug, otherwise they receive a placebo.
+          If the die comes up as a 5 or 6 and the patient has a score below $c$,
+          that patient takes the weight loss drug, otherwise they receive a placebo.
+          Suppose that the die roll is unknown to the experimenter.
+          
+          What does the estimate in a) measure now?
+          Can the parameter of interest in part a) still be estimated?
+          If so, how?  If not, why not?
+        \item[c)]
+          Suppose that the effect of the drug is thought to be the same
+          for all patients with goodness-of-health scores within the interval
+          $(c-5,c+5)$.
+          Suppose that patients with scores below $c$ 
+          are ineligible to receive the weight loss drug.
+          Patients with scores of $c$ or above are given an appointment to receive 
+          the drug.
+          The drug is administered only once during the trial, and only at this appointment.
+          Some patients fail to arrive at their appointment.
+          Under this setup,
+          discuss at least two types of inference 
+          possible for measuring the effect of the drug on weight loss? 
+          Discuss the parameters of interest and the methods used to estimate these parameters.
+          What assumptions are required to estimate these parameters?
+          Which estimate will be larger (in absolute value)?
+      \end{itemize}
+
+\paragraph{\Large III. Sensitivity Analysis \\ \\}
+
+  Suppose that there is a study with 
+      a total of $2n$ subjects.
+      Exactly $n$ of these people are smokers.
+      A height and weight are measured for
+      each subject.
+      Suppose that there are enough people so that
+      the joint distribution of the heights and weights is extremely close to a
+      multivariate normal distribution.
+      The researcher wants to test whether smoking affects 40-yard dash times.
+      \begin{itemize}
+        \item[a)]
+          A statistician notices some imbalance in the average weight and height 
+          between the smokers and the non-smokers.         
+          To fix the imbalance, the statistician matches smokers
+          to non-smokers by matching 
+          on the Mahalanobis distance with height and weight covariates          
+          (with replacement, nearest neighbor).
+          Will the differences in average height and average
+          weight between the smokers
+          and matched non-smokers            
+          be as small or smaller as they were before matching?  
+          Why or why not?
+        \item[b)]
+          Suppose instead that all subjects in the study are twins.
+          For each set of twins, one twin is a smoker and one twin is a non-smoker,
+          and both twins in each set have the same height and weight.
+          In his analysis, the statistician believes that 
+          the smoking sibling in a twin pair 
+          is essentially random, though he concedes
+          that some unobserved trait may help explain a twin's 
+          propensity for being a smoker.
+           
+          For each set of twins $s$, let $(1,s)$ denote the twin that smokes,
+          and let $(2,s)$ denote the non-smoking twin.
+          Let $T_{is}$ denote random smoking indicators;
+          $T_{is} = 1$ if the $i$th unit in the $s$th twin pair smokes, $i = 1,2$.
+          For this study, for each pair $s$, 
+          the smoking indicators are observed to be $T_{1s} = 1$
+          and $T_{2s} = 0$.
+          The statistician models the probability that a subject smokes in the following way:
+          \begin{equation}
+            \log\left( 
+              \frac{P(T_{is} = 1)}{1 - P(T_{is} = 1)}
+            \right) = \alpha + \kappa_1 h_{is} + \kappa_2 w_{is} + \gamma u_{is}
+            \label{probassign}
+          \end{equation}
+          where $h_{is}$ and $w_{is}$ are the height and weight of twin $(i,s)$,
+          and $u_{is}$ is the value of an unobserved covariate for that twin.
+          The statistician also assumes that any subject cannot influence
+          any other subject to smoke or not smoke
+          (smoking is independent across all subjects).
+           
+          Show that, under this model, the probability
+          that subject $(1,s)$ is a smoker is:
+%          of the obtaining
+%          the observed smoking assignment is:
+          \begin{equation}
+            P(T_{1s} = 1| T_{1s} + T_{2s} = 1) 
+            = \frac{e^{\gamma u_{1s}}}{e^{\gamma u_{1s}} + e^{\gamma u_{2s}}}
+            \label{aprobques}
+          \end{equation}
+          Hint: Use $P(A | B) = P(A\cap B)/P(B)$, and find an expression for
+          $$
+            \frac{P(T_{1s} = 1 \cap T_{2s} = 0)}{P(T_{1s} = 0 \cap T_{2s} = 1)} = 
+            \left(\frac{P(T_{1s} = 1)}{1 - P(T_{1s} = 1)}\right)
+            \left(\frac{P(T_{2s} = 0)}{1 - P(T_{2s} = 0)}\right)
+          $$
+        \item[c)]
+          Suppose that $0 \leq u_{is} \leq 1$ and that $\gamma > 0$.
+          Find an upper and lower bound (sharper than just 1 and 0) for the probability
+          $P(T_{1s} = 1| T_{1s} + T_{2s} = 1).$
+          Denote these bounds by $p^+_s$ and $p^-_s$ respectively.
+          Do the same for $P(T_{1s} = 0| T_{1s} + T_{2s} = 1).$
+          Comment, in one sentence, on how these bounds change if $\gamma < 0$.
+        \item[d)]
+          Let $y_{is}$ denote the 40-yard dash time of subject $(i,s)$ in milliseconds.
+          Let $Z_s$ denote an indicator variable for the smoker having the faster 40-yard dash time:
+          $Z_s = 1$ if and only if the smoking twin 
+          has a faster 40-yard dash time than the non-smoking twin.
+          Let $d_s$ denote the rank of $|y_{1s} - y_{2s}|$; 
+          higher ranks denote larger absolute values.
+          Assume there are no ties between $y_{1s}$ and $y_{2s}$ within any 
+          twin pair $s$,
+          and that $|y_{1s} - y_{2s}| \neq |y_{1t} - y_{2t}|$ for all distinct twin pairs $s,t$.
+          
+          The Wilcoxon signed rank statistic is:
+          $$
+            W = \sum_{s=1}^n d_sZ_s.
+          $$
+          Let $Z^+_s$ and $Z^-_s$ be independent and identically distributed 
+          bernoulli random variables (or indicator variables) with $P(Z^+_s = 1) = p^+_s$
+          and $P(Z^-_s = 1) = p^-_s$.
+          Consider the following random variables:
+          \begin{eqnarray*}
+            W^+ &=& \sum_{s=1}^n d_s Z^+_s \\
+            W^- & = & \sum_{s=1}^n d_sZ^-_s
+          \end{eqnarray*}
+          Show that, under the null hypothesis that smoking does not effect 40-yard dash times, 
+          the following property holds:
+          $$
+           \E(W^-)\leq  \E(W| T_{1s} + T_{2s} =1) \leq \E(W^+) 
+          $$
+        \item[e)]
+          In fact, it can be shown that under this null hypothesis, for any $a$:
+          \begin{equation}
+            P(W^- \geq a) \leq P(W \geq a | T_{1s} + T_{2s} = 1) \leq P(W^+ \geq a)
+            \label{probabs}
+          \end{equation}
+          Discuss, in about 3 -5 sentences or so, how property~\eqref{probabs} can be
+          exploited to test the exact null of no treatment effect. 
+        \item[f)] [BONUS QUESTION]
+          Prove property~\eqref{probabs}. 
+      \end{itemize}
+
+\paragraph{\Large IV. Media Bias \\ \\}
+
+For this problem, you will compare the research design from three
+papers studying the effects of media bias on political attitudes and
+choices.  The first paper is ``The Fox News Effect'', by S.
+DellaVigna and E. Kaplan (DVK), and can be found here
+\url{http://sekhon.berkeley.edu/causalinf/papers/DellaVignaFoxNews.pdf}. The
+second paper is ``Exploiting a Rare Shift in Communication Flows to
+Document News Media Persuasion'', by J. Ladd and G. Lenz (LL),
+and can be found here
+\url{http://sekhon.berkeley.edu/causalinf/papers/LaddLenzBritish.pdf}. And
+the third paper is ``Does the Media Matter? A Field Experiment
+Measuring the Effect of Newspapers on Voting Behavior and Political
+Opinions'', by A. Gerber, D. Karlan, and D. Bergan (GKB), and
+can be found here
+\url{http://sekhon.berkeley.edu/causalinf/papers/GerberNewspapers.pdf}.
+
+\vspace{1em}
+
+Please write a page or two addressing the following questions:
+
+
+   \begin{itemize}
+   \item[a.]  Compare the identification strategies of the
+     three papers.  Which strategy do you find the most convincing?
+     The least?  Why?
+
+   \item[b.] Given the different types of interventions being studied
+     (e.g., biased media exposure v. change in media bias, television v. newspaper media,
+     etc), in what sense are the findings across these three studies
+     `comparable'?  Do these studies give us useful information to
+     test the same theoretical claim or different theoretical claims?  
+
+   \item[c.] Imagine at a future point in time, Fox News expanded to
+    every major cable and media market in the US. Would we 
+     expect to see a similar media effect as measured by DVK as a
+     result of this national expansion?  Why or why
+    not?  What would be an analogous type of issue in the studies
+    conducted by LL and GKB?  Do any of the three studies seem more
+    robust to this type of issue than the others?
+
+   \item[d.]  Which paper do you find the most 
+     interesting, weighting both the scope and significance of the
+     effect being estimated, as well as the {\em external} and {\em internal} validity
+     of the respective estimates?  Generally speaking, which study is
+     {\em most} informative about the substantive impact of media bias on 
+public opinion or vote choice?  
+
+
+\end{itemize}
+
+
+
+
+\paragraph{\Large V. Data and Matching \\ \\}
+
+For this problem, you will perform several matching exercises using
+Ladd and Lenz's ``Exploiting a Rare Shift'' data.  The unit of
+observation is the individual respondent in a UK election survey, and
+the treatment under study is whether an individual is a reader of a
+newspaper that switched its party endorsement from Tory to Labour in
+the run-up to the 1997 election.  The main outcome is change in Labour
+party vote support between 1992 and 1997.  To control for confounding,
+the authors condition on a number of covariates (listed in Table 3
+and Table 1A of their paper) that may predict both readership and party voting
+behavior.
+\\
+
+\noindent The Ladd and Lenz data is available here:
+\url{http://sekhon.berkeley.edu/causalinf/data/midterm.dta}.
+The variables are described in the following file:
+\url{http://sekhon.berkeley.edu/causalinf/data/midterm_codebook.xsls}
+
+
+\vspace{1em}
+\noindent For parts (a) - (e) below, be sure to explicitly set seeds
+to ensure that GenMatch recovers reproducible results,
+i.e. \texttt{set.seed} in general, and in GenMatch \texttt{unif.seed}, \texttt{int.seed}.
+
+\begin{itemize}
+\item[a.]  Estimate the causal effect of being a typical reader of a newspaper
+  that switched party endorsement (from Tory to Labour) on the {\em
+    change} in Labour party vote support between 1992 and 1997.  In
+  doing so, select a set of relevant covariates to condition on.  In
+  matching, first use a custom loss function and then use GenMatch’s
+  default loss function. Provide some justification for your custom
+  loss function. Choose the matched dataset with the best balance on
+  the relevant covariates.  Are the media effects on voting you
+  estimate significantly different from zero? What are the mean
+  differences in change in party vote suport you recover after
+  matching?  What are the three {\em worst} balanced covariates in
+  this best-matched dataset?  What are the standardized mean
+  differences across matched treated and control on these three
+  covariates?
+
+
+\item[b.] Using the best-matched dataset from part (a), restrict your
+  analysis of the matched-pairs to include only those treated
+  individuals who are habitual readers of a newspaper that switched
+  its party endorsement.  Check balance on this `restricted' dataset
+  using \texttt{MatchBalance}.  Does balance change considerably in
+  this dataset, compared with that recovered in (a)?  Now, use
+  GenMatch to match on the same covariates used in (a), utilizing
+  habitual readers as the treatment indicator.  Does balance in this
+  matched dataset improve compared to that recoverd in the
+  `restricted' matched dataset?  What media effects do you recover in these
+  two matched datasets?  Are these different from that found in (a)?
+
+\item[c.] Choose one matched dataset from (a) or (b) that you think is
+  the most convincing in recovering conditional exchangeability (for
+  either habitual or typical readers), and conduct two robustness
+  tests of the conditional exchangeability assumption.  The first
+  robustness check should be a Rosenbaum sensitivity test using the
+  \texttt{rbounds} package in {R}.  The second robustness check either
+  should be a post-matching parametric bias adjustment on the matched
+  data (e.g., a probit regression including covariates and treatment
+  to model the outcome on the matched data), or a placebo test of the
+  effect of treatment on a prior party vote outcome before and after
+  matching.  What is the $\Gamma$ magnitude of confounding due to an
+  unobserved covariate in the Rosenbaum sensitivity test at which the
+  estimated treatment effect is indistinguishable from zero?  How does
+  this $\Gamma$ compare to the imbalance recovered on the three
+  worst-balanced covariates in the best-balanced dataset in (a)?  Are
+  these robustness tests convincing that conditional exchangeability
+  holds?
+
+
+\item[d.] Repeat the analysis in part (a), this time using the {\em
+    level} of Labour party vote support in 1997 (rather than change in
+  vote support). Is this estimate consistent with the one recovered in
+  (a)?  Is this causal estimate more or less persuasive than the
+  difference-in-difference estimate you recovered in (a)?   Overall, what do we learn about the effects of media from this
+  analysis?  
+
+
+
+
+
+%\item[e.] In this study, does SUTVA limit what we can say? If so, how?
+%  If not, why not?  
+
+\item[e.] [BONUS QUESTION] Fully replicate the regression analysis in
+  Table 1A (excluding the 1992 instrument column), on both the {\em
+    level} and {\em change} in party vote support.  That is, do the
+  bivariate analysis, the exact matching on the same covariates used
+  by Ladd and Lenz, and the GenMatch analysis on the same coveriates,
+  and also perform linear adjustment on each matched data set.  Can
+  you replicate the table exactly? If not, which parts can you
+  replicate exactly? How confident are you that this analysis is
+  recovering an unbiased estimate of the persuasive effect of media on
+  vote choice behavior? Does replicating the analysis change your
+  assessment?
+
+
+
+
+
+
+
+\end{itemize}
+
+\end{document}
+
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by your matching method used in part a—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+
+\item[a.] Select a set of covariates to condition on. Be sure to consider if any higher order terms and interactions are appropriate. Using these variables, perform Mahnolobis distance matching on a propensity score and “orthogo- nalized” covariates, with ATT as your estimand. Report your balance statistics, preferably using a plot.
+
+\item[a.] Now using the same set of covariates (propensity score and “orthogonalized” covariates), use GenMatch to generate weights that optimize balance. Use the default setting for the loss function, but feel free to adjust other parameters of the function. Present balance before and after matching.
+
+\item[a.] Now find balance with GenMatch using your own loss function. Explain the logic behind your choice of loss function. You may want to prioritize important selection variables, such as age. Present balance statistics after matching.
+1
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by pscore matching—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+\end{itemize}
+
+
+
+
+\end{document}
+
+
+For this problem, you will perform several matching exercises using
+the ``Fox News Effect'' data.  The unit of observation are towns in
+the US, and the treatment under study is the availability of Fox News
+during the 2000 election season. The outcome (\texttt{reppresfv2p00m96}) is the
+change in the Republican presidential vote share between 1996 and
+2000. The dataset for this assignment only includes those towns with
+pre-treatment outcome data, i.e. the change in the Republican
+presidential vote share between 1988 and 1992 (\texttt{reppresfv2p92m88}). The
+treatment indicator (\texttt{foxnews2000}) has been defined as equal to one if
+the town’s cable system carried the Fox News network before the 2000
+election. The dataset includes a set of demographic covariates from
+the 2000 and 1990 census
+
+\begin{itemize}
+\item[a.] Select a set of covariates to condition on. Be sure to
+  consider if any higher order terms and interactions that are
+  appropriate. Using these variables, perform Mahnolobis distance
+  matching on a propensity score and ``orthogonalized'' covariates
+  (simultaneously),
+  with ATT as your estimand. Report your treatment effect estimates
+  and your balance statistics, either in a table or a plot. Is it
+  similar to the estimate reported in the original paper, in
+  particular the estimate reported in columns 6 and 7 in Table IV?
+   \item[b.] Now with the same set of covariates, use GenMatch to
+     generate weights that optimize balance. Use the default setting
+     for the loss function, but feel free to adjust other parameters
+     of the function. Present balance before and after matching, as
+     well as your effect estimates. How is your estimate different
+     from the results reported in the paper and your findings in part
+     a?
+   \item[c.] Now match using either the method from part (a) or the
+     method from part (b), using only demographic covariates. Estimate
+     the ``treatment effect'' of the introduction of Fox news prior to
+     the 2000 election on pre-treatment outcome of the change in
+     Republican presidential vote share between 1988 and 1992. This is
+     known as a ``placebo test''. Can you recover a 0 ATT estimate using
+     only demographic covariates as the conditioning set?
+\end{itemize}
+
+
+
+
+
+
+\begin{itemize}
+\item[a.] Select a set of covariates to condition on. Be sure to consider if
+any higher order terms and interactions are appropriate. Using these
+variables, perform Mahalanobis distance matching, with ATT as your
+estimand. Report your balance statistics.
+
+\item[a.] Now using the same set of covariates, use GenMatch to generate weights that optimize balance. Use the default setting for the loss function, but feel free to adjust other parameters of the function. Present balance before and after matching.
+
+\item[a.] Now find balance with GenMatch using your own loss function. Explain the logic behind your choice of loss function. You may want to prioritize important selection variables, such as age. Present balance statistics after matching.
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by your matching method used in part a—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+
+\item[a.] Select a set of covariates to condition on. Be sure to consider if any higher order terms and interactions are appropriate. Using these variables, perform Mahnolobis distance matching on a propensity score and “orthogo- nalized” covariates, with ATT as your estimand. Report your balance statistics, preferably using a plot.
+
+\item[a.] Now using the same set of covariates (propensity score and “orthogonalized” covariates), use GenMatch to generate weights that optimize balance. Use the default setting for the loss function, but feel free to adjust other parameters of the function. Present balance before and after matching.
+
+\item[a.] Now find balance with GenMatch using your own loss function. Explain the logic behind your choice of loss function. You may want to prioritize important selection variables, such as age. Present balance statistics after matching.
+1
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by pscore matching—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+\end{itemize}
+
+
+
+
+\item[1(a).]   A researcher runs an experiment, and assigns people to 
+      treatment groups and control groups randomly.
+      The researcher estimates the Average Treatment Effect (ATE) in two ways: 
+      \begin{enumerate}
+        \item[i.] First, the researcher  computes
+          $$
+            \widehat{ATE}_1 = \sum_{i=1}^N \frac{Y_iT_i}{N_1} -\sum_{i=1}^N \frac{Y_i(1-T_i)}{N_0} 
+          $$
+           where $T_i$ are treatment indicators and 
+           $N_1$ and $N_0$ denote how many people were assigned to 
+           treatment and control respectively.
+           This estimate is unbiased for the ATE.
+         \item[ii.] Second, the researcher assumes that responses were generated by the model
+           $$
+             Y_i = \alpha + \beta T_i + \epsilon_i
+           $$
+           where $\epsilon_i$ are independent
+           and identically distributed with $\E(\epsilon_i) = 0$.
+           The researcher obtains $\widehat{ATE}_2 = \hat\beta $ through OLS.
+           Since OLS estimates coefficients unbiasedly, this 
+           method obtains an unbiased estimate for the ATE.
+      \end{enumerate}
+      Both methods find that the average treatment effect estimate is
+      large and positive.  The finding that both methods obtain large
+      and positive estimates of the ATE provides more evidence that
+      the ATE is positive than if only one of these methods were used.
+
+
+

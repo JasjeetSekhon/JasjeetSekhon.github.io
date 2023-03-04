@@ -1,0 +1,5 @@
+cd /srv/www/htdocs
+rsync -pgrtuzzvl -e ssh --progress htdocs musil:/srv/www
+cd -
+
+

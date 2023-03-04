@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st
+March 2002), see www.w3.org" /> 
+<meta name="keywords" content="Sekhon, Jasjeet Sekhon, Jasjeet Singh
+Sekhon,Apple, Mac OS X, Linux, Windows, OS X sucks, Linux rules, benchmarks,linux on g5, 970, ibm, review, tiger, operton, intel, linux vs. os x, Linux vs. OS X, G5 versus opteron, g5"/>
+<title>Linux versus Mac OS X on Intel Dual Core</title> 
+<link rel="stylesheet" href="http://www.w3.org/StyleSheets/Core/Steely"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body { margin: 5em 5em 5em 5em}
+/*]]>*/
+</style>
+</head>
+<body>
+<h2>
+Linux versus Mac OS X on Intel Dual Core
+</h2>
+
+<br>
+
+<h4 class="Summary">Summary</h4>
+<br>
+
+<a href="http://www.ubuntu.com">Linux</a> is found to be much faster
+than <a href="http://www.apple.com/macosx/">Apple's OS X</a> for
+statistical computing. Indeed, in one benchmark, <B> Linux is more
+than twice as fast </B>. The results on this page were conducted on
+a <a href="http://www.apple.com/macbookpro">MacBookpro</a> with a
+2.16Ghz Intel Core Duo chip and 2GB of RAM.
+<br>
+<br>
+
+I had <a href="g5.html">previous</a> conducted Linux versus Mac OS X
+and G5 versus Opteron Benchmarks.  Those results were <B> terrible
+</B> for OS X and not particularly good for the 970 (G5) chip.  <a
+href="g5.html">Indeed, my 2.7 pound Pentium-M Linux laptop is faster
+than my 44 pound G5 running OS X.</a> The floating point performance
+of the 970 chip leaves much to be desired, but OS X makes the
+performance problem significantly worse.
+
+<br><br> This <a
+href="http://www.osxbook.com/book/bonus/misc/linux/">spoof</a> of
+Apple's own marketing campaign on a website which helps users install
+Linux on Mactels appears to be fitting:
+<div id="warning">
+<p>
+<em>
+The Intel chip... For months, it's been trapped inside a Mac, inside a
+pretty little box, dutifully performing pretty little tasks when it
+could have been doing so much more. Starting today, the Intel chip
+will be set free, and get to live life in a Mac... running
+Linux. Imagine the possibilities.  </em>
+</p>
+</div>
+
+<h4 class="Background">Background</h4>
+<br>
+
+People often ask me about my opinions of <a
+href="http://www.apple.com/macosx/">Apple's OS X</a> both as a general
+operating system (as a replacement for <a
+href="http://www.linuxtoday.com">Linux</a> or other <a
+href="http://www.levenez.com/unix/">unixes</a>) and as an operating
+system useful for statistical computing. People training in
+statistical methods especially often ask for advice in trying to avoid
+Linux. Because I have to support my <a
+href="http://sekhon.berkeley.edu/matching/">statistical software</a>
+on various platforms, I have to think about the idiosyncrasies of the
+various operating systems and chips.  In order to save time repeating
+the same information to many people, I have decided to post it on the
+web.  The short answer: use Linux if you want performance and
+stability.  If you <b>want</b> to use Mac OS X or Windows XP, go
+ahead.  All of these operating systems are now above the line (not
+long ago the operating systems out of Redmond and Cupertino were a
+joke).  However, if you decide to use Mac OS X for whatever reason,
+don't think it is just like Linux or some other efficient unix with a
+pretty and friendly gui. Life is full of tradeoffs and reasonable
+people can decide to make different choices.  Don't pretend that
+tradeoffs don't exist, and don't fall victim to Apple's marketing
+which is an extension of the <a
+href="http://www.folklore.org/StoryView.py?project=Macintosh&story=Reality_Distortion_Field.txt">Steve
+Jobs Reality Distortion Field</a>.
+
+<br><br>
+
+<h4 class="Benchmarks">Benchmarks</h4>
+<br>
+
+I present here a set of benchmarks which are relevant to my work and
+to people working in statistical computing, particular people using
+the <a href="http://www.r-project.org/">R Project for Statistical
+Computing</a>.  These benchmarks are floating point bound where the
+main IO is to memory and not to disk.  Cache and Translation
+Look-aside Buffer (TLB) misses really matter as well as memory speed.
+This setup may be of more general interest.  But they may not be
+relevant for what you do.  If you need a computer to do <I>Y</I>, and
+these benchmarks are in no way related to <I>Y</I>, don't write me to
+complain about it.  These benchmarks are useful for the work <b> I
+</b> and some other computational statistics people do.
+
+<br><br>
+
+OS X is incredibly slow by design not least because of the <a
+href="http://en.wikipedia.org/wiki/XNU">hybrid XNU kernel</a> it uses.
+It is based on the <a
+href="http://en.wikipedia.org/wiki/Mach_kernel">Mach Microkernel</a>
+(see <a
+href="http://people.fluidsignal.com/~luferbu/misc/Linus_vs_Tanenbaum.html">Linus
+vs. Tanenbaum</a>) which was used by <a
+href="http://en.wikipedia.org/wiki/NeXT">NeXT</a> and the excellent <a
+href="http://en.wikipedia.org/wiki/Bsd">Berkeley Standard Distribution
+(BSD)</a> kernel.  The hybrid kernel is very inefficient and less
+stable than alternatives such as, for example, the Linux kernel or the
+BSD kernel found in <a href="http://www.freebsd.org/">FreeBSD</a>.
+The reasons for this are many. For example, in Linux, the variables
+for a system call are passed directly using the register file. In OS
+X, they are packed up in a memory buffer, passed to a variety of
+places, and the results are then passed back using another memory
+buffer before the results are written back to the register file. You
+can just imagine what that does for TLB and cache hits.  This just
+adds to the context switching difficulties on some chips such as the
+<a
+href="http://www-1.ibm.com/servers/eserver/pseries/hardware/whitepapers/power4.html">Power4</a>.
+Memory management in OS X is awful.  To quote <a
+href="http://www.tacc.utexas.edu/~kgoto/">Kazushige Goto</a> talking
+about his <a href="http://en.wikipedia.org/wiki/Blas">BLAS</a>:
+"Performance is suppressed on purpose due to [the] awful memory
+management of OS X".  Goto's work is described and praised on <a
+href="http://www.apple.com/education/science/profiles/vatech/optimization.html">Apple's
+own website</a> because he added a custom BLAS for the Apple super
+computer at <a href="http://www.tcf.vt.edu/systemX.html">Virginia
+Tech</a>.  On the Apple site it states that Goto was "pulling out
+incredible efficiencies".  Well, given the Goto's own benchmarks and
+comments, this is just another example of the <a
+href="http://www.folklore.org/StoryView.py?project=Macintosh&story=Reality_Distortion_Field.txt">Steve
+Jobs Reality Distortion Field</a>.
+
+<br>
+<br>
+
+The benchmarks presented here are based on two of my statistical
+software packages for <a href="http://www.r-project.org/">R</a>: <a
+href="../matching">Matching</a> (Multivariate and Propensity Score
+Matching Software) and <a href="../rgenoud">rgenoud</a> (R Version of
+GENetic Optimization Using Derivatives).  The code uses C++ code
+extensively.  The two benchmark scripts are available <a
+href="GenMatch.R">here (Genetic Matching)</a> and <a
+href="matching.R">here (Matching)</a>.  All benchmarks were done using
+R-2.3 and gcc 4.  The best timing result of the three calls to <a
+href="../Matching/GenMatch.html">GenMatch</a> in the GenMatch <a
+href="GenMatch.R">script</a> are presented and the best result of
+three consecutive runs of the <a href="matching.R">matching</a> script
+are presented (examining the worst or the average times yields the
+same substantive results).
+
+<br><br>
+
+The machines are:
+<TABLE BORDER=2 CELLSPACING=15>
+<TR> <TH>Label</TH> <TH>OS and Chip</TH> </TR> 
+
+<TR> <TD>OS X Core Duo</TD> <TD><a
+href="http://www.apple.com/macosx/tiger">Tiger</a> on <a
+href="http://www.apple.com/macbookpro">MacBookpro</a>, Intel 2.16GHz
+Dual Core 2GB RAM</TD> </TR>
+
+<TR>
+<TD>Linux Core Duo</TD> <TD><a
+href="http://www.ubuntu.com/">Ubuntu</a> Linux <a
+href=http://www.mactel-linux.org/wiki/Main_Page>LiveCD</a> on
+MacBookpro, Intel 2.16GHz Dual Core 2GB RAM</TD> </TR>
+
+<TR> <TD>Linux P4</TD> <TD><a href="http://www.ubuntu.com/">Ubuntu</a>
+Linux (<a
+href="http://www.ubuntu.com/testing/dapperbeta?highlight=%28beta%29">Drapper
+Drake Beta 2</a>) on 3GHz Pentium 4, 2GB RAM
+</TD>
+</TR>
+
+<TR> <TD>Linux Opteron</TD> <TD><a
+href="http://www.ubuntu.com/">Ubuntu</a> Linux (64bit) on <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>
+250, 4GB RAM
+</TD>
+</TR>
+</TABLE>
+
+<br> <br>
+
+<img src="GenMatch1.png" alt="GenMatch">
+
+<br><br>
+
+<b> Linux is vastly faster than OS X: more than 2.5 times faster.</b>
+This benchmark does not take up much ram, less than 30meg, nor does it
+work the filesystem much.  But the application does flip between
+various shared libraries and pass various data objects back and forth
+in RAM.  The following benchmarks takes about the same amount of ram,
+but it does not flip between various shared libraries.  It does call a
+shared library, but it only does it once and only passes results back
+once.  This second benchmarks looks better for OS X, but it is still
+about 1.2 times slower than Linux.
+
+<br><br>
+
+<img src="matching2.png" alt="matching2">
+
+<br><br>
+
+
+
+In neither benchmark are we testing IO or running multiple processes
+on the same chip.  If we do either of these, the <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>
+starts to outperform the Intel chips by a larger margin.
+
+<br><br>
+
+Many people commented that my <a href="g5.html">previous
+benchmarks</a>, which compared OS X on the G5 with Linux on Opteron
+chips, were limited because gcc is optimized for the x86 family.  In
+these benchmarks, this excuse can obvious not be used.  There are some
+serious issues with OS X and gang in Cupertino should really get to
+work.  Moreover, as my previous benchmarks showed, even Windows does a
+lot better than OS X.
+
+<br><br>
+
+As noted before, the <a href="http://en.wikipedia.org/wiki/XNU">hybrid
+XNU kernel</a> is probably to blame for OS X's problems.  <a
+href="http://www.applematters.com/index.php/section/comments/how-long-will-apple-keep-the-mach-microkernel/">People
+on the web</a> have recently been speculating whether Apple with drop
+the Mach micro-kernel portion of XNU. These rumors have picked with
+the departure of <a
+href="http://en.wikipedia.org/wiki/Avie_Tevanian">Avie Tevanian</a>,
+an important figure in the development of the Mach Kernel while at
+Carnegie Mellon and then at Apple.  Interestingly, Chris Emura, the
+Filystem Devleopment Manager within Apple's CoreOS organization, <a
+href="http://www.osnews.com/story.php?news_id=14473">recently
+stated</a> that Apple is interested in porting <a
+href="http://www.opensolaris.org/os/community/zfs/">Sun's ZFS
+filesystem</a> to OS X .  If true, this may show the Apple is
+interesting in fixing core issues with their operating system now that
+the eye candy is stable. 
+
+<br><br>
+
+I have conducted many more benchmarks on these and other machines.  I
+have also tested the HFS+ filesystem.  It is vastly slower than <a
+href="http://www.namesys.com/">reiser</a> for small and medium sized
+files and vastly slower than <a
+href="http://oss.sgi.com/projects/xfs/">XFS</a> for large files (I use
+reiser partitions for system files and XFS partitions for storing
+large media files).  If you want these additional benchmarks, let me
+know.
+
+<br><br>
+
+There are claims on the web that when Apple developers compile OS X on the
+970, they use -Os.  That is, they optimize for size and not for performance.
+<a href="http://arstechnica.com/columns/mac/mac-20050710.ars">"So even though
+Apple talked a lot of smack about having a first-class 64-bit RISC workstation
+chip under the hood of their towers, in the end they were more concerned about
+OS X's bulging memory requirements than they were about The Snappy(TM)."</a>
+
+AnandTech has an article which offers another explanation for why OS X is so
+inefficient.  See <a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2436">No more mysteries:
+Apple's G5 versus x86, Mac OS X versus Linux</a>.
+
+<br><br>
+
+<h4 class="General Review">General Review</h4>
+<br>
+
+What about OS X for more general computing applications?  After a few days of
+the Mac being my main desktop, I could no longer take it.  I switched back to
+my Linux box.  My Linux box has two monitors.  There is a third monitor which
+I switch between XP and OS X.  I run everything with just a single keyboard
+and mouse either through my KVM or even better through <a
+href="http://www.rdesktop.org">rdesktop (RDP)</a> to Windows and <a
+href="http://www.tightvnc.com">Tight VNC</a> to OS X (VNC controls the mouse
+and keyboard but I look at the actual monitor for the Mac screen output).
+
+<br><br>
+
+To make a long story short, the Mac has not been useful to me.  I only use it
+to run iTunes.  I cannot even use it to do video editing!?!  I convert video
+from my PVR to mpeg-ts (mpegpes) on Windows XP.  I do this using <a
+href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/directshow/htm/usinggraphedit.asp">DirectShow
+Filters via graphedit</a> which is an awesome interface to various video
+tools---one of Microsoft's biggest weapons has long been wonderful development
+tools.  In this way, I can turn PVR files into portable mpeg-ts files.  Which
+I can watch or burn to DVD for personal use.  The problem?  I cannot edit
+mepg-ts files using any Apple tool I can find.  I could use <a
+href="http://www.alfanet.it/squared5/mpegstreamclip.html">third party
+software</a> or open source stuff like <a
+href="http://www.mplayerhq.hu/homepage/index.html">mencoder and mplayer</a>,
+but I might as well then use Linux (where the software runs much faster
+because of the OS and because I can run the software on an <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>).
+On Windows, I can *easily* burn my shows to dvd using <a
+href="http://www.nero.com/">Nero</a> which is fast and user friendly. I cannot
+use iDVD because it relies on Quicktime and QT does not support mpeg-ts.  So,
+the Mac does not "just work" even for video editing.  mpeg-ts is hardly an
+obscure format.  And no, I do not want to add an encoding step to switch
+mpeg-ts to some Quicktime format just to change it again for burning to a dvd
+using iDVD.  But if an encoding step is okay for you, you can use <a
+href="http://www.alfanet.it/squared5/mpegstreamclip.html">MPEG Steamclip for
+OS X</a>, but it is slower than mplayer under Linux (particularly mplayer on
+x86 Linux).
+
+<br><br>
+
+When Tiger was first released it had a TON of bugs.  This is what
+happens when the beta testing setup is mostly secret---much like a
+Bush rally, you need the secret decoder ring to get in.  Apple does
+this because it wants the secrecy to generate buzz in the consumer
+market.  It doesn't really care about enterprise users and it shows.
+For a list of annoying bugs (which have admittedly since been
+corrected) see my <a href="g5.html">previous benchmarks</a>.
+
+<br><br>
+
+To be clear, Apple doesn't really care about techie users.  People I
+know who work there are very honest about this.  Apple thinks it is
+cool that a few hard core and famous hackers (such as <a
+href="http://en.wikipedia.org/wiki/Bill_Joy">Bill Joy</a>) are using
+their machines.  But that is not who they really care about.
+
+<br><br>
+
+The color quality of the Mac is fantastic.  Whites really are white
+and blues blue.  But the bad engineering of the OS as well as the
+highly controlled nature of their development model and applications
+offends me.  Who would have thought that a decade after the famous <a
+href="http://applemuseum.bott.org/sections/ads.html">1984 Big Brother
+ad</a>, it would be Apple with the highly controlled largely <a
+href="http://www.google.com/url?sa=U&start=1&q=http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/&e=9800">cathedral</a>
+OS and IBM would be spending hundreds of millions of dollars on code
+it allows anyone to <a href="http://www-1.ibm.com/linux/">share and to
+contribute to</a>?
+
+<br>
+<br>
+<h4 class="Summary">Suggestions</h4> 
+
+<br> 
+
+If you have any suggestions on how to fix the terrible performance of
+(this software on) OS X or if you think something here is erroneous,
+please <a href="http://sekhon.berkeley.edu">contact me</a>.
+
+<br>
+<br>
+<h4 class="Summary">Links</h4> 
+
+<br> 
+
+See similar benchmarks available on AnandTech's website: <a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2436">No more
+mysteries: Apple's G5 versus x86, Mac OS X versus Linux</a>. 
+
+<br>
+<br>
+
+For another review see 
+<a href="http://www.bitrot.de/macswitch.html">When a Linux user buys
+Apple's Mac mini</a>.
+
+<br>
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+
+
+</body>
+</html>
+
+
+
+<!--  LocalWords:  Kazushige BLAS Poytech Goto's Opteron AMD's unixes XP SuSE
+ -->
+<!--  LocalWords:  Microkernel Homepage yast Debian Cygwin GENetic gcc gui TLB
+ -->
+<!--  LocalWords:  tradeoffs SETI XNU Tanenbaum NeXT FreeBSD Goto rgenoud GHz
+ -->
+<!--  LocalWords:  GenMatch Ubuntu LiveCD Drapper Tevanian HFS reiser XFS RISC
+ -->
+<!--  LocalWords:  AnandTech KVM rdesktop RDP VNC iTunes PVR mpeg mpegpes mepg
+ -->
+<!--  LocalWords:  DirectShow graphedit mencoder mplayer dvd iDVD Quicktime
+ -->
+<!--  LocalWords:  Steamclip
+ -->

@@ -1,0 +1,246 @@
+<html><head><title>R: Multivariate Tests for Balance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score   Software, Causal Inference, Causality, Sekhon">
+<meta name="keywords" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score Software, Causal Inference, Causality, Jasjeet Sekhon, Jas Sekhon, Sekhon, Jas">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for balanceMV {Matching}"><tr><td>balanceMV {Matching}</td><td align="right">R Documentation</td></tr></table>
+<h2>Multivariate Tests for Balance</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function conducts the Kolmogorov-Smirnov tests for balance. The
+function does no matching.  Matching is performed by the
+<code><a href="Match.html">Match</a></code> function.  <code>balanceMV</code> is
+used to determine if <code><a href="Match.html">Match</a></code> was successful in achieving
+balance.  Multivariate balance is determined by the use of a model.
+This approach can be used regardless of the algorithm used to do the
+original matching.  For example, even if <code><a href="Match.html">Match</a></code> was
+told NOT to use a propensity score, <code>balanceMV</code> can be used to
+test balance.  Output can be summarized by using the
+<code><a href="summary.balanceMV.html">summary.balanceMV</a></code> function. Generally, users should call
+<code><a href="MatchBalance.html">MatchBalance</a></code> and not this function directly.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+balanceMV(formul, data = NULL, match.out=NULL, maxit = 1000,
+          weights = rep(1,nrow(data)), nboots=100, nmc=nboots, print.level=0, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formul</code></td>
+<td>
+A formula denoting the model for which balance should
+be determined.  This model will be estimated by a binary logistic
+estimator. The dependent variable in the formula is usually the
+treatment indicator. Univariate balance tests will be conducted for
+each of the regressors included in this model. And the multivariate
+tests will be conducted on the predicted probabilities of treatment
+for both treated and control based on this formula. The predicted
+probability densities for both treated and control should be
+indistinguishable if balance has been achieved. Note that the model
+defined by this formula is estimated separately for the matched and
+unmatched datasets.</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+A data frame which contains all of the variables in the
+formula.  If a data frame is not provided, the variables are obtained
+via lexical scoping.</td></tr>
+<tr valign="top"><td><code>match.out</code></td>
+<td>
+The output object from the <code><a href="Match.html">Match</a></code>
+function.  If this output is included, <code>balanceMV</code> will provide
+balance tests for both before and after matching. Otherwise
+balance tests will only be conducted for the raw data.</td></tr>
+<tr valign="top"><td><code>maxit</code></td>
+<td>
+The maximum number of iterations for the glm logistic
+procedure. </td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+A vector of observation weights. </td></tr>
+<tr valign="top"><td><code>nboots</code></td>
+<td>
+The number of bootstrap samples to be run.  If zero, no
+bootstraps are done.  Bootstrapping is highly recommended because
+the Kolmogorov-Smirnov test only provides correct coverage when
+bootstrapped due to the existence of nuisance parameters.  At least
+500 <code>nboots</code> (preferably 1000) are recommended for publication
+quality p-values.  Also see the <code>nmc</code> option.</td></tr>
+<tr valign="top"><td><code>nmc</code></td>
+<td>
+The number of Monte Carlo simulations to be conducted for
+each Kolmogorov-Smirnov test calculated.  Monte Carlo simulations
+are highly recommended because the usual Kolmogorov-Smirnov test is not
+consistent when the densities being compared contain point masses.  At least
+500 <code>nmc</code> (preferably 1000) are recommended for publication
+quality p-values. Also see the <code>nboots</code> option.</td></tr>
+<tr valign="top"><td><code>print.level</code></td>
+<td>
+The amount of printing to be done.  If zero, there is
+no printing.  If two, details are printing such as the number of the
+bootstrap sample currently being estimated.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Further arguments passed to <code><a href="../../stats/html/glm.control.html">glm.control</a></code>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The function can be used to determine if matching was successful in
+achieving balance.  Two multivariate tests are provided.  The
+Kolmogorov-Smirnov (KS) and Chi-Square null deviance tests.  The KS
+test is to be preferred over the Chi-Square test because the
+Chi-Square test is not testing the relevant hypothesis.  The null
+hypothesis for the KS test is of equal balance in the estimated
+probabilities between treated and control.  The null hypothesis for
+the Chi-Square test, however, is of all of the parameters being
+insignificant; a comparison of residual versus null deviance.  If the
+covariates being considered are discrete, this KS test is
+asymptotically nonparametric as long as the logit model does not produce zero
+parameter estimates.  The bootstrap-Monte Carlo version of the KS
+test is highly recommended because the usual KS test is not consistent
+when there are point masses in the distributions being compared, and
+the bootstrap is needed because parameters are being estimated in the
+logit model.
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>pval.kboot.unmatched</code></td>
+<td>
+The bootstrap p-value of the Kolmogorov-Smirnov test
+for the hypothesis that the probability densities for both the
+treated and control groups are the same (unmatched data).</td></tr>
+<tr valign="top"><td><code>pval.kboot.matched</code></td>
+<td>
+The bootstrap p-value of the Kolmogorov-Smirnov test
+for the hypothesis that the probability densities for both the
+treated and control groups are the same (matched data).</td></tr>
+<tr valign="top"><td><code>logit.unmatched</code></td>
+<td>
+Return object from glm estimating the model
+defined by the user in <code>formul</code> on the <EM>unmatched</EM> data.</td></tr>
+<tr valign="top"><td><code>logit.matched</code></td>
+<td>
+Return object from glm estimating the model
+defined by the user in <code>formul</code> on the <EM>matched</EM> data.</td></tr>
+<tr valign="top"><td><code>ks.unmatched</code></td>
+<td>
+Return object from <code><a href="../../stats/html/ks.test.html">ks.test</a></code> before matching.</td></tr>
+<tr valign="top"><td><code>ks.matched</code></td>
+<td>
+Return object from <code><a href="../../stats/html/ks.test.html">ks.test</a></code> after
+matching.</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+A list containing five variables: a treatment indicator
+for the unmatched (<code>Tr</code>) and the matched data
+(<code>Tr.matched</code>), weights for the matched data used for the glm
+models, <code>index.treated</code>, and <code>index.control</code>.  The two
+indexes are defined in <code><a href="Match.html">Match</a></code>.  The user should never
+need to examine this object.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Sekhon, Jasjeet S. 2007.  ``Multivariate and Propensity Score
+Matching Software with Automated Balance Optimization.''
+<EM>Journal of Statistical Software</EM>.
+<a href="http://sekhon.berkeley.edu/papers/MatchingJSS.pdf">http://sekhon.berkeley.edu/papers/MatchingJSS.pdf</a>
+</p>
+<p>
+Sekhon, Jasjeet S. 2006.  ``Alternative Balance Metrics for Bias
+Reduction in Matching Methods for Causal Inference.''  Working Paper.
+<a href="http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf">http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf</a>
+</p>
+<p>
+Diamond, Alexis and Jasjeet S. Sekhon. 2005. ``Genetic Matching for
+Estimating Causal Effects: A General Multivariate Matching Method for
+Achieving Balance in Observational Studies.''  Working Paper.
+<a href="http://sekhon.berkeley.edu/papers/GenMatch.pdf">http://sekhon.berkeley.edu/papers/GenMatch.pdf</a> 
+</p>
+<p>
+Abadie, Alberto.  2002.  ``Bootstrap Tests for Distributional Treatment
+Effects in Instrumental Variable Models.'' <EM>Journal of the
+American Statistical Association</EM>, 97:457 (March) 284-292.
+</p>
+<p>
+Hall, Peter. 1992. <EM>The Bootstrap and Edgeworth Expansion</EM>.  New
+York: Springer-Verlag.
+</p>
+<p>
+Wilcox, Rand R. 1997. <EM>Introduction to Robust Estimation</EM>.  San
+Diego, CA: Academic Press.
+</p>
+<p>
+William J. Conover (1971), <EM>Practical nonparametric statistics</EM>.
+New York: John Wiley &amp; Sons. Pages 295-301 (one-sample
+"Kolmogorov" test), 309-314 (two-sample "Smirnov" test).
+</p>
+<p>
+Shao, Jun and Dongsheng Tu. 1995. <EM>The Jackknife and Bootstrap</EM>.
+New York: Springer-Verlag.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+Also see <code><a href="summary.balanceMV.html">summary.balanceMV</a></code>,
+<code><a href="MatchBalance.html">MatchBalance</a></code>, <code><a href="balanceUV.html">balanceUV</a></code>, <code><a href="qqstats.html">qqstats</a></code>, 
+<code><a href="ks.boot.html">ks.boot</a></code>, <code><a href="Match.html">Match</a></code>, <code><a href="GenMatch.html">GenMatch</a></code>,
+<code><a href="GerberGreenImai.html">GerberGreenImai</a></code>, <code><a href="lalonde.html">lalonde</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(lalonde)
+
+#
+#direct matching on some variable
+#
+X  &lt;- cbind(lalonde$re74,lalonde$re75,lalonde$age,lalonde$hisp,lalonde$black)
+Y  &lt;- lalonde$re78
+Tr  &lt;- lalonde$treat
+
+rr  &lt;- Match(Y=Y,Tr=Tr,X=X,M=1)
+
+#multivariate test for balance
+# 'nboots' and 'nmc' are set to small values in the interest of speed.
+# Please increase to at least 500 each for publication quality p-values.  
+ks  &lt;- balanceMV(treat~ age + I(age^2) + educ + I(educ^2) + black +
+               hisp + married + nodegr + re74  + I(re74^2) + re75 + I(re75^2) +
+               u74 + u75, data=lalonde, match.out=rr, nboots=10, nmc=10)
+summary(ks)
+</pre>
+
+
+
+<hr><div align="center"><a href="http://sekhon.polisci.berkeley.edu/matching/">Return to Jasjeet
+Sekhon's Matching Software Page</a></div>
+
+</body></html>

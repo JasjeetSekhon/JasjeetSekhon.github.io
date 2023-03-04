@@ -1,0 +1,151 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+ 
+\usepackage{fullpage}
+\usepackage{boxedminipage}
+
+\usepackage{listings}
+
+\usepackage{minitoc}
+
+\usepackage{ifpdf}
+
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+\newcommand{\var}[0]{\text{var}}
+\newcommand{\cov}[0]{\text{cov}}
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\begin{document}
+\begin{itemize}
+  \item[1)]
+    Eggers and Hainmueller (2009) estimate the 
+    LATE of just barely winning/losing a contest on wealth at death. 
+    Their estimate compares the average wealth at death of
+    all winners of contests between 1950-1970
+    to the average wealth over all losers over that time.
+   
+   There were seven general elections over that time.  
+   Consider another estimator of the LATE that takes the average difference 
+   between the winners and the losers participating in a given general election, 
+   and takes the weighted average of these differences---weights are
+   $$
+     \frac{\#\text{near-winners and near-losers in that general election}}
+      {\text{total number of near-winners and near-losers across all elections}}.
+   $$
+   Each near-win/near-loss candidate is only included in this average once, according
+   to the contest in which that candidate is ultimately classified as near-win or near-loss.
+   
+   \begin{itemize}
+     \item[a)]  Write out mathematical expressions for both of these estimators.
+     \item[b)]
+       Show that, if the number of contests within each general election is the same, 
+       and the number of near winners is equal to the 
+       number of near losers in every general election, then
+       the two estimates are the same.
+     \item[c)]  Suppose the same assumptions as part b), 
+       except that the 1950 general election 
+       had twice as many contests as all other elections
+       and had twice as many near-winning candidates as near-losing candidates.       
+       In general, are the two estimators the same?  Or are they different?
+   \end{itemize}   
+\item[2)]
+   Suppose that 1,000,100 students take an exam.
+   Students can score an integer number of points between 0 and 10,000 
+   on the exam:
+   the set of possible test scores is $\{0, 1, \ldots, 9,999, 10,000\}$.
+   Miraculously, for each possible point value of the exam, 
+   exactly 100 students score that many points.    
+   Those students that score above a certain threshold on the exam
+   (usually around 5,000 points) receive 
+   a scholarship.
+   We are interested in estimating the LATE of receiving a scholarship
+   on future earnings, for those students that score 5,000 points.
+   
+   Let $Y_i(1)$ and $Y_i(0)$ denotes the future earnings of student $i$
+   when that student receives/does not receive the scholarship.        
+   Let $s_i$ denote the test score of student $i$.   
+   Let $c_i =1$ if student $i$ receives a scholarship
+   and $c_i = 0$ if that student does not receive a scholarship
+   Suppose that the distribution of $IQ$ for those students scoring 4,995 points 
+   is the same for students scoring 4,996 points, 4,997 points, 
+   $\ldots$, 5,004 points, 5,005 points.
+   We want to estimate:
+   $$
+     \text{LATE} = E(Y_i(1) - Y_i(0) | s_i = 5,000)
+   $$
+   \begin{itemize}
+     \item[a)] 
+       Suppose that all students that score above 5,000 points receive a scholarship, and
+       all students that score below 5,000 points do not receive a scholarship.
+       For students that score exactly 5,000 points, half will be randomly selected to receive
+       a scholarship, and half will not receive that scholarship.
+       Give an unbiased estimate of the LATE.
+       Does this estimate require smoothness of $E(Y_i(1))$ and $E(Y_i(0))$ 
+       at the $s_i = 5,000$ threshold?
+     \item[b)]
+       Suppose for parts b), c), and d) that all students scoring 5,000 points or above
+       receive a scholarship.
+       
+       Suppose that future earnings are determined by the following model:
+       $$
+         Y_i = \alpha + \beta_1 s_i + \beta_2c_i 
+                +\beta_3s_ic_i + \beta_4IQ_i + \epsilon_i
+       $$
+       where $\epsilon_i$ has expectation $0$ and variance $\sigma^2$.
+       Give an unbiased estimate of the LATE.
+       Under this model, are $E(Y_i(1))$ and $E(Y_i(0))$ smooth at the 
+       $s_i = 5,000$ threshold?
+       Are these assumptions stronger than those 
+       required for regression discontinuity?
+     \item[c)]
+       Suppose that, for scores between 4,995 and $5,000-\epsilon$ points, 
+       future earnings are determined by
+       $$
+         Y_i = 50,000 + 5,000(s_i - 5,000) + \epsilon_i
+       $$
+       and for scores between 5,000 and 5,005 points, future earnings are determined by
+       $$
+         Y_i = 80,000 - 6,000(s_i - 5,000) + \epsilon_i.
+       $$
+       Give an unbiased estimate of the LATE.
+       In what sense are these assumptions stronger or weaker than those in b)?
+       Are these assumptions stronger than those required for regression discontinuity?
+     \item[d)]
+       Suppose some students that would ordinarily receive low test scores cheat off of good students.
+       All students that cheat score 5,000 points or above, 
+       with some students scoring exactly 5,000 points.
+       Assume that, had the students not cheated, 
+       the assumptions for regression discontinuity analysis would hold. 
+       After the students cheat, do these assumptions still hold?
+       Why or why not?
+       What if all of the cheating students scored above 5,002 points?
+  \end{itemize}
+
+\item[3)]  When analyzing data from a regression discontinuity design, our desired estimand is the τRD = E[Y (1)− Y (0)|X = c]. Remeber that X is the “forcing variable” and “c” is the point at which units switch from control to treat- ment. If the discontinuity design is valid, we would like to simply estimate E[Y |T = 1, X = c]−E[Y |T = 0, X = c], but due to the absence of data immedately at the cutpoint, we are forced to extrapolate by using data in a window around c. The size of that window is determined by h, which is known as the “bandwidth”.
+Because choice of the bandwidth is somewhat arbitrary, Imbens (2009) recommends combining local linear regres- sion (discussed in section) with a “cross-validation” procedure for choosing h. The basic idea behind this approach is the following. Consider an observation i. To see how well a linear regression with a bandiwdth h fits the data, we run a regression with observation i left out and use the estimates to predict the value of Y at X = xi. To emulate the fact that RD estimates are based on regression estimates at the boundary, the regression is estimated using only observations with values of X on the left of Xi (Xi − h ≤ X < Xi) for observations on the left of the cutpoint (Xi < c). For observations on the right of the cutoff point (Xi ≥ c), the regression is estimated using only the observations with values of X on the right of Xi (Xi < X ≤ Xi + h).
+After repeating this procedure for each and every observation, we will have a collection of predicted values of Y that can be compared to the actual values of Y . The optimal bandwidth can be picked by choosing the value of h that minimizes the mean square of the difference between the predicted and actual value of Y .
+Formally, let Yˆ (Xi ) be the predicted value of Y obtained using the regressions described above. The cross valida-
+tion criterion is defined as
+
+ 
+\end{itemize}     
+
+
+
+\end{document}

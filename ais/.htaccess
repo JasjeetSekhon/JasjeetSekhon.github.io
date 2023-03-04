@@ -1,0 +1,22 @@
+AuthUserFile /home/httpd/html/ais/.htpasswd
+AuthGroupFile /dev/null
+AuthName "WHN Site Downloads"
+AuthType Basic
+
+<limit GET>
+require valid-user
+</limit>
+
+# If you are using an Apache server, you should add these
+# lines as well, to prevent users from downloading these
+# files:
+
+<files .htaccess>
+    Order allow,deny
+    Deny from all
+</files>
+
+<files .htpasswd>
+    Order allow,deny
+    Deny from all
+</files>

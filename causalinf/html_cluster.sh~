@@ -1,0 +1,18 @@
+#! /bin/bash
+
+# This program transfers the index.html file to Jas's server
+
+cd ~/Dropbox/causalinf
+# transfering the index.html to Jas's server
+scp ./index.html yotam@sekhon.berkeley.edu:~/causalinf/index.html
+
+# Transfering slides to Jas's server
+
+scp ~/Dropbox/causalinf.private/fa2015/slides/slides9_matching2/matching2.R yotam@sekhon.berkeley.edu:~/causalinf/fa2015/slides_section/McCrary.matching2.R
+
+scp ~/Dropbox/causalinf.private/fa2015/slides/slides9_matching2/slides_matching2.pdf yotam@sekhon.berkeley.edu:~/causalinf/fa2015/slides_section/slides_matching2.pdf
+
+exit 0
+
+
+

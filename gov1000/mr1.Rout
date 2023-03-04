@@ -1,0 +1,32 @@
+*****************************************
+
+Results from using the R regression command
+
+Call:
+lm(formula = approval ~ unrate + inflation)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-24.00492  -6.09909   0.04854   5.92588  30.88987 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  69.7785     1.6279  42.864  < 2e-16 ***
+unrate       -0.9258     0.2873  -3.222  0.00134 ** 
+inflation    -2.1394     0.1510 -14.168  < 2e-16 ***
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 9.872 on 567 degrees of freedom
+Multiple R-Squared: 0.3238,	Adjusted R-squared: 0.3214 
+F-statistic: 135.8 on 2 and 567 DF,  p-value: < 2.2e-16 
+
+
+*****************************************
+
+Results from doing it by hand
+intercept: 69.77847 
+unrate   : -0.9257907 
+inflation: -2.139350 
+
+*****************************************

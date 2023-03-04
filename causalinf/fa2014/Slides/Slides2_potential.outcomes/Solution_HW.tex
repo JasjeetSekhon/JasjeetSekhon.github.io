@@ -1,0 +1,298 @@
+% small.tex
+\documentclass{beamer}
+\usetheme{default}
+\usepackage{color}
+\usepackage[labelformat=empty]{caption}
+\usepackage{amsfonts, amsmath, amsthm, amssymb,epstopdf}
+
+%%% allows color text:
+\usepackage{xcolor}
+
+%%% Allows adding "links", i.e url
+\usepackage{hyperref}
+
+%\useoutertheme[subsection=false]{smoothbars}
+\usetheme{Warsaw}
+%\usecolortheme[rgb={0.2,0.3,0.7}]{structure}
+%\setbeamercovered{highly dynamic}
+
+\usepackage{amsmath,amssymb,latexsym}
+
+%%% New commands:
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+
+% adding slide numbers
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[round,sort,longnamesfirst]{natbib}
+
+%%% Details:
+\author{Yotam Shem-Tov}
+\title{STAT 239/ PS 236A}
+
+\begin{document}
+\setbeamertemplate{caption}{\insertcaption}
+
+
+\begin{frame}{}
+
+\centering
+
+\LARGE
+
+ $\bold{Solution}$ $\bold{to}$ $\bold{HW}$ $\bold{question}$ $\bold{\mathbb{V}(T)}$ 
+
+\vspace{0.4 in}
+
+\large
+\textit{Yotam Shem-Tov}
+
+\vspace{0.1 in}
+
+\textit{Fall 2014}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Slides: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{The difference in means}
+\begin{itemize}
+\item One of the most common test statistics is the difference in means,
+$$ T =\frac{\sum_{i=1}^N Z_i Y_i}{m} - \frac{\sum_{i=1}^N (1-Z_i) Y_i}{N-m}$$
+\item Denote the outcomes with treatment as $a_i$ and with control as $b_i$
+\item Consider the null hypothesis that the treatment has no effect, i.e $a_i=b_i$
+\item Under the null hypothesis what is the expectation of difference in means estimator,
+$$  \mathbb{E}\lbrace T \rbrace= \mathbb{E}\lbrace \bar{a} - \bar{b} \rbrace  = 
+\mathbb{E}\lbrace a_i \rbrace - \mathbb{E}\lbrace b_i \rbrace = 0$$
+\item What is the variance of the difference in means estimator? $\mathbb{V}(T)=?$ 
+\pause \textcolor{red}{Homework question - the answer is not as easy as it might seem}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The difference in means: variance calculation}
+\begin{itemize}
+\item In a finite sample $x_1,\dots,x_N$, the expectation is 
+$$\mathbb{E}(x_i) = \frac{1}{N} \sum_{i=1}^N x_i$$
+and the variance is,
+$$\mathbb{V}(x_i) = \frac{1}{N} \sum_{i=1}^N x_i^2 - \left( \frac{1}{N} \sum_{i=1}^N x_i \right)^2$$
+\item What is finite sample correction? \pause\\
+In order to adjust the variance for sampling from a finite population we need to adjust the variance by, $\frac{N-n}{N-1}$. Where $N$ is the population size and $n$ is the sample size
+\item When the population size is not infinite relative to the sample size, we need to use a finite sample correction  
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{The difference in means: variance calculation hints}
+\begin{itemize}
+
+\item What is $\mathbb{V}(\bar{a})=?$\\ \pause 
+\textcolor{blue}{$$\mathbb{V}(\bar{a}) = \frac{1}{m} \cdot \mathbb{V}(a_i)
+\left( \frac{N-m}{N-1} \right)$$
+$$ = \left( \frac{N-m}{N-1} \right) \frac{1}{m} \left( \frac{1}{N} \sum_{i=1}^N a_i^2 - \left( \frac{1}{N} \sum_{i=1}^N a_i \right)^2 \right)$$}
+
+\item What is $\mathbb{V}(\bar{b})=?$\\ \pause 
+\textcolor{blue}{$$\mathbb{V}(\bar{b}) = \frac{1}{N-m} \cdot \mathbb{V}(b_i)
+\left( \frac{N - (N-m)}{N-1} \right)$$
+$$ = \left( \frac{N - (N-m)}{N-1} \right) \frac{1}{N-m} \left( \frac{1}{N} \sum_{i=1}^N b_i^2 - \left( \frac{1}{N} \sum_{i=1}^N b_i \right)^2 \right)$$}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Solution to HW question \\ 
+The difference in means variance: Analytical Solution}
+$$\mathbb{V} \left( \bar{a} - \bar{b} \right)
+ = \mathbb{V} \left( \bar{a} \right) + \mathbb{V} \left( \bar{a} \right) 
+-2Cov(\bar{a},\bar{b})$$
+\pause
+Denote by $\sigma^2_a$ the variance in the treatment group, and by $\sigma^2_b$ the variance in the control group. Under the null, $\sigma^2_a = \sigma^2_b = \sigma^2$
+$$ \sigma^2 = 
+\frac{1}{N} \sum_{i=1}^N b_i^2 - \left( \frac{1}{N} \sum_{i=1}^N b_i \right)^2 = 
+\frac{1}{N} \sum_{i=1}^N a_i^2 - \left( \frac{1}{N} \sum_{i=1}^N a_i \right)^2$$
+Hence, \pause
+$$\mathbb{V} \left( \bar{a} \right) = \sigma^2 \frac{1}{m} \left( \frac{N - m}{N-1} \right)$$
+
+$$\mathbb{V} \left( \bar{b} \right) = \sigma^2 \frac{1}{N-m} \left( \frac{m}{N-1} \right)$$
+\end{frame}
+
+\begin{frame}{Solution to HW question \\ 
+The difference in means variance: Analytical Solution}
+$$Cov(\bar{a},\bar{b}) = Cov(\frac{1}{m} \sum_i a_i,\frac{1}{N-m} \sum_j b_j)$$
+$$= \frac{1}{m(N-m)} Cov(\sum_i a_i,\sum_j b_j) = 
+\frac{1}{m(N-m)} \sum_i \sum_{j\neq i} Cov( a_i, b_j)$$
+\pause
+$$ = \frac{1}{m(N-m)} m(N-m) Cov( a_i, b_j) = Cov( a_i, b_j)$$
+$$ Cov( a_i, b_j) = \mathbb{E}\lbrace a_i b_j \rbrace - 
+\mathbb{E}\lbrace b_j \rbrace \mathbb{E}\lbrace b_j \rbrace $$
+Note,\pause
+$$\mathbb{E}\lbrace b_j \rbrace = \frac{1}{N-m} \sum_{i=1}^N b_i = \frac{1}{N-m} \sum_{i=1}^N a_i, \;
+\mathbb{E}\lbrace a_i \rbrace = \frac{1}{m} \sum_{i=1}^N a_i = \frac{1}{m} \sum_{i=1}^N b_i$$
+\end{frame}
+
+\begin{frame}{Solution to HW question \\ 
+The difference in means variance: Analytical Solution}
+$$\mathbb{E}\lbrace a_i b_j \rbrace = 
+\frac{1}{N(N-1)} \sum_{i=1}^N \sum_{j\neq i} a_i b_j= 
+\frac{1}{N(N-1)} \left( \sum_{i=1}^N \sum_{j} a_i b_j  - 
+\sum_{i=1}^N a_i b_i\right)$$
+\pause
+Note,
+$$\frac{1}{N^2} \sum_{i=1}^N \sum_{j} a_i b_j = 
+\frac{1}{N^2} \sum_{i=1}^N  a_i \sum_{j} b_j = 
+\frac{1}{N} \sum_{i=1}^N  a_i \frac{1}{N} \sum_{j} b_j = 
+\mathbb{E}(a_i)\mathbb{E}(b_i)$$
+and, \pause
+$$ Cov(a_i,b_i) = \frac{1}{N} \sum_{i=1}^N a_i b_i - \mathbb{E}(a_i)\mathbb{E}(b_i)$$
+$$\Rightarrow \sum_{i=1}^N a_i b_i = N(Cov(a_i,b_i) +\mathbb{E}(a_i)\mathbb{E}(b_i))$$
+ 
+\end{frame}
+
+
+\begin{frame}{Solution to HW question \\ 
+The difference in means variance: Analytical Solution}
+Hence,
+$$\mathbb{E}\lbrace a_i b_j \rbrace = 
+\frac{1}{N(N-1)} \left[ N^2\mathbb{E}(a_i)\mathbb{E}(b_i)-  N(Cov(a_i,b_i) +\mathbb{E}(a_i)\mathbb{E}(b_i))\right]$$
+\pause
+$$= \frac{1}{N(N-1)} \left[ N(N-1)\mathbb{E}(a_i)\mathbb{E}(b_i)-  N Cov(a_i,b_i)\right]$$
+$$= \mathbb{E}(a_i)\mathbb{E}(b_i)-  \frac{1}{N-1} Cov(a_i,b_i)$$
+Therefore,
+$$ Cov(a_i,b_j) = - \frac{1}{N-1} Cov(a_i,b_i) = - \frac{\sigma^2}{N-1}$$
+\end{frame}
+
+\begin{frame}{Solution to HW question \\ 
+The difference in means variance: Analytical Solution}
+The variance of the difference in means estimator under the null is,
+$$\mathbb{V}(T) =  
+\mathbb{V} \left( \bar{a} \right) + \mathbb{V} \left( \bar{a} \right) 
+-2Cov(\bar{a},\bar{b})$$
+$$ = \sigma^2 \frac{1}{m} \left( \frac{N - m}{N-1} \right) +
+\sigma^2 \frac{1}{N-m} \left( \frac{m}{N-1} \right) 
+-2 \left( - \frac{\sigma^2}{N-1} \right) $$
+$$ = \sigma^2 \cdot  \frac{N^2}{(N-1)m(N-m)}  $$ 
+\end{frame}
+
+
+\begin{frame}[fragile]{Solution to HW question \\ 
+The difference in means variance: Simulation}
+\begin{itemize}
+\item When $N=12$ and $m=3$, and 
+\begin{verbatim}
+> set.seed(12345)
+> y = rnorm(N,mean=0,sd=1)
+> y
+ [1]  0.5855288  0.7094660 -0.1093033 -0.4534972  
+ 0.6058875 -1.8179560  0.6300986 -0.2761841 -0.2841597 -0.9193220 -0.1162478
+[12]  1.8173120
+\end{verbatim}
+\item What is the variance of the difference in means estimator?
+\item In order to answer the question we will approximate the variance using a Monte-Carlo simulation
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Solution to HW question \\ 
+The difference in means variance: Simulation}
+\begin{verbatim}
+m=3; N=12
+set.seed(12345)
+y = rnorm(N,mean=0,sd=1)
+R = 200000
+z = c(rep(1,m),rep(0,N-m))
+mean.diff<-mean.t <-mean.c <- rep(999,R)
+for (i in c(1:R)){
+  z0 = sample(z,N)
+  
+  mean.c[i] = mean(y[z0==0])
+  mean.t[i] = mean(y[z0==1])
+  mean.diff[i] = mean(y[z0==1]) - mean(y[z0==0])
+}
+cov(mean.c,mean.t)
+var(mean.diff)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Solution to HW question \\ 
+The difference in means variance: Simulation}
+\begin{itemize}
+\item The simulation estimation of $\mathbb{V}(\bar{a},\bar{b})$ is $0.3809463$, and the real variance is $0.3814015$
+\pause
+\item The $Cov(\bar{a},\bar{b}) = -0.07151277$, and accounts for $37.5\%$ of the variance of the difference in means
+\pause
+\item \textcolor{red}{\textbf{Conclusion: Monte Carlo simulations can help overcome difficult computational problems}}  
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Solution to HW question \\ 
+The difference in means variance: Asymptotic}
+What is the asymptotic variance of the difference in means estimator?  \pause
+A technical approach: 
+\textcolor{blue}{
+$$\mathbb{V}(T) = \sigma^2 \cdot  \frac{N^2}{(N-1)m(N-m)} \rightarrow  \frac{\sigma^2}{m}$$
+as $N \rightarrow \infty$ \\
+}
+\pause 
+A more intuitive approach: \\
+\textcolor{blue}{
+When $N\rightarrow \infty$, $Z_i$ and $Z_j$ are independent, and hence the variance is,
+$$\mathbb{V}(T) = \frac{\sigma^2}{N-m} + \frac{\sigma^2}{m} \rightarrow \frac{\sigma^2}{m}$$ 
+}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{frame}{Monte Carlo simulations}
+%\begin{itemize}
+%\item Consider the following estimator for the $ATE$ (the difference in means):
+%$$ \frac{1}{m} \sum_{i=1}^N Z_{i} Y_{i} - \frac{1}{N-m} \sum_{i=1}^N (1-Z_{i}) Y_{i}   $$
+%\item Is this estimator unbiased? \pause \textcolor{blue}{check at home}
+%\item What is the variance of the difference in means estimator?
+%\end{itemize}
+%\end{frame}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

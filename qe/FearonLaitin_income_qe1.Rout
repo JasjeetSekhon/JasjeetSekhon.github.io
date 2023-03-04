@@ -1,0 +1,109 @@
+
+R version 2.11.0 (2010-04-22)
+Copyright (C) 2010 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #
+> # Modifying the Fearon and Laitin Model 1 (Table 1) to estimate the effect on per capita income
+> #
+> 
+> 
+> dta <- read.table(file="http://sekhon.berkeley.edu/qe/FearonLaitin2003.asc", header=TRUE)
+> #dta <- read.table(file="FearonLaitin2003.asc", header=TRUE)
+> 
+> #if you prefer to use the stata data set.
+> #library(foreign)
+> #dta <- read.dta(file="FearonLaitin2003.dta")
+> 
+> # a few variables which may be of interest:
+> # "ccode" a country code (numeric)
+> # "country" country name, long form
+> # "cname"  country name, short form
+> # "cmark" an indicator variable for when a new country starts (1 for the first observation for a new country)
+> # "year" the observation year
+> 
+> #recode all values for the dependant variables for logistic regressions, so that obs that are > 1 are set equal to 1
+> indx  <- dta$onset > 1 
+> dta$onset[indx]  <- 1
+> 
+> indx  <- dta$ethonset > 1 
+> dta$ethonset[indx]  <- 1
+> 
+> indx  <- dta$emponset > 1 
+> dta$emponset[indx]  <- 1
+> 
+> indx  <- dta$cowonset > 1 
+> dta$cowonset[indx]  <- 1
+> 
+> 
+> #a model for per capital income based on model 1 in table 1 of Fearon
+> #and Laitin 2003, except that we are changing what the dependent
+> #variable is.  For replication of Table 1 see the 'FearonLaitin_replication1.R' file.
+> 
+> #note that in the Fearon and Laitin dataset income per capial at time
+> #t-1 has more significant digits then at t, to make the number of
+> #significanticant digits equation we do the following:
+> dta$gdpenl <-  round(dta$gdpenl, 3)
+> 
+> # to see that gdpenl is the log of gdpen
+> #cbind(dta$ccode, dta$year, dta$gdpen, dta$gdpenl)
+> 
+> #Per capital income model
+> lm1  <- glm(gdpen ~ warl + gdpenl +lpopl1 +lmtnest +ncontig +Oil +nwstate +instab +polity2l +ethfrac +relfrac
++ , 
++              data=dta) 
+> summary(lm1)
+
+Call:
+glm(formula = gdpen ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + 
+    Oil + nwstate + instab + polity2l + ethfrac + relfrac, data = dta)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-6.34236  -0.09148  -0.01039   0.08714   4.49525  
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.004598   0.029433  -0.156  0.87587    
+warl        -0.088680   0.013050  -6.795 1.18e-11 ***
+gdpenl       0.984774   0.001145 860.020  < 2e-16 ***
+lpopl1       0.019522   0.003221   6.061 1.43e-09 ***
+lmtnest     -0.002128   0.003107  -0.685  0.49349    
+ncontig      0.056329   0.012389   4.547 5.55e-06 ***
+Oil         -0.022217   0.013192  -1.684  0.09221 .  
+nwstate     -0.159660   0.026294  -6.072 1.34e-09 ***
+instab      -0.042984   0.011991  -3.585  0.00034 ***
+polity2l     0.008160   0.000633  12.892  < 2e-16 ***
+ethfrac     -0.084126   0.016376  -5.137 2.88e-07 ***
+relfrac     -0.005255   0.020625  -0.255  0.79890    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for gaussian family taken to be 0.1064895)
+
+    Null deviance: 118819.70  on 6302  degrees of freedom
+Residual deviance:    669.93  on 6291  degrees of freedom
+  (307 observations deleted due to missingness)
+AIC: 3784.2
+
+Number of Fisher Scoring iterations: 2
+
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  1.167   0.140   7.714 

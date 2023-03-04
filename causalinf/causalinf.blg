@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2010/Fink)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: causalinf.aux
+The style file: info.bst
+Database file #1: causalinf.bib
+Warning--empty institution in deaton2009
+Warning--empty institution in imbens2009
+Warning--empty pages in przeworski:science
+You've used 84 entries,
+            2804 wiz_defined-function locations,
+            1202 strings with 19087 characters,
+and the built_in function-call counts, 39400 in all, are:
+= -- 3850
+> -- 1527
+< -- 79
++ -- 547
+- -- 424
+* -- 3254
+:= -- 7047
+add.period$ -- 343
+call.type$ -- 84
+change.case$ -- 490
+chr.to.int$ -- 75
+cite$ -- 87
+duplicate$ -- 1768
+empty$ -- 3033
+format.name$ -- 651
+if$ -- 7802
+int.to.chr$ -- 10
+int.to.str$ -- 1
+missing$ -- 82
+newline$ -- 433
+num.names$ -- 344
+pop$ -- 518
+preamble$ -- 1
+purify$ -- 473
+quote$ -- 0
+skip$ -- 1270
+stack$ -- 0
+substring$ -- 2664
+swap$ -- 307
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 741
+warning$ -- 3
+while$ -- 389
+width$ -- 0
+write$ -- 1098
+(There were 3 warnings)

@@ -1,0 +1,4 @@
+\frametitle{Measurment error in the dependent variable}
+\textit{When there is multiplicative noise the bias of $\hat{\beta}$ is influenced by $\mathbb{E}(noise)$, not from $\mathbb{V}(noise)$}
+
+% Need to add the numbers from the simulation and a plot

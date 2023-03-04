@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Random Number Generator for the Multinomial Distribution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for rmultinomial {multinomRob}"><tr><td>rmultinomial {multinomRob}</td><td align="right">R Documentation</td></tr></table>
+<h2>Random Number Generator for the Multinomial Distribution</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generates a random count vector for one observation of a multinomial
+distribution for <code>n</code> trials with probability vector <code>pr</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rmultinomial(n = 5, pr = c(0.5, 0.5), long = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>n</code></td>
+<td>
+Number of trials.</td></tr>
+<tr valign="top"><td><code>pr</code></td>
+<td>
+Probability vector.</td></tr>
+<tr valign="top"><td><code>long</code></td>
+<td>
+<code>TRUE</code> to choose one generator, <code>FALSE</code> to choose another one.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Generates a random count vector for one observation of a multinomial
+distribution for <code>n</code> trials with probability vector <code>pr</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+Vector of counts.</td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+This function is only used in the examples and not in the
+<code>multinomRob</code> code.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Walter R. Mebane, Jr., Cornell University,
+<a href="mailto:wrm1@cornell.edu">wrm1@cornell.edu</a>, <a href="http://macht.arts.cornell.edu/wrm1/">http://macht.arts.cornell.edu/wrm1/</a> <br>
+</p>
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ rmultinomial(10, c(.3, .3, .4));
+</pre>
+
+
+
+<hr><div align="center">[Package <em>multinomRob</em> version 1.8-2 <a href="00Index.html">Index]</a></div>
+
+</body></html>

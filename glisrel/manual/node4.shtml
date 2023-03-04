@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>General Setup</TITLE>
+<META NAME="description" CONTENT="General Setup">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node5.shtml">
+<LINK REL="previous" HREF="node3.shtml">
+<LINK REL="up" HREF="manual.shtml">
+<LINK REL="next" HREF="node5.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html73"
+ HREF="node5.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html71"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html65"
+ HREF="node3.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html74"
+ HREF="node5.shtml">Linear Structure Model Definition</A>
+<B> Up:</B> <A NAME="tex2html72"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html66"
+ HREF="node3.shtml">Program Syntax</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">&#160;</A>
+<A NAME="general:top">&#160;</A>
+<BR>
+General Setup
+</H1>
+The <B>general setup</B> section of the model specification (modelspec) file
+started at the very beginning of the file.  The format of the section is
+<TT>keyword</TT> for the desired option followed by a space and then any
+arguments (numbers or filenames) needed for the option.
+
+<P>
+The following option keywords may be included in this section.  Most of the
+options are set to a default value if no definition is given in the modelspec
+file.  Most of the keywords may appear in any order, but they must be
+separated by either spaces or line breaks and they must appear in the General
+Setup section.  The General Setup section ends with the keyword
+<TT>model</TT>--see the <A HREF="node9.shtml#example:top">example model specification files</A>.
+
+<P>
+The keywords <TT>dataset</TT>, <TT>observedvars</TT> and <TT>latentvars</TT>
+must be included with specified values because they don't have a default value
+and are required.  The <TT>ngroups</TT> option must be specified if multigroup
+processing is to occur; in this case <TT>ngroups</TT> must be specified first,
+before the other three options.
+
+<P>
+<UL><A NAME="general:ngroups">&#160;</A><LI><TT>ngroups</TT> <BR>
+Usage: <TT>ngroups</TT> <I>integer</I> <BR>
+Default: 1 <BR>
+This keyword <I>must</I> be specified if data from multiple groups are
+  to be processed in parallel.  The integer argument specifies the number
+  of groups.  This number must equal the number of files named in the
+  <TT>datafile</TT> option and the number of variable numbers listed in the
+  <TT>observedvars</TT> option.  If there is only one group, then this
+  option may be omitted and the default value of 1 will be used.
+
+<P>
+<A NAME="general:datafile">&#160;</A><LI><TT>datafile</TT> <BR>
+Usage: <TT>datafile</TT> <I>path-to-file</I> [<I>path-to-file</I> ...] <BR>
+Default: none <BR>
+This keyword precedes the path to where the dataset of raw observations is
+  located.  There can be a maximum of 4096 characters in any path name used in
+  GENBLIS.  This is a longer path than many operating systems allow.  The data
+  are read from the dataset by observation, using the variable number
+  <I>integer</I> specified in the <TT>observedvars</TT> option: the first
+  <I>integer</I> values in the dataset become the values of the observed
+  variables for the first observation, the next <I>integer</I> values in the
+  dataset become the values of the observed variables for the next
+  observation, etc.  Each value is translated from ascii (character)
+  representation to a double precision floating point number (C type double;
+  the C-language format used to scan [fscanf] the ascii representations is
+  %lf).  Numbers in the raw data files must be delimited by whitespace.
+  GENBLIS sets the number of observations equal to the number of observations
+  read in this manner from the dataset.  If multigroup processing is desired,
+  the data for each group must be placed in a separate file, each of which is
+  named in succession after the <TT>datafile</TT> keyword.  The number of
+  filenames must equal the value of the argument to the <TT>ngroups</TT>
+  option.  Each dataset is processed in parallel, in the fashion described for
+  a single dataset.
+<LI><TT>observedvars</TT> <BR>
+Usage: <TT>observedvars</TT> <I>integer</I> [<I>integer</I> ...] <BR>
+Default: none <BR>
+This variable must be set to the number of observed variables in the
+  data.  The number is equal to the number of variables which are read in from
+  the data file.  This specifies the number of rows in the model matrix
+  named 
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">
+(see <A HREF="node5.shtml#eq:sigma">the model equation</A>).  If multigroup processing is desired, the number of
+  observed variables for each group must be listed.  The order of the numbers
+  must match the order of the raw datasets named in the <TT>datafile</TT>
+  option.  A number must be specified for each file, even if all the numbers
+  are equal.  In the GENBLIS <TT>model</TT> section, the observed variables
+  are referred to by number in order across all groups.  For instance, if
+  there are six variables in each of two groups, the <TT>observedvars</TT>
+  option would read ``<TT>observedvars</TT>&nbsp;6&nbsp;6'' and in the <TT>model</TT>
+  section the observed variables in the first group would have numbers 1-6
+  while the observed variables in the second group would have numbers 7-12.
+  The 
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">
+matrix has 12 rows in this case.
+
+<P>
+<LI><TT>latentvars</TT> <BR>
+Usage: <TT>latentvars</TT> <I>integer</I> <BR>
+Default: none <BR>
+The variable sets the number of latent variable present in the model to be
+  estimated.  This specifies the number of rows and columns in the model
+  matrices named <I>B</I> and <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">,
+and the number of columns in the matrix named
+  
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">
+(see <A HREF="node5.shtml#eq:sigma">the model equation</A>).
+  In a multigroup model, this number must count all the latent variables in
+  all the groups.  For example, in a model with two groups and a one-factor
+  model in each group, there are two latent variables.
+</UL>
+
+<P>
+The remaining variables need not be set by the user. 
+
+<P>
+<UL>
+<LI><TT>bootseed</TT> <BR>
+Usage: <TT>bootseed</TT> <I>integer</I> <BR>
+Default: 707070 <BR>
+There are two random number generators used by GENBLIS and hence two random
+  number seeds: <TT>genoudseed</TT> and <TT>bootseed</TT>.  This option sets
+  the random number seed for generating the bootstrap resamples.  This number
+  must be an integer.  For each seed, a unique series of random numbers is
+  generated.  This option allows one to replicate results.  If both
+  <TT>bootseed</TT> and <TT>genoudseed</TT> are not changed, each and every
+  execution of GENBLIS with the same data and model will produce
+  <I>exactly</I> the same results.  GENBLIS will generate and then use
+  exactly the same random numbers.
+
+<P>
+<LI><TT>bootstraps</TT> <BR>
+Usage: <TT>bootstraps</TT> <I>integer</I> <BR>
+Default: 1000 <BR>
+This variable sets the number of bootstrap resamples which are used to
+  calculate the bootstrap confidence intervals for the parameters and to
+  estimate the bootstrap confidence interval for the goodness-of-fit test.
+
+<P>
+<LI><TT>bootstrapdetails</TT> <BR>
+Usage: <TT>bootstrapdetails</TT> <BR>
+Default: The details of the BC<SUB><I>a</I></SUB> bootstrap are not presented.  <BR>
+By default GENBLIS prints the BC<SUB><I>a</I></SUB> confidence intervals.  If this
+  option is selected, along with the BC<SUB><I>a</I></SUB> bootstrap confidence
+  intervals, GENBLIS will print the values of the bias (
+<!-- MATH: $\hat{z}_{0}$ -->
+<IMG
+ WIDTH="20" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif"
+ ALT="$\hat{z}_{0}$">)
+and
+  acceleration adjustments (
+<!-- MATH: $\hat{\alpha}$ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\hat{\alpha}$">)
+for the BC<SUB><I>a</I></SUB> bootstrap.
+  For details please see Efron and Tibshirani, <I>An Introduction to
+    the Bootstrap</I>, (New York: Chapman &amp; Hall), pp.325ff.
+
+<P>
+<LI><TT>covmatrix</TT> <BR>
+Usage: <TT>covmatrix</TT> <BR>
+Default: The asymptotic covariance matrix is not printed. <BR>
+If this option is listed, the estimated asymptotic covariance matrix of
+  the parameter estimates is printed.
+
+<P>
+<LI><TT>genconverge</TT> <BR>
+Usage: <TT>genconverge</TT> <I>integer</I> <BR>
+Default value: 5.  <BR>
+This option sets the number of generations <I>after</I> GENBLIS thinks
+  it has converged it ought to keep going.  This number must be an integer.
+  GENBLIS thinks it has converged if the gradients at the best solution
+  found so far are below a criterion defined below.  It is often good to
+  keep GENBLIS working after this point because the evolutionary program
+  (EP) portion of GENBLIS continues to provide useful non-local information.
+  Obviously, the higher this number is, the greater security one has that a
+  global optimum has been found.
+
+<P>
+<LI><TT>genmax</TT> <BR>
+Usage: <TT>genmax</TT> <I>integer</I> <BR>
+Default: 100 <BR>
+This variable sets the maximum number of generations.  Recall that theory
+  suggests that the size of the population of genetic operators is of greater
+  practical importance than the number of generations.  The asymptotics are
+  primarily in operator population size:  it will not work to run a very large
+  number of generations if the operator population is too small.  But
+  optimization will also fail if the generation limit is set too small.  Use
+  the <A HREF="node8.shtml#controls:top"><B>genetic operator controls</B></A> to change the population of
+  operators.
+
+<P>
+<LI><TT>genoudseed</TT> <BR>
+Usage: <TT>genoudseed</TT> <I>integer</I> <BR>
+Default value: 0 <BR>
+There are two random number generators used by GENBLIS and hence two random
+  number seeds: <TT>genoudseed</TT> and <TT>bootseed</TT>.  This options sets
+  the random number seed for GENOUD which is the evolutionary program heart of
+  GENBLIS.  This number must be an integer.  For each seed, a unique series of
+  random numbers is generated.  This option allows one to replicate results.
+  If both <TT>bootseed</TT> and <TT>genoudseed</TT> are not changed, each and
+  every execution of GENBLIS with the same data and model will produce
+  <I>exactly</I> the same results.  GENBLIS will generate and then use
+  exactly the same random numbers.
+<LI><TT>listfile</TT> <BR>
+Usage: <TT>listfile</TT> <I>path-to-file</I> <BR>
+Default: the name of the model specification file plus the <TT>.lst</TT>
+  extension. <BR>
+In addition to the output which GENBLIS by default sends to standard out,
+  GENBLIS creates a list file which contains a summary of the results.  The
+  list file provides a description of the estimated model, the options
+  chosen, and the results requested.  The list file does not provide the
+  details of program execution.  By default GENBLIS sends this list output
+  to a file it creates with the same name as the model specification file
+  plus the extension <TT>.lst</TT>.  For example, if the specified model
+  specification file is entitled <TT>1run</TT> the default list file will
+  be <TT>1run.lst</TT> and it will be created in the directory from which
+  GENBLIS is executed.  The name for the list file can be chosen using the
+  <TT>listfile</TT> option--please see the General Setup section.
+
+<P>
+<LI><TT>noboots</TT> <BR>
+Usage: list <TT>noboots</TT> in the modelspec file to turn
+  <B>off</B> the bootstrap routine.
+  Default: the bootstrap routine is turned <B>on</B>. <BR>
+By default GENBLIS provides bootstrap confidence intervals for the linear
+  structure model parameter estimates and provides a bootstrap goodness-of-fit
+  test.
+<LI><TT>nobig</TT> <BR>
+Usage: list <TT>nobig</TT> in the modelspec file to turn <B>off</B>
+  using <TT>control.big</TT>. <BR>
+Default: control.big is used. <BR>
+GENBLIS has four different control setups: <TT>control</TT> (used for the
+  original sample), <TT>control.big</TT> (used in the original sample and when
+  there is a convergence failure in either the jackknives or the bootstraps),
+  <TT>control.jack</TT> (used for the jackknives), and <TT>control.boot</TT>
+  (used for the bootstraps).  When the <TT>nobig</TT> option is used GENBLIS
+  estimates only the original sample using the control file and then stops.
+  Neither jackknives nor bootstraps are done.
+<LI><TT>nojacks</TT> <BR>
+Usage: list <TT>nojacks</TT> in the modelspec file to turn <B>off</B>
+  the jackknife routine. <BR>
+Default: the jackknife is turned <B>on</B>.  <BR>
+By default jackknives are done by GENBLIS because they are required in order
+  to estimate the bootstrap confidence intervals produced by GENBLIS.  The
+  jackknives are usually done after the linear structure model is estimated in
+  the original sample (i.e., in the the observed dataset) and before the model
+  is estimated in bootstrap resamples.  If one wants neither jackknives nor
+  any bootstrap resamples, then one must set <TT>nojacks</TT> and set
+  <TT>bootstraps</TT> to 0.  These two options are usually used together
+  except for diagnostic purposes.  The bootstraps will not provide useful
+  information without the jackknives.
+
+<P>
+<LI><TT>readrecordfile</TT> <BR>
+Usage: <TT>readrecordfile</TT> <I>path-to-file</I> <BR>
+Default: none <BR>
+This keyword precedes the path to a GENBLIS record file which will be
+  read by GENBLIS.  See the <TT>recordfile</TT> option for a full
+  discussion.  
+
+<P>
+<LI><TT>recordfile</TT> <BR>
+Usage: <TT>recordfile</TT> <I>path-to-file</I> <BR>
+Default: none <BR>
+This keyword precedes the path to the file GENBLIS will write its record
+  file. The record file is an ASCII file which records all of GENBLIS's
+  results--i.e., in the original sample and in jackknife and bootstrap
+  resamples. This file is not needed to run GENBLIS. But it is useful if
+  one stops GENBLIS in the middle, and then wants to start it again. The
+  <TT>readrecordfile</TT> option allows GENBLIS to finish a run started by
+  another execution. These options are especially useful when in one or
+  more bootstrap resamples convergence is difficult to obtain. One can
+  obtain convergence in the relatively easy cases and then restart GENBLIS
+  with a large genetic population--see the Genetic Operator Controls
+  section.
+
+<P>
+<LI><TT>onboundary</TT> <BR>
+Usage: <TT>onboundary</TT> <I>floating-point number</I> <BR>
+Default value: 0.000001 <BR>
+An estimated variance must be above this number or GENBLIS considers that
+  variance to be on the boundary--i.e., 0.  This is known as a ``Heywood
+  case.''  When a variance is on the boundary, the remaining parameters,
+  including the non-zero variances, are estimated as usual, albeit with the
+  on-boundary parameter treated as if it were fixed equal to the boundary
+  value.  In many cases the results from this approach will not be meaningful,
+  so if an on-boundary situation occurs it is extremely important to recheck
+  the data and model specification.  Rechecking is especially called for if
+  the on-boundary situation occurs in the original sample of data.  If a
+  variance goes below the <TT>onboundary</TT> threshold, GENBLIS prints
+  ``boundary-hit threshold'' and goes on to estimate the remaining parameters.
+
+<P>
+<LI><TT>usecorr</TT> <BR>
+Usage: <TT>usecorr</TT> <BR>
+Default: analyze the sample correlation matrix <BR>
+Specify this keyword to analyze the sample product-moment correlation
+  matrix.  If none of the keywords <TT>usecov</TT>, <TT>usecorr</TT> or
+  <TT>usecrossp</TT> are specified, GENBLIS will analyze the covariance
+  matrix.  If more than one of the three keywords is specified, the one
+  occurring last in the General Setup section will take effect.
+
+<P>
+<LI><TT>usecov</TT> <BR>
+Usage: <TT>usecov</TT> <BR>
+Default: analyze the sample covariance matrix <BR>
+Specify this keyword to analyze the sample covariance matrix.  If none of
+  the keywords <TT>usecov</TT>, <TT>usecorr</TT> or <TT>usecrossp</TT> are
+  specified, GENBLIS will analyze the covariance matrix.  If more than one of
+  the three keywords is specified, the one occurring last in the General Setup
+  section will take effect.
+
+<P>
+<LI><TT>usecrossp</TT> <BR>
+Usage: <TT>usecrossp</TT> <BR>
+Default: analyze the mean sample crossproduct matrix <BR>
+Specify this keyword to analyze the sample crossproduct matrix (the simple
+  crossproduct matrix is divided by the number of observations, or by the sum
+  of the weight values specified by the <TT>weights</TT> option).  If none of
+  the keywords <TT>usecov</TT>, <TT>usecorr</TT> or <TT>usecrossp</TT> are
+  specified, GENBLIS will analyze the covariance matrix.  If more than one of
+  the three keywords is specified, the one occurring last in the General Setup
+  section will take effect.  
+
+<P>
+<LI><TT>use_out_of_bounds</TT>
+<BR>
+Usage: list <TT>use_out_of_bounds</TT> in the modelspec file to turn this
+  option <B>on</B>. <BR>
+Default: option is <B>off</B>.
+<BR>
+This option tells GENBLIS if it should use parameter values which are
+  out of the bounds set in the modelspec file (the setting of bounds is
+  discussed later).  When this option is on, GENBLIS uses the bounds
+  information provided to focus its search.  However, GENBLIS will allow
+  searching outside of the bounds.  If this occurs, a message will be
+  printed in standard output informing the user that GENBLIS is using
+  values outside of the bounds.  If this option is off, as is the default,
+  GENBLIS will constrain optimization within the bounds but will print a
+  message that it wishes to go outside of the bounds.  It is sometimes wise,
+  however, to ignore GENBLIS if one wishes to extensively search one region
+  of the parameter space.
+
+<P>
+<LI><TT>weights</TT> <BR>
+Usage: <TT>weights</TT> <I>path-to-file</I> [<I>path-to-file</I> ...] <BR>
+Default: none <BR>
+This keyword precedes the path to where a dataset of numbers to use as
+  observation weights is located.  If this option is specified, each
+  observation is multiplied by the corresponding weight value whenever there
+  is summing over the data to compute sample means, covariances or other
+  sample moments.  The resulting sum is divided by the sum of the weights,
+  rather than by the unweighted number of observations.  The weights are used
+  for sample moments computed in each bootstrap resample; each weight always
+  remains correctly associated with the original sample observation data
+  vector.  If multigroup processing is being used, the weighting data for each
+  group must be placed in a separate file, each of which is named in
+  succession after the <TT>weights</TT> keyword.  The number of filenames must
+  equal the value of the argument to the <TT>ngroups</TT> option.  The number
+  of weight values in each file must equal the number of observations in the
+  dataset named in the corresponding position in the <TT>datafile</TT> option.
+  GENBLIS may not complain if the numbers do not match, but in general the
+  results in case of a mismatch will be garbage.  When weights are used the
+  sample covariance matrix is computed with denominator equal to the sum of
+  the weights.  When weights are not used the denominator is <I>n</I>-1, where <I>n</I>
+  is the number of observations (or, with multigroup processing, the number of
+  observations in the relevant group).
+
+<P>
+</UL>
+
+<P>
+Although the <TT>genadd</TT> and <TT>cases</TT> variables are no longer
+used by GENBLIS, including them in the model specification file will not
+cause an error.  These variables are simply ignored.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html73"
+ HREF="node5.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html71"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html65"
+ HREF="node3.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html74"
+ HREF="node5.shtml">Linear Structure Model Definition</A>
+<B> Up:</B> <A NAME="tex2html72"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html66"
+ HREF="node3.shtml">Program Syntax</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

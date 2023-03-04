@@ -1,0 +1,549 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb} 
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+
+
+
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\title{PS C236A / Stat C239A \\  Practice Midterm \\ }%\\ Due: Nov. 12, 2012}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-4em}
+\section*{Instructions}
+
+
+
+
+This is an ungraded practice exam.  The following instructions outline
+the expectations for the upcoming midterm. \vspace{1em}
+
+\noindent The questions below will be graded as follows: True/False (I) 10\%,
+analytical section (II, III, IV) 40\%, and the empirical section (V)
+50\%.  You may submit the analytical portion of the midterm either
+electronically or in paper form.  Electronic versions must be sent as
+a .pdf to $<$\texttt{jahenderson[at]berkeley.edu}$>$. Paper copies
+should be placed in my mailbox in 210 Barrows.  For the computing
+portion, you \underline{\bf must}  submit a fully executable version of all
+.R code, along with any data used in the code 
+%(excepting that provided through the course webpage) 
+to the email above.  If you do not send an electronic version of your
+.R code, that portion of the midterm \underline{\bf will not} be graded.  All files
+sent electronically should be included
+in one omnibus email, with the subject line containing the course number and your last name (e.g., PS239A/STAT236A: Midterm - Norquist).\\
+
+
+\noindent Note: This exam is open book.  However, during the exam,
+you are not allowed to communicate or cooperate with anyone in
+any way about the exam. Any questions should be asked directly to the
+Professor or the GSI. To repeat: you may not use study groups, online
+help forms, the writing center, or any other form of external help.
+If in doubt, ask.
+
+
+
+
+
+
+
+\paragraph{\Large I. True or False}
+Answer {\em True} or {\em False}.  Explain your answer in a sentence or two.
+\begin{itemize}
+\item[1.]  A treatment was randomly assigned to a population. A
+  researcher is investigating the impact of this treatment on an
+  outcome $Y$, and she proceeds to estimate the average treatment
+  effect (ATE) by: 
+$$\widehat{ATE} = \frac{1}{N_1}\sum_{i=1}^{N_1}Y_{i1} -
+  \frac{1}{N_0}\sum_{i=1}^{N_0}Y_{i0}$$ Here, $Y_{i0}$ is the observed
+  outcome for unit $i$ in the control group, $Y_{i1}$ is the observed
+  outcome for unit $i$ in the treatment group, $N_0$ is the number of
+  units in the control group and $N_1$ is the number of units in the
+  treatment group. Even though she knows that $\widehat{ATE}$ is a
+  consistent estimator of the ATE, she decides to verify this by
+  running OLS regression.  She estimates the model $Y = \alpha + \beta
+  T + \epsilon$, (where $T$ is the treatment dummy) and she finds $\hat{\beta} =
+\widehat{ATE}$. This is evidence that the randomization worked well, since OLS
+  recovered the experimental benchmark.
+\item[2.]  A researcher is analyzing the effect of a treatment in a
+  randomized experiment and uses a two-sample $t$-test (with unequal
+  variances) to reject the null hypothesis of a 0 average treatment
+  effect. The researcher could have tested the same null hypothesis
+  with a randomization (permutation) test and his inference would not
+  depend on any large sample approximations.
+
+\item[3.] A group of researchers begin a drug trial to study the
+  effectiveness of a particular psychostimulant in treating Attention
+  Deficit Hyperactivity Disorder (ADHD).  At time $t$, people in the
+  study are randomly assigned either to treatment and receive the
+  drug, or to control and receive a sugar pill placebo. Since
+  compliance is a common problem in drug trials, the researchers
+  included an additional intervention at $t+1$ aimed to increase
+  compliance rates.  In this second part, half the subjects were
+  randomly assigned to an `encouragement' condition, where they were
+  counseled on the importance of taking their assigned pill dosage --
+  the other half of the subjects received no such encouragement.
+  Since both the drug and encouragement interventions are randomly
+  assigned, it is generally valid (without additional assumptions) to
+  estimate the Intention-to-Treat (ITT) effect of the drug on changes
+  in behavior at $t+2$, by pooling all people in the drug arm to
+  measure the average outcome for the treated, and pooling people in
+  the placebo to measure the average outcome for the controls, with
+  the estimate of the ITT being the difference between these two
+  averages.
+
+\end{itemize}
+
+
+\paragraph{\Large II. Sample Selection \\ \\}
+\vspace{1em}
+
+\noindent A political scientist wants to estimate the personal incumbency
+advantage. Let $Y_i(1)$ be the vote share in the next election of
+candidate $i$ if he or she wins in the present election, and $Y_i(0)$
+is the vote share of candidate $i$ in the next election if he or she
+loses in the present election.  Define incumbency advantage as:
+$$E[\delta] = E[Y_i(1) - Y_i(0)]$$
+
+Let $D_i$ be an indicator (treatment) variable for whether or not
+candidate $i$ wins election. If all candidates re-run in the subsequent
+election, then the political scientist would observe $Y_i(1)|D_i = 1$ and
+$Y_i(0)|D_i = 0$.
+
+Unfortunately, not all candidates re-run in subsequent elections. Let
+$R_i$ be an indicator variable for whether or not candidate $i$ runs for
+office in the subsequent election. Thus, the political scientist can
+observe $Y_i(1)|(D_i = 1, R_i = 1)$ and $Y_i(0)|(D_i = 0, R_i = 1)$, but not
+$Y_i(1)|(D_i = 1, R_i = 0)$ and $Y_i(0)|(D_i = 0, R_i = 0)$.
+
+Denote the proportion of treated units in the population as $\pi$ and the
+proportion of candidates running for office in the next election as
+$\lambda$. Assume a very large sample so that sampling error is negligible.
+
+\begin{itemize}
+\item[a.]  The political scientist naively estimates the incumbency
+  advantage using the following estimator: 
+$$\hat{\delta}_{naive} = E[Y_i|(D_i = 1, R_i
+= 1)] - E[Y_i|(D_i = 0, R_i = 1)]$$
+
+This is simply the average difference in vote shares between the
+winners and losers {\em who run again} in the following
+election. Without making any assumptions, if the estimand is the
+average treatment effect ($E[\delta]$) what is the bias in this
+estimator? Be sure to account for the bias resulting from
+``fundamental missingness'' (unobservability of the counterfactual
+conditions) as well as the bias resulting from candidates not always
+rerunning.
+
+
+\noindent {\em Hint}: Decompose $E[Y_i(1)]$ as the weighted average of
+four causal types, based on their potential outcomes under treatment
+and control and whether or not they re-run. Do the same for
+$E[Y_i(0)]$.
+
+\item[b.] Assume $(Y_i(1),Y_i(0)) \perp D_i$. With this assumption,
+  what is the bias in the naive estimator? Under what conditions would
+  the bias be 0?
+
+\item[c.]  Assume that incumbency advantage is bigger among candidates
+  who re-run than those who do not re-run. Under this assumption, as
+  well as the independence assumption made in part (b), what is the
+  largest possible value of $E[\delta]$? What is the smallest?
+\end{itemize}
+
+\paragraph{\Large III. Regression Discontinuity \\ \\}
+
+Imagine a study where a treatment group of unemployed workers in San
+Francisco are given the opportunity to participate in a worker
+training program. Six months after the treatment is administered, the
+workers' employment status and yearly income is measured. You are
+asked to evaluate the effect of this program.
+
+Please be explicit about your assumptions, how you would make your
+inferences, and the workers to which your inferences would apply. In
+your answers below, use mathematical notation where appropriate.
+
+\begin{itemize}
+\item[a.] Suppose that the randomization to treatment occurred as
+  follows: a randomly generated number $X$ is drawn from a uniform
+  distribution with the range [0, 4]. Units with $X \geq 2$ are given
+  the treatment while units with $X < 2$ are denied treatment. All
+  workers assigned to treatment are forced to attend the training
+  program. Under this setup, what inferences could you make about the
+  effect of the training program on the workers' employment status and
+  income? What assumptions are required?
+\item[b.] Now imagine that for ethical reasons, workers are
+  compensated for having received a ``bad draw'' by being awarded
+  monetary compensation inversely proportional to the random number
+  $X$. So workers with a $X \approx 0$ receive a large sum of money
+  and those with $X \approx 4$ receive very little. The workers are
+  enrolled in the worker trainer program if $X \geq 2$. Under this
+  setup what inferences could you make about the workers training
+  program? How would you make these inferences?
+
+\item[c.] Suppose the same set-up as in part (b) (including the
+  compensation), except workers with $X\geq2$ flip a coin -- those who
+  flip heads are enrolled in the worker trainer program, and those who
+  flip tails are not.  The value of $X$ is observed, but it is not
+  possible to know whether or not a worker actually participated in
+  the program.  What assumptions need to be made in order to bound the
+  estimand in (b)?
+\end{itemize}
+
+\paragraph{\Large IV. Media Bias \\ \\}
+
+For this problem, you will compare the research design from two papers
+studying the effects of media bias on political attitudes and choices.
+The first paper is ``The Fox News Effect'', by
+Stefano DellaVigna and Ethan Kaplan (DVK), and can be found here
+\url{http://sekhon.berkeley.edu/causalinf/papers/DellaVignaFoxNews.pdf}. The
+second paper is ``Exploiting a Rare Shift in Communication Flows to
+Document News Media Persuasion'', by Jonathan Ladd and Gabe Lenz (LL), and
+can be found here \url{http://sekhon.berkeley.edu/causalinf/papers/LaddLenzBritish.pdf}.
+\vspace{1em}
+
+Please write a page or two addressing the following questions:
+
+
+   \begin{itemize}
+   \item[a.]  Compare the identification strategies of the two papers.
+     Does LL share similar weaknesses as DVK? Similar strengths?
+     % , as noted in a previous homework?
+Do you find LL more or less convincing than DVK?    
+
+   \item[b.] One potential issue in DVK is that the effect is measured
+     in the aggregate at the township level. Do you think addressing
+     the selection problem in DVK would be improved by analyzing
+     individual- rather than township-level data?  Does the
+     individual-level data analysis in LL influence your judgement
+     about the strengths or weaknesses of LL relative to DVK?
+ %    media on voter information and opinion?
+   \item[c.]  Which paper do you find more
+     interesting, weighting both the scope and significance of the
+     effect being estimated, as well as the {\em external} and {\em internal} validity
+     of the respective estimates?  Generally speaking, which study is
+     more informative about the substantive impact of media bias on 
+public opinion or vote choice?  
+%More generally, what does each
+ %    study tell us about biased media sources and information and opinion more generally
+%   \item[d.] Imagine at a future point in time, Fox News expanded to
+ %    every major cable and media market in the US. Would we 
+  %   expect to see a similar media effect as measured by DVK?  Why or why
+   %  not?  What would be an analogous type of issue in the study
+    % conducted by LL?
+
+\end{itemize}
+
+
+
+
+\paragraph{\Large V. Data and Matching \\ \\}
+
+For this problem, you will perform several matching exercises using
+the ``Fox News Effect'' data.  The unit of observation are towns in
+the US, and the treatment under study is the availability of Fox News
+during the 2000 election season. The outcome (\texttt{reppresfv2p00m96}) is the
+change in the Republican presidential vote share between 1996 and
+2000. The dataset for this assignment only includes those towns with
+pre-treatment outcome data, i.e. the change in the Republican
+presidential vote share between 1988 and 1992 (\texttt{reppresfv2p92m88}). The
+treatment indicator (\texttt{foxnews2000}) has been defined as equal to one if
+the town’s cable system carried the Fox News network before the 2000
+election. The dataset includes a set of demographic covariates from
+the 2000 and 1990 census.
+\vspace{1em}
+
+\noindent The Fox news data is available here:
+\url{http://sekhon.berkeley.edu/causalinf/data/hw6data.RData}.
+The variables are described in the following file:
+\url{http://sekhon.berkeley.edu/causalinf/data/hw6_codebook.txt}
+
+%\vspace{1em}
+%\noindent
+%The dataset has 435 observations and was used in the article ``Water
+%for Life: The Impact of the Privatization of Water Services on Child
+%Mortality'', by S. Galiani, P. Gertler, and E. Schargrodsky (2005,
+%Journal of Political Economy, volume 113).  The paper is here: \url{http://sekhon.berkeley.edu/causalinf/papers/GalianiWater.pdf}.
+
+%\vspace{1em}
+%\noindent The units of observation are municipalities in Argentina, and the
+%treatment under study is the privatization of municipal water
+%services. All 435 municipalities in this sample had public water
+%services in the year 1990, but by the year 1999, 123 municipalities
+%had privatized their water services. Of the 123 municipalities which
+%privatized between 1990 and 1999, 83 municipalities did so between
+%1998 and 1999. The original panel structure of the dataset has been
+%simplified to a cross-section: for each municipality, the dataset you%
+%will be working with has the covariates for each year between 1990 and
+%1999.
+
+%\vspace{1em}
+%\noindent
+%The treatment indicator has been defined as equal to one if the%
+%municipality privatized its water services sometime between 1991 and
+%1999, and equal to zero if a municipality whose water services were
+%public in 1990 never privatized between 1991 and 1999. The outcomes of
+%interest are total child mortality and child mortality from infectious
+%parasitic diseases, i.e., water-borne diseases. Perinatal mortality
+%is also of interest for the reasons discussed in Galiani, Gertler, and
+%Schargrodsky (2005).  
+% For the purposes of all questions on this exam except for the bonus
+% question, when trying to find optimal balance, you can safely
+% restrict yourself to the following baseline covariates and the
+% nonlinear functions listed here:
+
+\vspace{1em}
+\noindent For parts (a) - (e) below, be sure to explicitly set seeds
+to ensure that GenMatch recovers reproducible results,
+i.e. \texttt{set.seed} in general, and in GenMatch \texttt{unif.seed}, \texttt{int.seed}.
+
+\begin{itemize}
+\item[a.] 
+
+  Estimate the causal effect for the treated of a town carrying Fox
+  news on the change in Republican presidential vote share between
+  1996 and 2000.  In doing so, select a set of covariates to condition
+  on, being sure to include higher order terms and interactions you
+  think are appropriate.  Also include a propensity score when
+  conditioning, and ``orthogonalize'' your other covariates using this
+  propensity score. Report your balance statistics before and after
+  matching using \texttt{MatchBalance}.  Are these effects
+  significant?  What is the most interesting summary statistic when
+  comparing change in Republican vote returns? How informative are
+  mean differences? What are the mean differences?
+
+\item[b.] Create a loss function in GenMatch that ensures that the
+  function will not return a matched data set with worse balance on
+  any variable in your BalanceMatrix than the balance obtained by
+  matching on {\em just} your propensity score in part (a) -- as
+  judged by eQQ-plots and difference of means. Do this so that this
+  property holds by design -- i.e., it holds regardless of the dataset
+  used. ({\em Hint}: To do this, you will have to both write a custom loss
+  function and provide GenMatch with starting values for the covariate
+  weights so that it begins with the matched dataset returned from
+  using only the propensity score above.)  Match again on your
+  orthogongalized covariates from above using this loss function.
+  Present balance before and after matching using
+  \texttt{MatchBalance}.  %Produce two QQ-Plots illustrating
+%  improvement in balance on one important continuous covariate before
+ % and after matching.
+
+\item[c.] Now match using the method from part (b) only using
+  demographic covariates.  Estimate the ``treatment effect'' of the
+  introduction of Fox news prior to the 2000 election on the pre-treatment
+  outcome of change in Republican presidential vote share between
+  1988 and 1992. This is known as a ``placebo test''. Can you recover a
+  0 ATT estimate using only demographic covariates as the conditioning
+  set?
+
+%\item[c.] Estimate a post-matching parametric bias adjustment method
+%  on the matched dataset you obtained in part (b), such as a
+%  regression model. Does this make a difference for the inferences
+%  drawn after matching? 
+
+\item[d.] Overall, how do your results differ from those in DellaVigna and
+  Kaplan (2007)? Are your results and their results comparable?  
+
+%\item[e.] In this study, does SUTVA limit what we can say? If so, how?
+%  If not, why not?  
+
+\item[e.] [BONUS QUESTION] Freed of the constraints in the previous
+parts, find the best matching method (and possibly post-matching
+  adjustment model) to answer the substantive question at hand. How
+  confident are you that this is an unbiased estimate of the Fox news
+  effect?  What do we learn about the effects of media bias from this analysis?    
+
+
+
+
+
+%\item[c.] Estimate the ATT of privatizing
+ % water services between 1991 and 1999 on child mortality in 1999,
+ % using your matched data from part (b).  Is the ATT estimate
+ % statistically different from zero?  Plot the density of the unit effects of treatment on
+  %the treated municipalities.  Does your interpretation of the effect
+  %of privatization change when examining average versus unit effects?    
+
+%  What is the most interesting summary statistic when comparing child
+%  mortality across the two groups? How informative are mean
+%  differences? What are the mean differences?
+
+%\item[d.] Using the same covariates from (a) and (b), rerun GenMatch, this
+ % time dropping at most 10\% of the treated units. Does your balance
+  %improve with respect to the balance you found in part (b)? Now what
+ % is the ATT of privatization in this matched data?  Is the ATT
+ % significantly different from zero?  
+
+
+%\item[e.] Now find the best balance with GenMatch using your own loss
+ % function.  In doing so, retain every other specification you used in
+ % GenMatch in part (d).  Explain the logic behind your choice of loss
+  %function. (An example loss function would maximize the median
+  %$p$-value from a vector of \texttt{t.test} and \texttt{ks.test}
+  %results). In your loss function, you may want to prioritize
+  %important selection variables, for instance pre-treatment mortality
+  %rates. Present balance statistics after matching using
+  %\texttt{MatchBalance}.
+
+%\item[f.] Overall, how do your results differ from those in Galiani,
+ % Gertler, and Schargrodsky (2005)?  In particular, are your results
+  %in part (b) and (c), and their published findings comparable? 
+
+\end{itemize}
+
+\end{document}
+
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by your matching method used in part a—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+
+\item[a.] Select a set of covariates to condition on. Be sure to consider if any higher order terms and interactions are appropriate. Using these variables, perform Mahnolobis distance matching on a propensity score and “orthogo- nalized” covariates, with ATT as your estimand. Report your balance statistics, preferably using a plot.
+
+\item[a.] Now using the same set of covariates (propensity score and “orthogonalized” covariates), use GenMatch to generate weights that optimize balance. Use the default setting for the loss function, but feel free to adjust other parameters of the function. Present balance before and after matching.
+
+\item[a.] Now find balance with GenMatch using your own loss function. Explain the logic behind your choice of loss function. You may want to prioritize important selection variables, such as age. Present balance statistics after matching.
+1
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by pscore matching—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+\end{itemize}
+
+
+
+
+\end{document}
+
+
+For this problem, you will perform several matching exercises using
+the ``Fox News Effect'' data.  The unit of observation are towns in
+the US, and the treatment under study is the availability of Fox News
+during the 2000 election season. The outcome (\texttt{reppresfv2p00m96}) is the
+change in the Republican presidential vote share between 1996 and
+2000. The dataset for this assignment only includes those towns with
+pre-treatment outcome data, i.e. the change in the Republican
+presidential vote share between 1988 and 1992 (\texttt{reppresfv2p92m88}). The
+treatment indicator (\texttt{foxnews2000}) has been defined as equal to one if
+the town’s cable system carried the Fox News network before the 2000
+election. The dataset includes a set of demographic covariates from
+the 2000 and 1990 census
+
+\begin{itemize}
+\item[a.] Select a set of covariates to condition on. Be sure to
+  consider if any higher order terms and interactions that are
+  appropriate. Using these variables, perform Mahnolobis distance
+  matching on a propensity score and ``orthogonalized'' covariates
+  (simultaneously),
+  with ATT as your estimand. Report your treatment effect estimates
+  and your balance statistics, either in a table or a plot. Is it
+  similar to the estimate reported in the original paper, in
+  particular the estimate reported in columns 6 and 7 in Table IV?
+   \item[b.] Now with the same set of covariates, use GenMatch to
+     generate weights that optimize balance. Use the default setting
+     for the loss function, but feel free to adjust other parameters
+     of the function. Present balance before and after matching, as
+     well as your effect estimates. How is your estimate different
+     from the results reported in the paper and your findings in part
+     a?
+   \item[c.] Now match using either the method from part (a) or the
+     method from part (b), using only demographic covariates. Estimate
+     the ``treatment effect'' of the introduction of Fox news prior to
+     the 2000 election on pre-treatment outcome of the change in
+     Republican presidential vote share between 1988 and 1992. This is
+     known as a ``placebo test''. Can you recover a 0 ATT estimate using
+     only demographic covariates as the conditioning set?
+\end{itemize}
+
+
+
+
+
+
+\begin{itemize}
+\item[a.] Select a set of covariates to condition on. Be sure to consider if
+any higher order terms and interactions are appropriate. Using these
+variables, perform Mahalanobis distance matching, with ATT as your
+estimand. Report your balance statistics.
+
+\item[a.] Now using the same set of covariates, use GenMatch to generate weights that optimize balance. Use the default setting for the loss function, but feel free to adjust other parameters of the function. Present balance before and after matching.
+
+\item[a.] Now find balance with GenMatch using your own loss function. Explain the logic behind your choice of loss function. You may want to prioritize important selection variables, such as age. Present balance statistics after matching.
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by your matching method used in part a—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+
+\item[a.] Select a set of covariates to condition on. Be sure to consider if any higher order terms and interactions are appropriate. Using these variables, perform Mahnolobis distance matching on a propensity score and “orthogo- nalized” covariates, with ATT as your estimand. Report your balance statistics, preferably using a plot.
+
+\item[a.] Now using the same set of covariates (propensity score and “orthogonalized” covariates), use GenMatch to generate weights that optimize balance. Use the default setting for the loss function, but feel free to adjust other parameters of the function. Present balance before and after matching.
+
+\item[a.] Now find balance with GenMatch using your own loss function. Explain the logic behind your choice of loss function. You may want to prioritize important selection variables, such as age. Present balance statistics after matching.
+1
+
+\item[a.] Create a loss function that ensures that GenMatch will not return a matched data set with worse balance on any variable in BalanceMatrix than the balance obtained by pscore matching—as judged by eQQ-plots and difference of means. Do this so that this property holds by design—i.e., it holds regardless of the dataset used. In order to make this happen, you will have to both write a custom loss function (you may alter the one created in question “c” or write a new one), and provide GenMatch with starting.values so that it starts with the pscore matched dataset. Report your balance statistics after using this loss function.
+
+\item[a.] Pick the matching method that produced, in your judgement, the best
+balance. Estimate treatment effects and report them. How do they
+differ from the reported estimates?
+\end{itemize}
+

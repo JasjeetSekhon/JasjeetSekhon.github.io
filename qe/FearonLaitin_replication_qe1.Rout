@@ -1,0 +1,269 @@
+
+R version 2.11.0 (2010-04-22)
+Copyright (C) 2010 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #
+> # R version of replicating Table 1 of Fearon and Latin 2003 in R
+> #
+> 
+> # a few variables which may be of interest:
+> # "ccode" a country code (numeric)
+> # "country" country name, long form
+> # "cname"  country name, short form
+> # "cmark" an indicator variable for when a new country starts (1 for the first observation for a new country)
+> # "year" the observation year
+> 
+> # all of the other variable names you need to know are defined in the
+> # regressions below (just compare with variable names here with the
+> # names in Table 1 in the article to figure out what they are.
+> # Compare cofficients etc).
+> 
+> dta <- read.table(file="http://sekhon.berkeley.edu/qe/FearonLaitin2003.asc", header=TRUE)
+> #dta <- read.table(file="FearonLaitin2003.asc", header=TRUE)
+> 
+> #if you prefer to use the stata data set.
+> #library(foreign)
+> #dta <- read.dta(file="FearonLaitin2003.dta")
+> 
+> #recode all values for the dependant variables, so that obs that are > 1 are set equal to 1
+> indx  <- dta$onset > 1 
+> dta$onset[indx]  <- 1
+> 
+> indx  <- dta$ethonset > 1 
+> dta$ethonset[indx]  <- 1
+> 
+> indx  <- dta$emponset > 1 
+> dta$emponset[indx]  <- 1
+> 
+> indx  <- dta$cowonset > 1 
+> dta$cowonset[indx]  <- 1
+> 
+> #Model 1
+> glm1  <- glm(onset ~ warl + gdpenl +lpopl1 +lmtnest +ncontig +Oil +nwstate +instab +polity2l +ethfrac +relfrac, 
++              data=dta, family=binomial) 
+> summary(glm1)
+
+Call:
+glm(formula = onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + 
+    Oil + nwstate + instab + polity2l + ethfrac + relfrac, family = binomial, 
+    data = dta)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.1412  -0.2001  -0.1446  -0.1011   3.4209  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -6.73134    0.73577  -9.149  < 2e-16 ***
+warl        -0.95437    0.31439  -3.036 0.002400 ** 
+gdpenl      -0.34386    0.07179  -4.790 1.67e-06 ***
+lpopl1       0.26294    0.07271   3.616 0.000299 ***
+lmtnest      0.21880    0.08475   2.582 0.009830 ** 
+ncontig      0.44333    0.27399   1.618 0.105646    
+Oil          0.85764    0.27919   3.072 0.002127 ** 
+nwstate      1.70946    0.33859   5.049 4.45e-07 ***
+instab       0.61754    0.23510   2.627 0.008621 ** 
+polity2l     0.02086    0.01677   1.244 0.213536    
+ethfrac      0.16641    0.37310   0.446 0.655581    
+relfrac      0.28505    0.50874   0.560 0.575273    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1077.1  on 6326  degrees of freedom
+Residual deviance:  960.8  on 6315  degrees of freedom
+  (283 observations deleted due to missingness)
+AIC: 984.8
+
+Number of Fisher Scoring iterations: 8
+
+> 
+> 
+> #Model 2, second > .049999
+> subset.indx <- dta$second > .049999
+> glm2  <- glm(ethonset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + Oil + nwstate + instab + polity2l + ethfrac + relfrac,
++              data=dta, family=binomial, subset=subset.indx) 
+> summary(glm2)
+
+Call:
+glm(formula = ethonset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + 
+    Oil + nwstate + instab + polity2l + ethfrac + relfrac, family = binomial, 
+    data = dta, subset = subset.indx)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0352  -0.1660  -0.1180  -0.0796   3.6779  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -8.45018    1.09211  -7.737 1.01e-14 ***
+warl        -0.84905    0.38847  -2.186 0.028845 *  
+gdpenl      -0.37855    0.09985  -3.791 0.000150 ***
+lpopl1       0.38936    0.10976   3.547 0.000389 ***
+lmtnest      0.11991    0.10581   1.133 0.257110    
+ncontig      0.48140    0.39781   1.210 0.226229    
+Oil          0.80875    0.35182   2.299 0.021518 *  
+nwstate      1.77668    0.41482   4.283 1.84e-05 ***
+instab       0.38464    0.31560   1.219 0.222935    
+polity2l     0.01310    0.02206   0.594 0.552728    
+ethfrac      0.14564    0.58442   0.249 0.803204    
+relfrac      1.53298    0.72392   2.118 0.034208 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 689.75  on 5185  degrees of freedom
+Residual deviance: 606.35  on 5174  degrees of freedom
+  (203 observations deleted due to missingness)
+AIC: 630.35
+
+Number of Fisher Scoring iterations: 9
+
+> 
+> #Model 3
+> glm3  <- glm(onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + Oil + nwstate + instab + anocl + deml + ethfrac + relfrac, 
++              data=dta, family=binomial) 
+> summary(glm3)
+
+Call:
+glm(formula = onset ~ warl + gdpenl + lpopl1 + lmtnest + ncontig + 
+    Oil + nwstate + instab + anocl + deml + ethfrac + relfrac, 
+    family = binomial, data = dta)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-1.16707  -0.20205  -0.14285  -0.09789   3.46720  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -7.01855    0.75068  -9.350  < 2e-16 ***
+warl        -0.91555    0.31197  -2.935 0.003338 ** 
+gdpenl      -0.31780    0.07140  -4.451 8.54e-06 ***
+lpopl1       0.27189    0.07368   3.690 0.000224 ***
+lmtnest      0.19852    0.08456   2.348 0.018888 *  
+ncontig      0.42557    0.27168   1.566 0.117255    
+Oil          0.75145    0.27827   2.700 0.006926 ** 
+nwstate      1.65793    0.34177   4.851 1.23e-06 ***
+instab       0.51267    0.24247   2.114 0.034483 *  
+anocl        0.52104    0.23697   2.199 0.027896 *  
+deml         0.12672    0.30437   0.416 0.677163    
+ethfrac      0.16375    0.36840   0.445 0.656680    
+relfrac      0.32599    0.50596   0.644 0.519380    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1077.11  on 6326  degrees of freedom
+Residual deviance:  957.34  on 6314  degrees of freedom
+  (283 observations deleted due to missingness)
+AIC: 983.34
+
+Number of Fisher Scoring iterations: 8
+
+> 
+> 
+> #Model 4
+> glm4  <- glm(emponset ~ empwarl+ empgdpenl +emplpopl+ emplmtnest+ empncontig+ Oil+ nwstate+ instab+ empethfrac,
++              data=dta, family=binomial) 
+> summary(glm4)
+
+Call:
+glm(formula = emponset ~ empwarl + empgdpenl + emplpopl + emplmtnest + 
+    empncontig + Oil + nwstate + instab + empethfrac, family = binomial, 
+    data = dta)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0997  -0.2072  -0.1530  -0.1051   3.4380  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -6.80097    0.68114  -9.985  < 2e-16 ***
+empwarl     -0.68766    0.26437  -2.601 0.009292 ** 
+empgdpenl   -0.30506    0.06337  -4.814 1.48e-06 ***
+emplpopl     0.26677    0.06889   3.873 0.000108 ***
+emplmtnest   0.19248    0.08211   2.344 0.019063 *  
+empncontig   0.79755    0.24101   3.309 0.000936 ***
+Oil          0.54823    0.26233   2.090 0.036628 *  
+nwstate      1.52250    0.33191   4.587 4.49e-06 ***
+instab       0.54756    0.22503   2.433 0.014963 *  
+empethfrac   0.49046    0.34525   1.421 0.155437    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1190.6  on 6359  degrees of freedom
+Residual deviance: 1060.1  on 6350  degrees of freedom
+  (250 observations deleted due to missingness)
+AIC: 1080.1
+
+Number of Fisher Scoring iterations: 8
+
+> 
+> 
+> #Model 5
+> glm5  <- glm(cowonset ~ cowwarl + gdpenl + lpopl1 + lmtnest + ncontig + Oil + nwstate + instab + anocl + deml + ethfrac + relfrac,
++              data=dta, family=binomial) 
+> summary(glm5)
+
+Call:
+glm(formula = cowonset ~ cowwarl + gdpenl + lpopl1 + lmtnest + 
+    ncontig + Oil + nwstate + instab + anocl + deml + ethfrac + 
+    relfrac, family = binomial, data = dta)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.77077  -0.20298  -0.13495  -0.08313   3.38404  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -7.50253    0.85370  -8.788  < 2e-16 ***
+cowwarl     -0.55094    0.37379  -1.474 0.140495    
+gdpenl      -0.30860    0.07934  -3.890 0.000100 ***
+lpopl1       0.22285    0.07913   2.816 0.004859 ** 
+lmtnest      0.41811    0.10296   4.061 4.89e-05 ***
+ncontig     -0.17069    0.32793  -0.521 0.602709    
+Oil          1.26865    0.29671   4.276 1.91e-05 ***
+nwstate      1.14678    0.41349   2.773 0.005547 ** 
+instab       0.58417    0.26789   2.181 0.029208 *  
+anocl        0.59703    0.26085   2.289 0.022090 *  
+deml         0.21880    0.35420   0.618 0.536747    
+ethfrac     -0.11906    0.39640  -0.300 0.763910    
+relfrac      1.17560    0.56345   2.086 0.036940 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 890.19  on 5377  degrees of freedom
+Residual deviance: 791.58  on 5365  degrees of freedom
+  (1232 observations deleted due to missingness)
+AIC: 817.58
+
+Number of Fisher Scoring iterations: 8
+
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  2.141   0.257   8.776 

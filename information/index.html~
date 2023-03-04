@@ -1,0 +1,129 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Voter
+    Information, Elections, Causal Inference, Matching, Propensity
+    Score Matching, Robust Estimation, Democratic Theory,
+    democratization, Survey Data, Sekhon">
+   <meta name="keywords" content="Public Opinion, Propensity Score Matching, Multivariate Matching, Causal Inference, Causality, Jasjeet Sekhon, Jas Sekhon, Sekhon,  Jas">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.17-21mdksmp i686) [Netscape]">
+   <title>Jasjeet Sekhon's "Varying Role of Voter Information Across Democratic Societies" Webpage</title>
+</head>
+
+<body>
+
+<link rel="stylesheet"
+href="http://jsekhon.fas.harvard.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+<h1>The Varying Role of Voter Information Across Democratic Societies Webpage</h1>
+
+<a href="http://jsekhon.fas.harvard.edu/">Jasjeet S. Sekhon</a>
+
+<br><br> This website is for my project on the varying role voter information
+plays across democratic societies.  Using new robust matching methods for
+making causal inferences from survey data, I demonstrate that there are
+profound differences between how voters behave in mature democracies versus
+how they behave in new ones.  The problems of voter ignorance and
+inattentiveness are not as serious in mature democracies as many analysts have
+suggested but are of grave concern in new democracies.  Citizens in mature
+democracies are able to accomplish something that citizens in fledgling
+democracies are not: inattentive and poorly informed citizens are able to vote
+like their better informed compatriots and hence need to pay little attention
+to political events such as election campaigns in order to vote as if they
+were attentive. <br> <br>
+
+This software was used by me to produce the following working paper:
+<a
+href="http://jsekhon.fas.harvard.edu/papers/SekhonInformation.pdf">The
+Varying Role of Voter Information across Democratic Societies.</a>
+This paper includes some useful discussion of Matching, particularly
+of the balance tests.  The robust propensity score methods discussed
+in the paper will be included in a future version.  The core matching
+estimator which is implemented is that of <a
+href="http://ksghome.harvard.edu/~.aabadie.academic.ksg/">Alberto
+Abadie</a> and <a href="http://elsa.berkeley.edu/~imbens/">Guido
+Imbens</a>.  This algorithm provides principled standard errors when
+matching is done with covariates or a known propensity score.  Ties
+are handled in a deterministic and coherent fashion.
+
+For details see their working paper entitled <a
+href="http://ksghome.harvard.edu/~.aabadie.academic.ksg/sme.pdf">Large
+Sample Properties of Matching Estimators for Average Treatment</a>.
+
+<br><br> The easiest way to install the latest version (0.34), if you
+have an active network connection, is to type in a <b><a
+href="http://www.r-project.org/">R</a></b> session: <br> <dl> <dd>
+<B> > install.packages("Matching",
+CRAN="http://jsekhon.fas.harvard.edu") </B>
+</dl> </dd> 
+
+<br> Alternatively, the package may be directly downloaded: <br> <dl>
+<dd> Linux (x86) all versions: <a
+href="http://jsekhon.fas.harvard.edu/R/CRAN/src/contrib/Matching_0.34.tar.gz">Matching_0.34.tar.gz</a><br>
+
+Windows R-1.9: <a
+href="http://jsekhon.fas.harvard.edu/R/CRAN/bin/windows/contrib/1.9/Matching_0.34.zip">Matching_0.34.zip</a><br>
+
+Windows R-1.8: <a href="http://jsekhon.fas.harvard.edu/R/CRAN/bin/windows/contrib/1.8/Matching_0.34.zip">Matching_0.34.zip</a><br>
+</dl> </dd>
+<br>
+
+<b><a href="http://www.r-project.org/">R</a></b> version 1.8.1 or
+higher is required to use Matching. This is a large package so it may
+take a few minutes to download if you have a slow network connection.
+
+<br> <br>
+The package includes the following user exposed functions, two replication datasets and
+three demos:
+<br> <dl> <dd> 
+     <a href="Match.html">Match()</a> <br>
+     <a href="MatchBalance.html">MatchBalance()</a><br>
+     <a href="balanceMV.html">balanceMV()</a><br>
+     <a href="balanceUV.html">balanceUV()</a><br>
+     <a href="summary.Match.html">summary.Match()</a><br>
+     <a href="summary.balanceMV.html">summary.balanceMV()</a><br>
+     <a href="GerberGreenImai.html">Gerber, Green and Imai data</a><br>
+     <a href="lalonde.html">Lalonde data</a><br>
+     <a href="AbadieImbens.Rout">AbadieImbens demo</a><br>
+     <a href="DehejiaWahba.Rout">DehejiaWahba demo</a><br>
+     <a href="GerberGreenImai.Rout">GerberGreenImai demo</a><br>
+</dl> </dd>
+<br>
+
+The package is under active development so please check back for
+updates.  
+<br><br>
+
+The package currently only works on Linux or Windows (x86).  The
+reason for this limitation is that <a href="Match.html">Match()
+</a> relies on a compiled C/C++ modified version of Guido Imbens's <a
+href="http://elsa.berkeley.edu/~imbens/estimators.shtml">Matlab
+function</a>.  No knowledge of Matlab nor a Matlab license is required
+to use the package.
+
+<br><br> For more details on matching and causal inference see <a
+href="http://www.stanford.edu/class/polisci353/2004winter/reading.html">Jonathan
+Wand's Reading List</a>.
+
+
+
+<br>
+<br>
+<small><small> <a href="http://jsekhon.fas.harvard.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+</body>
+</html>
+<!--  LocalWords:  html charset iso css multinomRob CRAN MatchBalance balanceMV
+ -->
+<!--  LocalWords:  balanceUV Matlab
+ -->

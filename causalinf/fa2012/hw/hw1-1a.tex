@@ -1,0 +1,214 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+ 
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\title{PS C236A / Stat C239A \\ Problem Set 1 \\ Due: Sept. 21, 2012}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Problem 1:}
+Suppose you are in a simplified world, and you wish to determine the returns to education for a group of N workers you have data for.  In this simplified version of the world, there are two factors that influence a worker's income, level of education and intelligence.  The correct model would, therefore, be:
+\begin{equation} y_{i} = \alpha_{1} + \gamma_{1}*\text{education level}_{i} + \gamma_{2}*\text{intelligence}_{i} + \epsilon_{1i} \end{equation}
+Where $Y_{i}$ is individual $i$'s income.  However, you naively assume that the only factor that influences income is education level, and you run a regression using the following model:
+\begin{equation} y_{i} = \alpha_{2} + \beta_{1}*\text{education level}_{i} + \epsilon_{2i}  \end{equation}
+\begin{itemize}
+
+\item[a.] Write down or describe the design matrix for the correct model of the world (model 1) as well as the naive model (model 2).
+\item[b.] Show that $\frac{1}{N}\sum_{i = 1}^N y_{i} = \frac{1}{N}\sum_{i = 1}^N \hat{y}_{i}$
+\item[c.] Which, if any, assumptions and conditions are necessary for part b to be true?
+\item[d.] Assume that education level and intelligence are positively correlated.  By using the naive model instead of the true model, what happens to your estimate of $\beta_{1}$?  How would it relate to your estimate of $\gamma_{1}$ if you ran a regression using the true model?  Prove it.
+\end{itemize}
+
+% freedman page 66 question 7
+\paragraph{Problem 2:} True or False, and explain: as long as the design matrix has full rank, the computer can find the OLS estimator $\hat{\beta}$.  If so, what are the assumptions good for? Discuss briefly.
+
+
+
+\paragraph{Problem 3:}
+\renewcommand{\theenumi}{\alph{enumi}}
+Suppose $x_1, \ldots, x_n$ and $y_1,\ldots,y_n$ have means $\bar x, \bar y$, the standard deviations are $s_x>0, s_y>0$; and the correlation is $r$. Let
+$$
+\textrm{cov}(x,y) = \frac{1}{n}\sum_{i=1}^n (x_i - \bar x) (y_i - \bar y).
+$$
+``cov'' is shorthand for covariance. Show that ---
+\begin{enumerate}
+\item cov$(x,y) = rs_xs_y$
+\item The slope of the regression line for predicting $y$ from $x$ is 
+$$
+\frac{\textrm{cov}(x,y)}{\textrm{var}(x)}
+$$
+\item var$(x)=\textrm{cov}(x,x)$
+\item cov$(x,y) = \overline{xy} - \bar x \bar y$
+\item var$(x) = \overline{x^2} -\bar x^2$
+\end{enumerate}
+
+\paragraph{Problem4:} 
+\renewcommand{\theenumi}{\alph{enumi}} Suppose
+$Yi=au_i+bv_i+\epsilon_i$ for $i=1,...,100$.The $\epsilon_i$ are
+independent $N(0,1)$.The $u$’s and $v$’s are fixed not random; these
+two data variables have mean 0 and variance 1: the correlation between
+them is $r$. If $r = \pm 1$, show that the design matrix has rank
+1. Otherwise, let $\hat{a}$ and $\hat{b}$ be the OLS estimator. Find
+the variance of $\hat{a}$, find the variance of $\hat{b}$, and find
+the variance of $\hat{a} - \hat{b}$. What happens if $r = 0.99$? What
+are the implications for collinearity for applied work? For instance,
+what sort of inferences about a and b are made easier or harder by
+collinearity?
+
+\section*{Application}
+In this section, you will use R to calculate descriptive statistics
+and treatment effect estimates from a dataset used in: 
+\begin{quote}
+  Benjamin A. Olken. 2007. ``Monitoring Corruption: Evidence from a
+  Field Experiment in Indonesia.'' \textit{Journal of Political
+    Economy} 115: 300-249
+\end{quote}
+Note: You can download the data file on the class website at:
+\paragraph{}
+\url{http://www.sekhon.berkeley.edu/causalinf/fa2009/hw1data.RData}
+
+The data are contained in an object called \texttt{data}.
+\paragraph{}
+This objective of this experiment was to evaluate two interventions
+thought to reduce corruption in road building projects in Indonesian
+villages. The two treatments were audits by engineers and efforts to
+encourage communities to monitor the projects
+themselves. i.e. ``grassroots participation''.  While the actual
+experimental design is somewhat involved, in this exercise we will
+focus on the intervention designed to increase community
+monitoring. The full paper can be found here:
+\begin{quote}
+  \url{http://econ-www.mit.edu/files/2913}
+\end{quote}
+
+
+Olken describes the intervention to be analyzed as follows:
+\begin{quote}
+  ...[T]he experiments sought to enhance participation at
+  ``accountability meetings'', the village-level meetings in which
+  project officials account for how they spent project
+  funds. ...[H]undreds of invitations to these meetings were
+  distributed throughout the village, to encourage direct
+  participation in the monitoring process and to reduce elite
+  dominance of the process. 
+\end{quote}
+Note that residents in treatment villages were notified about these meetings
+\textit{before} construction began, but after the total budget
+was decided. While the total budget was allocated before assignment to treatment, decisions about how the budget was to be spent was decided after the intervention. 
+
+The main dependent variable is \texttt{pct.missing}, which is a
+measure of the difference between what the villages claimed they spent
+on road construction and an independent estimate of what the villages
+actually spent. Treatment status is indicated by the dummy variable
+\texttt{treat.invite}, which takes a value of 1 if the village
+received the intervention and 0 if it did not. 
+
+\begin{table*}[h]
+  \caption{Variables \label{vars}}
+  \centering
+  \begin{tabular}{c|c}
+    \hline \textbf{Variable} & \textbf{Definition}\\ \hline
+    \texttt{pct.missing} & Percent expenditures missing\\
+    \texttt{treat.invite} & Treatment assignment \\ 
+    \texttt{head.edu} & Village head education \\
+    \texttt{mosques} & Mosques per 1,000 \\
+    \texttt{pct.poor} & Percent of households below the poverty line\\
+    \texttt{total.budget} & Total budget (Rp. million)\\
+    \texttt{share.total.unskilled} & Share of road construction expenses spent on
+    unskilled labor
+  \end{tabular}
+\end{table*}
+Other variables in the dataset are listed in Table \ref{vars}. 
+
+
+\paragraph{Problem 4:}
+Check whether the variables in the dataset have missing values, and
+report the number of missing values by variable. 
+
+\paragraph{Problem 5:}
+Report the minimum, maximum, mean, and standard deviation of the
+\textit{pre}-treatment covariates in the data set, separately for treatment and
+controls.  Are treatment and control units similar in terms of these
+characteristics? Be sure that you only include variables that were
+measured before the treatment was applied. 
+
+If you can, use a ``for loop'' or the \texttt{apply}
+function to calculate these summary statistics. 
+
+\paragraph{Problem 6:}
+\begin{itemize}
+\item[a.] Report the average difference in the outcome variable by treatment
+assignment status (the ``treatment effect''). What is the standard error of this estimate? 
+
+\item[b.] Now estimate the treatment effect using a regression model with no
+covariates. Is this estimate different from the
+difference-in-means estimate? Are the standard errors of the two estimates different?
+
+\item[c.] Finally, estimate the treatment effect using a regression model, but
+this time include all pre-treatment covariates as additional independent
+variables.  What is your estimated treatment effect? What is the
+standard error of this estimate? Is this estimate substantively
+different from the difference-in-means estimate?
+
+\item[d.] Bonus question: Is there a reason to prefer one of these methods of estimating treatment effects over the others?
+\end{itemize}
+
+\paragraph{Problem 7:}
+In a couple of sentences, what can you conclude about the
+effectiveness of this intervention? 
+\end{document}

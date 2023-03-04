@@ -1,0 +1,705 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>An Endogenous Switching Tobit Model</TITLE>
+<META NAME="description" CONTENT="An Endogenous Switching Tobit Model">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="next" HREF="node7.shtml">
+<LINK REL="previous" HREF="node2.shtml">
+<LINK REL="up" HREF="pm96.shtml">
+<LINK REL="next" HREF="node7.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html85"
+ HREF="node7.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html83"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html77"
+ HREF="node5.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html86"
+ HREF="node7.shtml">Tables</A>
+<B> Up:</B> <A NAME="tex2html84"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html78"
+ HREF="node5.shtml">Application: Domains of Economic</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000">
+An Endogenous Switching Tobit Model</A>
+</H1>
+
+<P>
+Mebane and Wawro [MW] (1996) use account-level data on budget requests,
+appropriations and proposals for rescissions and deferrals for each fiscal
+year during the Reagan administration to test key predictions of a spatial
+game model.  The question is whether the amounts the President proposes to
+impound relate to the amounts voted by the House and Senate in the ways the
+spatial game suggests, and in particular whether the structure of impoundments
+changed after the Supreme Court's decision in <I>Immigration and
+Naturalization Service v. Chadha</I> (462 U.S. 919 (1983)) which declared the
+one-house legislative veto unconstitutional.  The <I>Chadha</I> ruling invalidated a
+wide range of legislation, including provisions of the Budget and Impoundment
+Control Act (BICA) of 1974 that allowed a single chamber of Congress to
+overturn a presidential decision to defer spending previously appropriated
+funds.  We describe their motivation and use of a Cox test with bootstrap
+calibration to correct the size of the test.
+
+<P>
+The statistical model consists of two likelihood functions, one based on a
+pre-<I>Chadha</I> form of the game and one based on a post-<I>Chadha</I> form.  The principal
+prediction of the game model is that after the <I>Chadha</I> decision, the likelihood
+function that best fits the data for deferrals should change from the pre-<I>Chadha</I> to the post-<I>Chadha</I> form.  The Supreme Court decided <I>Chadha</I> on June 23, 1983, close
+enough to the end of FY1983 that MW do not expect to see effects
+on deferrals earlier than FY1984.  The model may work poorly in FY1987,
+because early in 1987 a U.S. Court of Appeals for the District of Columbia
+decision affirmed a federal district court ruling that invalidated the section
+of law that allowed policy deferrals (<I>City of New Haven v. United
+States</I>, 809 F.2d 900 (D.C. Cir. 1987)).
+
+<P>
+Using <I>t</I> to index the observations in each year, the pre-<I>Chadha</I> likelihood has
+the form
+<BR><P></P>
+<DIV>
+<!-- MATH: \begin{equation*}
+L_{1} = \prod_{y_t = 0} G_{1t} \prod_{y_t > 0} \tilde{L}_{1t}\{y_t\}
+\end{equation*} -->
+
+
+<IMG
+ WIDTH="192" HEIGHT="52"
+ SRC="img65.gif"
+ ALT="\begin{displaymath}L_{1} = \prod_{y_t = 0} G_{1t} \prod_{y_t > 0} \tilde{L}_{1t}\{y_t\}
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where 
+<!-- MATH: $\prod_{y_t = 0}$ -->
+<IMG
+ WIDTH="51" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.gif"
+ ALT="$\prod_{y_t = 0}$">
+denotes a product over observations that are assumed
+to be censored at zero according to a tobit-like rule, with
+
+<!-- MATH: $G_{1t}=\int_{-\infty}^0 \tilde{L}_{1t}\{\tilde{y}\} d\tilde{y}$ -->
+<IMG
+ WIDTH="159" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.gif"
+ ALT="$G_{1t}=\int_{-\infty}^0 \tilde{L}_{1t}\{\tilde{y}\} d\tilde{y}$">.
+
+<!-- MATH: $\tilde{L}_{1}$ -->
+<IMG
+ WIDTH="24" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.gif"
+ ALT="$\tilde{L}_{1}$">
+is a complicated function that represents a endogenous
+switching-regression likelihood (switching among three regimes) implied by one
+form of the spatial game.  The post-<I>Chadha</I> likelihood has a similar form,
+<BR><P></P>
+<DIV>
+<!-- MATH: \begin{equation*}
+L_{2} = \prod_{y_t = 0} G_{2t} \prod_{y_t > 0} \tilde{L}_{2t}\{y_t\}
+\end{equation*} -->
+
+
+<IMG
+ WIDTH="192" HEIGHT="52"
+ SRC="img69.gif"
+ ALT="\begin{displaymath}L_{2} = \prod_{y_t = 0} G_{2t} \prod_{y_t > 0} \tilde{L}_{2t}\{y_t\}
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where 
+<!-- MATH: $G_{2t} = \int_{-\infty}^0 \tilde{L}_{2t}\{\tilde{y}\} d\tilde{y}$ -->
+<IMG
+ WIDTH="159" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img70.gif"
+ ALT="$G_{2t} = \int_{-\infty}^0 \tilde{L}_{2t}\{\tilde{y}\} d\tilde{y}$">
+and
+
+<!-- MATH: $\tilde{L}_{2}$ -->
+<IMG
+ WIDTH="24" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.gif"
+ ALT="$\tilde{L}_{2}$">
+is a complicated function that represents the
+switching-regression likelihood implied by the other form of the game.
+
+<P>
+To<A NAME="tex2html11"
+ HREF="footnode.shtml#foot601"><SUP>3</SUP></A> perform a Cox (1961; 1962) test of the hypothesis that the
+pre-<I>Chadha</I> likelihood <I>L</I><SUB>1</SUB> applies, versus the post-<I>Chadha</I> alternative <I>L</I><SUB>2</SUB>,
+MW use the statistic 
+<!-- MATH: $\hat{M}_{12}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\hat{M}_{12}$">
+where
+<BR><P></P>
+<DIV>
+<!-- MATH: \begin{equation*}
+\hat{M}_{jk} = n^{-1} \left[
+\log \dfrac{\hat{L}_{j}}{\hat{L}_{k}} - \sum_{t=1}^n \left(
+ \log \dfrac{\hat{G}_{jt}}{\hat{G}_{kt}} \hat{G}_{jt}
+ + \int_{0}^{\infty} \log
+ \dfrac{\Hat{\Tilde{L}}_{jt}\{\tilde{y}\}}{\Hat{\Tilde{L}}_{kt}\{\tilde{y}\}}
+ \Hat{\Tilde{L}}_{jt}\{\tilde{y}\} d\tilde{y} \right)
+ \right]
+\end{equation*} -->
+
+
+<IMG
+ WIDTH="514" HEIGHT="62"
+ SRC="img73.gif"
+ ALT="\begin{displaymath}\hat{M}_{jk} = n^{-1} \left[
+\log \dfrac{\hat{L}_{j}}{\hat{L...
+... \Hat{\Tilde{L}}_{jt}\{\tilde{y}\} d\tilde{y} \right)
+\right]
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+with 
+<!-- MATH: $\hat{L}_{1}$ -->
+<IMG
+ WIDTH="24" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="$\hat{L}_{1}$">,
+
+<!-- MATH: $\hat{L}_{2}$ -->
+<IMG
+ WIDTH="24" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img74.gif"
+ ALT="$\hat{L}_{2}$">,
+
+<!-- MATH: $\hat{G}_{1t}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.gif"
+ ALT="$\hat{G}_{1t}$">,
+
+<!-- MATH: $\hat{G}_{2t}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif"
+ ALT="$\hat{G}_{2t}$">,
+
+<!-- MATH: $\Hat{\Tilde{L}}_{1t}$ -->
+<IMG
+ WIDTH="29" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.gif"
+ ALT="$\Hat{\Tilde{L}}_{1t}$">
+and 
+<!-- MATH: $\Hat{\Tilde{L}}_{2t}$ -->
+<IMG
+ WIDTH="29" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.gif"
+ ALT="$\Hat{\Tilde{L}}_{2t}$">
+all being evaluated at the
+MLEs of the parameters <IMG
+ WIDTH="23" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.gif"
+ ALT="$\mu_1$">,
+<IMG
+ WIDTH="23" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.gif"
+ ALT="$\mu_2$">,
+<IMG
+ WIDTH="23" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.gif"
+ ALT="$\mu_3$">,
+<IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img40.gif"
+ ALT="$\theta$">
+and <IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img82.gif"
+ ALT="$\sigma$">
+in the
+respective specifications, say 
+<!-- MATH: $\hat{\gamma}_1$ -->
+<IMG
+ WIDTH="21" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.gif"
+ ALT="$\hat{\gamma}_1$">
+and 
+<!-- MATH: $\hat{\gamma}_{2}$ -->
+<IMG
+ WIDTH="21" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.gif"
+ ALT="$\hat{\gamma}_{2}$">
+where
+
+<!-- MATH: $\hat{\gamma}_j = (\hat{\mu}_{1j}, \hat{\mu}_{2j}, \hat{\mu}_{3j},
+\hat{\theta}_j, \hat{\sigma}_j)$ -->
+<IMG
+ WIDTH="193" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.gif"
+ ALT="$\hat{\gamma}_j = (\hat{\mu}_{1j}, \hat{\mu}_{2j}, \hat{\mu}_{3j},
+\hat{\theta}_j, \hat{\sigma}_j)$">
+is the vector of parameter MLEs under <I>L</I><SUB><I>j</I></SUB>.
+Following Dastoor (1985), the statistic 
+<!-- MATH: $\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.gif"
+ ALT="$\hat{M}_{jk}$">
+may be derived as a
+Lagrange Multiplier test statistic from the general model
+<BR><P></P>
+<DIV>
+<!-- MATH: \begin{equation*}
+M_{jk} = n^{-1} \left[
+\log \dfrac{(L_{j})^{\lambda}}{(\hat{L}_{k})^{1-\lambda}}
+ - \sum_{t=1}^n \left(
+ \log \dfrac{(G_{jt})^{\lambda}}{(\hat{G}_{kt})^{1-\lambda}} G_{jt}
+ + \int_{0}^{\infty} \log
+ \dfrac{\left(\Tilde{L}_{jt}\{\tilde{y}\}\right)^{\lambda}}
+ {\left(\Hat{\Tilde{L}}_{kt}\{\tilde{y}\}\right)^{1-\lambda}}
+ \Tilde{L}_{jt}\{\tilde{y}\} d\tilde{y} \right)
+ \right]
+\end{equation*} -->
+
+
+<IMG
+ WIDTH="622" HEIGHT="83"
+ SRC="img87.gif"
+ ALT="\begin{displaymath}M_{jk} = n^{-1} \left[
+\log \dfrac{(L_{j})^{\lambda}}{(\hat{...
+...bda}}
+\Tilde{L}_{jt}\{\tilde{y}\} d\tilde{y} \right)
+\right]
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+for 
+<!-- MATH: $\lambda\in[0,1]$ -->
+<IMG
+ WIDTH="71" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img88.gif"
+ ALT="$\lambda\in[0,1]$">,
+where now <I>L</I><SUB><I>j</I></SUB>, <I>G</I><SUB><I>jt</I></SUB> and 
+<!-- MATH: $\Tilde{L}_{jt}$ -->
+<IMG
+ WIDTH="28" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img89.gif"
+ ALT="$\Tilde{L}_{jt}$">
+are
+functions of the parameters <IMG
+ WIDTH="21" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.gif"
+ ALT="$\mu_i$">,
+<IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img40.gif"
+ ALT="$\theta$">
+and <IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img82.gif"
+ ALT="$\sigma$">
+of <I>L</I><SUB><I>j</I></SUB>, and
+
+<!-- MATH: $\hat{L}_{k}$ -->
+<IMG
+ WIDTH="25" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.gif"
+ ALT="$\hat{L}_{k}$">,
+
+<!-- MATH: $\hat{G}_{kt}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img92.gif"
+ ALT="$\hat{G}_{kt}$">
+and 
+<!-- MATH: $\Hat{\Tilde{L}}_{kt}$ -->
+<IMG
+ WIDTH="30" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img93.gif"
+ ALT="$\Hat{\Tilde{L}}_{kt}$">
+are again functions
+of 
+<!-- MATH: $\hat{\gamma}_{k}$ -->
+<IMG
+ WIDTH="22" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img94.gif"
+ ALT="$\hat{\gamma}_{k}$">.
+The hypothesis that <I>L</I><SUB><I>j</I></SUB> is correct corresponds to
+the hypothesis that <IMG
+ WIDTH="47" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img95.gif"
+ ALT="$\lambda=1$">.
+If <I>L</I><SUB><I>j</I></SUB> is correct, then subject to
+regularity conditions, 
+<!-- MATH: $\sqrt{n}\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="61" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img96.gif"
+ ALT="$\sqrt{n}\hat{M}_{jk}$">
+has asymptotically a normal
+distribution with mean zero and finite variance (White 1982; Aguirre-Torres
+and Gallant 1983).  Statistically significant negative or positive values of
+
+<!-- MATH: $\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.gif"
+ ALT="$\hat{M}_{jk}$">
+are evidence against <I>L</I><SUB><I>j</I></SUB> (Cox 1962; Dastoor 1985).  It is
+possible for both <I>L</I><SUB>1</SUB> and <I>L</I><SUB>2</SUB> to be rejected, by having 
+<!-- MATH: $\hat{M}_{12}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\hat{M}_{12}$">
+and 
+<!-- MATH: $\hat{M}_{21}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif"
+ ALT="$\hat{M}_{21}$">
+both be either significantly negative or significantly
+positive.
+
+<P>
+Loh (1985) shows that the size of a Cox test may deviate substantially from
+the intended test level, even asymptotically.  In addition, the switching
+tobit likelihoods need not satisfy the regularity conditions necessary for
+
+<!-- MATH: $\sqrt{n}\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="61" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img96.gif"
+ ALT="$\sqrt{n}\hat{M}_{jk}$">
+to be asymptotically normal, even when <I>L</I><SUB><I>j</I></SUB> is
+correct.  For instance, if 
+<!-- MATH: $|\mu_i/\theta \sigma|$ -->
+<IMG
+ WIDTH="58" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif"
+ ALT="$\vert\mu_i/\theta \sigma\vert$">
+is large for one
+
+<!-- MATH: $i\in\{H,S,P\}$ -->
+<IMG
+ WIDTH="104" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img99.gif"
+ ALT="$i\in\{H,S,P\}$">,
+then the observed data may not contain sufficient information
+to determine a unique optimum estimate for all of the parameters.  In
+particular, if chamber 
+<!-- MATH: $i\in\{H,S\}$ -->
+<IMG
+ WIDTH="84" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif"
+ ALT="$i\in\{H,S\}$">
+is never decisive for any appropriations
+item, then the realization of the spatial game is degenerate and all MW can
+determine under <I>L</I><SUB>1</SUB> is that 
+<!-- MATH: $\mu_i <\min_t (C_{Dt}^*-C_{it}^*) + \mu_D$ -->
+<IMG
+ WIDTH="210" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.gif"
+ ALT="$\mu_i <\min_t (C_{Dt}^*-C_{it}^*) + \mu_D$">
+and under <I>L</I><SUB>2</SUB> that 
+<!-- MATH: $\mu_i >\max_t (C_{Dt}^*-C_{it}^*) + \mu_D$ -->
+<IMG
+ WIDTH="213" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.gif"
+ ALT="$\mu_i >\max_t (C_{Dt}^*-C_{it}^*) + \mu_D$">.
+Apart
+from such cases 
+<!-- MATH: $|\hat{\mu}_i|$ -->
+<IMG
+ WIDTH="30" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.gif"
+ ALT="$\vert\hat{\mu}_i\vert$">
+is finite if <IMG
+ WIDTH="45" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.gif"
+ ALT="$\theta>0$">
+and <IMG
+ WIDTH="47" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif"
+ ALT="$\sigma>0$">,
+and
+all the parameters are identifiable as 
+<!-- MATH: $n\rightarrow\infty$ -->
+<IMG
+ WIDTH="60" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img106.gif"
+ ALT="$n\rightarrow\infty$">.
+But for any
+particular <I>n</I> the accuracy of the asymptotic normal approximation may be
+poor.
+
+<P>
+To avoid relying on asymptotic normality, MW use Monte Carlo simulation to
+estimate the distribution of 
+<!-- MATH: $\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.gif"
+ ALT="$\hat{M}_{jk}$">,
+conditioning on the parameter
+MLEs of the respective likelihoods.  Observing that the distributions of
+
+<!-- MATH: $\hat{\gamma}_j$ -->
+<IMG
+ WIDTH="21" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.gif"
+ ALT="$\hat{\gamma}_j$">
+and 
+<!-- MATH: $\hat{\gamma}_k$ -->
+<IMG
+ WIDTH="22" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img94.gif"
+ ALT="$\hat{\gamma}_{k}$">
+do not depend on <IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img108.gif"
+ ALT="$\lambda$">,
+they are
+using the MLEs as statistics ancillary to 
+<!-- MATH: $\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.gif"
+ ALT="$\hat{M}_{jk}$">,
+which they treat as
+implicitly a function of the parameter <IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img108.gif"
+ ALT="$\lambda$">
+of
+<I>M</I><SUB><I>jk</I></SUB>.<A NAME="tex2html12"
+ HREF="footnode.shtml#foot735"><SUP>4</SUP></A>  To correct the test level in estimating 95%
+confidence intervals, MW use nonparametric bootstrap calibration (Loh 1987;
+Hall 1992, 141-145). For each of 
+<!-- MATH: $b=1,\ldots,1000$ -->
+<IMG
+ WIDTH="121" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img109.gif"
+ ALT="$b=1,\ldots,1000$">
+replications MW generate
+three sets of <I>n</I> independent Normal deviates with mean zero and variance
+
+<!-- MATH: $\hat{\sigma}_j^2$ -->
+<IMG
+ WIDTH="23" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img110.gif"
+ ALT="$\hat{\sigma}_j^2$">,
+using these as the disturbances 
+<!-- MATH: $\varepsilon_i$ -->
+<IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img111.gif"
+ ALT="$\varepsilon_i$">
+with the
+estimates 
+<!-- MATH: $\hat{\theta}_j$ -->
+<IMG
+ WIDTH="20" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img112.gif"
+ ALT="$\hat{\theta}_j$">,
+
+<!-- MATH: $\hat{\mu}_{ij}$ -->
+<IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img113.gif"
+ ALT="$\hat{\mu}_{ij}$">
+and the observed values <I>A</I> and
+<I>C</I><SUB><I>i</I></SUB> to compute simulated values 
+<!-- MATH: $\acute{y}_i^{*b}$ -->
+<IMG
+ WIDTH="27" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img114.gif"
+ ALT="$\acute{y}_i^{*b}$">.
+Applying the regime
+definitions and the censoring rule then gives impoundment observations
+
+<!-- MATH: $\acute{y}^{b}$ -->
+<IMG
+ WIDTH="21" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img115.gif"
+ ALT="$\acute{y}^{b}$">
+simulated from <IMG
+ WIDTH="24" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img116.gif"
+ ALT="$\hat{L}_j$">,
+from which, using 
+<!-- MATH: $\hat{\gamma}_j$ -->
+<IMG
+ WIDTH="21" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.gif"
+ ALT="$\hat{\gamma}_j$">
+and 
+<!-- MATH: $\hat{\gamma}_k$ -->
+<IMG
+ WIDTH="22" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img94.gif"
+ ALT="$\hat{\gamma}_{k}$">,
+MW compute 
+<!-- MATH: $\Acute{\Hat{M}}_{jk}^{b}$ -->
+<IMG
+ WIDTH="38" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img117.gif"
+ ALT="$\Acute{\Hat{M}}_{jk}^{b}$">.
+MW use the
+algorithm outlined by Hall (1992, 144) to calibrate percentile confidence
+intervals of 
+<!-- MATH: $\Acute{\Hat{M}}_{jk}^{b}-\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="90" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img118.gif"
+ ALT="$\Acute{\Hat{M}}_{jk}^{b}-\hat{M}_{jk}$">,
+resampling (with
+replacement) 200 times from each set of simulated disturbances.  When
+
+<!-- MATH: $\Acute{\Hat{M}}_{jk}^{b}>\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="92" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img119.gif"
+ ALT="$\Acute{\Hat{M}}_{jk}^{b}>\hat{M}_{jk}$">
+for all <I>b</I> or
+
+<!-- MATH: $\Acute{\Hat{M}}_{jk}^{b}<\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="92" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img120.gif"
+ ALT="$\Acute{\Hat{M}}_{jk}^{b}<\hat{M}_{jk}$">
+for all <I>b</I>, MW use the uncalibrated
+percentile intervals.
+
+<P>
+The combined set of Cox test results and estimation failures due to unbounded
+likelihoods (with 
+<!-- MATH: $\hat{\theta} \downarrow 0$ -->
+<IMG
+ WIDTH="40" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img121.gif"
+ ALT="$\hat{\theta} \downarrow 0$">), reported in
+Table <A HREF="node7.shtml#tab:coxtest">2</A>, provides fair support for the spatial model.  For
+rescissions, the test supports <I>L</I><SUB>1</SUB> rather than <I>L</I><SUB>2</SUB> for FY1982 and
+FY1983 and does not reject either likelihood for FY1986 or FY1987.  For FY1985
+the test is undefined because both <I>L</I><SUB>1</SUB> and <I>L</I><SUB>2</SUB> are unbounded; MW
+reject both likelihoods for that year.  The major departure from the pattern
+hypothesized for rescissions is that the test supports <I>L</I><SUB>2</SUB> rather than
+<I>L</I><SUB>1</SUB> for FY1984.  For deferrals, the test does not reject either likelihood
+for FY1982 and supports <I>L</I><SUB>1</SUB> rather than <I>L</I><SUB>2</SUB> for FY1983.  For FY1984,
+the likelihood is unbounded for <I>L</I><SUB>2</SUB> but not <I>L</I><SUB>1</SUB>, while for FY1985
+<I>L</I><SUB>1</SUB> is unbounded but not <I>L</I><SUB>2</SUB>.  For FY1986 the test is undefined
+because both <I>L</I><SUB>1</SUB> and <I>L</I><SUB>2</SUB> are unbounded, while for FY1987 both
+
+<!-- MATH: $\hat{M}_{12}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif"
+ ALT="$\hat{M}_{12}$">
+and 
+<!-- MATH: $\hat{M}_{21}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif"
+ ALT="$\hat{M}_{21}$">
+are significantly positive; MW reject both
+likelihoods for both years.  The results for deferrals are compatible with the
+expected pattern of a change to the post-<I>Chadha</I> form between FY1984 and FY1985,
+with neither likelihood fitting the data very well during FY1987.
+
+<P>
+MW found that the likelihood for the simple tobit model that includes only an
+intercept is always smaller than either switching tobit likelihood; i.e.,
+
+<!-- MATH: $\hat{L}_{\text{tobit}} <\hat{L}_{j}$ -->
+<IMG
+ WIDTH="88" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img122.gif"
+ ALT="$\hat{L}_{\text{tobit}} <\hat{L}_{j}$">
+for <I>j</I>=1 and <I>j</I>=2.  Such a result
+occurs because in conditioning on the differences <I>A</I>-<I>C</I><SUB><I>i</I></SUB>, both switching
+tobit models use more information than the simple tobit specification does.
+The simple tobit model is nonetheless not nested under the switching models,
+because the parameter space for the switching models does not include the
+value <IMG
+ WIDTH="45" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img123.gif"
+ ALT="$\theta=0$">.
+Cox tests using statistics analogous to 
+<!-- MATH: $\hat{M}_{jk}$ -->
+<IMG
+ WIDTH="36" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.gif"
+ ALT="$\hat{M}_{jk}$">
+do
+not reject the simple tobit specification in comparison to either switching
+tobit specification, nor vice versa.  Because of the high frequency of
+censoring, however, these tests are not powerful.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html85"
+ HREF="node7.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html83"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html77"
+ HREF="node5.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html86"
+ HREF="node7.shtml">Tables</A>
+<B> Up:</B> <A NAME="tex2html84"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html78"
+ HREF="node5.shtml">Application: Domains of Economic</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

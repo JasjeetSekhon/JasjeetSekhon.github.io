@@ -1,0 +1,77 @@
+
+DESCRIPTION OF VARIABLES IN DATASET "cross_section_wfl.dta"
+
+  obs:           462                          
+ vars:           353                          9 Nov 2007 17:50
+ size:       631,092 (39.8% of memory free)
+
+All variables except for "pcia.dpt" and "treat" are preceded by
+"yxxxx.", where xxxx indicates the year for which the variables have
+information.
+
+For example, y1990.privatews is equal to one if water services were
+private in year 1990 and equal to zero if water services were public
+in year 1990, while y1996.privatews is equal to one if water services
+were private in year 1996 and equal to zero if water services were
+public in year 1996.
+
+Only descriptions for the year 1990 are given. Descriptions for all
+other years are analogous.
+
+All mortality variables are in rates.
+
+
+-------------------------------------------------------------------------------
+              storage  display     value
+variable name   type   format      label      variable label
+-------------------------------------------------------------------------------
+pcia.dpt         long   %12.0g                 Unique municipality identifier
+
+treat            float  %9.0g                  Treatment indicator (=1 if water services privatized between 1991 and 1999, 
+                                                                    =0 if water services did not privatize in this period) 
+
+treat98          float  %9.0g                  Indicator (=1 if water services privatized between 1991 and 1998,
+                                                          =0 if water services did not privatize in this period) 
+
+y1990.year       int    %8.0g                  Year in 1990 (always 1990)
+y1990.privatews  byte   %8.0g                  Private Water Services (=1 if water services private in year 1990, 
+                                                                       =0 if water services public in year 1990)
+y1990.unemp      float  %9.0g                  Unemployment
+y1990.pbirpc     float  %8.0g                  Real GDP per capita
+y1990.tasatot    float  %9.0g                  Child Mortality
+y1990.pubspendpc float  %9.0g                  Public spending per capita
+y1990.ineq       float  %9.0g                  Income inequality
+y1990.tmaccid    float  %9.0g                  Mortality from Accidents
+y1990.tmperin    float  %9.0g                  Mortality from Perinatal
+y1990.tmconge    float  %9.0g                  Mortality from Congenital anomalies
+y1990.tmpiel     float  %9.0g                  Mortality from Skin and soft-tissue diseases
+y1990.tmsangr    float  %9.0g                  Mortality from Blood and hematologic diseases
+y1990.tmcircu    float  %9.0g                  Mortality from Cardiovascular diseases
+y1990.tmdiges    float  %9.0g                  Mortality from Gastrointestinal tract disorders
+y1990.tmgenit    float  %9.0g                  Mortality from Genital and urinary diseases
+y1990.tmosteo    float  %9.0g                  Mortality from Osteoarticular and connective tissue diseases
+y1990.tmrespi    float  %9.0g                  Mortality from Respiratory diseases
+y1990.tmendoc    float  %9.0g                  Mortality from Immunodeficiencies, endocrine,and nutrition system diseases
+y1990.tminfec    float  %9.0g                  Mortality from Infectious and parasitic diseases
+y1990.tmmenta    float  %9.0g                  Mortality from Mental disorders
+y1990.tmtumor    float  %9.0g                  Mortality from Tumors
+y1990.tmnerv     float  %9.0g                  Mortality from Nervous system disorders
+y1990.propen     float  %9.0g                  Propensity Score used by Galiani, Schargrodsky and Gertler (2005) 
+y1990.lower      float  %9.0g                  Common support limit used by Galiani, Schargrodsky and Gertler (2005) 
+y1990.upper      float  %9.0g                  Common support limit used by Galiani, Schargrodsky and Gertler (2005) 
+y1990.radical    float  %9.0g                  Radical Party (=1 if Radical party in control of government, =0 otherwise)
+y1990.peron      float  %9.0g                  Peronist Party (=1 if Peronist party in control of government, =0 otherwise)
+y1990.pcia.year  float  %9.0g                  (Cross-sectionalized interaction of province and year, do not use)
+y1990.tmsl       float  %9.0g                  Mortality from Other causes
+y1990.hognbi1    float  %9.0g                  Nonpoor Municipalities (=1 if non-poor, =0 otherwise)
+y1990.hognbi2    float  %9.0g                  Poor Municipalities (=1 if poor, =0 otherwise)
+y1990.hognbi3    float  %9.0g                  Extremely Poor Municipalities (=1 if extremely poor, =0 otherwise)
+y1990.interact1  float  %9.0g                  Treatment-Nonpoor Municipalities (cross-sectionalized interaction, do not use) 
+y1990.interact2  float  %9.0g                  Treatment-Poor Municipalities    (cross-sectionalized interaction, do not use) 
+y1990.interact3  float  %9.0g                  Treatment-Extremely Poor Municipalities (cross-sectionalized interaction, do not use) 
+
+
+      
+
+
+

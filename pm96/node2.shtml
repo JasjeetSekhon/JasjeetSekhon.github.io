@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>LISREL</TITLE>
+<META NAME="description" CONTENT="LISREL">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="next" HREF="node6.shtml">
+<LINK REL="previous" HREF="node1.shtml">
+<LINK REL="up" HREF="pm96.shtml">
+<LINK REL="next" HREF="node3.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html44"
+ HREF="node3.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html42"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html36"
+ HREF="node1.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html45"
+ HREF="node3.shtml">The LISREL Cox Test</A>
+<B> Up:</B> <A NAME="tex2html43"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html37"
+ HREF="node1.shtml">Introduction</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+LISREL</A>
+</H1>
+
+<P>
+The LISREL log-likelihood can be derived from the Wishart distribution
+(Anderson 1958, 154-159).  For sample covariance matrix <I>S</I> computed from <I>n</I>
+i.i.d. observations of <I>p</I> variables having covariance matrix <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img3.gif"
+ ALT="$\Sigma$">,
+<BR><P></P>
+<DIV>
+
+<!-- MATH: \begin{equation}
+\log L = \log \left [\frac{|S|^{\frac{1}{2}(n-p-2)}
+\exp \left \{-\frac{1}{2}(n-1) \ \operatorname{tr}\left [S \Sigma^{-1} \right] \right \}
+ \left (\frac{1}{2}(n-1) \right )^{\frac{1}{2}p(n-1)}}
+ {\pi^{\frac{1}{4}(2p-1)} |\Sigma|^{\frac{1}{2}(n-1)}
+ \prod_{i=1}^{p} \Gamma \left [\frac{1}{2}(n - i) \right ]} \right ]
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD NOWRAP><IMG
+ WIDTH="543" HEIGHT="70"
+ SRC="img4.gif"
+ ALT="\begin{displaymath}\log L = \log \left [\frac{\vert S\vert^{\frac{1}{2}(n-p-2)}
+...
+..._{i=1}^{p} \Gamma \left [\frac{1}{2}(n - i) \right ]} \right ]
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(1)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+The LISREL likelihood can also be derived from the multinormal probability
+distribution.  For observations 
+<!-- MATH: $w_{i} = (w_{i1},
+w_{i2},\cdots,w_{ip})^{\top}$ -->
+<IMG
+ WIDTH="194" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.gif"
+ ALT="$w_{i} = (w_{i1},
+w_{i2},\cdots,w_{ip})^{\top}$">
+with mean <IMG
+ WIDTH="15" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.gif"
+ ALT="$\mu$">,
+<BR>
+<A NAME="eq:logl">&#160;</A><IMG
+ WIDTH="511" HEIGHT="95" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.gif"
+ ALT="\begin{align}\log L & = \log \left [
+\left ( 2 \pi \right )^{\frac{1}{2}np} \ve...
+...2} n \operatorname{tr}\left ( S_{\mathrm{ml}} \Sigma^{-1}
+\right )
+\end{align}">
+<BR>
+where 
+<!-- MATH: $S_{\mathrm{ml}}= n^{-1} \sum_{i=1}^{n}
+(w_{i}-\hat{\mu})(w_{i}-\hat{\mu})^{\top}$ -->
+<IMG
+ WIDTH="265" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.gif"
+ ALT="$S_{\mathrm{ml}}= n^{-1} \sum_{i=1}^{n}
+(w_{i}-\hat{\mu})(w_{i}-\hat{\mu})^{\top}$">,
+using the sample mean vector
+<IMG
+ WIDTH="15" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.gif"
+ ALT="$\hat{\mu}$">.
+Subject to correct specification and unique identifiability of
+all model parameters, the maximum likelihood LISREL estimator gives consistent
+and asymptotically normal parameter estimates under a wide range of
+conditions; multivariate normality of the observed data is not required
+(Anderson and Amemiya 1988; Browne 1987; Browne and Shapiro 1988; Anderson
+1989).  In fact we shall not require consistency, but only identifiable
+uniqueness (White 1994, 28).  We assume that the observations <I>w</I><SUB><I>i</I></SUB> are
+i.i.d. from a probability distribution <I>F</I> that has finite fourth moments,
+mean <IMG
+ WIDTH="26" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.gif"
+ ALT="$\mu_F$">
+and covariance matrix <IMG
+ WIDTH="29" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\Sigma_F$">.
+<I>F</I> is presumably generated by
+the hypothesized LISREL model.
+
+<P>
+Let 
+<!-- MATH: $\hat{L}_{01}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="$\hat{L}_{01}$">
+be the likelihood ratio test statistic between the
+estimated model, 
+<!-- MATH: $\hat{L}_{0}$ -->
+<IMG
+ WIDTH="24" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif"
+ ALT="$\hat{L}_{0}$">,
+and the saturated model, 
+<!-- MATH: $\hat{L}_{1}$ -->
+<IMG
+ WIDTH="24" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="$\hat{L}_{1}$">,
+i.e.,
+
+<!-- MATH: $\hat{L}_{01} = -2 (\log \hat{L}_{0} - \log \hat{L}_{1})$ -->
+<IMG
+ WIDTH="201" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.gif"
+ ALT="$\hat{L}_{01} = -2 (\log \hat{L}_{0} - \log \hat{L}_{1})$">.
+Because 
+<!-- MATH: $\log
+\hat{L}_{1}$ -->
+<IMG
+ WIDTH="49" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.gif"
+ ALT="$\log
+\hat{L}_{1}$">
+is a constant for a given sample, minimizing
+
+<!-- MATH: $\hat{L}_{01}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="$\hat{L}_{01}$">
+instead of maximizing 
+<!-- MATH: $\log \hat{L}_{0}$ -->
+<IMG
+ WIDTH="49" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\log \hat{L}_{0}$">
+does not affect the
+choice of the MLE 
+<!-- MATH: $\hat{\theta}$ -->
+<IMG
+ WIDTH="13" HEIGHT="20" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\hat{\theta}$">.
+
+<!-- MATH: $\hat{L}_{01}$ -->
+<IMG
+ WIDTH="31" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="$\hat{L}_{01}$">
+is the usual goodness-of-fit
+test statistic for 
+<!-- MATH: $\hat{L}_{0}$ -->
+<IMG
+ WIDTH="24" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif"
+ ALT="$\hat{L}_{0}$">
+(Amemiya and Anderson 1990).  Using the
+Wishart likelihood,
+<BR><P></P>
+<DIV>
+
+<!-- MATH: \begin{equation}
+\hat{L}_{01} = -2 (\log \hat{L}_{0} - \log \hat{L}_{1})
+= (n-1)
+ \left[ \operatorname{tr}\left( S \hat{\Sigma}^{-1} \right) - \log|S \hat{\Sigma}^{-1}| - p \right]
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD NOWRAP><A NAME="eq:d">&#160;</A><IMG
+ WIDTH="497" HEIGHT="38"
+ SRC="img19.gif"
+ ALT="\begin{displaymath}\hat{L}_{01} = -2 (\log \hat{L}_{0} - \log \hat{L}_{1})
+= (n...
+...^{-1} \right) - \log\vert S \hat{\Sigma}^{-1}\vert - p \right]
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(2)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+The LISREL discrepancy function is
+<BR><P></P>
+<DIV>
+
+<!-- MATH: \begin{equation}
+F_{ML} = (n-1)^{-1}\hat{L}_{01} = \operatorname{tr}\left[ S \hat{\Sigma}^{-1} \right]
+- \log|S \hat{\Sigma}^{-1}| - p.
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD NOWRAP><A NAME="eq:fml">&#160;</A><IMG
+ WIDTH="389" HEIGHT="38"
+ SRC="img20.gif"
+ ALT="\begin{displaymath}F_{ML} = (n-1)^{-1}\hat{L}_{01} = \operatorname{tr}\left[ S \...
+...Sigma}^{-1} \right]
+- \log\vert S \hat{\Sigma}^{-1}\vert - p.
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(3)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html46"
+ HREF="node3.shtml">The LISREL Cox Test Statistic</A>
+<LI><A NAME="tex2html47"
+ HREF="node4.shtml">Bootstrapping 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$"></A>
+<LI><A NAME="tex2html48"
+ HREF="node5.shtml">Application:  Domains of Economic Assessment</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html44"
+ HREF="node3.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html42"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html36"
+ HREF="node1.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html45"
+ HREF="node3.shtml">The LISREL Cox Test</A>
+<B> Up:</B> <A NAME="tex2html43"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html37"
+ HREF="node1.shtml">Introduction</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

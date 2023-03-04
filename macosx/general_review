@@ -1,0 +1,74 @@
+<h4 class="General Review">General Review</h4>
+<br>
+
+What about OS X for more general computing applications?  After a few days of
+the Mac being my main desktop, I could no longer take it.  I switched back to
+my Linux box.  My Linux box has two monitors.  There is a third monitor which
+I switch between XP and OS X.  I run everything with just a single keyboard
+and mouse either through my KVM or even better through <a
+href="http://www.rdesktop.org">rdesktop (RDP)</a> to Windows and <a
+href="http://www.tightvnc.com">Tight VNC</a> to OS X (VNC controls the mouse
+and keyboard but I look at the actual monitor for the Mac screen output).
+
+<br><br>
+
+To make a long story short, the Mac has not been useful to me.  I only use it
+to run iTunes.  I cannot even use it to do video editing!?!  I convert video
+from my PVR to mpeg-ts (mpegpes) on Windows XP.  I do this using <a
+href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/directshow/htm/usinggraphedit.asp">DirectShow
+Filters via graphedit</a> which is an awesome interface to various video
+tools---one of Microsoft's biggest weapons has long been wonderful development
+tools.  In this way, I can turn PVR files into portable mpeg-ts files.  Which
+I can watch or burn to DVD for personal use.  The problem?  I cannot edit
+mepg-ts files using any Apple tool I can find.  I could use <a
+href="http://www.alfanet.it/squared5/mpegstreamclip.html">third party
+software</a> or open source stuff like <a
+href="http://www.mplayerhq.hu/homepage/index.html">mencoder and mplayer</a>,
+but I might as well then use Linux (where the software runs much faster
+because of the OS and because I can run the software on an <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>).
+On Windows, I can *easily* burn my shows to dvd using <a
+href="http://www.nero.com/">Nero</a> which is fast and user friendly. I cannot
+use iDVD because it relies on Quicktime and QT does not support mpeg-ts.  So,
+the Mac does not "just work" even for video editing.  mpeg-ts is hardly an
+obscure format.  And no, I do not want to add an encoding step to switch
+mpeg-ts to some Quicktime format just to change it again for burning to a dvd
+using iDVD.  But if an encoding step is okay for you, you can use <a
+href="http://www.alfanet.it/squared5/mpegstreamclip.html">MPEG Steamclip for
+OS X</a>, but it is slower than mplayer under Linux (particularly mplayer on
+x86 Linux).
+
+<br><br>
+
+When Tiger was first released it had a TON of bugs.  This is what
+happens when the beta testing setup is mostly secret---much like a
+Bush rally, you need the secret decoder ring to get in.  Apple does
+this because it wants the secrecy to generate buzz in the consumer
+market.  It doesn't really care about enterprise users and it shows.
+For a list of annoying bugs (which have admittedly since been
+corrected) see my <a href="g5.html">previous benchmarks</a>.
+
+<br><br>
+
+To be clear, Apple doesn't really care about techie users.  People I
+know who work there are very honest about this.  Apple thinks it is
+cool that a few hard core and famous hackers (such as <a
+href="http://en.wikipedia.org/wiki/Bill_Joy">Bill Joy</a>) are using
+their machines.  But that is not who they really care about.
+
+<br><br>
+
+The color quality of the Mac desktop is fantastic.  Whites really are
+white and blues blue.  But the bad engineering of the OS as well as
+the highly controlled nature of Apple's development model and
+applications offends me.  Who would have thought that a decade after
+the famous <a
+href="http://applemuseum.bott.org/sections/ads.html">1984 Big Brother
+ad</a>, it would be Apple with the highly controlled <a
+href="http://www.google.com/url?sa=U&start=1&q=http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/&e=9800">cathedral</a>
+OS and IBM would be spending hundreds of millions of dollars on code
+it allows anyone to <a href="http://www-1.ibm.com/linux/">share and to
+contribute to</a>?
+
+<br>
+<br>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st
+March 2002), see www.w3.org" /> 
+<meta name="keywords" content="Sekhon, Jasjeet Sekhon, Jasjeet Singh
+Sekhon,Apple, Mac OS X, Linux, Windows, benchmarks,linux on g5, 970, ibm, review, tiger, operton, intel, linux vs. os x, Linux vs. OS X, G5 versus opteron, g5, MacBookpro"/>
+<title>Linux versus Mac OS X on Intel Dual Core</title> 
+<link rel="stylesheet" href="http://www.w3.org/StyleSheets/Core/Steely"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body { margin: 5em 5em 5em 5em}
+/*]]>*/
+</style>
+</head>
+<body>
+<h2>
+Linux versus Mac OS X on Intel Dual Core
+</h2>
+
+<br>
+
+In early May I posted benchmarks comparing Linux and OS X on a
+MacBookpro running my <a href="http://sekhon.berkeley.edu/Matching">R
+packages</a> (I later added Windows XP benchmarks).  In one of the
+original benchmarks, both Linux and Windows XP were more than twice as
+fast as OS X.  And in a second (more representative) benchmark, Linux
+was about 20% faster.  The benchmarks were posted on <a
+href="http://digg.com">Digg</a> and a variety of other high traffic
+internet websites.  This attention generated a lot of comments and
+suggestions.
+
+<br><br>
+
+With the help of a variety of developers working at Apple and
+elsewhere, the large OS X performance gap previously reported here has
+been significantly reduced.  The most important improvement is the use
+of a more efficient algorithm which relies on optimized <a
+href="http://www.netlib.org/blas/faq.html">BLAS</a> to perform key
+matrix operations.  This change increased the performance of the code
+on all platforms.  The performance gap was further closed by compiling
+and linking R on OS X against <a
+href="http://g.oswego.edu/dl/html/malloc.html">Doug Lea's malloc</a>
+(called <a href="http://dmalloc.com/">dmalloc</a> for short).
+
+<br><br> 
+
+<B> However, a Linux speed advantage remains which varies with the
+size of the dataset used.  For example, the gap ranges from 0% for a
+small dataset to 10% for what is a medium size dataset for the
+algorithm in question.  The gap shrinks again to 0% for a large
+dataset.  The performance gap is much greater if the default OS X
+malloc is used notwithstanding the use of the new algorithm: the gap
+goes from essentially zero for a small dataset, to 50% for a medium
+one, and up to 70% for a large one.  Therefore, it is recommend that R
+for OS X be linked against dmalloc just as it is for Windows.  At the
+very least, packages such as the <a
+href="http://scythe.wustl.edu/">Scythe Statistical Library</a> should
+be so compiled.
+</B>
+
+<br><br> The default malloc on OS X, like the default malloc on
+Windows XP, causes a large performance degradation relative to the
+default mallocs on Linux and Solaris.  <a
+href="http://www.r-project.org">R</a> developers use the default
+system malloc on every operating system but Windows.  It turns out
+that this decision is a bad one in the case of OS X because its memory
+allocator makes mmap system calls more often (at 15KB and larger
+allocations) than dmalloc (at 256KB and larger).  Indeed, as suggested
+by <a href="http://www.tacc.utexas.edu/~kgoto/">Kazushige Goto</a>,
+the performance of this code can be further improved by avoiding mmap
+altogether.  GNU malloc, for example, always makes the munmap system
+call for large allocations which results in page faults with every
+such allocation.  Calls to mmap can be avoided on Linux by setting two
+envirnmental variables: MALLOC_TRIM_THRESHOLD to -1 and
+MALLOC_MMAP_MAX to 0.  If this is done, the benchmarks below
+significantly improve for medium and large dataset sizes.  Once I get
+this working for OS X, I'll update the benchmarks.
+
+<br><br>
+
+While the new BLAS version of the code is faster on all platforms, the
+quality of BLAS implementations is not constant across operating
+systems.  <a href="http://www.tacc.utexas.edu/~kgoto/">Goto's BLAS</a>
+implementation is currently the fastest and it is not yet available
+for x86 OS X.  So, a direct comparison between OS X and Linux using
+the best BLAS library is not currently possible.  For the purposes of
+these comparisons, the <a
+href="http://math-atlas.sourceforge.net/">ATLAS</a> (nonthreaded) BLAS
+were used on both OS X and Linux.  It turns out that the default OS X
+BLAS libraries in the vecLib Framework provide somewhat better
+performance for this code on OS X, so the OS X default BLAS
+implementation is used while the default <a
+href="http://packages.ubuntulinux.org/dapper/devel/atlas3-sse2-dev">Ubuntu
+ATLAS BLAS</a> libraries are used for Linux.
+
+<br><br>
+
+Linux performance improves if Goto's BLAS are used instead of the
+ATLAS BLAS.  Goto's work is described on an <a
+href="http://www.apple.com/education/science/profiles/vatech/optimization.html">Apple
+webpage</a> because he added a custom BLAS for the Apple super
+computer at <a href="http://www.tcf.vt.edu/systemX.html">Virginia
+Tech</a>.  Virginia Tech was able to achieve their excellent
+performance by using a kernel level memory manager which provides
+physically contiguous memory which provides them with both high and
+consistent performance (information provided via email by their
+Director of HPC and Technology Innovation and K. Goto).
+
+<br><br>
+
+
+The benchmarks are based on one of my statistical software packages
+for <a href="http://www.r-project.org/">R</a>: <a
+href="../matching">Matching</a> (Multivariate and Propensity Score
+Matching Software).  The code uses C++ code extensively.  The
+benchmark scripts only vary by the sample size of the dataset being
+examined.  The data sizes are: <a href="GenMatch.R">445</a>, <a
+href="GenMatch2.R">890</a>, <a href="GenMatch3.R">1780</a> and <a
+href="GenMatch5.R">5340</a> observations.  The script with 445
+observations is exactly the same as the original <a
+href="GenMatch1.png">Benchmark 1</a>, but it is now run with the new
+algorithm which makes use of optimized BLAS.  Each script runs the
+benchmark three times and the best runtime of the three is recorded.
+Each script is executed 100 times and the average times are reported
+below.
+
+<br><br>
+
+The computer being  used is:
+<TABLE BORDER=2 CELLSPACING=15>
+<TR> <TH>Label</TH> <TH>OS and Chip</TH> </TR> 
+
+<TR> <TD>OS X Core Duo</TD> <TD><a
+href="http://www.apple.com/macosx/tiger">Tiger</a> on <a
+href="http://www.apple.com/macbookpro">MacBookpro</a>, Intel 2.16GHz
+Dual Core 2GB RAM</TD> </TR>
+
+<TR>
+<TD>Linux Core Duo</TD> <TD>
+<a href="http://www.ubuntu.com/">Ubuntu</a> Linux (<a
+href="http://www.ubuntu.com/testing/dapperbeta?highlight=%28beta%29">Drapper
+Drake</a>) with i686-SMP kernel on MacBookpro, Intel 2.16GHz Dual Core
+2GB RAM.  Note: Xorg server running with <a
+href="http://www.gnome.org">GNOME</a></TD> </TR>
+</TABLE>
+
+<br> <br>
+
+<img src="GenMatch2_445obs.png" alt="GenMatch">
+
+<br><br>
+
+Unlike the <a href="GenMatch1.png">original Benchmark 1 results</a>
+(which were obtained using exactly this script), this benchmarks
+results in only small differences.  There is no difference in
+performance between Linux and the OS X code when Lea's malloc is used.
+And the difference between Linux and the code with the OS X malloc is
+small but statistically significant---the p-value based on the
+empirical distribution over 100 simulations is 0.04.
+
+<br><br>
+
+As we increase the sample size, differences begin to become more
+pronounced.
+
+<br>
+
+
+<img src="GenMatch2_890obs.png" alt="GenMatch_890obs">
+
+<br><br>
+
+Linux is now 20% faster than the default OS X version (p-value=0.00)
+and 10% faster than the OS X version using Lea's malloc
+(p-value=0.00).
+
+<img src="GenMatch2_1780obs.png" alt="GenMatch_1780obs">
+<br><br>
+
+There is some evidence that the difference between Linux and OS X with
+Lea's malloc is either asymptoting at about 10% or possibly even
+shrinking---from 1.11 times as slow as Linux in the previous benchmark
+to 1.08 times as slow now.  The next simulation will help to nail this
+down.  In any case, the gap between Linux and the default OS X malloc
+version has more than doubled and OS X is now about 1.5 times slower
+than Linux.
+
+<br><br>
+
+In an attempt to answer the asymptoting vs shrinking gap question, a
+benchmarks was run with 5340 observations (12 times the original
+dataset).
+
+<br>
+
+<img src="GenMatch2_5340obs.png" alt="GenMatch_5340obs">
+
+<br>
+
+So it appears that the Linux advantage over OS X using dmalloc was
+only present for a given range of dataset size and at this point it
+has disappeared once again.  The gap between OS X (default malloc) and
+Linux continues to grow.
+
+<br><br>
+
+I'm a bit surprised at the degree to which the malloc implementation
+is still making a difference. The efficiency of the
+malloc implementation had a large impact on the original version of
+the code because malloc was being called in the inner loop by the <a
+href="http://scythe.wustl.edu/">Scythe Statistical Library</a>.  This
+library does not require that the dimensions of matrices be explicitly
+declared.  In my updated algorithm not only are these dimensions
+declared at the time of variable creation, key operations now make use
+of system <a href="http://www.netlib.org/blas/">BLAS</a> libraries.
+These changes make the code faster on all platforms.  However, there
+is a tradeoff.  The original code made extensive use of the <a
+href="http://scythe.wustl.edu/">Scythe Statistical Library</a> which
+allows for the quick development of C++ code that is faster than R (an
+interpreted language). One can certainly write more efficient C++ code
+(the new version of my package which uses optimized system BLAS is an
+example).  But code using Scythe is clear and straightforward to
+write, read and debug especially for R programmers because it uses a
+similar syntax.  Therefore, it is reasonable for developers to use
+Scythe even though there are more efficient alternatives.
+
+<br><br>
+
+The claims that I had previously made about the inefficiency of OS X
+system calls relative to Linux still hold although system calls are
+probably not an issue for these benchmarks at least judging from
+profiling the code---as an aside, I would dearly love to have the
+equivalent of <a
+href="http://developer.apple.com/tools/sharkoptimize.html">Shark</a>
+for Linux.  As for system calls, as one email corresponded noted,
+compare <a
+href="http://cvs.opendarwin.org/cgi-bin/cvsweb.cgi/src/xnu/bsd/dev/ppc/systemcalls.c?rev=1.3&content-type=text/x-cvsweb-markup">Darwin
+system call handling</a> versus the <a
+href="http://lxr.linux.no/source/arch/ppc/kernel/entry.S">Linux
+equivalent</a> (Tiger version is available <a
+href="http://www.opensource.apple.com/darwinsource/10.4.6.ppc/xnu-792.6.70/bsd/dev/ppc/systemcalls.c">here</a>). <a
+href="http://www.anandtech.com/">Anandtech</a> (<a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2436">Part I</a> and
+<a href="http://www.anandtech.com/mac/showdoc.aspx?i=2520&p=8">Part
+II</a>) has conducted a series of benchmarks relevant to this issue,
+and Darwin is slower than the 2.6 Linux kernel in these benchmarks
+sometimes by several times.
+
+<br><br>
+
+<h4 class="Summary">Suggestions</h4>
+
+<br>
+
+If you have any suggestions or if you think something here is
+erroneous, please <a href="http://sekhon.berkeley.edu">contact me</a>.
+
+<br>
+<br>
+<h4 class="Summary">Links</h4> 
+
+<br> 
+
+AnandTech's OS X benchmarks: <a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2436">"No more
+mysteries: Apple's G5 versus x86, Mac OS X versus Linux"</a> and <a
+href="http://www.anandtech.com/mac/showdoc.aspx?i=2520&p=8">"No more
+mysteries, part two"</a>.
+
+<br>
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+
+
+</body>
+</html>
+
+
+
+<!--  LocalWords:  Kazushige BLAS Goto's Opteron AMD's unixes XP SuSE Ghz Duo
+ -->
+<!--  LocalWords:  Microkernel Homepage yast Debian Cygwin GENetic gcc TLB
+ -->
+<!--  LocalWords:  tradeoffs SETI XNU Tanenbaum NeXT FreeBSD Goto rgenoud GHz
+ -->
+<!--  LocalWords:  GenMatch Ubuntu LiveCD Drapper Tevanian HFS reiser XFS RISC
+ -->
+<!--  LocalWords:  AnandTech KVM rdesktop RDP VNC iTunes PVR mpeg mpegpes mepg
+ -->
+<!--  LocalWords:  DirectShow graphedit mencoder mplayer dvd iDVD Quicktime
+ -->
+<!--  LocalWords:  Steamclip MacBookpro mallocs Anandtech
+ -->

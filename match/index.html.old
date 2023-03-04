@@ -1,0 +1,190 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score   Software, Causal Inference, Causality, Sekhon">
+   <meta name="keywords" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score Software, Causal Inference, Causality, Jasjeet Sekhon, Jas Sekhon, Sekhon, Jas">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; Linux 2.2.17-21mdksmp i686) [Netscape]">
+   <title>Jasjeet Sekhon's Multivariate and Propensity Score Matching
+   Software for Causal Inference</title>
+</head>
+
+<body>
+
+<link rel="stylesheet"
+href="http://sekhon.berkeley.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+<h1>Multivariate and Propensity Score Matching Software for Causal Inference</h1>
+
+<a href="http://sekhon.berkeley.edu/">Jasjeet S. Sekhon</a>
+
+<br><br> This website is for the distribution of "Matching" which is a
+<b><a href="http://www.r-project.org/">R</a></b> package for
+estimating causal effects by multivariate and propensity score
+matching.  The package provides functions for multivariate and
+propensity score matching and for finding optimal balance based on
+a <a href="http://sekhon.berkeley.edu/rgenoud/">genetic search
+algorithm</a></b>. A variety of univariate and multivariate tests to
+determine if balance has been obtained are also provided.  These tests
+can also be used to determine if an experiment or quasi-experiment is
+balanced on baseline covariates.  
+
+<br><br> 
+
+The latest version is significantly faster than pre-2.1 versions
+because the package now makes direct use of the <a
+href="http://www.netlib.org/blas/">BLAS</a> libraries---thanks to the
+efforts of <a href="http://www.apple.com">Apple's</a> Nate Begeman.
+Indeed, <a
+href="http://sekhon.berkeley.edu/matching/Match.html"><b>Match()</b></a>
+is the fastest multivariate and propensity score matching function I
+know of.  Maximum speed is achieved with replace=FALSE and/or
+ties=FALSE---see the <a
+href="http://sekhon.berkeley.edu/matching/Match.html">Match() help</a>
+for details. But the more reliable results are obtained with the
+defaults (replace=TRUE and ties=TRUE).  <a
+href="http://sekhon.berkeley.edu/matching/GenMatch.html"><b>GenMatch()</b></a>
+supports the use of multiple computers, CPUs or cores to perform
+parallel computations.  A <a href="CHANGE_LOG.txt">change log</a> is
+available which tracks changes across versions.
+
+<br><br> The easiest way to install the latest version (4.0-6), if you
+have an active network connection, is to type in a <b><a
+href="http://www.r-project.org/">R</a></b> session: <br> <dl> <dd>
+<B> > install.packages("Matching", dependencies=TRUE) </B>
+</dl> </dd> 
+
+<br> Make sure that the latest version of <a
+href="http://sekhon.berkeley.edu/rgenoud">rgenoud</a> is also installed:
+<br> <dl> <dd>
+<B> > install.packages("rgenoud") </B>
+</dl> </dd> 
+
+
+<br> Alternatively, the package may be directly downloaded:
+<br> <dl> <dd> Source package: <a
+href="http://sekhon.berkeley.edu/R/CRAN/src/contrib/Matching_4.0-6.tar.gz">Matching_4.0-6.tar.gz</a>
+<br> Windows binary package (R-2.4): <a
+href="http://sekhon.berkeley.edu/R/CRAN/bin/windows/contrib/2.4/Matching_4.0-6.zip">Matching_4.0-6.zip</a>
+<br> Mac OS X universal binary package (R-2.4): 
+<a href="http://sekhon.berkeley.edu/R/CRAN/bin/macosx/universal/contrib/2.4/Matching_4.0-6.tgz">Matching_4.0-6.tgz</a>
+<br> Also make sure to download and install the <a
+href="http://sekhon.berkeley.edu/rgenoud">rgenoud</a> package.
+<br> Other binary Packages:  <a
+href="http://www.cran.r-project.org/bin">http://www.cran.r-project.org/bin</a>
+</dl>
+</dd>
+
+<br>
+The package includes the following main user exposed functions, two
+replication datasets and three demos:
+<br> <dl> <dd> 
+     <a
+     href="http://sekhon.berkeley.edu/matching/GenMatch.html"><b>GenMatch():</b></a>
+     finds optimal balance using multivariate matching where a genetic
+     search algorithm determines the weight each covariate is given.
+     The user can choose which function of covariate balance to
+     optimize from a list or provide one of her own.
+     <br><br>
+     <a href="http://sekhon.berkeley.edu/matching/Match.html">Match()</a>: 
+     performs multivariate and propensity score matching. 
+     <br><br>
+     <a href="http://sekhon.berkeley.edu/matching/MatchBalance.html">MatchBalance():</a> 
+     provides a variety of univariate and multivariate tests to determine if
+     balance exists.
+     <br><br>
+     <a
+     href="http://sekhon.berkeley.edu/matching/Matchby.html">Matchby():</a>
+     This function is a wrapper for the <a
+     href="http://sekhon.berkeley.edu/matching/Match.html">Match()</a>
+     function which separates the matching problem into subgroups
+     defined by a factor.  This function is much faster for large
+     datasets than the <a
+     href="http://sekhon.berkeley.edu/matching/Match.html">Match()</a>
+     function itself.
+     <br><br>
+     <a href="http://sekhon.berkeley.edu/matching/qqstats.html">qqstats()</a><br>
+     <a href="http://sekhon.berkeley.edu/matching/ks.boot.html">ks.boot()</a><br>
+     <a href="http://sekhon.berkeley.edu/matching/balanceUV.html">balanceUV()</a><br>
+     <a href="http://sekhon.berkeley.edu/matching/balanceMV.html">balanceMV()</a><br>
+     <a href="http://sekhon.berkeley.edu/matching/GerberGreenImai.html">Gerber, Green and Imai data</a><br>
+     <a href="http://sekhon.berkeley.edu/matching/lalonde.html">LaLonde data</a><br>
+     <a href="http://sekhon.berkeley.edu/matching/AbadieImbens.Rout">AbadieImbens demo</a><br>
+     <a href="http://sekhon.berkeley.edu/matching/DehejiaWahba.Rout">DehejiaWahba demo</a><br>
+     <a
+     href="http://sekhon.berkeley.edu/matching/GerberGreenImai.Rout">GerberGreenImai demo</a><br>
+     <a
+     href="http://sekhon.berkeley.edu/matching/R">Examples of how to use multiple computers to perform parallel calculations</a><br>
+     <a href="http://sekhon.berkeley.edu/doc/html">General R Documentation</a><br>
+</dl> </dd>
+<br>
+
+The package is under active development so please check back for
+updates.  <br> <br>
+
+The following paper describes <a
+href="http://sekhon.berkeley.edu/matching/GenMatch.html">GenMatch()</a>
+in detail and discusses its theoretical properties: "<a
+href="http://sekhon.berkeley.edu/papers/GenMatch.pdf">Genetic Matching
+for Estimating Causal Effects: A General Multivariate Matching Method for
+Achieving Balance in Observational Studies.</a>" Monte Carlo experiments are
+presented in the paper which illustrate GenMatch's properties, and real data
+examples are provided.
+
+<br><br>
+The Matching software was used to produce the following working paper: <a
+href="http://sekhon.berkeley.edu/papers/SekhonInformation.pdf">The Varying
+Role of Voter Information Across Democratic Societies.</a> The robust
+propensity score methods discussed in the paper will be included in a future
+version.  
+
+The core matching estimator which is implemented is that of <a
+href="http://ksghome.harvard.edu/~.aabadie.academic.ksg/">Alberto
+Abadie</a> and <a href="http://elsa.berkeley.edu/~imbens/">Guido
+Imbens</a>.  This algorithm provides principled standard errors when
+matching is done with covariates or a known propensity score.  Ties
+are handled in a deterministic and coherent fashion. For details see
+<a href="http://ksghome.harvard.edu/~.aabadie.academic.ksg/sme.pdf">Large
+Sample Properties of Matching Estimators for Average Treatment</a>.
+
+<br><br> 
+
+Significant performance enhancements were provided by Nate Begeman
+(Mac OS X Performance Group at <a
+href="http://www.apple.com">Apple</a>).  And "Matching" relies on a
+modified version of the <a href="http://scythe.wustl.edu/">Scythe
+Statistical Library</a> developed by Andrew Martin, Kevin Quinn and
+Daniel Pemstein.  My modified version of the library is included in
+the "Matching" package.
+
+<br><br> For more details on matching and causal inference see <a
+href="http://www.stanford.edu/class/polisci353/2004winter/reading.html">Jonathan
+Wand's Reading List</a>.
+
+
+
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+</body>
+</html>
+<!--  LocalWords:  html charset iso css multinomRob CRAN MatchBalance balanceMV
+ -->
+<!--  LocalWords:  balanceUV Matlab rgenoud ks LaLonde AbadieImbens GenMatch's
+ -->
+<!--  LocalWords:  DehejiaWahba GerberGreenImai Abadie Imbens Pemstein Wand's
+ -->
+<!--  LocalWords:  Homepage GenMatch Sekhon's Jasjeet Sekhon website pre BLAS
+ -->
+<!--  LocalWords:  Begeman Imai Monte Carlo Guido qqstats
+ -->

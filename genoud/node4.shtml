@@ -1,0 +1,449 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Four-dimensional Hopf Model</TITLE>
+<META NAME="description" CONTENT="The Four-dimensional Hopf Model">
+<META NAME="keywords" CONTENT="genoud">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="genoud.css">
+<LINK REL="next" HREF="node5.shtml">
+<LINK REL="previous" HREF="node3.shtml">
+<LINK REL="up" HREF="genoud.shtml">
+<LINK REL="next" HREF="node5.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html69"
+ HREF="node5.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html67"
+ HREF="genoud.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html61"
+ HREF="node3.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+ <A NAME="tex2html1"
+ HREF="http://jsekhon.fas.harvard.edu">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html70"
+ HREF="node5.shtml">Conclusion</A>
+<B> Up:</B> <A NAME="tex2html68"
+ HREF="genoud.shtml">Genetic Optimization Using Derivatives</A>
+<B> Previous:</B> <A NAME="tex2html62"
+ HREF="node3.shtml">Normal Mixture Densities</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+The Four-dimensional Hopf Model</A>
+</H1>
+
+<P>
+In this section we compare the performance of GENOUD to that of a Gauss-Newton
+optimizer built into SAS's PROC MODEL (SAS Institute Inc. 1988), which is a
+well-known program for estimating nonlinear systems by least squares.  The
+main point is to show with real data how GENOUD can outperform gradient-based
+optimization when the objective function has many parameters and many local
+optima.  For this purpose we use a version of Mebane's (1997)
+<I>four-dimensional Hopf</I> (4DH) model.  We also illustrate how variation
+in the use of gradient information in GENOUD can affect its performance.
+
+<P>
+The 4DH model is a nonlinear statistical model for four observed variables.
+Mebane (1997) uses the model to test certain predictions from a game theoretic
+model of congressional campaigns.  Denoting the observed variables by
+
+<!-- MATH: $\mathsf{v}$ -->
+<IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.gif"
+ ALT="$\mathsf{v}$">,
+
+<!-- MATH: $\mathsf{w}$ -->
+<IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="$\mathsf{w}$">,
+
+<!-- MATH: $\mathsf{x}$ -->
+<IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.gif"
+ ALT="$\mathsf{x}$">
+and 
+<!-- MATH: $\mathsf{y}$ -->
+<IMG
+ WIDTH="13" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\mathsf{y}$">,
+and using
+
+<!-- MATH: $v=\mathsf{v}-\tilde{v}$ -->
+<IMG
+ WIDTH="76" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif"
+ ALT="$v=\mathsf{v}-\tilde{v}$">,
+
+<!-- MATH: $w=\mathsf{w}-\tilde{w}$ -->
+<IMG
+ WIDTH="87" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif"
+ ALT="$w=\mathsf{w}-\tilde{w}$">,
+
+<!-- MATH: $x=\mathsf{x}-\tilde{x}$ -->
+<IMG
+ WIDTH="77" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif"
+ ALT="$x=\mathsf{x}-\tilde{x}$">
+and 
+<!-- MATH: $y=\mathsf{y}-\tilde{y}$ -->
+<IMG
+ WIDTH="76" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.gif"
+ ALT="$y=\mathsf{y}-\tilde{y}$">,
+for unknown parameters <IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img16.gif"
+ ALT="$\tilde{v}$">,
+<IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\tilde{w}$">,
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\tilde{x}$">
+and <IMG
+ WIDTH="14" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\tilde{y}$">,
+the four-equation specification is
+<P ALIGN="RIGHT">
+<A NAME="eq:hopf4">&#160;</A><IMG
+ WIDTH="609" HEIGHT="576" ALIGN="BOTTOM" BORDER="0"
+ SRC="img20.gif"
+ ALT="\begin{subequations}
+\begin{align}
+u_v & = v +
+[\mbox{}-c_{vy}y + c_{vw}w + c_{...
+...{wy}wy)
++ (a_{xy}y+b_{xy}x)(x^2+y^2+e_{xy}xy) ]/3
+\end{align}\end{subequations}">
+<BR></P>
+The vector 
+<!-- MATH: $\mathbf{u} = (u_v, u_w, u_x, u_y)^{\top}$ -->
+<IMG
+ WIDTH="162" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif"
+ ALT="$\mathbf{u} = (u_v, u_w, u_x, u_y)^{\top}$">
+is assumed to be
+normally distributed with mean 
+<!-- MATH: $E\mathbf{u}=0$ -->
+<I>E</I><B>u</B>=0 and covariance matrix
+
+<!-- MATH: $E\mathbf{uu^{\top}} =\boldsymbol{\Sigma}$ -->
+<IMG
+ WIDTH="90" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$E\mathbf{uu^{\top}} =\boldsymbol{\Sigma}$">.
+Parameters to be estimated are
+<IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img16.gif"
+ ALT="$\tilde{v}$">,
+<IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\tilde{w}$">,
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\tilde{x}$">,
+<IMG
+ WIDTH="14" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\tilde{y}$">,
+the elements of
+
+<!-- MATH: $\boldsymbol{\Sigma}$ -->
+<IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\boldsymbol{\Sigma}$">,
+and <I>a</I><SUB><I>ij</I></SUB>, <I>b</I><SUB><I>ij</I></SUB>, <I>c</I><SUB><I>ij</I></SUB> and <I>e</I><SUB><I>ij</I></SUB> for
+
+<!-- MATH: $ij\in \{vy, xy, wy, wx, vw, vx\} \equiv \mathfrak{I}$ -->
+<IMG
+ WIDTH="252" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img24.gif"
+ ALT="$ij\in \{vy, xy, wy, wx, vw, vx\} \equiv \mathfrak{I} $">,
+with 
+<!-- MATH: $-2<e_{ij}<2$ -->
+-2&lt;<I>e</I><SUB><I>ij</I></SUB>&lt;2.
+
+<P>
+Mebane estimates the model by maximum likelihood using 24 combinations of
+congressional district-level data from 1983-1985 and from 1985-1987.
+Variable 
+<!-- MATH: $\mathsf{v}$ -->
+<IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.gif"
+ ALT="$\mathsf{v}$">
+has four realizations in each period, corresponding to
+four types of intergovernmental transfers from the federal government to local
+governments in each district.  Variables 
+<!-- MATH: $\mathsf{w}$ -->
+<IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif"
+ ALT="$\mathsf{w}$">
+and 
+<!-- MATH: $\mathsf{x}$ -->
+<IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.gif"
+ ALT="$\mathsf{x}$">
+each
+have three realizations, corresponding to campaign contributions to incumbents
+and to challengers from three kinds of political action committees (PACs).
+Variable 
+<!-- MATH: $\mathsf{y}$ -->
+<IMG
+ WIDTH="13" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif"
+ ALT="$\mathsf{y}$">
+is the logit of the proportion <I>P</I> of all general
+election votes that were cast for the incumbent.  See Mebane (1997) for
+further details about the data.
+
+<P>
+To facilitate comparison between GENOUD and PROC MODEL, we estimate the 4DH
+model using the ordinary least squares criterion of minimizing the sum of the
+variances in the diagonal of 
+<!-- MATH: $\boldsymbol{\Sigma}$ -->
+<IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\boldsymbol{\Sigma}$">.
+Let 
+<!-- MATH: $\sigma_{+} =
+\sigma_{vv} + \sigma_{ww} + \sigma_{xx} + \sigma_{yy}$ -->
+<IMG
+ WIDTH="220" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.gif"
+ ALT="$\sigma_{+} =
+\sigma_{vv} + \sigma_{ww} + \sigma_{xx} + \sigma_{yy}$">
+denote that sum.
+Minimizing 
+<!-- MATH: $\sigma_{+}$ -->
+<IMG
+ WIDTH="26" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.gif"
+ ALT="$\sigma_{+}$">
+gives solutions different from those obtained from the
+multivariate normal 4DH model likelihood, especially because the term
+
+<!-- MATH: $\log\det\boldsymbol{\Sigma}$ -->
+<IMG
+ WIDTH="72" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img27.gif"
+ ALT="$\log\det\boldsymbol{\Sigma}$">
+of the log-likelihood is omitted.  This change
+in the model is inconsequential for our current, purely computational
+interests.  To enforce the range restrictions 
+<!-- MATH: $-2<e_{ij}<2$ -->
+-2&lt;<I>e</I><SUB><I>ij</I></SUB>&lt;2, we use a penalty
+function.  The penalty added to 
+<!-- MATH: $\sigma_{+}$ -->
+<IMG
+ WIDTH="26" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.gif"
+ ALT="$\sigma_{+}$">
+is 
+<!-- MATH: $\sum_{ij\in\mathfrak{I} }
+\left[ e^{15(e_{ij}-2.07)} + e^{15(-e_{ij}-2.07)} \right]^4$ -->
+<IMG
+ WIDTH="276" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$\sum_{ij\in\mathfrak{I} }
+\left[ e^{15(e_{ij}-2.07)} + e^{15(-e_{ij}-2.07)} \right]^4$">.
+Penalty
+functions are not necessary for GENOUD, but are the only feasible technique
+for imposing the range restrictions on PROC MODEL.
+
+<P>
+We compare results from Gauss-Newton estimation using PROC MODEL to results
+from four configurations of GENOUD.  The Gauss-Newton algorithm is run
+using analytical gradients while GENOUD is run using the built-in numerical
+gradients.  All the Gauss-Newton runs start with <IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img16.gif"
+ ALT="$\tilde{v}$">,
+<IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\tilde{w}$">,
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\tilde{x}$">
+and <IMG
+ WIDTH="14" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif"
+ ALT="$\tilde{y}$">
+set equal to the sample means of the observed
+variables and 
+<!-- MATH: $\boldsymbol{\Sigma}$ -->
+<IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\boldsymbol{\Sigma}$">
+equal to the sample covariance matrix.
+For GENOUD, those values are included once in the initial population of
+trial solutions, with all the other trial solutions being randomly
+generated; identical random values are used for all populations of the same
+size.  The Gauss-Newton runs are allowed up to 1000 iterations.  The GENOUD
+runs use trial solution populations of size 3051, corresponding to 500
+instances of Table 1's operators 1, 3, 4, 5, 6 and 7, 50 instances of
+operator 2 and none of operator 8.  Two GENOUD runs have an upper limit of
+50 generations and two have an upper limit of 100 generations.  In one of
+each of these runs, GENOUD applies the BFGS to the best trial solution in
+every generation.  For the other two runs the BFGS is used only after half
+the allowed number of generations have been completed.
+
+<P>
+Table <A HREF="node7.shtml#tab:ghopf">4</A> shows that GENOUD almost always outperforms the Gauss-Newton
+optimizer for this problem.  For all 24 sets of data, both Gauss-Newton and
+GENOUD find local-minimum solutions that give residual variance 
+<!-- MATH: $\sigma_{+}$ -->
+<IMG
+ WIDTH="26" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.gif"
+ ALT="$\sigma_{+}$">
+considerably less than the sum of the sample variances of the observed
+variables (denoted ``original variance'').  Only two of the Gauss-Newton runs
+converge within 1000 iterations by the default criterion (for which see SAS
+Institute Inc. 1988, 347), but elements of the gradient of the objective
+function are always small, except for <I>e</I><SUB><I>ij</I></SUB> parameters with near-boundary
+values.  Most of the GENOUD solutions have gradient vectors in which all
+elements have magnitude less than 10<SUP>-8</SUP>.  Exceptions are marked as not
+being local minima.  For 22 of the 24 data sets, the best of the GENOUD
+solutions has residual variance smaller than the residual variance of the
+Gauss-Newton solution.  Inspection of the parameter estimates shows
+differences large enough to matter for substantive conclusions in 16 of the 22
+cases.  Of the two instances where the Gauss-Newton solution residual variance
+is smaller, only for the case of labor PACs and highways transfers in 1986 are
+the differences in the parameter estimates consequentially large.
+Table <A HREF="node7.shtml#tab:ghopftimes">5</A>, which reports the CPU time required for the various
+runs, shows that GENOUD's superior performance does not come at the price of
+inordinate demand for computing resources.  Indeed, in only two instances do
+the GENOUD runs require more time to complete than PROC MODEL.
+
+<P>
+The use of the BFGS and the number of generations affected GENOUD's
+performance, though not in a uniform manner.  Variations occur across
+the GENOUD configurations for nine of the 24 sets of data.  In all but
+one of those nine instances, the configurations that apply the BFGS
+after every generation do at least as well as the configurations that
+start using the BFGS only after half the allowed number of generations
+have completed.  Increasing the number of generations from 50 to 100
+never hurts performance when the BFGS is being applied to all
+generations.  But when the BFGS is not used for the early generations,
+the final result is better with 100 generations than with 50
+generations one time, but two times it is worse.
+
+<P>
+The one instance in Table <A HREF="node7.shtml#tab:ghopf">4</A> where the Gauss-Newton algorithm
+clearly outperforms GENOUD presents the most interesting case for
+exploring the choice that can arise between locally efficient
+optimization, which is best performed by the BFGS, and effective
+global search by means of the EA part of GENOUD.  Table <A HREF="node7.shtml#tab:ghopflh86">6</A>
+shows results from running GENOUD on the 1986 data for labor PACs and
+highways transfers, using four different generation count limits.  The
+results in the table are for GENOUD configurations in which the BFGS
+is applied only after the halfway point.  If the BFGS is used for all
+generations, GENOUD is unable to improve on the best GENOUD solution
+reported for these data in Table <A HREF="node7.shtml#tab:ghopf">4</A>, i.e.,
+
+<!-- MATH: $\sigma_{+}=2.9336$ -->
+<IMG
+ WIDTH="98" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$\sigma_{+}=2.9336$">.
+The prematurely reached local minimum is
+reproduced excessively, to such an extent that the population of trial
+solutions contains insufficient variety for GENOUD to be able to
+improve on it in a reasonable number of generations.  GENOUD finds
+better solutions only when it is allowed to search globally for
+several generations, without the strong pressure to converge locally
+that the BFGS applies.
+
+<P>
+Table <A HREF="node7.shtml#tab:ghopflh86">6</A> shows that as the number of generations increases, the
+solutions found improve.  A solution better than that found with Gauss-Newton
+appears when 400 generations are allowed.  The residual variance is slightly
+smaller than the Gauss-Newton solution, but the parameter values do not
+substantially differ.
+
+<P>
+The four-dimensional Hopf model example shows that GENOUD consistently
+performs better than SAS's Gauss-Newton optimizer--significantly so
+in 16 out of 24 cases.  The example also illustrates that one needs to
+be careful when using the BFGS portion of GENOUD.  The BFGS's local
+hill-climbing prowess can cause premature convergence and hence
+ineffective global optimization, as occurred in 1 of the 24 cases.
+For maximum assurance, one should use a large population of trial
+solutions, turn off the BFGS portion of GENOUD and run the program for
+a very large number of generations.  For most problems this would be
+overly conservative, but one must keep the tradeoff in mind.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html69"
+ HREF="node5.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html67"
+ HREF="genoud.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html61"
+ HREF="node3.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html70"
+ HREF="node5.shtml">Conclusion</A>
+<B> Up:</B> <A NAME="tex2html68"
+ HREF="genoud.shtml">Genetic Optimization Using Derivatives</A>
+<B> Previous:</B> <A NAME="tex2html62"
+ HREF="node3.shtml">Normal Mixture Densities</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

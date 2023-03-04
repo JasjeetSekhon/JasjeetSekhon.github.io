@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+<TITLE>R-GENetic Optimization Using Derivatives (R-GENOUD) Home Page</TITLE>
+<META NAME="description" CONTENT="R-GENetic Optimization Using Derivatives (RGENOUD) Home Page">
+<META NAME="keywords" CONTENT="genoud, rgenoud, genetic optimization, genetic
+algorithm, manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+</HEAD>
+
+<BODY >
+
+<link rel="stylesheet"
+href="http://sekhon.berkeley.edu/Traditional"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body {margin-left: 5%}
+/*]]>*/
+</style>
+
+
+<h1> R-GENetic Optimization Using Derivatives (RGENOUD)</h1>
+
+<a href="http://www-personal.umich.edu/~wmebane/">Walter R. Mebane,
+Jr.</a> and <a href="http://sekhon.berkeley.edu/">Jasjeet
+S. Sekhon</a>
+
+<br><br>
+
+This webpage is for the distribution of the <A
+href="http://www.r-project.org/"><B>R</B></A> version of GENOUD
+(GENetic Optimized Using Derivatives).  <a
+href="genoud.html">Genoud</a> is a function that combines evolutionary
+search algorithms with derivative-based (Newton or quasi-Newton)
+methods to solve difficult optimization problems.  <code>Genoud</code>
+may also be used for optimization problems for which derivatives do
+not exist.
+
+<br><br> For an introduction to the package with documentation and
+examples, please see <a href="../papers/rgenoudJSS.pdf">"Genetic
+Optimization Using Derivatives: The rgenoud package for
+R"</a> <I>Journal of Statistical Software,</I>42(11): 1-26. 2011.
+
+<br><br> The easiest way to install the latest version, if you
+have an active network connection, is to type in a <b><a
+href="http://www.r-project.org/">R</a></b> session: <br> <dl> <dd>
+<B> > install.packages("rgenoud") </B>
+</dl> </dd> 
+
+<br> Alternatively, the package may be directly downloaded:
+<dl> <dd>
+<dd> CRAN:  <a href="http://cran.r-project.org/package=rgenoud">http://cran.r-project.org/package=rgenoud</a></dd>
+</dl> </dd>
+
+<br> Examples are provided for how to use <a
+href="http://sekhon.berkeley.edu/rgenoud/multiple_cpus.html">multiple
+chips on the same computer to perform parallel computations</a>.
+Examples are also provided for how to use <a
+href="http://sekhon.berkeley.edu/rgenoud/R/genoud_cluster_manual.R">multiple computers to
+perform parallel computations</a> (for tunnelling version here <a
+href="http://sekhon.berkeley.edu/rgenoud/R/genoud_cluster_manual_tunnel.R">here</a>). </a><br>
+
+<br> <code>Genoud</code> solves problems that are nonlinear or perhaps even
+discontinuous in the parameters of the function to be optimized.  When
+a statistical model's estimating function (for example, a
+log-likelihood) is nonlinear in the model's parameters, the function
+to be optimized will generally not be globally concave and may have
+irregularities such as saddlepoints or discontinuities.  Optimization
+methods that rely on derivatives of the objective function may be
+unable to find any optimum at all.  Multiple local optima may exist,
+so that there is no guarantee that a derivative-based method will
+converge to the global optimum. On the other hand, algorithms that do
+not use derivative information (such as pure genetic algorithms) are
+for many problems needlessly poor at local hill climbing.  Most
+statistical problems are regular in a neighborhood of the solution.
+Therefore, for some portion of the search space, derivative
+information is useful.  <code>Genoud</code>, via
+the <code>cluster</code> option, supports the use of multiple
+computers, CPUs or cores to perform parallel computations.  <br> <br>
+
+Nine different <code>R</code> packages on <a
+href="http://CRAN.R-project.org">CRAN</a> rely on
+<code>rgenoud</code>.  For example, the <a
+href="http://cran.r-project.org/package=Matching">Matching</a> package
+(for multivariate and propensity score matching for causal inference)
+makes extensive use of the parallel and lexical optimization
+functions.  And the <a
+href="http://cran.r-project.org/package=FAiR">FAiR</a> package (by Ben
+Goodrich) for estimating factor analysis models with arbitrary
+restrictions makes use of the <code>transform</code> option.  Ben
+Goodrich provided a patch to support this option.  The other seven
+packages on <a href="http://CRAN.R-project.org">CRAN</a> that rely on
+<code>rgenoud</code> are: <a
+href="http://cran.r-project.org/package=anchors">anchors</a>, <a
+href="http://cran.r-project.org/package=BARD">BARD</a>, <a
+href="http://cran.r-project.org/package=ivivc">ivivc</a>, <a
+href="http://cran.r-project.org/package=multinomRob">multinomRob</a>,
+<a href="http://cran.r-project.org/package=PKfit">PKfit</a>, <a
+href="http://cran.r-project.org/package=qpcR">qpcR</a>, and <a
+href="http://cran.r-project.org/package=Synth">Synth</a>.  Many other
+software projects also depend on <code>rgenoud</code>, such as Bear
+Braumoeller's <a
+href="http://polisci.osu.edu/faculty/braumoeller/custom/Booleanbatch.html">Boolean</a>
+package.
+
+<br>
+<br>
+<br>
+<br>
+<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+<BR>
+
+</BODY>
+</HTML>
+
+<!--  LocalWords:  GENetic GENOUD RGENOUD Mebane webpage rgenoud genoud GAs
+ -->
+<!--  LocalWords:  saddlepoints Homepage FAiR genoud's CRAN ivivc multinomRob
+ -->
+<!--  LocalWords:  PKfit qpcR Synth Braumoeller's
+ -->

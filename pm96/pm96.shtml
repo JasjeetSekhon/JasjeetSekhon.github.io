@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bootstrap Methods for Non-nested Hypothesis Tests</TITLE>
+<META NAME="description" CONTENT="Bootstrap Methods for Non-nested Hypothesis Tests">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="next" HREF="node1.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html15"
+ HREF="node1.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif_gr.gif">   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html16"
+ HREF="node1.shtml">Introduction</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<P>
+
+<P>
+
+<P>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+2">Bootstrap Methods for Non-nested Hypothesis Tests</FONT> <BR>
+<BR>
+by <BR>
+<BR>
+<FONT SIZE="+1">Walter R. Mebane, Jr.</FONT>
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$">
+<BR>
+<BR>
+and <BR>
+<BR>
+<FONT SIZE="+1">Jasjeet S. Sekhon</FONT>
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$">
+<BR>
+<BR>
+</DIV>
+
+<P>
+<BR>
+
+<P>
+<DIV ALIGN="LEFT">
+<P>
+Prepared for delivery at the 1996 Summer Methods Conference, University of
+Michigan, Ann Arbor, July 17-21.  Sekhon gratefully acknowledges support from
+the Social Science and Humanities Research Council of Canada (grant
+752-95-0380).  <BR>
+<BR>
+
+<P>
+
+<!-- MATH: $^{\mbox{\dag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif"
+ ALT="$^{\mbox{\dag }}$">
+Associate Professor, Department of Government,
+<A NAME="tex2html2"
+ HREF="http://www.cornell.edu">Cornell University</A>,
+<A NAME="tex2html3"
+ HREF="mailto:wrm1@cornell.edu"><TT>wrm1@cornell.edu</TT></A>,
+<A NAME="tex2html4"
+ HREF="http://macht.arts.cornell.edu/wrm1/"><TT>HTTP://macht.arts.cornell.edu/wrm1/</TT></A>. <BR>
+<BR>
+
+<P>
+
+<!-- MATH: $^{\mbox{\ddag }}$ -->
+<IMG
+ WIDTH="13" HEIGHT="23" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$^{\mbox{\ddag }}$">
+Assistant Professor,
+<A NAME="tex2html5"
+ HREF="http://www.gov.harvard.edu/">Department of Government</A>,
+<A NAME="tex2html6"
+ HREF="http://www.harvard.edu">Harvard University</A>,
+<A NAME="tex2html7"
+ HREF="mailto:jsekhon@fas.harvard.edu"><TT>jsekhon@fas.harvard.edu</TT></A>,
+<A NAME="tex2html8"
+ HREF="http://data.fas.harvard.edu/jsekhon/"><TT>HTTP://data.fas.harvard.edu/jsekhon/</TT></A>.
+Jasjeet Sekhon's research is supported in part by the Social Sciences and
+Humanities Research Council of Canada grant number 752-95-0380.
+
+<P>
+</DIV>
+
+<P>
+
+<P>
+
+<H3>Abstract:</H3>
+<DIV>
+<P>
+<DIV ALIGN="LEFT">
+Cox (1961; 1962) proposed a fairly general method that can be used to
+    construct powerful tests of alternative hypotheses from separate statistical
+    families.  We prove that non-parametric bootstrap methods can produce
+    consistent and second-order correct approximations to the distribution of the
+    Cox statistic for non-nested LISREL-style covariance structure models.  We use
+    the method to investigate a question about the specification of a LISREL model
+    used by Kinder, Adams and Gronke (1989).  In a second application--a pair of
+    non-nested endogenous switching regression models with tobit-style censoring,
+    applied to real data--we illustrate how bootstrap calibration can be used to
+    correct the size of the test when the test distribution is being estimated by
+    Monte Carlo simulation due to concern about nonregularity.
+    
+  </DIV></DIV>
+<P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html17"
+ HREF="node1.shtml">Introduction</A>
+<LI><A NAME="tex2html18"
+ HREF="node2.shtml">LISREL</A>
+<UL>
+<LI><A NAME="tex2html19"
+ HREF="node3.shtml">The LISREL Cox Test Statistic</A>
+<LI><A NAME="tex2html20"
+ HREF="node4.shtml">Bootstrapping 
+<!-- MATH: $\hat{M}_{\mathrm{lisrel}}$ -->
+<IMG
+ WIDTH="50" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\hat{M}_{\mathrm{lisrel}}$"></A>
+<LI><A NAME="tex2html21"
+ HREF="node5.shtml">Application:  Domains of Economic Assessment</A>
+</UL>
+<LI><A NAME="tex2html22"
+ HREF="node6.shtml">An Endogenous Switching Tobit Model</A>
+<LI><A NAME="tex2html23"
+ HREF="node7.shtml">Tables</A>
+<LI><A NAME="tex2html24"
+ HREF="node8.shtml">References</A>
+<LI><A NAME="tex2html25"
+ HREF="node9.shtml">About this document ... </A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html15"
+ HREF="node1.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif_gr.gif">   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html16"
+ HREF="node1.shtml">Introduction</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

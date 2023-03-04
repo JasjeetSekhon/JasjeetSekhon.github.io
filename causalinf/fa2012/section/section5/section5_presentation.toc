@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Basic Setup}{2}{0}{1}
+\beamer@sectionintoc {2}{Lee's Interpretation}{6}{0}{2}
+\beamer@sectionintoc {3}{Examples}{16}{0}{3}
+\beamer@sectionintoc {4}{Nuts and Bolts}{29}{0}{4}
+\beamer@subsectionintoc {4}{1}{Graphical Methods}{31}{0}{4}
+\beamer@subsectionintoc {4}{2}{Analysis}{34}{0}{4}
+\beamer@sectionintoc {5}{Cross-Validation}{38}{0}{5}

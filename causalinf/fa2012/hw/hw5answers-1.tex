@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+ 
+\usepackage{fullpage}
+\usepackage{boxedminipage}
+
+\usepackage{listings}
+
+\usepackage{minitoc}
+
+\usepackage{ifpdf}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amssymb}
+
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+\newcommand{\var}[0]{\text{var}}
+\newcommand{\cov}[0]{\text{cov}}
+\def\E{{\mathbb E}}   
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\begin{document}
+
+\title{PS C236A / Stat C239A \\ Problem Set 5 - Solutions}
+\date{}
+\maketitle
+\begin{itemize}
+\item[1)] 
+%An alternative distance metric to the propensity score is  the Mahalanobis distance. This metric also reduces a  multi-dimensional problem into a unidimensional problem. The  Mahalanobis distance was originally developed for use with  multivariate Normal data, however, we often use covariates that are  not normally distributed in our matching methods. This problem will  explore what the implications of these non-normal variables are for  this distance metric.
+    \begin{itemize}
+    \item[a)] 
+      % When including a binary variable in a Mahalanobis distance
+      % metric, will a binary variable with $p = \frac{1}{2}$ or a
+      % binary variable with $p$ near zero be given greater weight by
+      % this distance metric? Prove why this is true mathematically.
+\vspace{1em} 
+The Mahalanobis distance is defined as:
+$$D_m(X_i,X_j)=\left\{ (X_i-X_j)^TS^{-1}(X_i- X_j)
+\right\}^{\frac{1}{2}}$$
+\vspace{1em}
+Where $S^{-1}$ is the inverse of the sample covariance matrix of $X$.  
+
+A binary variable with probability of success $p$ has variance $p(1 -
+p)$.  A variable with $p = \frac{1}{2}$ therefore has variance of $p(1
+- p) = \frac{1}{4}$, whereas a variable with $p$ near 0 would have
+variance near 0. Since we take the inverse of the sample covariance
+matrix, therefore dividing by the variance, a variable with $p =
+\frac{1}{2}$ will be given less weight than a variable with $p$ near
+0 (or, similarly a variable with $p$ near 1). By FOC, we can show that
+the variance of a binary variable is greatest when $p = \frac{1}{2}$, so a binary
+variable with $p = \frac{1}{2}$ will be given less weight than any binary variable
+with $p \neq \frac{1}{2}$
+
+   
+\item[b)] Variables with long tails or extreme outliers tend to have
+  inflated variances, and by the same logic as above, any variable
+  with larger variance will be given relatively less weight.
+       
+\item[c)] We should be concerned. Outliers and long tails do not make
+  a covariate unimportant, so we may not wish to downweight it
+  relative to other covariates. Binary variables that are very rare
+  may not be of overriding importance, so it may not be wise to give
+  them significantly higher weight than binary variables with $p$
+  closer to $\frac{1}{2}$. However, if it is a rare binary event, then
+  we might want to treat a difference in outcome as worse than
+  a difference in outcome for a covariate where $p$ is closer to
+  $\frac{1}{2}$. Overall, we should be concerned that Mahalanobis
+  distance exhibits these behaviors for variables for which the theory
+  was not designed.
+      
+    \end{itemize}
+  \item[2)]
+    \begin{itemize}
+     \item[a)]
+     \item[b)]
+     \item[c)]     
+     \item[d)]      
+   \end{itemize}
+\item[3)] See \texttt{HW5\_Answers.R} for solutions
+\end{itemize}     
+\end{document}

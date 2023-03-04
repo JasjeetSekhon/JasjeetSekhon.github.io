@@ -1,0 +1,760 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Linear Structure Model Definition</TITLE>
+<META NAME="description" CONTENT="Linear Structure Model Definition">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node6.shtml">
+<LINK REL="previous" HREF="node4.shtml">
+<LINK REL="up" HREF="manual.shtml">
+<LINK REL="next" HREF="node6.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html83"
+ HREF="node6.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html81"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html75"
+ HREF="node4.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html84"
+ HREF="node6.shtml">Parameter Bounds</A>
+<B> Up:</B> <A NAME="tex2html82"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html76"
+ HREF="node4.shtml">General Setup</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00050000000000000000">&#160;</A>
+<A NAME="modelspec:top">&#160;</A>
+<BR>
+Linear Structure Model Definition
+</H1>
+
+<P>
+The <B>linear structure model definition</B> part of the model specification
+file begins with the key word <TT>model</TT>--see the <A HREF="node9.shtml#example:top">example model
+  specification files</A>.  As in every other section, comments are not allowed to
+appear between a keyword and the arguments it takes.  Please see
+<A HREF="node3.shtml#syntax:comments">Program Syntax</A> for details.
+
+<P>
+GENBLIS is optimized for speed.  Because of this, GENBLIS implements only the
+``endogenous'' parameterization of LISREL.  Implementing only one of the
+parameterizations is more computationally efficient than implementing them
+all.  Computation efficiency is of great concern because the LISREL likelihood
+has to be evaluated a large number of times by GENBLIS's evolutionary program
+and bootstrap routines.  Implementing only the ``endogenous'' model does not
+in any way restrict the generality or scope of the GENBLIS program, because
+any model that can be defined using the exogenous or united specification
+(with all eight of the classical LISREL matrices) can in fact be estimated by
+using only the ``endogenous'' parameterization.  Although the names endogenous
+and exogenous are conventionally used to refer to different parts of the
+eight-matrix LISREL parameterization, the names can be misleading.  The
+``endogenous'' parameterization is sufficient to express any pattern of linear
+structural relations among the latent variables.
+
+<P>
+To treat one set of variables as exogenous in relation to another set, it is
+sufficient to impose constraints on parameters such that the former
+(exogenous) variables do not in any way depend on the random disturbances of
+the latter (endogenous) variables.  For instance, if one estimates a model
+with two latent variables, letting the variables be related through one
+parameter in the <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">
+matrix and specifying their disturbances to be
+uncorrelated, then the <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">
+parameter is estimating the effect of an
+``exogenous'' variable on an ``endogenous'' variable.  Therefore, one can
+estimate a model using only GENBLIS's ``endogenous'' parameterization and then
+write up the results as having been obtained from the exogenous or full model.
+
+<P>
+The ``endogenous'' parameterization consists of four matrices: 
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">,
+
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">,
+<IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">,
+and <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">.
+Using these matrices, the model for
+the covariance matrix of the observed variables is
+<BR><P></P>
+<DIV ALIGN="CENTER">
+
+<!-- MATH: \begin{equation}
+\Sigma =
+  \Lambda_{y}\text{B}^{-1}\Psi \text{B}^{-\top} \Lambda_{y}^{\top} +
+  \Theta_{\epsilon}
+
+\end{equation} -->
+
+<TABLE WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD ALIGN="CENTER" NOWRAP><A NAME="eq:sigma">&#160;</A><IMG
+ WIDTH="196" HEIGHT="34"
+ SRC="img24.gif"
+ ALT="\begin{displaymath}
+\Sigma =
+\Lambda_{y}\text{B}^{-1}\Psi \text{B}^{-\top} \Lambda_{y}^{\top} +
+\Theta_{\epsilon}
+\end{displaymath}"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(1)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+GENBLIS attempts to minimize the discrepancy function (or ``fit statistic'')
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation*}
+F_{\text{ML}} = \log|\Sigma| + \text{tr}(\mathbf{S}\Sigma^{-1})
+-\log|\mathbf{S}| - p
+\end{equation*} -->
+
+
+<IMG
+ WIDTH="292" HEIGHT="31"
+ SRC="img25.gif"
+ ALT="\begin{displaymath}F_{\text{ML}} = \log\vert\Sigma\vert + \text{tr}(\mathbf{S}\Sigma^{-1})
+-\log\vert\mathbf{S}\vert - p
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <I>p</I> is the number of observed variables and 
+<!-- MATH: $\mathbf{S}$ -->
+<B>S</B> is the sample
+covariance matrix of the observed variables.  The parameters in each of the
+four model-specification matrices are
+specified in the <TT>model</TT> section of the model specification file by
+numerical sequences that follow the appropriate one of the following four
+keywords: <TT>ly</TT>, <TT>te</TT>, <TT>b</TT>, and <TT>psi</TT>.
+
+<P>
+With multigroup processing (see general options <TT>ngroups</TT>,
+<TT>datafile</TT> and <TT>observedvars</TT>), 
+<!-- MATH: $\mathbf{S}$ -->
+<B>S</B> and <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.gif"
+ ALT="$\Sigma$">
+are
+block diagonal, with one block for each group.  That is, for <I>m</I> groups,
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation*}
+\mathbf{S} =
+\begin{bmatrix}
+    \mathbf{S}_1 & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & \mathbf{S}_m &  \\
+  \end{bmatrix}
+  \;, \qquad
+  \Sigma = 
+  \begin{bmatrix}
+    \Sigma_1 & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & \Sigma_m &  \\
+  \end{bmatrix}
+
+\end{equation*} -->
+
+
+<IMG
+ WIDTH="390" HEIGHT="81"
+ SRC="img27.gif"
+ ALT="\begin{displaymath}\mathbf{S} =
+\begin{bmatrix}
+\mathbf{S}_1 & \dots & 0 \\
+...
+... \ddots & \vdots \\
+0 & \dots & \Sigma_m & \\
+\end{bmatrix}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+with 
+<!-- MATH: $\mathbf{S}_k$ -->
+<B>S</B><SUB><I>k</I></SUB> and <IMG
+ WIDTH="26" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif"
+ ALT="$\Sigma_k$">
+being respectively the sample covariance
+matrix and the model covariance matrix for the data from group <I>k</I>.
+Different groups may have different numbers of observed variables and
+different numbers of observations.  To enhance computational efficiency,
+the GENBLIS program ignores covariance matrix elements that are not in one
+of the group-specific submatrices.  It is not valid to specify a model that
+implies a covariance between observed variables that are in different
+groups.  GENBLIS does not try to detect such erroneous covariances and will
+not necessarily issue any warnings or error messages, but results in such
+cases are unpredictable and wrong.  It is perfectly fine to specify
+equality constraints across groups between parameters of the same type.  To
+test such constraints is often the main reason to estimate a multigroup
+model.  Note that in the <TT>model</TT> section all the observed variables
+and model matrix parameters are numbered consecutively in a unified fashion
+across all groups.  There is no separate indexing of variables or
+parameters by group: see <A HREF="node9.shtml#example:top">Examples 3 and 4</A>.  GENBLIS
+also supports analysis of the sample mean crossproducts matrix (i.e., the
+simple crossproduct of the observed data, divided by the number of
+observations), which allows structures to be specified on group means.  To
+analyze the crossproducts matrix instead of the covariance matrix, specify
+the <TT>usecrossp</TT> option.  GENBLIS does not add a constant to the set
+of input variables, so if one is desired it must be included by the user.
+
+<P>
+All parameters which are not mentioned by the user in this section are fixed
+to zero.  Therefore only the non-zero elements of each matrix need to be
+described by the user.  Indeed, a specified value of 0 for a parameter is
+interpreted to mean that the parameter is a <I>free</I> parameter that is to
+be estimated.  The definition of each matrix element must follow one of the
+following formats.  It is not necessary for each set three or five arguments
+to appear on a separate line, though doing so may make the specification
+easier to proofread.
+<BR>
+<BR>
+<BR>
+
+<P>
+
+<A HREF="node5.shtml#modelspec:ly"><TT>ly</TT></A> <BR>
+<TT>v  w  x</TT> <BR>
+<TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+
+<P>
+
+<A HREF="node5.shtml#modelspec:te"><TT>te</TT></A> <BR>
+<TT>v  w  x</TT> <BR>
+<TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+
+<P>
+
+<A HREF="node5.shtml#modelspec:b"><TT>b</TT></A> <BR>
+<TT>v  w  x</TT> <BR>
+<TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+
+<P>
+
+<A HREF="node5.shtml#modelspec:psi"><TT>psi</TT></A> <BR>
+<TT>v  w  x</TT> <BR>
+<TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+
+<P>
+Combinations of argument values not covered by the following descriptions are
+errors.  All array indexes are counted from 1 (technical programming note:
+GENBLIS converts them internally to count from 0 for indexing the C-language
+arrays).  Comments cannot be placed between any of the keywords (e.g.,
+<TT>ly</TT>, <TT>te</TT>, <TT>b</TT>, and <TT>psi</TT>) and their numerical
+arguments.  For example, comments can appear after the <TT>ly</TT> arguments
+and before the <TT>te</TT> keyword. <BR>
+
+<P>
+<DIV ALIGN="LEFT">
+<A NAME="modelspec:ly">&#160;</A>  <B>The definition of 
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">
+(<TT>ly</TT>):</B> <BR>
+
+<P>
+<TT>ly</TT> <BR>
+  <TT>v  w  x</TT> <BR>
+  <TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+To indicate that a single parameter is to be estimated (a free
+  parameter),
+  or to set a fixed parameter to a nonzero value, use 3 arguments: <BR>
+if <TT>v</TT>&gt;0 <TT>w</TT>&gt;0 then <TT>v</TT>,<TT>w</TT> indexes
+  
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">[v,w] and <TT>x</TT>=0 indicates a free parameter while
+  <TT>x</TT><IMG
+ WIDTH="18" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$\ne$">0 indicates a fixed parameter with value fixed at x. <BR>
+<BR>
+<BR>
+To specify that one parameter is constrained to equal another parameter, use
+  5 arguments: <BR>
+if <TT>v</TT>=0 and <TT>w</TT>&gt;0, <TT>x</TT>&gt;0, <TT>y</TT>&gt;0, and
+  <TT>z</TT>&gt;0 then <TT>w</TT>,<TT>x</TT> and <TT>y</TT>,<TT>z</TT> index
+  
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">
+such that 
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">[w,x] is constrained to equal
+  
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">[y,z].  If 
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">[y,z] is to be estimated that must
+  be specified separately (using a 3-argument
+  entry). <BR>
+<BR>
+<BR>
+<BR>
+
+<P>
+<A NAME="modelspec:te">&#160;</A>  <B>The definition of 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">
+(<TT>te</TT>):</B> <BR>
+
+<P>
+<TT>te</TT> <BR>
+  <TT>v  w  x</TT> <BR>
+  <TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+To indicate that a single parameter is to be estimated (a free parameter),
+  or to set a fixed parameter to a nonzero value, use 3 arguments: <BR>
+if <TT>v</TT>&gt;0 <TT>w</TT>&gt;0 then <TT>v</TT>,<TT>w</TT> indexes
+  
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">[v,w]=
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">[w,v] and <TT>x</TT>=0
+  indicates a (single) free parameter while <TT>x</TT><IMG
+ WIDTH="18" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$\ne$">0 indicates a
+  fixed parameter with value fixed at <TT>x</TT>.  GENBLIS automatically
+  imposes symmetry on 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">,
+so only one of any symmetric pair
+  of off-diagonal parameters (if any) should be specified. <BR>
+<BR>
+<BR>
+To indicate that all the diagonal elements of 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">
+are
+  free parameters, use special values for <TT>v</TT> and <TT>w</TT>: <BR>
+if <TT>v</TT> = -1 and <TT>w</TT> = -1 then all the diagonal elements of
+  
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">
+are free parameters.  <TT>x</TT> must be specified as
+  a number but its value is irrelevant. <BR>
+<BR>
+<BR>
+To indicate that a square symmetric block of elements of 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">
+  are free parameters, use a special value for <TT>v</TT>: <BR>
+if <TT>v</TT> = -2 and <TT>w</TT>&gt;0 <TT>x</TT>&gt;0 then all elements in
+  the square, symmetric block of 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">
+from
+  
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">[w,w] to 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">[x,x] inclusive are
+  free--both diagonal and off-diagonal. <BR>
+<BR>
+<BR>
+To specify that one parameter is constrained to equal another parameter, use
+  5 arguments: <BR>
+if <TT>v</TT>=0 and <TT>w</TT>&gt;0, <TT>x</TT>&gt;0, <TT>y</TT>&gt;0, and
+  <TT>z</TT>&gt;0 then <TT>w</TT>,<TT>x</TT> and <TT>y</TT>,<TT>z</TT> index
+  
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">
+such that 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">[w,x] is constrained to
+  equal 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">[y,z].  If 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">[y,z] is to be
+  estimated that must be specified separately (using a 3-argument
+  entry).  GENBLIS automatically imposes symmetry on 
+<!-- MATH: $\Theta_{\epsilon}$ -->
+<IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif"
+ ALT="$\Theta_{\epsilon}$">,
+so
+  equality constraints should <I>not</I> be used for that purpose.  To do so
+  is an error that will cause unpredictable and incorrect results.  <BR>
+<BR>
+<BR>
+<BR>
+
+<P>
+<A NAME="modelspec:b">&#160;</A>  <B>The definition of <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">
+(<TT>b</TT>):</B> <BR>
+
+<P>
+<TT>b</TT> <BR>
+  <TT>v  w  x</TT> <BR>
+  <TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+
+<P>
+To indicate that a single parameter is to be estimated (a free parameter),
+  or to set a fixed parameter to a nonzero value, use 3 arguments: <BR>
+if <TT>v</TT>&gt;0 and <TT>w</TT>&gt;0 then <TT>v</TT>,<TT>w</TT> indexes
+  <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">[v,w] and <TT>x</TT>=0 indicates a free parameter while
+  <TT>x</TT><IMG
+ WIDTH="18" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$\ne$">0 indicates a fixed parameter with value fixed at
+  <TT>x</TT>. <BR>
+<BR>
+<BR>
+To indicate that all the parameters in a rectangular block of <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">
+  (except parameters in <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">'s diagonal, which are always fixed equal to
+  1) are to be estimated, use 5 arguments: <BR>
+if <TT>v</TT>= -2 and <TT>w</TT>&gt;0, <TT>x</TT>&gt;0, <TT>y</TT>&gt;0, and
+  <TT>z</TT>&gt;0, then <TT>w</TT>,<TT>x</TT> and <TT>y</TT>,<TT>z</TT>
+  index <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">
+such that all elements are free in the rectangle bounded by
+  upper-left corner <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">[w,x] and bottom-right corner <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">[y,z], except for
+  elements in the rectangle that are on <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">'s diagonal, which are
+  ignored. <BR>
+<BR>
+<BR>
+To specify that one parameter is constrained to equal another parameter, use
+  5 arguments: <BR>
+if <TT>v</TT>=0 and <TT>w</TT>&gt;0, <TT>x</TT>&gt;0, <TT>y</TT>&gt;0, and
+  <TT>z</TT>&gt;0 then <TT>w</TT>,<TT>x</TT> and <TT>y</TT>,<TT>z</TT> index
+  <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">
+such that <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">[w,x] is constrained to equal
+  <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">[y,z].  If <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif"
+ ALT="$\text{B}$">[y,z] is to be estimated that must be
+  specified separately (using a 3-argument entry). <BR>
+<BR>
+<BR>
+<BR>
+
+<P>
+<A NAME="modelspec:psi">&#160;</A>  <B>The definition of <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+(<TT>psi</TT>)</B>: <BR>
+
+<P>
+<TT>psi</TT> <BR>
+  <TT>v  w  x</TT> <BR>
+  <TT>v  w  x  y  z</TT> <BR>
+<BR>
+<BR>
+To indicate that a single parameter is to be estimated (a free parameter),
+  or to set a fixed parameter to a nonzero value, use 3 arguments: <BR>
+if <TT>v</TT>&gt;0 and <TT>w</TT>&gt;0, then <TT>v</TT>,<TT>w</TT> indexes
+  <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[v,w]=<IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[w,v].  <TT>x</TT>=0 indicates a (single) free
+  parameter while <TT>x</TT><IMG
+ WIDTH="18" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif"
+ ALT="$\ne$">0 indicates a fixed parameter with value
+  fixed at <TT>x</TT>.  GENBLIS automatically
+  imposes symmetry on <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">,
+so only one of any symmetric pair
+  of off-diagonal parameters (if any) should be specified. <BR>
+<BR>
+<BR>
+To indicate that all the diagonal elements of <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+are free
+  parameters, use special values for <TT>v</TT> and <TT>w</TT>: <BR>
+if <TT>v</TT> = -1 and <TT>w</TT> = -1 then all the diagonal elements of
+  <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+are free parameters.  <TT>x</TT> must be specified as a number but its
+  value is irrelevant. <BR>
+<BR>
+<BR>
+
+<P>
+To indicate that a square symmetric block of elements of <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+  are free parameters, use a special value for <TT>v</TT>: <BR>
+if <TT>v</TT> = -1 and <TT>w</TT> = -2 then all elements of <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+are free parameters.
+  <TT>x</TT> must be specified as a number but its value is irrelevant. <BR>
+<BR>
+<BR>
+if <TT>v</TT> = -2 and <TT>w</TT>&gt;0, <TT>x</TT>&gt;0, then all elements
+  in the square, symmetric block of <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+from <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[w,w] to <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[x,x] inclusive
+  are free (both diagonal and off-diagonal). <BR>
+<BR>
+<BR>
+To specify that a square symmetric block of elements of <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+is fixed to
+  be exactly equal to a square symmetric block of the sample covariance matrix
+  of the observed variables, use 5 arguments: <BR>
+if <TT>v</TT> = -3 and <TT>w</TT>&gt;0, <TT>x</TT>&gt;0, <TT>y</TT>&gt;0,
+  <TT>z</TT>&gt;0, then the elements of the square, symmetric block of
+  <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+from <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[w,w] thru <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[x,x] are set equal to the
+  corresponding elements in the block of the sample covariance matrix, <I>S</I>,
+  from <I>S</I>[y,y] thru <I>S</I>[z,z].  The sample covariance matrix is the
+  appropriate one respectively for the original sample, jackknife and bootstrap
+  computations.  If the 
+<!-- MATH: $\Lambda_{y}$ -->
+<IMG
+ WIDTH="25" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.gif"
+ ALT="$\Lambda_{y}$">
+loading pattern is set correctly, the
+  equivalence here will reproduce the relevant observed covariances
+  exactly.  This is useful if those variables are considered observed
+  without error and exogenous. <BR>
+<BR>
+<BR>
+To specify that one parameter is constrained to equal another parameter, use
+  5 arguments: <BR>
+if <TT>v</TT>=0 and <TT>w</TT>&gt;0, <TT>x</TT>&gt;0, <TT>y</TT>&gt;0, and
+  <TT>z</TT>&gt;0 then <TT>w</TT>,<TT>x</TT> and <TT>y</TT>,<TT>z</TT> index
+  <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">
+such that <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[w,x] is constrained to equal <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[y,z].  If
+  <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">[y,z] is to be estimated that must be specified separately (using a
+  3-argument entry).  GENBLIS automatically imposes symmetry on <IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img18.gif"
+ ALT="$\Psi$">,
+so
+  equality constraints should <I>not</I> be used for that purpose.  To do so
+  is an error that will cause unpredictable and incorrect results.
+
+<P>
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html83"
+ HREF="node6.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html81"
+ HREF="manual.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html75"
+ HREF="node4.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html84"
+ HREF="node6.shtml">Parameter Bounds</A>
+<B> Up:</B> <A NAME="tex2html82"
+ HREF="manual.shtml">The GENetic optimization and</A>
+<B> Previous:</B> <A NAME="tex2html76"
+ HREF="node4.shtml">General Setup</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

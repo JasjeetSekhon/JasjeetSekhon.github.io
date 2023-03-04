@@ -1,0 +1,27 @@
+Variables from Jasjeet S. Sekhon. "The 2004 Florida Optical Voting
+Machine Controversy: A Causal Analysis Using Matching."
+http://sekhon.berkeley.edu/papers/SekhonOpticalMatch.pdf
+
+
+fl 	  dummy variable 1 if Florida; 0 otherwise
+oh 	  dummy variable 1 if Ohio; 0 otherwise
+county 	  county name
+d1996 	  raw votes for Dole, 1996
+c1996 	  raw votes for Clinton, 1996
+b2000 	  raw votes for Bush, 2000
+g2000 	  raw votes for Gore, 2000
+b2004 	  raw votes for Bush, 2004
+k2004 	  raw votes for Kerry, 2004
+etouch    dummy variable 1 if Electronic Voting; 0 otherwise
+income 	  median income
+hispanic  total hispanic population
+votes00   votes for Gore plus votes for Bush, 2000
+size 	  votes for Kerry plus votes for Bush, 2004
+d96pc 	  % voted for Dole, 1996 d1996/(d1996 + c1996)
+b00pc 	  % voted for Bush, 2000 b2000/votes00
+b04pc 	  % voted for Bush, 2004 b2004/size
+b_change  Change in % voted for Bush from 2000 to 2004 b04pc - b00pc
+b00pc_sq  % voted for Bush 2000 squared b_change*b_change
+b00pc_e   interaction effect between b00pc and etouch b00pc*etouch
+b00pcsq_e interaction effect between b00pc_sq and etouch b00pc_sq*etouch
+v_change  change in voter turnout from 2000 to 2004 size - votes00

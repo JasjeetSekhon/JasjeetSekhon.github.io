@@ -1,0 +1,116 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb} 
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+% Multipart figures
+%\usepackage{subfigure}
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\usepackage{natbib} 
+\usepackage{times} 
+\usepackage{setspace}
+\usepackage{subfigure}
+
+\usepackage{hyperref} 
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}} 
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}} 
+
+\ifpdf 
+\usepackage[pdftex]{graphicx} \else 
+\usepackage{graphicx} \fi 
+
+\title{PS C236A / Stat C239A \\ Problem Set 2 \\ Due: Sept. 28, 2012}
+\date{}
+
+\begin{document}
+
+
+
+\paragraph{Problem 1: The Lady Tasting Tea }
+Consider the following variation of the Lady Tasting Tea example that we discussed in class. The Lady tastes eight cups of tea, four of which have milk added first and four of which have tea added first. The cups are organized into matched pairs and for each pair, a fair coin is flipped to determine which gets milk first. The Lady knows the design, meaning that she knows there is one milk-first cup and one tea-first cup in each matched pair.
+
+\begin{itemize}
+
+
+\item[a.]   Consider the following hypothesis test:  The null hypothesis 
+  is that the Lady has no ability to
+  discriminate the order in which milk is added to tea. 
+  The alternative is that the Lady's ability to discriminate 
+  the order is better than random chance.
+  In the case where the Lady makes one mistake (classifies
+  one milk-first cup as a tea-first cup), what is the $p$-value for this hypothesis test?
+
+\item[b.] Consider the same null and alternative as in part a.  
+  Suppose now that the cups are no longer paired;
+  instead milk-first or tea-first assignment is completely randomized,
+  with four cups receiving each assignment. 
+  The Lady is told that exactly four cups are milk-first, 
+  but is given no additional information.
+  If the Lady makes one mistake (classifies one milk-first cup as a tea-first cup), 
+  what $p$-value for the hypothesis test?
+  Is this $p$-value different from the one calculated in part (a)? 
+  Why or why not?
+  If you are trying to discern whether the 
+  Lady can correctly identify milk-first
+  and tea-first cups, which design would you prefer,
+  the one in a) or the one in b)?
+
+\item[c.]  You believe that the Lady guesses "milk-first" 2/3 of the time.  
+  Suppose you have a coin that
+  lands heads 2/3 of the time.  
+  For each of the eight cups, you flip the coin and pour
+  milk first or tea first depending on the outcome of the coin.
+  Which would you prefer:  
+  Pour milk first on heads or pour tea first on heads?
+  
+\item[d.]  
+  Consider the same null and alternative hypotheses as in part a.
+  Suppose that for each of the eight cups, you flip a fair coin, 
+  and you pour milk into that cup first
+  if that coin lands heads (otherwise, you pour tea first).
+  By chance, seven of the cups are milk-first, and only one of the cups is tea-first.
+  The Lady, when told about the randomization mechanism, 
+  states that she will choose at most six cups to be milk-first and at most six cups to 
+  be tea-first, as any more than that "is far too unlikely to happen."
+  Suppose that the Lady makes exactly two mistakes.
+  What is the $p$-value for this hypothesis test?
+
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>example1</TITLE>
+<META NAME="description" CONTENT="example1">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="manual.css">
+<LINK REL="next" HREF="node11.shtml">
+<LINK REL="previous" HREF="node9.shtml">
+<LINK REL="up" HREF="node9.shtml">
+<LINK REL="next" HREF="node11.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html141"
+ HREF="node11.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html139"
+ HREF="node9.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html133"
+ HREF="node9.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/genblis/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html142"
+ HREF="node11.shtml">example1.lst</A>
+<B> Up:</B> <A NAME="tex2html140"
+ HREF="node9.shtml">Example Files</A>
+<B> Previous:</B> <A NAME="tex2html134"
+ HREF="node9.shtml">Example Files</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00091000000000000000">&#160;</A>
+<A NAME="example:example1">&#160;</A>
+<BR>
+<TT>example1</TT>
+</H2>
+
+<P>
+The annotated <TT>example1</TT> model specification file is included in the
+manual for convenience.
+
+<P>
+<PRE>
+# This is a model specification file.  Please see the GENBLIS manual for
+# details.  The manual is available at
+# http://data.fas.harvard.edu/jsekhon/genblis/.  Your distribution of
+# GENBLIS ought to have come with a postscript version of the manual.
+
+# Comments begin with a "#" and continue until the end of the line.
+# Comments are not allowed to occur between keywords and their arguments.
+
+# The model specification file begins with the GENERAL SETUP SECTION.
+
+# Required.  This keyword precedes the path to where the dataset is
+# located.  There can be a maximum of 4096 characters in any path name used
+# in GENBLIS.  There is no default path.
+
+datafile example1.dat
+
+
+# Required.  This variable must be set to the number of observed variables
+# in the data.  The number is equal to the number of variables which must
+# be read in from the data file.  There is no default.
+  
+observedvars 6
+
+
+# Required.  The variable sets the number of latent variable present in the
+# linear structure model to be estimated.  There is not default.
+
+latentvars 1
+
+# Optional.  If you don't want any bootstrap estimates, just uncomment the
+# "noboots" keyword below.
+# noboots
+
+# Optional.  If you want neither bootstrap estimates nor GENBLIS to use the
+# control.big file, just uncomment the "nobig" keyword below.
+# nobig
+
+
+# Optional. This option sets the number of generations after GENBLIS thinks
+# it has converged it ought to keep going.  This number must be an integer.
+# GENBLIS thinks it has converged if the gradients at the best solution
+# found so far are below a criterion defined below.  It is often good to
+# keep GENBLIS keeps working after this point because the evolutionary
+# program (EP) portion of GENBLIS continues to provide useful information.
+# Obviously, the higher this number is, the greater security one has that a
+# global optimal has been found.  The default value is 5.
+
+genconverge 1
+
+
+# Optional.  This variable sets the maximum number of generations.  Recall
+# that theory states that the size of the genetic population is of greater
+# importance than then number of generations. The asymptotics are
+# primarily in population size.  The default value is 100.
+
+genmax 20
+
+
+# Required.  The "model" keyword begins the Linear Structure Model Definition
+# part of this file.  This section is required.
+
+model
+
+# The model which is implemented here is
+#
+# y1 = l1 * latent1 + e1,
+# y2 = l2 * latent1 + e2,
+# y3 = 1  * latent1 + e3,  y3 is used to identify the model and to scale
+#                          the latent variable
+# y4 = l3 * latent1 + e4,
+# y5 = l4 * latent1 + e5,
+# y6 = l5 * latent1 + e6,
+#
+# the variance of latent1 is psi1,
+#
+# where, y1 through y6 are the six observed variables, "latent1" is the one
+# latent variable, and e1 through e6 are the random errors, and l1 through
+# l5 are the coefficients which scale the latent variable to the
+# corresponding observed variable.  e1 through e6 have variances which are
+# estimated as the diagonal elements of te.  There are no estimated
+# covariances.
+#
+# The bootstrap goodness-of-fits tests (presented in the example1.lst file)
+# show that this model fits the data.
+
+
+# Setup Lambda Y.  No comments are allowed until all of the arguments to
+# the keyword "ly" have been entered.
+# This defines a one factor model.  Lambda Y[3,1] is fixed to one for
+# identification.  All other loadings are estimated.
+ly
+1 1 0
+2 1 0
+3 1 1
+4 1 0
+5 1 0
+6 1 0
+
+# Setup Theta Epsilon.  No comments are allowed until all of the arguments to
+# the keyword "te" have been entered.  All of the diagonal elements of Theta
+# Epsilon are estimated.
+te
+-1 -1 0
+
+# Setup Psi.  No comments are allowed until all of the arguments to
+# the keyword "psi" have been entered.  The random error of the one latent
+# variable is estimated by Psi[1,1].
+psi
+1 1 0
+
+
+# Required.  The keyword "bounds" begins the Parameter Bounds portion of
+# the model specification file.  No comments are allowed until all of the
+# bounds have been listed.  Format: parameter-number lower-bound
+# upper-bound
+
+bounds
+1   -1.00      20.10 
+2   -1.00      20.10 
+3   -1.00      20.10 
+4   -1.00      20.10 
+5   -1.00      20.10
+6   0.00      0.90 
+7   0.00      0.90 
+8   0.00      0.90 
+9   0.00      0.90 
+10  0.00      0.90 
+11  0.00      0.90 
+12  0.00      0.90
+
+# Optional.  No Starting Values are provided.  If there had been a starting
+# value section, it would have been started by the "starting_values"
+# keyword
+
+
+# Optional.  The keyword "control" begin the Genetic Operator Controls
+# setup for the control file.  None of the following control files is
+# required.  This section defines the four control file used by GENBLIS.
+# GENBLIS has four different control files defined by the following
+# keywords: control (used for the original sample); control.big (used in the
+# original sample and when there is a convergence failure in either the
+# jackknives or the bootstraps); control.jack (used for the jackknives);
+# and control.boot (used for the bootstraps).  Each control defines 9
+# different variables: the number used of each of 8 operators, and the
+# gradient convergence tolerance.  The gradient convergence tolerance is a
+# number which all of the gradients have to be below for GENBLIS to think that
+# it has found a minimum.  The default tolerance is 0.00002.
+#
+# The syntax is "control-file-keyword" followed by up to 9 numbers.  The
+# first 8 numbers define the number of operators of the chosen type.  The
+# 9th number is the gradient tolerance.  Obviously, the first 8 numbers
+# must be integers.  The first 8 numbers refer to the operators in the
+# following order:
+#
+# uniform mutation (50)
+# boundary mutation (0)
+# non-uniform mutation (50)
+# polytope crossover (50)
+# multiple point simple crossover (50)
+# whole non-uniform mutation (50)
+# heuristic crossover (50)
+# local-minimum crossover (0).
+#
+# The number in brackets is the default number of operators of each type
+# that GENBLIS uses.  If the "control" file is set and another of the given
+# files is not set, it is set equal to the control file.  If only part of a
+# control file's arguments is listed (e.g., "control.big" is only followed
+# by 3 numbers) the rest of the operators and the gradient tolerance are
+# set to equal the default values listed above.
+
+
+control
+50      0       50      50      50      50      50      0
+
+control.big
+60      0       60      60      60      60      60      0
+
+control.jack
+2       0       2       2       2       2       20      0
+
+control.boot
+40      0       40      40      40      40      40      0
+</PRE>
+
+<P>
+
+<BR><HR>
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-08-25</I>
+</ADDRESS>
+</BODY>
+</HTML>

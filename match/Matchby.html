@@ -1,0 +1,384 @@
+<html><head><title>R: Multivariate and Propensity Score Matching Estimator for Causal Inference</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score   Software, Causal Inference, Causality, Sekhon">
+<meta name="keywords" content="Propensity Score Matching, Multivariate Matching, Matching Software, Propensity Score Software, Causal Inference, Causality, Jasjeet Sekhon, Jas Sekhon, Sekhon, Jas">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for Matchby {Matching}"><tr><td>Matchby {Matching}</td><td align="right">R Documentation</td></tr></table>
+<h2>Grouped Multivariate and Propensity Score Matching</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function is a wrapper for the <code><a href="Match.html">Match</a></code> function which
+separates the matching problem into subgroups defined by a factor.
+This is equivalent to conducting exact matching on each level of a factor.
+Matches within each level are found as determined by the
+usual matching options.  This function is much faster for large
+datasets than the <code><a href="Match.html">Match</a></code> function itself.  For additional
+speed, consider doing matching without replacement&mdash;see the
+<code>replace</code> option.  This function is more limited than the
+<code><a href="Match.html">Match</a></code> function.  For example, <code>Matchby</code> cannot be
+used if the user wishes to provide observation specific weights.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Matchby(Y, Tr, X, by, estimand = "ATT", M = 1, ties=FALSE, replace=TRUE,
+        exact = NULL, caliper = NULL, AI=FALSE, Var.calc=0,
+        Weight = 1, Weight.matrix = NULL, distance.tolerance = 1e-05,
+        tolerance = sqrt(.Machine$double.eps), print.level=1, version="Matchby", ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Y</code></td>
+<td>
+A vector containing the outcome of interest. Missing values are not allowed.</td></tr>
+<tr valign="top"><td><code>Tr</code></td>
+<td>
+A vector indicating the observations which are
+in the treatment regime and those which are not.  This can either be a
+logical vector or a real vector where 0 denotes control and 1 denotes
+treatment.</td></tr>
+<tr valign="top"><td><code>X</code></td>
+<td>
+A matrix containing the variables we wish to match on.
+This matrix may contain the actual observed covariates or the
+propensity score or a combination of both.</td></tr>
+<tr valign="top"><td><code>by</code></td>
+<td>
+A "factor" in the sense that <code>as.factor(by)</code> defines the
+grouping, or a list of such factors in which case their
+interaction is used for the grouping.</td></tr>
+<tr valign="top"><td><code>estimand</code></td>
+<td>
+A character string for the estimand.  The default
+estimand is "ATT", the sample average treatment effect for the
+treated. "ATE" is the sample average treatment effect (for all), and
+"ATC" is the sample average treatment effect for the controls.</td></tr>
+<tr valign="top"><td><code>M</code></td>
+<td>
+A scalar for the number of matches which should be
+found. The default is one-to-one matching. Also see the
+<code>ties</code> option.</td></tr>
+<tr valign="top"><td><code>ties</code></td>
+<td>
+A logical flag for whether ties should be handled
+deterministically.  By default <code>ties==TRUE</code>. If, for example, one
+treated observation matches more than one control observation, the
+matched dataset will include the multiple matched control observations
+and the matched data will be weighted to reflect the multiple matches.
+The sum of the weighted observations will still equal the original
+number of observations. If <code>ties==FALSE</code>, ties will be randomly
+broken.  <EM>If the dataset is large and there are many ties,
+setting <code>ties=FALSE</code> often results in a large speedup.</EM> Whether
+two potential matches are close enough to be considered tied, is
+controlled by the <code>distance.tolerance</code> option.</td></tr>
+<tr valign="top"><td><code>replace</code></td>
+<td>
+Whether matching should be done with replacement.  Note
+that if <code>FALSE</code>, the order of matches generally matters.  Matches
+will be found in the same order as the data is sorted.  Thus, the
+match(es) for the first observation will be found first and then for
+the second etc. Matching without replacement will generally increase
+bias so it is not recommended.  <EM>But if the dataset is large and
+there are many potential matches, setting <code>replace=false</code> often
+results in a large speedup and negligible or no bias.</EM> Ties are
+randomly broken when <code>replace==FALSE</code>&mdash;see the <code>ties</code>
+option for details.</td></tr>
+<tr valign="top"><td><code>exact</code></td>
+<td>
+A logical scalar or vector for whether exact matching
+should be done.  If a logical scalar is provided, that logical value is
+applied to all covariates of
+<code>X</code>.  If a logical vector is provided, a logical value should
+be provided for each covariate in <code>X</code>. Using a logical vector
+allows the user to specify exact matching for some but not other
+variables.  When exact matches are not found, observations are
+dropped.  <code>distance.tolerance</code> determines what is considered to be an
+exact match. The <code>exact</code> option takes precedence over the
+<code>caliper</code> option.</td></tr>
+<tr valign="top"><td><code>caliper</code></td>
+<td>
+A scalar or vector denoting the caliper(s) which
+should be used when matching.  A caliper is the distance which is
+acceptable for any match.  Observations which are outside of the
+caliper are dropped. If a scalar caliper is provided, this caliper is
+used for all covariates in <code>X</code>.  If a vector of calipers is
+provided, a caliper value should be provide for each covariate in
+<code>X</code>. The caliper is interpreted to be in standardized units.  For
+example, <code>caliper=.25</code> means that all matches not equal to or
+within .25 standard deviations of each covariate in <code>X</code> are
+dropped.</td></tr>
+<tr valign="top"><td><code>AI</code></td>
+<td>
+A logical flag for if the Abadie-Imbens standard error
+should be calculated. It is computationally expensive to calculate
+with large datasets. <code>Matchby</code> can only calculate AI SEs for ATT.
+To calculate AI errors with other estimands, please use the
+<code><a href="Match.html">Match</a></code> function.  See the <code>Var.calc</code> option if one
+does not want to assume homoscedasticity.</td></tr>
+<tr valign="top"><td><code>Var.calc</code></td>
+<td>
+A scalar for the variance estimate
+that should be used.  By default <code>Var.calc=0</code> which means that
+homoscedasticity is assumed.  For values of  <code>Var.calc &gt; 0</code>,
+robust variances are calculated using <code>Var.calc</code> matches.</td></tr>
+<tr valign="top"><td><code>Weight</code></td>
+<td>
+A scalar for the type of
+weighting scheme the matching algorithm should use when weighting
+each of the covariates in <code>X</code>.  The default value of
+1 denotes that weights are equal to the inverse of the variances. 2
+denotes the Mahalanobis distance metric, and 3 denotes
+that the user will supply a weight matrix (<code>Weight.matrix</code>).  Note that
+if the user supplies a <code>Weight.matrix</code>, <code>Weight</code> will be automatically
+set to be equal to 3.</td></tr>
+<tr valign="top"><td><code>Weight.matrix</code></td>
+<td>
+This matrix denotes the weights the matching
+algorithm uses when weighting each of the covariates in <code>X</code>&mdash;see
+the <code>Weight</code> option. This square matrix should have as many
+columns as the number of columns of the <code>X</code> matrix. This matrix
+is usually provided by a call to the <code><a href="GenMatch.html">GenMatch</a></code> function
+which finds the optimal weight each variable should be given so as to
+achieve balance on the covariates. <br>
+<br>
+For most uses, this matrix has zeros in the off-diagonal
+cells.  This matrix can be used to weight some variables more than
+others.  For
+example, if <code>X</code> contains three variables and we want to 
+match as best as we can on the first, the following would work well:
+<br>
+<code>&gt; Weight.matrix &lt;- diag(3)</code><br>
+<code>&gt; Weight.matrix[1,1] &lt;- 1000/var(X[,1])</code> <br>
+<code>&gt; Weight.matrix[2,2] &lt;- 1/var(X[,2])</code> <br>
+<code>&gt; Weight.matrix[3,3] &lt;- 1/var(X[,3])</code> <br>
+This code changes the weights implied by the
+inverse of the variances by multiplying the first variable by a 1000
+so that it is highly weighted.  In order to enforce exact matching
+see the <code>exact</code> and <code>caliper</code> options.</td></tr>
+<tr valign="top"><td><code>distance.tolerance</code></td>
+<td>
+This is a scalar which is used to determine if distances
+between two observations are different from zero.  Values less than
+<code>distance.tolerance</code> are deemed to be equal to zero.  This
+option can be used to perform a type of optimal matching</td></tr>
+<tr valign="top"><td><code>tolerance</code></td>
+<td>
+This is a scalar which is used to determine
+numerical tolerances.  This option is used by numerical routines
+such as those used to determine if a matrix is singular.</td></tr>
+<tr valign="top"><td><code>print.level</code></td>
+<td>
+The level of printing. Set to '0' to turn off printing.</td></tr>
+<tr valign="top"><td><code>version</code></td>
+<td>
+The version of the code to be used.  The "Matchby" C/C++
+version of the code is the fastest, and the end-user should not
+change this option.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments passed on to <code><a href="Match.html">Match</a></code>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>Matchby</code> is much faster for large datasets than
+<code><a href="Match.html">Match</a></code>.  But <code>Matchby</code> only implements a subset of
+the functionality of <code><a href="Match.html">Match</a></code>.  For example, the
+<code>restrict</code> option cannot be used, Abadie-Imbens standard errors
+are not provided and bias adjustment cannot be requested.
+<code>Matchby</code> is a wrapper for the <code><a href="Match.html">Match</a></code> function which
+separates the matching problem into subgroups defined by a factor.  This
+is the equivalent to doing exact matching on each factor, and the
+way in which matches are found within each factor is determined by the
+usual matching options. <br>
+</p>
+<p>
+<EM>Note that by default <code>ties=FALSE</code> although the default for
+the <code>Match</code> in <code>GenMatch</code> functions is <code>TRUE</code>.  This is
+done because randomly breaking ties in large datasets often results in
+a great speedup.</EM>  For additional speed, consider doing matching
+without replacement which is often much faster when the dataset is
+large&mdash;see the <code>replace</code> option. <br>
+</p>
+<p>
+There will be slight differences in the matches produced by
+<code>Matchby</code> and <code><a href="Match.html">Match</a></code> because of how the covariates
+are weighted.  When the data is broken up into separate groups (via
+the <code>by</code> option), Mahalanobis distance and inverse variance
+will imply different weights than when the data is taken as whole.
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>est</code></td>
+<td>
+The estimated average causal effect.</td></tr>
+<tr valign="top"><td><code>se.standard </code></td>
+<td>
+The usual standard error.  This is the standard error
+calculated on the matched data using the usual method of calculating
+the difference of means (between treated and control) weighted so
+that ties are taken into account.</td></tr>
+<tr valign="top"><td><code>se </code></td>
+<td>
+The Abadie-Imbens standard error. This is only calculated
+if the <code>AI</code> option is <code>TRUE</code>. This standard error has
+correct coverage if <code>X</code> consists of either covariates or a
+known propensity score because it takes into account the uncertainty
+of the matching
+procedure.  If an estimated propensity score is used, the
+uncertainty involved in its estimation is not accounted for although the
+uncertainty of the matching procedure itself still is.</td></tr>
+<tr valign="top"><td><code>index.treated </code></td>
+<td>
+A vector containing the observation numbers from
+the original dataset for the treated observations in the
+matched dataset.  This index in conjunction with <code>index.control</code>
+can be used to recover the matched dataset produced by
+<code>Matchby</code>.  For example, the <code>X</code> matrix used by <code>Matchby</code>
+can be recovered by
+<code>rbind(X[index.treated,],X[index.control,])</code>.</td></tr>
+<tr valign="top"><td><code>index.control </code></td>
+<td>
+A vector containing the observation numbers from
+the original data for the control observations in the
+matched data.  This index in conjunction with <code>index.treated</code>
+can be used to recover the matched dataset produced by
+<code>Matchby</code>.  For example, the <code>Y</code> matrix for the matched dataset
+can be recovered by
+<code>c(Y[index.treated],Y[index.control])</code>.</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+The weights for each observation in the matched
+dataset.</td></tr>
+<tr valign="top"><td><code>orig.nobs </code></td>
+<td>
+The original number of observations in the dataset.</td></tr>
+<tr valign="top"><td><code>nobs </code></td>
+<td>
+The number of observations in the matched dataset.</td></tr>
+<tr valign="top"><td><code>wnobs </code></td>
+<td>
+The number of weighted observations in the matched dataset.</td></tr>
+<tr valign="top"><td><code>orig.treated.nobs</code></td>
+<td>
+The original number of treated observations.</td></tr>
+<tr valign="top"><td><code>ndrops</code></td>
+<td>
+The number of matches which were dropped because there
+were not enough observations in a given group and because of
+caliper and exact matching.</td></tr>
+<tr valign="top"><td><code>estimand</code></td>
+<td>
+The estimand which was estimated.</td></tr>
+<tr valign="top"><td><code>version</code></td>
+<td>
+The version of <code><a href="Match.html">Match</a></code> which was used.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Jasjeet S. Sekhon, UC Berkeley, <a href="mailto:sekhon@berkeley.edu">sekhon@berkeley.edu</a>,
+<a href="http://sekhon.berkeley.edu/">http://sekhon.berkeley.edu/</a>.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Sekhon, Jasjeet S. 2011.  "Multivariate and Propensity Score
+Matching Software with Automated Balance Optimization.&rdquo;
+<EM>Journal of Statistical Software</EM> 42(7): 1-52.
+<a href="http://www.jstatsoft.org/v42/i07/">http://www.jstatsoft.org/v42/i07/</a>
+</p>
+<p>
+Diamond, Alexis and Jasjeet S. Sekhon. 2005. "Genetic Matching for
+Estimating Causal Effects: A General Multivariate Matching Method for
+Achieving Balance in Observational Studies.&rdquo;  Working Paper.
+<a href="http://sekhon.berkeley.edu/papers/GenMatch.pdf">http://sekhon.berkeley.edu/papers/GenMatch.pdf</a>
+</p>
+<p>
+Sekhon, Jasjeet Singh and Richard D. Grieve. 2011. "A Matching Method
+For Improving Covariate Balance in Cost-Effectiveness Analyses."
+<EM>Health Economics</EM>. forthcoming.
+</p>
+<p>
+Abadie, Alberto and Guido Imbens. 2006.
+``Large Sample Properties of Matching Estimators for Average
+Treatment Effects.'' <EM>Econometrica</EM> 74(1): 235-267.
+<a href="http://ksghome.harvard.edu/~.aabadie.academic.ksg/sme.pdf">http://ksghome.harvard.edu/~.aabadie.academic.ksg/sme.pdf</a> 
+</p>
+<p>
+Imbens, Guido. 2004. Matching Software for Matlab and
+Stata. <a href="http://elsa.berkeley.edu/~imbens/estimators.shtml">http://elsa.berkeley.edu/~imbens/estimators.shtml</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+Also see <code><a href="Match.html">Match</a></code>,
+<code><a href="summary.Matchby.html">summary.Matchby</a></code>,
+<code><a href="GenMatch.html">GenMatch</a></code>,
+<code><a href="MatchBalance.html">MatchBalance</a></code>,
+<code><a href="balanceUV.html">balanceUV</a></code>,
+<code><a href="qqstats.html">qqstats</a></code>, <code><a href="ks.boot.html">ks.boot</a></code>,
+<code><a href="GerberGreenImai.html">GerberGreenImai</a></code>, <code><a href="lalonde.html">lalonde</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+#
+# Match exactly by racial groups and then match using the propensity score within racial groups
+#
+
+data(lalonde)
+
+#
+# Estimate the Propensity Score
+#
+glm1  &lt;- glm(treat~age + I(age^2) + educ + I(educ^2) + 
+             hisp + married + nodegr + re74  + I(re74^2) + re75 + I(re75^2) +
+             u74 + u75, family=binomial, data=lalonde)
+
+#save data objects
+#
+X  &lt;- glm1$fitted
+Y  &lt;- lalonde$re78
+Tr &lt;- lalonde$treat
+
+# one-to-one matching with replacement (the "M=1" option) after exactly
+# matching on race using the 'by' option.  Estimating the treatment
+# effect on the treated (the "estimand" option defaults to ATT).
+rr  &lt;- Matchby(Y=Y, Tr=Tr, X=X, by=lalonde$black, M=1);
+summary(rr)
+
+# Let's check the covariate balance
+# 'nboots' is set to small values in the interest of speed.
+# Please increase to at least 500 each for publication quality p-values.  
+mb  &lt;- MatchBalance(treat~age + I(age^2) + educ + I(educ^2) + black +
+                    hisp + married + nodegr + re74  + I(re74^2) + re75 + I(re75^2) +
+                    u74 + u75, data=lalonde, match.out=rr, nboots=10)
+
+</pre>
+
+<hr><div align="center"><a href="http://sekhon.berkeley.edu/matching/">Return to Jasjeet
+Sekhon's Matching Software Page</a></div>
+
+</body></html>

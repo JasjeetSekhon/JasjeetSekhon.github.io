@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>References</TITLE>
+<META NAME="description" CONTENT="References">
+<META NAME="keywords" CONTENT="pm96">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="pm96.css">
+<LINK REL="next" HREF="node9.shtml">
+<LINK REL="previous" HREF="node7.shtml">
+<LINK REL="up" HREF="pm96.shtml">
+<LINK REL="next" HREF="node9.shtml">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html105"
+ HREF="node9.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html103"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html97"
+ HREF="node7.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html106"
+ HREF="node9.shtml">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html104"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html98"
+ HREF="node7.shtml">Tables</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00050000000000000000">
+References</A>
+</H1>
+
+<P>
+<DL>
+<DD><P>
+<DT><DD>Aguirre-Torres, Victor and A. Ronald Gallant.  1983.  ``The Null and Non-null
+Asymptotic Distribution of the Cox Test for Multivariate Nonlinear
+Regression.''  <I>Journal of Econometrics</I> 21:5-33.
+
+<P>
+<DT><DD>Amemiya, Yasuo, and T. W. Anderson.  1990.  ``Asymptotic Chi-square Tests for
+a Large Class of Factor Analysis Models.''  <I>Annals of Statistics</I>
+18:1453-1463.
+
+<P>
+<DT><DD>Anderson, T. W.  1989.  ``Linear Latent Variable Models and Covariance
+Structures.''  <I>Journal of Econometrics</I> 41:91-119.
+
+<P>
+<DT><DD>Anderson, T. W., and Yasuo Amemiya.  1988.  ``The Asymptotic Normal
+Distribution of Estimators in Factor Analysis Under General Conditions.''
+<I>Annals of Statistics</I> 16:759-771.
+
+<P>
+<DT><DD>Barndorff-Nielsen, O. E., and D. R. Cox.  1994.  <I>Inference and
+Asymptotics</I>.  London:  Chapman and Hall.
+
+<P>
+<DT><DD>Beran, Rudolf, and Muni S. Srivastava.  1985.  ``Bootstrap Tests and
+Confidence Regions for Functions of a Covariance Matrix.''  <I>Annals of
+Statistics</I> 13:95-115.
+
+<P>
+<DT><DD>Browne, M. W.  1987.  ``Robustness of Statistical Inference in Factor
+Analysis and Related Models.''  <I>Biometrika</I> 74:375-384.
+
+<P>
+<DT><DD>Browne, M. W., and A. Shapiro.  1988.  ``Robustness of Normal Theory Methods
+in the Analysis of Linear Latent Variate Models.''  <I>British Journal of
+Mathematical and Statistical Psychology</I> 41:193-208.
+
+<P>
+<DT><DD>Cox, David R.  1961.  ``Tests of Separate Families of Hypotheses.''
+<I>Proceedings of the Fourth Berkeley Symposium on Mathematical
+Statistics and Probability</I> 1:105-123.
+
+<P>
+<DT><DD>Cox, David R.  1962.  ``Further Results on Tests of Separate Families of
+Hypotheses.''  <I>Journal of the Royal Statistical Society</I> B
+24:406-424.
+
+<P>
+<DT><DD>Dastoor, Naorayex K.  1985.  ``A Classical Approach to Cox's Test for
+Non-nested Hypotheses.'' <I>Journal of Econometrics</I> 27:363-370.
+
+<P>
+<DT><DD>Hall, Peter.  1992.  <I>The Bootstrap and Edgeworth Expansion</I>.  New
+York: Springer-Verlag.
+
+<P>
+<DT><DD>Kinder, Donald R., Gordon S. Adams and Paul W. Gronke.  1989.  ``Economics and
+Politics in the 1984 American Presidential Election.''  <I>American
+Journal of Political Science</I> 33:491-515.
+
+<P>
+<DT><DD>Loh, Wei-Yin.  1985.  ``A New Method of Testing Separate Families of
+Hypothesis.''  <I>Journal of the American Statistical
+Association</I> 80:362-368.
+
+<P>
+<DT><DD>Mebane, Walter R. Jr., Jasjeet Sekhon and Martin Wells.  1996.  ``The
+Robustness of Normal-theory LISREL Models: Tests Using a New
+Optimizer, the Bootstrap, and Sampling Experiments.''  Manuscript.
+
+<P>
+<DT><DD>Mebane, Walter R. Jr., and Gregory J. Wawro.  1996.  ``<I>Chadha</I>
+and Impoundments: Testing a Spatial Game Model of Institutional
+Change.''  Manuscript.
+
+<P>
+<DT><DD>White, Halbert.  1982.  ``Regularity Conditions for Cox's Test of Non-nested
+Hypotheses.''  <I>Journal of Econometrics</I> 19:301-318.
+
+<P>
+<DT><DD>White, Halbert.  1994.  <I>Estimation, Inference and Specification
+Analysis</I>.  New York:  Cambridge University Press.
+
+<P>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html105"
+ HREF="node9.shtml">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif"></A> 
+<A NAME="tex2html103"
+ HREF="pm96.shtml">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif"></A> 
+<A NAME="tex2html97"
+ HREF="node7.shtml">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif"></A>   
+      <BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+    ALINK="#FF0000">
+
+    <img src = "http://www.watchwise.net/cgi-watchwise/monitorwise.cgi?URL=http://data.fas.harvard.edu/jsekhon/:paper_cox&LINK=<!--#echo var="HTTP_REFERER"-->" height=1 width=1>
+  <A NAME="tex2html1"
+ HREF="http://data.fas.harvard.edu/jsekhon/">
+<IMG
+  ALIGN="BOTTOM" BORDER="0"
+ SRC="http://data.fas.harvard.edu/jsekhon/pics/home.gif"
+ ALT="http://data.fas.harvard.edu/jsekhon/pics/home.gif"></A>
+<BR>
+<B> Next:</B> <A NAME="tex2html106"
+ HREF="node9.shtml">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html104"
+ HREF="pm96.shtml">Bootstrap Methods for Non-nested</A>
+<B> Previous:</B> <A NAME="tex2html98"
+ HREF="node7.shtml">Tables</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Jas S. Sekhon</I>
+<BR><I>1998-07-30</I>
+</ADDRESS>
+</BODY>
+</HTML>

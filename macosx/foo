@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st
+March 2002), see www.w3.org" /> 
+<meta name="keywords" content="Sekhon, Jasjeet Sekhon, Jasjeet Singh Sekhon,Apple, Mac OS X, Linux, Windows, OS X sucks, Linux rules, benchmarks, linux on g5, 970, ibm, review, tiger, operton, intel"/>
+<title>Linux versus Mac OS X Benchmarks</title> 
+<link rel="stylesheet" href="http://www.w3.org/StyleSheets/Core/Steely"
+   type="text/css"/>
+<style type="text/css">
+/*<![CDATA[*/
+p {text-align: justify}
+p.validity {text-align: right}
+body { margin: 5em 5em 5em 5em}
+/*]]>*/
+</style>
+</head>
+<body>
+<h2>
+Linux versus Mac OS X Benchmarks
+</h2>
+
+<br>
+
+<h4 class="Summary">Summary</h4>
+<br>
+
+For statistical computing <a href="http://www.apple.com/macosx/">Apple's OS
+X</a> is incredibly inefficient relative to <a
+href="http://www.linuxtoday.com">Linux</a>.  The floating point performance of
+the <a
+href="http://www-3.ibm.com/chips/techlib/techlib.nsf/techdocs/A1387A29AC1C2AE087256C5200611780">970
+chip (the G5)</a> leaves much to be desired but OS X makes the performance
+problem significantly worse.  OS X does not "just work" (at least for me). The
+latest release of the OS, <a
+href="http://www.apple.com/macosx/tiger">Tiger</a>, is very buggy and does not
+have the usability I would expect given Apple's reputation.  Also, the issues
+of <a href="http://www.gnu.org/philosophy/">freedom and transparency</a>
+should not be forgotten.
+
+<h4 class="Background">Background</h4>
+<br>
+
+People often ask me about my opinions of <a
+href="http://www.apple.com/macosx/">Apple's OS X</a> both as a general
+operating system (as a replacement for <a
+href="http://www.linuxtoday.com">Linux</a> or other <a
+href="http://www.levenez.com/unix/">unixes</a>) and as an operating system
+useful for statistical computing. People training in statistical methods
+expecially often ask for advice in trying to avoid Linux. Because I have to
+support my <a href="http://jsekhon.fas.harvard.edu/matching/">statistical
+software</a> on various platforms, I have finally gotten around to purchasing
+a Mac: a 1.8Ghz dual G5 with 2GB of RAM.  I have also run benchmarks on a dual
+2Ghz G5. In order to save time repeating the same information to many people I
+have decided to post it on the web.  The short answer: use Linux.  If you
+<b>want</b> to use Mac OS X or Windows XP, go ahead.  All of these operating
+systems are now above the line (not long ago the operating systems out of
+Redmond and Cupertino were a joke).  However, if you decide to use Mac OS X
+for whatever reason, don't think it is just like Linux or some other efficient
+unix with a pretty and friendly gui. Life is full of tradeoffs and reasonable
+people can decide to make different choices.  Don't pretend that tradeoffs
+don't exist, and don't fall victim to Apple's marketing which is an extention
+of the <a
+href="http://www.folklore.org/StoryView.py?project=Macintosh&story=Reality_Distortion_Field.txt">Steve
+Jobs Reality Distortion Field</a>.
+
+<br><br>
+
+<h4 class="Benchmarks">Benchmarks</h4>
+<br>
+
+I present here a set of benchmarks which are relevant to my work and to people
+working in statistical computing, particular people using the <a
+href="http://www.r-project.org/">R Project for Statistical Computing</a>.
+These benchmarks are floating point bound where the main IO is to memory and
+not to disk.  Cache and Translation Look-aside Buffer (TLB) misses really
+matter as well as memory speed.  This setup may be of more general interest.
+For example, my benchmarks generally match those provided by the well known <a
+href="http://setiathome.ssl.berkeley.edu/">SETI</a> project (<a
+href="http://www.cox-internet.com/setispy/efficiency.htm">benchmarks</a>).
+But they may not be relevant for what you do.  If you need a computer to do
+<I>Y</I>, and these benchmarks are in no way related to <I>Y</I>, don't write
+me to complain about it.  These benchmarks are useful for the work <b> I </b>
+and some other computational statistics people do.
+
+<br><br>
+
+OS X is incredibly slow by design not least because it uses the <a
+href="http://en.wikipedia.org/wiki/Mach_kernel">Mach Microkernel</a> (see <a
+href="http://people.fluidsignal.com/~luferbu/misc/Linus_vs_Tanenbaum.html">Linus
+vs. Tanenbaum</a>).  For example, in Linux, the variables for a system call
+are passed directly using the register file. In OS X, they are packed up in a
+memory buffer, passed to a variety of places, and the results are then passed
+back using another memory buffer before the results are written back to the
+register file. You can just imagine what that does for TLB and cache hits.
+This just adds to the context switching difficulties on the <a
+href="http://www-1.ibm.com/servers/eserver/pseries/hardware/whitepapers/power4.html">Power4
+chips</a>.  Memory management in OS X is awful.  To quote Kazushige Goto
+talking about his BLAS: <a
+href="http://www.cs.utexas.edu/users/kgoto/#For_OS_X">"Performance is
+suppressed on purpose due to [the] awful memory management of OS X"</a>.
+Goto's work is described and praised on <a
+href="http://www.apple.com/education/science/profiles/vatech/optimization.html">Apple's
+own website</a> because he added a custom BLAS for the Apple super computer at
+<a href="http://www.tcf.vt.edu/systemX.html">Virginia Tech</a>.  On the Apple
+site it states that Goto was "pulling out incredible efficiencies".  Well,
+given the Goto's own benchmarks and comments, this is just another example of
+the <a
+href="http://www.folklore.org/StoryView.py?project=Macintosh&story=Reality_Distortion_Field.txt">Steve
+Jobs Reality Distortion Field</a>.
+
+<br>
+<br>
+
+The benchmarks presented here are based on two of my statistical software
+packages for <a href="http://www.r-project.org/">R</a>: <a
+href="../matching">Matching</a> (Multivariate and Propensity Score Matching
+Software) and <a href="../rgenoud">rgenoud</a> (R Version of GENetic
+Optimization Using Derivatives).  The former uses C++ code extensively and the
+later mainly relies on C code.  The two benchmark scripts are available <a
+href="matching.R">here (matching)</a> and <a href="rgenoud.R">here
+(rgenoud)</a>.  All benchmarks were done using R-2.1.0 and gcc.  The best
+timing results of three consecutive runs of the scripts are presented (if the
+first run numbers are used the results remain substantively the same).
+
+
+<br><br>
+
+The machines are:
+<TABLE BORDER=2 CELLSPACING=15>
+<TR> <TH>Label</TH>             <TH>OS and Chip</TH> </TR>
+<TR> <TD>OS X G5</TD>           <TD><a href="http://www.apple.com/macosx/tiger">Tiger</a>, dual 1.8 Ghz G5, 2GB RAM</TD> </TR>
+<TR> <TD>Linux G5</TD>          <TD><a href="http://www.ubuntulinux.org/">Ubuntu
+Linux 5.04</a> <a href="http://us.releases.ubuntu.com/releases/5.04/">ppc
+livecd</a>, dual 1.8 Ghz G5, 2GB RAM</TD> </TR>
+<TR> <TD>Linux Intel-M</TD>     <TD><a
+href="http://www.novell.com/linux/suse/">SuSE Professional 9.1</a>, <a
+href="http://www.ibm.com/thinkpad">IBM Thinkpad X41</a> 1.2 Pentium-M laptop,
+1GB RAM</TD> </TR>
+<TR> <TD>Linux Intel</TD>      <TD><a
+href="http://www.novell.com/linux/suse/">SuSE Professional 9.1</a>,
+<ahref="http://www.ibm.com">IBM Intelistation</a> 3 Ghz Pentium 4, 2GB RAM</TD> </TR>
+<TR> <TD>Linux Opteron</TD>    <TD><a
+href="http://www.novell.com/linux/suse/">SuSE Enterprise 9</a>,
+<a href="http://www.polywell.com">Polywell</a> <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a> Workstation, dual 1.8 Ghz, 4GB RAM</TD></TD> </TR>
+<TR> <TD>XP Intel</TD>      <TD><a
+href="http://www.microsoft.com/windowsxp/pro/">Windows XP Professional
+(SP2)</a>, <ahref="http://www.ibm.com">IBM Intelistation</a> 3 Ghz Pentium 4,
+2GB RAM</TD> </TR>
+</TABLE>
+
+<br> <br>
+
+<img src="matching1.png" alt="Matching">
+
+<br><br>
+
+<img src="rgenoud1.png" alt="rgenoud">
+
+<br><br>
+
+<b> My 2.7 pound Pentium-M laptop beats my 47 odd pound G5 running OS X!!</b>
+Here were are not testing IO nor are we testing running multiple processes on
+the same chip.  If we do either of these, the <a
+href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_8825,00.html">Opteron</a>
+starts to outperform the Intel machine by a noticeable margin.  The <a
+href="http://setiathome.ssl.berkeley.edu/">SETI</a> people have a webpage
+which compares processors and it matches my own benchmarks well.  They report
+theoretical peak cycles/flop for the Pentium M at 3.1, Opteron at 3.5, G5
+(970) at 5.2 and the Pentium 4 at 6.4.  Obviously, the Pentium 4 is able to
+maintain good performance only because it is clocked at a high speed.  For
+actual performance numbers see their <a
+href="http://www.cox-internet.com/setispy/efficiency.htm">calculator</a>.
+
+<br><br>
+
+It is worth noting that the distribution of Linux am running on the Mac, <a
+href="http://www.ubuntulinux.org/">Ubuntu</a>, is not optimized for the G5.
+One imagines that performance would improve if one were to use either <a
+href="http://www.gentoo.org">Gentoo PPC64</a> or <a
+href="http://www.yellowdoglinux.com">Yellow Dog Linux</a> high performance
+version.  Unlike, Ubuntu both of these distribution are 64-bit.
+
+
+<br><br>
+
+IBM designed the <a
+href="http://www-3.ibm.com/chips/techlib/techlib.nsf/techdocs/A1387A29AC1C2AE087256C5200611780">970
+chip (i.e,. the G5)</a> as a brain damaged version of their server <a
+href="http://www-1.ibm.com/servers/eserver/pseries/hardware/whitepapers/power4.html">Power4
+chips</a>.  They were worried that the 970 would eat into their server chip
+market so they limited it (512 cache, FPU etc).  Just compare the IBM
+discussion of the 970 (<a
+href="http://www-3.ibm.com/chips/techlib/techlib.nsf/techdocs/A1387A29AC1C2AE087256C5200611780">"64-bit
+PowerPC microprocessor designed for desktops and <b> entry-level
+</b>servers"</a> with Apple's marketing hyperbole <a
+href="http://www.apple.com/g5processor/">"Apple and IBM team up to produce the
+world's most advanced processor"</a>.
+
+<br><br>
+
+I have conducted many more benchmarks on these and other machines (including a
+dual 2Ghz G5 and dual 252 Opteron workstations).  I have also tested the HFS+
+filesystem.  It is vastly slower than <a
+href="http://www.namesys.com/">reiser</a> for small and medium sized files and
+vastly slower than <a href="http://oss.sgi.com/projects/xfs/">XFS</a> for
+large files (I use reiser partitions for system files and XFS partitions for
+storing large media files).  If you want these additional benchmarks, let me
+know.
+
+<br><br>
+
+
+<h4 class="General Review">General Review</h4>
+<br>
+
+What about OS X for more general computing applications?  After a few days of
+the Mac being my main desktop, I could no longer take it.  I switched back to
+my Linux box.  My Linux box has two monitors.  There is a third monitor which
+I switch between XP and OS X.  I run everything with just a single keyboard
+and mouse either through my KVM or even better through <a
+href="http://www.rdesktop.org">rdesktop (RDP)</a> to Windows and <a
+href="http://www.tightvnc.com">Tight VNC</a> to OS X (VNC controls the mouse
+and keyboard but I look at the actual monitor for the Mac screen output).
+
+<br><br>
+
+To make a long story short, the Mac has not been useful to me.  I only use it
+to run iTunes.  I cannot even use it to do video editing!?!  I convert video
+from my PVR to mpeg-ts (mpegpes) on Windows XP.  I do this using <a
+href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/directshow/htm/usinggraphedit.asp">DirectShow
+Filters via graphedit</a> which is an awesome interface to various video
+tools---one of Microsoft's biggest weapons has long been wonderful development
+tools.  In this way, I can turn PVR files into portable mpeg-ts files.  Which
+I can watch or burn to DVD for personal use.  The problem?  I cannot edit
+mepg-ts files using any Mac tool I can find.  I could use open source stuff
+like mencoder and mplayer, but I might as well then use Linux.  On Windows, I
+can *easily* burn my shows to dvd using <a
+href="http://www.nero.com/">Nero</a> which is fast and user friendly. I cannot
+use iDVD because it relies on Quicktime and QT does not support mpeg-ts.  So,
+the Mac does not "just work" even for video editing.  mpeg-ts is hardly an
+obscure format.  And no, I do not want to add an encoding step to switch
+mpeg-ts to some Quicktime format just to change it again for burning to a dvd
+using iDVD!
+
+<br><br>
+
+Tiger has a LOT of bugs.  It's ridiculous.  This is what happens when the beta
+testing setup is mostly secret---much like a Bush rally, you need the secret
+decoder ring to get in.  Apple does this because it wants the secrecy to
+generate buzz in the consumer market.  It doesn't really care about enterprise
+users and it shows.  The biggest bug I've found?  <a
+href="http://www.samba.org">Samba</a> client support is broken.  If Microsoft
+did this, <a href="http://www.slashdot.org">Slashdot</a> would go nuts.  But
+Jobs's reality distortion field protects Apple. An example of the bug, on
+Linux (which is serving the smb file share), create the following two files:
+
+<table bgcolor="#CCCCCC" width="60%" cellpadding="5" cellspacing="0"
+border="1"><tr><td><pre><code>
+musil:tmp/tmp> echo "a" > README
+musil:tmp/tmp> echo "bb" > readme
+musil:tmp/tmp> ls -l
+total 8
+-rw-r--r--  1 jsekhon research 3 2005-05-09 04:05 readme
+-rw-r--r--  1 jsekhon research 2 2005-05-09 04:05 README
+</code></pre></td></tr></table>
+<br>
+
+
+Mac OS X then hangs when it tries to view the directory.  If this is done
+through finder, you are in big trouble.  This is just stupid.  smb has very
+basic rules for how clients are supposed to handle this.  Windows has no
+problems and neither do Linux smb clients.
+
+<br><br>
+
+A related bug means that Macromedia MX does not work correctly on Tiger with a
+case sensitive filesystem.  Damn. Macromedia MX on XP works fine on a case
+sensitive filesystem (enabled by the excellent <a
+href="http://www.microsoft.com/windowsserversystem/sfu">UNIX Services for
+Windows</a> package). See this <a
+href="http://www.macromedia.com/cfusion/knowledgebase/index.cfm?id=d2410320">Macromedia
+webpage</a>.
+
+<br><br>
+
+Other bugs?  Malicious web pages can <a
+ href="http://stephan.com/widgets/zaptastic/">install dashboard
+ widgets</a>. <b>Egad!</b> Didn't we hate pre-SP2 XP for allowing this?
+
+<br><br>
+
+I have to reboot to install the Quicktime mpeg plugin.  What's up with that?
+I can't believe that I had to reboot the machine just to install the mpeg2
+codec player for QuickTime.  That is just so lame it's funny.  Especially
+given that they are using the <a
+href="http://en.wikipedia.org/wiki/Mach_kernel">Mach Microkernel</a> which is
+incredibly inefficient because it is a micro-kernel.  They take the efficient hit of a micro-kernel but they
+still don't have a modular system to the point that even a codec needs a
+reboot?!?  At *worst* only the gui should need a reboot.  And I guess they
+don't want to separate the gui because they don't want to scare most of their
+user base.
+
+<br><br>
+
+To be clear, Apple doesn't really care about techie users.  People I know who
+work there are very honest about this.  Apple thinks it is cool that a few
+hard core and famous hackers (such as <a
+href="http://en.wikipedia.org/wiki/Bill_Joy">Bill Joy</a>) are using their
+machines.  But that is not who they care about.
+
+<br><br>
+
+The color quality of the Mac is fantastic.  Whites really are white and blues
+blue.  But the bad engineering of the OS as well as the highly controlled
+nature of the apps offends me.  Who would have thought that a decade after the
+famous <a href="http://applemuseum.bott.org/sections/ads.html">1984 Big
+Brother ad</a>, it would be Apple with the highly controlled largely <a
+href="http://www.google.com/url?sa=U&start=1&q=http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/&e=9800">cathedral</a>
+OS and IBM would be spending hundreds of millions of dollars on code it allows
+anyone to <a href="http://www-1.ibm.com/linux/">share and to contribute
+to</a>.  
+
+<br>
+<br>
+<br>
+<br>
+<small><small> <a href="http://jsekhon.fas.harvard.edu/">Return to Jasjeet
+Sekhon's Homepage</a><br> </small></small>
+
+
+
+</body>
+</html>
+
+
+
+<!--  LocalWords:  Kazushige BLAS Poytech Goto's Opteron AMD's unixes XP
+ -->
+<!--  LocalWords:  Microkernel Homepage
+ -->

@@ -1,0 +1,147 @@
+
+R : Copyright 2004, The R Foundation for Statistical Computing
+Version 2.0.1  (2004-11-15), ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for a HTML browser interface to help.
+Type 'q()' to quit R.
+
+> invisible(options(echo = TRUE))
+> #
+> # Replication of Beck et al. (1993) Table 1, column 1
+> #
+> 
+> #make printing wider
+> options(width=150)
+> 
+> #load up the dataset called "dta"
+> loadURL(url="http://jsekhon.fas.harvard.edu/gov2000/R/agl1.RData")
+> 
+> #load up code for panel corrected standard errors
+> source("http://jsekhon.fas.harvard.edu/gov2000/R/pcse.R")
+> 
+> #data from
+> #Government Partisanship, Labor Organization and Macroeconomic Performance: A
+> #Corrigendum (Nathaniel Beck, Jonathan Katz, Michael Alvarez, Geoffrey
+> #Garrett, and Peter Lange), American Political Science Review, 87(4) December
+> #1993: 945-948.
+> 
+> #An earlier paper on this is:
+> 
+> #Government Partisanship, Labor Organization and Macroeconomic Performance,
+> #1967-1984 (R. Michael Alvarez, Geoffrey Garrett and Peter Lange), American
+> #Political Science Review, 85(3) June 1991: 539-556.
+> #
+> #(both available on JSTOR)
+> 
+> 
+> #print(names(data))
+> #print(as.matrix(names(dta)))
+> #      [,1]        
+> # [1,] "y"         : gdp growth 
+> # [2,] "country"   : country number (see "cname" for the name)
+> # [3,] "imports"   : OECD import prices (vulnerability to OECD supply conditions)
+> # [4,] "exports"   : OECD export prices (vulnerability to OECD supply conditions)
+> # [5,] "left"      : Lefitst participation in cabinet government
+> # [6,] "demand"    : Vulnerability to OECD demand conditions
+> # [7,] "growth.lag": the lag of gdp growth
+> # [8,] "labor.org" : Labor ortanization index (use "lo" for replication)
+> # [9,] "year"      : year
+> #[10,] "cname"     : name of country
+> #[11,] "lo"        : labor organization index (USE THIS ONE)
+> #[12,] "growth"    : dgp growth (same as "y")
+> 
+> 
+> #attach the datset for easy access to variables
+> attach(dta)
+> 
+> #Let's replicate Table 1, Column 1 of the 1993 article.  
+> 
+> a1  <- lm(y~growth.lag + demand + exports + imports + lo + left + I(lo*left) + as.factor(year),
++          data=dta)
+> #standard ols results
+> summary(a1)
+
+Call:
+lm(formula = y ~ growth.lag + demand + exports + imports + lo + 
+    left + I(lo * left) + as.factor(year), data = dta)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-3.85157 -1.08852 -0.01186  1.08520  4.69346 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(>|t|)    
+(Intercept)          4.6507242  0.6652975   6.990 3.87e-11 ***
+growth.lag           0.0772770  0.0658709   1.173 0.242107    
+demand              -0.0025147  0.0018153  -1.385 0.167494    
+exports              0.0022153  0.0011576   1.914 0.057071 .  
+imports             -0.0009169  0.0016243  -0.564 0.573051    
+lo                  -0.7000230  0.2163041  -3.236 0.001414 ** 
+left                -0.0228002  0.0090981  -2.506 0.012994 *  
+I(lo * left)         0.0115011  0.0035756   3.217 0.001510 ** 
+as.factor(year)1972  1.8100902  0.6463875   2.800 0.005598 ** 
+as.factor(year)1973  1.7348983  0.7107140   2.441 0.015501 *  
+as.factor(year)1974 -4.0826320  1.1578647  -3.526 0.000521 ***
+as.factor(year)1975 -3.9217945  0.9053744  -4.332 2.33e-05 ***
+as.factor(year)1976  1.1678935  0.7049729   1.657 0.099135 .  
+as.factor(year)1977 -1.0360795  0.6302978  -1.644 0.101767    
+as.factor(year)1978  0.0815087  0.6710340   0.121 0.903441    
+as.factor(year)1979 -0.4083002  0.6833597  -0.597 0.550847    
+as.factor(year)1980 -2.7156839  0.7524740  -3.609 0.000387 ***
+as.factor(year)1981 -3.3880437  0.7392642  -4.583 8.00e-06 ***
+as.factor(year)1982 -3.2375839  0.8391325  -3.858 0.000153 ***
+as.factor(year)1983 -1.4276092  0.6768995  -2.109 0.036167 *  
+as.factor(year)1984  0.4812812  0.7148540   0.673 0.501549    
+---
+Signif. codes:  0 `***' 0.001 `**' 0.01 `*' 0.05 `.' 0.1 ` ' 1 
+
+Residual standard error: 1.745 on 203 degrees of freedom
+Multiple R-Squared: 0.5156,	Adjusted R-squared: 0.4678 
+F-statistic:  10.8 on 20 and 203 DF,  p-value: < 2.2e-16 
+
+> 
+> #calculate panel corrected standard errrors. pcse returns the variance-covariance matrix
+> VC.pcse  <- pcse(a1, group=dta$country)
+> #calculate the panel corected standard errors
+> se  <-sqrt(diag(VC.pcse))
+> 
+> #put on nice lables
+> parms  <- as.data.frame(cbind(a1$coef, se, a1$coef/se, summary(a1)$coef[,2:3]))
+> names(parms)  <- c("parms", "pcse", "pcse t-stats", "ols se", "ols t-stats")
+> 
+> #print the results with 3 significant digits
+> print(signif(parms, digits=3))
+                        parms    pcse pcse t-stats  ols se ols t-stats
+(Intercept)          4.650000 0.64900        7.170 0.66500       6.990
+growth.lag           0.077300 0.09380        0.824 0.06590       1.170
+demand              -0.002510 0.00186       -1.350 0.00182      -1.390
+exports              0.002220 0.00117        1.890 0.00116       1.910
+imports             -0.000917 0.00174       -0.527 0.00162      -0.564
+lo                  -0.700000 0.28100       -2.490 0.21600      -3.240
+left                -0.022800 0.00682       -3.340 0.00910      -2.510
+I(lo * left)         0.011500 0.00308        3.730 0.00358       3.220
+as.factor(year)1972  1.810000 0.21500        8.420 0.64600       2.800
+as.factor(year)1973  1.730000 0.35800        4.850 0.71100       2.440
+as.factor(year)1974 -4.080000 0.98000       -4.170 1.16000      -3.530
+as.factor(year)1975 -3.920000 0.73500       -5.340 0.90500      -4.330
+as.factor(year)1976  1.170000 0.48500        2.410 0.70500       1.660
+as.factor(year)1977 -1.040000 0.15900       -6.530 0.63000      -1.640
+as.factor(year)1978  0.081500 0.34300        0.237 0.67100       0.121
+as.factor(year)1979 -0.408000 0.31800       -1.280 0.68300      -0.597
+as.factor(year)1980 -2.720000 0.45300       -5.990 0.75200      -3.610
+as.factor(year)1981 -3.390000 0.48200       -7.020 0.73900      -4.580
+as.factor(year)1982 -3.240000 0.65400       -4.950 0.83900      -3.860
+as.factor(year)1983 -1.430000 0.39000       -3.660 0.67700      -2.110
+as.factor(year)1984  0.481000 0.39700        1.210 0.71500       0.673
+> proc.time()
+[1] 0.39 0.06 0.91 0.00 0.00
+> 
