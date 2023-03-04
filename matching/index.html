@@ -12,7 +12,7 @@
 <body>
 
 <link rel="stylesheet"
-href="http://sekhon.berkeley.edu/Traditional"
+href="Traditional"
    type="text/css"/>
 <style type="text/css">
 /*<![CDATA[*/
@@ -24,14 +24,14 @@ body {margin-left: 5%}
 
 <h1>Multivariate and Propensity Score Matching Software for Causal Inference</h1>
 
-<a href="http://sekhon.berkeley.edu/">Jasjeet S. Sekhon</a>
+<a href="../">Jasjeet S. Sekhon</a>
 
 <br><br> This website is for the distribution of "Matching" which is a
 <b><a href="http://www.r-project.org/">R</a></b> package for
 estimating causal effects by multivariate and propensity score
 matching.  The package provides functions for multivariate and
 propensity score matching and for finding optimal balance based on
-a <a href="http://sekhon.berkeley.edu/rgenoud/">genetic search
+a <a href="rgenoud/">genetic search
 algorithm</a></b>. A variety of univariate and multivariate tests to
 determine if balance has been obtained are also provided.  These tests
 can also be used to determine if an experiment or quasi-experiment is
@@ -39,37 +39,37 @@ balanced on baseline covariates.
 
 <br><br> For an introduction to the package with documentation and
 examples, please
-see <a href="http://sekhon.berkeley.edu/papers/MatchingJSS.pdf">"Multivariate
+see <a href="papers/MatchingJSS.pdf">"Multivariate
 and Propensity Score Matching Software with Automated Balance
 Optimization: The Matching package for R."</a> <I> Journal of
 Statistical Software,</I> 42(7): 1-52. 2011.  And the following two
 papers provides examples
-where <a href="http://sekhon.berkeley.edu/matching/GenMatch.html">GenMatch()</a>
+where <a href="matching/GenMatch.html">GenMatch()</a>
 is able to recover experimental benchmarks using observational data:
-"<a href="http://sekhon.berkeley.edu/papers/GenMatch.pdf">Genetic
+"<a href="papers/GenMatch.pdf">Genetic
 Matching for Estimating Causal Effects: A General Multivariate
 Matching Method for Achieving Balance in Observational Studies</a>"
-and <a href="http://sekhon.berkeley.edu/papers/GeneticMatching_SekhonGrieve.pdf">"A
+and <a href="papers/GeneticMatching_SekhonGrieve.pdf">"A
 New Non-Parametric Matching Method for Bias Adjustment with
 Applications to Economic Evaluations"</a>.
 
 <br><br> 
 
 <a
-href="http://sekhon.berkeley.edu/matching/Match.html"><b>Match()</b></a>
+href="matching/Match.html"><b>Match()</b></a>
 is the fastest multivariate and propensity score matching function I
 know of.  Maximum speed is achieved when one uses the replace=FALSE
 and/or ties=FALSE options---see the <a
-href="http://sekhon.berkeley.edu/matching/Match.html">Match() help</a>
+href="matching/Match.html">Match() help</a>
 for details. But the most reliable estimates are obtained with the
 defaults settings: replace=TRUE and ties=TRUE.  <a
-href="http://sekhon.berkeley.edu/matching/GenMatch.html"><b>GenMatch()</b></a>
+href="matching/GenMatch.html"><b>GenMatch()</b></a>
 supports the use of multiple computers, CPUs or cores to perform
 parallel computations.  Examples are provided for how to use <a
-href="http://sekhon.berkeley.edu/rgenoud/multiple_cpus.html">multiple
+href="rgenoud/multiple_cpus.html">multiple
 chips on the same computer to perform parallel computations</a>.
 Examples are also provided for how to use <a
-href="http://sekhon.berkeley.edu/matching/R"> multiple computers to
+href="matching/R"> multiple computers to
 perform parallel calculations</a>. A <a href="ChangeLog">Change
 Log</a> is available which tracks changes across versions.
 
@@ -80,7 +80,7 @@ session: <br> <dl> <dd>
 </dl> </dd> 
 
 <br> Also, make sure that the latest version of <a
-href="http://sekhon.berkeley.edu/rgenoud">rgenoud</a> is also
+href="rgenoud">rgenoud</a> is also
 installed: <br> <dl> <dd> <B> > install.packages("rgenoud") </B> </dl> </dd>
 
 <br> Alternatively, the package may be directly downloaded from <a href="https://cran.r-project.org/web/packages/Matching/index.html">CRAN</a>.
@@ -91,43 +91,42 @@ The package includes the following main user exposed functions, two
 replication datasets and three demos:
 <br> <dl> <dd> 
      <a
-     href="http://sekhon.berkeley.edu/matching/GenMatch.html"><b>GenMatch():</b></a>
+     href="matching/GenMatch.html"><b>GenMatch():</b></a>
      finds optimal balance using multivariate matching where a genetic
      search algorithm determines the weight each covariate is given.
      The user can choose which function of covariate balance to
      optimize from a list or provide one of her own.
      <br><br>
-     <a href="http://sekhon.berkeley.edu/matching/Match.html">Match()</a>: 
+     <a href="matching/Match.html">Match()</a>: 
      performs multivariate and propensity score matching. 
      <br><br>
-     <a href="http://sekhon.berkeley.edu/matching/MatchBalance.html">MatchBalance():</a> 
+     <a href="matching/MatchBalance.html">MatchBalance():</a> 
      provides a variety of univariate and multivariate tests to determine if
      balance exists.
      <br><br>
      <a
-     href="http://sekhon.berkeley.edu/matching/Matchby.html">Matchby():</a>
+     href="matching/Matchby.html">Matchby():</a>
      This function is a wrapper for the <a
-     href="http://sekhon.berkeley.edu/matching/Match.html">Match()</a>
+     href="matching/Match.html">Match()</a>
      function which separates the matching problem into subgroups
      defined by a factor.  This function is much faster for large
      datasets than the <a
-     href="http://sekhon.berkeley.edu/matching/Match.html">Match()</a>
+     href="matching/Match.html">Match()</a>
      function itself.
      <br><br>
-     <a href="http://sekhon.berkeley.edu/matching/qqstats.html">qqstats()</a><br>
-     <a href="http://sekhon.berkeley.edu/matching/ks.boot.html">ks.boot()</a><br>
-     <a href="http://sekhon.berkeley.edu/matching/balanceUV.html">balanceUV()</a><br>
-     <a href="http://sekhon.berkeley.edu/matching/GerberGreenImai.html">Gerber, Green and Imai data</a><br>
-     <a href="http://sekhon.berkeley.edu/matching/lalonde.html">LaLonde data</a><br>
-     <a href="http://sekhon.berkeley.edu/matching/AbadieImbens.Rout">AbadieImbens demo</a><br>
-     <a href="http://sekhon.berkeley.edu/matching/DehejiaWahba.Rout">DehejiaWahba demo</a><br>
+     <a href="matching/qqstats.html">qqstats()</a><br>
+     <a href="matching/ks.boot.html">ks.boot()</a><br>
+     <a href="matching/balanceUV.html">balanceUV()</a><br>
+     <a href="matching/GerberGreenImai.html">Gerber, Green and Imai data</a><br>
+     <a href="matching/lalonde.html">LaLonde data</a><br>
+     <a href="matching/AbadieImbens.Rout">AbadieImbens demo</a><br>
+     <a href="matching/DehejiaWahba.Rout">DehejiaWahba demo</a><br>
      <a
-     href="http://sekhon.berkeley.edu/matching/GerberGreenImai.Rout">GerberGreenImai demo</a><br>
-     <a href="http://sekhon.berkeley.edu/rgenoud/multiple_cpus.html">Examples of how to use multiple
+     href="matching/GerberGreenImai.Rout">GerberGreenImai demo</a><br>
+     <a href="rgenoud/multiple_cpus.html">Examples of how to use multiple
 chips on the same computer to perform parallel computations</a><br>
      <a
-     href="http://sekhon.berkeley.edu/matching/R">Examples of how to use multiple computers to perform parallel calculations</a><br>
-     <a href="http://sekhon.berkeley.edu/doc/html">General R Documentation</a><br>
+     href="matching/R">Examples of how to use multiple computers to perform parallel calculations</a><br>
 </dl> </dd>
 <br>
 
@@ -138,26 +137,26 @@ Automated Balance Optimization: The Matching package for R." <I>
 Journal of Statistical Software.</I> 42(7): 1-52. </b> <br>
 <br>
 
-<a href="http://sekhon.berkeley.edu/matching/GenMatch.html"><b>GenMatch()</b></a>
+<a href="matching/GenMatch.html"><b>GenMatch()</b></a>
 can make use of multiple chips on the same computer or multiple
 computers to perform parallel computations. Examples are provided for
 how to use <a
-href="http://sekhon.berkeley.edu/rgenoud/multiple_cpus.html">multiple
+href="rgenoud/multiple_cpus.html">multiple
 chips on the same computer</a>.  Examples are also provided for how to
 use multiple computers to perform parallel computations in the <a
-href="http://sekhon.berkeley.edu/papers/MatchingJSS.pdf"><I>Journal
+href="papers/MatchingJSS.pdf"><I>Journal
 of Statistical Software</I></a> article. <br><br>
 
 The following paper describes <a
-href="http://sekhon.berkeley.edu/matching/GenMatch.html">GenMatch()</a>
+href="matching/GenMatch.html">GenMatch()</a>
 in detail and discusses its theoretical properties: "<a
-href="http://sekhon.berkeley.edu/papers/GenMatch.pdf">Genetic Matching
+href="papers/GenMatch.pdf">Genetic Matching
 for Estimating Causal Effects: A General Multivariate Matching Method
 for Achieving Balance in Observational Studies.</a>" Monte Carlo
 experiments are presented in the paper which illustrate GenMatch's
 properties, and real data examples are provided where GenMatch
 recovers the experimental bench.  Also see the paper entitled <a
-href="http://sekhon.berkeley.edu/papers/GeneticMatching_SekhonGrieve.pdf">"A New
+href="papers/GeneticMatching_SekhonGrieve.pdf">"A New
 Non-Parametric Matching Method for Bias Adjustment with Applications
 to Economic Evaluations,"</a> where GenMatch is used to recover
 another experimental benchmark.
@@ -165,7 +164,7 @@ another experimental benchmark.
 <br><br>
 
 Also see my "<a
-href="http://sekhon.berkeley.edu/papers/SekhonBalanceMetrics.pdf">Alternative
+href="papers/SekhonBalanceMetrics.pdf">Alternative
 Balance Metrics for Bias Reduction in Matching Methods for Causal
 Inference</a>" paper which critically reviews various ways to measure
 balance.  Cumulative probability distribution functions of
@@ -186,7 +185,7 @@ analysis for matched data. One can conduct sensitivity analyses for
 matched data with binary, ordinal or continuous outcomes, and for
 matched data with multiple control units matched to each treated
 unit. The package is designed work with the object returned by the <a
-href="http://sekhon.berkeley.edu/matching/Match.html">Match()</a>
+href="matching/Match.html">Match()</a>
 function.
 
 
@@ -202,7 +201,7 @@ the "Matching" package.
 
 <br>
 <br>
-<small><small> <a href="http://sekhon.berkeley.edu/">Return to Jasjeet
+<small><small> <a href="../">Return to Jasjeet
 Sekhon's Homepage</a><br> </small></small>
 
 </body>
