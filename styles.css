@@ -42,7 +42,8 @@ a {
 }
 
 a:hover {
-    color: #5a5a5a;
+    color: #1a0dab;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
