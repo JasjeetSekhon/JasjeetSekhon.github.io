@@ -1,6 +1,24 @@
+:root {
+    --font-family: 'Poppins', sans-serif;
+    --font-size-base: 16px;
+    --color-text: #333;
+    --color-background: #f7f8fa;
+    --color-primary: #146eb4;
+    --color-primary-hover: #0c4c7d;
+    --color-header-bg: #ffffff;
+    --color-border: #ddd;
+    --color-card-bg: #ffffff;
+    --color-card-hover-shadow: rgba(0, 0, 0, 0.1);
+    --color-hero-gradient-start: #146eb4;
+    --color-hero-gradient-end: #0c4c7d;
+    --color-hero-overlay: rgba(0,0,0,0.25);
+    --border-radius-base: 6px;
+    --transition-base: 0.2s ease;
+}
+
 html {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: var(--font-size-base);
 }
 
 *, *::before, *::after {
@@ -9,28 +27,28 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family);
     font-weight: 300;
     line-height: 1.5;
-    color: #333;
-    background: #f4f5f7;
+    color: var(--color-text);
+    background: var(--color-background);
 }
 
 a {
-    color: #146eb4;
+    color: var(--color-primary);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color var(--transition-base);
 }
 
 a:hover, a:focus {
-    color: #0c4c7d;
+    color: var(--color-primary-hover);
     text-decoration: underline;
 }
 
-/* Navigation/Header */
+/* Header */
 .site-header {
-    background: #ffffff;
-    border-bottom: 1px solid #ddd;
+    background: var(--color-header-bg);
+    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 999;
@@ -39,7 +57,7 @@ a:hover, a:focus {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,43 +69,51 @@ a:hover, a:focus {
     color: #333;
 }
 
+/* Main Navigation */
 .main-nav a {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     font-size: 0.95rem;
     font-weight: 400;
     color: #555;
+    padding: 0.25rem 0;
+    transition: color var(--transition-base);
+}
+
+.main-nav a:hover {
+    color: var(--color-primary-hover);
 }
 
 .main-nav a.contact-link {
     padding: 0.4rem 0.75rem;
-    background: #146eb4;
+    background: var(--color-primary);
     color: #fff;
-    border-radius: 4px;
+    border-radius: var(--border-radius-base);
     font-weight: 500;
     margin-left: 1.5rem;
+    transition: background var(--transition-base);
 }
 
 .main-nav a.contact-link:hover {
-    background: #0c4c7d;
+    background: var(--color-primary-hover);
 }
 
 /* Hero Section */
 .hero {
     position: relative;
-    min-height: 400px;
-    background: linear-gradient(135deg, #146eb4 0%, #0c4c7d 100%);
+    min-height: 450px;
+    background: linear-gradient(135deg, var(--color-hero-gradient-start) 0%, var(--color-hero-gradient-end) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #ffffff;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
 }
 
 .hero-overlay {
     position: absolute;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.25);
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--color-hero-overlay);
 }
 
 .hero-content {
@@ -97,8 +123,8 @@ a:hover, a:focus {
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid #fff;
@@ -108,14 +134,14 @@ a:hover, a:focus {
 .hero h1 {
     margin: 0.5rem 0;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 .hero-subtitle {
-    margin: 0.5rem 0 1rem;
-    font-size: 1rem;
+    margin: 0.75rem 0 1.5rem;
+    font-size: 1.05rem;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .hero-links a {
@@ -123,10 +149,12 @@ a:hover, a:focus {
     color: #e0f0ff;
     font-weight: 300;
     margin: 0 0.25rem;
+    transition: opacity var(--transition-base);
 }
 
 .hero-links a:hover {
     text-decoration: underline;
+    opacity: 0.9;
 }
 
 /* Main Content */
@@ -140,7 +168,7 @@ main {
 
 .content-section {
     background: #ffffff;
-    border-radius: 8px;
+    border-radius: var(--border-radius-base);
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     padding: 2rem;
     margin-bottom: 2rem;
@@ -148,10 +176,12 @@ main {
 
 .content-section h2 {
     margin-top: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: #222;
     margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
 }
 
 /* Card Grid */
@@ -162,8 +192,8 @@ main {
 }
 
 .card {
-    background: #fdfdfd;
-    border-radius: 6px;
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius-base);
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -171,7 +201,7 @@ main {
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.07);
+    box-shadow: 0 4px 12px var(--color-card-hover-shadow);
 }
 
 .card h3 {
@@ -179,7 +209,7 @@ main {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #146eb4;
+    color: var(--color-primary);
 }
 
 .card p {
@@ -190,7 +220,6 @@ main {
 }
 
 /* Publications */
-/* Remove flex and column layout to prevent forced line breaks */
 .pub-list {
     list-style: none;
     margin: 0;
@@ -198,17 +227,15 @@ main {
 }
 
 .publication {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
-/* Make sure anchor links are inline to avoid forcing new lines */
 .publication a {
     display: inline;
     font-size: 1rem;
     font-weight: 400;
-    color: #146eb4;
-    line-height: 1.4;
-    white-space: normal;
+    color: var(--color-primary);
+    line-height: 1.5;
 }
 
 .publication a:hover {
@@ -226,7 +253,7 @@ main {
 /* Footer */
 .site-footer {
     background: #fafafa;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--color-border);
     padding: 1rem 0;
     text-align: center;
     font-size: 0.9rem;
@@ -239,7 +266,7 @@ main {
     padding: 0 1rem;
 }
 
-/* Responsive */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .main-nav {
         display: none;
@@ -250,11 +277,11 @@ main {
     }
 
     .hero h1 {
-        font-size: 1.75rem;
+        font-size: 1.9rem;
     }
 
     .hero-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .card-grid {
@@ -263,5 +290,9 @@ main {
 
     main {
         margin: -4rem auto 2rem;
+    }
+
+    .content-section {
+        padding: 1.5rem;
     }
 }
